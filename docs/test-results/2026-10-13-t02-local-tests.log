@@ -1,0 +1,45 @@
+✔ all seed cities are covered and stable ids are unique (1.0878ms)
+✔ empty query returns all records (0.4962ms)
+✔ city era type and keyword filters intersect (0.9697ms)
+✔ impossible combination is empty rather than ignoring filters (0.1304ms)
+✔ whitespace-only search is empty query (0.0855ms)
+✔ active records hide tombstones and sort latest first (0.1373ms)
+✔ upsert replaces one logical record (0.0791ms)
+✔ logical timestamp handles local clock rollback (0.0704ms)
+✔ latest timestamp wins and losing content is retained (0.1877ms)
+✔ same timestamp has deterministic device tie break (0.1561ms)
+✔ semantic equality ignores property insertion order (0.102ms)
+✔ equal timestamp deletion wins over live record (0.1123ms)
+✔ old offline version cannot resurrect deleted record (0.0557ms)
+✔ merge is idempotent and has no conflict for identical records (0.1689ms)
+✔ merge is commutative across multiple ids and versions (0.141ms)
+✔ snapshot copies cannot mutate source tags (0.1265ms)
+✔ snapshot round trips unicode and timestamps (0.2772ms)
+✔ corrupt or future snapshots are rejected (0.2711ms)
+✔ invalid records and duplicate ids are rejected (0.1504ms)
+✔ maximum legal note and tags round trip without truncation (0.1839ms)
+✔ UI test store is accepted only for a bounded debug-only namespace (0.1474ms)
+✔ recommendations exclude current and favorites and explain ranking (0.253ms)
+✔ cold start recommendations are deterministic (0.076ms)
+✔ progress is an input to local recommendations (0.0743ms)
+✔ landing recommendations do not repeat already viewed content (0.057ms)
+✔ unconfigured sync never claims success (0.4242ms)
+✔ all catalog illustrations are bundled offline (0.7077ms)
+✔ light and dark themes contain identical resource keys (0.5477ms)
+✔ repository initializes a genuinely absent snapshot and persists installation id (4.5888ms)
+✔ repository reopens existing snapshot without rewriting it (4.3117ms)
+✔ repository rejects existing empty, corrupt and wrong-type values without clearing them (3.2435ms)
+✔ repository does not initialize over an orphaned backup (0.548ms)
+✔ failed flush leaves disk and current in-memory cache on confirmed snapshot (1.6803ms)
+✔ queue recovers after a failed write (0.698ms)
+✔ save captures input before caller mutates it (0.5529ms)
+✔ queued writes persist the last request and retain the previous confirmed version (0.8042ms)
+✔ invalid schema is rejected before any write (0.8293ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 487.8621

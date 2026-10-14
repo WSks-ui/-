@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-14",
+  "source": "HarmonyOS API 26 手机模拟器，HDC / Hypium / UiTest 原生截图",
+  "report": "../../test-results/2026-10-14-134918-device.log",
+  "capability": "../../test-results/2026-10-14-immersive-capability.log",
+  "mainHapSha256": "FC41940FEBD00BCEDA22F9D357C4DAAA181F03FD1531D1688751C3E9984BE9F9",
+  "testHapSha256": "3310CAE993F6D53E73C9A3B40310E3D9D61B21F0FD555A14EB50062296BB7B9B",
+  "pixels": {
+    "width": 1256,
+    "height": 2760
+  },
+  "captures": [
+    {
+      "file": "home.png",
+      "sha256": "C71C193F3760ECAB93C44CBED4CDBD6F0B87F484D42AE4612853E53277F2C020"
+    },
+    {
+      "file": "scrolled.png",
+      "sha256": "C0245D100830B4D1FE0D2002DB3BA05E463A84CC77030FCF79B38557A863AF29"
+    },
+    {
+      "file": "scroll-bottom.png",
+      "sha256": "EA07FE4D53A1F5C5342A29435999E3F222755B3B8388FD27B5A929CA82EE0336"
+    },
+    {
+      "file": "disabled.png",
+      "sha256": "863C39E83FEAF04DA3F47F8DF9D64DA57555A4BEBD5BA4FDEEFB3481324F0F08"
+    },
+    {
+      "file": "reduced.png",
+      "sha256": "863C39E83FEAF04DA3F47F8DF9D64DA57555A4BEBD5BA4FDEEFB3481324F0F08"
+    },
+    {
+      "file": "dark.png",
+      "sha256": "2B8CAA1499E1D858900FDA5CBD417BEE7A9B047CB2C3ADD89AFB48CB3D1D1CB1"
+    },
+    {
+      "file": "scrolled-dark.png",
+      "sha256": "9D1B0E4B73409046CBD1C87D4E3F0EEE620FB3A6C61C5649E76A5B784B853F33"
+    },
+    {
+      "file": "large.png",
+      "sha256": "E014BACA3A4FC8522D5AA0207EDA72E5FF9EEC4976CBF1073277710BE699BB94"
+    },
+    {
+      "file": "detail-large.png",
+      "sha256": "B0AB1C69BDD2B627872DC48CCF10B5B0E992DF536ABF811DBC5E48DC6E746FAA"
+    }
+  ],
+  "composition": {
+    "file": "overview.png",
+    "method": "三张原截图等比缩放与排列，只添加页名",
+    "sources": [
+      "home.png",
+      "scrolled.png",
+      "scrolled-dark.png"
+    ],
+    "sha256": "405CF14A1D187FFED8C634B9A58EBC0A6143921A449B2EA4FE4EC0E2BF1596A5"
+  },
+  "functionalTestHapSha256": "9073A6778AB4DD2B951E856E7755D4FB5D13AB5EFFED70F70D39C52899585E41",
+  "functionalReports": [
+    "../../test-results/2026-10-14-132006-device.log",
+    "../../test-results/2026-10-14-132122-device.log",
+    "../../test-results/2026-10-14-132624-device.log"
+  ]
+}

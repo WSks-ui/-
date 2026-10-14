@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 400 320">
+  <!-- 原创古塔主题图，只表达建筑阅读主题，不是开封铁塔测绘或复原图。 -->
+  <rect width="400" height="320" fill="#3A3328"/>
+  <circle cx="113" cy="115" r="49" fill="#51442F"/>
+  <path d="M0 252c77-23 125-11 195 5s126-17 205-5v68H0z" fill="#51442F"/>
+  <g fill="none" stroke="#6A573C" stroke-width="2" stroke-linecap="round">
+    <path d="M67 199h32M303 112h40M312 125h20M287 269h42M59 279h44"/>
+    <circle cx="316" cy="198" r="5"/>
+  </g>
+  <g stroke="#E2C08D" stroke-width="3" stroke-linejoin="round">
+    <path d="M200 71V54M171 96l29-25 29 25z" fill="#8D744F"/>
+    <path d="M176 96l-24 163h96L224 96z" fill="#5F503D"/>
+    <path d="M169 125l31-16 31 16zM164 157l36-16 36 16zM159 190l41-16 41 16zM153 225l47-16 47 16z" fill="#8D744F"/>
+    <path d="M160 128h80M154 160h92M148 193h104M141 228h118M132 259h136" fill="none"/>
+    <path d="M188 259v-24h24v24M193 104h14M190 137h20M188 171h24M184 205h32" fill="none"/>
+  </g>
+</svg>
+

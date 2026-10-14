@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-14",
+  "reportFileTimezone": "Asia/Shanghai",
+  "runtimeOS": "HarmonyOS",
+  "sdkVersion": "26.0.0.105",
+  "deviceSystem": "7.0.0.107",
+  "api": 26,
+  "screenshotPixels": [
+    1256,
+    2760
+  ],
+  "pass": 2,
+  "failure": 0,
+  "error": 0,
+  "ignore": 0,
+  "inspected": [
+    "home",
+    "graph",
+    "compare",
+    "personal",
+    "personal-compare",
+    "dark",
+    "large"
+  ],
+  "fontSizeScales": [
+    1,
+    1.5
+  ],
+  "files": [
+    {
+      "path": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+      "sha256": "322505022BD558E3625BB6EAB865C5E9BFB12DA4DBFC328743E18DC9B61916E5"
+    },
+    {
+      "path": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap",
+      "sha256": "7DD06708BFFFC0FEAE066CD4F773481B61C703C9EFEE1B42BBB98BE0E1347160"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-175431-device.log",
+      "sha256": "19D5F49F6D53D6E783C2BE9407D42E55868055F49C34B5A7D1B9AA4FD117EFEA"
+    },
+    {
+      "path": "docs/design/culture/home.png",
+      "sha256": "72702EBB32706F41BFF16C7736C41C621230BA20423DF8F97E6AB41B8176A47A"
+    },
+    {
+      "path": "docs/design/culture/graph.png",
+      "sha256": "A479657F56DB8E9E3B53BAD65F3A578E161725D4247EEFECD333FA88412F801F"
+    },
+    {
+      "path": "docs/design/culture/compare.png",
+      "sha256": "A7B63694F15F0399ECB1F7F7D450E08EA732DF52C356A5A25DFA1868885CDF50"
+    },
+    {
+      "path": "docs/design/culture/personal.png",
+      "sha256": "FDF2DF15D53A90EC40CE1D95E6C230BB82D5B35F8CDED948655B2F89019AB608"
+    },
+    {
+      "path": "docs/design/culture/personal-compare.png",
+      "sha256": "2173FBE06B87A3DFFC544437566D9088ABD4655C118B08C094583344734D4856"
+    },
+    {
+      "path": "docs/design/culture/dark.png",
+      "sha256": "1B2CD228C26AB74746EB8E5CD08E65A5C9351DFC58D37481602C4ED2759F785A"
+    },
+    {
+      "path": "docs/design/culture/large.png",
+      "sha256": "DDC1F436BE7AE54AC028E84C8C35E85676A716AAD0E2F601EF944C1729C62A19"
+    },
+    {
+      "path": "docs/design/culture/overview.png",
+      "sha256": "D1D034845EFE65511840C77451821C969148498CFE29492B44D231D637CF94C1"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+
+OHOS_REPORT_SUM: 6
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=preferences_round_trip_after_cache_eviction
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=preferences_round_trip_after_cache_eviction
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=36
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=corrupt_snapshot_is_not_overwritten
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=corrupt_snapshot_is_not_overwritten
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=17
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=queued_saves_keep_latest_and_previous_snapshot
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=queued_saves_keep_latest_and_previous_snapshot
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=50
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_search_detail_and_note_validation
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:190:13)
+OHOS_REPORT_STATUS: stream=Error in native_search_detail_and_note_validation, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND site-search
+OHOS_REPORT_STATUS: test=native_search_detail_and_note_validation
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=95811
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=existing_invalid_values_are_not_initialized_over
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=existing_invalid_values_are_not_initialized_over
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=24
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=orphaned_previous_snapshot_is_preserved_for_recovery
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=orphaned_previous_snapshot_is_preserved_for_recovery
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=11
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: suiteconsuming=95949
+
+
+OHOS_REPORT_SUM: 6
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=7
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_sync_panel_reports_unavailable
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=7
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_sync_panel_reports_unavailable
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=8828
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=8
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_combined_filters_and_reset
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=8
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_combined_filters_and_reset
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=60094
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=9
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_favorite_note_crud_and_ability_restart
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=9
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_favorite_note_crud_and_ability_restart
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=127158
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=10
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_unsaved_draft_close_back_and_keep_editing
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=10
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_unsaved_draft_close_back_and_keep_editing
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=75774
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=11
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_note_and_tags_are_saved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=11
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_note_and_tags_are_saved
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=169326
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=12
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=12
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_tags_survive_edit_and_expansion
+OHOS_REPORT_STATUS_CODE: 1
+
+Timeout: user test is not completed within the specified time.

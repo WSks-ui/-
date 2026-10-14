@@ -1,0 +1,89 @@
+
+OHOS_REPORT_SUM: 6
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_sync_panel_reports_unavailable
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_sync_panel_reports_unavailable
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=10813
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_combined_filters_and_reset
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_combined_filters_and_reset
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=87463
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_favorite_note_crud_and_ability_restart
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_favorite_note_crud_and_ability_restart
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=117885
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_unsaved_draft_close_back_and_keep_editing
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_unsaved_draft_close_back_and_keep_editing
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=60484
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_note_and_tags_are_saved
+OHOS_REPORT_STATUS_CODE: 1
+

@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-14",
+  "platform": "HarmonyOS 7.0.0.107 / API 26",
+  "devices": {
+    "A": "Pura 90 Pro",
+    "B": "YunhejiSyncB"
+  },
+  "capturedWith": {
+    "mainPackageSha256": "54F5003C8C5EBEC7E9C3FDC7E405221233D818F62B682AA8AE01A63CBD5DCEF3",
+    "testPackageSha256": "864616965178985C2CA067BBE4A556C49ED03D47FA4D315BDBA769CEC70C2D8A"
+  },
+  "phaseManifest": {
+    "path": "docs/test-results/2026-10-14-account-phases.json",
+    "sha256": "2068B8E8F8D2CABEB4EAF43D23D32B8F46BE207DCE9E25E96A5C8B27A8EAC65F"
+  },
+  "visualInspection": "10 张原图逐张人工查看；账号输入为空、笔记为合成示例；图集只等比缩放和排列。",
+  "captures": [
+    {
+      "path": "docs/design/account/login.png",
+      "device": "A",
+      "scene": "A · 空白账号入口",
+      "report": "docs/test-results/2026-10-14-205206-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "E87E7DE45673982D57159D0BA126A33803E7D2238E92B6DBE27B1A7677C01DDE"
+    },
+    {
+      "path": "docs/design/account/login-dark.png",
+      "device": "A",
+      "scene": "A · 深色账号入口",
+      "report": "docs/test-results/2026-10-14-205206-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "7B173A4BD2AD1961C83A50E7B79AF811AD1541947F18966933814AA5D2B6EEAD"
+    },
+    {
+      "path": "docs/design/account/login-large.png",
+      "device": "A",
+      "scene": "A · 1.5 倍字体",
+      "report": "docs/test-results/2026-10-14-205206-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "A6678DFB91A802E37F99E9B616A16C54EAF9CD8B3BC7B18003D2793F9A5E3BF3"
+    },
+    {
+      "path": "docs/design/account/device-a.png",
+      "device": "A",
+      "scene": "A · 保存初始笔记",
+      "report": "docs/test-results/2026-10-14-205236-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "14127E1F4159EDF3A93130C5DB98E63C82B19BDA768F4ADEB80CA07DDB044FCE"
+    },
+    {
+      "path": "docs/design/account/device-b.png",
+      "device": "B",
+      "scene": "B · 接收同一笔记",
+      "report": "docs/test-results/2026-10-14-205531-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "B355A11EF507E7DD4E00A156082BD9E33738D1EDCE90808F298E2806128CB402"
+    },
+    {
+      "path": "docs/design/account/device-b-memory.png",
+      "device": "B",
+      "scene": "B · 收藏、笔记与浏览",
+      "report": "docs/test-results/2026-10-14-205531-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "0DD1CA2A9E365E6CEC639ECD224125FAFA22727B11A31B454B79093377FA74B9"
+    },
+    {
+      "path": "docs/design/account/device-a-updated.png",
+      "device": "A",
+      "scene": "A · 收到 B 的修改",
+      "report": "docs/test-results/2026-10-14-205652-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "AB79FFD9E883854DBFA94BD9BE79299F062516B0D65353C5D8F6286F17D90402"
+    },
+    {
+      "path": "docs/design/account/offline-note.png",
+      "device": "B",
+      "scene": "B · 服务停止后保存",
+      "report": "docs/test-results/2026-10-14-205913-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "3C2C20F2D88379ABFB3386E1FEBEDD63BDE0050FF972A226205CFC0EC5961863"
+    },
+    {
+      "path": "docs/design/account/reconnected.png",
+      "device": "A",
+      "scene": "A · 收到离线修改",
+      "report": "docs/test-results/2026-10-14-210129-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "F6949A96493577CE0999C0E54175B803A64C0DB40E131834C8C3BA69627DAD9B"
+    },
+    {
+      "path": "docs/design/account/deleted.png",
+      "device": "B",
+      "scene": "B · 收到删除墓碑",
+      "report": "docs/test-results/2026-10-14-210250-device.log",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "539C70F479D8BFF29472061AD77222B165C958BDFB5B42817547A048A5DE0A41"
+    }
+  ],
+  "reports": [
+    {
+      "path": "docs/test-results/2026-10-14-205206-device.log",
+      "sha256": "E5069ED2E778FCD10B2CA50ECC7BA7E31FB941D3F8CBE4E1D37E58814221A8DE"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-205236-device.log",
+      "sha256": "B05C95168302F4CDD6D4E739BEB0041C71B5067C2F6DB04532DA71C85DED65F2"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-205531-device.log",
+      "sha256": "9724994CDDB2D8F83A48B8CAF2EDDF870BB86B0108A7E6EFB3FEEFB1016FA2BD"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-205652-device.log",
+      "sha256": "5C41E50245B76A11285AC58C1EBC92A1C594B7447CE6F6D89E0E6F8DD95A654C"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-205913-device.log",
+      "sha256": "9E6CC4408D26693E9274971618DF36B76531E004EFC0B35E9CA7F5F75BA12917"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-210053-device.log",
+      "sha256": "BA04BF11F9D24783E221FFA60E44BE5A517E73C444874C774F3E5B0CAAF6B4C8"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-210129-device.log",
+      "sha256": "79296AC081B58B7764768E039E2C83A51F3BB5DBB081E67BD30FF555B8FCAAEC"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-210250-device.log",
+      "sha256": "10CE8535DFBAED9E5C7EF1D221BD82B4B84DCD0E72F893168918492CDA135C2D"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-210327-device.log",
+      "sha256": "79ED7B0600DFF8C1A76A492BB71565A6753E56E7AD6DEF545FF28C620E29443D"
+    },
+    {
+      "path": "docs/test-results/2026-10-14-210334-device.log",
+      "sha256": "55A87BF535D9E2B331EB7A3AB5C8D658AA6482398CCBF599E544333003B8DA7F"
+    }
+  ],
+  "galleries": [
+    {
+      "path": "docs/design/account/overview.png",
+      "sha256": "CF3ABEC4F5DA53D8892F451AC360EE4C3567F8F1E55ADA49AADE8CF5E6E2785D"
+    },
+    {
+      "path": "docs/design/account/transfer.png",
+      "sha256": "4838D25C8A997E2FB69524899A9B92D3866E5CC755E2310693BDD6322968E9A3"
+    },
+    {
+      "path": "docs/design/account/appearance.png",
+      "sha256": "42FEF42511B1E93F9BF149A2C8E06E18C97701AA813D294206840FF2CE7D2331"
+    }
+  ]
+}

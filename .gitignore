@@ -1,0 +1,15 @@
+/node_modules
+/oh_modules
+/local.properties
+/.idea
+**/build
+/.hvigor
+.cxx
+/.clangd
+/.clang-format
+/.clang-tidy
+**/.test
+/.appanalyzer
+/.local
+/entry/src/main/resources/rawfile/account-sync-dev.json
+/entry/src/ohosTest/resources/rawfile/account-sync-test.json

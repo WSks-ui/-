@@ -1,0 +1,8 @@
+
+OHOS_REPORT_RESULT: stream=Tests run: 0, Failure: 0, Error: 0, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=0
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

@@ -1,0 +1,388 @@
+端口已有监听，保留当前进程；请核对 /health 是否为云河纪服务。端口：18443
+Forwardport result:OK
+
+Forwardport result:OK
+
+本地服务配置只用于 debug 包；release 不读取该证书或地址。
+WakeupDevice is called
+No Error
+Override screen off time to 1800000
+WakeupDevice is called
+No Error
+Override screen off time to 1800000
+[Info]App install path:<PROJECT_ROOT>\entry\build\default\outputs\default\entry-default-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+[Info]App install path:<PROJECT_ROOT>\entry\build\default\outputs\ohosTest\entry-ohosTest-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=account_entry_dark_and_large_text_without_private_fields
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=account_entry_dark_and_large_text_without_private_fields
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=27423
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=27423
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=27423
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-205206-device.log
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_a_register_publish_and_guest_isolation
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_a_register_publish_and_guest_isolation
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=171774
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=171774
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=171774
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-205236-device.log
+[Info]App install path:<PROJECT_ROOT>\entry\build\default\outputs\default\entry-default-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+[Info]App install path:<PROJECT_ROOT>\entry\build\default\outputs\ohosTest\entry-ohosTest-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_receive_and_edit_from_real_ui
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_receive_and_edit_from_real_ui
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=77456
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=77456
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=77456
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-205531-device.log
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_a_receive_edit_and_logout_preserves_guest
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_a_receive_edit_and_logout_preserves_guest
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=137795
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=137795
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=137795
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-205652-device.log
+已停止本任务账号服务以验证离线本机保存：2026-10-14 20:59:48
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_offline_note_is_saved_locally
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_offline_note_is_saved_locally
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=95262
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=95262
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=95262
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+�豸���� 1/1 ͨ����ԭʼ�����<PROJECT_ROOT>\docs\test-results\2026-10-14-205913-device.log
+账号服务已后台启动，端口：18443
+保留已有设备反向端口：127.0.0.1:5557
+本地服务配置只用于 debug 包；release 不读取该证书或地址。
+已恢复同一数据库与 TLS 证书的账号服务。
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_upload_pending_offline_note
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_upload_pending_offline_note
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=34255
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=34255
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=34255
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-210053-device.log
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_a_receive_reconnected_note_and_delete
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_a_receive_reconnected_note_and_delete
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=79646
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=79646
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=79646
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-210129-device.log
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_receive_tombstone_without_resurrection
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=device_b_receive_tombstone_without_resurrection
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=34087
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=34087
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=34087
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-210250-device.log
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=cleanup_only_this_run_test_preferences
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=cleanup_only_this_run_test_preferences
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=5663
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=5663
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=5663
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-210327-device.log
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=cleanup_only_this_run_test_preferences
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=cleanup_only_this_run_test_preferences
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=5839
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: suiteconsuming=5839
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=5839
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+设备测试 1/1 通过。原始结果：<PROJECT_ROOT>\docs\test-results\2026-10-14-210334-device.log
+8 项账号 / 双端路径与 2 项独立库清理通过；原始报告已逐阶段保存。
+Restore screen off time
+Restore screen off time

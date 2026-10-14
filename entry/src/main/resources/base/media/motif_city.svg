@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 400 320">
+  <!-- 原创古城主题图，不代表任一遗址的真实建筑形制。 -->
+  <rect width="400" height="320" fill="#E7EFF6"/>
+  <circle cx="295" cy="96" r="40" fill="#F1DDB8"/>
+  <path d="M0 208c76-40 107-28 178 1s148-43 222-15v126H0z" fill="#CCDDE8"/>
+  <path d="M0 252c88-30 130 21 224 6s131-18 176 0" fill="none" stroke="#AEC6D5" stroke-width="2"/>
+  <g fill="none" stroke="#AEC6D5" stroke-width="2" stroke-linecap="round">
+    <path d="M51 105h47M68 119h25M315 160h39M50 267h52M314 274h41"/>
+  </g>
+  <g stroke="#58798C" stroke-width="3" stroke-linejoin="round">
+    <path d="M99 246V166h23v-17h28v17h100v-17h28v17h23v80z" fill="#A8C1D0"/>
+    <path d="M159 149v-35h82v35z" fill="#C1D4DD"/>
+    <path d="M146 114l54-30 54 30z" fill="#7698AE"/>
+    <path d="M176 246v-32a24 24 0 0 1 48 0v32" fill="#E7EFF6"/>
+    <path d="M89 246h222M101 188h44M255 188h44M121 208h29M250 208h29M184 127v18M216 127v18" fill="none"/>
+  </g>
+  <path d="M61 280c33-5 68-5 102 0M242 284c37-6 71-6 103-1" fill="none" stroke="#AEC6D5" stroke-width="2"/>
+</svg>

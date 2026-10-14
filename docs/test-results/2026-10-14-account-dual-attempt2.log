@@ -1,0 +1,31 @@
+端口已有监听，保留当前进程；请核对 /health 是否为云河纪服务。端口：18443
+保留已有设备反向端口：127.0.0.1:5555
+保留已有设备反向端口：127.0.0.1:5557
+本地服务配置只用于 debug 包；release 不读取该证书或地址。
+WakeupDevice is called
+No Error
+Override screen off time to 1800000
+WakeupDevice is called
+No Error
+Override screen off time to 1800000
+[Info]App install path:<PROJECT_ROOT>\entry\build\default\outputs\default\entry-default-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+[Info]App install path:<PROJECT_ROOT>\entry\build\default\outputs\ohosTest\entry-ohosTest-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=AccountSyncTest
+
+
+OHOS_REPORT_STATUS: class=AccountSyncTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=account_entry_dark_and_large_text_without_private_fields
+OHOS_REPORT_STATUS_CODE: 1
+
+[Fail]Not match target founded, check connect-key please
+
+[Fail]ExecuteCommand need connect-key? please confirm a device by help info
+

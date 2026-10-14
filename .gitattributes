@@ -1,0 +1,3 @@
+# 测试证据按原字节保存，避免跨系统换行转换改变报告 / 清单哈希。
+docs/test-results/** -text
+docs/design/** -text

@@ -1,0 +1,130 @@
+
+OHOS_REPORT_SUM: 6
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=preferences_round_trip_after_cache_eviction
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=preferences_round_trip_after_cache_eviction
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=42
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=corrupt_snapshot_is_not_overwritten
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=corrupt_snapshot_is_not_overwritten
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=17
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=queued_saves_keep_latest_and_previous_snapshot
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=queued_saves_keep_latest_and_previous_snapshot
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=52
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_search_detail_and_note_validation
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_search_detail_and_note_validation
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=73664
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=existing_invalid_values_are_not_initialized_over
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=existing_invalid_values_are_not_initialized_over
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=23
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=orphaned_previous_snapshot_is_preserved_for_recovery
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=orphaned_previous_snapshot_is_preserved_for_recovery
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=10
+
+
+OHOS_REPORT_STATUS: class=ArchiveDeviceTest
+OHOS_REPORT_STATUS: suiteconsuming=73808
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 6, Failure: 0, Error: 0, Pass: 6, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=73808
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

@@ -1,0 +1,88 @@
+> hvigor [32mUP-TO-DATE :entry:ohosTest@PreBuild...  [39m
+> hvigor [32mFinished :entry:ohosTest@CreateModuleInfo... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GenerateMetadata...  [39m
+> hvigor [32mFinished :entry:ohosTest@ConfigureCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@MergeProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CreateBuildProfile...  [39m
+> hvigor [32mFinished :entry:ohosTest@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GeneratePkgContextInfo...  [39m
+> hvigor [32mFinished :entry:ohosTest@GeneratePkgSdkInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:ohosTest@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@MakePackInfo...  [39m
+> hvigor [32mFinished :entry:ohosTest@SyscapTransform... after 8 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessRouterMap...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessShareConfig...  [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessStartupConfig... after 2 ms [39m
+> hvigor [32mFinished :entry:ohosTest@BuildNativeWithNinja... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GenerateLoaderJson...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessLibs...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CompileResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@DoNativeStrip...  [39m
+> hvigor [32mFinished :entry:ohosTest@OhosTestBuildJS... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CacheNativeLibs...  [39m
+> hvigor ERROR: Failed :entry:ohosTest@OhosTestCompileArkTS... 
+> hvigor WARN: 
+1 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+
+2 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:17:32
+ Function may throw exceptions. Special handling is required.
+
+3 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:18:40
+ Function may throw exceptions. Special handling is required.
+
+4 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:20:24
+ Function may throw exceptions. Special handling is required.
+
+5 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:21:32
+ Function may throw exceptions. Special handling is required.
+
+6 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:26:24
+ Function may throw exceptions. Special handling is required.
+
+7 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:33:70
+ Function may throw exceptions. Special handling is required.
+
+8 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:34:54
+ Function may throw exceptions. Special handling is required.
+
+9 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:35:40
+ Function may throw exceptions. Special handling is required.
+
+10 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:38:65
+ Function may throw exceptions. Special handling is required.
+
+11 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+
+> hvigor ERROR: ArkTS Compiler Error
+1 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'config' does not exist on type 'Context'. At File: <PROJECT_ROOT>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:93:34
+
+
+COMPILE RESULT:FAIL {ERROR:2 WARN:11}
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+
+[31m
+FAILURE: Build completed with 1 failure.[31m[39m
+[31m
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task 'ohosTest@OhosTestCompileArkTS'.
+  > Compilation error. See log for more details
+
+[31m* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+[31m[39m
+[31m================================================================================[31m[39m
+> hvigor ERROR: BUILD FAILED in 7 s 294 ms 
+
+25 tasks in total: 10 executed, 15 up-to-date

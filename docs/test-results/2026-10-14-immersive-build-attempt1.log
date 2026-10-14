@@ -1,0 +1,1269 @@
+> hvigor [32mFinished :entry:default@PreBuild... after 324 ms [39m
+> hvigor [32mFinished :entry:default@CreateModuleInfo... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GenerateMetadata...  [39m
+> hvigor [32mFinished :entry:default@ConfigureCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@MergeProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@CreateBuildProfile...  [39m
+> hvigor [32mFinished :entry:default@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GeneratePkgContextInfo...  [39m
+> hvigor [32mFinished :entry:default@GeneratePkgSdkInfo... after 4 ms [39m
+> hvigor [32mFinished :entry:default@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@MakePackInfo...  [39m
+> hvigor [32mFinished :entry:default@SyscapTransform... after 48 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessRouterMap...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessShareConfig...  [39m
+> hvigor [32mFinished :entry:default@ProcessStartupConfig... after 15 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithNinja... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@GenerateLoaderJson...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessLibs...  [39m
+> hvigor [32mFinished :entry:default@CompileResource... after 1 s 563 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@DoNativeStrip...  [39m
+> hvigor [32mFinished :entry:default@BuildJS... after 4 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@CacheNativeLibs...  [39m
+> hvigor ERROR: Failed :entry:default@CompileArkTS... 
+> hvigor WARN: 
+1 WARN: ArkTS:WARN: For details about ArkTS syntax errors, see FAQs
+2 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:26:52
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+3 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:27:53
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+> hvigor ERROR: ArkTS Compiler Error
+1 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:294:42
+
+
+2 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:296:27
+
+
+3 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:301:60
+
+
+4 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:305:60
+
+
+5 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:309:60
+
+
+6 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:30
+
+
+7 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:49
+
+
+8 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:72
+
+
+9 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:92
+
+
+10 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:323:43
+
+
+11 ERROR: 10605090 ArkTS Compiler Error
+Error Message: Function return type inference is limited (arkts-no-implicit-return-types) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:323:19
+
+
+12 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:326:91
+
+
+13 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:326:91
+
+
+14 ERROR: 10605090 ArkTS Compiler Error
+Error Message: Function return type inference is limited (arkts-no-implicit-return-types) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:326:67
+
+
+15 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:350:60
+
+
+16 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:357:43
+
+
+17 ERROR: 10605090 ArkTS Compiler Error
+Error Message: Function return type inference is limited (arkts-no-implicit-return-types) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:357:19
+
+
+18 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:367:22
+
+
+19 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:377:28
+
+
+20 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:378:25
+
+
+21 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:377:28
+
+
+22 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:378:25
+
+
+23 ERROR: 10605008 ArkTS Compiler Error
+Error Message: Use explicit types instead of "any", "unknown" (arkts-no-any-unknown) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:377:21
+
+
+24 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:424:43
+
+
+25 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:426:17
+
+
+26 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:436:43
+
+
+27 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:438:17
+
+
+28 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:467:40
+
+
+29 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:482:46
+
+
+30 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:489:66
+
+
+31 ERROR: 10605093 ArkTS Compiler Error
+Error Message: Using "this" inside stand-alone functions is not supported (arkts-no-standalone-this) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:495:49
+
+
+32 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:284:11
+
+
+33 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:285:13
+
+
+34 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:286:14
+
+
+35 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:287:16
+
+
+36 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:297:27
+
+
+37 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:310:10
+
+
+38 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:311:15
+
+
+39 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:317:10
+
+
+40 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:330:8
+
+
+41 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:332:6
+
+
+42 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:335:11
+
+
+43 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:336:13
+
+
+44 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:337:14
+
+
+45 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:338:16
+
+
+46 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:340:15
+
+
+47 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:344:10
+
+
+48 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:345:15
+
+
+49 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:351:10
+
+
+50 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:363:47
+
+
+51 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:364:35
+
+
+52 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:365:33
+
+
+53 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:370:16
+
+
+54 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:374:14
+
+
+55 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:375:12
+
+
+56 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:381:8
+
+
+57 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:383:6
+
+
+58 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:386:11
+
+
+59 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:387:12
+
+
+60 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:388:14
+
+
+61 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:389:16
+
+
+62 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:391:28
+
+
+63 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:392:19
+
+
+64 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:395:12
+
+
+65 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:396:32
+
+
+66 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:399:12
+
+
+67 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:400:10
+
+
+68 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:402:18
+
+
+69 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:408:10
+
+
+70 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:410:18
+
+
+71 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:417:10
+
+
+72 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:419:18
+
+
+73 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:420:30
+
+
+74 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:428:12
+
+
+75 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:432:30
+
+
+76 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:440:12
+
+
+77 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:441:10
+
+
+78 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:443:18
+
+
+79 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:449:10
+
+
+80 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:450:8
+
+
+81 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:452:6
+
+
+82 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:455:11
+
+
+83 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:456:13
+
+
+84 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:458:33
+
+
+85 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:460:31
+
+
+86 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:463:10
+
+
+87 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:465:31
+
+
+88 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:468:10
+
+
+89 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:470:20
+
+
+90 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:474:82
+
+
+91 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:475:28
+
+
+92 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:475:46
+
+
+93 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:476:28
+
+
+94 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:476:46
+
+
+95 ERROR: 10505001 ArkTS Compiler Error
+Error Message: ';' expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:477:28
+
+
+96 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:477:45
+
+
+97 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:478:14
+
+
+98 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:483:12
+
+
+99 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:486:5
+
+
+100 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:496:6
+
+
+101 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Declaration or statement expected. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:498:1
+
+
+102 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'explore'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:285:3
+
+
+103 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Scroll' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:286:5
+
+
+104 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:287:7
+
+
+105 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:288:9
+
+
+106 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:289:9
+
+
+107 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:290:9
+
+
+108 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Search' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:291:9
+
+
+109 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:291:25
+
+
+110 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:291:51
+
+
+111 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:294:42
+
+
+112 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:296:27
+
+
+113 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:297:9
+
+
+114 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Select' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:298:11
+
+
+115 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:298:82
+
+
+116 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:298:115
+
+
+117 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:299:38
+
+
+118 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:301:60
+
+
+119 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Select' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:302:11
+
+
+120 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:302:80
+
+
+121 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:302:110
+
+
+122 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:303:36
+
+
+123 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:305:60
+
+
+124 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Select' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:306:11
+
+
+125 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:306:81
+
+
+126 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:306:113
+
+
+127 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:307:37
+
+
+128 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:309:60
+
+
+129 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:310:11
+
+
+130 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:311:9
+
+
+131 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:312:11
+
+
+132 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:312:19
+
+
+133 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Button' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:314:11
+
+
+134 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:30
+
+
+135 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:49
+
+
+136 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:72
+
+
+137 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:316:92
+
+
+138 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:317:11
+
+
+139 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:318:13
+
+
+140 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:319:11
+
+
+141 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:321:27
+
+
+142 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:322:39
+
+
+143 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:323:43
+
+
+144 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:324:9
+
+
+145 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:325:48
+
+
+146 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:326:91
+
+
+147 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:328:9
+
+
+148 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:330:9
+
+
+149 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:331:46
+
+
+150 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:331:75
+
+
+151 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'height'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:332:7
+
+
+152 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'archive'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:336:3
+
+
+153 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Scroll' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:337:5
+
+
+154 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:338:7
+
+
+155 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:339:9
+
+
+156 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:340:9
+
+
+157 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:341:49
+
+
+158 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:342:49
+
+
+159 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:343:49
+
+
+160 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:344:11
+
+
+161 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:345:9
+
+
+162 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:346:11
+
+
+163 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Select' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:347:11
+
+
+164 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:348:20
+
+
+165 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:350:60
+
+
+166 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:351:11
+
+
+167 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:352:13
+
+
+168 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:353:11
+
+
+169 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:355:27
+
+
+170 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:356:39
+
+
+171 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:357:43
+
+
+172 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:358:9
+
+
+173 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:359:27
+
+
+174 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:360:11
+
+
+175 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:362:31
+
+
+176 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Button' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:363:11
+
+
+177 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:364:13
+
+
+178 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:365:15
+
+
+179 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'SymbolGlyph' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:366:17
+
+
+180 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:367:17
+
+
+181 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:367:22
+
+
+182 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'SymbolGlyph' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:369:17
+
+
+183 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:370:17
+
+
+184 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:371:15
+
+
+185 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:373:15
+
+
+186 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'alignItems'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:374:15
+
+
+187 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:375:13
+
+
+188 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:377:28
+
+
+189 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:378:25
+
+
+190 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:381:9
+
+
+191 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:382:46
+
+
+192 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:382:75
+
+
+193 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'height'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:383:7
+
+
+194 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'device'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:387:3
+
+
+195 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Scroll' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:388:5
+
+
+196 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:389:7
+
+
+197 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:390:9
+
+
+198 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:390:31
+
+
+199 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:391:9
+
+
+200 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Stack' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:392:11
+
+
+201 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Rect' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:393:13
+
+
+202 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'SymbolGlyph' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:394:13
+
+
+203 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:395:13
+
+
+204 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:396:11
+
+
+205 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:397:13
+
+
+206 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:397:18
+
+
+207 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:398:13
+
+
+208 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'layoutWeight'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:399:13
+
+
+209 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:400:11
+
+
+210 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:401:9
+
+
+211 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:402:9
+
+
+212 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:403:52
+
+
+213 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:404:11
+
+
+214 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:406:11
+
+
+215 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:407:68
+
+
+216 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:408:11
+
+
+217 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:409:9
+
+
+218 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:410:9
+
+
+219 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:413:11
+
+
+220 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:415:11
+
+
+221 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:417:11
+
+
+222 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:418:9
+
+
+223 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:419:9
+
+
+224 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:420:11
+
+
+225 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:421:13
+
+
+226 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Toggle' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:422:13
+
+
+227 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:422:53
+
+
+228 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:422:92
+
+
+229 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:424:43
+
+
+230 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:426:17
+
+
+231 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:428:13
+
+
+232 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:429:11
+
+
+233 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:431:11
+
+
+234 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Row' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:432:11
+
+
+235 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:433:13
+
+
+236 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Toggle' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:434:13
+
+
+237 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:434:53
+
+
+238 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:434:93
+
+
+239 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:436:43
+
+
+240 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:438:17
+
+
+241 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:440:13
+
+
+242 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:441:11
+
+
+243 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:442:9
+
+
+244 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:443:9
+
+
+245 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:445:11
+
+
+246 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:446:56
+
+
+247 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Divider' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:447:11
+
+
+248 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:449:11
+
+
+249 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:450:9
+
+
+250 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:451:46
+
+
+251 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:451:75
+
+
+252 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'height'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:452:7
+
+
+253 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'build'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:455:3
+
+
+254 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Stack' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:456:5
+
+
+255 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:457:11
+
+
+256 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:458:21
+
+
+257 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:459:11
+
+
+258 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:460:9
+
+
+259 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'LoadingProgress' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:461:11
+
+
+260 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:462:11
+
+
+261 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:463:11
+
+
+262 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:464:19
+
+
+263 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:465:9
+
+
+264 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:466:11
+
+
+265 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:466:16
+
+
+266 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Button' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:467:11
+
+
+267 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:467:40
+
+
+268 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'padding'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:468:11
+
+
+269 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Column' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:470:11
+
+
+270 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:471:17
+
+
+271 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'Text' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:472:15
+
+
+272 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:472:20
+
+
+273 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:474:35
+
+
+274 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:474:63
+
+
+275 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'TabContent' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:475:15
+
+
+276 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:475:30
+
+
+277 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'tabBar'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:475:47
+
+
+278 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:475:54
+
+
+279 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'TabContent' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:476:15
+
+
+280 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:476:30
+
+
+281 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'tabBar'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:476:47
+
+
+282 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:476:54
+
+
+283 ERROR: 10905236 ArkTS Compiler Error
+Error Message: UI component 'TabContent' cannot be used in this place. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:477:15
+
+
+284 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:477:30
+
+
+285 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'tabBar'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:477:46
+
+
+286 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:477:53
+
+
+287 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:478:15
+
+
+288 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:480:58
+
+
+289 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:480:86
+
+
+290 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:481:52
+
+
+291 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:482:46
+
+
+292 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:483:13
+
+
+293 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'hideTitleBar'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:486:6
+
+
+294 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:486:20
+
+
+295 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:488:43
+
+
+296 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:488:71
+
+
+297 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:489:66
+
+
+298 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:492:11
+
+
+299 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:493:40
+
+
+300 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Object is possibly 'undefined'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:495:49
+
+
+301 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Cannot find name 'width'. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:496:7
+
+
+302 ERROR: 10905103 ArkTS Compiler Error
+Error Message: The struct 'Index' must have at least and at most one 'build' method. At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:25:8
+
+* Try the following:
+  > A structurally modified page must have at least one and no more than one 'build' method.
+
+
+COMPILE RESULT:FAIL {ERROR:303 WARN:3}
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+
+[31m
+FAILURE: Build completed with 1 failure.[31m[39m
+[31m
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task 'default@CompileArkTS'.
+  > Compilation error. See log for more details
+
+[31m* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+[31m[39m
+[31m================================================================================[31m[39m
+> hvigor ERROR: BUILD FAILED in 1 min 16 s 83 ms 
+
+25 tasks in total: 12 executed, 13 up-to-date

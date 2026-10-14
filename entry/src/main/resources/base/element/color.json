@@ -1,0 +1,28 @@
+{
+  "color": [
+    { "name": "canvas", "value": "#FDF8F6" },
+    { "name": "surface", "value": "#FFFFFF" },
+    { "name": "navigation_tint", "value": "#8CFFFFFF" },
+    { "name": "surface_soft", "value": "#F8F1EF" },
+    { "name": "surface_sunken", "value": "#F3EAE7" },
+    { "name": "ink", "value": "#2B2225" },
+    { "name": "muted", "value": "#7A6C70" },
+    { "name": "tertiary", "value": "#A7989C" },
+    { "name": "accent", "value": "#C4647C" },
+    { "name": "on_accent", "value": "#FFFFFF" },
+    { "name": "accent_soft", "value": "#FBEAF0" },
+    { "name": "line", "value": "#EFE3E0" },
+    { "name": "danger", "value": "#A74340" },
+    { "name": "home_rose", "value": "#F6E1E6" },
+    { "name": "home_blue", "value": "#E8EFF8" },
+    { "name": "home_mint", "value": "#E8F2EA" },
+    { "name": "home_yellow", "value": "#FAEBC9" },
+    { "name": "home_blue_ink", "value": "#517291" },
+    { "name": "home_mint_ink", "value": "#477B6B" },
+    { "name": "home_yellow_ink", "value": "#92763A" },
+    {
+      "name": "start_window_background",
+      "value": "#FDF8F6"
+    }
+  ]
+}

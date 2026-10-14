@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-13",
+  "source": "HarmonyOS API 26 手机模拟器，HDC / Hypium / UiTest 原生截图",
+  "report": "../test-results/2026-10-13-201122-device.log",
+  "mainHapSha256": "26C0B50CDA0D8926211EC8112726163C721B82C7434E97E87C2FB2E8F60F8E60",
+  "testHapSha256": "3A5F89CA5DBC239890DB2DF78441F964BC276EA32AFDCF8D3A08E6FBB22A5808",
+  "pixels": {
+    "height": 2760,
+    "width": 1256
+  },
+  "captures": [
+    {
+      "file": "home.png",
+      "sha256": "257887531D79275EE20D120F8B567628E83E922686222B6D87EBDEC92FA127E8"
+    },
+    {
+      "file": "catalog.png",
+      "sha256": "26E35792AE9DBCAA52DCFA1E2613760C0B249DCE3B42B49E8D43F24B92AE3796"
+    },
+    {
+      "file": "detail.png",
+      "sha256": "EDB51B4242C88F25CDA2466D75F68AEFD49DC6BCA66DE4D8648D93428C01FF3C"
+    },
+    {
+      "file": "editor.png",
+      "sha256": "8AD37B5EEB448662500FB8BE661D964986D3CB726BF5367705649F2BC5B8CCC8"
+    },
+    {
+      "file": "collection.png",
+      "sha256": "1BA32739F35A41D03C96CDED8EE416106BE9EAC3C263E9A21D3687E518B3A85F"
+    },
+    {
+      "file": "device.png",
+      "sha256": "B36D8D7395BE8E416C1F1D863DCB446F840F54C184EA5405D6B9C1F8FE942BE6"
+    },
+    {
+      "file": "home-dark.png",
+      "sha256": "F3ED8178C1DEBFBB29B52739713FBA875288BA783BA9B549CC535E686A24B810"
+    },
+    {
+      "file": "detail-dark.png",
+      "sha256": "C943B98D0537372C05EB75D48F6D6EC084E0D10005922127014D7334A477A05D"
+    },
+    {
+      "file": "home-large.png",
+      "sha256": "80FA5A211C856A78AFA46D09F788E55A236367EEC2DE695EC46251461F4E186B"
+    },
+    {
+      "file": "editor-large-keyboard.png",
+      "sha256": "D5DC762C6B1C35E8F78D262488E81C2B6B34828A727F1BE541BC1FE34434FFD4"
+    }
+  ],
+  "composition": {
+    "file": "overview.png",
+    "method": "原截图等比缩放与排列，添加页名",
+    "sha256": "96B359DC9E1DA9EDE94D984CE4C14151135B5B4BD907A6DC9B580D98B4BED89B"
+  }
+}

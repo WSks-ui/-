@@ -1,0 +1,54 @@
+
+OHOS_REPORT_SUM: 2
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_note_and_tags_are_saved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_note_and_tags_are_saved
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=140857
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_tags_survive_edit_and_expansion
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_maximum_tags_survive_edit_and_expansion
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=45493
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: suiteconsuming=186350
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 2, Failure: 0, Error: 0, Pass: 2, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=186350
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

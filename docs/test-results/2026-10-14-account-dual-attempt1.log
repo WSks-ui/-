@@ -1,0 +1,12 @@
+端口已有监听，保留当前进程；请核对 /health 是否为云河纪服务。端口：18443
+保留已有设备反向端口：127.0.0.1:5555
+保留已有设备反向端口：127.0.0.1:5557
+本地服务配置只用于 debug 包；release 不读取该证书或地址。
+WakeupDevice is called
+No Error
+Override screen off time to 1800000
+WakeupDevice is called
+No Error
+Override screen off time to 1800000
+Restore screen off time
+Restore screen off time

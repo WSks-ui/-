@@ -1,0 +1,91 @@
+设备：127.0.0.1:5555
+
+-------------------------------[ability]-------------------------------
+
+
+----------------------------------PowerManagerService----------------------------------
+POWER STATE DUMP:
+Current State: DIM  Reason: 1  Time: 7980320
+ScreenOffTime: Timeout=30000ms
+DUMP DETAILS:
+Last Screen On: 7956248
+Last Screen Off: 0
+Last SuspendDevice: 0
+Last WakeupDevice: 7949828
+Last Refresh: 7956248
+DUMP EACH STATES:
+State: AWAKE   Reason: SHELL   Time: 7949839
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: FREEZE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: INACTIVE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: STAND_BY   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: DOZE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: SLEEP   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: HIBERNATE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: SHUTDOWN   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: DIM   Reason: TIMEOUT   Time: 7980320
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+设备：127.0.0.1:5557
+
+-------------------------------[ability]-------------------------------
+
+
+----------------------------------PowerManagerService----------------------------------
+POWER STATE DUMP:
+Current State: DIM  Reason: 1  Time: 6295942
+ScreenOffTime: Timeout=30000ms
+DUMP DETAILS:
+Last Screen On: 6271867
+Last Screen Off: 0
+Last SuspendDevice: 0
+Last WakeupDevice: 6267371
+Last Refresh: 6271867
+DUMP EACH STATES:
+State: AWAKE   Reason: SHELL   Time: 6267387
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: FREEZE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: INACTIVE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: STAND_BY   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: DOZE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: SLEEP   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: HIBERNATE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: SHUTDOWN   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: DIM   Reason: TIMEOUT   Time: 6295942
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+账号服务 /health（验证本任务公开 CA）：
+{"service":"yunheji-account","version":1}
+在线设备：
+127.0.0.1:5555
+127.0.0.1:5557

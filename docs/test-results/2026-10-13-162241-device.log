@@ -1,0 +1,16 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_note_and_tag_limits_round_trip_without_truncation
+OHOS_REPORT_STATUS_CODE: 1
+
+TestFinished-ResultCode: -1
+TestFinished-ResultMsg: App died
+user test finished.

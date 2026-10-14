@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-14",
+  "logTimezone": "Asia/Shanghai",
+  "reconstructedFrom": "逐条核对原始 Hypium 日志，替换误指汇总日志的阶段索引",
+  "mainPackageSha256": "54F5003C8C5EBEC7E9C3FDC7E405221233D818F62B682AA8AE01A63CBD5DCEF3",
+  "accountTestPackageSha256": "864616965178985C2CA067BBE4A556C49ED03D47FA4D315BDBA769CEC70C2D8A",
+  "scenarios": 8,
+  "cleanupCases": 2,
+  "phases": [
+    {
+      "device": "A",
+      "case": "account_entry_dark_and_large_text_without_private_fields",
+      "report": "docs/test-results/2026-10-14-205206-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "E5069ED2E778FCD10B2CA50ECC7BA7E31FB941D3F8CBE4E1D37E58814221A8DE"
+    },
+    {
+      "device": "A",
+      "case": "device_a_register_publish_and_guest_isolation",
+      "report": "docs/test-results/2026-10-14-205236-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "B05C95168302F4CDD6D4E739BEB0041C71B5067C2F6DB04532DA71C85DED65F2"
+    },
+    {
+      "device": "B",
+      "case": "device_b_receive_and_edit_from_real_ui",
+      "report": "docs/test-results/2026-10-14-205531-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "9724994CDDB2D8F83A48B8CAF2EDDF870BB86B0108A7E6EFB3FEEFB1016FA2BD"
+    },
+    {
+      "device": "A",
+      "case": "device_a_receive_edit_and_logout_preserves_guest",
+      "report": "docs/test-results/2026-10-14-205652-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "5C41E50245B76A11285AC58C1EBC92A1C594B7447CE6F6D89E0E6F8DD95A654C"
+    },
+    {
+      "device": "B",
+      "case": "device_b_offline_note_is_saved_locally",
+      "report": "docs/test-results/2026-10-14-205913-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "9E6CC4408D26693E9274971618DF36B76531E004EFC0B35E9CA7F5F75BA12917"
+    },
+    {
+      "device": "B",
+      "case": "device_b_upload_pending_offline_note",
+      "report": "docs/test-results/2026-10-14-210053-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "BA04BF11F9D24783E221FFA60E44BE5A517E73C444874C774F3E5B0CAAF6B4C8"
+    },
+    {
+      "device": "A",
+      "case": "device_a_receive_reconnected_note_and_delete",
+      "report": "docs/test-results/2026-10-14-210129-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "79296AC081B58B7764768E039E2C83A51F3BB5DBB081E67BD30FF555B8FCAAEC"
+    },
+    {
+      "device": "B",
+      "case": "device_b_receive_tombstone_without_resurrection",
+      "report": "docs/test-results/2026-10-14-210250-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "10CE8535DFBAED9E5C7EF1D221BD82B4B84DCD0E72F893168918492CDA135C2D"
+    },
+    {
+      "device": "A",
+      "case": "cleanup_only_this_run_test_preferences",
+      "report": "docs/test-results/2026-10-14-210327-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "79ED7B0600DFF8C1A76A492BB71565A6753E56E7AD6DEF545FF28C620E29443D"
+    },
+    {
+      "device": "B",
+      "case": "cleanup_only_this_run_test_preferences",
+      "report": "docs/test-results/2026-10-14-210334-device.log",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "reportSha256": "55A87BF535D9E2B331EB7A3AB5C8D658AA6482398CCBF599E544333003B8DA7F"
+    }
+  ]
+}

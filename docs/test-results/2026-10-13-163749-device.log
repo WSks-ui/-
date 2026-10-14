@@ -1,0 +1,55 @@
+
+OHOS_REPORT_SUM: 2
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_favorite_note_crud_and_ability_restart
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_favorite_note_crud_and_ability_restart
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=82937
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_note_and_tag_limits_round_trip_without_truncation
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:176:13)
+OHOS_REPORT_STATUS: stream=Error in native_note_and_tag_limits_round_trip_without_truncation, UI_SCROLL_FAILED: UI_SCROLL_TARGET_NOT_FOUND
+OHOS_REPORT_STATUS: test=native_note_and_tag_limits_round_trip_without_truncation
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=167944
+
+
+OHOS_REPORT_STATUS: class=ArchiveUiTest
+OHOS_REPORT_STATUS: suiteconsuming=250881
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 2, Failure: 0, Error: 1, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=250881
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
