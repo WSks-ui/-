@@ -1,0 +1,888 @@
+{
+  "source": "HarmonyOS 7 真实设备 PNG 与同次 dumpLayout / hilog",
+  "prefix": "expanded-duling",
+  "siteId": "zz-duling-fangding",
+  "pose": {
+    "version": 1,
+    "sceneType": "relic_inspector",
+    "yaw": 1.1726990816987242,
+    "pitch": 0.58,
+    "zoom": 0.98,
+    "hotspotId": "corners",
+    "sectionId": "",
+    "label": "四个折角 · 67°",
+    "proceduralPreset": "duling_fangding",
+    "sceneRevision": 2,
+    "rendererProfile": "native-raster-v1",
+    "viewFrame": {
+      "width": 294.85714285714283,
+      "height": 300,
+      "textDensity": 3.5,
+      "dark": false
+    }
+  },
+  "drawnReplayCamera": {
+    "siteId": "zz-duling-fangding",
+    "sceneType": "relic_inspector",
+    "proceduralPreset": "duling_fangding",
+    "sceneRevision": 2,
+    "selectedId": "corners",
+    "yaw": 1.1726990816987242,
+    "pitch": 0.58,
+    "zoom": 0.98,
+    "width": 294.85714285714283,
+    "height": 300
+  },
+  "canvasBounds": {
+    "centers": [
+      112,
+      865,
+      1144,
+      1915
+    ],
+    "corners": [
+      112,
+      865,
+      1144,
+      1915
+    ],
+    "frame": [
+      112,
+      865,
+      1144,
+      1915
+    ],
+    "source": [
+      112,
+      865,
+      1144,
+      1915
+    ],
+    "gallery": [
+      131,
+      1024,
+      1125,
+      1787
+    ],
+    "replay": [
+      112,
+      1071,
+      1144,
+      2121
+    ]
+  },
+  "visibleContentChecks": {
+    "centers": {
+      "visibleModelPixels": 384070,
+      "visibleModelPixelRatio": 0.35443890734588407,
+      "saturatedOrDarkPixels": 384070,
+      "saturatedPixels": 90063,
+      "darkPixels": 377967,
+      "modelVisibilityThreshold": {
+        "chromaAtLeast": 18,
+        "chromaMaximumChannelAtMost": 250,
+        "darkLumaAtMost": 190,
+        "darkMaximumChannelAtMost": 242,
+        "requiredPixels": 43344,
+        "minimumAreaFraction": 0.04
+      }
+    },
+    "corners": {
+      "visibleModelPixels": 314419,
+      "visibleModelPixelRatio": 0.29016149870801033,
+      "saturatedOrDarkPixels": 314419,
+      "saturatedPixels": 52613,
+      "darkPixels": 312045,
+      "modelVisibilityThreshold": {
+        "chromaAtLeast": 18,
+        "chromaMaximumChannelAtMost": 250,
+        "darkLumaAtMost": 190,
+        "darkMaximumChannelAtMost": 242,
+        "requiredPixels": 43344,
+        "minimumAreaFraction": 0.04
+      }
+    },
+    "frame": {
+      "visibleModelPixels": 323352,
+      "visibleModelPixelRatio": 0.2984053156146179,
+      "saturatedOrDarkPixels": 323352,
+      "saturatedPixels": 118737,
+      "darkPixels": 320548,
+      "modelVisibilityThreshold": {
+        "chromaAtLeast": 18,
+        "chromaMaximumChannelAtMost": 250,
+        "darkLumaAtMost": 190,
+        "darkMaximumChannelAtMost": 242,
+        "requiredPixels": 43344,
+        "minimumAreaFraction": 0.04
+      }
+    },
+    "source": {
+      "visibleModelPixels": 270837,
+      "visibleModelPixelRatio": 0.24994186046511627,
+      "saturatedOrDarkPixels": 270837,
+      "saturatedPixels": 119707,
+      "darkPixels": 268718,
+      "modelVisibilityThreshold": {
+        "chromaAtLeast": 18,
+        "chromaMaximumChannelAtMost": 250,
+        "darkLumaAtMost": 190,
+        "darkMaximumChannelAtMost": 242,
+        "requiredPixels": 43344,
+        "minimumAreaFraction": 0.04
+      }
+    },
+    "gallery": {
+      "visibleModelPixels": 143385,
+      "visibleModelPixelRatio": 0.18905701575112535,
+      "saturatedOrDarkPixels": 143385,
+      "saturatedPixels": 63035,
+      "darkPixels": 142174,
+      "modelVisibilityThreshold": {
+        "chromaAtLeast": 18,
+        "chromaMaximumChannelAtMost": 250,
+        "darkLumaAtMost": 190,
+        "darkMaximumChannelAtMost": 242,
+        "requiredPixels": 30337,
+        "minimumAreaFraction": 0.04
+      }
+    },
+    "replay": {
+      "visibleModelPixels": 270837,
+      "visibleModelPixelRatio": 0.24994186046511627,
+      "saturatedOrDarkPixels": 270837,
+      "saturatedPixels": 119707,
+      "darkPixels": 268718,
+      "modelVisibilityThreshold": {
+        "chromaAtLeast": 18,
+        "chromaMaximumChannelAtMost": 250,
+        "darkLumaAtMost": 190,
+        "darkMaximumChannelAtMost": 242,
+        "requiredPixels": 43344,
+        "minimumAreaFraction": 0.04
+      }
+    }
+  },
+  "saveReplayComparison": {
+    "imageSize": [
+      1032,
+      1050
+    ],
+    "comparedPixels": 1083600,
+    "identical": true,
+    "changedPixels": 0,
+    "changedPixelRatio": 0.0,
+    "meanAbsoluteDifference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "meanAbsoluteDifferenceOverall": 0.0,
+    "maximumChannelDifference": 0,
+    "differenceSamples": [],
+    "allowedMaximumChannelDifference": 1,
+    "modelComparedPixels": 270837,
+    "modelChangedPixels": 0,
+    "modelPixelsIdentical": true,
+    "maximumBackgroundChannelDifference": 0,
+    "allowedMaximumBackgroundChannelDifference": 1,
+    "sameComposition": true
+  },
+  "hotspotFrameComparisons": [
+    {
+      "imageSize": [
+        1032,
+        1050
+      ],
+      "comparedPixels": 1083600,
+      "identical": false,
+      "changedPixels": 426402,
+      "changedPixelRatio": 0.3935049833887043,
+      "meanAbsoluteDifference": [
+        36.36268087855297,
+        33.54696290143965,
+        33.09478405315615
+      ],
+      "meanAbsoluteDifferenceOverall": 34.33480927771625,
+      "maximumChannelDifference": 225,
+      "differenceSamples": [
+        {
+          "x": 219,
+          "y": 62,
+          "firstRgb": [
+            249,
+            245,
+            239
+          ],
+          "secondRgb": [
+            250,
+            246,
+            240
+          ]
+        },
+        {
+          "x": 220,
+          "y": 62,
+          "firstRgb": [
+            245,
+            240,
+            234
+          ],
+          "secondRgb": [
+            250,
+            246,
+            240
+          ]
+        },
+        {
+          "x": 366,
+          "y": 62,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            249,
+            244,
+            238
+          ]
+        },
+        {
+          "x": 367,
+          "y": 62,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            249,
+            244,
+            238
+          ]
+        },
+        {
+          "x": 219,
+          "y": 63,
+          "firstRgb": [
+            243,
+            238,
+            232
+          ],
+          "secondRgb": [
+            250,
+            246,
+            240
+          ]
+        },
+        {
+          "x": 220,
+          "y": 63,
+          "firstRgb": [
+            243,
+            238,
+            232
+          ],
+          "secondRgb": [
+            250,
+            246,
+            240
+          ]
+        },
+        {
+          "x": 368,
+          "y": 63,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            246,
+            241,
+            235
+          ]
+        },
+        {
+          "x": 369,
+          "y": 63,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            243,
+            238,
+            233
+          ]
+        },
+        {
+          "x": 370,
+          "y": 63,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            248,
+            244,
+            237
+          ]
+        },
+        {
+          "x": 373,
+          "y": 63,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            249,
+            245,
+            239
+          ]
+        },
+        {
+          "x": 218,
+          "y": 64,
+          "firstRgb": [
+            243,
+            238,
+            233
+          ],
+          "secondRgb": [
+            250,
+            246,
+            240
+          ]
+        },
+        {
+          "x": 219,
+          "y": 64,
+          "firstRgb": [
+            230,
+            222,
+            216
+          ],
+          "secondRgb": [
+            250,
+            246,
+            240
+          ]
+        }
+      ],
+      "modelComparedPixels": 431104,
+      "modelChangedPixels": 417811,
+      "modelChangedPixelRatio": 0.9691652130344418,
+      "leftHotspot": "centers",
+      "rightHotspot": "corners",
+      "leftOriginalCanvasSize": [
+        1032,
+        1050
+      ],
+      "rightOriginalCanvasSize": [
+        1032,
+        1050
+      ],
+      "comparisonSize": [
+        1032,
+        1050
+      ],
+      "leftResized": false,
+      "rightResized": false,
+      "minimumChangedPixelRatio": 0.01,
+      "minimumModelChangedPixelRatio": 0.01,
+      "minimumMeanAbsoluteDifference": 0.75,
+      "differentRenderedFrame": true
+    },
+    {
+      "imageSize": [
+        1032,
+        1050
+      ],
+      "comparedPixels": 1083600,
+      "identical": false,
+      "changedPixels": 438948,
+      "changedPixelRatio": 0.4050830564784053,
+      "meanAbsoluteDifference": [
+        39.20138704318937,
+        36.86764581026209,
+        36.31204134366925
+      ],
+      "meanAbsoluteDifferenceOverall": 37.460358065706906,
+      "maximumChannelDifference": 228,
+      "differenceSamples": [
+        {
+          "x": 231,
+          "y": 52,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            245,
+            240,
+            234
+          ]
+        },
+        {
+          "x": 231,
+          "y": 53,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            243,
+            238,
+            232
+          ]
+        },
+        {
+          "x": 225,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            246,
+            241,
+            235
+          ]
+        },
+        {
+          "x": 226,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            244,
+            239,
+            233
+          ]
+        },
+        {
+          "x": 227,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            246,
+            242,
+            236
+          ]
+        },
+        {
+          "x": 228,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            249,
+            244,
+            238
+          ]
+        },
+        {
+          "x": 230,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            247,
+            243,
+            236
+          ]
+        },
+        {
+          "x": 231,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            242,
+            237,
+            231
+          ]
+        },
+        {
+          "x": 227,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            247,
+            243,
+            236
+          ]
+        },
+        {
+          "x": 228,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            241,
+            236,
+            230
+          ]
+        },
+        {
+          "x": 229,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            238,
+            233,
+            226
+          ]
+        },
+        {
+          "x": 230,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            225,
+            217,
+            210
+          ]
+        }
+      ],
+      "modelComparedPixels": 439293,
+      "modelChangedPixels": 421146,
+      "modelChangedPixelRatio": 0.9586904412317064,
+      "leftHotspot": "centers",
+      "rightHotspot": "frame",
+      "leftOriginalCanvasSize": [
+        1032,
+        1050
+      ],
+      "rightOriginalCanvasSize": [
+        1032,
+        1050
+      ],
+      "comparisonSize": [
+        1032,
+        1050
+      ],
+      "leftResized": false,
+      "rightResized": false,
+      "minimumChangedPixelRatio": 0.01,
+      "minimumModelChangedPixelRatio": 0.01,
+      "minimumMeanAbsoluteDifference": 0.75,
+      "differentRenderedFrame": true
+    },
+    {
+      "imageSize": [
+        1032,
+        1050
+      ],
+      "comparedPixels": 1083600,
+      "identical": false,
+      "changedPixels": 402663,
+      "changedPixelRatio": 0.37159745293466223,
+      "meanAbsoluteDifference": [
+        35.20591177556294,
+        31.977098560354374,
+        31.44153562200074
+      ],
+      "meanAbsoluteDifferenceOverall": 32.87484865263935,
+      "maximumChannelDifference": 212,
+      "differenceSamples": [
+        {
+          "x": 231,
+          "y": 52,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            245,
+            240,
+            234
+          ]
+        },
+        {
+          "x": 231,
+          "y": 53,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            243,
+            238,
+            232
+          ]
+        },
+        {
+          "x": 225,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            246,
+            241,
+            235
+          ]
+        },
+        {
+          "x": 226,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            244,
+            239,
+            233
+          ]
+        },
+        {
+          "x": 227,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            246,
+            242,
+            236
+          ]
+        },
+        {
+          "x": 228,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            249,
+            244,
+            238
+          ]
+        },
+        {
+          "x": 230,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            247,
+            243,
+            236
+          ]
+        },
+        {
+          "x": 231,
+          "y": 54,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            242,
+            237,
+            231
+          ]
+        },
+        {
+          "x": 227,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            247,
+            243,
+            236
+          ]
+        },
+        {
+          "x": 228,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            241,
+            236,
+            230
+          ]
+        },
+        {
+          "x": 229,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            238,
+            233,
+            226
+          ]
+        },
+        {
+          "x": 230,
+          "y": 55,
+          "firstRgb": [
+            250,
+            246,
+            240
+          ],
+          "secondRgb": [
+            225,
+            217,
+            210
+          ]
+        }
+      ],
+      "modelComparedPixels": 399813,
+      "modelChangedPixels": 386471,
+      "modelChangedPixelRatio": 0.9666293992441466,
+      "leftHotspot": "corners",
+      "rightHotspot": "frame",
+      "leftOriginalCanvasSize": [
+        1032,
+        1050
+      ],
+      "rightOriginalCanvasSize": [
+        1032,
+        1050
+      ],
+      "comparisonSize": [
+        1032,
+        1050
+      ],
+      "leftResized": false,
+      "rightResized": false,
+      "minimumChangedPixelRatio": 0.01,
+      "minimumModelChangedPixelRatio": 0.01,
+      "minimumMeanAbsoluteDifference": 0.75,
+      "differentRenderedFrame": true
+    }
+  ],
+  "galleryPreviewComparison": {
+    "galleryCanvasBounds": [
+      131,
+      1024,
+      1125,
+      1787
+    ],
+    "savedVirtualFrame": {
+      "width": 294.85714285714283,
+      "height": 300,
+      "textDensity": 3.5,
+      "dark": false
+    },
+    "savedCamera": {
+      "yaw": 1.1726990816987242,
+      "pitch": 0.58,
+      "zoom": 0.98,
+      "hotspotId": "corners",
+      "sceneRevision": 2,
+      "rendererProfile": "native-raster-v1"
+    },
+    "containContentBoundsInGalleryCanvas": [
+      122,
+      0,
+      872,
+      763
+    ],
+    "galleryContentSize": [
+      750,
+      763
+    ],
+    "sourceReferenceSize": [
+      750,
+      763
+    ],
+    "meanAbsoluteDifferenceAfterLanczos": 0.4761124217271006,
+    "meanAbsoluteDifferenceByChannel": [
+      0.4669392747924858,
+      0.4661074705111402,
+      0.49529051987767586
+    ],
+    "rgbCorrelation": 0.9995216989110912,
+    "maximumMeanAbsoluteDifference": 6,
+    "minimumRgbCorrelation": 0.97,
+    "sameComposition": true,
+    "method": "以真实 dumpLayout Canvas bounds 裁切；依据日志中保存的虚拟画幅去除 contain 留白；LANCZOS 缩放后比较完整内容画幅"
+  },
+  "thresholds": {
+    "visibleContent": {
+      "chromaAtLeast": 18,
+      "chromaMaximumChannelAtMost": 250,
+      "darkLumaAtMost": 190,
+      "darkMaximumChannelAtMost": 242,
+      "minimumPixels": 2500,
+      "minimumAreaFraction": 0.04
+    },
+    "saveReplayMaximumChannelDifference": 1,
+    "saveReplayModelPixelsMustMatch": true,
+    "savedAndDrawnReplayCameraAbsoluteTolerance": 0.0001,
+    "hotspotMinimumChangedPixelRatio": 0.01,
+    "hotspotMinimumModelChangedPixelRatio": 0.01,
+    "hotspotMinimumMeanAbsoluteDifference": 0.75,
+    "galleryMinimumRgbCorrelation": 0.97,
+    "galleryMaximumMeanAbsoluteDifference": 6
+  }
+}

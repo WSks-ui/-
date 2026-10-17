@@ -1,0 +1,287 @@
+{
+  "date": "2026-10-17",
+  "stage": "T04 / T07 / T08 扩展庙底沟与杜岭二号方鼎",
+  "platform": "HarmonyOS 7 / API 26",
+  "device": "YunhejiSyncB",
+  "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+  "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+  "testPackageSha256": "B6BBDDCD556A832907106B020FC6D97417EFA863D810BD3CE2E6F0029BA7ACC3",
+  "total": 2,
+  "passed": 2,
+  "failure": 0,
+  "error": 0,
+  "ignore": 0,
+  "phases": [
+    {
+      "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+      "phase": "miaodigou-native-scroll",
+      "platform": "HarmonyOS 7 / API 26",
+      "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+      "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+      "testPackageSha256": "B6BBDDCD556A832907106B020FC6D97417EFA863D810BD3CE2E6F0029BA7ACC3",
+      "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+      "report": "docs/test-results/2026-10-17-182114-device.log",
+      "status": "pass",
+      "captures": [
+        {
+          "name": "expanded-miaodigou-living",
+          "path": "docs/design/expanded-observation/expanded-miaodigou-living.png",
+          "sha256": "0452E23F67E04FAD7E554E4EF9FA486675A5CA5BA619EEC617908BE6A41C0645",
+          "layoutSha256": "792A65653A93181EF03809A266F5231CC84F2E2D0B0BEE08CC420A4F89464CBD"
+        },
+        {
+          "name": "expanded-miaodigou-kilns",
+          "path": "docs/design/expanded-observation/expanded-miaodigou-kilns.png",
+          "sha256": "F3036B83C84D051BF16B7913DEE02610E2892F402F65676433CBA97500E91238",
+          "layoutSha256": "DE8C9E0A2A894971B992E979A9EF113FBB8F506FA9EA1489E72CC2D1CB7DF7D9"
+        },
+        {
+          "name": "expanded-miaodigou-ditches",
+          "path": "docs/design/expanded-observation/expanded-miaodigou-ditches.png",
+          "sha256": "87772482F9E4911F9855E59FB9C24885C60A46052CCE2D1A1C520ADA1075E865",
+          "layoutSha256": "F0E949DD818DFEE081EAA1C8D5A07681748BEA52FE4ED7EEFD9BB3E11B1ED929"
+        },
+        {
+          "name": "expanded-miaodigou-source",
+          "path": "docs/design/expanded-observation/expanded-miaodigou-source.png",
+          "sha256": "97864E4B881BEC0445AF5E81DBCCB04C8C93B89DEDAC11151F755A855AA294EE",
+          "layoutSha256": "FBB8B0726C111BDE7E9251D01122DECC46DECDFFC5938F4DD18992389365BB4D"
+        },
+        {
+          "name": "expanded-miaodigou-gallery",
+          "path": "docs/design/expanded-observation/expanded-miaodigou-gallery.png",
+          "sha256": "663774B0041D06C60EB26E077743585B2BFA768D6BB67F573A0ADCFD2D4BCAF1",
+          "layoutSha256": "D923E37CB0D6E8C84BB0EF8E80C97DD2A0A638CEBF8192962F951C3CA6498003"
+        },
+        {
+          "name": "expanded-miaodigou-replay",
+          "path": "docs/design/expanded-observation/expanded-miaodigou-replay.png",
+          "sha256": "17BAE8EAB132B01B1A44D99A7173954D75D9F4CB0CD6F9293CA0875251E68B31",
+          "layoutSha256": "DFDD3D1BCEEE7F35E1E0304205AB4E8A17ADF84C294AE50335A84CF08F912BAE"
+        }
+      ],
+      "sourceHashes": [
+        {
+          "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+          "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+          "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+          "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+        },
+        {
+          "path": "entry/src/main/ets/domain/DulingObservation.ts",
+          "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+        },
+        {
+          "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+          "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+        },
+        {
+          "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+          "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+          "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+          "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+        },
+        {
+          "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+          "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+        },
+        {
+          "path": "entry/src/main/ets/components/SiteDetail.ets",
+          "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+        },
+        {
+          "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+          "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+        },
+        {
+          "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+          "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "durationMs": 155058,
+      "pixelChecks": "docs/design/expanded-observation/miaodigou/pixel-checks.json"
+    },
+    {
+      "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+      "phase": "duling-native-scroll",
+      "platform": "HarmonyOS 7 / API 26",
+      "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+      "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+      "testPackageSha256": "B6BBDDCD556A832907106B020FC6D97417EFA863D810BD3CE2E6F0029BA7ACC3",
+      "test": "ExpandedObservationTest#native_duling_observe_save_gallery_replay",
+      "report": "docs/test-results/2026-10-17-182413-device.log",
+      "status": "pass",
+      "captures": [
+        {
+          "name": "expanded-duling-centers",
+          "path": "docs/design/expanded-observation/expanded-duling-centers.png",
+          "sha256": "C85B08190C469FCE4D598AD4207EF660204FEB49DD028A96BAC5F243A88DDAC5",
+          "layoutSha256": "336580F225E54BDD6304E8D0154ABAE1B32F468688915970991DF92847D648D3"
+        },
+        {
+          "name": "expanded-duling-corners",
+          "path": "docs/design/expanded-observation/expanded-duling-corners.png",
+          "sha256": "F595095F375ADA244086698F261AAF6867ECC9F85D2B52D61415E1F195BF8435",
+          "layoutSha256": "860D702EDB4FB2558755667404227B6E5B219AF778A73CC804F8157698D81E11"
+        },
+        {
+          "name": "expanded-duling-frame",
+          "path": "docs/design/expanded-observation/expanded-duling-frame.png",
+          "sha256": "55CFC4C34FDFF363E6302C650139CC58874EF241CFDDF254E39627508C8359A9",
+          "layoutSha256": "E2A05DEE932A2D654245C49003CB46D779EB3E309F917D8B8211B19D446ACFD1"
+        },
+        {
+          "name": "expanded-duling-source",
+          "path": "docs/design/expanded-observation/expanded-duling-source.png",
+          "sha256": "47684A0071945AADA7F749B9D9FE4E9F47D729A6EB84ADD4F0B4762193376A6A",
+          "layoutSha256": "059FD973B76C6C78FEF27E1B2AFAA8224047BC0DE02299AC41A016AF94C8E800"
+        },
+        {
+          "name": "expanded-duling-gallery",
+          "path": "docs/design/expanded-observation/expanded-duling-gallery.png",
+          "sha256": "0DF495E98314EE9C2682A8C315C230537C4B56AEE78219556707BC88BAF8EA86",
+          "layoutSha256": "544CBFADBB27F09D7F1C895565ED86C20D1715517B3D2DC1147B232B841E4C9D"
+        },
+        {
+          "name": "expanded-duling-replay",
+          "path": "docs/design/expanded-observation/expanded-duling-replay.png",
+          "sha256": "C2465ABCCCF458BF37780D8BA6BEF99765EBDEF06BB4696373F5F8022AD674DE",
+          "layoutSha256": "F982AF457623A4828E9C0219CF5B6F2F85A292DAE8C035D5CAD0352F29129FCC"
+        }
+      ],
+      "sourceHashes": [
+        {
+          "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+          "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+          "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+          "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+        },
+        {
+          "path": "entry/src/main/ets/domain/DulingObservation.ts",
+          "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+        },
+        {
+          "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+          "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+        },
+        {
+          "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+          "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+          "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+          "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+        },
+        {
+          "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+          "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+        },
+        {
+          "path": "entry/src/main/ets/components/SiteDetail.ets",
+          "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+        },
+        {
+          "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+          "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+        },
+        {
+          "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+          "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "durationMs": 155787,
+      "pixelChecks": "docs/design/expanded-observation/duling/pixel-checks.json"
+    }
+  ],
+  "sourceSha256": [
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservation.ts",
+      "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+      "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+      "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+      "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+      "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+      "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ExpandedObservation.test.ets",
+      "sha256": "1E890D40994DEBF92919718BE6D950DE5477F5617D5070E688100C89C08DB596"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "sha256": "081FBFB1E077231E925311EB3B5105109F5075D03BB3D40544194EA7249055F7"
+    },
+    {
+      "path": "tools/domain.test.mjs",
+      "sha256": "85F5186478078FEC6837902BA0069805AC85CED5E5EAE5C92F9AC2D38E7BDC34"
+    },
+    {
+      "path": "tools/load-domain-module.mjs",
+      "sha256": "09F3F408106D92EC0A88AFB32FCA66376C275FA280F4C94703ECBBA61E82B788"
+    },
+    {
+      "path": "tools/memory-journal.test.mjs",
+      "sha256": "C4491C2C3C1FF3917A7F42A88CA2DFA6BF40D074FB6931F819F5FE0CC0CFA649"
+    }
+  ],
+  "scope": "新增两处精细观察与本机画面手账回放；首页入口、新手账双端、三分钟录像另验收"
+}

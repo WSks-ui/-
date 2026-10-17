@@ -12,6 +12,7 @@ import engineExperienceTest from './EngineExperience.test';
 import memoryJourneyTest from './MemoryJourney.test';
 import coreContentTest from './CoreContent.test';
 import observationMemoryTest from './ObservationMemory.test';
+import expandedObservationTest from './ExpandedObservation.test';
 import materialComparisonTest from './MaterialComparison.test';
 
 export default function testsuite() {
@@ -29,5 +30,6 @@ export default function testsuite() {
   memoryJourneyTest();
   coreContentTest();
   observationMemoryTest();
+  expandedObservationTest();
   materialComparisonTest();
 }

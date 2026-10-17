@@ -1,0 +1,602 @@
+[
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "miaodigou",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "E0878C9FEE723F950752D19160AA97DF51E2D9C6B1B2582B81EA1E8985FB6A00",
+    "testPackageSha256": "E3823FD7CD13157E1E95FE8107543613D448014D5E86657DEAB70B85C0BC2239",
+    "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-173438-device.log",
+    "status": "failed",
+    "captures": [],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "4FF57D4248046C37EC1F3B507429D69DCC8C0F1F3F3AD06A5A4D31D3BB0A346B"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "error": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-173438-device.log",
+    "reasonNotFinal": "新用例读完较长说明后没有离屏 Canvas 节点，frameCanvas 缺省向下搜索；补真实页首锚点后重建测试包复验，未改业务断言或超时上限。"
+  },
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "miaodigou-final",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "E0878C9FEE723F950752D19160AA97DF51E2D9C6B1B2582B81EA1E8985FB6A00",
+    "testPackageSha256": "587736C4039D8507B1E97F8A6C00C9CC5221F77D51BBC4F1DFB5495AB1E6F858",
+    "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-173903-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "expanded-miaodigou-living",
+        "path": ".local\\expanded-observation\\miaodigou-final-20261017-173900\\expanded-miaodigou-living.png",
+        "sha256": "64EAE7326F0B626BCE9F0A663AE1A19DAD120B69E0864FC7A6AA2F306D09DE53"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "4FF57D4248046C37EC1F3B507429D69DCC8C0F1F3F3AD06A5A4D31D3BB0A346B"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "error": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-173903-device.log",
+    "reasonNotFinal": "页首锚点修正后已采到首热点原图；第二热点已更新文字与镜头但视角栏仍显示初始状态。统一 payload 后续选择与画布主动聚焦语义，清除旧回放取景并更新已聚焦，再重建两包。"
+  },
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "miaodigou-verified",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+    "testPackageSha256": "844A679DAD3A88B873447B54E089E7CED67D87849253D7C77782811DE6F847BB",
+    "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-174713-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "expanded-miaodigou-living",
+        "path": ".local\\expanded-observation\\miaodigou-verified-20261017-174709\\expanded-miaodigou-living.png",
+        "sha256": "0CE284C840DB717885994AF45C99819FCA49B974A605DE1D1AAB83D0205DA9EC"
+      },
+      {
+        "name": "expanded-miaodigou-kilns",
+        "path": ".local\\expanded-observation\\miaodigou-verified-20261017-174709\\expanded-miaodigou-kilns.png",
+        "sha256": "745ED3013B04005780F88C14C70115ADB87F65063A8DB9EB0B2E6F6C72B300DE"
+      },
+      {
+        "name": "expanded-miaodigou-ditches",
+        "path": ".local\\expanded-observation\\miaodigou-verified-20261017-174709\\expanded-miaodigou-ditches.png",
+        "sha256": "62E3B604F51A44EBDEDBAB2041AB636FAEE0E19EDDE36A45E58A1BC7769D561C"
+      },
+      {
+        "name": "expanded-miaodigou-source",
+        "path": ".local\\expanded-observation\\miaodigou-verified-20261017-174709\\expanded-miaodigou-source.png",
+        "sha256": "B223048B6B1BD19ED562AD68B51885A324CF8C39AC94AE581562669E0176FF7D"
+      },
+      {
+        "name": "expanded-miaodigou-gallery",
+        "path": ".local\\expanded-observation\\miaodigou-verified-20261017-174709\\expanded-miaodigou-gallery.png",
+        "sha256": "CAA213F17D9976BEECA75B3BF9E7A7EB9719560D0B4DA08C969A4DD253F96520"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "error": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-174713-device.log",
+    "reasonNotFinal": "正式回放已绘制对应镜头，但新用例将带操作后缀的 engine-angle 与无后缀文案做全等比较。按大河村既有用例核对回放状态文案，保留真实相机与后续角度验证，仅重建测试包复验。"
+  },
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "miaodigou-accepted",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+    "testPackageSha256": "DC5A3F160D6DF6BA93E1F725334524DF58052888928F529D2A4B893FF0E9B0A4",
+    "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-175144-device.log",
+    "status": "pass",
+    "captures": [
+      {
+        "name": "expanded-miaodigou-living",
+        "path": ".local\\expanded-observation\\miaodigou-accepted-20261017-175142\\expanded-miaodigou-living.png",
+        "sha256": "E6380AA82CD11FFF3FA102CFCDF4F10DC824AF871CD7D3374B34EF1B75560940"
+      },
+      {
+        "name": "expanded-miaodigou-kilns",
+        "path": ".local\\expanded-observation\\miaodigou-accepted-20261017-175142\\expanded-miaodigou-kilns.png",
+        "sha256": "AE977A7944CEEB9CD9E3576F0A2484438D9768976B192C6B7BD8186761DCDF93"
+      },
+      {
+        "name": "expanded-miaodigou-ditches",
+        "path": ".local\\expanded-observation\\miaodigou-accepted-20261017-175142\\expanded-miaodigou-ditches.png",
+        "sha256": "76A5DE3EA9269335E03EAD7B96BE3016CDCF868AF67AE2DB047D53B9C6FD2D99"
+      },
+      {
+        "name": "expanded-miaodigou-source",
+        "path": ".local\\expanded-observation\\miaodigou-accepted-20261017-175142\\expanded-miaodigou-source.png",
+        "sha256": "F06164CD975CD4D26BCA881E1DC4E817237AEAB2BBA0056E363D0D612130E8BE"
+      },
+      {
+        "name": "expanded-miaodigou-gallery",
+        "path": ".local\\expanded-observation\\miaodigou-accepted-20261017-175142\\expanded-miaodigou-gallery.png",
+        "sha256": "F066B728E68E5CAA0D65FD188CA50C5281AC5C145C15939C663C59BDE034B527"
+      },
+      {
+        "name": "expanded-miaodigou-replay",
+        "path": ".local\\expanded-observation\\miaodigou-accepted-20261017-175142\\expanded-miaodigou-replay.png",
+        "sha256": "F234F63D52086DD4188CFA4D9F8A695778626AD7060ECB040BFAB6100203FB88"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "error": "",
+    "reasonNotFinal": "核心设备路径已1/1通过，六张原图齐备；结束后才读取的系统日志环形缓冲丢失较早保存及重绘相机记录，像素核对因此中止。未改变产品、测试或超时，同包补采连续JSAPP日志后再登记画面验收。"
+  },
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "duling-accepted",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+    "testPackageSha256": "DC5A3F160D6DF6BA93E1F725334524DF58052888928F529D2A4B893FF0E9B0A4",
+    "test": "ExpandedObservationTest#native_duling_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-175609-device.log",
+    "status": "pass",
+    "captures": [
+      {
+        "name": "expanded-duling-centers",
+        "path": ".local\\expanded-observation\\duling-accepted-20261017-175606\\expanded-duling-centers.png",
+        "sha256": "19056E38329F2EA943A26A4F378D17F793650B40FA391211D30DC541119CDB24"
+      },
+      {
+        "name": "expanded-duling-corners",
+        "path": ".local\\expanded-observation\\duling-accepted-20261017-175606\\expanded-duling-corners.png",
+        "sha256": "E2FFBA867306AFD42AA9B738376A4A3B4D8BF5F893561BFE2388DF87E21B9ABF"
+      },
+      {
+        "name": "expanded-duling-frame",
+        "path": ".local\\expanded-observation\\duling-accepted-20261017-175606\\expanded-duling-frame.png",
+        "sha256": "14C197F2705E81F7AB86CA920B7D2E82F4484A87647F2DBE02E4A51CEAC0088B"
+      },
+      {
+        "name": "expanded-duling-source",
+        "path": ".local\\expanded-observation\\duling-accepted-20261017-175606\\expanded-duling-source.png",
+        "sha256": "6BD9DBD6AB4650BDAD87D923909DE804FEC6246632D90E3E0807220274B5791E"
+      },
+      {
+        "name": "expanded-duling-gallery",
+        "path": ".local\\expanded-observation\\duling-accepted-20261017-175606\\expanded-duling-gallery.png",
+        "sha256": "7C43619D44EE179B0D935BD6B9C041CEC72B14CAB7B9282042FB4670024B340B"
+      },
+      {
+        "name": "expanded-duling-replay",
+        "path": ".local\\expanded-observation\\duling-accepted-20261017-175606\\expanded-duling-replay.png",
+        "sha256": "9B8E6CDFC4FF52BDAD27F063E82C13939EE02ACC121DA07D04B99E89F2BBBA86"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "logCollection": "HDC持续读取JSAPP；原结束时环形缓冲另存device-hilog-ring.log。",
+    "error": "",
+    "reasonNotFinal": "同包方鼎核心路径1/1通过并完成画面核对；因庙底沟同一版测试反复滚动接近超时，优化共用测试定位顺序后将两处统一到最新测试包复验，本次作为旧测试包通过记录保留。"
+  },
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "miaodigou-evidence",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+    "testPackageSha256": "DC5A3F160D6DF6BA93E1F725334524DF58052888928F529D2A4B893FF0E9B0A4",
+    "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-180030-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "expanded-miaodigou-living",
+        "path": ".local\\expanded-observation\\miaodigou-evidence-20261017-180027\\expanded-miaodigou-living.png",
+        "sha256": "A27B51839A720EE342788E4B70BB55F8A1319DB957BE68D680386DF37E323089"
+      },
+      {
+        "name": "expanded-miaodigou-kilns",
+        "path": ".local\\expanded-observation\\miaodigou-evidence-20261017-180027\\expanded-miaodigou-kilns.png",
+        "sha256": "CDD8EC35EE2EF0EB3D581588229532C2F82030622E9EBAD55410CD8EEE099F47"
+      },
+      {
+        "name": "expanded-miaodigou-ditches",
+        "path": ".local\\expanded-observation\\miaodigou-evidence-20261017-180027\\expanded-miaodigou-ditches.png",
+        "sha256": "094BB2856BC4FE3F62978BCA337B1290BDA487F0329AD197C455C62D278217E8"
+      },
+      {
+        "name": "expanded-miaodigou-source",
+        "path": ".local\\expanded-observation\\miaodigou-evidence-20261017-180027\\expanded-miaodigou-source.png",
+        "sha256": "783F9DFF53AA366A11DB461158B237807E486739840D67A93A57C719EFFAE7C6"
+      },
+      {
+        "name": "expanded-miaodigou-gallery",
+        "path": ".local\\expanded-observation\\miaodigou-evidence-20261017-180027\\expanded-miaodigou-gallery.png",
+        "sha256": "D4B7DB9F3D6755EA3239EFCE317039509D4027A280AFDB4711BD367BFAFC3847"
+      },
+      {
+        "name": "expanded-miaodigou-replay",
+        "path": ".local\\expanded-observation\\miaodigou-evidence-20261017-180027\\expanded-miaodigou-replay.png",
+        "sha256": "A4024428F211DE16C52A43AA5B8305DC8048C241160AC5EC6F78C0609EE8D541"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "error": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-180030-device.log",
+    "reasonNotFinal": "连续日志和六张截图已齐，但反复上下滚动的整条新用例在240000ms上限触发超时，不计设备通过。保留业务断言与超时，仅优化新测试的定位顺序后重建测试包，并以同一对包重验两处。"
+  },
+  {
+    "stage": "核心体验成型阶段：庙底沟与杜岭二号方鼎观察、画面手账与回放",
+    "phase": "miaodigou-optimized",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "89c18c1406dcb7b42193fc512ffd85ee9e2f42cd",
+    "mainPackageSha256": "4AF9FF393DE9124852AC52BF4F519188912F1AAADFBC627477E48B8CD3D725EA",
+    "testPackageSha256": "C25ADE5F793278247E07CAA813CF1CE09C1174C021E0F4B1E7277A0405F7AC30",
+    "test": "ExpandedObservationTest#native_miaodigou_observe_save_gallery_replay",
+    "report": "docs/test-results/2026-10-17-181514-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "expanded-miaodigou-living",
+        "path": ".local\\expanded-observation\\miaodigou-optimized-20261017-181511\\expanded-miaodigou-living.png",
+        "sha256": "AAB9B2FE54C79245B8151B53DA9976B6B1271D9B5511B7537E025098AF5CF6CA"
+      },
+      {
+        "name": "expanded-miaodigou-kilns",
+        "path": ".local\\expanded-observation\\miaodigou-optimized-20261017-181511\\expanded-miaodigou-kilns.png",
+        "sha256": "EDD475913A77D7FBBFFD894AF77EB893E3558491AA278616050EE3F230D92473"
+      },
+      {
+        "name": "expanded-miaodigou-ditches",
+        "path": ".local\\expanded-observation\\miaodigou-optimized-20261017-181511\\expanded-miaodigou-ditches.png",
+        "sha256": "0196048E38D9B3A489BD2398C1BD11FF90ABEF6ED783E1906DF16D6415F0FAE9"
+      },
+      {
+        "name": "expanded-miaodigou-source",
+        "path": ".local\\expanded-observation\\miaodigou-optimized-20261017-181511\\expanded-miaodigou-source.png",
+        "sha256": "2CA2DDC8C09314310BE8B8EA2B62C8DB4B1770D78D36E52D6E698A7385869952"
+      },
+      {
+        "name": "expanded-miaodigou-gallery",
+        "path": ".local\\expanded-observation\\miaodigou-optimized-20261017-181511\\expanded-miaodigou-gallery.png",
+        "sha256": "A7BD8160E643B0952191218D659BF1C9FFE2206267391214C3FDE677A49D5057"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+        "sha256": "26E289F0A230BF22780B2C9C235C47F12824207CA928A98CC4C672AB62E615A1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+        "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservation.ts",
+        "sha256": "2C0DAE590A2C3CBC61AE38F06A63A23511A1FE5115FE984BEEC6BD67FF7548D1"
+      },
+      {
+        "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+        "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+      },
+      {
+        "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+        "sha256": "86F58ECBC91C94578C504973F8874EB3C27EA26816025DEFDCB22E1EBC89D684"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+        "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      }
+    ],
+    "error": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-181514-device.log",
+    "reasonNotFinal": "第一轮合并文案查询仍在240000ms上限超时；主要耗时仍来自长说明与页首之间的试探滑动。保留断言与截图边界，改用真实Scroll回顶定位固定观察画布，并先向下寻找未知的后续内容。"
+  }
+]

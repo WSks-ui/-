@@ -3,6 +3,8 @@ import type { ObjectMesh, ObjectPoint, SiteObjectShape } from './SiteObjectGeome
 import type { CulturalEnginePayload, CulturalSceneType } from './CulturalEngineContract';
 import { materialObservationForPreset } from './MaterialObservation';
 import { dahecunObservationShape } from './MaterialObservationGeometry';
+import { miaodigouObservationShape } from './MiaodigouObservationGeometry';
+import { dulingObservationShape } from './DulingObservationGeometry';
 
 export interface NativeEngineAnchor { id: string; label: string; type: string; point: ObjectPoint; }
 export interface NativeCulturalScene { shape: SiteObjectShape; anchors: NativeEngineAnchor[]; }
@@ -166,11 +168,14 @@ export function nativeCulturalScene(type: CulturalSceneType, payload: CulturalEn
     });
     return { shape: { title: '五城河洛 · 程序化沙盘', meshes }, anchors };
   }
-  // 仅明确的第 2 版双连壶启用新的观察模型；缺省 / 第 1 版仍保留旧单壶及旧热点供手账回放。
+  // 第 2 版三处精细观察均有独立几何；缺省 / 第 1 版仍保留原形态和旧热点，旧手账不得被替换。
   const observation = type === 'relic_inspector' ? materialObservationForPreset(payload.proceduralPreset || '',
     payload.sceneRevision === undefined ? 1 : payload.sceneRevision) : undefined;
   if (observation) {
-    return { shape: dahecunObservationShape(payload.selectedId || ''), anchors: observation.hotspots.map(hotspot => ({
+    const selected = payload.selectedId || '';
+    const shape = observation.siteId === 'smx-miaodigou' ? miaodigouObservationShape(selected) :
+      observation.siteId === 'zz-duling-fangding' ? dulingObservationShape(selected) : dahecunObservationShape(selected);
+    return { shape, anchors: observation.hotspots.map(hotspot => ({
       id: hotspot.id, label: hotspot.label, type: 'hotspot', point: hotspot.point
     })) };
   }

@@ -126,7 +126,11 @@ export struct CulturalEngineViewport {
       this.automatic = false;
     }
     // 新场景的 id 不能先发给仍承载旧数据的 Web；由本次 engineLoadScene 一并应用。
-    if (changed || oldSelection !== (this.payload.selectedId || '')) this.focus(this.payload.selectedId || '', false, false);
+    // 页面下方部位按钮通过 payload 更换选择，同样属于用户主动聚焦。
+    // 初次载入保留初始状态；后续切换则清除旧回放取景并更新“已聚焦”，不能仍显示初始 / 已恢复。
+    if (changed || oldSelection !== (this.payload.selectedId || '')) {
+      this.focus(this.payload.selectedId || '', !changed, false);
+    }
     if (changed && this.memoryPoseJson) this.applyMemoryPose();
     this.push(true); this.syncMotion();
   }

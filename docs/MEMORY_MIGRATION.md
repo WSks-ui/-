@@ -1,6 +1,6 @@
 # 拾遗手账数据兼容说明
 
-记录日期：2026-10-17。目标工程：HarmonyOS 7 / API 26。此说明涵盖 Step 3 手账及本轮大河村观察画面的领域数据格式；界面、真实设备与双端结果由本轮测试报告另行记录，领域规则完成不代表双端或实际绘制已经通过。
+记录日期：2026-10-17。目标工程：HarmonyOS 7 / API 26。此说明涵盖 Step 3 手账及三处重点观察画面的领域数据格式；界面、真实设备与双端结果由本轮测试报告另行记录，领域规则完成不代表双端或实际绘制已经通过。
 
 拾遗手账沿用 `ArchiveRecord` 的 `kind: 'note'` 和 `schemaVersion: 1`，不改已有笔记 ID、正文、标签、更新时间、安装实例身份或 Preferences 名称。新增的四个字段均为可选值：
 
@@ -36,7 +36,15 @@
 
 当前只支持回放 `relic_inspector` 与 `stratum_slice`。原生相机与现有手势一致：`yaw` 为有限数，`pitch` 在 `[-0.5, 0.8]`，`zoom` 在 `[0.7, 1.6]`。归档层接受正有限画布尺寸，但实际绘制要求宽大于 24、高大于 46；不满足时回放给出无法绘制的说明。`viewFrame.textDensity`、`viewFrame.dark` 缺省的记录仍可归档，但不能计作完整重建。
 
-缺少修订信息的旧视角按原 `sceneRevision: 1` 路径打开，原有全部预设仍可用；器物热点为 `form / pattern / story`，文化切片主题固定为 `overview / archaeology / history / poetry-travel`。本轮 `sceneRevision: 2` 只提供大河村 `zz-dahecun / dahecun_pottery`，器物热点为 `mouth / opening / paint`，由 `MaterialObservation` 的定义核对。旧大河村视角继续使用旧版单壶示意，不把新双连壶几何冒充当时画面。只要已提供的信息存在失配或不支持值，即使其他元信息缺失，也应为 `unavailable`，不能借 `legacy` 绕过支持检查。
+缺少修订信息的旧视角按原 `sceneRevision: 1` 路径打开，原有全部预设仍可用；器物热点为 `form / pattern / story`，文化切片主题固定为 `overview / archaeology / history / poetry-travel`。本轮 `sceneRevision: 2` 提供下列三处，由 `MaterialObservation` 的定义核对；这次扩展只扩大可回放场景名单，没有新增字段、提高 schemaVersion 或批量改写旧记录。
+
+| 档案 / 预设 | revision 2 热点 |
+|---|---|
+| 庙底沟 `smx-miaodigou / miaodigou_pottery` | `living / kilns / ditches` |
+| 大河村 `zz-dahecun / dahecun_pottery` | `mouth / opening / paint` |
+| 杜岭二号方鼎 `zz-duling-fangding / duling_fangding` | `centers / corners / frame` |
+
+三处旧视角继续使用各自 revision 1 几何；旧大河村因而保留原单壶示意，不把新双连壶几何冒充当时画面。只要已提供的信息存在失配或不支持值，即使其他元信息缺失，也应为 `unavailable`，不能借 `legacy` 绕过支持检查。
 
 升级前无需批量迁移，也不复制或重建安装实例 ID。既有 `previous_snapshot` 仍是落盘保护副本，不能当成新增的一键恢复功能。若需回退应用版本，应先保留包含新字段的完整快照，并让参与手账同步的设备使用本轮或更新客户端：未升级的旧客户端只复制旧字段，在编辑或保存快照时可能丢弃手账元数据，因此**不保证旧客户端保留新字段**。现有账号服务复用领域解析与合并，但旧运行进程仍需重启以加载更新后的规则；本说明不代表当前双端已复验。
 

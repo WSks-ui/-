@@ -163,7 +163,8 @@ export struct SiteDetail {
           .fontWeight(FontWeight.Medium).lineHeight(27).width('100%')
       }
       Row({ space: 8 }) {
-        Button('器物凝视').id('engine-mode-relic').onClick(() => this.startObservation('relic_inspector'))
+        Button(this.site.id === 'smx-miaodigou' && this.observation() ? '空间观察' : '器物凝视')
+          .id('engine-mode-relic').onClick(() => this.startObservation('relic_inspector'))
           .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'relic_inspector' ? T.accentSoft : T.soft)
         Button('文化切片').id('engine-mode-stratum').onClick(() => this.startObservation('stratum_slice'))
           .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'stratum_slice' ? T.accentSoft : T.soft)

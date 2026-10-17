@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { stripTypeScriptTypes } from 'node:module';
 import { runInNewContext } from 'node:vm';
 import { createHash } from 'node:crypto';
+import { domainModuleUrl } from './load-domain-module.mjs';
 import {
   activeRecords, compareVersions, copySnapshot, emptySnapshot, filterSites,
   mergeRecords, nextTimestamp, parseSnapshot, putRecord, recommendSites,
@@ -492,11 +493,39 @@ test('force layout settles expanded nodes inside narrow and large-text viewports
 await import('./cultural-content.test.mjs');
 await import('../entry/src/main/resources/rawfile/engine/engine.test.cjs');
 
-const nativeSceneSource = readFileSync(new URL('../entry/src/main/ets/domain/CulturalNativeScene.ts', import.meta.url), 'utf8')
-  .replace("from './SiteObjectGeometry'", `from '${new URL('../entry/src/main/ets/domain/SiteObjectGeometry.ts', import.meta.url).href}'`)
-  .replace("from './MaterialObservation'", `from '${new URL('../entry/src/main/ets/domain/MaterialObservation.ts', import.meta.url).href}'`)
-  .replace("from './MaterialObservationGeometry'", `from '${new URL('../entry/src/main/ets/domain/MaterialObservationGeometry.ts', import.meta.url).href}'`);
-const { nativeCulturalScene } = await import(`data:text/javascript,${encodeURIComponent(stripTypeScriptTypes(nativeSceneSource))}`);
+const { nativeCulturalScene } = await import(domainModuleUrl('CulturalNativeScene'));
+const { materialObservationForSite, materialObservationForPreset } = await import(domainModuleUrl('MaterialObservation'));
+
+test('three focused observations bind each visible part to evidence and keep legacy geometry separate', () => {
+  for (const siteId of ['smx-miaodigou', 'zz-dahecun', 'zz-duling-fangding']) {
+    const observation = materialObservationForSite(siteId);
+    const study = materialStudyForId(siteId);
+    assert.equal(observation.siteId, siteId);
+    assert.equal(observation.hotspots.length, 3);
+    assert.equal(new Set(observation.hotspots.map(hotspot => hotspot.id)).size, 3);
+    assert.equal(materialObservationForPreset(observation.proceduralPreset, 1), undefined);
+    assert.equal(materialObservationForPreset(observation.proceduralPreset, 2).siteId, siteId);
+    const legacy = nativeCulturalScene('relic_inspector', { version: 1,
+      proceduralPreset: observation.proceduralPreset, sceneRevision: 1 });
+    assert.deepEqual(legacy.anchors.map(anchor => anchor.id), ['form', 'pattern', 'story']);
+    const signatures = [];
+    for (const hotspot of observation.hotspots) {
+      assert.ok(hotspot.visibleDetail.length > 15);
+      // 所有可点部位都应能直接保存回放，不能只保证演示选中的单一镜头有效。
+      assert.ok(Number.isFinite(hotspot.yaw) && hotspot.pitch >= -0.5 && hotspot.pitch <= 0.8);
+      assert.ok(hotspot.zoom >= 0.7 && hotspot.zoom <= 1.6);
+      assert.ok(study.facts.some(fact => fact.id === hotspot.factId && fact.sourceIds.length > 0));
+      const scene = nativeCulturalScene('relic_inspector', { version: 1,
+        proceduralPreset: observation.proceduralPreset, sceneRevision: 2, selectedId: hotspot.id });
+      assert.deepEqual(scene.anchors.map(anchor => anchor.id), observation.hotspots.map(item => item.id));
+      const frame = objectRasterFrame(scene.shape, '#B66B4A', 330, 300, hotspot.yaw, hotspot.pitch);
+      assert.ok(frame.faces.length > 20 && frame.culledFaces > 0, `${siteId}/${hotspot.id}: invisible scene`);
+      assert.ok(frame.faces.every(face => face.points.every(point => Number.isFinite(point.x + point.y))));
+      signatures.push(JSON.stringify(scene.shape));
+    }
+    assert.ok(new Set(signatures).size > 1, `${siteId}: selected detail must visibly change scene geometry or emphasis`);
+  }
+});
 
 test('native fallback creates a visible river with five valid city selection anchors', () => {
   const scene = nativeCulturalScene('river_sandbox', { version: 1,

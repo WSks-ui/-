@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { stripTypeScriptTypes } from 'node:module';
+import { domainModuleUrl } from './load-domain-module.mjs';
 import { copySnapshot, compareVersions, emptySnapshot, mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import {
@@ -10,11 +9,7 @@ import {
 } from '../entry/src/main/ets/domain/MemoryJournal.ts';
 
 // ArkTS 使用无扩展名导入；仅改测试装载路径，执行与应用相同的回放判定源码。
-let replaySource = readFileSync(new URL('../entry/src/main/ets/domain/MemoryReplay.ts', import.meta.url), 'utf8');
-for (const name of ['ArchiveDomain', 'CulturalContent', 'MaterialObservation']) {
-  replaySource = replaySource.replaceAll(`'./${name}'`, `'${new URL(`../entry/src/main/ets/domain/${name}.ts`, import.meta.url).href}'`);
-}
-const { resolveMemoryReplay } = await import(`data:text/javascript,${encodeURIComponent(stripTypeScriptTypes(replaySource))}`);
+const { resolveMemoryReplay } = await import(domainModuleUrl('MemoryReplay'));
 
 const note = (patch = {}) => ({
   id: 'note:memory-test', kind: 'note', siteId: 'ly-erlitou', body: '记住这一刻', tags: ['城市'],
@@ -185,4 +180,25 @@ test('journal helpers use explicit decoration, existing catalog prose and approx
   assert.equal(isMemoryPostcard(note({ paperTheme: 'rose' })), true);
   assert.equal(isMemoryPostcard(note({ stampType: '河洛拾遗' })), true);
   assert.equal(isMemoryPostcard(note({ stampType: '未知主题' })), false);
+});
+
+test('both expanded observations preserve their own selected detail and recorded frame through archive replay', () => {
+  const cases = [
+    { siteId: 'smx-miaodigou', preset: 'miaodigou_pottery', hotspot: 'kilns', label: '西部陶窑' },
+    { siteId: 'zz-duling-fangding', preset: 'duling_fangding', hotspot: 'corners', label: '四个折角' }
+  ];
+  for (const item of cases) {
+    const savedPose = { ...observationPose(), proceduralPreset: item.preset, hotspotId: item.hotspot };
+    const saved = { ...emptySnapshot('device-a'), records: [postcard({ siteId: item.siteId, snapshot3DPose: savedPose })] };
+    const received = parseSnapshot(JSON.stringify(copySnapshot(saved))).records[0];
+    assert.deepEqual(received.snapshot3DPose, savedPose);
+    assert.equal(resolveMemoryReplay(item.siteId, received.snapshot3DPose).state, 'ready');
+    assert.equal(memoryPoseLabel(received.snapshot3DPose), item.label);
+    // 新部位不能混入旧修订；旧记录仍能按原三热点恢复，而且不会自动补场景或取景元数据。
+    assert.equal(resolveMemoryReplay(item.siteId, { ...savedPose, sceneRevision: 1 }).canReplay, false);
+    const old = pose();
+    assert.equal(resolveMemoryReplay(item.siteId, old).state, 'legacy');
+    assert.equal(Object.hasOwn(old, 'sceneRevision'), false);
+    assert.equal(Object.hasOwn(old, 'viewFrame'), false);
+  }
 });

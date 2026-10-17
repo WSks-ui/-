@@ -1,10 +1,34 @@
-# 大河村观察与带画面手账样板
+# 三处重点观察与带画面手账
 
 记录日期：2026-10-17。目标工程：HarmonyOS 7 / API 26，ArkUI 原生页面。本说明记录当前代码行为，不登记设备、画面一致性或双端通过结果；实际验收由[测试报告](TEST_REPORT.md)另行记录。
 
-本轮把大河村 `zz-dahecun` 的彩陶双连壶连接为一条体验路径：观察具体部位、阅读对应事实、转动取景、保存个人文字与画面参数，再从手账重返同一观察。当前精细场景使用 `dahecun_pottery / sceneRevision: 2`，采用原生 ArkUI Canvas 绘制程序化几何，范围仅为这一处样板。
+从大河村 `zz-dahecun` 的彩陶双连壶样板扩展到庙底沟和杜岭二号方鼎，三处共用一条体验路径：观察具体部位、阅读对应事实、转动取景、保存个人文字与画面参数，再从手账重返同一观察。精细场景均显式使用 `sceneRevision: 2`，采用原生 ArkUI Canvas 绘制各自独立的程序化几何；其他档案仍沿用原详情。
 
-## 三个部位与事实
+## 庙底沟：看见共存的西部
+
+核心问题是“陶窑和居住遗存分别在哪里？”。`smx-miaodigou / miaodigou_pottery / revision 2` 使用方位沙盘，页面模式名为“空间观察”。居住符号跨西部和中部，陶色陶窑符号穿插在西部，东西两侧为开放沟槽。原点的 `+X` 为东、`-X` 为西；沙盘内方位标识随模型转动，不能把旋转后的屏幕左侧始终理解为西。
+
+| 部位 | 当前观察内容 | 对应事实 ID |
+|---|---|---|
+| `living` · 居住遗存 | 西部与中部均有居住符号，强调分布范围 | `miaodigou-living` |
+| `kilns` · 西部陶窑 | 观察西部陶窑与居住符号共存，不能读作互斥功能区 | `miaodigou-kilns` |
+| `ditches` · 东西壕沟 | 观察东西两侧开放沟槽，不延伸成完整围墙或闭合边界 | `miaodigou-ditches` |
+
+配置见[MiaodigouObservation](../entry/src/main/ets/domain/MiaodigouObservation.ts)，几何见[MiaodigouObservationGeometry](../entry/src/main/ets/domain/MiaodigouObservationGeometry.ts)。房形、陶窑和沟槽只作为阅读符号，其数量、间距、轮廓、深度和各部比例没有测绘、地层或年代含义。依据与原图边界沿用[庙底沟资料记录](research/core-experience/miaodigou.md)。
+
+## 杜岭二号方鼎：四加四的八组位置
+
+核心问题是“四面方鼎，为什么有八组上腹兽面纹？”。`zz-duling-fangding / duling_fangding / revision 2` 表达敞开的方口、内壁与器底、外折口沿、双立耳和四根上粗下细的柱足。玫瑰色位置标记位于四壁正中，陶色折片跨过四个棱角，分别高亮后可看清两组位置关系。
+
+| 部位 | 当前观察内容 | 对应事实 ID |
+|---|---|---|
+| `centers` · 壁面正中 | 四壁正中的玫瑰色位置标记 | `duling-eight` |
+| `corners` · 四个折角 | 跨相邻两壁的陶色折角标记，和四壁正中合为上腹八组 | `duling-eight` |
+| `frame` · 乳钉边框 | 每壁两侧边与腹部近底端的点状边框，与上腹位置标记区分 | `duling-eight` |
+
+配置见[DulingObservation](../entry/src/main/ets/domain/DulingObservation.ts)，几何见[DulingObservationGeometry](../entry/src/main/ets/domain/DulingObservationGeometry.ts)。位置标记不是兽面纹拓本；乳钉数量、排数和局部比例不代表实测值，足部纹饰不计入上腹八组。依据与素材边界沿用[二号方鼎资料记录](research/core-experience/duling.md)，不能套用一号鼎数据。
+
+## 大河村：两壶内部怎样相通
 
 核心问题是“两只并排的壶，怎样成为一件内部相通的器物？”。对象特指河南博物院藏彩陶双连壶，不能把它的特征推广到大河村全部彩陶。事实正文与来源见[内容数据](../entry/src/main/ets/data/MaterialStudyCatalog.ts)及[对象研究记录](research/core-experience/dahecun.md)。
 
@@ -25,7 +49,7 @@
 | 信息 | 用途 |
 |---|---|
 | `proceduralPreset` | 明确保存哪一种程序化对象，避免打开错误档案的模型 |
-| `sceneRevision` | 明确几何和热点修订；新大河村观察为 `2` |
+| `sceneRevision` | 明确几何和热点修订；三处新观察均为 `2` |
 | `rendererProfile` | 明确绘制配置；当前完整支持 `native-raster-v1` |
 | `viewFrame.width / height` | 保存当时实际参与投影的虚拟画布尺寸 |
 | `viewFrame.textDensity / dark` | 保存当时标签文字密度与明暗配色，避免改用当前设备偏好冒充原画面 |
@@ -44,7 +68,7 @@
 
 ## 旧记录和不可用记录
 
-旧普通笔记保持原正文、标签和时间戳，不自动补上视角或新元信息。合法旧视角缺少完整元信息时为 `legacy`，显示“旧版视角，原取景未记录”；卡片保留文字说明，不补造声称等同原画面的预览。可以恢复的旧视角按原 revision 1 打开，旧大河村仍为原单壶示意和 `form / pattern / story` 热点，不被新双连壶静默替换。
+旧普通笔记保持原正文、标签和时间戳，不自动补上视角或新元信息。合法旧视角缺少完整元信息时为 `legacy`，显示“旧版视角，原取景未记录”；卡片保留文字说明，不补造声称等同原画面的预览。可以恢复的旧视角按原 revision 1 打开，三处仍为各自原形态和 `form / pattern / story` 热点，不被 revision 2 静默替换；大河村旧记录因此仍显示原单壶示意。
 
 未知档案、预设失配、不支持的版本或渲染配置、无对应热点、超出当前相机范围等情况为 `unavailable`。页面说明具体原因并保留手账文字，不代入首个档案，不截断角度或缩放后宣称恢复成功。已打开档案中的失败回放可通过“开始新的观察”进入当前场景，这次操作不改写原手账。
 
@@ -52,8 +76,8 @@
 
 ## 本轮范围与后续验收
 
-当前新增精细观察只启用大河村 revision 2。庙底沟、杜岭二号方鼎的内容和分析图仍沿用前阶段成果，本说明不把它们登记为已完成同级精细场景；首页主题优先级与入口调整也不在本样板的验收范围。
+精细观察登记三处 revision 2，正文和事实来源沿用已经核对的内容目录；详情、预览与正式回放使用同一场景分发。首页主题优先级与入口调整另按 T09 / T10 推进。
 
 新手账的本机保存、预览和回放与同账号双端完整性是不同验收项。现有账号传输继续使用 HTTPS，不能因本机能够重建画面，就宣称新元信息已到达另一端或另一端画面已经一致。本轮双端尚未验收，不称为分布式 KV。
 
-限定的[ObservationMemoryTest](../entry/src/ohosTest/ets/test/ObservationMemory.test.ets)已提供大河村三部位、主动右转、真实保存后移除缓存回读、画廊和正式回放的演示路径；只有明确选择该测试类才启用。用例保留画布布局供实际画面核对。此处只说明验证入口，不记录其执行或通过结果。阶段任务仍以[核心体验执行规范](CORE_EXPERIENCE.md)为准。
+限定的[ObservationMemoryTest](../entry/src/ohosTest/ets/test/ObservationMemory.test.ets)提供大河村核心路径，[ExpandedObservationTest](../entry/src/ohosTest/ets/test/ExpandedObservation.test.ets)分两条提供庙底沟与二号方鼎核心路径：三部位、主动右转、真实保存后移除缓存回读、画廊和正式回放；只有明确选择对应测试类才启用。用例保留画布布局供实际画面核对。此处只说明验证入口，不记录其执行或通过结果。阶段任务仍以[核心体验执行规范](CORE_EXPERIENCE.md)为准。

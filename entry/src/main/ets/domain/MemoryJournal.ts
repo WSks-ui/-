@@ -65,6 +65,17 @@ export function memoryPoseLabel(pose?: MemoryPose): string {
     if (pose.hotspotId === 'opening') return '腹部通口';
     if (pose.hotspotId === 'paint') return '红衣黑彩';
   }
+  // 正常保存会带选中部位的 label；这里只为缺少标签但仍有合法新视角的记录提供对应部位名称。
+  if (pose.proceduralPreset === 'miaodigou_pottery' && pose.sceneRevision === 2) {
+    if (pose.hotspotId === 'living') return '居住遗存';
+    if (pose.hotspotId === 'kilns') return '西部陶窑';
+    if (pose.hotspotId === 'ditches') return '东西壕沟';
+  }
+  if (pose.proceduralPreset === 'duling_fangding' && pose.sceneRevision === 2) {
+    if (pose.hotspotId === 'centers') return '壁面正中';
+    if (pose.hotspotId === 'corners') return '四个折角';
+    if (pose.hotspotId === 'frame') return '乳钉边框';
+  }
   if (pose.hotspotId === 'form') return '器形观察';
   if (pose.hotspotId === 'pattern') return '纹饰观察';
   if (pose.hotspotId === 'story') return '文化线索';

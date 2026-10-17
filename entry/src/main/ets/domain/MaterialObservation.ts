@@ -1,4 +1,6 @@
 import type { ObjectPoint } from './SiteObjectGeometry';
+import { MIAODIGOU_OBSERVATION } from './MiaodigouObservation';
+import { DULING_OBSERVATION } from './DulingObservation';
 
 export interface MaterialObservationHotspot {
   id: string;
@@ -22,7 +24,7 @@ export interface MaterialObservationDefinition {
 
 // 热点与镜头共用同一份纯配置，详情、原生绘制和手账恢复不可各自猜测部位。
 // 局部坐标以双连壶两腹之间为原点，+Y 向上、+Z 为通常观察的前侧；角度为弧度。
-// 此版只表达馆方文字已核实的双口、腹部相通与红衣黑彩；不启用另外两处的精细场景。
+// 双连壶只表达馆方文字已核实的双口、腹部相通与红衣黑彩。
 const DAHECUN_OBSERVATION: MaterialObservationDefinition = {
   siteId: 'zz-dahecun',
   proceduralPreset: 'dahecun_pottery',
@@ -41,12 +43,16 @@ const DAHECUN_OBSERVATION: MaterialObservationDefinition = {
   notice: '原创结构学习示意 · 比例与纹线已简化，非实物复原；腹部通口采用剖开解释。'
 };
 
+// 每处保留独立的内容与几何模块；这里只登记真实可提供的场景，不给其他档案套通用热点。
+const MATERIAL_OBSERVATIONS: MaterialObservationDefinition[] = [
+  MIAODIGOU_OBSERVATION, DAHECUN_OBSERVATION, DULING_OBSERVATION
+];
+
 export function materialObservationForSite(siteId: string): MaterialObservationDefinition | undefined {
-  return siteId === DAHECUN_OBSERVATION.siteId ? DAHECUN_OBSERVATION : undefined;
+  return MATERIAL_OBSERVATIONS.find(item => item.siteId === siteId);
 }
 
 export function materialObservationForPreset(preset: string, revision: number = 2): MaterialObservationDefinition | undefined {
   // 场景版本参与匹配：缺省旧手账由调用方传 1，不能被新几何静默替换。
-  return preset === DAHECUN_OBSERVATION.proceduralPreset && revision === DAHECUN_OBSERVATION.sceneRevision ?
-    DAHECUN_OBSERVATION : undefined;
+  return MATERIAL_OBSERVATIONS.find(item => item.proceduralPreset === preset && item.sceneRevision === revision);
 }
