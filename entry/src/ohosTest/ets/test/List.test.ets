@@ -9,6 +9,7 @@ import profileLoginTest from './ProfileLogin.test';
 import catalogGraphTest from './CatalogGraph.test';
 import spatialExperienceTest from './SpatialExperience.test';
 import engineExperienceTest from './EngineExperience.test';
+import memoryJourneyTest from './MemoryJourney.test';
 
 export default function testsuite() {
   archiveDeviceTest();
@@ -22,4 +23,5 @@ export default function testsuite() {
   catalogGraphTest();
   spatialExperienceTest();
   engineExperienceTest();
+  memoryJourneyTest();
 }

@@ -88,16 +88,17 @@ export class CulturalNativeRenderer {
       const a = targets.find(node => node.id === edge.source), b = targets.find(node => node.id === edge.target);
       if (!a || !b) return;
       context.beginPath(); context.moveTo(a.x, a.y); context.quadraticCurveTo((a.x + b.x) / 2, (a.y + b.y) / 2 - 12, b.x, b.y);
-      context.strokeStyle = dark ? 'rgba(91,142,138,0.25)' : 'rgba(91,142,138,0.18)';
-      context.lineWidth = payload.selectedId === a.id || payload.selectedId === b.id ? 1.3 : 0.6; context.stroke();
+      context.strokeStyle = edge.highlighted ? '#C88A4B' : (dark ? 'rgba(91,142,138,0.25)' : 'rgba(91,142,138,0.18)');
+      context.lineWidth = edge.highlighted ? 2.5 : (payload.selectedId === a.id || payload.selectedId === b.id ? 1.3 : 0.6); context.stroke();
     });
     targets.forEach((target, index) => {
       const node = (payload.nodes || [])[index], selected = payload.selectedId === target.id;
       context.beginPath(); context.arc(target.x, target.y, selected ? 10 : 6, 0, Math.PI * 2);
-      context.fillStyle = node.explored ? '#C88A4B' : (selected ? '#C45A6A' : '#5B8E8A'); context.fill();
-      if (selected || node.explored) {
+      context.fillStyle = node.explored ? '#C88A4B' : (selected || node.highlighted ? '#C45A6A' : '#5B8E8A'); context.fill();
+      if (selected || node.explored || node.highlighted) {
         context.beginPath(); context.arc(target.x, target.y, 13 + Math.sin(phase) * 1.5, 0, Math.PI * 2);
-        context.strokeStyle = 'rgba(200,138,75,0.4)'; context.lineWidth = 1; context.stroke();
+        context.strokeStyle = node.highlighted ? '#C88A4B' : 'rgba(200,138,75,0.4)';
+        context.lineWidth = node.highlighted ? 2.3 : 1; context.stroke();
       }
       context.font = `${10 * textDensity}px sans-serif`; context.textAlign = 'center';
       context.fillStyle = dark ? '#F5ECE6' : '#5C4D46';

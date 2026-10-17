@@ -1,8 +1,12 @@
 import { webview } from '@kit.ArkWeb';
+import { MemoryPose } from '../domain/ArchiveDomain';
 import { CulturalEnginePayload, CulturalSceneType } from '../domain/CulturalEngineContract';
 import { needsObjectCanvas } from '../platform/SiteObjectCanvas';
 import { CulturalHitTarget, CulturalNativeRenderer } from '../platform/CulturalNativeRenderer';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
+
+interface EngineCameraReply { yaw: number; pitch: number; distance: number; }
+interface EngineViewReply { view: EngineCameraReply; }
 
 function needsNativeCultureViewport(): boolean {
   try { return needsObjectCanvas() || !canIUse('SystemCapability.Web.Webview.Core'); }
@@ -37,10 +41,13 @@ export struct CulturalEngineViewport {
   @Prop viewportHeight: number = 300;
   // 留影回调由未来手账入口接收；没有实际接收者时不提供会丢失结果的操作按钮。
   @Prop captureEnabled: boolean = false;
+  @Prop rememberEnabled: boolean = false;
+  @Prop @Watch('applyMemoryPose') memoryPoseJson: string = '';
   @LocalStorageProp('appForeground') @Watch('syncMotion') foreground: boolean = true;
   onNodeSelected: (id: string, type: string) => void = () => {};
   onProgressUnlocked: (id: string, value: number) => void = () => {};
   onCaptureSnapshot: (value: string) => void = () => {};
+  onRememberView: (pose: MemoryPose) => void = () => {};
   @State private native: boolean = needsNativeCultureViewport();
   @State private automatic: boolean = true;
   @State private angleLabel: string = '初始视角';
@@ -68,11 +75,13 @@ export struct CulturalEngineViewport {
   private sceneKey: string = '';
   private pushedScene: string = '';
   private pushedPayload: string = '';
+  private restoredPose: MemoryPose | undefined = undefined;
+  private pushedMemoryPose: string = '';
   private bridge: EngineBridge = new EngineBridge((id: string, type: string) => this.select(id, type),
     (id: string, value: number) => this.acceptProgress(id, value), (value: string) => this.acceptCapture(value),
     (mode: string) => { if (mode === 'unavailable') this.useNative(); }, () => this.pauseAutomatic());
 
-  aboutToAppear(): void { this.disposed = false; this.reload(); }
+  aboutToAppear(): void { this.disposed = false; this.reload(); this.applyMemoryPose(); }
   aboutToDisappear(): void {
     this.disposed = true; this.stop();
     if (this.themeTimer >= 0) clearTimeout(this.themeTimer);
@@ -108,6 +117,7 @@ export struct CulturalEngineViewport {
     }
     // 新场景的 id 不能先发给仍承载旧数据的 Web；由本次 engineLoadScene 一并应用。
     if (changed || oldSelection !== (this.payload.selectedId || '')) this.focus(this.payload.selectedId || '', false, false);
+    if (changed && this.memoryPoseJson) this.applyMemoryPose();
     this.push(true); this.syncMotion();
   }
   private displayActive(): boolean { return !this.disposed && this.active && this.foreground && this.visible; }
@@ -129,7 +139,48 @@ export struct CulturalEngineViewport {
     }
     // 主题、前后台和减少动态变化只推设置，不重载场景，因此保留用户的取景。
     source += `window.engineSetActive(${this.displayActive()});`;
+    if (this.restoredPose && this.pushedMemoryPose !== this.memoryPoseJson) {
+      const pose = this.restoredPose;
+      source += `window.engineSetAutomatic(false);window.engineSetView(${JSON.stringify({ yaw: pose.yaw,
+        pitch: pose.pitch, distance: 4.8 / pose.zoom, panX: 0, panY: 0 })});`;
+      this.pushedMemoryPose = this.memoryPoseJson;
+    }
     this.js(source);
+  }
+
+  private applyMemoryPose(): void {
+    if (!this.memoryPoseJson) return;
+    try {
+      const pose = JSON.parse(this.memoryPoseJson) as MemoryPose;
+      if (pose.version !== 1 || pose.sceneType !== this.sceneType ||
+        !Number.isFinite(pose.yaw) || !Number.isFinite(pose.pitch) || !Number.isFinite(pose.zoom)) return;
+      this.restoredPose = pose;
+      this.pauseAutomatic(); this.yaw = pose.yaw; this.pitch = pose.pitch;
+      this.zoom = Math.max(0.7, Math.min(1.6, pose.zoom)); this.phase = 0;
+      this.angleLabel = '已回到手账视角'; this.draw(); this.push();
+    } catch { this.captureMessage = '这张手账的视角暂不能打开'; }
+  }
+
+  private async rememberView(): Promise<void> {
+    if (!this.displayActive()) return;
+    this.pauseAutomatic();
+    // 手账保存相机参数而非大图；同一程序化模型可重建视角，账号同步无需传输截图。
+    // Web 使用自身当前相机回读，不能拿原生分支的未更新变量冒充用户刚操作的视角。
+    if (!this.native && this.loaded) {
+      try {
+        let raw = await this.controller.runJavaScript('window.engineGetState()');
+        if (raw.startsWith('"')) raw = JSON.parse(raw) as string;
+        const state = JSON.parse(raw) as EngineViewReply;
+        this.yaw = state.view.yaw; this.pitch = state.view.pitch;
+        this.zoom = Math.max(0.7, Math.min(1.6, 4.8 / state.view.distance));
+      } catch { this.captureMessage = '暂未取到视角，请稍后再试'; return; }
+    }
+    const selected = this.payload.selectedId || '';
+    const pose: MemoryPose = { version: 1, sceneType: this.sceneType, yaw: this.yaw, pitch: this.pitch,
+      zoom: this.zoom, hotspotId: this.sceneType === 'relic_inspector' ? selected : '',
+      sectionId: this.sceneType === 'stratum_slice' ? selected : '',
+      label: `${this.sceneType === 'stratum_slice' ? '主题切片' : '器物凝视'} · ${Math.round(this.yaw * 180 / Math.PI)}°` };
+    this.onRememberView(pose);
   }
   private draw(): void {
     if (!this.native || !this.canvasReady || !this.displayActive()) return;
@@ -288,6 +339,11 @@ export struct CulturalEngineViewport {
             .height(36).padding({ left: 12, right: 12 }).borderRadius(12).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.soft)
         }
       }.width('100%')
+      if (this.rememberEnabled) {
+        Button('留住此刻 · 写一页手账').id('engine-remember-view').width('100%').height(42)
+          .borderRadius(12).fontSize(F.small).fontColor(T.accent).backgroundColor(T.accentSoft)
+          .onClick(() => this.rememberView())
+      }
     }.width('100%')
   }
 }

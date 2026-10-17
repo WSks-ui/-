@@ -22,10 +22,13 @@ import { DEFAULT_ARCHIVE_STORE } from '../platform/ArchiveLaunch';
 import { CultureAtlas } from '../components/CultureAtlas';
 import { LoginPage } from '../components/LoginPage';
 import { ProfilePage } from '../components/ProfilePage';
+import { MemoryPostcardItem } from '../components/MemoryPostcardItem';
+import { JourneyPanel } from '../components/JourneyPanel';
 import { AccountSyncClient } from '../sync/AccountSyncClient';
 import { AccountView, accountErrorMessage, accountStoreName, changedAccountView, guestAccountView } from '../domain/AccountSync';
 
-interface SiteRoute { siteId: string; }
+interface SiteRoute { siteId: string; poseJson?: string; }
+interface JourneyGraphRoute { journeyId: string; }
 
 @Entry({ useSharedStorage: true })
 @Component
@@ -46,6 +49,7 @@ struct Index {
   @State era: string = ERAS[0];
   @State type: string = TYPES[0];
   @State collectionTag: string = '全部标签';
+  @State memoryGallery: boolean = true;
   @State currentTab: number = 0;
   @State wide: boolean = false;
   @State featuredHeight: number = 242;
@@ -214,7 +218,7 @@ struct Index {
     }
   }
 
-  private async openSite(site: HeritageSite): Promise<void> {
+  private async openSite(site: HeritageSite, poseJson: string = ''): Promise<void> {
     if (this.saving || this.accountView.busy) return;
     const next = copySnapshot(this.snapshot);
     const progress: ArchiveRecord = {
@@ -223,7 +227,7 @@ struct Index {
     };
     next.records = putRecord(next.records, progress);
     await this.commit(next);
-    const route: SiteRoute = { siteId: site.id };
+    const route: SiteRoute = { siteId: site.id, poseJson };
     this.paths.pushPathByName('site', route, !this.snapshot.reducedMotion);
   }
 
@@ -275,15 +279,18 @@ struct Index {
     if (name === 'site') {
       SiteDetail({
         site: this.siteFor((parameter as SiteRoute).siteId) || HERITAGE_SITES[0],
-        snapshot: $snapshot,
+        snapshot: $snapshot, initialPoseJson: (parameter as SiteRoute).poseJson || '',
         onCommit: (next: ArchiveSnapshot): Promise<boolean> => this.commit(next),
         onOpen: (site: HeritageSite) => this.openSite(site)
       })
     } else if (name === 'culture') {
-      CultureAtlas({ snapshot: $snapshot, onOpen: (site: HeritageSite) => this.openSite(site) })
+      CultureAtlas({ snapshot: $snapshot, journeyId: (parameter as JourneyGraphRoute)?.journeyId || '', onOpen: (site: HeritageSite) => this.openSite(site) })
     } else if (name === 'profile') {
       ProfilePage({ snapshot: $snapshot, view: this.accountView, saving: this.saving,
         university: this.university, studentNumber: this.studentNumber,
+        onOpenSite: (id: string) => { const site = this.siteFor(id); if (site) this.openSite(site); },
+        onOpenJourneyGraph: (id: string) => this.paths.pushPathByName('culture', { journeyId: id } as JourneyGraphRoute,
+          !this.snapshot.reducedMotion),
         onCommit: (next: ArchiveSnapshot): Promise<boolean> => this.commit(next),
         onLogin: () => this.openLogin(), onLogout: () => { this.logoutAccount(); },
         onSync: () => { this.syncAccount(); } })
@@ -496,6 +503,18 @@ struct Index {
         this.heading('沿河，遇见文明', '五座城，把黄河故事慢慢读完。')
         this.riverSandbox()
         this.cultureEntry()
+        Button({ type: ButtonType.Normal }) {
+          Row({ space: 12 }) {
+            SymbolGlyph($r('sys.symbol.map')).fontSize(25).fontColor([T.mintInk])
+            Column({ space: 5 }) {
+              Text('黄河寻迹漫游').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
+              Text('三条主题路线 · 让每一页手账点亮旅程').fontSize(F.caption).fontColor(T.muted)
+            }.layoutWeight(1).alignItems(HorizontalAlign.Start)
+            SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(16).fontColor([T.mintInk])
+          }.width('100%').padding(18)
+        }.width('100%').padding(0).backgroundColor(T.mint).borderRadius(20).margin({ bottom: 18 })
+          .id('journey-home-entry').onClick(() => this.paths.pushPathByName('profile', '', !this.snapshot.reducedMotion))
+
         this.entryBoard()
         this.cityIndex()
         Search({ value: this.keyword, controller: this.searchController, placeholder: '搜索遗址、城市或文化线索' })
@@ -552,6 +571,31 @@ struct Index {
           ArchiveStat({ value: `${activeRecords(this.snapshot.records, 'note').length}`, label: '笔记', valueId: 'note-count' })
           ArchiveStat({ value: `${this.visitedCount()}`, label: '已浏览', valueId: 'visited-count' })
         }.width('100%').padding({ top: 20, bottom: 20 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
+        // 手账置于统计块之后优先展示，避免收藏空卡片把本轮核心演示内容挤出首屏。
+        Row({ space: 10 }) {
+          Column({ space: 4 }) {
+            Text('云河拾遗手账').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
+            Text('把每次凝视，装进一页私藏').fontSize(F.caption).fontColor(T.muted)
+          }.layoutWeight(1).alignItems(HorizontalAlign.Start)
+          Button('列表').id('memory-view-list').fontSize(F.caption).height(36).padding({ left: 10, right: 10 })
+            .fontColor(this.memoryGallery ? T.muted : T.accent).backgroundColor(this.memoryGallery ? T.soft : T.accentSoft)
+            .onClick(() => { this.memoryGallery = false; })
+          Button('画廊').id('memory-view-gallery').fontSize(F.caption).height(36).padding({ left: 10, right: 10 })
+            .fontColor(this.memoryGallery ? T.accent : T.muted).backgroundColor(this.memoryGallery ? T.accentSoft : T.soft)
+            .onClick(() => { this.memoryGallery = true; })
+        }.width('100%').padding({ top: 24, bottom: 14 })
+        if (activeRecords(this.snapshot.records, 'note').length === 0) {
+          this.emptyState('第一张手账，从一次凝视开始', $r('sys.symbol.square_and_pencil'), '打开文化档案，留住视角，写下自己的黄河记忆。')
+        }
+        ForEach(activeRecords(this.snapshot.records, 'note'), (note: ArchiveRecord) => {
+          MemoryPostcardItem({ note, site: this.siteFor(note.siteId) || HERITAGE_SITES[0], compact: !this.memoryGallery,
+            syncLabel: this.accountView.signedIn && this.accountView.lastSync >= note.updatedAt ? '已完成账号同步' : '已保存在本机',
+            onOpen: () => { const site = this.siteFor(note.siteId); if (site) this.openSite(site); },
+            onPose: () => {
+              const site = this.siteFor(note.siteId);
+              if (site) this.openSite(site, note.snapshot3DPose ? JSON.stringify(note.snapshot3DPose) : '');
+            } })
+        }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}:${this.memoryGallery}`)
         Row() {
           Text('收藏档案').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
           Select(['全部标签'].concat(COLLECTION_TAGS).map((value: string): SelectOption => ({ value })))
@@ -565,29 +609,6 @@ struct Index {
         SiteGrid({ sites: this.collections(), gridId: 'archive-site-grid',
           collectedIds: activeRecords(this.snapshot.records, 'favorite').map((record: ArchiveRecord) => record.siteId),
           onOpen: (site: HeritageSite) => this.openSite(site) })
-        this.sectionTitle('最近笔记', '个人学习记录')
-        if (activeRecords(this.snapshot.records, 'note').length === 0) {
-          this.emptyState('还没有学习记录', $r('sys.symbol.square_and_pencil'), '在档案详情里，记下你的观察和思考。')
-        }
-        ForEach(activeRecords(this.snapshot.records, 'note'), (note: ArchiveRecord) => {
-          Button({ type: ButtonType.Normal }) {
-            Column({ space: 10 }) {
-              Row({ space: 8 }) {
-                SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(18).fontColor([T.yellowInk])
-                Text(this.siteFor(note.siteId)?.name || '未收录档案').fontSize(F.small).fontWeight(FontWeight.Medium)
-                  .fontColor(T.accent).layoutWeight(1)
-                SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(13).fontColor([T.tertiary])
-              }.width('100%')
-              Text(note.body).fontSize(F.small).lineHeight(24).maxLines(3)
-                .textOverflow({ overflow: TextOverflow.Ellipsis }).fontColor(T.ink)
-              Text(new Date(note.updatedAt).toLocaleString()).fontSize(F.caption).fontColor(T.muted)
-            }.alignItems(HorizontalAlign.Start).width('100%').padding(16)
-          }.width('100%').padding(0).borderRadius(T.cardRadius).backgroundColor(T.surface).margin({ bottom: 12 })
-            .onClick(() => {
-              const site = this.siteFor(note.siteId);
-              if (site) this.openSite(site);
-            })
-        }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}`)
       }.width('100%').constraintSize({ maxWidth: 760 })
         .padding({ left: 16, right: 16, top: this.topClearance(), bottom: this.dockClearance() })
     }.height('100%').width('100%').align(Alignment.Top).id('archive-scroll')

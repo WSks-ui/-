@@ -165,3 +165,9 @@ Git 公开交付时，记录中的本机工程 / 工具绝对路径替换为 `<P
 - `142511` 外观1/1但原图大字截断，未计最终大字视觉通过；`142802` 原笔记回归Pass0/Error1，旧用例未滚出收藏区。保留在 `engine-phases-before-large-text-padding.json`，修正按钮内边距与测试可见性后另留当前包报告。
 
 当前实际设备画面为原生ArkUI Canvas，WebGL2/GLSL、Web软件路径与真实GLB模型未计设备通过。HarmonyOS6已按用户要求取消，保持HarmonyOS7/API26。未重跑完整双端账号或旧全量存储套件。
+
+## 2026-10-17 拾遗手账与主题漫游
+
+本地89/89、报告解析9/9、主包 / 测试包构建成功；唯一核心演示 [2026-10-17-152242-device.log](2026-10-17-152242-device.log) **1/1**，Failure/Error/Ignore为0。覆盖真实手账保存、画廊、视角回放、点亮1/5和主题路线图谱，四张原图见 [图集](../design/memory/README.md)。本轮不跑大字或泛化安全 / 边界套件。
+
+`2026-10-17-memory-phases.json` 记录实际两包与原图。`150705` 首轮Error1为测试嵌套定位失败，`memory-attempt1.json` 保留旧包信息；`memory-build-attempt1.log` 保留早期编译失败。最终输出为 `memory-main-build.log`、`memory-test-build.log`、`memory-local.log`。

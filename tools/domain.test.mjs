@@ -15,6 +15,8 @@ import { UnavailableSyncGateway } from '../entry/src/main/ets/sync/SyncGateway.t
 import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/ets/platform/ArchiveLaunch.ts';
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
 import { accountStoreName, changedAccountView, guestAccountView, validateAccountInput, validateAccountSession, validateAccountReply } from '../entry/src/main/ets/domain/AccountSync.ts';
+import './memory-journal.test.mjs';
+import './journey-routes.test.mjs';
 
 test('account stores isolate account identity and test sessions without changing guest data', () => {
   const accountA = 'a'.repeat(32), accountB = 'b'.repeat(32);

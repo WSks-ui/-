@@ -1,7 +1,7 @@
 import {
   activeRecords, ArchiveRecord, ArchiveSnapshot, COLLECTION_TAGS, copySnapshot,
   HeritageSite, MAX_NOTE_LENGTH, MAX_NOTE_TAGS, MAX_NOTE_TAG_LENGTH, MAX_NOTE_TAGS_TEXT_LENGTH,
-  nextTimestamp, putRecord, recommendSites, Recommendation
+  nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose
 } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { SiteRow, siteIllustration } from './SiteRow';
@@ -11,11 +11,16 @@ import { getCulturalSiteMetadata, EXPLORATION_SECTIONS, ExplorationSectionId, Cu
 import { decodeExplorationProgress, encodeExplorationProgressRecord } from '../domain/ExplorationProgress';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
+import { MemoryPostcardItem } from './MemoryPostcardItem';
+import { defaultStampForSite, PAPER_THEMES, paperThemeLabel, STAMP_TYPES, memoryQuoteForSite } from '../domain/MemoryJournal';
+
+interface MemoryPoseRequest extends MemoryPose { request: number; }
 
 @Component
 export struct SiteDetail {
   @Prop site: HeritageSite = HERITAGE_SITES[0];
   @Link snapshot: ArchiveSnapshot;
+  @Prop initialPoseJson: string = '';
   onCommit: (next: ArchiveSnapshot) => Promise<boolean> = async () => false;
   onOpen: (site: HeritageSite) => void = () => {};
   @State draft: string = '';
@@ -31,8 +36,39 @@ export struct SiteDetail {
   @State private engineMode: CulturalSceneType = 'relic_inspector';
   @State private hotspot: string = 'form';
   @State private explorationSection: ExplorationSectionId = 'overview';
+  @State private stampType: string = '';
+  @State private paperTheme: string = 'rose';
+  @State private quoteEnabled: boolean = true;
+  @State private quotedText: string = '';
+  @State private draftPose: MemoryPose | undefined = undefined;
+  @State private poseRequestJson: string = '';
+  private originalDecoration: string = '';
+  private detailScroller: Scroller = new Scroller();
   private bodyController: TextAreaController = new TextAreaController();
   private tagsController: TextInputController = new TextInputController();
+
+  aboutToAppear(): void {
+    if (this.initialPoseJson) {
+      try { this.restoreMemoryPose(JSON.parse(this.initialPoseJson) as MemoryPose); } catch { /* 旧笔记无视角仍可阅读。 */ }
+    }
+  }
+
+  private restoreMemoryPose(pose: MemoryPose): void {
+    if (pose.sceneType !== 'relic_inspector' && pose.sceneType !== 'stratum_slice') return;
+    this.engineMode = pose.sceneType;
+    if (['form', 'pattern', 'story'].includes(pose.hotspotId)) this.hotspot = pose.hotspotId;
+    const section = EXPLORATION_SECTIONS.find(item => item.id === pose.sectionId);
+    if (section) this.explorationSection = section.id;
+    // 附加请求序号，使同一张卡在手动旋转后仍可再次恢复；序号不存入档案。
+    const request: MemoryPoseRequest = { version: pose.version, sceneType: pose.sceneType, yaw: pose.yaw, pitch: pose.pitch,
+      zoom: pose.zoom, hotspotId: pose.hotspotId, sectionId: pose.sectionId, label: pose.label, request: Date.now() };
+    this.poseRequestJson = JSON.stringify(request);
+    this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 });
+  }
+
+  private decoration(): string {
+    return JSON.stringify([this.stampType, this.paperTheme, this.quoteEnabled, this.quotedText, this.draftPose]);
+  }
 
   private favorite(): ArchiveRecord | undefined {
     return activeRecords(this.snapshot.records, 'favorite').find((record: ArchiveRecord) => record.siteId === this.site.id);
@@ -80,6 +116,8 @@ export struct SiteDetail {
           .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'stratum_slice' ? T.accentSoft : T.soft)
       }.width('100%')
       CulturalEngineViewport({ sceneType: this.engineMode, payloadJson: this.enginePayload(), viewportHeight: 300,
+        rememberEnabled: true, memoryPoseJson: this.poseRequestJson,
+        onRememberView: (pose: MemoryPose) => this.editNote(undefined, pose),
         reducedMotion: this.snapshot.reducedMotion, active: this.objectActive && !this.editorOpen,
         onNodeSelected: (id: string, type: string) => {
           if (type === 'hotspot') this.hotspot = id;
@@ -143,12 +181,18 @@ export struct SiteDetail {
     this.busy = false;
   }
 
-  private editNote(note?: ArchiveRecord): void {
+  private editNote(note?: ArchiveRecord, pose?: MemoryPose): void {
     this.editingId = note ? note.id : '';
     this.draft = note ? note.body : '';
     this.noteTags = note ? note.tags.join('，') : '';
     this.originalDraft = this.draft;
     this.originalTags = this.noteTags;
+    this.stampType = note?.stampType || defaultStampForSite(this.site);
+    this.paperTheme = note?.paperTheme || 'rose';
+    this.quoteEnabled = note ? !!note.quotedPoemOrFact : true;
+    this.quotedText = note?.quotedPoemOrFact || memoryQuoteForSite(this.site);
+    this.draftPose = pose || note?.snapshot3DPose;
+    this.originalDecoration = this.decoration();
     this.validation = '';
     this.editorOpen = true;
   }
@@ -170,6 +214,10 @@ export struct SiteDetail {
       id: this.editingId || `note:${next.deviceId}:${time}`, kind: 'note', siteId: this.site.id,
       body, tags, updatedAt: time, deviceId: next.deviceId, deleted: false
     };
+    record.stampType = this.stampType;
+    record.paperTheme = this.paperTheme;
+    if (this.quoteEnabled && this.quotedText) record.quotedPoemOrFact = this.quotedText;
+    if (this.draftPose) record.snapshot3DPose = this.draftPose;
     next.records = putRecord(next.records, record);
     if (await this.onCommit(next)) {
       this.editorOpen = false;
@@ -184,7 +232,7 @@ export struct SiteDetail {
   private discardEditor(): void {
     if (this.busy) return;
     this.finishEditing();
-    if (this.draft !== this.originalDraft || this.noteTags !== this.originalTags) {
+    if (this.draft !== this.originalDraft || this.noteTags !== this.originalTags || this.decoration() !== this.originalDecoration) {
       this.getUIContext().showAlertDialog({
         title: '放弃尚未保存的修改？',
         message: '已保存的笔记不会被删除。',
@@ -212,10 +260,10 @@ export struct SiteDetail {
     if (this.busy) return;
     this.busy = true;
     const next = copySnapshot(this.snapshot);
-    const record: ArchiveRecord = {
-      id: note.id, kind: note.kind, siteId: note.siteId, body: note.body, tags: note.tags.slice(),
-      updatedAt: nextTimestamp(next.records, Date.now()), deviceId: next.deviceId, deleted: true
-    };
+    // 使用深拷贝后的同一记录落墓碑，手账装饰与视角随删除版本保留。
+    const record = next.records.find(item => item.id === note.id);
+    if (!record) { this.busy = false; return; }
+    record.updatedAt = nextTimestamp(next.records, Date.now()); record.deviceId = next.deviceId; record.deleted = true;
     next.records = putRecord(next.records, record);
     await this.onCommit(next);
     this.busy = false;
@@ -240,7 +288,7 @@ export struct SiteDetail {
       Row() {
         Column({ space: 6 }) {
           Text(this.site.name).fontSize(F.caption).fontColor(T.accent)
-          Text(this.editingId ? '编辑笔记' : '记录此刻').fontSize(F.display).fontWeight(FontWeight.Bold).fontColor(T.ink)
+          Text(this.editingId ? '编辑拾遗手账' : '留一页，记住此刻').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
         }.alignItems(HorizontalAlign.Start).layoutWeight(1)
         Button({ type: ButtonType.Circle }) {
           SymbolGlyph($r('sys.symbol.xmark')).fontSize(18).fontColor([T.muted])
@@ -251,6 +299,32 @@ export struct SiteDetail {
       // 不再用 FIT_CONTENT 配合固定 Column，否则键盘会盖住标签和保存按钮。
       Scroll() {
         Column({ space: 14 }) {
+          Row({ space: 10 }) {
+            Text('落款印章').fontSize(F.small).fontColor(T.muted)
+            Select(STAMP_TYPES.map((value: string): SelectOption => ({ value }))).value(this.stampType)
+              .id('memory-stamp-index').layoutWeight(1).font({ size: F.small }).fontColor(T.accent).backgroundColor(T.accentSoft)
+              .onSelect((_index: number, value: string) => { this.stampType = value; })
+          }.width('100%')
+          Row({ space: 6 }) {
+            ForEach(PAPER_THEMES, (theme: string) => {
+              Button(paperThemeLabel(theme)).id(`memory-paper-${theme}`).layoutWeight(1).height(38).fontSize(F.caption)
+                .padding({ left: 4, right: 4 }).borderRadius(10).fontColor(this.paperTheme === theme ? T.onAccent : T.muted)
+                .backgroundColor(this.paperTheme === theme ? T.accent : T.soft).onClick(() => { this.paperTheme = theme; })
+            }, (theme: string) => theme)
+          }.width('100%')
+          if (this.draftPose) {
+            Text(`已留住凝视 · ${this.draftPose?.label || '当前视角'}`).fontSize(F.caption).fontColor(T.mintInk)
+              .width('100%').padding(10).backgroundColor(T.mint).borderRadius(10).id('memory-draft-pose')
+          }
+          Row({ space: 10 }) {
+            Text('带上一句档案摘录').fontSize(F.small).fontColor(T.ink).layoutWeight(1)
+            Toggle({ type: ToggleType.Switch, isOn: this.quoteEnabled }).selectedColor(T.accent).id('memory-quote-toggle')
+              .onChange((value: boolean) => { this.quoteEnabled = value; })
+          }.width('100%')
+          if (this.quoteEnabled) {
+            Text(this.quotedText).fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+              .padding(12).backgroundColor(T.accentSoft).borderRadius(10)
+          }
           Text('我的观察与思考').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink).width('100%')
           TextArea({ text: this.draft, controller: this.bodyController, placeholder: '记下器物、空间，或一个还想追问的问题…' })
             .height(200).maxLength(MAX_NOTE_LENGTH).fontSize(F.body).fontColor(T.ink).placeholderColor(T.muted)
@@ -271,7 +345,7 @@ export struct SiteDetail {
       if (this.validation) {
         Text(this.validation).fontSize(13).fontColor($r('app.color.danger'))
       }
-      Button(this.busy ? '正在保存' : '保存笔记', { type: ButtonType.Normal })
+      Button(this.busy ? '正在保存' : '盖章，存入我的手账', { type: ButtonType.Normal })
         .width('100%').height(48).fontSize(F.body).borderRadius(8).backgroundColor(T.accent)
         .fontColor(T.onAccent).enabled(!this.busy).id('save-note').onClick(() => this.saveNote())
     }.padding(20).width('100%').height('100%').backgroundColor(T.surface)
@@ -279,7 +353,7 @@ export struct SiteDetail {
 
   build() {
     NavDestination() {
-      Scroll() {
+      Scroll(this.detailScroller) {
         Column() {
           this.culturalExperience()
           Stack({ alignContent: Alignment.TopStart }) {
@@ -312,7 +386,7 @@ export struct SiteDetail {
             Button({ type: ButtonType.Normal }) {
               Row({ space: 8 }) {
                 SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(18).fontColor([T.accent])
-                Text('写笔记').fontSize(F.small).fontColor(T.accent)
+                Text('写手账').fontSize(F.small).fontColor(T.accent)
               }.justifyContent(FlexAlign.Center)
             }.height(48).layoutWeight(1).borderRadius(8).backgroundColor(T.surface)
               .enabled(!this.busy).id('write-note').onClick(() => this.editNote())
@@ -337,7 +411,7 @@ export struct SiteDetail {
               .copyOption(CopyOptions.LocalDevice)
             Text('封面为主题示意图，非文物或遗址复原。').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
           }.width('100%').alignItems(HorizontalAlign.Start).padding(16).backgroundColor(T.soft).borderRadius(12)
-          Text(`我的笔记 · ${this.notes().length}`).fontSize(F.section).fontWeight(FontWeight.Bold)
+          Text(`拾遗手账 · ${this.notes().length}`).fontSize(F.section).fontWeight(FontWeight.Bold)
             .fontColor(T.ink).width('100%').margin({ top: 24, bottom: 12 })
           if (this.notes().length === 0) {
             Column({ space: 12 }) {
@@ -347,33 +421,22 @@ export struct SiteDetail {
             }.width('100%').padding(24).backgroundColor(T.surface).borderRadius(T.cardRadius)
           }
           ForEach(this.notes(), (note: ArchiveRecord) => {
-            Column({ space: 12 }) {
-              // 操作放在笔记顶部；长正文默认摘要并可展开，避免 4000 字把编辑/删除
-              // 推到数屏之后。只折叠显示，不修改正文或标签；编辑器仍加载完整记录。
-              Row() {
-                Text(new Date(note.updatedAt).toLocaleString()).fontSize(11).fontColor($r('app.color.muted'))
-                  .layoutWeight(1)
-                Button({ type: ButtonType.Circle }) {
-                  SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(18).fontColor([$r('app.color.ink')])
-                }.width(44).height(44).backgroundColor(Color.Transparent).accessibilityText('编辑笔记')
-                  .enabled(!this.busy).id(`edit-${note.id}`).onClick(() => this.editNote(note))
-                Button({ type: ButtonType.Circle }) {
-                  SymbolGlyph($r('sys.symbol.trash')).fontSize(18).fontColor([$r('app.color.danger')])
-                }.width(44).height(44).backgroundColor(Color.Transparent).accessibilityText('删除笔记')
-                  .enabled(!this.busy).id(`delete-${note.id}`).onClick(() => this.confirmDelete(note))
-              }.width('100%')
-              Text(note.tags.join(' · ')).fontSize(12).fontColor($r('app.color.accent')).width('100%')
-                .maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
-              if (note.body.length > 200) {
-                Button(this.expandedNoteId === note.id ? '收起全文' : '展开全文', { type: ButtonType.Normal })
-                  .fontSize(13).height(40).backgroundColor(Color.Transparent).fontColor($r('app.color.accent'))
-                  .onClick(() => { this.expandedNoteId = this.expandedNoteId === note.id ? '' : note.id; })
+            MemoryPostcardItem({ note, site: this.site, editable: true, busy: this.busy,
+              onOpen: (): void => { this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 }); },
+              onPose: () => {
+                if (note.snapshot3DPose) this.restoreMemoryPose(note.snapshot3DPose);
+                else this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 });
+              },
+              onEdit: () => this.editNote(note), onDelete: () => this.confirmDelete(note) })
+            if (note.body.length > 200) {
+              Button(this.expandedNoteId === note.id ? '收起全文' : '展开全文').fontSize(F.caption)
+                .fontColor(T.accent).backgroundColor(T.accentSoft)
+                .onClick(() => { this.expandedNoteId = this.expandedNoteId === note.id ? '' : note.id; })
+              if (this.expandedNoteId === note.id) {
+                Text(note.body).fontSize(F.body).fontColor(T.ink).lineHeight(26).width('100%').padding(16)
+                  .backgroundColor(T.surface).copyOption(CopyOptions.LocalDevice)
               }
-              Text(note.body).fontSize(F.body).fontColor(T.ink).lineHeight(26)
-                .copyOption(CopyOptions.LocalDevice).width('100%')
-                .maxLines(this.expandedNoteId === note.id ? MAX_NOTE_LENGTH : 8)
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-            }.padding(16).margin({ bottom: 12 }).borderRadius(T.cardRadius).backgroundColor(T.surface).width('100%')
+            }
           }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}`)
           Text('继续探索').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
             .width('100%').margin({ top: 24, bottom: 14 })

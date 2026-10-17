@@ -4,6 +4,7 @@ import { HarmonyEffects } from '../platform/HarmonyEffects';
 import { AccountPanel } from './AccountPanel';
 import { ArchiveStatusRow } from './ArchiveInfo';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
+import { JourneyPanel } from './JourneyPanel';
 
 @Component
 export struct ProfilePage {
@@ -16,6 +17,8 @@ export struct ProfilePage {
   onLogin: () => void = () => {};
   onLogout: () => void = () => {};
   onSync: () => void = () => {};
+  onOpenSite: (siteId: string) => void = () => {};
+  onOpenJourneyGraph: (routeId: string) => void = () => {};
 
   @Builder
   heading(title: string, caption: string = '') {
@@ -32,22 +35,10 @@ export struct ProfilePage {
           Text('每一次探索，都成为你的一部分。').fontSize(F.small).fontColor(T.muted).lineHeight(22)
             .width('100%').margin({ top: 12, bottom: 22 })
           AccountPanel({ view: this.view, onLogin: this.onLogin, onLogout: this.onLogout, onSync: this.onSync })
-          this.heading('教育计划', '准备中')
-          Column({ space: 14 }) {
-            Row({ space: 12 }) {
-              SymbolGlyph($r('sys.symbol.book')).fontSize(27).fontColor([T.mintInk])
-              Column({ space: 5 }) {
-                Text('把文化探索，写进学习旅程').fontSize(F.card).fontWeight(FontWeight.Medium).fontColor(T.ink)
-                Text('学习档案 · 功能预留').fontSize(F.caption).fontColor(T.muted)
-              }.layoutWeight(1).alignItems(HorizontalAlign.Start)
-            }.width('100%')
-            Divider().color(T.line)
-            ArchiveStatusRow({ label: '大学 / 院校', value: this.university || '暂未填写', valueId: 'profile-university' })
-            // 学号仅本次会话保留并掩码展示，不上传，也不用于生成教育计划。
-            ArchiveStatusRow({ label: '学号', value: this.studentNumber ? '已填写 · 仅本次展示' : '暂未填写', valueId: 'profile-student-number' })
-            Text('教育计划尚未开放。大学与学号为选填占位，本次展示后不保存或同步，不做学籍认证。')
-              .fontSize(F.caption).fontColor(T.muted).lineHeight(21).id('profile-education-hint')
-          }.width('100%').padding(18).backgroundColor(T.mint).borderRadius(T.cardRadius).alignItems(HorizontalAlign.Start)
+          // 路线只读个人档案派生进度，不把大学或学号用于学习判定、账号认证或同步。
+          // 两个旧资料属性仍保留给现有登录调用方，个人页不再显示教育计划占位。
+          JourneyPanel({ records: this.snapshot.records, onOpenSite: this.onOpenSite,
+            onOpenGraph: this.onOpenJourneyGraph }).margin({ top: 24 })
           this.heading('账号同步')
           Column() {
             ArchiveStatusRow({ label: '其他在线设备', value: this.view.signedIn && this.view.lastSync > 0

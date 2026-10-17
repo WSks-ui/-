@@ -32,6 +32,19 @@ export interface SiteFilter {
   type: string;
 }
 
+// 手账只保存可重建的示意视角，不保存模型像素或声称拥有实景照片。
+// version 是视角格式版本；sceneType 保留字符串以便以后增加场景，读取方再决定是否支持重放。
+export interface MemoryPose {
+  version: number;
+  sceneType: string;
+  yaw: number;
+  pitch: number;
+  zoom: number;
+  hotspotId: string;
+  sectionId: string;
+  label: string;
+}
+
 // 收藏、笔记、进度共用版本信封。删除保留墓碑，后续设备重连时不能把旧记录复活。
 // updatedAt 由单设备逻辑时钟生成；跨设备时钟偏差仍需同步适配层处理，不能承诺物理时间绝对准确。
 export interface ArchiveRecord {
@@ -43,6 +56,11 @@ export interface ArchiveRecord {
   updatedAt: number;
   deviceId: string;
   deleted: boolean;
+  // schema v1 的可选扩展：只有用户保存手账时才写入，旧普通笔记不自动补值或改时间戳。
+  stampType?: string;
+  paperTheme?: string;
+  quotedPoemOrFact?: string;
+  snapshot3DPose?: MemoryPose;
 }
 
 export interface ArchiveSnapshot {
@@ -83,10 +101,24 @@ export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
   return {
     schemaVersion: snapshot.schemaVersion,
     deviceId: snapshot.deviceId,
-    records: snapshot.records.map((record: ArchiveRecord): ArchiveRecord => ({
-      id: record.id, kind: record.kind, siteId: record.siteId, body: record.body,
-      tags: record.tags.slice(), updatedAt: record.updatedAt, deviceId: record.deviceId, deleted: record.deleted
-    })),
+    records: snapshot.records.map((record: ArchiveRecord): ArchiveRecord => {
+      const copy: ArchiveRecord = {
+        id: record.id, kind: record.kind, siteId: record.siteId, body: record.body,
+        tags: record.tags.slice(), updatedAt: record.updatedAt, deviceId: record.deviceId, deleted: record.deleted
+      };
+      // 条件复制让旧 note 继续缺省；视角必须逐字段复制，防止编辑草稿时改到已保存快照。
+      if (record.stampType !== undefined) copy.stampType = record.stampType;
+      if (record.paperTheme !== undefined) copy.paperTheme = record.paperTheme;
+      if (record.quotedPoemOrFact !== undefined) copy.quotedPoemOrFact = record.quotedPoemOrFact;
+      if (record.snapshot3DPose !== undefined) {
+        const pose = record.snapshot3DPose;
+        copy.snapshot3DPose = {
+          version: pose.version, sceneType: pose.sceneType, yaw: pose.yaw, pitch: pose.pitch,
+          zoom: pose.zoom, hotspotId: pose.hotspotId, sectionId: pose.sectionId, label: pose.label
+        };
+      }
+      return copy;
+    }),
     lightEnabled: snapshot.lightEnabled,
     reducedMotion: snapshot.reducedMotion
   };
@@ -120,6 +152,16 @@ export function compareText(a: string, b: string): number {
   return a === b ? 0 : (a < b ? -1 : 1);
 }
 
+function recordContent(record: ArchiveRecord): string {
+  const pose = record.snapshot3DPose;
+  // 明确字段顺序，不依赖 JSON 对象的属性插入顺序。可选字段缺省在数组里规范化为 null。
+  // 新手账字段也参与版本比较，正文相同而纸色、印章或视角不同的记录不能被判为同一版本。
+  return JSON.stringify([record.kind, record.siteId, record.body, record.tags,
+    record.stampType, record.paperTheme, record.quotedPoemOrFact,
+    pose === undefined ? null : [pose.version, pose.sceneType, pose.yaw, pose.pitch, pose.zoom,
+      pose.hotspotId, pose.sectionId, pose.label]]);
+}
+
 // 相同时间戳必须有稳定的次序，否则 A 合并 B 与 B 合并 A 会得出不同结果。
 // 相同时间的删除优先，其次设备 ID，最后完整内容；禁止使用依赖语言环境的 localeCompare。
 export function compareVersions(a: ArchiveRecord, b: ArchiveRecord): number {
@@ -127,8 +169,7 @@ export function compareVersions(a: ArchiveRecord, b: ArchiveRecord): number {
   if (a.deleted !== b.deleted) return a.deleted ? 1 : -1;
   const deviceOrder = compareText(a.deviceId, b.deviceId);
   if (deviceOrder !== 0) return deviceOrder;
-  return compareText(JSON.stringify([a.kind, a.siteId, a.body, a.tags]),
-    JSON.stringify([b.kind, b.siteId, b.body, b.tags]));
+  return compareText(recordContent(a), recordContent(b));
 }
 
 export function mergeRecords(local: ArchiveRecord[], remote: ArchiveRecord[]): MergeResult {
@@ -142,8 +183,7 @@ export function mergeRecords(local: ArchiveRecord[], remote: ArchiveRecord[]): M
       const previous = records[index];
       const order = compareVersions(candidate, previous);
       if (order !== 0 && candidate.deviceId !== previous.deviceId &&
-        (candidate.body !== previous.body || candidate.deleted !== previous.deleted ||
-          candidate.tags.join('\u0000') !== previous.tags.join('\u0000'))) {
+        (candidate.deleted !== previous.deleted || recordContent(candidate) !== recordContent(previous))) {
         conflicts.push(order > 0 ? previous : candidate);
       }
       if (order > 0) records[index] = candidate;
@@ -195,10 +235,22 @@ export function parseSnapshot(raw: string): ArchiveSnapshot {
       !Array.isArray(record.tags) || record.tags.length > MAX_NOTE_TAGS ||
       !record.tags.every((tag: string) => typeof tag === 'string' && tag.length <= MAX_NOTE_TAG_LENGTH) ||
       !Number.isSafeInteger(record.updatedAt) || record.updatedAt < 0 ||
-      typeof record.deviceId !== 'string' || !record.deviceId || typeof record.deleted !== 'boolean') {
+      typeof record.deviceId !== 'string' || !record.deviceId || typeof record.deleted !== 'boolean' ||
+      (record.stampType !== undefined && typeof record.stampType !== 'string') ||
+      (record.paperTheme !== undefined && typeof record.paperTheme !== 'string') ||
+      (record.quotedPoemOrFact !== undefined && typeof record.quotedPoemOrFact !== 'string') ||
+      (record.snapshot3DPose !== undefined && !validMemoryPose(record.snapshot3DPose))) {
       throw new Error('ARCHIVE_INVALID_RECORD');
     }
     ids.push(record.id);
   });
   return value;
+}
+
+function validMemoryPose(pose: MemoryPose): boolean {
+  // 空热点与空主题表示普通视角。支持名单属于视口播放规则，归档层只校验可保留的数据形状。
+  return !!pose && Number.isSafeInteger(pose.version) && pose.version > 0 &&
+    typeof pose.sceneType === 'string' && pose.sceneType.length > 0 &&
+    Number.isFinite(pose.yaw) && Number.isFinite(pose.pitch) && Number.isFinite(pose.zoom) && pose.zoom > 0 &&
+    typeof pose.hotspotId === 'string' && typeof pose.sectionId === 'string' && typeof pose.label === 'string';
 }

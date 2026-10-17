@@ -4,7 +4,9 @@
 
 **最新执行口径（用户 2026-10-17 明确）：按比赛演示推进，不再主动开展大字体、泛化安全或边界测试，不把生产化治理作为每轮门禁。优先完成精美页面、创新交互和可连续演示的核心路径；验证只围绕实际演示与必要构建，出现具体问题后定向修复。本轮此前已做的大字等记录仅作为历史证据保留，不是后续必跑清单。HarmonyOS 6 兼容已取消，继续 HarmonyOS 7 / API 26。**
 
-**最新交接（2026-10-17，Step 1+2 核心）：五城目录为 20 条初稿、每城 4 条；原 15 个档案 ID 与顺序保留，新增条目追加。详情增加四个主题的显式探索进度，每主题 25%，不表示掌握程度或真实考古层序。首页、详情和文明图谱共用 `CulturalEngineViewport` 的四种场景。用户已取消 HarmonyOS 6 降级，`targetSdkVersion` / `compatibleSdkVersion` 保持 26.0.0。当前本地 81/81、报告解析 9/9，主包和测试包构建成功。按场景绑定三版包设备六项 6/6，Failure / Error / Ignore 均为 0：首页 / 图谱、进度 / 模型、外观 / 笔记各两项分别对应三个按钮样式阶段。21 张原图与模型静止 / 转动像素核对见 [图集](design/engine/README.md)。包对应关系与保留失败详见测试报告第 17 节。所有文化条目仍为“初稿待校审”；没有获授权并随包提供的 GLB 模型，WebGL2 / GPU 尚无设备验收。Step 3 拾遗手账 / 漫游与 Step 4 分布式 KV / 冲突处理 / 备份恢复尚未实施。完整实现范围与复现命令见 [CULTURAL_ENGINE.md](CULTURAL_ENGINE.md) 和 [EXPLORATION_DATA.md](EXPLORATION_DATA.md)。**
+**最新交接（2026-10-17，Step 3 拾遗手账与主题漫游）：手账沿用 schema v1 note，按需保存印章、四种纸色、档案摘录与可重建的视角参数；记忆页提供列表 / 画廊和视角恢复。三条路线按真实档案 ID 组织，单处由 75% 探索进度或有效手账点亮，全部节点完成后点亮路线纪念章，并可在文明图谱按主题顺序查看。旧普通 note 不自动补元数据或打卡。个人页以主题漫游替代教育计划占位，大学和学号不参与路线判断。当前本地 89/89、报告解析 9/9，主包和测试包均为 `BUILD SUCCESSFUL`；唯一 `MemoryJourneyTest` 核心设备演示 1/1，Failure / Error / Ignore 均为 0；四张原图见[图集](design/memory/README.md)。Step 4 分布式 KV / 冲突裁决 / 备份恢复尚未实现。实现与路线边界见[拾遗手账与主题漫游](MEMORY_JOURNEY.md)、[数据兼容说明](MEMORY_MIGRATION.md)和第 22 节。**
+
+**前一轮交接（2026-10-17，Step 1+2 核心）：五城目录为 20 条初稿、每城 4 条；原 15 个档案 ID 与顺序保留，新增条目追加。详情增加四个主题的显式探索进度，每主题 25%，不表示掌握程度或真实考古层序。首页、详情和文明图谱共用 `CulturalEngineViewport` 的四种场景。用户已取消 HarmonyOS 6 降级，`targetSdkVersion` / `compatibleSdkVersion` 保持 26.0.0。当前本地 81/81、报告解析 9/9，主包和测试包构建成功。按场景绑定三版包设备六项 6/6，Failure / Error / Ignore 均为 0：首页 / 图谱、进度 / 模型、外观 / 笔记各两项分别对应三个按钮样式阶段。21 张原图与模型静止 / 转动像素核对见 [图集](design/engine/README.md)。包对应关系与保留失败详见测试报告第 17 节。所有文化条目仍为“初稿待校审”；没有获授权并随包提供的 GLB 模型，WebGL2 / GPU 尚无设备验收。Step 3 拾遗手账 / 漫游与 Step 4 分布式 KV / 冲突处理 / 备份恢复尚未实施。完整实现范围与复现命令见 [CULTURAL_ENGINE.md](CULTURAL_ENGINE.md) 和 [EXPLORATION_DATA.md](EXPLORATION_DATA.md)。**
 
 **最新内容与图谱交付（2026-10-16）：五城已扩充至 15 条初稿；离线交互画布、真实节点点击 / 拖动、原生索引、对照和个人专题均完成。当前模拟器禁用 WebGL，实测为 Canvas 2D 降级。主包相同、三版测试包按场景绑定，七份完整设备报告共 13/13，本地 48/48、报告解析 9/9，13 张原图已检查。见第 18 节、[内容说明](CONTENT_GRAPH.md) 和测试报告第 14 节。工作区保留上一轮登录 / 我的改动，本轮未提交 / 推送。**
 
@@ -489,3 +491,16 @@ T02 完成范围限定于当前 HarmonyOS API 26 手机模拟器。下拉/遮罩
 
 复现顺序、设备类名与当前边界见 [CULTURAL_ENGINE.md](CULTURAL_ENGINE.md)。Step 3 的拾遗手账卡 / 漫游路线，Step 4 的分布式 KV、冲突裁决和备份恢复均未实施；继续保持真实能力与验证结果一致。完成范围不覆盖文化逐条校审、正式服务部署或 WebGL2 / GPU 设备验收。
 
+
+## 22. Step 3 拾遗手账与主题漫游交接
+
+日期：2026-10-17。本节接续第 21 节 Step 1+2 交接；第 21 节对 Step 3 的未实施说明保留为当时状态。
+
+- **文件边界：** `domain/MemoryJournal.ts` 定义印章、纸色、摘录和有效手账规则；`domain/JourneyRoutes.ts` 以真实档案 ID 派生路线进度。`SiteDetail.ets` 与 `CulturalEngineViewport.ets` 负责视角采集和恢复；`MemoryPostcardItem.ets`、`Index.ets` 负责手账卡与列表 / 画廊；`JourneyPanel.ets`、`JourneyBadge.ets`、`ProfilePage.ets` 与 `CultureAtlas.ets` 负责路线、纪念章和图谱入口。
+- **数据兼容：** 四项可选元数据为 `stampType`、`paperTheme`、`quotedPoemOrFact`、`snapshot3DPose`，继续保存在 schema v1 的 `kind: 'note'` 上；无需批量迁移。旧 note 读取时不补字段、不改时间戳、不自动打卡，卡片显示“河流笔记”。字段细节见 [MEMORY_MIGRATION.md](MEMORY_MIGRATION.md)。
+- **视角恢复：** `MemoryPose` 保存版本、场景、yaw / pitch / zoom、热点 / 主题和显示标签。界面通过同一程序化视口恢复参数，不保存截图；当前详情接受器物凝视和主题切片视角。
+- **三条路线：** `seeking-xia`（寻夏记）：`smx-yangshao` → `smx-miaodigou` → `ly-erlitou` → `ly-yanshi-shang` → `zz-shang`；`earth-and-fire`（泥火成器）：`smx-miaodigou` → `zz-dahecun` → `zz-duling-fangding` → `kf-iron-pagoda`；`folded-capitals`（折叠的都城）：`ly-hanwei` → `zz-zhenghan` → `kf-zhouqiao` → `kf-city-wall` → `py-qicheng`。每处按四主题探索达到 75% 或存在有效手账计为完成；全路线节点完成才点亮纪念章。路线图谱的连线仅表示主题阅读顺序，不是考古复原、年代结论、真实地理交通或历史因果。
+- **个人页与范围：** 个人页的主题漫游面板替代教育计划占位；大学和学号不参与路线判断。Step 4 的分布式 KV、冲突裁决及用户可操作备份 / 恢复尚未实施。
+
+当前本地 **89/89**、报告解析 **9/9**，主包与测试包均为 `BUILD SUCCESSFUL`。唯一 `MemoryJourneyTest` 设备核心演示 **1/1**，Failure / Error / Ignore 均为 0；原始结果为 `2026-10-17-152242-device.log`，四张实际页面见 [图集](design/memory/README.md)。已通过真实操作保存青玉笺手账，回读四项元数据、从画廊恢复视角，并在寻夏记显示 1 / 5 后进入主题路线图谱。没有运行大字、泛化安全或旧全量套件。完整功能边界见 [MEMORY_JOURNEY.md](MEMORY_JOURNEY.md)。
+此前基线已按用户要求使用中文提交并推送到 main：`0bdb35d23a8caafb549b54d19069ea7f0bd6a572`。本节 Step 3 的源码、必要测试适配、实际截图与报告按用户后续指令纳入本次 Git 提交。

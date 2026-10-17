@@ -10,12 +10,19 @@ export interface CulturalEngineNode {
   type?: string;
   accent?: string;
   explored?: boolean;
+  // 当前主题路线或已完整解锁路线的视觉强调；不能当成该节点已探索的记录。
+  highlighted?: boolean;
   x?: number;
   y?: number;
   z?: number;
 }
 
-export interface CulturalEngineEdge { source: string; target: string; }
+export interface CulturalEngineEdge {
+  source: string;
+  target: string;
+  // 主题阅读编排只决定金色连线，不构成文化传承或历史因果证据。
+  highlighted?: boolean;
+}
 export interface CulturalEngineLayer { id: string; label: string; summary?: string; }
 export interface CulturalEngineView {
   yaw: number;

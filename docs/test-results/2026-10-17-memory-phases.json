@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-17",
+  "platform": "HarmonyOS 7 / API 26",
+  "renderer": "ArkUI Canvas",
+  "baselineCommit": "0bdb35d23a8caafb549b54d19069ea7f0bd6a572",
+  "mainPackageSha256": "E7E3C90A03CFEA96CAC523E46B08302A71F180134F5BE6AE4AE18F91AB5BCF93",
+  "testPackageSha256": "95F889737D4ACD027536F6C3AE4F5CA523A1C6FB6848E30D49E3DBFD63144608",
+  "report": "docs/test-results/2026-10-17-152242-device.log",
+  "test": "MemoryJourneyTest#native_postcard_capture_gallery_pose_and_route",
+  "total": 1,
+  "pass": 1,
+  "failure": 0,
+  "error": 0,
+  "ignore": 0,
+  "captures": [
+    {
+      "path": "docs/design/memory/detail-card.png",
+      "sha256": "CCE5A86AF7A0F3C30DF5B9B5AADF141536C35B31D4ECF36C4A1CBFF19E031382"
+    },
+    {
+      "path": "docs/design/memory/gallery.png",
+      "sha256": "DF4691306E3B2240360257E26CD4984B132362793742F0EB0E7E3BF8D2C7F3B8"
+    },
+    {
+      "path": "docs/design/memory/route.png",
+      "sha256": "690CEE74A14AFB0B48DEFF902A114C8D70A581DB1A23A59C40A72E47A0D3711A"
+    },
+    {
+      "path": "docs/design/memory/route-graph.png",
+      "sha256": "79266752860B6E008A650A6983C6B7404276540C73CC1BDFA96706E56C878C73"
+    }
+  ]
+}

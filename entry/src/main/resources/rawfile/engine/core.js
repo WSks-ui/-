@@ -48,13 +48,14 @@
       nodeIds.add(id);
       nodes.push({ id, label: text(node.label, id, 48), city: text(node.city, '', 20), era: text(node.era, '', 40),
         type: text(node.type, 'site', 24), accent: /^#[0-9a-f]{6}$/i.test(node.accent || '') ? node.accent : '#5B8E8A',
-        explored: node.explored === true, x: finite(node.x, undefined), y: finite(node.y, undefined), z: finite(node.z, undefined) });
+        explored: node.explored === true, highlighted: node.highlighted === true,
+        x: finite(node.x, undefined), y: finite(node.y, undefined), z: finite(node.z, undefined) });
     });
     const edges = [], edgeIds = new Set();
     (Array.isArray(source.edges) ? source.edges : []).slice(0, 160).forEach(edge => {
       if (!edge || !nodeIds.has(edge.source) || !nodeIds.has(edge.target) || edge.source === edge.target) return;
       const key = [edge.source, edge.target].sort().join('|');
-      if (!edgeIds.has(key)) { edges.push({ source: edge.source, target: edge.target }); edgeIds.add(key); }
+      if (!edgeIds.has(key)) { edges.push({ source: edge.source, target: edge.target, highlighted: edge.highlighted === true }); edgeIds.add(key); }
     });
     const layerIds = new Set(), layers = [];
     (Array.isArray(source.layers) ? source.layers : []).slice(0, 12).forEach(layer => {
@@ -306,9 +307,9 @@
         const cityIndex=CITIES.indexOf(node.city), category=/诗|文旅|poem|travel/.test(node.type)?-.62:(/器|文物|relic/.test(node.type)?.05:.65);
         const x=clamp(finite(node.x,(cityIndex<0?i%5:cityIndex)*1.65-3.3+(i%3-1)*.2),-6,6);
         const y=clamp(finite(node.y,category+(i%2)*.17),-2.5,2.5),z=clamp(finite(node.z,eraDepth(node.era)+(i%3)*.23),-3,3);
-        const tint=node.explored?'#C88A4B':node.accent;
+        const tint=node.explored?'#C88A4B':(node.highlighted?'#C45A6A':node.accent);
         result.meshes.push(sphere('档案节点'+node.id,[x,y,z],node.explored?.105:.08,tint,5,12));
-        result.hotspots.push({id:node.id,label:node.label,type:'site',position:[x,y,z],color:tint,explored:node.explored});
+        result.hotspots.push({id:node.id,label:node.label,type:'site',position:[x,y,z],color:tint,explored:node.explored,highlighted:node.highlighted});
       });
       result.edges=p.edges;
     }

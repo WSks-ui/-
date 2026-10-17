@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-17",
+  "mainPackageSha256": "F59513325ED1C2DC98102BBBA8D95C82234787A804F59238418C29E5F76F1B69",
+  "testPackageSha256": "1FA7C21CE3A5C28202FB4C9EAD4C62C171627A65BA29EF855AE2968B57A27C74",
+  "report": "docs/test-results/2026-10-17-150705-device.log",
+  "pass": 0,
+  "failure": 0,
+  "error": 1,
+  "reason": "已真实保存手账并完成画廊/视角回放，到路线断言时测试使用不支持的嵌套within；另修正卡片时间状态同行溢出"
+}
