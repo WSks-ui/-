@@ -2,7 +2,9 @@ import { SegmentButton, SegmentButtonOptions } from '@ohos.arkui.advanced.Segmen
 import { activeRecords, ArchiveRecord, ArchiveSnapshot, HeritageSite, mergeRecords } from '../domain/ArchiveDomain';
 import { connectionReasons, cultureConnections, CultureConnection, cultureTopics, personalCultureSites } from '../domain/CultureConnections';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
+import { MATERIAL_COMPARISON } from '../data/MaterialStudyCatalog';
 import { CulturalEngineViewport } from './CulturalEngineViewport';
+import { MaterialComparisonPanel } from './MaterialComparisonPanel';
 import { CulturalEnginePayload, CulturalEngineNode, CulturalEngineEdge } from '../domain/CulturalEngineContract';
 import { cultureGraphData, CultureGraphNode, CultureGraphEdge } from '../domain/CultureGraphData';
 import { decodeExplorationProgress } from '../domain/ExplorationProgress';
@@ -21,6 +23,7 @@ export struct CultureAtlas {
   @State selectedId: string = 'ly-erlitou';
   @State comparisonId: string = 'zz-shang';
   @State comparing: boolean = false;
+  @State private materialComparing: boolean = false;
   @State mode: number[] = [0];
   @State topic: string = '';
   @State graphActive: boolean = true;
@@ -121,6 +124,27 @@ export struct CultureAtlas {
     return reasons;
   }
 
+  private isMaterialPair(leftId: string, rightId: string): boolean {
+    return (leftId === MATERIAL_COMPARISON.leftSiteId && rightId === MATERIAL_COMPARISON.rightSiteId) ||
+      (leftId === MATERIAL_COMPARISON.rightSiteId && rightId === MATERIAL_COMPARISON.leftSiteId);
+  }
+
+  private openComparison(site: HeritageSite): void {
+    this.comparisonId = site.id; this.materialComparing = this.isMaterialPair(this.selected().id, site.id);
+    this.comparing = true;
+  }
+
+  private openMaterialComparison(): void {
+    // 直达入口不改图谱筛选或选中档案，个人模式没有收藏其中一件时也不会被 selected() 的回退替换对象。
+    this.materialComparing = true; this.comparing = true;
+  }
+
+  private openComparisonSite(siteId: string): void {
+    const site = HERITAGE_SITES.find((item: HeritageSite) => item.id === siteId);
+    if (!site) return;
+    this.comparing = false; this.materialComparing = false; this.onOpen(site);
+  }
+
   private graphPayload(): string {
     const sites = this.sites();
     const records = mergeRecords([], this.snapshot.records).records;
@@ -152,6 +176,22 @@ export struct CultureAtlas {
   }
 
   @Builder
+  materialComparisonEntry() {
+    Button({ type: ButtonType.Normal }) {
+      Row({ space: 12 }) {
+        Column({ space: 6 }) {
+          Text('双连壶与方鼎对照').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
+          Text('三项具体差异 · 原创结构示意 · 逐项资料依据').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
+        }.layoutWeight(1).alignItems(HorizontalAlign.Start)
+        SymbolGlyph($r('sys.symbol.arrow_left_arrow_right')).fontSize(22).fontColor([T.accent])
+      }.width('100%').padding(15)
+    }.width('100%').padding(0).backgroundColor(T.surface).borderRadius(16)
+      .border({ width: 1, color: T.line, radius: 16 }).id('culture-material-comparison-open')
+      .accessibilityText('打开大河村彩陶双连壶与杜岭二号方鼎的三项事实对照')
+      .onClick(() => this.openMaterialComparison())
+  }
+
+  @Builder
   journeyHeader(progress: JourneyProgress) {
     Column({ space: 12 }) {
       Row({ space: 10 }) {
@@ -169,6 +209,9 @@ export struct CultureAtlas {
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%').id('culture-journey-order')
       Text('主题阅读路线，不是历史先后、真实交通线或统一地层。连线只表示阅读编排，不作为历史证据。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
+      if (progress.route.id === 'earth-and-fire') {
+        this.materialComparisonEntry()
+      }
       Row({ space: 10 }) {
         Button(progress.unlocked ? '重读起点' : '继续下一处', { type: ButtonType.Normal }).fontSize(F.small).height(42)
           .layoutWeight(1).backgroundColor(T.accent).fontColor(T.onAccent).borderRadius(T.buttonRadius)
@@ -225,6 +268,18 @@ export struct CultureAtlas {
 
   @Builder
   comparison() {
+    if (this.materialComparing) {
+      MaterialComparisonPanel({
+        onClose: () => { this.comparing = false; this.materialComparing = false; },
+        onOpenSite: (siteId: string) => this.openComparisonSite(siteId)
+      })
+    } else {
+      this.genericComparison()
+    }
+  }
+
+  @Builder
+  genericComparison() {
     Scroll() {
       Column({ space: 20 }) {
         Row() {
@@ -263,6 +318,9 @@ export struct CultureAtlas {
             Text(`${this.sites().length} 处档案 · ${this.connections().length} 条阅读线索`)
               .fontSize(F.small).fontColor(T.muted).id('culture-atlas-count')
           }.width('100%').alignItems(HorizontalAlign.Start)
+          if (!this.currentJourney() && this.mode[0] === 0) {
+            this.materialComparisonEntry()
+          }
           this.journeyChoices()
           if (!this.currentJourney()) {
             SegmentButton({ options: this.modeOptions, selectedIndexes: $mode, enableStateAnimation: !this.snapshot.reducedMotion })
@@ -313,7 +371,7 @@ export struct CultureAtlas {
                 }.width('100%').padding(14)
               }.width('100%').padding(0).backgroundColor(T.surface).borderRadius(T.cardRadius)
                 .id(`culture-compare-${connection.site.id}`).accessibilityText(`与${connection.site.name}对照`)
-                .onClick(() => { this.comparisonId = connection.site.id; this.comparing = true; })
+                .onClick(() => this.openComparison(connection.site))
             }, (connection: CultureConnection) => `${this.selected().id}:${connection.site.id}:${connection.reasons.join('|')}`)
             if (this.notes().length > 0) {
               Text('我的观察').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')

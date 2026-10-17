@@ -4,6 +4,7 @@ import {
   memoryPoseLabel, memorySeasonLabel, paperThemeLabel
 } from '../domain/MemoryJournal';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
+import { MemoryPosePreview } from './MemoryPosePreview';
 
 // 一张手账卡同时承载旧笔记与新记忆元数据；旧记录没有显式印章时显示“河流笔记”，不补造打卡状态。
 // 卡片本体不接管点击，打开、凝视、编辑、删除均保持为独立入口，避免操作区域互相吞点击。
@@ -49,7 +50,7 @@ export struct MemoryPostcardItem {
   }
 
   private paperSurface(): Resource {
-    // 只用现有暖色语义令牌表达纸色，不直接拼色值，未知或旧主题回退为素白纸面。
+    // 纸色只留在细边与主题标签，画面和观察文字是主体；未知或旧主题回退为素白。
     if (this.note.paperTheme === 'ochre') return T.yellow;
     if (this.note.paperTheme === 'jade') return T.mint;
     if (this.note.paperTheme === 'ink') return T.sunken;
@@ -72,7 +73,7 @@ export struct MemoryPostcardItem {
             if (this.themeLabel()) {
               Text(this.themeLabel()).fontSize(F.caption).fontColor(T.yellowInk)
                 .padding({ left: 7, right: 7, top: 3, bottom: 3 })
-                .backgroundColor(T.yellow).borderRadius(9)
+                .backgroundColor(this.paperSurface()).borderRadius(9)
             }
           }.layoutWeight(1)
           if (this.editable) {
@@ -89,19 +90,17 @@ export struct MemoryPostcardItem {
         Row({ space: 12 }) {
           Column({ space: 6 }) {
             Text(`${this.site.city} · ${this.site.era}`)
-              .fontSize(F.caption).fontColor(T.mintInk)
-              .padding({ left: 10, right: 10, top: 5, bottom: 5 })
-              .backgroundColor(T.mint).borderRadius(12)
+              .fontSize(F.caption).fontColor(T.muted)
             Text(this.site.name).fontSize(F.card).fontWeight(FontWeight.Bold)
               .fontColor(T.ink).maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
           }.alignItems(HorizontalAlign.Start).layoutWeight(1)
 
           if (this.stampText()) {
             Column({ space: 2 }) {
-              Text(this.stampLine(0)).fontSize(10).fontWeight(FontWeight.Bold).fontColor(T.onAccent)
-              Text(this.stampLine(1)).fontSize(10).fontWeight(FontWeight.Bold).fontColor(T.onAccent)
-            }.width(42).height(42).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
-              .backgroundColor(T.accent).borderRadius(7)
+              Text(this.stampLine(0)).fontSize(9).fontWeight(FontWeight.Bold).fontColor(T.onAccent)
+              Text(this.stampLine(1)).fontSize(9).fontWeight(FontWeight.Bold).fontColor(T.onAccent)
+            }.width(34).height(34).justifyContent(FlexAlign.Center).alignItems(HorizontalAlign.Center)
+              .backgroundColor(T.accent).borderRadius(6)
               .accessibilityText(`${this.stampText()}，朱砂方印`)
           } else {
             Text('河流笔记').fontSize(F.caption).fontColor(T.muted).fontWeight(FontWeight.Medium)
@@ -110,12 +109,20 @@ export struct MemoryPostcardItem {
           }
         }.width('100%').alignItems(VerticalAlign.Center)
 
-        if (!this.compact) {
-          Row({ space: 7 }) {
-            Row().width(22).height(2).backgroundColor(T.rose).borderRadius(1)
-            Text('一页私藏').fontSize(F.caption).fontColor(T.muted)
-            Row().height(1).layoutWeight(1).backgroundColor(T.line)
-          }.width('100%')
+        MemoryPosePreview({
+          siteId: this.note.siteId,
+          poseJson: this.note.snapshot3DPose ? JSON.stringify(this.note.snapshot3DPose) : '',
+          previewHeight: this.compact ? 176 : 218,
+          previewId: `memory-preview-${this.note.id}`,
+          onOpen: this.onPose
+        })
+
+        if (this.note.snapshot3DPose) {
+          Column({ space: 4 }) {
+            Text('当时在看').fontSize(F.caption).fontColor(T.accent).fontWeight(FontWeight.Medium)
+            Text(this.poseLabel()).fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink).lineHeight(22)
+              .maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
+          }.width('100%').alignItems(HorizontalAlign.Start)
         }
 
         if (this.note.quotedPoemOrFact) {
@@ -133,14 +140,14 @@ export struct MemoryPostcardItem {
           Button({ type: ButtonType.Normal }) {
             Row({ space: 7 }) {
               Text('◉').fontSize(F.small).fontColor(T.mintInk)
-              Text(this.poseLabel() ? `回到我的凝视 · ${this.poseLabel()}` : '查看遗址凝视')
+              Text(this.poseLabel() ? '重返我的观察' : '打开观察场景')
                 .fontSize(F.caption).fontColor(T.mintInk).maxLines(1)
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
             }.width('100%').justifyContent(FlexAlign.Start)
           }
           .id(`memory-pose-${this.note.id}`).layoutWeight(1).height(36)
           .padding({ left: 10, right: 10 }).backgroundColor(T.mint).borderRadius(11)
-          .accessibilityText(this.poseLabel() ? `回到笔记保存的凝视视角，${this.poseLabel()}` : `查看${this.site.name}的遗址凝视`)
+          .accessibilityText(this.poseLabel() ? `打开手账保存的观察视角，${this.poseLabel()}` : `打开${this.site.name}的观察场景`)
           .onClick(() => this.onPose())
         }.width('100%')
 
@@ -183,10 +190,10 @@ export struct MemoryPostcardItem {
         }.width('100%').alignItems(VerticalAlign.Center)
       }
       .width('100%').padding(this.compact ? 13 : 17)
-      .backgroundColor(this.paperSurface()).border({ width: 1, color: T.line, radius: 17 }).borderRadius(17)
+      .backgroundColor(T.surface).border({ width: 1, color: T.line, radius: 17 }).borderRadius(17)
     }
     .width('100%').padding(3)
-    .backgroundColor(T.rose).border({ width: 1, color: T.accentSoft, radius: 20 }).borderRadius(20)
+    .backgroundColor(this.paperSurface()).border({ width: 1, color: T.line, radius: 20 }).borderRadius(20)
     .id(`memory-card-${this.note.id}`)
   }
 }

@@ -37,6 +37,8 @@ export interface CulturalEnginePayload {
   itemId?: string;
   title?: string;
   proceduralPreset?: string;
+  // 几何修订与 payload 协议版本分离；缺省为原有第 1 版，旧手账不可被新样板静默替换。
+  sceneRevision?: number;
   selectedId?: string;
   // 只允许 ../models/<本地文件名>.glb。未提供时尝试 itemId 对应资源；失败继续显示程序化示意。
   modelPath?: string;

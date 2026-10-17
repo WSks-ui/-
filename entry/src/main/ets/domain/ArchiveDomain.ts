@@ -32,8 +32,17 @@ export interface SiteFilter {
   type: string;
 }
 
+// 原取景使用保存时的虚拟画布，预览只做等比适配，不用卡片尺寸重新取景。
+// 文字密度和明暗模式仍为可选，便于保留信息不完整的记录；能否完整重建由回放层判断。
+export interface MemoryViewFrame {
+  width: number;
+  height: number;
+  textDensity?: number;
+  dark?: boolean;
+}
+
 // 手账只保存可重建的示意视角，不保存模型像素或声称拥有实景照片。
-// version 是视角格式版本；sceneType 保留字符串以便以后增加场景，读取方再决定是否支持重放。
+// version 继续为 1；新信息按需扩展，未知正修订号或渲染配置可归档，由回放层决定是否支持。
 export interface MemoryPose {
   version: number;
   sceneType: string;
@@ -43,6 +52,10 @@ export interface MemoryPose {
   hotspotId: string;
   sectionId: string;
   label: string;
+  proceduralPreset?: string;
+  sceneRevision?: number;
+  rendererProfile?: string;
+  viewFrame?: MemoryViewFrame;
 }
 
 // 收藏、笔记、进度共用版本信封。删除保留墓碑，后续设备重连时不能把旧记录复活。
@@ -97,6 +110,26 @@ export function emptySnapshot(deviceId: string): ArchiveSnapshot {
   return { schemaVersion: 1, deviceId, records: [], lightEnabled: true, reducedMotion: false };
 }
 
+export function copyMemoryViewFrame(frame: MemoryViewFrame): MemoryViewFrame {
+  const copy: MemoryViewFrame = { width: frame.width, height: frame.height };
+  if (frame.textDensity !== undefined) copy.textDensity = frame.textDensity;
+  if (frame.dark !== undefined) copy.dark = frame.dark;
+  return copy;
+}
+
+export function copyMemoryPose(pose: MemoryPose): MemoryPose {
+  const copy: MemoryPose = {
+    version: pose.version, sceneType: pose.sceneType, yaw: pose.yaw, pitch: pose.pitch,
+    zoom: pose.zoom, hotspotId: pose.hotspotId, sectionId: pose.sectionId, label: pose.label
+  };
+  // 不补新字段，也不将 viewFrame 与已保存记录共享；草稿和回放请求均可复用这一复制边界。
+  if (pose.proceduralPreset !== undefined) copy.proceduralPreset = pose.proceduralPreset;
+  if (pose.sceneRevision !== undefined) copy.sceneRevision = pose.sceneRevision;
+  if (pose.rendererProfile !== undefined) copy.rendererProfile = pose.rendererProfile;
+  if (pose.viewFrame !== undefined) copy.viewFrame = copyMemoryViewFrame(pose.viewFrame);
+  return copy;
+}
+
 export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
   return {
     schemaVersion: snapshot.schemaVersion,
@@ -111,11 +144,7 @@ export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
       if (record.paperTheme !== undefined) copy.paperTheme = record.paperTheme;
       if (record.quotedPoemOrFact !== undefined) copy.quotedPoemOrFact = record.quotedPoemOrFact;
       if (record.snapshot3DPose !== undefined) {
-        const pose = record.snapshot3DPose;
-        copy.snapshot3DPose = {
-          version: pose.version, sceneType: pose.sceneType, yaw: pose.yaw, pitch: pose.pitch,
-          zoom: pose.zoom, hotspotId: pose.hotspotId, sectionId: pose.sectionId, label: pose.label
-        };
+        copy.snapshot3DPose = copyMemoryPose(record.snapshot3DPose);
       }
       return copy;
     }),
@@ -154,12 +183,14 @@ export function compareText(a: string, b: string): number {
 
 function recordContent(record: ArchiveRecord): string {
   const pose = record.snapshot3DPose;
+  const frame = pose === undefined ? undefined : pose.viewFrame;
   // 明确字段顺序，不依赖 JSON 对象的属性插入顺序。可选字段缺省在数组里规范化为 null。
   // 新手账字段也参与版本比较，正文相同而纸色、印章或视角不同的记录不能被判为同一版本。
   return JSON.stringify([record.kind, record.siteId, record.body, record.tags,
     record.stampType, record.paperTheme, record.quotedPoemOrFact,
     pose === undefined ? null : [pose.version, pose.sceneType, pose.yaw, pose.pitch, pose.zoom,
-      pose.hotspotId, pose.sectionId, pose.label]]);
+      pose.hotspotId, pose.sectionId, pose.label, pose.proceduralPreset, pose.sceneRevision, pose.rendererProfile,
+      frame === undefined ? null : [frame.width, frame.height, frame.textDensity, frame.dark]]]);
 }
 
 // 相同时间戳必须有稳定的次序，否则 A 合并 B 与 B 合并 A 会得出不同结果。
@@ -239,7 +270,7 @@ export function parseSnapshot(raw: string): ArchiveSnapshot {
       (record.stampType !== undefined && typeof record.stampType !== 'string') ||
       (record.paperTheme !== undefined && typeof record.paperTheme !== 'string') ||
       (record.quotedPoemOrFact !== undefined && typeof record.quotedPoemOrFact !== 'string') ||
-      (record.snapshot3DPose !== undefined && !validMemoryPose(record.snapshot3DPose))) {
+      (record.snapshot3DPose !== undefined && !isValidMemoryPose(record.snapshot3DPose))) {
       throw new Error('ARCHIVE_INVALID_RECORD');
     }
     ids.push(record.id);
@@ -247,10 +278,24 @@ export function parseSnapshot(raw: string): ArchiveSnapshot {
   return value;
 }
 
-function validMemoryPose(pose: MemoryPose): boolean {
+export function isValidMemoryPose(pose: MemoryPose): boolean {
   // 空热点与空主题表示普通视角。支持名单属于视口播放规则，归档层只校验可保留的数据形状。
   return !!pose && Number.isSafeInteger(pose.version) && pose.version > 0 &&
     typeof pose.sceneType === 'string' && pose.sceneType.length > 0 &&
     Number.isFinite(pose.yaw) && Number.isFinite(pose.pitch) && Number.isFinite(pose.zoom) && pose.zoom > 0 &&
-    typeof pose.hotspotId === 'string' && typeof pose.sectionId === 'string' && typeof pose.label === 'string';
+    typeof pose.hotspotId === 'string' && typeof pose.sectionId === 'string' && typeof pose.label === 'string' &&
+    (pose.proceduralPreset === undefined ||
+      (typeof pose.proceduralPreset === 'string' && pose.proceduralPreset.trim().length > 0)) &&
+    (pose.sceneRevision === undefined || (Number.isSafeInteger(pose.sceneRevision) && pose.sceneRevision > 0)) &&
+    (pose.rendererProfile === undefined ||
+      (typeof pose.rendererProfile === 'string' && pose.rendererProfile.trim().length > 0)) &&
+    (pose.viewFrame === undefined || validMemoryViewFrame(pose.viewFrame));
+}
+
+function validMemoryViewFrame(frame: MemoryViewFrame): boolean {
+  // 损坏的扩展必须拒绝整条快照并交给既有读取保护，不能悄悄删掉扩展后覆盖原档案。
+  return !!frame && Number.isFinite(frame.width) && frame.width > 0 &&
+    Number.isFinite(frame.height) && frame.height > 0 &&
+    (frame.textDensity === undefined || (Number.isFinite(frame.textDensity) && frame.textDensity > 0)) &&
+    (frame.dark === undefined || typeof frame.dark === 'boolean');
 }

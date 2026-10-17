@@ -493,7 +493,9 @@ await import('./cultural-content.test.mjs');
 await import('../entry/src/main/resources/rawfile/engine/engine.test.cjs');
 
 const nativeSceneSource = readFileSync(new URL('../entry/src/main/ets/domain/CulturalNativeScene.ts', import.meta.url), 'utf8')
-  .replace("from './SiteObjectGeometry'", `from '${new URL('../entry/src/main/ets/domain/SiteObjectGeometry.ts', import.meta.url).href}'`);
+  .replace("from './SiteObjectGeometry'", `from '${new URL('../entry/src/main/ets/domain/SiteObjectGeometry.ts', import.meta.url).href}'`)
+  .replace("from './MaterialObservation'", `from '${new URL('../entry/src/main/ets/domain/MaterialObservation.ts', import.meta.url).href}'`)
+  .replace("from './MaterialObservationGeometry'", `from '${new URL('../entry/src/main/ets/domain/MaterialObservationGeometry.ts', import.meta.url).href}'`);
 const { nativeCulturalScene } = await import(`data:text/javascript,${encodeURIComponent(stripTypeScriptTypes(nativeSceneSource))}`);
 
 test('native fallback creates a visible river with five valid city selection anchors', () => {

@@ -19,7 +19,7 @@
   const HOTSPOTS = [
     { id: 'form', label: '观形制', position: [-0.86, 0.5, 0.12], yaw: -0.45, pitch: 0.22 },
     { id: 'pattern', label: '察纹样', position: [0.82, 0.04, -0.15], yaw: 0.62, pitch: 0.14 },
-    { id: 'story', label: '听故事', position: [0.13, -0.75, 0.35], yaw: -0.9, pitch: 0.5 }
+    { id: 'story', label: '读线索', position: [0.13, -0.75, 0.35], yaw: -0.9, pitch: 0.5 }
   ];
   const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
   const finite = (v, fallback) => typeof v === 'number' && Number.isFinite(v) ? v : fallback;

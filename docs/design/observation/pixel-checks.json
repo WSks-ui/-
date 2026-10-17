@@ -1,0 +1,88 @@
+{
+  "source": "HarmonyOS 7 模拟器真实 PNG 与 dumpLayout",
+  "replay": {
+    "sourceCanvas": [
+      112,
+      621,
+      1144,
+      1671
+    ],
+    "replayCanvas": [
+      112,
+      582,
+      1144,
+      1632
+    ],
+    "visibleModelPixels": 457966,
+    "replayVisibleModelPixels": 457966,
+    "comparedInterior": [
+      12,
+      12,
+      1020,
+      1038
+    ],
+    "identical": false,
+    "meanAbsoluteDifference": [
+      9.669234815433646e-07,
+      9.669234815433646e-07,
+      0.0
+    ],
+    "changedPixels": 1,
+    "maximumChannelDifference": 1,
+    "modelPixelsIdentical": true,
+    "differenceSamplesInComparedInterior": [
+      {
+        "x": 6,
+        "y": 1015,
+        "sourceRgb": [
+          253,
+          251,
+          247
+        ],
+        "replayRgb": [
+          252,
+          250,
+          247
+        ]
+      }
+    ],
+    "sameComposition": true
+  },
+  "galleryPreview": {
+    "galleryCanvas": [
+      131,
+      923,
+      1125,
+      1686
+    ],
+    "savedVirtualFrame": {
+      "width": 294.85714285714283,
+      "height": 300,
+      "textDensity": 3.5,
+      "dark": false
+    },
+    "savedCamera": {
+      "yaw": 0.7326990816987242,
+      "pitch": 0.14,
+      "zoom": 0.98,
+      "hotspotId": "opening",
+      "sceneRevision": 2,
+      "rendererProfile": "native-raster-v1"
+    },
+    "containContentInCanvas": [
+      122.04000000000002,
+      0.0,
+      871.96,
+      763.0
+    ],
+    "visibleModelPixels": 241516,
+    "meanAbsoluteDifferenceAfterResampling": [
+      0.7666706790832722,
+      0.916886437667108,
+      0.9730019077217134
+    ],
+    "rgbCorrelation": 0.999190226256416,
+    "sameComposition": true,
+    "method": "布局定位真实Canvas，依保存画幅去除contain留白；LANCZOS缩放主视口后只比较内部，容许设备抗锯齿差异"
+  }
+}

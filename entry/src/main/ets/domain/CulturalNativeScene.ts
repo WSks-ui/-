@@ -1,6 +1,8 @@
 import { siteObjectShape } from './SiteObjectGeometry';
 import type { ObjectMesh, ObjectPoint, SiteObjectShape } from './SiteObjectGeometry';
 import type { CulturalEnginePayload, CulturalSceneType } from './CulturalEngineContract';
+import { materialObservationForPreset } from './MaterialObservation';
+import { dahecunObservationShape } from './MaterialObservationGeometry';
 
 export interface NativeEngineAnchor { id: string; label: string; type: string; point: ObjectPoint; }
 export interface NativeCulturalScene { shape: SiteObjectShape; anchors: NativeEngineAnchor[]; }
@@ -163,6 +165,14 @@ export function nativeCulturalScene(type: CulturalSceneType, payload: CulturalEn
       anchors.push({ id: node.id, label: node.label, type: 'city', point: { x, y: selected ? 0.4 : 0.23, z } });
     });
     return { shape: { title: '五城河洛 · 程序化沙盘', meshes }, anchors };
+  }
+  // 仅明确的第 2 版双连壶启用新的观察模型；缺省 / 第 1 版仍保留旧单壶及旧热点供手账回放。
+  const observation = type === 'relic_inspector' ? materialObservationForPreset(payload.proceduralPreset || '',
+    payload.sceneRevision === undefined ? 1 : payload.sceneRevision) : undefined;
+  if (observation) {
+    return { shape: dahecunObservationShape(payload.selectedId || ''), anchors: observation.hotspots.map(hotspot => ({
+      id: hotspot.id, label: hotspot.label, type: 'hotspot', point: hotspot.point
+    })) };
   }
   return { shape: relic(payload.proceduralPreset || 'yangshao_pottery'), anchors: [
     { id: 'form', label: '形', type: 'hotspot', point: { x: -0.75, y: 0.2, z: 0.2 } },

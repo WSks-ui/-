@@ -60,6 +60,11 @@ export function memoryPoseLabel(pose?: MemoryPose): string {
   if (pose.sectionId === 'archaeology') return '遗存观察';
   if (pose.sectionId === 'history') return '历史线索';
   if (pose.sectionId === 'poetry-travel') return '诗词与今访';
+  if (pose.proceduralPreset === 'dahecun_pottery' && pose.sceneRevision === 2) {
+    if (pose.hotspotId === 'mouth') return '两只壶口';
+    if (pose.hotspotId === 'opening') return '腹部通口';
+    if (pose.hotspotId === 'paint') return '红衣黑彩';
+  }
   if (pose.hotspotId === 'form') return '器形观察';
   if (pose.hotspotId === 'pattern') return '纹饰观察';
   if (pose.hotspotId === 'story') return '文化线索';

@@ -11,6 +11,8 @@ import spatialExperienceTest from './SpatialExperience.test';
 import engineExperienceTest from './EngineExperience.test';
 import memoryJourneyTest from './MemoryJourney.test';
 import coreContentTest from './CoreContent.test';
+import observationMemoryTest from './ObservationMemory.test';
+import materialComparisonTest from './MaterialComparison.test';
 
 export default function testsuite() {
   archiveDeviceTest();
@@ -26,4 +28,6 @@ export default function testsuite() {
   engineExperienceTest();
   memoryJourneyTest();
   coreContentTest();
+  observationMemoryTest();
+  materialComparisonTest();
 }

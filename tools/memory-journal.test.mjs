@@ -1,11 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { stripTypeScriptTypes } from 'node:module';
 import { copySnapshot, compareVersions, emptySnapshot, mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import {
   STAMP_TYPES, PAPER_THEMES, defaultStampForSite, isMemoryPostcard, memoryPoseLabel,
   memoryQuoteForSite, memorySeasonLabel, paperThemeLabel
 } from '../entry/src/main/ets/domain/MemoryJournal.ts';
+
+// ArkTS 使用无扩展名导入；仅改测试装载路径，执行与应用相同的回放判定源码。
+let replaySource = readFileSync(new URL('../entry/src/main/ets/domain/MemoryReplay.ts', import.meta.url), 'utf8');
+for (const name of ['ArchiveDomain', 'CulturalContent', 'MaterialObservation']) {
+  replaySource = replaySource.replaceAll(`'./${name}'`, `'${new URL(`../entry/src/main/ets/domain/${name}.ts`, import.meta.url).href}'`);
+}
+const { resolveMemoryReplay } = await import(`data:text/javascript,${encodeURIComponent(stripTypeScriptTypes(replaySource))}`);
 
 const note = (patch = {}) => ({
   id: 'note:memory-test', kind: 'note', siteId: 'ly-erlitou', body: '记住这一刻', tags: ['城市'],
@@ -14,6 +23,11 @@ const note = (patch = {}) => ({
 const pose = () => ({
   version: 1, sceneType: 'relic_inspector', yaw: 0.75, pitch: 0.3, zoom: 1.2,
   hotspotId: 'form', sectionId: '', label: '器形观察'
+});
+const observationPose = () => ({
+  ...pose(), hotspotId: 'opening', label: '', proceduralPreset: 'dahecun_pottery',
+  sceneRevision: 2, rendererProfile: 'native-raster-v1',
+  viewFrame: { width: 360, height: 280, textDensity: 3.5, dark: false }
 });
 const postcard = (patch = {}) => note({
   stampType: '夏都寻踪', paperTheme: 'jade', quotedPoemOrFact: HERITAGE_SITES[1].summary,
@@ -64,6 +78,96 @@ test('metadata differences take part in deterministic versions and cross-device 
   }
   const reversePoseProperties = Object.fromEntries(Object.entries(pose()).reverse());
   assert.equal(compareVersions(original, postcard({ snapshot3DPose: reversePoseProperties })), 0);
+});
+
+test('recorded framing metadata survives copies, tombstones and snapshot round trips without migration', () => {
+  const original = postcard({ siteId: 'zz-dahecun', snapshot3DPose: observationPose() });
+  const source = { ...emptySnapshot('device-a'), records: [original, { ...original, id: 'note:frame-deleted', deleted: true }] };
+  const parsed = parseSnapshot(JSON.stringify(source));
+  assert.deepEqual(parsed, source);
+  const copied = copySnapshot(parsed);
+  copied.records[0].snapshot3DPose.viewFrame.width = 720;
+  copied.records[0].snapshot3DPose.viewFrame.textDensity = 2;
+  copied.records[0].snapshot3DPose.viewFrame.dark = true;
+  assert.deepEqual(parsed.records[0].snapshot3DPose.viewFrame, observationPose().viewFrame);
+  assert.deepEqual(copied.records[1], source.records[1]);
+  assert.equal(parsed.records[0].updatedAt, 100);
+
+  // 未来支持名单不影响归档；实际损坏的扩展必须触发既有读取保护，不能被悄悄抹掉。
+  const future = { ...observationPose(), sceneType: 'future_scene', sceneRevision: 7, rendererProfile: 'future-renderer' };
+  const futureSnapshot = { ...emptySnapshot('device-a'), records: [postcard({ snapshot3DPose: future })] };
+  assert.deepEqual(copySnapshot(parseSnapshot(JSON.stringify(futureSnapshot))), futureSnapshot);
+  for (const patch of [{ sceneRevision: 0 }, { rendererProfile: 7 }, { viewFrame: null },
+    { viewFrame: { width: 360, height: 0 } }, { viewFrame: { width: 360, height: 280, textDensity: -1 } }]) {
+    assert.throws(() => parseSnapshot(JSON.stringify({ ...source,
+      records: [postcard({ snapshot3DPose: { ...observationPose(), ...patch } })] })), /ARCHIVE_INVALID_RECORD/);
+  }
+});
+
+test('scene and framing changes participate in canonical versions and sync conflicts', () => {
+  const original = postcard({ siteId: 'zz-dahecun', snapshot3DPose: observationPose() });
+  const reversePose = Object.fromEntries(Object.entries(observationPose()).reverse());
+  reversePose.viewFrame = Object.fromEntries(Object.entries(reversePose.viewFrame).reverse());
+  assert.equal(compareVersions(original, { ...original, snapshot3DPose: reversePose }), 0);
+  const changes = [
+    { proceduralPreset: 'future_preset' }, { sceneRevision: 3 }, { rendererProfile: 'future-renderer' },
+    ...[{ width: 400 }, { height: 300 }, { textDensity: 2 }, { dark: true }].map((patch) =>
+      ({ viewFrame: { ...observationPose().viewFrame, ...patch } }))
+  ];
+  for (const patch of changes) {
+    const changed = { ...original, snapshot3DPose: { ...observationPose(), ...patch } };
+    assert.notEqual(compareVersions(original, changed), 0);
+    assert.deepEqual(mergeRecords([original], [changed]).records, mergeRecords([changed], [original]).records);
+    const merged = mergeRecords([original], [{ ...changed, deviceId: 'device-b' }]);
+    assert.deepEqual(merged.conflicts, [original]);
+    assert.deepEqual(merged.records[0].snapshot3DPose, changed.snapshot3DPose);
+  }
+});
+
+test('replay separates old camera recovery from fully recorded native framing', () => {
+  const legacyPose = pose();
+  const legacy = resolveMemoryReplay('ly-erlitou', legacyPose);
+  assert.equal(legacy.state, 'legacy');
+  assert.equal(legacy.canReplay, true);
+  assert.equal(legacy.message, '旧版视角，原取景未记录');
+  assert.equal(legacy.proceduralPreset, 'erlitou_palace');
+  assert.equal(legacy.sceneRevision, 1);
+  assert.equal(Object.hasOwn(legacyPose, 'sceneRevision'), false);
+  assert.equal(Object.hasOwn(legacyPose, 'viewFrame'), false);
+
+  const recorded = observationPose();
+  const resolved = resolveMemoryReplay('zz-dahecun', recorded);
+  assert.equal(resolved.state, 'ready');
+  assert.equal(resolved.canReplay, true);
+  assert.equal(resolved.sceneRevision, 2);
+  assert.equal(memoryPoseLabel(recorded), '腹部通口');
+  resolved.viewFrame.width = 500;
+  assert.equal(recorded.viewFrame.width, 360);
+  const missingDensity = { ...recorded, viewFrame: { width: 360, height: 280, dark: false } };
+  assert.equal(resolveMemoryReplay('zz-dahecun', missingDensity).state, 'legacy');
+  const oldRevision = { ...recorded, sceneRevision: 1, hotspotId: 'form' };
+  assert.equal(resolveMemoryReplay('zz-dahecun', oldRevision).state, 'ready');
+  const slice = { ...recorded, sceneType: 'stratum_slice', hotspotId: '', sectionId: 'archaeology' };
+  assert.equal(resolveMemoryReplay('zz-dahecun', slice).state, 'ready');
+});
+
+test('unmatched archives, revisions, selections and camera values never report a replay as ready', () => {
+  assert.equal(resolveMemoryReplay('unknown-site', observationPose()).state, 'unavailable');
+  assert.equal(resolveMemoryReplay('zz-dahecun').canReplay, false);
+  const patches = [
+    { version: 2 }, { proceduralPreset: 'erlitou_palace' }, { sceneRevision: 3 },
+    { rendererProfile: 'webgl2-v1' }, { sceneType: 'river_sandbox' },
+    { hotspotId: 'form' }, { sectionId: 'overview' }, { pitch: 0.81 }, { zoom: 1.61 }
+  ];
+  for (const patch of patches) {
+    const saved = { ...observationPose(), ...patch };
+    const result = resolveMemoryReplay('zz-dahecun', saved);
+    assert.equal(result.state, 'unavailable', JSON.stringify(patch));
+    assert.equal(result.canReplay, false);
+    assert.ok(result.message.length > 0);
+    assert.deepEqual(saved, { ...observationPose(), ...patch });
+  }
+  assert.equal(resolveMemoryReplay('ly-erlitou', { ...observationPose(), proceduralPreset: 'erlitou_palace' }).canReplay, false);
 });
 
 test('journal helpers use explicit decoration, existing catalog prose and approximate calendar labels', () => {

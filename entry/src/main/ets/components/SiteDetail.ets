@@ -1,11 +1,14 @@
 import {
   activeRecords, ArchiveRecord, ArchiveSnapshot, COLLECTION_TAGS, copySnapshot,
   HeritageSite, MAX_NOTE_LENGTH, MAX_NOTE_TAGS, MAX_NOTE_TAG_LENGTH, MAX_NOTE_TAGS_TEXT_LENGTH,
-  nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose
+  nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose, copyMemoryPose
 } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { MATERIAL_STUDIES, materialStudyForId } from '../data/MaterialStudyCatalog';
 import { MaterialStudyPanel } from './MaterialStudyPanel';
+import { MaterialObservationDefinition, MaterialObservationHotspot, materialObservationForSite } from '../domain/MaterialObservation';
+import { resolveMemoryReplay } from '../domain/MemoryReplay';
+import { MemoryPosePreview } from './MemoryPosePreview';
 import { SiteRow, siteIllustration } from './SiteRow';
 import { CulturalEngineViewport } from './CulturalEngineViewport';
 import { CulturalEnginePayload, CulturalEngineLayer, CulturalSceneType } from '../domain/CulturalEngineContract';
@@ -44,28 +47,70 @@ export struct SiteDetail {
   @State private quotedText: string = '';
   @State private draftPose: MemoryPose | undefined = undefined;
   @State private poseRequestJson: string = '';
+  @State private replayRevision: number = 0;
+  @State private replayMessage: string = '';
+  @State private replayBlocked: boolean = false;
   private originalDecoration: string = '';
   private detailScroller: Scroller = new Scroller();
   private bodyController: TextAreaController = new TextAreaController();
   private tagsController: TextInputController = new TextInputController();
 
   aboutToAppear(): void {
+    const observation = materialObservationForSite(this.site.id);
+    if (observation) this.hotspot = observation.hotspots[0].id;
     if (this.initialPoseJson) {
-      try { this.restoreMemoryPose(JSON.parse(this.initialPoseJson) as MemoryPose); } catch { /* 旧笔记无视角仍可阅读。 */ }
+      try { this.restoreMemoryPose(JSON.parse(this.initialPoseJson) as MemoryPose); }
+      catch { this.replayMessage = '保存的观察参数暂不能读取，文字手账仍可查看'; this.replayBlocked = true; }
     }
   }
 
   private restoreMemoryPose(pose: MemoryPose): void {
-    if (pose.sceneType !== 'relic_inspector' && pose.sceneType !== 'stratum_slice') return;
-    this.engineMode = pose.sceneType;
-    if (['form', 'pattern', 'story'].includes(pose.hotspotId)) this.hotspot = pose.hotspotId;
+    const resolution = resolveMemoryReplay(this.site.id, pose);
+    if (!resolution.canReplay) {
+      this.replayMessage = resolution.message; this.replayBlocked = true; return;
+    }
+    this.engineMode = pose.sceneType as CulturalSceneType;
+    this.replayRevision = resolution.sceneRevision;
+    this.hotspot = pose.hotspotId;
     const section = EXPLORATION_SECTIONS.find(item => item.id === pose.sectionId);
     if (section) this.explorationSection = section.id;
+    this.replayBlocked = false;
+    this.replayMessage = resolution.state === 'ready' ? '正在重建保存的观察画面' : resolution.message;
     // 附加请求序号，使同一张卡在手动旋转后仍可再次恢复；序号不存入档案。
-    const request: MemoryPoseRequest = { version: pose.version, sceneType: pose.sceneType, yaw: pose.yaw, pitch: pose.pitch,
-      zoom: pose.zoom, hotspotId: pose.hotspotId, sectionId: pose.sectionId, label: pose.label, request: Date.now() };
+    const request = copyMemoryPose(pose) as MemoryPoseRequest;
+    request.request = Date.now();
     this.poseRequestJson = JSON.stringify(request);
     this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 });
+  }
+
+  private sceneRevision(): number {
+    return this.engineMode === 'stratum_slice' ? 1 :
+      (this.replayRevision || materialObservationForSite(this.site.id)?.sceneRevision || 1);
+  }
+
+  private observation(): MaterialObservationDefinition | undefined {
+    const observation = materialObservationForSite(this.site.id);
+    return observation && this.sceneRevision() === observation.sceneRevision ? observation : undefined;
+  }
+
+  private selectedObservationLabel(): string {
+    return this.observation()?.hotspots.find(item => item.id === this.hotspot)?.label || '';
+  }
+
+  private selectedObservationReading(): string {
+    const id = this.observation()?.hotspots.find(item => item.id === this.hotspot)?.factId || '';
+    return materialStudyForId(this.site.id)?.facts.find(fact => fact.id === id)?.body || '';
+  }
+
+  private selectHotspot(id: string): void {
+    this.poseRequestJson = ''; this.replayMessage = ''; this.replayBlocked = false;
+    this.hotspot = id;
+  }
+
+  private startObservation(mode: CulturalSceneType = 'relic_inspector'): void {
+    this.replayRevision = 0; this.replayMessage = ''; this.replayBlocked = false; this.poseRequestJson = '';
+    this.engineMode = mode;
+    this.hotspot = materialObservationForSite(this.site.id)?.hotspots[0].id || 'form';
   }
 
   private decoration(): string {
@@ -83,6 +128,7 @@ export struct SiteDetail {
   private enginePayload(): string {
     const payload: CulturalEnginePayload = { version: 1, itemId: this.site.id, title: this.site.name,
       proceduralPreset: getCulturalSiteMetadata(this.site.id)?.proceduralPreset || 'yangshao_pottery',
+      sceneRevision: this.sceneRevision(),
       selectedId: this.engineMode === 'stratum_slice' ? this.explorationSection : this.hotspot,
       exploredIds: decodeExplorationProgress(this.snapshot.records, this.site.id).completedSectionIds,
       layers: EXPLORATION_SECTIONS.map((section: CulturalLearningSection): CulturalEngineLayer => ({ id: section.id, label: section.title })) };
@@ -112,41 +158,74 @@ export struct SiteDetail {
   culturalExperience() {
     Column({ space: 12 }) {
       Text('文化凝视').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
+      if (this.observation()) {
+        Text(materialStudyForId(this.site.id)?.question || '').fontSize(F.body).fontColor(T.ink)
+          .fontWeight(FontWeight.Medium).lineHeight(27).width('100%')
+      }
       Row({ space: 8 }) {
-        Button('器物凝视').id('engine-mode-relic').onClick(() => { this.engineMode = 'relic_inspector'; })
+        Button('器物凝视').id('engine-mode-relic').onClick(() => this.startObservation('relic_inspector'))
           .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'relic_inspector' ? T.accentSoft : T.soft)
-        Button('地层切片').id('engine-mode-stratum').onClick(() => { this.engineMode = 'stratum_slice'; })
+        Button('文化切片').id('engine-mode-stratum').onClick(() => this.startObservation('stratum_slice'))
           .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'stratum_slice' ? T.accentSoft : T.soft)
       }.width('100%')
-      CulturalEngineViewport({ sceneType: this.engineMode, payloadJson: this.enginePayload(), viewportHeight: 300,
+      if (this.replayMessage) {
+        Text(this.replayMessage).fontSize(F.small).fontColor(T.mintInk).lineHeight(23).width('100%')
+          .padding(12).backgroundColor(T.mint).borderRadius(12).id('memory-replay-message')
+      }
+      if (this.replayBlocked) {
+        Button('开始新的观察').id('memory-start-new-observation').width('100%').height(44)
+          .fontColor(T.accent).backgroundColor(T.accentSoft).onClick(() => this.startObservation())
+      } else {
+        CulturalEngineViewport({ sceneType: this.engineMode, payloadJson: this.enginePayload(), viewportHeight: 300,
         rememberEnabled: true, memoryPoseJson: this.poseRequestJson,
         onRememberView: (pose: MemoryPose) => this.editNote(undefined, pose),
+        onReplayResult: (success: boolean, message: string) => {
+          this.replayMessage = message;
+          if (!success) this.replayBlocked = true;
+        },
         reducedMotion: this.snapshot.reducedMotion, active: this.objectActive && !this.editorOpen,
         onNodeSelected: (id: string, type: string) => {
-          if (type === 'hotspot') this.hotspot = id;
+          if (type === 'hotspot') this.selectHotspot(id);
           const section = EXPLORATION_SECTIONS.find(section => section.id === id);
           if (type === 'layer' && section) this.explorationSection = section.id;
         } })
+      }
       if (this.engineMode === 'relic_inspector') {
+        if (this.observation()) {
+          Row({ space: 8 }) {
+            ForEach(this.observation()?.hotspots || [], (detail: MaterialObservationHotspot) => {
+              Button(detail.label).id(`observation-hotspot-${detail.id}`).layoutWeight(1).height(42)
+                .fontSize(F.small).fontColor(T.accent).borderRadius(12).padding({ left: 4, right: 4 })
+                .backgroundColor(this.hotspot === detail.id ? T.accentSoft : T.soft)
+                .onClick(() => this.selectHotspot(detail.id))
+            }, (detail: MaterialObservationHotspot) => detail.id)
+          }.width('100%')
+          Text(`正在观察 · ${this.selectedObservationLabel()}`).fontSize(F.body).fontColor(T.ink)
+            .fontWeight(FontWeight.Medium).width('100%').id('observation-selected-detail')
+          Text(this.observation()?.hotspots.find(item => item.id === this.hotspot)?.visibleDetail || '')
+            .fontSize(F.small).fontColor(T.ink).lineHeight(24).width('100%').id('observation-visible-detail')
+        } else {
         // 三个热点等分一行，显式收紧内边距，让 1.5 倍字号仍完整显示三字标签。
         // 保留系统字体缩放；后续增加文案长度时应改换行布局，不能靠限制字号掩盖截断。
         Row({ space: 8 }) {
-          Button('观形制').id('hotspot-form').onClick(() => { this.hotspot = 'form'; })
+          Button('观形制').id('hotspot-form').onClick(() => this.selectHotspot('form'))
             .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
             .padding({ left: 4, right: 4 })
             .backgroundColor(this.hotspot === 'form' ? T.accentSoft : T.soft)
-          Button('察纹样').id('hotspot-pattern').onClick(() => { this.hotspot = 'pattern'; })
+          Button('察纹样').id('hotspot-pattern').onClick(() => this.selectHotspot('pattern'))
             .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
             .padding({ left: 4, right: 4 })
             .backgroundColor(this.hotspot === 'pattern' ? T.accentSoft : T.soft)
-          Button('听故事').id('hotspot-story').onClick(() => { this.hotspot = 'story'; })
+          Button('读线索').id('hotspot-story').onClick(() => this.selectHotspot('story'))
             .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
             .padding({ left: 4, right: 4 })
             .backgroundColor(this.hotspot === 'story' ? T.accentSoft : T.soft)
         }.width('100%')
-        Text(this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history)
+        }
+        Text(this.observation() ? this.selectedObservationReading() :
+          (this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history))
           .fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%').id('engine-hotspot-reading')
-        Text('按档案主题生成的几何与装饰示意，非文物或遗址复原。')
+        Text(this.observation()?.notice || '按档案主题生成的几何与装饰示意，非文物或遗址复原。')
           .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').id('site-object-notice')
       } else {
         Text('四层表示阅读主题，未核实为该遗址的真实考古层序。')
@@ -194,6 +273,7 @@ export struct SiteDetail {
     this.paperTheme = note?.paperTheme || 'rose';
     this.quoteEnabled = note ? !!note.quotedPoemOrFact : true;
     this.quotedText = note?.quotedPoemOrFact || memoryQuoteForSite(this.site);
+    if (!note && pose && this.selectedObservationReading()) this.quotedText = this.selectedObservationReading();
     this.draftPose = pose || note?.snapshot3DPose;
     this.originalDecoration = this.decoration();
     this.validation = '';
@@ -302,6 +382,12 @@ export struct SiteDetail {
       // 不再用 FIT_CONTENT 配合固定 Column，否则键盘会盖住标签和保存按钮。
       Scroll() {
         Column({ space: 14 }) {
+          if (this.draftPose) {
+            MemoryPosePreview({ siteId: this.site.id, poseJson: JSON.stringify(this.draftPose),
+              previewHeight: 180, previewId: 'memory-draft-preview' })
+            Text(`留住的细节 · ${this.draftPose?.label || '当前视角'}`).fontSize(F.small).fontColor(T.mintInk)
+              .width('100%').id('memory-draft-pose')
+          }
           Row({ space: 10 }) {
             Text('落款印章').fontSize(F.small).fontColor(T.muted)
             Select(STAMP_TYPES.map((value: string): SelectOption => ({ value }))).value(this.stampType)
@@ -315,10 +401,6 @@ export struct SiteDetail {
                 .backgroundColor(this.paperTheme === theme ? T.accent : T.soft).onClick(() => { this.paperTheme = theme; })
             }, (theme: string) => theme)
           }.width('100%')
-          if (this.draftPose) {
-            Text(`已留住凝视 · ${this.draftPose?.label || '当前视角'}`).fontSize(F.caption).fontColor(T.mintInk)
-              .width('100%').padding(10).backgroundColor(T.mint).borderRadius(10).id('memory-draft-pose')
-          }
           Row({ space: 10 }) {
             Text('带上一句档案摘录').fontSize(F.small).fontColor(T.ink).layoutWeight(1)
             Toggle({ type: ToggleType.Switch, isOn: this.quoteEnabled }).selectedColor(T.accent).id('memory-quote-toggle')
@@ -358,10 +440,13 @@ export struct SiteDetail {
     NavDestination() {
       Scroll(this.detailScroller) {
         Column() {
-          if (materialStudyForId(this.site.id)) {
+          if (materialStudyForId(this.site.id) && !materialObservationForSite(this.site.id)) {
             MaterialStudyPanel({ study: materialStudyForId(this.site.id) || MATERIAL_STUDIES[0] })
           }
           this.culturalExperience()
+          if (materialStudyForId(this.site.id) && materialObservationForSite(this.site.id)) {
+            MaterialStudyPanel({ study: materialStudyForId(this.site.id) || MATERIAL_STUDIES[0] })
+          }
           if (!materialStudyForId(this.site.id)) {
             Stack({ alignContent: Alignment.TopStart }) {
               Image(siteIllustration(this.site)).width('100%').height(210).objectFit(ImageFit.Cover)

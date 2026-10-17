@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-17",
+  "stage": "T04—T08 大河村样板及 T06 对照",
+  "platform": "HarmonyOS 7 / API 26",
+  "device": "YunhejiSyncB",
+  "baselineCommit": "37bfbf0804a7670f294599d53fbb858f9e8b595c",
+  "mainPackageSha256": "7B52CAC9ECBCC4C09199AFEC3F91D10BEA751BD6FDB1E8185BFEE89B5E321127",
+  "testPackageSha256": "B24958475C8FF3F302A8C17E7780193EB5550B13AD1E4E3B88739AC17F55115F",
+  "total": 2,
+  "passed": 2,
+  "failure": 0,
+  "error": 0,
+  "ignore": 0,
+  "phases": [
+    {
+      "stage": "核心体验成型阶段 T04—T08 大河村样板与 T06 对照",
+      "phase": "observation-verified",
+      "platform": "HarmonyOS 7 / API 26",
+      "baselineCommit": "37bfbf0804a7670f294599d53fbb858f9e8b595c",
+      "mainPackageSha256": "7B52CAC9ECBCC4C09199AFEC3F91D10BEA751BD6FDB1E8185BFEE89B5E321127",
+      "testPackageSha256": "B24958475C8FF3F302A8C17E7780193EB5550B13AD1E4E3B88739AC17F55115F",
+      "test": "ObservationMemoryTest#native_dahecun_hotspots_recorded_frame_gallery_and_replay",
+      "report": "docs/test-results/2026-10-17-170500-device.log",
+      "status": "pass",
+      "captures": [
+        {
+          "name": "mouth",
+          "path": "docs/design/observation/mouth.png",
+          "sha256": "C2110FC638BFEBB2490A1AAC801DA004E0D9760C1B05F46A5B32F75809669467",
+          "layoutSha256": "8B56CB0277C4B77231B457659DD8572FC823D6B1297086CB71BB6F6ACD4C73BC"
+        },
+        {
+          "name": "paint",
+          "path": "docs/design/observation/paint.png",
+          "sha256": "72C71B11124B961B0DA8E733D3CCD11E1FB7A961FF78E92D513CA4312F8584E6",
+          "layoutSha256": "9795AE5C7BB85A90C443F25BB8675F469F44EFB39CF8B5C532CF74D76DFB1E28"
+        },
+        {
+          "name": "opening",
+          "path": "docs/design/observation/opening.png",
+          "sha256": "76374C2358E8A05A62E5D6D194D8E18D0D899066F2F9AEB00063278AF8B64BF1",
+          "layoutSha256": "6F6179B10455E99B6466EEDABFB99423AAE7BF8718C9FD32C6BB09EF474D0DDF"
+        },
+        {
+          "name": "source-frame",
+          "path": "docs/design/observation/source-frame.png",
+          "sha256": "9ABEC636AE0D0C353AF70A852359B7440CC823E25B880BA8BE9B610D214DFD9A",
+          "layoutSha256": "0AB96304D07B95EE3907BCBFC86D83CB88E05792D3ABA5DCE27C77456630BD52"
+        },
+        {
+          "name": "gallery",
+          "path": "docs/design/observation/gallery.png",
+          "sha256": "43072193C324867413A4DF80A7FD8F4553B7216D668F246A4287BD7223448BC4",
+          "layoutSha256": "747593453CFB7FF2A61BCE0A8CBED467CDDAC08EFF0783B5C1623C73F337F259"
+        },
+        {
+          "name": "replay",
+          "path": "docs/design/observation/replay.png",
+          "sha256": "0C28997F3149270262E37A0FBB655B413A089DAF06C38FD532033D150B2F04DA",
+          "layoutSha256": "907BECF6C539B585698D5FB3A345FBB6560A55AAF9A140313D81E7349140D8EC"
+        }
+      ],
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "passed": 1,
+      "ignore": 0,
+      "durationMs": 146382
+    },
+    {
+      "stage": "核心体验成型阶段 T04—T08 大河村样板与 T06 对照",
+      "phase": "comparison-final",
+      "platform": "HarmonyOS 7 / API 26",
+      "baselineCommit": "37bfbf0804a7670f294599d53fbb858f9e8b595c",
+      "mainPackageSha256": "7B52CAC9ECBCC4C09199AFEC3F91D10BEA751BD6FDB1E8185BFEE89B5E321127",
+      "testPackageSha256": "B24958475C8FF3F302A8C17E7780193EB5550B13AD1E4E3B88739AC17F55115F",
+      "test": "MaterialComparisonTest#native_three_dimensions_sources_original_visuals_and_dahecun_observation",
+      "report": "docs/test-results/2026-10-17-165119-device.log",
+      "status": "pass",
+      "captures": [
+        {
+          "name": "comparison-body",
+          "path": "docs/design/observation/comparison-body.png",
+          "sha256": "6ED61463098188F3FCDAC9D66794FE0D3913E5443622B67C90DDAD9FB07C392E",
+          "layoutSha256": "FE3A50755AF8BBA8309506B9D65F2EB9B73BA89144B04E2C819D2C5025ED5937"
+        },
+        {
+          "name": "comparison-visuals-left",
+          "path": "docs/design/observation/comparison-visuals-left.png",
+          "sha256": "BF2192CA3DC7EC09461290171E5D1AAE159A3734081727B920CE5ED3DC4443AD",
+          "layoutSha256": "7E172396AAD184F3894FEFD45C4A1EA34F82205016DB82C20065C564E3E04A28"
+        },
+        {
+          "name": "comparison-visuals-right",
+          "path": "docs/design/observation/comparison-visuals-right.png",
+          "sha256": "A688B4DF80F0B53881D8A4BCA4530CCBA4F86CE4BE1FEC75C9BD7DD6D7F2963D",
+          "layoutSha256": "5CE1F197002D1156158FAA8946F829A290A0217995DC46E0178AB02F2890806C"
+        }
+      ],
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "passed": 1,
+      "ignore": 0,
+      "durationMs": 74204
+    }
+  ],
+  "sourceSha256": [
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "sha256": "4FF57D4248046C37EC1F3B507429D69DCC8C0F1F3F3AD06A5A4D31D3BB0A346B"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureAtlas.ets",
+      "sha256": "59E6F2F6FE9F661E8B400CEEE7E1B7A9DCE01E825F52E11D1B5668C0E6416DB8"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialComparisonPanel.ets",
+      "sha256": "DA039241E1AEC231C7645CBDC98A6566B53B1117096D174271F02465D12A9EDE"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+      "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+      "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "sha256": "6812861DD93D20255A88830C4050DC1E611D2B8E251439AA72FC8A789091EAB8"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ArchiveDomain.ts",
+      "sha256": "E79EC02E578C8416BFF60142EAAA94BCD9D46DEA7E9A81A3AA192A4D2FA29A09"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalEngineContract.ts",
+      "sha256": "A769E07A59E254CE267D784EA2674CFC06FEB8CF1385A3AC35427FD2F1E41BD2"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "sha256": "A523F3FB01D65FD9747F2D2098AC5D4E42FA1EACD75BA9C3853C01E2263C2C70"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+      "sha256": "96C4F13CA82AF4C0640C3C117CE18CC4C538688332F745C6F573FF2E3424399A"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservationGeometry.ts",
+      "sha256": "5249D8F179CA2548A3903B7F7CC7964D1DE43485DF9DB3150C5FC0DAB6B0BC93"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+      "sha256": "9A873A0C3AD808CAD4192A973D72EFB82F9E817CB46911098816DB7D46C2F596"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+      "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "sha256": "C092CD70C0BF1E988A447173566BF4F657521898A01EEA5A7A14A0796ABC072A"
+    },
+    {
+      "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+      "sha256": "C1B5B97064A1AB9D7047B9DCC850E4E616822FF910724AAF206D4AB1A7EC000E"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/core.js",
+      "sha256": "FB37238583D01718F00D3CBE4BF76900024FC33A3B381573E05BDA7F0CD2179A"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "sha256": "BAF5C9262682BE5DE250B1008C492C74A654621A6C79A98A68E47ED5D3A4552C"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/MaterialComparison.test.ets",
+      "sha256": "DAA80C46141813E80AA121443AB3B2A97B5FDA597894C2ABBA64960BE807704B"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ObservationMemory.test.ets",
+      "sha256": "5BECB2541D53F46C27C7568B69A40F500972266181DF696604499D5B01B72542"
+    },
+    {
+      "path": "tools/domain.test.mjs",
+      "sha256": "6BE981BC6F213C5BC45D9AE7C737F62EFB6981BE350E78C524770AA95FD41990"
+    },
+    {
+      "path": "tools/memory-journal.test.mjs",
+      "sha256": "604B8DDD74FAD0B05039C2AF5EE84E482A688306EB0F2DB3BF9B61F7B1549D99"
+    }
+  ],
+  "pixels": "docs/design/observation/pixel-checks.json",
+  "scope": "仅大河村精细场景；未扩庙底沟/杜岭精细热点，未验收新首页和新手账双端，未录制备用视频"
+}

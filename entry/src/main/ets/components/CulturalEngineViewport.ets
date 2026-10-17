@@ -1,5 +1,7 @@
 import { webview } from '@kit.ArkWeb';
-import { MemoryPose } from '../domain/ArchiveDomain';
+import { MemoryPose, MemoryViewFrame } from '../domain/ArchiveDomain';
+import { resolveMemoryReplay } from '../domain/MemoryReplay';
+import { materialObservationForPreset } from '../domain/MaterialObservation';
 import { CulturalEnginePayload, CulturalSceneType } from '../domain/CulturalEngineContract';
 import { needsObjectCanvas } from '../platform/SiteObjectCanvas';
 import { CulturalHitTarget, CulturalNativeRenderer } from '../platform/CulturalNativeRenderer';
@@ -48,10 +50,12 @@ export struct CulturalEngineViewport {
   onProgressUnlocked: (id: string, value: number) => void = () => {};
   onCaptureSnapshot: (value: string) => void = () => {};
   onRememberView: (pose: MemoryPose) => void = () => {};
+  onReplayResult: (success: boolean, message: string) => void = () => {};
   @State private native: boolean = needsNativeCultureViewport();
   @State private automatic: boolean = true;
   @State private angleLabel: string = '初始视角';
   @State private captureMessage: string = '';
+  @State private frameBackground: ResourceColor = T.canvas;
   private payload: CulturalEnginePayload = { version: 1 };
   private controller: webview.WebviewController = new webview.WebviewController();
   private painter: CulturalNativeRenderer = new CulturalNativeRenderer();
@@ -77,6 +81,8 @@ export struct CulturalEngineViewport {
   private pushedPayload: string = '';
   private restoredPose: MemoryPose | undefined = undefined;
   private pushedMemoryPose: string = '';
+  private replayFrame: MemoryViewFrame | undefined = undefined;
+  private pendingReplayMessage: string = '';
   private bridge: EngineBridge = new EngineBridge((id: string, type: string) => this.select(id, type),
     (id: string, value: number) => this.acceptProgress(id, value), (value: string) => this.acceptCapture(value),
     (mode: string) => { if (mode === 'unavailable') this.useNative(); }, () => this.pauseAutomatic());
@@ -105,13 +111,17 @@ export struct CulturalEngineViewport {
       if (!parsed || parsed.version !== 1) throw new Error('Unsupported viewport payload');
       this.payload = parsed;
     }
-    catch { this.payload = { version: 1 }; }
-    const nextKey = `${this.sceneType}|${this.payload.itemId || ''}`;
+    catch { this.payload = { version: 1 }; this.captureMessage = '观察资料暂不能读取'; }
+    // 精细场景与旧版示意保持独立修订，重返旧手账时不能悄悄替换其几何。
+    const nextKey = `${this.sceneType}|${this.payload.itemId || ''}|${this.payload.proceduralPreset || ''}|${this.payload.sceneRevision || 1}`;
     const changed = this.sceneKey !== nextKey;
+    if (this.payload.sceneRevision === 2 && !this.native) this.useNative();
     if (changed) {
       // 物件和模式切换采用各自初始镜头；不继承上个沙盘的极端旋转或双指放大。
       this.sceneKey = nextKey; this.yaw = 0.25; this.pitch = this.sceneType === 'river_sandbox' ? 0.42 : 0.3;
-      this.zoom = 1; this.phase = 0; this.automatic = true; this.angleLabel = '初始视角'; this.captureMessage = '';
+      this.zoom = 1; this.phase = 0;
+      this.automatic = this.payload.sceneRevision !== 2;
+      this.angleLabel = '初始视角'; this.captureMessage = '';
     } else if (oldSelection !== (this.payload.selectedId || '')) {
       this.automatic = false;
     }
@@ -149,21 +159,44 @@ export struct CulturalEngineViewport {
   }
 
   private applyMemoryPose(): void {
-    if (!this.memoryPoseJson) return;
+    if (!this.memoryPoseJson) {
+      this.restoredPose = undefined; this.replayFrame = undefined; this.pendingReplayMessage = '';
+      this.frameBackground = T.canvas;
+      this.draw();
+      return;
+    }
     try {
       const pose = JSON.parse(this.memoryPoseJson) as MemoryPose;
-      if (pose.version !== 1 || pose.sceneType !== this.sceneType ||
-        !Number.isFinite(pose.yaw) || !Number.isFinite(pose.pitch) || !Number.isFinite(pose.zoom)) return;
+      const resolution = resolveMemoryReplay(this.payload.itemId || '', pose);
+      if (!resolution.canReplay || pose.sceneType !== this.sceneType) {
+        this.captureMessage = resolution.canReplay ? '保存场景与当前观察不一致' : resolution.message;
+        this.pendingReplayMessage = ''; this.onReplayResult(false, this.captureMessage); return;
+      }
+      // 本机重建与画廊共用 Native 配置；旧视角也明确标作旧版，不把 Web 相机换算当像素一致。
+      if (!this.native) this.useNative();
+      this.payload.proceduralPreset = resolution.proceduralPreset;
+      this.payload.sceneRevision = resolution.sceneRevision;
+      this.payload.selectedId = this.sceneType === 'relic_inspector' ? pose.hotspotId : pose.sectionId;
       this.restoredPose = pose;
       this.pauseAutomatic(); this.yaw = pose.yaw; this.pitch = pose.pitch;
-      this.zoom = Math.max(0.7, Math.min(1.6, pose.zoom)); this.phase = 0;
-      this.angleLabel = '已回到手账视角'; this.draw(); this.push();
-    } catch { this.captureMessage = '这张手账的视角暂不能打开'; }
+      this.zoom = pose.zoom; this.phase = 0;
+      this.replayFrame = resolution.state === 'ready' ? resolution.viewFrame : undefined;
+      this.frameBackground = this.replayFrame ? (this.replayFrame.dark ? '#171311' : '#FAF6F0') : T.canvas;
+      this.captureMessage = '';
+      this.pendingReplayMessage = resolution.state === 'ready' ? '已回到手账视角' : resolution.message;
+      this.angleLabel = '正在重建保存画面'; this.draw(); this.push();
+    } catch {
+      this.captureMessage = '这张手账的视角数据暂不能读取';
+      this.pendingReplayMessage = ''; this.onReplayResult(false, this.captureMessage);
+    }
   }
 
   private async rememberView(): Promise<void> {
     if (!this.displayActive()) return;
     this.pauseAutomatic();
+    if (this.native && (!this.canvasReady || !this.painter.hasFrame)) {
+      this.captureMessage = '观察画面正在生成，请稍后留住此刻'; return;
+    }
     // 手账保存相机参数而非大图；同一程序化模型可重建视角，账号同步无需传输截图。
     // Web 使用自身当前相机回读，不能拿原生分支的未更新变量冒充用户刚操作的视角。
     if (!this.native && this.loaded) {
@@ -180,12 +213,47 @@ export struct CulturalEngineViewport {
       zoom: this.zoom, hotspotId: this.sceneType === 'relic_inspector' ? selected : '',
       sectionId: this.sceneType === 'stratum_slice' ? selected : '',
       label: `${this.sceneType === 'stratum_slice' ? '主题切片' : '器物凝视'} · ${Math.round(this.yaw * 180 / Math.PI)}°` };
+    if (this.native) {
+      pose.proceduralPreset = this.payload.proceduralPreset;
+      pose.sceneRevision = this.payload.sceneRevision || 1;
+      pose.rendererProfile = 'native-raster-v1';
+      // 保留实际参与投影的虚拟画幅；卡片和另一尺寸设备按同一画幅等比重建，不重新取景。
+      pose.viewFrame = this.replayFrame ? { width: this.replayFrame.width, height: this.replayFrame.height,
+        textDensity: this.replayFrame.textDensity, dark: this.replayFrame.dark } :
+        { width: this.canvasWidth, height: this.canvasHeight, textDensity: this.getUIContext().fp2px(1), dark: this.dark() };
+    }
+    const observation = materialObservationForPreset(this.payload.proceduralPreset || '', this.payload.sceneRevision || 1);
+    const detail = observation?.hotspots.find(item => item.id === selected);
+    if (detail) pose.label = `${detail.label} · ${Math.round(this.yaw * 180 / Math.PI)}°`;
+    console.info(`OBSERVATION_SAVED_VIEW:${JSON.stringify({ siteId: this.payload.itemId, pose })}`);
     this.onRememberView(pose);
   }
   private draw(): void {
     if (!this.native || !this.canvasReady || !this.displayActive()) return;
-    this.hits = this.painter.draw(this.context, this.sceneType, this.payload, this.canvasWidth, this.canvasHeight,
-      this.yaw, this.pitch, this.zoom, this.dark(), this.phase, this.getUIContext().fp2px(1));
+    const width = this.replayFrame?.width || this.canvasWidth;
+    const height = this.replayFrame?.height || this.canvasHeight;
+    const scale = Math.min(this.canvasWidth / width, this.canvasHeight / height);
+    const left = (this.canvasWidth - width * scale) / 2;
+    const top = (this.canvasHeight - height * scale) / 2;
+    this.context.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this.context.save(); this.context.translate(left, top); this.context.scale(scale, scale);
+    const targets = this.painter.draw(this.context, this.sceneType, this.payload, width, height,
+      this.yaw, this.pitch, this.zoom, this.replayFrame?.dark ?? this.dark(), this.phase,
+      this.replayFrame?.textDensity || this.getUIContext().fp2px(1));
+    this.context.restore();
+    this.hits = targets.map((hit: CulturalHitTarget): CulturalHitTarget => ({ id: hit.id, type: hit.type,
+      x: left + hit.x * scale, y: top + hit.y * scale, radius: hit.radius * scale }));
+    if (this.pendingReplayMessage) {
+      const message = this.pendingReplayMessage; this.pendingReplayMessage = '';
+      if (this.painter.hasFrame) {
+        this.angleLabel = message;
+        console.info(`MEMORY_REPLAY_FRAME:${JSON.stringify({ siteId: this.payload.itemId, sceneType: this.sceneType,
+          proceduralPreset: this.payload.proceduralPreset, sceneRevision: this.payload.sceneRevision,
+          selectedId: this.payload.selectedId, yaw: this.yaw, pitch: this.pitch, zoom: this.zoom, width, height })}`);
+        this.onReplayResult(true, message);
+      }
+      else { this.captureMessage = '保存的场景暂不能绘制'; this.onReplayResult(false, this.captureMessage); }
+    }
   }
   private stop(): void { if (this.timer >= 0) clearInterval(this.timer); this.timer = -1; }
   private syncMotion(): void {
@@ -207,7 +275,9 @@ export struct CulturalEngineViewport {
   }
   private select(id: string, type: string): void {
     if (!this.displayActive()) return;
-    const allowed = this.sceneType === 'relic_inspector' && type === 'hotspot' ? ['form', 'pattern', 'story'].includes(id) :
+    const observation = materialObservationForPreset(this.payload.proceduralPreset || '', this.payload.sceneRevision || 1);
+    const allowed = this.sceneType === 'relic_inspector' && type === 'hotspot' ?
+      (observation ? observation.hotspots.some(item => item.id === id) : ['form', 'pattern', 'story'].includes(id)) :
       this.sceneType === 'stratum_slice' && type === 'layer' ? (this.payload.layers || []).some(layer => layer.id === id) :
         ((this.sceneType === 'river_sandbox' && type === 'city') || (this.sceneType === 'constellation_graph' && type === 'site')) &&
           (this.payload.nodes || []).some(node => node.id === id);
@@ -216,11 +286,19 @@ export struct CulturalEngineViewport {
   }
   private focus(id: string, manual: boolean = true, sendToWeb: boolean = true): void {
     this.payload.selectedId = id;
+    const observation = materialObservationForPreset(this.payload.proceduralPreset || '', this.payload.sceneRevision || 1);
     if (this.sceneType === 'relic_inspector' && id) {
-      const index = ['form', 'pattern', 'story'].indexOf(id);
-      if (index >= 0) { this.yaw = [0.3, 0.95, -0.7][index]; this.pitch = [0.22, 0.1, 0.4][index]; }
+      const detail = observation?.hotspots.find(item => item.id === id);
+      if (detail) { this.yaw = detail.yaw; this.pitch = detail.pitch; this.zoom = detail.zoom; }
+      else {
+        const index = ['form', 'pattern', 'story'].indexOf(id);
+        if (index >= 0) { this.yaw = [0.3, 0.95, -0.7][index]; this.pitch = [0.22, 0.1, 0.4][index]; }
+      }
     }
-    if (manual) { this.pauseAutomatic(); this.angleLabel = '已聚焦'; }
+    if (manual) {
+      this.pendingReplayMessage = ''; this.replayFrame = undefined; this.frameBackground = T.canvas;
+      this.pauseAutomatic(); this.captureMessage = ''; this.angleLabel = '已聚焦';
+    }
     this.draw();
     if (sendToWeb && this.loaded && !this.native) this.js(`window.engineFocusHotspot(${JSON.stringify(id)})`);
   }
@@ -234,12 +312,14 @@ export struct CulturalEngineViewport {
     this.automatic = !this.automatic; this.angleLabel = this.automatic ? '自动浏览' : '已暂停'; this.syncMotion();
   }
   private turn(delta: number): void {
+    this.pendingReplayMessage = '';
     this.pauseAutomatic(); this.yaw += delta; this.captureMessage = '';
     this.angleLabel = `视角 ${Math.round(this.yaw * 180 / Math.PI) % 360}°`; this.draw();
     // Web turn 的 value 是 0.35 弧度步数，原生按钮使用真实弧度，必须换算再发送。
     if (this.loaded && !this.native) this.js(`window.engineCommand('turn',${delta / 0.35})`);
   }
   private reset(): void {
+    this.pendingReplayMessage = ''; this.replayFrame = undefined; this.frameBackground = T.canvas;
     this.pauseAutomatic(); this.yaw = 0.25; this.pitch = this.sceneType === 'river_sandbox' ? 0.42 : 0.3; this.zoom = 1;
     this.angleLabel = '初始视角'; this.captureMessage = ''; this.draw();
     if (this.loaded && !this.native) this.js("window.engineCommand('reset')");
@@ -314,7 +394,7 @@ export struct CulturalEngineViewport {
             .onErrorReceive((event: OnErrorReceiveEvent) => { if (event.request.isMainFrame()) this.useNative(); })
             .onRenderExited(() => this.useNative())
         }
-      }.width('100%').height(this.viewportHeight).borderRadius(20).clip(true).backgroundColor(T.canvas)
+      }.width('100%').height(this.viewportHeight).borderRadius(20).clip(true).backgroundColor(this.frameBackground)
         .id(`engine-viewport-${this.sceneType}`)
         .accessibilityText(this.sceneType === 'stratum_slice' ? '四个阅读主题的空间学习示意' : '可拖动旋转、双指缩放的文化示意视口')
         .onVisibleAreaChange([0, 0.1], (visible: boolean, ratio: number) => { this.visible = visible && ratio > 0; this.syncMotion(); })

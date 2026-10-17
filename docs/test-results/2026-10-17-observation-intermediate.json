@@ -1,0 +1,18 @@
+[
+  {
+    "test": "ObservationMemoryTest#native_dahecun_hotspots_recorded_frame_gallery_and_replay",
+    "report": "docs/test-results/2026-10-17-164410-device.log",
+    "status": "pass",
+    "mainPackageSha256": "D30B341E6B0B2BDBB132D914F87BFCE742F04DD991152C0AFF5681CA8192D4BA",
+    "testPackageSha256": "34640F1A555A1F77C3F102AD98CBDFD5B3E74A8FB6F304BC2AE7C72B636EFC20",
+    "reasonNotFinal": "热点字覆在器表，人工看图后改为当前部位浅底注释牌"
+  },
+  {
+    "test": "ObservationMemoryTest#native_dahecun_hotspots_recorded_frame_gallery_and_replay",
+    "report": "docs/test-results/2026-10-17-164722-device.log",
+    "status": "pass",
+    "mainPackageSha256": "E2768D91F58760058AAEF41F0A75F17A6E2F14A2141384268D9728013DC6EB13",
+    "testPackageSha256": "E2A34B85622C65439A7ED02B2199116F82EFAD3ABAB802382C560415805CD1FE",
+    "reasonNotFinal": "标注修正版，随后补充各部位短观察提示"
+  }
+]

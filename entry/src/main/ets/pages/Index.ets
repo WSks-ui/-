@@ -245,6 +245,25 @@ struct Index {
     return HERITAGE_SITES.find((site: HeritageSite) => site.id === id);
   }
 
+  private memorySite(note: ArchiveRecord): HeritageSite {
+    const site = this.siteFor(note.siteId);
+    if (site) return site;
+    // 未知档案只保留记录自身的身份与文字，不能拿目录首条文化内容替代它。
+    return { id: note.siteId, name: '原档案暂不可用', city: '文字记忆', era: '', type: '未找到档案', tags: [],
+      summary: '', overview: '', archaeology: '', history: '', poetry: '', travel: '',
+      source: { title: '原档案暂不在当前目录中', url: '' }, reviewStatus: '档案信息不可用',
+      illustration: '', accent: '', photos: [] };
+  }
+
+  private openMemory(note: ArchiveRecord, replay: boolean): void {
+    const site = this.siteFor(note.siteId);
+    if (!site) {
+      this.getUIContext().getPromptAction().showToast({ message: '原档案暂不在当前目录中，这页文字记忆仍然保留' });
+      return;
+    }
+    this.openSite(site, replay && note.snapshot3DPose ? JSON.stringify(note.snapshot3DPose) : '');
+  }
+
   private visitedCount(): number {
     // 同一档案的 opened 和四个探索主题共用 progress kind，统计必须按 siteId 去重。
     return HERITAGE_SITES.filter((site: HeritageSite) => this.snapshot.records.some((record: ArchiveRecord) =>
@@ -277,12 +296,22 @@ struct Index {
   @Builder
   destination(name: string, parameter: Object) {
     if (name === 'site') {
-      SiteDetail({
-        site: this.siteFor((parameter as SiteRoute).siteId) || HERITAGE_SITES[0],
+      if (this.siteFor((parameter as SiteRoute).siteId)) {
+        SiteDetail({
+        site: this.siteFor((parameter as SiteRoute).siteId)!,
         snapshot: $snapshot, initialPoseJson: (parameter as SiteRoute).poseJson || '',
         onCommit: (next: ArchiveSnapshot): Promise<boolean> => this.commit(next),
         onOpen: (site: HeritageSite) => this.openSite(site)
-      })
+        })
+      } else {
+        NavDestination() {
+          Column({ space: 16 }) {
+            Text('原档案暂不在当前目录中').fontSize(F.section).fontColor(T.ink)
+            Text('已保存的文字记忆仍然保留；此处无法重建对应观察。').fontSize(F.body).fontColor(T.muted)
+            Button('返回记忆').fontColor(T.accent).backgroundColor(T.accentSoft).onClick(() => { this.paths.pop(); })
+          }.width('100%').padding(24)
+        }.title('档案暂不可用').backgroundColor(T.canvas)
+      }
     } else if (name === 'culture') {
       CultureAtlas({ snapshot: $snapshot, journeyId: (parameter as JourneyGraphRoute)?.journeyId || '', onOpen: (site: HeritageSite) => this.openSite(site) })
     } else if (name === 'profile') {
@@ -588,13 +617,10 @@ struct Index {
           this.emptyState('第一张手账，从一次凝视开始', $r('sys.symbol.square_and_pencil'), '打开文化档案，留住视角，写下自己的黄河记忆。')
         }
         ForEach(activeRecords(this.snapshot.records, 'note'), (note: ArchiveRecord) => {
-          MemoryPostcardItem({ note, site: this.siteFor(note.siteId) || HERITAGE_SITES[0], compact: !this.memoryGallery,
+          MemoryPostcardItem({ note, site: this.memorySite(note), compact: !this.memoryGallery,
             syncLabel: this.accountView.signedIn && this.accountView.lastSync >= note.updatedAt ? '已完成账号同步' : '已保存在本机',
-            onOpen: () => { const site = this.siteFor(note.siteId); if (site) this.openSite(site); },
-            onPose: () => {
-              const site = this.siteFor(note.siteId);
-              if (site) this.openSite(site, note.snapshot3DPose ? JSON.stringify(note.snapshot3DPose) : '');
-            } })
+            onOpen: () => this.openMemory(note, false),
+            onPose: () => this.openMemory(note, true) })
         }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}:${this.memoryGallery}`)
         Row() {
           Text('收藏档案').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
