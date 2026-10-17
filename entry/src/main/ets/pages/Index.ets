@@ -9,6 +9,9 @@ import {
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { LocalArchiveRepository } from '../data/LocalArchiveRepository';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
+import { CulturalEngineViewport } from '../components/CulturalEngineViewport';
+import { CulturalEnginePayload, CulturalEngineNode } from '../domain/CulturalEngineContract';
+
 import { SiteRow } from '../components/SiteRow';
 import { SiteDetail } from '../components/SiteDetail';
 import { SiteGrid } from '../components/SiteCard';
@@ -17,7 +20,8 @@ import { ArchiveTheme as T, ArchiveType as F } from '../components/ArchiveTheme'
 import { ArchiveStat, ArchiveStatusRow, PaperSurface } from '../components/ArchiveInfo';
 import { DEFAULT_ARCHIVE_STORE } from '../platform/ArchiveLaunch';
 import { CultureAtlas } from '../components/CultureAtlas';
-import { AccountPanel } from '../components/AccountPanel';
+import { LoginPage } from '../components/LoginPage';
+import { ProfilePage } from '../components/ProfilePage';
 import { AccountSyncClient } from '../sync/AccountSyncClient';
 import { AccountView, accountErrorMessage, accountStoreName, changedAccountView, guestAccountView } from '../domain/AccountSync';
 
@@ -29,6 +33,9 @@ struct Index {
   @LocalStorageProp('archiveStoreName') archiveStoreName: string = DEFAULT_ARCHIVE_STORE;
   @LocalStorageProp('appForeground') appForeground: boolean = true;
   @State accountView: AccountView = guestAccountView();
+  @State entered: boolean = false;
+  @State university: string = '';
+  @State studentNumber: string = '';
   @State snapshot: ArchiveSnapshot = emptySnapshot('');
   @State ready: boolean = false;
   @State loading: boolean = true;
@@ -75,8 +82,10 @@ struct Index {
     this.accountView = changedAccountView(this.accountView, { serviceConfigured: await this.accountClient.configure() });
   }
 
-  private async authenticateAccount(username: string, password: string, register: boolean): Promise<boolean> {
-    if (this.saving || this.accountView.busy || !this.accountClient) return false;
+  private async authenticateAccount(username: string, password: string, register: boolean,
+    university: string, studentNumber: string): Promise<boolean> {
+    // 初始游客库读取完成后才允许认证，避免其迟到响应覆盖已经切入的账号快照。
+    if (this.loading || this.saving || this.accountView.busy || !this.accountClient) return false;
     this.accountView = changedAccountView(this.accountView, { busy: true, message: '' });
     try {
       const session = await this.accountClient.authenticate(username, password, register);
@@ -90,8 +99,16 @@ struct Index {
       this.paths.clear();
       this.repository = repository;
       this.snapshot = snapshot;
+      this.ready = true;
+      this.errorMessage = '';
+      this.currentTab = 0;
+      this.collectionTag = '全部标签';
+      // 教育资料仅供本次会话的占位展示，既不认证也不持久化，切换身份时清除。
+      this.university = university;
+      this.studentNumber = studentNumber;
       this.keyword = ''; this.city = CITIES[0]; this.era = ERAS[0]; this.type = TYPES[0];
       this.accountView = changedAccountView(guestAccountView(), { signedIn: true, username: session.username, serviceConfigured: true });
+      this.entered = true;
       await this.syncAccount();
       return true;
     } catch (error) {
@@ -113,9 +130,26 @@ struct Index {
       this.repository = guest;
       this.snapshot = snapshot;
       this.accountView = changedAccountView(guestAccountView(), { serviceConfigured: this.accountView.serviceConfigured });
+      this.openLogin();
     } catch {
       this.accountView = changedAccountView(this.accountView, { busy: false, message: '本机档案暂时无法读取，当前账号记录仍保留。' });
     }
+  }
+
+  private openLogin(): void {
+    if (this.saving || this.accountView.busy) return;
+    this.paths.clear();
+    this.currentTab = 0;
+    this.university = ''; this.studentNumber = '';
+    this.entered = false;
+    this.accountView = changedAccountView(this.accountView, { message: '' });
+  }
+
+  private enterOffline(): void {
+    if (!this.ready || this.loading || this.accountView.busy) return;
+    this.paths.clear(); this.currentTab = 0;
+    this.accountView = changedAccountView(this.accountView, { message: '' });
+    this.entered = true;
   }
 
   private async syncAccount(): Promise<void> {
@@ -207,6 +241,35 @@ struct Index {
     return HERITAGE_SITES.find((site: HeritageSite) => site.id === id);
   }
 
+  private visitedCount(): number {
+    // 同一档案的 opened 和四个探索主题共用 progress kind，统计必须按 siteId 去重。
+    return HERITAGE_SITES.filter((site: HeritageSite) => this.snapshot.records.some((record: ArchiveRecord) =>
+      record.kind === 'progress' && !record.deleted && record.siteId === site.id)).length;
+  }
+
+  private riverPayload(): string {
+    const payload: CulturalEnginePayload = { version: 1, selectedId: this.city === CITIES[0] ? '' : this.city,
+      nodes: CITIES.slice(1).map((city: string): CulturalEngineNode => ({ id: city, label: city, city })) };
+    return JSON.stringify(payload);
+  }
+
+  @Builder
+  riverSandbox() {
+    Column({ space: 12 }) {
+      Row() {
+        Text('五城河洛').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
+        Text('沿河漫游').fontSize(F.caption).fontColor(T.accent)
+      }.width('100%')
+      CulturalEngineViewport({ sceneType: 'river_sandbox', payloadJson: this.riverPayload(), viewportHeight: 260,
+        reducedMotion: this.snapshot.reducedMotion, active: this.currentTab === 0 && this.paths.size() === 0,
+        onNodeSelected: (id: string, kind: string) => {
+          if (kind === 'city' && CITIES.slice(1).includes(id)) this.city = id;
+        } })
+      Text('点选河谷锚点或下方城市，循线浏览。地形为程序化示意。')
+        .fontSize(F.caption).fontColor(T.muted).lineHeight(20)
+    }.width('100%').padding(16).backgroundColor(T.surface).borderRadius(20).margin({ bottom: 12 }).id('river-sandbox-card')
+  }
+
   @Builder
   destination(name: string, parameter: Object) {
     if (name === 'site') {
@@ -218,7 +281,27 @@ struct Index {
       })
     } else if (name === 'culture') {
       CultureAtlas({ snapshot: $snapshot, onOpen: (site: HeritageSite) => this.openSite(site) })
+    } else if (name === 'profile') {
+      ProfilePage({ snapshot: $snapshot, view: this.accountView, saving: this.saving,
+        university: this.university, studentNumber: this.studentNumber,
+        onCommit: (next: ArchiveSnapshot): Promise<boolean> => this.commit(next),
+        onLogin: () => this.openLogin(), onLogout: () => { this.logoutAccount(); },
+        onSync: () => { this.syncAccount(); } })
     }
+  }
+
+  @Builder
+  profileEntry() {
+    Button({ type: ButtonType.Normal }) {
+      Column({ space: 3 }) {
+        // miniBar 高度固定：图标用 vp，文字限制导航区的放大上限，
+        // 避免 1.5 倍字体把文字裁进圆形边缘，正文仍遵从完整系统倍率。
+        SymbolGlyph($r('sys.symbol.person')).fontSize('23vp').fontColor([T.accent])
+        Text('我的').fontSize(12).maxFontScale(1.2).fontColor(T.ink).id('profile-entry-label')
+      }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+    }.width('100%').height('100%').padding(0).backgroundColor(Color.Transparent)
+      .borderRadius(30).accessibilityText('打开我的页面').id('profile-entry')
+      .onClick(() => this.paths.pushPathByName('profile', '', !this.snapshot.reducedMotion))
   }
 
   @Builder
@@ -411,6 +494,7 @@ struct Index {
     Scroll(this.exploreScroller) {
       Column() {
         this.heading('沿河，遇见文明', '五座城，把黄河故事慢慢读完。')
+        this.riverSandbox()
         this.cultureEntry()
         this.entryBoard()
         this.cityIndex()
@@ -466,7 +550,7 @@ struct Index {
         Row() {
           ArchiveStat({ value: `${activeRecords(this.snapshot.records, 'favorite').length}`, label: '收藏', valueId: 'collection-count' })
           ArchiveStat({ value: `${activeRecords(this.snapshot.records, 'note').length}`, label: '笔记', valueId: 'note-count' })
-          ArchiveStat({ value: `${activeRecords(this.snapshot.records, 'progress').length}`, label: '已浏览', valueId: 'visited-count' })
+          ArchiveStat({ value: `${this.visitedCount()}`, label: '已浏览', valueId: 'visited-count' })
         }.width('100%').padding({ top: 20, bottom: 20 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
         Row() {
           Text('收藏档案').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
@@ -513,78 +597,42 @@ struct Index {
   device() {
     Scroll(this.deviceScroller) {
       Column() {
-        this.heading('我的随身档案', this.accountView.signedIn ? '同一账号，让收藏与记忆相随。' : '本机记录，登录后使用账号档案。')
-        AccountPanel({ view: this.accountView,
-          onAuthenticate: (username: string, password: string, register: boolean): Promise<boolean> => this.authenticateAccount(username, password, register),
-          onLogout: () => { this.logoutAccount(); }, onSync: () => { this.syncAccount(); } })
+        this.heading('随身档案', '文化资源留在本地，探索随时可以开始。')
         Row({ space: 14 }) {
           Stack() {
-            Rect().width(56).height(56).radius(16).fill(T.rose).rotate({ angle: -6 })
-            SymbolGlyph($r('sys.symbol.folder')).fontSize(28).fontColor([T.accent])
+            Rect().width(56).height(56).radius(16).fill(T.mint).rotate({ angle: -6 })
+            SymbolGlyph($r('sys.symbol.folder')).fontSize(28).fontColor([T.mintInk])
           }.width(60).height(60)
           Column({ space: 6 }) {
             Text(this.saving ? '正在保存档案' : '档案保存在本机').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
             Text('收藏与笔记，随时翻阅。').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
           }.layoutWeight(1).alignItems(HorizontalAlign.Start)
-        }.width('100%').padding(18).backgroundColor(T.surface).borderRadius(T.cardRadius).margin({ top: 16 })
-        this.sectionTitle('档案状态', '本地模式')
+        }.width('100%').padding(18).backgroundColor(T.surface).borderRadius(T.cardRadius)
+        this.sectionTitle('档案状态')
         Column() {
           ArchiveStatusRow({ label: '本地存储', value: this.saving ? '正在保存' : '已就绪' })
           Divider().color(T.line)
           ArchiveStatusRow({ label: '文化资源', value: `${HERITAGE_SITES.length} 份预置初稿` })
           Divider().color(T.line)
-          ArchiveStatusRow({ label: '已浏览', value: `${activeRecords(this.snapshot.records, 'progress').length} 处` })
-        }.width('100%').padding({ left: 18, right: 18 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
-        this.sectionTitle('跨端连接')
-        Column() {
-          // 在线数来自已认证服务端最近 45 秒的真实交换活动，不等于鸿蒙可信设备发现。
-          ArchiveStatusRow({ label: '其他在线设备', value: this.accountView.signedIn && this.accountView.lastSync > 0
-            ? `${this.accountView.otherDevices} 台` : '尚未接入', valueId: 'connected-devices-value' })
-          Divider().color(T.line)
-          ArchiveStatusRow({ label: '最近账号同步', value: this.accountView.signedIn && this.accountView.lastSync > 0
-            ? new Date(this.accountView.lastSync).toLocaleTimeString() : '尚未接入', valueId: 'last-sync-value' })
-          Divider().color(T.line)
-          ArchiveStatusRow({ label: '保留冲突版本', value: this.accountView.signedIn && this.accountView.lastSync > 0
-            ? `${this.accountView.conflictCount} 条` : '尚未检测' })
-        }.width('100%').padding({ left: 18, right: 18 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
-        this.sectionTitle('阅读偏好', '跟随系统外观')
-        Column() {
-          Row({ space: 12 }) {
-            Text('沉浸光感').fontSize(F.body).fontColor(T.ink).layoutWeight(1)
-            Toggle({ type: ToggleType.Switch, isOn: this.snapshot.lightEnabled }).enabled(!this.saving).id('light-enabled')
-              .selectedColor(T.accent).onChange((enabled: boolean) => {
-                const next = copySnapshot(this.snapshot);
-                next.lightEnabled = enabled;
-                this.commit(next);
-              })
-          }.width('100%').padding({ top: 16, bottom: 16 })
-          Divider().color(T.line)
-          ArchiveStatusRow({ label: '设备光感能力', value: HarmonyEffects.hdsSupported() ? '原生沉浸光感' : '系统自适应材质', valueId: 'native-material-capability' })
-          Divider().color(T.line)
-          Row({ space: 12 }) {
-            Text('减少动态效果').fontSize(F.body).fontColor(T.ink).layoutWeight(1)
-            Toggle({ type: ToggleType.Switch, isOn: this.snapshot.reducedMotion }).enabled(!this.saving).id('reduced-motion')
-              .selectedColor(T.accent).onChange((enabled: boolean) => {
-                const next = copySnapshot(this.snapshot);
-                next.reducedMotion = enabled;
-                this.commit(next);
-              })
-          }.width('100%').padding({ top: 16, bottom: 16 })
-        }.width('100%').padding({ left: 18, right: 18 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
-        this.sectionTitle('关于云河纪')
-        Column() {
-          ArchiveStatusRow({ label: '版本', value: '0.1.0 · 地基版' })
+          ArchiveStatusRow({ label: '已浏览', value: `${this.visitedCount()} 处` })
           Divider().color(T.line)
           ArchiveStatusRow({ label: '数据格式', value: `v${this.snapshot.schemaVersion}` })
-          Divider().color(T.line)
-          ArchiveStatusRow({ label: '内容状态', value: '五城种子内容待校审' })
         }.width('100%').padding({ left: 18, right: 18 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
+        this.sectionTitle('离线文化资源')
+        Column({ space: 12 }) {
+          Text('五城文化，随身翻阅').fontSize(F.card).fontWeight(FontWeight.Medium).fontColor(T.ink)
+          Text(`已内置 ${HERITAGE_SITES.length} 份文化档案与主题插画。无需连接账号服务，也可查看文化档案、收藏与笔记。`)
+            .fontSize(F.small).fontColor(T.muted).lineHeight(24)
+          Text('文化内容仍为初稿待校审；插画为主题示意。')
+            .fontSize(F.caption).fontColor(T.accent).lineHeight(21)
+        }.width('100%').padding(18).alignItems(HorizontalAlign.Start).backgroundColor(T.surface).borderRadius(T.cardRadius)
       }.width('100%').constraintSize({ maxWidth: 760 })
         .padding({ left: 16, right: 16, top: this.topClearance(), bottom: this.dockClearance() })
     }.height('100%').width('100%').align(Alignment.Top).id('device-scroll')
   }
 
-  build() {
+  @Builder
+  mainPage() {
     Stack() {
       if (this.currentTab === 0) { RiverBackdrop() }
       HdsNavigation(this.paths) {
@@ -609,7 +657,7 @@ struct Index {
               TabContent() { this.device() }.tabBar(this.tabStyle(2, '档案', $r('sys.symbol.folder')))
             }.width('100%').layoutWeight(1)
               .barPosition(BarPosition.End).barOverlap(true).barBackgroundColor(Color.Transparent)
-              .barFloatingStyle(HarmonyEffects.dockStyle(this.snapshot.lightEnabled, this.snapshot.reducedMotion))
+              .barFloatingStyle(HarmonyEffects.dockStyle(this.snapshot.lightEnabled, this.snapshot.reducedMotion, () => { this.profileEntry(); }))
               .scrollable(false).animationDuration(this.snapshot.reducedMotion ? 0 : 220)
               .onChange((index: number) => { this.currentTab = index; }).id('native-dock')
           }.width('100%').height('100%')
@@ -628,4 +676,18 @@ struct Index {
       .onAreaChange((_old: Area, area: Area) => { this.wide = Number(area.width) >= 840; })
     }.width('100%').height('100%').backgroundColor(T.canvas)
   }
+
+  build() {
+    Stack() {
+      if (this.entered) {
+        this.mainPage()
+      } else {
+        LoginPage({ view: this.accountView, initializing: this.loading, localAvailable: this.ready, localError: this.errorMessage,
+          onAuthenticate: (username: string, password: string, register: boolean, university: string, studentNumber: string): Promise<boolean> =>
+            this.authenticateAccount(username, password, register, university, studentNumber),
+          onOffline: () => this.enterOffline(), onRetryLocal: () => { this.loadArchive(); } })
+      }
+    }.width('100%').height('100%').backgroundColor(T.canvas)
+  }
+
 }

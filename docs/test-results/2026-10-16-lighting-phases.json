@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-16",
+  "device": "HarmonyOS 7 API 26 phone emulator",
+  "renderer": "ArkUI Canvas CPU polygon projection with per-face Lambert and directional gloss",
+  "mainPackageSha256": "08C731A251C7B5C6CC954959A7BA59DCCA992931482126676B91593D2AB8E835",
+  "testPackageSha256": "1DF158A6625F1A0214C66E6504C1CFD177EF14387DCE986FA03357BF55F147DB",
+  "reports": [
+    {
+      "label": "forms-a",
+      "test": "SpatialExperienceTest#native_pottery_terraces_and_city_ring_rotate",
+      "path": "docs/test-results/2026-10-16-233843-device.log",
+      "sha256": "9DA1CFD474E84566FF4C81DE84C53B1420837B933633588C2290439FA5BDF14D",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0
+    },
+    {
+      "label": "forms-b",
+      "test": "SpatialExperienceTest#native_tower_and_mound_release_when_leaving",
+      "path": "docs/test-results/2026-10-16-234039-device.log",
+      "sha256": "E1583C8D3CDC76892FBE5E4C85B2B7991844F37F596C947DBA5EE61F4EBD7853",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0
+    },
+    {
+      "label": "appearance",
+      "test": "SpatialExperienceTest#native_object_reduced_motion_dark_and_large_text",
+      "path": "docs/test-results/2026-10-16-234200-device.log",
+      "sha256": "623CA3E8D33739E8135A34C9E4715498182FEEAD1F6C1B334FA784B96EEE25C5",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0
+    }
+  ],
+  "captures": [
+    {
+      "path": "docs/design/lighting/object-before-turn.png",
+      "report": "docs/test-results/2026-10-16-233843-device.log",
+      "sha256": "193D45F091E5BD97E8A77B7A223E73380B426BF8D73CD14A8947098D3D665229"
+    },
+    {
+      "path": "docs/design/lighting/object-after-turn.png",
+      "report": "docs/test-results/2026-10-16-233843-device.log",
+      "sha256": "5C0D0A6894112041C905ED9032150F196BEAF98D68CC59FC444FAE4A9D1D1E5D"
+    },
+    {
+      "path": "docs/design/lighting/smx-yangshao.png",
+      "report": "docs/test-results/2026-10-16-233843-device.log",
+      "sha256": "7CEDE1AE41B82FA949030469E5BD22D28C87A996EBAD38CA7803D8DC4DEC9619"
+    },
+    {
+      "path": "docs/design/lighting/ly-erlitou.png",
+      "report": "docs/test-results/2026-10-16-233843-device.log",
+      "sha256": "31A0A01C14A436047A505FA46B1E03560706252E21721A37B6017402C51DECEE"
+    },
+    {
+      "path": "docs/design/lighting/py-qicheng.png",
+      "report": "docs/test-results/2026-10-16-233843-device.log",
+      "sha256": "4D130FC38F943806E49023D76D27410C48FF0B430A3823735C67A6300296AEB3"
+    },
+    {
+      "path": "docs/design/lighting/kf-iron-pagoda.png",
+      "report": "docs/test-results/2026-10-16-234039-device.log",
+      "sha256": "79645D6E382DA70738FEFED9E02C10153DC489011E21614E9C81AA16E1BECE33"
+    },
+    {
+      "path": "docs/design/lighting/smx-guoguo.png",
+      "report": "docs/test-results/2026-10-16-234039-device.log",
+      "sha256": "D3D5ED75EBE48052D1AAA520A810DEE764CBF2F28CD1BB0ED0B5E0732F556731"
+    },
+    {
+      "path": "docs/design/lighting/object-reduced-before.png",
+      "report": "docs/test-results/2026-10-16-234200-device.log",
+      "sha256": "7E0692CFD118B6E97455761A92084D463AF19A0C54DBABE031A83A75806584BC"
+    },
+    {
+      "path": "docs/design/lighting/object-reduced-after.png",
+      "report": "docs/test-results/2026-10-16-234200-device.log",
+      "sha256": "7E0692CFD118B6E97455761A92084D463AF19A0C54DBABE031A83A75806584BC"
+    },
+    {
+      "path": "docs/design/lighting/object-dark-reduced.png",
+      "report": "docs/test-results/2026-10-16-234200-device.log",
+      "sha256": "8913D136DB3CDD1D9A9C0DC83D815CA0C3C8A5E6F59F92AF238A7ABBFF7DCCCF"
+    },
+    {
+      "path": "docs/design/lighting/object-large-reduced.png",
+      "report": "docs/test-results/2026-10-16-234200-device.log",
+      "sha256": "4FB98EA8C7C0A8E2824B8FFDF9E739EA7A00AA282466B12953206F334F13E94C"
+    }
+  ],
+  "validation": {
+    "localTests": 60,
+    "localPassed": 60,
+    "reportParserPassed": 9,
+    "deviceTests": 3,
+    "devicePassed": 3,
+    "failure": 0,
+    "error": 0,
+    "ignore": 0,
+    "normalLaunch": "已通过实际应用节点确认独立登录页",
+    "screenOffTimeoutMs": 30000,
+    "pixelChecks": "docs/design/lighting/pixel-checks.json",
+    "gpuRendering": "未在本轮验收",
+    "performance": "仅统计剔除面数量，未测帧率或耗时提升"
+  },
+  "sources": [
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectGeometry.ts",
+      "sha256": "4E3030BC6F646346C8370E60DB25A2F380096C9A7DEAFC975C28362FC00EB7DE"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectRaster.ts",
+      "sha256": "7F198F8709C1C24C43133B2FE02727B09352969D705861C468789C9D65F4541F"
+    },
+    {
+      "path": "entry/src/main/ets/platform/SiteObjectCanvas.ets",
+      "sha256": "1DE30FA4480D615B7283681244FDBEE8C9E061AAC3371D35375BA4A00733C8D1"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteObject3D.ets",
+      "sha256": "6125FAF809F6047ED2900705DA722B64A510608E72813023C6D0C5452A888CA4"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "sha256": "1FD3DEED7754695E68BAFFF7D89B063EE033FC4BD8195481B42B3FFE06B6D797"
+    },
+    {
+      "path": "tools/domain.test.mjs",
+      "sha256": "52E5681FAD344EBD5851284E805E411A0C0C61B9FC39377BFAC4239883942662"
+    }
+  ]
+}

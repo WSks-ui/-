@@ -1,0 +1,92 @@
+
+OHOS_REPORT_SUM: 4
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=startup_login_optional_education_and_failed_auth_stays_at_gate
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=startup_login_optional_education_and_failed_auth_stays_at_gate
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=28736
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=profile_outside_dock_archive_separation_and_settings_are_saved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=profile_outside_dock_archive_separation_and_settings_are_saved
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=45111
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=login_and_independent_entry_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=login_and_independent_entry_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=48042
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=register_with_optional_education_logout_and_real_login
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=register_with_optional_education_logout_and_real_login
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=110070
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: suiteconsuming=231959
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 4, Failure: 0, Error: 0, Pass: 4, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=231959
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

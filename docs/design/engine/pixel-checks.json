@@ -1,0 +1,124 @@
+{
+  "reducedMotion": {
+    "viewport": [
+      112,
+      728,
+      1144,
+      1778
+    ],
+    "visibleScenePixels": 413951,
+    "identical": true,
+    "meanAbsoluteDifference": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "rotation": [
+    {
+      "itemId": "smx-yangshao",
+      "beforeViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "afterViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "meanAbsoluteDifference": [
+        9.581045895851721,
+        8.383476917763536,
+        7.948308645765379
+      ],
+      "visibleChange": true
+    },
+    {
+      "itemId": "zz-duling-fangding",
+      "beforeViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "afterViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "meanAbsoluteDifference": [
+        40.86656337541732,
+        39.26014812540773,
+        39.825472965194365
+      ],
+      "visibleChange": true
+    },
+    {
+      "itemId": "kf-iron-pagoda",
+      "beforeViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "afterViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "meanAbsoluteDifference": [
+        16.05584251122453,
+        17.429153075712804,
+        18.10628093940673
+      ],
+      "visibleChange": true
+    },
+    {
+      "itemId": "py-xishuipo",
+      "beforeViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "afterViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "meanAbsoluteDifference": [
+        13.977050155416554,
+        15.251733566138379,
+        16.046098276986836
+      ],
+      "visibleChange": true
+    },
+    {
+      "itemId": "ly-erlitou",
+      "beforeViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "afterViewport": [
+        112,
+        728,
+        1144,
+        1778
+      ],
+      "meanAbsoluteDifference": [
+        28.07643712345063,
+        27.136912391112475,
+        26.40784757665298
+      ],
+      "visibleChange": true
+    }
+  ]
+}

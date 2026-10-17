@@ -1,0 +1,16 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=SpatialExperienceTest
+
+
+OHOS_REPORT_STATUS: class=SpatialExperienceTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=graph_depth_rotation_and_two_finger_selection
+OHOS_REPORT_STATUS_CODE: 1
+
+TestFinished-ResultCode: -1
+TestFinished-ResultMsg: App died
+user test finished.

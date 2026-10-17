@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-17",
+  "platform": "HarmonyOS 7 / API 26",
+  "renderer": "ArkUI Canvas native CPU fallback",
+  "mainPackageSha256": "9714328E0DE65F9B640CD0CFE4A2641A43067A977D569B143691EF882B1F7183",
+  "testPackageSha256": "08E8F1A5180A05580D9947068D39CC6C163AE45986E363D8C09EFC5AA1A70E37",
+  "reports": [
+    {
+      "label": "river",
+      "test": "EngineExperienceTest#native_river_five_cities_filter_matrix",
+      "path": "docs/test-results/2026-10-17-140226-device.log",
+      "sha256": "6E84760636C6C51F782721C7B36880D6ED8C3FE1E063D1CFDB958C07372BA076",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0
+    }
+  ],
+  "captures": [
+    {
+      "path": "docs/design/engine/history/river-home-first.png",
+      "report": "docs/test-results/2026-10-17-140226-device.log",
+      "sha256": "D68468B801C62C80B06F5F4B8F12CAA1B1EB76F48204E7FD97EFFC3F92013FFF"
+    }
+  ],
+  "historyAttempts": [
+    {
+      "date": "2026-10-17",
+      "reason": "首个五城与图谱合并用例240000ms超时；未计通过",
+      "packages": [
+        {
+          "path": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+          "sha256": "9714328E0DE65F9B640CD0CFE4A2641A43067A977D569B143691EF882B1F7183"
+        },
+        {
+          "path": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap",
+          "sha256": "1C024A92231451005E08C11C5CD41EDE7F9CFEAFC013D3C637A1604722DEFE9C"
+        }
+      ],
+      "report": "docs/test-results/2026-10-17-135416-device.log",
+      "pass": 0,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "entry/src/main/ets/domain/CulturalContent.ts",
+      "sha256": "A0C39CBE3EE217F8CF99E5DB8D63DC9D100E0686D01D8B3C1FA5EF925E65E87C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ExplorationProgress.ts",
+      "sha256": "D43BE17AE1AB2CC41094F598A413376370CB8519FB9D6C698C23D80DE9DBC2E7"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "sha256": "140DFEB4C65234A5AE70D4A880916370E72815AEAF28FB1655ACAB82150B8453"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectGeometry.ts",
+      "sha256": "EAC39C273DDCF6601B272012594D20701BA66DDB78D5C9DDAC3B946F9F0CF7CD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectRaster.ts",
+      "sha256": "C449A82C9F4B03E2364CC52FAC60D2D1AB8A775FC451FC0E2A52E7A38596AE25"
+    },
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "sha256": "77953F946F80A4499D5CD19AB0FC92FDD3424F49480CAD852420802A58CDE653"
+    },
+    {
+      "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+      "sha256": "614E061C7881BB59EFE1B38816712C6D2E8138F43CAD99A5BC07138247A09BD6"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "sha256": "6F41F1DBCAE596948203A91A6CDD4C884CFBEE9A85C8B8A0857CCF94147BB5D9"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureAtlas.ets",
+      "sha256": "F590B89385E91EA224FD596B9E0E511FAF352D02206823A61B187305B6FB632B"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "sha256": "0D79DE9828994C7CC39ECDFCBB48A5EFD18C521143F97CCABFEAD8F3888CB7C2"
+    },
+    {
+      "path": "entry/src/main/ets/data/HeritageCatalog.ts",
+      "sha256": "7F7D8EFBBA64E58956911B25F4845BA4F9995A8A0119385DBB423BB895E4B37D"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/EngineExperience.test.ets",
+      "sha256": "1DF0AC88653E5FCD071A6CC3006FE4C88CE6F8AA3A45F84D0401E092B76BFEBC"
+    }
+  ],
+  "failedReports": [
+    {
+      "label": "graph-entry",
+      "path": "docs/test-results/2026-10-17-140425-device.log",
+      "sha256": "1BBEB26BEEC3B04AF983C36A5AAE0C630ABA038A7BC3C106BB18DFF6058B4A9D",
+      "total": 1,
+      "pass": 0,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0,
+      "reason": "整屏搜索手势跳过短入口，已定位到列表底部，未计通过"
+    }
+  ]
+}

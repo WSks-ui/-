@@ -1,6 +1,6 @@
 import { uiMaterial } from '@kit.ArkUI';
 import { deviceInfo } from '@kit.BasicServicesKit';
-import { BlurStrategy, hdsMaterial, HdsTabsFloatingStyle, ScrollEffectType, TitleBarStyleOptions } from '@kit.UIDesignKit';
+import { BlurStrategy, hdsMaterial, HdsBarStyle, HdsBarLayoutMode, HdsTabsFloatingStyle, ScrollEffectType, TitleBarStyleOptions } from '@kit.UIDesignKit';
 
 // API 26 材质仅在官方支持的区域使用：标题栏、底部 TabBar、弹窗和部分控件。
 // 该文件是新 SDK 的隔离边界；当前工程最低 SDK 仍为 26，不能把此检测宣传成 API 12 兼容。
@@ -70,11 +70,17 @@ export class HarmonyEffects {
     };
   }
 
-  static dockStyle(enabled: boolean, reducedMotion: boolean): HdsTabsFloatingStyle {
+  static dockStyle(enabled: boolean, reducedMotion: boolean, profileBuilder?: CustomBuilder): HdsTabsFloatingStyle {
     return {
       // HDS 原生浮动栏按三个入口自适应宽度；不以百分比强制拉满，
       // 当前 SDK 的百分比配置会让材质底板偏移，窄屏也容易越过边缘。
       barSideMargin: 16, barBottomMargin: -14,
+      // 官方 miniBar 在 TabBar 外并排显示；尺寸 / 材质由 HDS 协调，不增加第四个页签。
+      miniBar: profileBuilder ? {
+        miniBarBuilder: profileBuilder, miniBarStyle: HdsBarStyle.COLLAPSE,
+        miniBarWidth: { smallWidth: 60, mediumWidth: 60, largeWidth: 60 },
+        barLayoutMode: HdsBarLayoutMode.HORIZONTAL, enableMiniBarBackground: true
+      } : undefined,
       lightColor: enabled && !reducedMotion ? $r('app.color.accent') : Color.Transparent,
       systemMaterialEffect: {
         materialType: HarmonyEffects.nativeMaterialType(enabled, reducedMotion),

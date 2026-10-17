@@ -16,7 +16,7 @@ async function capture(session: ArchiveUiSession, name: string): Promise<void> {
 }
 
 async function setToggle(session: ArchiveUiSession, id: string, enabled: boolean): Promise<void> {
-  const control = await session.inScroll('device-scroll', ON.id(id));
+  const control = await session.inScroll('profile-scroll', ON.id(id));
   expect(await control.isChecked()).assertEqual(!enabled);
   const bounds = await control.getBounds();
   // 当前模拟器上 Component.click 的默认中心点击曾返回成功却没有改变 Switch。
@@ -70,27 +70,29 @@ export default function archiveImmersiveTest() {
           await capture(session, 'scroll-bottom');
           await (await session.waitId('top-collection')).click();
           await session.waitId('collection-filter');
-          await (await session.waitId('tab-2')).click();
-          await session.inScroll('device-scroll', ON.id('light-enabled'));
+          await (await session.waitId('profile-entry')).click();
+          await session.inScroll('profile-scroll', ON.id('light-enabled'));
           expect(await (await session.waitId('native-material-capability')).getText()).assertEqual(HarmonyEffects.hdsSupported()
             ? '原生沉浸光感' : '系统自适应材质');
           await setToggle(session, 'light-enabled', false);
           expect((await session.read()).lightEnabled).assertFalse();
           expect(HarmonyEffects.nativeMaterialType(false, false)).assertEqual(hdsMaterial.MaterialType.NONE);
+          await session.driver.pressBack();
           await (await session.waitId('tab-0')).click();
           await session.inScroll('explore-scroll', ON.text('沿河，遇见文明'));
           await checkBars(session);
           await capture(session, 'disabled');
-          await (await session.waitId('tab-2')).click();
+          await (await session.waitId('profile-entry')).click();
           await setToggle(session, 'light-enabled', true);
           expect((await session.read()).lightEnabled).assertTrue();
           await setToggle(session, 'reduced-motion', true);
           expect((await session.read()).reducedMotion).assertTrue();
           expect(HarmonyEffects.nativeMaterialType(true, true)).assertEqual(hdsMaterial.MaterialType.NONE);
+          await session.driver.pressBack();
           await (await session.waitId('tab-0')).click();
           await session.inScroll('explore-scroll', ON.text('沿河，遇见文明'));
           await capture(session, 'reduced');
-          await (await session.waitId('tab-2')).click();
+          await (await session.waitId('profile-entry')).click();
           await setToggle(session, 'reduced-motion', false);
           expect((await session.read()).reducedMotion).assertFalse();
         });

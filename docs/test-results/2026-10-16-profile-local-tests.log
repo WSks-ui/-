@@ -1,0 +1,52 @@
+✔ account stores isolate account identity and test sessions without changing guest data (1.0096ms)
+✔ account authentication and sync responses reject invalid identity and statistics (0.2652ms)
+✔ account view never manufactures sync success for a guest or unavailable service (0.0925ms)
+✔ all seed cities are covered and stable ids are unique (0.0729ms)
+✔ empty query returns all records (0.1517ms)
+✔ city era type and keyword filters intersect (0.9111ms)
+✔ impossible combination is empty rather than ignoring filters (0.262ms)
+✔ whitespace-only search is empty query (0.1027ms)
+✔ active records hide tombstones and sort latest first (0.154ms)
+✔ upsert replaces one logical record (0.1916ms)
+✔ logical timestamp handles local clock rollback (0.0957ms)
+✔ latest timestamp wins and losing content is retained (0.1641ms)
+✔ same timestamp has deterministic device tie break (0.0682ms)
+✔ semantic equality ignores property insertion order (0.0603ms)
+✔ equal timestamp deletion wins over live record (0.0597ms)
+✔ old offline version cannot resurrect deleted record (0.0704ms)
+✔ merge is idempotent and has no conflict for identical records (0.0356ms)
+✔ merge is commutative across multiple ids and versions (0.066ms)
+✔ snapshot copies cannot mutate source tags (0.076ms)
+✔ snapshot round trips unicode and timestamps (0.1379ms)
+✔ corrupt or future snapshots are rejected (0.1058ms)
+✔ invalid records and duplicate ids are rejected (0.1379ms)
+✔ maximum legal note and tags round trip without truncation (0.1596ms)
+✔ UI test store is accepted only for a bounded debug-only namespace (0.0722ms)
+✔ recommendations exclude current and favorites and explain ranking (0.2279ms)
+✔ cold start recommendations are deterministic (0.0742ms)
+✔ progress is an input to local recommendations (0.0611ms)
+✔ landing recommendations do not repeat already viewed content (0.0455ms)
+✔ unconfigured sync never claims success (0.2535ms)
+✔ all catalog illustrations are bundled offline (0.4124ms)
+✔ light and dark themes contain identical resource keys (0.3431ms)
+✔ culture graph explains shared era and content without inventing links (0.1877ms)
+✔ personal graph derives only from live known favorites and notes (0.1005ms)
+✔ custom note topic creates a real personal connection and removes with deleted note (0.1272ms)
+✔ repository initializes a genuinely absent snapshot and persists installation id (1.5018ms)
+✔ repository reopens existing snapshot without rewriting it (0.54ms)
+✔ repository rejects existing empty, corrupt and wrong-type values without clearing them (3.4187ms)
+✔ repository does not initialize over an orphaned backup (0.4828ms)
+✔ failed flush leaves disk and current in-memory cache on confirmed snapshot (0.5522ms)
+✔ queue recovers after a failed write (0.5427ms)
+✔ save captures input before caller mutates it (0.4882ms)
+✔ queued writes persist the last request and retain the previous confirmed version (0.5275ms)
+✔ invalid schema is rejected before any write (0.4823ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 272.6038
+设备报告解析测试：9/9 通过。

@@ -61,11 +61,12 @@ export default function archiveAppearanceTest() {
           expect(await (await session.waitId('collection-count')).getText()).assertEqual('1');
           expect(await (await session.waitId('note-count')).getText()).assertEqual('1');
           await capture(session, 'collection');
-          await (await session.waitId('tab-2')).click();
-          await session.inScroll('device-scroll', ON.id('last-sync-value'));
+          await (await session.waitId('profile-entry')).click();
+          await session.inScroll('profile-scroll', ON.id('last-sync-value'));
           await capture(session, 'device');
 
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+          await session.driver.pressBack();
           await (await session.waitId('tab-0')).click();
           await (await session.waitId('explore-scroll')).scrollToTop(40000);
           await capture(session, 'home-dark');

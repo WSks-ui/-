@@ -21,9 +21,9 @@ export class ArchiveTheme {
   static mintInk: Resource = $r('app.color.home_mint_ink');
   static yellowInk: Resource = $r('app.color.home_yellow_ink');
   static pagePadding: number = 16;
-  static cardRadius: number = 16;
-  static inputRadius: number = 10;
-  static buttonRadius: number = 8;
+  static cardRadius: number = 20;
+  static inputRadius: number = 12;
+  static buttonRadius: number = 12;
 }
 
 // 使用系统 fp 字号，让标题、正文、说明一起响应用户字体设置。

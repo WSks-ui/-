@@ -2,7 +2,10 @@ import { SegmentButton, SegmentButtonOptions } from '@ohos.arkui.advanced.Segmen
 import { activeRecords, ArchiveRecord, ArchiveSnapshot, HeritageSite } from '../domain/ArchiveDomain';
 import { connectionReasons, cultureConnections, CultureConnection, cultureTopics, personalCultureSites } from '../domain/CultureConnections';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
-import { CultureGraph } from './CultureGraph';
+import { CulturalEngineViewport } from './CulturalEngineViewport';
+import { CulturalEnginePayload, CulturalEngineNode, CulturalEngineEdge } from '../domain/CulturalEngineContract';
+import { cultureGraphData, CultureGraphNode, CultureGraphEdge } from '../domain/CultureGraphData';
+import { decodeExplorationProgress } from '../domain/ExplorationProgress';
 import { siteIllustration } from './SiteRow';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
@@ -16,6 +19,7 @@ export struct CultureAtlas {
   @State comparing: boolean = false;
   @State mode: number[] = [0];
   @State topic: string = '';
+  @State graphActive: boolean = true;
   @State modeOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '五城图谱' }, { text: '我的图谱' }],
     fontColor: T.muted, selectedFontColor: T.accent, backgroundColor: T.soft, selectedBackgroundColor: T.surface
@@ -37,6 +41,17 @@ export struct CultureAtlas {
 
   private notes(): ArchiveRecord[] {
     return activeRecords(this.snapshot.records, 'note').filter((note: ArchiveRecord) => note.siteId === this.selected().id);
+  }
+
+  private graphPayload(): string {
+    const graph = cultureGraphData(this.sites(), this.selected().id, this.snapshot.records);
+    const payload: CulturalEnginePayload = { version: 1, selectedId: graph.selectedId,
+      nodes: graph.nodes.map((node: CultureGraphNode): CulturalEngineNode => ({ id: node.id, label: node.label, city: node.city, era: node.era,
+        type: this.sites().find(site => site.id === node.id)?.type || '', accent: node.accent,
+        explored: decodeExplorationProgress(this.snapshot.records, node.id).percent >= 75 ||
+          this.snapshot.records.some(record => record.kind === 'note' && !record.deleted && record.siteId === node.id) })),
+      edges: graph.edges.map((edge: CultureGraphEdge): CulturalEngineEdge => ({ source: edge.source, target: edge.target })) };
+    return JSON.stringify(payload);
   }
 
   @Builder
@@ -105,8 +120,16 @@ export struct CultureAtlas {
               Text(this.topic ? '此专题暂无档案' : '尚无收藏与笔记').fontSize(F.card).fontColor(T.muted)
             }.width('100%').height(240).justifyContent(FlexAlign.Center)
           } else {
-            CultureGraph({ sites: this.sites(), selectedId: this.selected().id, records: this.snapshot.records,
-              reducedMotion: this.snapshot.reducedMotion, onSelect: (id: string) => { this.selectedId = id; } })
+            CulturalEngineViewport({ sceneType: 'constellation_graph', payloadJson: this.graphPayload(), viewportHeight: 440,
+              reducedMotion: this.snapshot.reducedMotion, active: this.graphActive && !this.comparing,
+              onNodeSelected: (id: string, type: string) => {
+                if (type === 'site' && this.sites().some(site => site.id === id)) this.selectedId = id;
+              } })
+            Text('西东五城 × 档案类型 × 年代纵深 · 金色表示已探索或留有笔记')
+              .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+            Select(this.sites().map((site: HeritageSite): SelectOption => ({ value: site.name }))).value(this.selected().name)
+              .font({ size: F.small }).fontColor(T.ink).backgroundColor(T.surface).width('100%').id('culture-site-index')
+              .onSelect((index: number) => { this.selectedId = this.sites()[index].id; })
             Row({ space: 12 }) {
               Column({ space: 6 }) {
                 Text(this.selected().name).fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).id('culture-selected-name')
@@ -148,6 +171,8 @@ export struct CultureAtlas {
       }.width('100%').height('100%').align(Alignment.Top).id('culture-atlas-scroll')
     }.title('文明连线', { systemMaterial: HarmonyEffects.material(this.snapshot.lightEnabled, this.snapshot.reducedMotion) })
       .backgroundColor(T.canvas)
+      .onShown(() => { this.graphActive = true; })
+      .onWillHide(() => { this.graphActive = false; })
       .bindSheet($$this.comparing, this.comparison(), {
         height: SheetSize.LARGE, showClose: false, dragBar: true, backgroundColor: T.canvas
       })

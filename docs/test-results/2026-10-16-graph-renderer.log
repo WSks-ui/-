@@ -1,0 +1,5 @@
+HarmonyOS 7.0.0.107 / API 26; YunhejiSyncB; main HAP SHA256 25BF1EAD4F3136C751C7F6F701BD21D82D2250E34A5E7AAF562A219EA7D31D39
+10-16 20:02:29.991  8023  8023 I A01194/ARKWEB-CONSOLE: [CONSOLE:3840] "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  disabled by enterprise policy or commandline switch", source: resource://rawfile/three/three.min.js (3840)
+10-16 20:02:29.991  8023  8023 I A01194/ARKWEB-CONSOLE: [CONSOLE:3840] "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  disabled by enterprise policy or commandline switch", source: resource://rawfile/three/three.min.js (3840)
+10-16 20:02:29.993  8023  8023 I A01194/ARKWEB-CONSOLE: [CONSOLE:3840] "THREE.WebGLRenderer: Error creating WebGL context.", source: resource://rawfile/three/three.min.js (3840)
+10-16 20:02:30.051  8023  8023 I A03d00/JSAPP: CULTURE_GRAPH_RENDERER_READY:canvas2d

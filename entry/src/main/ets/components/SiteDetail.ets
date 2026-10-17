@@ -5,6 +5,10 @@ import {
 } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { SiteRow, siteIllustration } from './SiteRow';
+import { CulturalEngineViewport } from './CulturalEngineViewport';
+import { CulturalEnginePayload, CulturalEngineLayer, CulturalSceneType } from '../domain/CulturalEngineContract';
+import { getCulturalSiteMetadata, EXPLORATION_SECTIONS, ExplorationSectionId, CulturalLearningSection } from '../domain/CulturalContent';
+import { decodeExplorationProgress, encodeExplorationProgressRecord } from '../domain/ExplorationProgress';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 
@@ -23,6 +27,10 @@ export struct SiteDetail {
   @State editorOpen: boolean = false;
   @State validation: string = '';
   @State expandedNoteId: string = '';
+  @State private objectActive: boolean = true;
+  @State private engineMode: CulturalSceneType = 'relic_inspector';
+  @State private hotspot: string = 'form';
+  @State private explorationSection: ExplorationSectionId = 'overview';
   private bodyController: TextAreaController = new TextAreaController();
   private tagsController: TextInputController = new TextInputController();
 
@@ -32,6 +40,92 @@ export struct SiteDetail {
 
   private notes(): ArchiveRecord[] {
     return activeRecords(this.snapshot.records, 'note').filter((record: ArchiveRecord) => record.siteId === this.site.id);
+  }
+
+  private enginePayload(): string {
+    const payload: CulturalEnginePayload = { version: 1, itemId: this.site.id, title: this.site.name,
+      proceduralPreset: getCulturalSiteMetadata(this.site.id)?.proceduralPreset || 'yangshao_pottery',
+      selectedId: this.engineMode === 'stratum_slice' ? this.explorationSection : this.hotspot,
+      exploredIds: decodeExplorationProgress(this.snapshot.records, this.site.id).completedSectionIds,
+      layers: EXPLORATION_SECTIONS.map((section: CulturalLearningSection): CulturalEngineLayer => ({ id: section.id, label: section.title })) };
+    return JSON.stringify(payload);
+  }
+
+  private selectedReading(): string {
+    return this.explorationSection === 'overview' ? this.site.overview :
+      this.explorationSection === 'archaeology' ? this.site.archaeology :
+        this.explorationSection === 'history' ? this.site.history : `${this.site.poetry}\n${this.site.travel}`;
+  }
+
+  private async completeSection(): Promise<void> {
+    if (this.busy || decodeExplorationProgress(this.snapshot.records, this.site.id).completedSectionIds.includes(this.explorationSection)) return;
+    this.busy = true;
+    try {
+      const next = copySnapshot(this.snapshot);
+      next.records = putRecord(next.records, encodeExplorationProgressRecord(this.site.id, this.explorationSection,
+        nextTimestamp(next.records, Date.now()), next.deviceId));
+      // 先落盘才发布完成状态；每个主题独立版本信封，离线探索不同主题不会覆盖彼此。
+      await this.onCommit(next);
+    } finally { this.busy = false; }
+  }
+
+  @Builder
+  culturalExperience() {
+    Column({ space: 12 }) {
+      Text('文化凝视').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
+      Row({ space: 8 }) {
+        Button('器物凝视').id('engine-mode-relic').onClick(() => { this.engineMode = 'relic_inspector'; })
+          .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'relic_inspector' ? T.accentSoft : T.soft)
+        Button('地层切片').id('engine-mode-stratum').onClick(() => { this.engineMode = 'stratum_slice'; })
+          .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'stratum_slice' ? T.accentSoft : T.soft)
+      }.width('100%')
+      CulturalEngineViewport({ sceneType: this.engineMode, payloadJson: this.enginePayload(), viewportHeight: 300,
+        reducedMotion: this.snapshot.reducedMotion, active: this.objectActive && !this.editorOpen,
+        onNodeSelected: (id: string, type: string) => {
+          if (type === 'hotspot') this.hotspot = id;
+          const section = EXPLORATION_SECTIONS.find(section => section.id === id);
+          if (type === 'layer' && section) this.explorationSection = section.id;
+        } })
+      if (this.engineMode === 'relic_inspector') {
+        // 三个热点等分一行，显式收紧内边距，让 1.5 倍字号仍完整显示三字标签。
+        // 保留系统字体缩放；后续增加文案长度时应改换行布局，不能靠限制字号掩盖截断。
+        Row({ space: 8 }) {
+          Button('观形制').id('hotspot-form').onClick(() => { this.hotspot = 'form'; })
+            .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
+            .padding({ left: 4, right: 4 })
+            .backgroundColor(this.hotspot === 'form' ? T.accentSoft : T.soft)
+          Button('察纹样').id('hotspot-pattern').onClick(() => { this.hotspot = 'pattern'; })
+            .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
+            .padding({ left: 4, right: 4 })
+            .backgroundColor(this.hotspot === 'pattern' ? T.accentSoft : T.soft)
+          Button('听故事').id('hotspot-story').onClick(() => { this.hotspot = 'story'; })
+            .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
+            .padding({ left: 4, right: 4 })
+            .backgroundColor(this.hotspot === 'story' ? T.accentSoft : T.soft)
+        }.width('100%')
+        Text(this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history)
+          .fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%').id('engine-hotspot-reading')
+        Text('按档案主题生成的几何与装饰示意，非文物或遗址复原。')
+          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').id('site-object-notice')
+      } else {
+        Text('四层表示阅读主题，未核实为该遗址的真实考古层序。')
+          .fontSize(F.caption).fontColor(T.accent).lineHeight(20).width('100%')
+        ForEach(EXPLORATION_SECTIONS, (section: CulturalLearningSection) => {
+          Button(`${decodeExplorationProgress(this.snapshot.records, this.site.id).completedSectionIds.includes(section.id) ? '✓ ' : ''}${section.title}`)
+            .id(`exploration-${section.id}`).fontSize(F.small).width('100%').borderRadius(12)
+            .fontColor(T.ink).backgroundColor(this.explorationSection === section.id ? T.accentSoft : T.soft)
+            .onClick(() => { this.explorationSection = section.id; })
+        }, (section: CulturalLearningSection) => section.id)
+        Text(this.selectedReading()).fontSize(F.body).fontColor(T.ink).lineHeight(26).width('100%').id('exploration-reading')
+        Text(`探索进度 ${decodeExplorationProgress(this.snapshot.records, this.site.id).percent}%`)
+          .fontSize(F.small).fontColor(T.accent).width('100%').id('exploration-progress')
+        Progress({ value: decodeExplorationProgress(this.snapshot.records, this.site.id).percent, total: 100, type: ProgressType.Linear })
+          .width('100%').color(T.accent)
+        Button(this.busy ? '正在保存' : '标记此主题已探索').id('exploration-complete').fontSize(F.small)
+          .width('100%').enabled(!this.busy && !decodeExplorationProgress(this.snapshot.records, this.site.id).completedSectionIds.includes(this.explorationSection))
+          .backgroundColor(T.accent).fontColor(T.onAccent).onClick(() => this.completeSection())
+      }
+    }.width('100%').padding(16).backgroundColor(T.surface).borderRadius(20).margin({ top: 12, bottom: 12 })
   }
 
   private async saveFavorite(tag: string = ''): Promise<void> {
@@ -187,6 +281,7 @@ export struct SiteDetail {
     NavDestination() {
       Scroll() {
         Column() {
+          this.culturalExperience()
           Stack({ alignContent: Alignment.TopStart }) {
             Image(siteIllustration(this.site)).width('100%').height(210).objectFit(ImageFit.Cover)
               .borderRadius(18).accessibilityText('文化主题示意，非遗址实景')
@@ -290,6 +385,8 @@ export struct SiteDetail {
     }
     .title(this.site.name, { systemMaterial: HarmonyEffects.material(this.snapshot.lightEnabled, this.snapshot.reducedMotion) })
     .backgroundColor($r('app.color.canvas'))
+    .onShown(() => { this.objectActive = true; })
+    .onHidden(() => { this.objectActive = false; })
     .bindSheet($$this.editorOpen, this.noteEditor(), {
       height: SheetSize.LARGE, showClose: false, dragBar: false,
       keyboardAvoidMode: SheetKeyboardAvoidMode.RESIZE_ONLY,

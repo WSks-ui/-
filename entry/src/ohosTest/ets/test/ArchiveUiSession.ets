@@ -14,10 +14,12 @@ export class ArchiveUiSession {
   readonly driver: Driver = Driver.create();
   context: common.Context = TestContext.context;
   private ability: UIAbility | undefined = undefined;
+  private browseOffline: boolean;
 
-  constructor(scenario: string, storeName: string = '') {
+  constructor(scenario: string, storeName: string = '', browseOffline: boolean = true) {
     this.name = storeName || `yunheji_test_ui_${Date.now()}_${scenario}`;
     if (!/^yunheji_test_ui_[a-z0-9_]{1,80}$/.test(this.name)) throw new Error('INVALID_UI_TEST_STORE');
+    this.browseOffline = browseOffline;
   }
 
   async start(): Promise<void> {
@@ -27,8 +29,10 @@ export class ArchiveUiSession {
         bundleName: 'com.chr.myapplication', abilityName: 'EntryAbility',
         parameters: { yunhejiTestStore: this.name }
       });
-      // 首屏布局会随字体与窗口变化；用滚动容器确认加载完成，不假定搜索框一定在首屏内。
-      await this.wait(ON.id('explore-scroll'));
+      // 正式启动首先显示独立登录页。旧的离线路径测试也必须经真实按钮进入，
+      // 不用启动参数跳过认证界面；账号 / 登录专项可选择停留在登录页。
+      await this.waitId('login-scroll');
+      if (this.browseOffline) await this.enterOffline();
       // 启动命令返回时窗口可能尚未就绪，必须等节点出现后才能查询顶层 Ability。
       this.ability = await delegator.getCurrentTopAbility();
       expect(this.ability.context.abilityInfo.name === 'EntryAbility').assertTrue();
@@ -38,6 +42,11 @@ export class ArchiveUiSession {
       const store = await preferences.getPreferences(this.context, { name: this.name });
       expect(await store.has('snapshot')).assertTrue();
     } catch (error) { throw new Error(`UI_START_FAILED: ${(error as Error).message}`); }
+  }
+
+  async enterOffline(): Promise<void> {
+    await (await this.inScroll('login-scroll', ON.id('login-offline'))).click();
+    await this.waitId('explore-scroll');
   }
 
   async stop(): Promise<void> {
@@ -90,13 +99,77 @@ export class ArchiveUiSession {
   async waitId(id: string): Promise<Component> { return this.wait(ON.id(id), id); }
   async waitText(text: string): Promise<Component> { return this.wait(ON.text(text), text); }
 
+  private async inDetailScroll(scroll: Component, target: On): Promise<Component> {
+    const viewport = await scroll.getBounds();
+    const safeTop = viewport.top + 24;
+    const safeBottom = viewport.bottom - 80;
+    const height = safeBottom - safeTop;
+    if (height < 200) throw new Error('UI_DETAIL_VIEWPORT_TOO_SMALL');
+    // 详情开头新增了可交互画布。findComponent 能找到节点并不保证节点已经显示，
+    // 对零范围 / 被标题栏裁切的按钮不能直接 click，也不能先等待其“稳定”后就当成可见。
+    // 在页面左侧内边距外发起手势，避开画布的模型旋转和热点，不用 scrollSearch 的中央拖动。
+    const swipeX = Math.round(viewport.left + 12);
+    const distance = Math.min(700, height * 0.32);
+    let towardTop = false;
+    for (let attempt = 0; attempt <= 12; attempt++) {
+      const component = await this.driver.findComponent(target);
+      let hasBounds = false;
+      if (component) {
+        const bounds = await component.getBounds();
+        hasBounds = bounds.right > bounds.left && bounds.bottom - bounds.top > 12;
+        if (hasBounds) {
+          const centerY = (bounds.top + bounds.bottom) / 2;
+          if (centerY >= safeTop && centerY <= safeBottom) {
+            // 只有进入真实可点击区域后才检查稳定 / enabled；保存锁释放前不提前点击。
+            // 稳定期间发生布局更新时再核对一次范围，不复用滚动前或保存前的坐标。
+            const stable = await this.wait(target);
+            const current = await stable.getBounds();
+            const currentCenter = (current.top + current.bottom) / 2;
+            if (current.right > current.left && current.bottom - current.top > 12 &&
+              currentCenter >= safeTop && currentCenter <= safeBottom) return stable;
+          }
+          towardTop = centerY < safeTop;
+        }
+      }
+      if (attempt === 12) break;
+      if (!hasBounds) {
+        // 从详情底部查找编辑 / 删除操作时，节点可能已在屏幕上方，UiTest 只给零范围。
+        // 用真实页首 / 页尾锚点选择方向，不能把“未找到”固定解释为还在下方。
+        const end = await this.driver.findComponent(ON.text('继续探索').within(ON.id('detail-scroll')));
+        if (end) {
+          const bounds = await end.getBounds();
+          if (bounds.bottom > bounds.top && bounds.bottom >= safeTop && bounds.top <= safeBottom) towardTop = true;
+        }
+        const start = await this.driver.findComponent(ON.id('engine-mode-relic'));
+        if (start) {
+          const bounds = await start.getBounds();
+          if (bounds.bottom > bounds.top && bounds.bottom >= safeTop && bounds.top <= safeBottom) towardTop = false;
+        }
+      }
+      // 相邻搜索视野保持重叠；600 的单位为 px/s，不能沿用整屏高速 fling 跳过短按钮。
+      const startY = safeTop + height * (towardTop ? 0.28 : 0.72);
+      const endY = startY + (towardTop ? distance : -distance);
+      await this.driver.swipe(swipeX, Math.round(startY), swipeX, Math.round(endY), 600);
+    }
+    throw new Error('UI_DETAIL_SCROLL_TARGET_NOT_EXPOSED');
+  }
+
   async inScroll(scrollId: string, target: On): Promise<Component> {
     try {
       const scroll = await this.waitId(scrollId);
+      if (scrollId === 'detail-scroll') return await this.inDetailScroll(scroll, target);
       let offset = 80;
       let safeTop = 0;
       let safeBottom = 0;
       let swipeX = 0;
+      if (scrollId === 'profile-scroll') {
+        // 独立个人页没有 Dock，但 scrollSearch 也可能只露出 Switch 的一小截。
+        // 同样先把点击中心滚进完整内容区，否则裁切后的 bounds 会算错滑块中心。
+        const bounds = await scroll.getBounds();
+        safeTop = bounds.top + 24;
+        safeBottom = bounds.bottom - 80;
+        swipeX = Math.round((bounds.left + bounds.right) / 2);
+      }
       if (scrollId === 'explore-scroll' || scrollId === 'archive-scroll' || scrollId === 'device-scroll') {
         const bounds = await scroll.getBounds();
         const top = await this.driver.findComponent(ON.id('top-navigation-content'));
@@ -144,7 +217,7 @@ export class ArchiveUiSession {
         if (!exposed) throw new Error('UI_SCROLL_TARGET_COVERED_BY_NATIVE_BAR');
       }
       return this.wait(target);
-    } catch (error) { throw new Error(`UI_SCROLL_FAILED: ${(error as Error).message}`); }
+    } catch (error) { throw new Error(`UI_SCROLL_FAILED(${scrollId}): ${(error as Error).message}`); }
   }
 
   async search(keyword: string, expectedCount: number): Promise<void> {
@@ -191,9 +264,10 @@ export class ArchiveUiSession {
 
   async openYangshao(): Promise<void> {
     try {
-      await this.search('仰韶', 1);
+      // 内容扩充后“仰韶”会命中多处同文化条目；这个助手只负责打开仰韶村，使用完整名称。
+      await this.search('仰韶村遗址', 1);
       await (await this.inScroll('explore-scroll', ON.id('site-row-smx-yangshao'))).click();
-      await this.wait(ON.id('write-note'));
+      await this.inScroll('detail-scroll', ON.id('write-note'));
     } catch (error) { throw new Error(`UI_OPEN_FAILED: ${(error as Error).message}`); }
   }
 

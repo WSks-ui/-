@@ -1,0 +1,62 @@
+
+OHOS_REPORT_SUM: 2
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=visible_graph_compare_and_personal_note_topic
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stack=    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:86:24)
+OHOS_REPORT_STATUS: stream=Error in visible_graph_compare_and_personal_note_topic, execute timeout 240000ms
+OHOS_REPORT_STATUS: test=visible_graph_compare_and_personal_note_topic
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=240015
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=visible_graph_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stack=    at ArchiveUiSession entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:14:36)
+    at anonymous entry (entry/src/ohosTest/ets/test/CultureAtlas.test.ets:78:23)
+    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:90:19)
+    at getFuncWithArgsZero @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:82:12)
+    at processedFunc @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:161:24)
+    at asyncRun @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:1030:24)
+    at asyncRunSpecs @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:729:32)
+OHOS_REPORT_STATUS: stream=Error in visible_graph_dark_and_large_text, uitest-api dose not allow calling concurrently, current processing:Component.scrollSearch, incoming: Driver.create
+OHOS_REPORT_STATUS: test=visible_graph_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=1
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: suiteconsuming=240016
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 2, Failure: 0, Error: 2, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=240016
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

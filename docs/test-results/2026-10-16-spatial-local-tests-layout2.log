@@ -1,0 +1,82 @@
+(node:1132) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ account stores isolate account identity and test sessions without changing guest data (3.1611ms)
+✔ account authentication and sync responses reject invalid identity and statistics (9.6085ms)
+✔ account view never manufactures sync success for a guest or unavailable service (0.7129ms)
+✔ all seed cities are covered and stable ids are unique (0.5801ms)
+✔ empty query returns all records (1.5144ms)
+✔ city era type and keyword filters intersect (2.1998ms)
+✔ impossible combination is empty rather than ignoring filters (0.5141ms)
+✔ whitespace-only search is empty query (0.2242ms)
+✔ active records hide tombstones and sort latest first (0.5837ms)
+✔ upsert replaces one logical record (0.7796ms)
+✔ logical timestamp handles local clock rollback (0.2716ms)
+✔ latest timestamp wins and losing content is retained (0.2187ms)
+✔ same timestamp has deterministic device tie break (0.0852ms)
+✔ semantic equality ignores property insertion order (0.5598ms)
+✔ equal timestamp deletion wins over live record (0.322ms)
+✔ old offline version cannot resurrect deleted record (0.1951ms)
+✔ merge is idempotent and has no conflict for identical records (0.0689ms)
+✔ merge is commutative across multiple ids and versions (0.1215ms)
+✔ snapshot copies cannot mutate source tags (0.1665ms)
+✔ snapshot round trips unicode and timestamps (1.6744ms)
+✔ corrupt or future snapshots are rejected (0.2487ms)
+✔ invalid records and duplicate ids are rejected (0.2614ms)
+✔ maximum legal note and tags round trip without truncation (0.4838ms)
+✔ UI test store is accepted only for a bounded debug-only namespace (0.1589ms)
+✔ recommendations exclude current and favorites and explain ranking (0.4908ms)
+✔ cold start recommendations are deterministic (0.0984ms)
+✔ progress is an input to local recommendations (0.104ms)
+✔ landing recommendations do not repeat already viewed content (0.0978ms)
+✔ unconfigured sync never claims success (0.5033ms)
+✔ all catalog illustrations are bundled offline (0.9488ms)
+✔ light and dark themes contain identical resource keys (1.2465ms)
+✔ culture graph explains shared era and content without inventing links (0.3206ms)
+✔ expanded catalog covers 15 entries, valid filters and unchanged original identities (2.2794ms)
+✔ era projection has real depth, centered rotation and reversible node dragging (0.7439ms)
+✔ rotated graph keeps narrow-screen and large-text node targets inside the viewport (59.3485ms)
+✖ projected labels avoid each other at standard and enlarged font sizes (28.4389ms)
+✔ six procedural object types produce bounded meshes with valid indices and unit normals (5.4217ms)
+✔ graph edges have real reasons, no duplicates and all selected connections (0.4824ms)
+✔ personal graph has only known live nodes and handles an absent selection (0.4233ms)
+✔ force layout settles 15 nodes inside narrow and large-text viewports (58.2221ms)
+✔ force layout preserves existing nodes and bounds drag and resize (36.9856ms)
+✔ personal graph derives only from live known favorites and notes (0.1878ms)
+✔ custom note topic creates a real personal connection and removes with deleted note (0.1894ms)
+✔ repository initializes a genuinely absent snapshot and persists installation id (1.6066ms)
+✔ repository reopens existing snapshot without rewriting it (0.9832ms)
+✔ repository rejects existing empty, corrupt and wrong-type values without clearing them (4.0279ms)
+✔ repository does not initialize over an orphaned backup (0.6142ms)
+✔ failed flush leaves disk and current in-memory cache on confirmed snapshot (1.9024ms)
+✔ queue recovers after a failed write (0.9ms)
+✔ save captures input before caller mutates it (0.5924ms)
+✔ queued writes persist the last request and retain the previous confirmed version (0.6401ms)
+✔ invalid schema is rejected before any write (0.5562ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 51
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 457.2214
+
+✖ failing tests:
+
+test at tools\domain.test.mjs:264:1
+✖ projected labels avoid each other at standard and enlarged font sizes (28.4389ms)
+  AssertionError [ERR_ASSERTION]: 328/1: projected labels overlap: ly-hanwei, zz-zhenghan
+      at TestContext.<anonymous> (file:///<项目目录>/tools/domain.test.mjs:277:18)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

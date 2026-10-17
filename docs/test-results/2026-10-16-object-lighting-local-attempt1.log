@@ -1,0 +1,143 @@
+(node:22984) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ account stores isolate account identity and test sessions without changing guest data (0.9916ms)
+✔ account authentication and sync responses reject invalid identity and statistics (4.1107ms)
+✔ account view never manufactures sync success for a guest or unavailable service (2.5631ms)
+✔ all seed cities are covered and stable ids are unique (0.2503ms)
+✔ empty query returns all records (0.5254ms)
+✔ city era type and keyword filters intersect (1.3512ms)
+✔ impossible combination is empty rather than ignoring filters (0.1834ms)
+✔ whitespace-only search is empty query (0.609ms)
+✔ active records hide tombstones and sort latest first (0.5369ms)
+✔ upsert replaces one logical record (0.3504ms)
+✔ logical timestamp handles local clock rollback (0.1888ms)
+✔ latest timestamp wins and losing content is retained (0.371ms)
+✔ same timestamp has deterministic device tie break (0.1485ms)
+✔ semantic equality ignores property insertion order (0.0726ms)
+✔ equal timestamp deletion wins over live record (0.0394ms)
+✔ old offline version cannot resurrect deleted record (0.0398ms)
+✔ merge is idempotent and has no conflict for identical records (0.0359ms)
+✔ merge is commutative across multiple ids and versions (0.0703ms)
+✔ snapshot copies cannot mutate source tags (1.5035ms)
+✔ snapshot round trips unicode and timestamps (0.3844ms)
+✔ corrupt or future snapshots are rejected (0.2428ms)
+✔ invalid records and duplicate ids are rejected (0.3739ms)
+✔ maximum legal note and tags round trip without truncation (0.3329ms)
+✔ UI test store is accepted only for a bounded debug-only namespace (0.0885ms)
+✔ recommendations exclude current and favorites and explain ranking (0.2716ms)
+✔ cold start recommendations are deterministic (0.0623ms)
+✔ progress is an input to local recommendations (0.0929ms)
+✔ landing recommendations do not repeat already viewed content (0.0782ms)
+✔ unconfigured sync never claims success (0.3899ms)
+✔ all catalog illustrations are bundled offline (0.5232ms)
+✔ light and dark themes contain identical resource keys (17.6114ms)
+✔ culture graph explains shared era and content without inventing links (0.3538ms)
+✔ expanded catalog covers 15 entries, valid filters and unchanged original identities (0.5378ms)
+✔ native and offline web graph math share checked generated sources (1.2648ms)
+✔ era projection has real depth, centered rotation and reversible node dragging (0.4652ms)
+✔ rotated graph keeps narrow-screen and large-text node targets inside the viewport (50.4208ms)
+✔ projected labels avoid each other at standard and enlarged font sizes (57.3984ms)
+✔ manual graph dragging takes precedence over the readable-row packing fallback (19.9922ms)
+✖ six procedural object types produce bounded meshes with valid indices and unit normals (0.6063ms)
+✖ object polygon faces have nondegenerate winding and agree with GPU triangle indices (0.1838ms)
+✔ Lambert lighting separates terrace top front side and unlit faces (0.1826ms)
+✔ directional gloss peaks toward the specified highlight and remains bounded (0.0807ms)
+✖ pottery has three continuous sixteen-sector bands without coplanar overlay faces (0.0845ms)
+✖ city wall has outward outer walls inward inner walls and a horizontal crown (0.0935ms)
+✖ object raster culls backfaces and keeps all five shapes inside rotated viewports (0.1554ms)
+✔ graph edges have real reasons, no duplicates and all selected connections (0.3364ms)
+✔ personal graph has only known live nodes and handles an absent selection (0.2466ms)
+✔ force layout settles 15 nodes inside narrow and large-text viewports (46.5353ms)
+✔ force layout preserves existing nodes and bounds drag and resize (29.0941ms)
+✔ personal graph derives only from live known favorites and notes (0.1424ms)
+✔ custom note topic creates a real personal connection and removes with deleted note (0.1471ms)
+✔ repository initializes a genuinely absent snapshot and persists installation id (1.406ms)
+✔ repository reopens existing snapshot without rewriting it (0.5554ms)
+✔ repository rejects existing empty, corrupt and wrong-type values without clearing them (2.4197ms)
+✔ repository does not initialize over an orphaned backup (1.2018ms)
+✔ failed flush leaves disk and current in-memory cache on confirmed snapshot (0.5654ms)
+✔ queue recovers after a failed write (0.5214ms)
+✔ save captures input before caller mutates it (0.4478ms)
+✔ queued writes persist the last request and retain the previous confirmed version (0.4988ms)
+✔ invalid schema is rejected before any write (0.4951ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 55
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 635.8673
+
+✖ failing tests:
+
+test at tools\domain.test.mjs:311:1
+✖ six procedural object types produce bounded meshes with valid indices and unit normals (0.6063ms)
+  TypeError: Cannot read properties of undefined (reading 'x')
+      at samePoint (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:26:25)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:29:29
+      at Array.forEach (<anonymous>)
+      at addFace (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:28:11)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:55:9
+      at Array.forEach (<anonymous>)
+      at lathe (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:42:11)
+      at pottery (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:111:10)
+      at siteObjectShape (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:143:36)
+      at TestContext.<anonymous> (file:///<PROJECT_ROOT>/tools/domain.test.mjs:314:19)
+
+test at tools\domain.test.mjs:332:1
+✖ object polygon faces have nondegenerate winding and agree with GPU triangle indices (0.1838ms)
+  TypeError: Cannot read properties of undefined (reading 'x')
+      at samePoint (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:26:25)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:29:29
+      at Array.forEach (<anonymous>)
+      at addFace (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:28:11)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:55:9
+      at Array.forEach (<anonymous>)
+      at lathe (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:42:11)
+      at pottery (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:111:10)
+      at siteObjectShape (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:143:36)
+      at TestContext.<anonymous> (file:///<PROJECT_ROOT>/tools/domain.test.mjs:334:24)
+
+test at tools\domain.test.mjs:375:1
+✖ pottery has three continuous sixteen-sector bands without coplanar overlay faces (0.0845ms)
+  TypeError: Cannot read properties of undefined (reading 'x')
+      at samePoint (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:26:25)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:29:29
+      at Array.forEach (<anonymous>)
+      at addFace (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:28:11)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:55:9
+      at Array.forEach (<anonymous>)
+      at lathe (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:42:11)
+      at pottery (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:111:10)
+      at siteObjectShape (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:143:36)
+      at TestContext.<anonymous> (file:///<PROJECT_ROOT>/tools/domain.test.mjs:376:16)
+
+test at tools\domain.test.mjs:385:1
+✖ city wall has outward outer walls inward inner walls and a horizontal crown (0.0935ms)
+  TypeError: Cannot read properties of undefined (reading 'x')
+      at samePoint (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:26:25)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:29:29
+      at Array.forEach (<anonymous>)
+      at addFace (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:28:11)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:55:9
+      at Array.forEach (<anonymous>)
+      at lathe (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:42:11)
+      at ring (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:85:10)
+      at siteObjectShape (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:119:59)
+      at TestContext.<anonymous> (file:///<PROJECT_ROOT>/tools/domain.test.mjs:386:16)
+
+test at tools\domain.test.mjs:401:1
+✖ object raster culls backfaces and keeps all five shapes inside rotated viewports (0.1554ms)
+  TypeError: Cannot read properties of undefined (reading 'x')
+      at samePoint (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:26:25)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:29:29
+      at Array.forEach (<anonymous>)
+      at addFace (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:28:11)
+      at file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:55:9
+      at Array.forEach (<anonymous>)
+      at lathe (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:42:11)
+      at pottery (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:111:10)
+      at siteObjectShape (file:///<PROJECT_ROOT>/entry/src/main/ets/domain/SiteObjectGeometry.ts:143:36)
+      at TestContext.<anonymous> (file:///<PROJECT_ROOT>/tools/domain.test.mjs:403:19)
+

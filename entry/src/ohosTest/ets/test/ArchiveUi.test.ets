@@ -1,6 +1,7 @@
 import { abilityDelegatorRegistry, ON } from '@kit.TestKit';
 import { describe, expect, it } from '@ohos/hypium';
 import { activeRecords } from '../../../main/ets/domain/ArchiveDomain';
+import { HERITAGE_SITES } from '../../../main/ets/data/HeritageCatalog';
 import { ArchiveUiSession } from './ArchiveUiSession';
 
 export default function archiveUiTest() {
@@ -14,33 +15,37 @@ export default function archiveUiTest() {
     it('native_sync_panel_reports_unavailable', 0, async () => {
       const session = new ArchiveUiSession('sync_status');
       await session.run(async () => {
-        await (await session.waitId('tab-2')).click();
-        // 保留历史用例名，便于已有分组脚本继续运行。账号已接入后验证的是
-        // “未登录不能显示同步成功”，并滚到登录卡片下方的真实状态区；
-        // 不再依赖接入前的旧提示，也不把屏幕外节点误当成缺失。
-        await session.inScroll('device-scroll', ON.id('account-submit'));
+        await (await session.waitId('profile-entry')).click();
+        // 未登录的真实同步状态在独立“我的”页，登录表单仅在启动页。
+        await session.inScroll('profile-scroll', ON.id('profile-login'));
         expect(!await session.driver.findComponent(ON.id('account-sync-state'))).assertTrue();
-        expect(await (await session.inScroll('device-scroll', ON.id('connected-devices-value'))).getText()).assertEqual('尚未接入');
-        expect(await (await session.inScroll('device-scroll', ON.id('last-sync-value'))).getText()).assertEqual('尚未接入');
+        expect(await (await session.inScroll('profile-scroll', ON.id('connected-devices-value'))).getText()).assertEqual('尚未接入');
+        expect(await (await session.inScroll('profile-scroll', ON.id('last-sync-value'))).getText()).assertEqual('尚未接入');
       });
     });
     it('native_combined_filters_and_reset', 0, async () => {
       const session = new ArchiveUiSession('filters');
       await session.run(async () => {
+        await session.inScroll('explore-scroll', ON.id('filter-city'));
         await session.select('filter-city', '洛阳');
+        await session.inScroll('explore-scroll', ON.id('filter-era'));
         await session.select('filter-era', '夏商');
+        await session.inScroll('explore-scroll', ON.id('filter-type'));
         await session.select('filter-type', '都城遗址');
-        await session.search('青铜 都城', 1);
+        // 扩充后的洛阳有两处夏商都城；保留 AND 筛选，并同时核对两张真实结果卡片。
+        await session.search('青铜 都城', 2);
         await session.inScroll('explore-scroll', ON.id('site-row-ly-erlitou').within(ON.id('explore-site-grid')));
+        await session.inScroll('explore-scroll', ON.id('site-row-ly-yanshi-shang').within(ON.id('explore-site-grid')));
         // 同时核对实际卡片，避免结果数量更新了、双列 ForEach 却仍保留旧配对。
         expect(!await session.driver.findComponent(ON.id('site-row-smx-yangshao').within(ON.id('explore-site-grid')))).assertTrue();
         expect(!await session.driver.findComponent(ON.id('site-row-zz-shang').within(ON.id('explore-site-grid')))).assertTrue();
         await (await session.waitId('explore-scroll')).scrollToTop(40000);
         await session.inScroll('explore-scroll', ON.id('reset-filters'));
         await (await session.waitId('reset-filters')).click();
-        expect(await (await session.waitId('search-result-count')).getText()).assertEqual('5 处文化遗产');
+        expect(await (await session.waitId('search-result-count')).getText()).assertEqual(`${HERITAGE_SITES.length} 处文化遗产`);
         await session.inScroll('explore-scroll', ON.id('filter-city'));
         await session.select('filter-city', '洛阳');
+        await session.inScroll('explore-scroll', ON.id('filter-era'));
         await session.select('filter-era', '宋');
         expect(await (await session.waitId('search-result-count')).getText()).assertEqual('0 处文化遗产');
         await session.inScroll('explore-scroll', ON.text('没有符合条件的档案'));
@@ -51,10 +56,13 @@ export default function archiveUiTest() {
       const session = new ArchiveUiSession('crud');
       await session.run(async () => {
         await session.openYangshao();
-        await (await session.waitId('favorite-toggle')).click();
+        // 文化视口把收藏 / 笔记操作推到首屏以下，必须先滚入真实可点击区域。
+        await (await session.inScroll('detail-scroll', ON.id('favorite-toggle'))).click();
+        await session.inScroll('detail-scroll', ON.text('已收藏').within(ON.id('favorite-toggle')));
         await session.waitText('已收藏');
+        await session.inScroll('detail-scroll', ON.id('favorite-category'));
         await session.select('favorite-category', '研究资料');
-        await (await session.waitId('write-note')).click();
+        await (await session.inScroll('detail-scroll', ON.id('write-note'))).click();
         await (await session.waitId('note-body')).inputText('自动回归：仰韶文化的学习记录');
         await (await session.inScroll('note-editor-scroll', ON.id('note-tags'))).inputText('彩陶，研学');
         await (await session.waitId('save-note')).click();
@@ -73,6 +81,7 @@ export default function archiveUiTest() {
         await (await session.waitId('tab-1')).click();
         await session.select('collection-filter', '研究资料');
         await (await session.inScroll('archive-scroll', ON.id('site-row-smx-yangshao'))).click();
+        await session.inScroll('detail-scroll', ON.text('已收藏').within(ON.id('favorite-toggle')));
         await session.waitText('已收藏');
         console.info('UI_CRUD: 重建后收藏分类和详情已恢复');
         await (await session.waitId('detail-scroll')).scrollToBottom(40000);
@@ -100,7 +109,8 @@ export default function archiveUiTest() {
         expect(activeRecords(deleted.records, 'note').length).assertEqual(0);
         expect(deleted.records.find((record) => record.id === note.id)?.deleted).assertTrue();
         await (await session.waitId('detail-scroll')).scrollToTop(40000);
-        await (await session.waitId('favorite-toggle')).click();
+        await (await session.inScroll('detail-scroll', ON.id('favorite-toggle'))).click();
+        await session.inScroll('detail-scroll', ON.text('收藏档案').within(ON.id('favorite-toggle')));
         await session.waitText('收藏档案');
         const unfavorited = await session.read();
         expect(activeRecords(unfavorited.records, 'favorite').length).assertEqual(0);

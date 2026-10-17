@@ -1,0 +1,71 @@
+
+OHOS_REPORT_SUM: 4
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=startup_login_optional_education_and_failed_auth_stays_at_gate
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=startup_login_optional_education_and_failed_auth_stays_at_gate
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=39399
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=profile_outside_dock_archive_separation_and_settings_are_saved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:248:13)
+OHOS_REPORT_STATUS: stream=Error in profile_outside_dock_archive_separation_and_settings_are_saved, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND 
+OHOS_REPORT_STATUS: test=profile_outside_dock_archive_separation_and_settings_are_saved
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=57648
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=login_and_independent_entry_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=login_and_independent_entry_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=61334
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=register_with_optional_education_logout_and_real_login
+OHOS_REPORT_STATUS_CODE: 1
+

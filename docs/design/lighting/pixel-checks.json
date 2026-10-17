@@ -1,0 +1,28 @@
+{
+  "source": "实际模拟器原图的形态视口内暖色模型最大连通区域；排除时钟、按钮、插画和状态文字",
+  "modelRegion": [
+    376,
+    641,
+    880,
+    1215
+  ],
+  "reducedMotionIdentical": true,
+  "reducedMotionMeanAbsoluteDifference": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotationRegion": [
+    380,
+    641,
+    876,
+    1215
+  ],
+  "rotationChangesVisiblePixels": true,
+  "rotationMeanAbsoluteDifference": [
+    16.15004004158705,
+    11.81279855569293,
+    11.288952736877599
+  ],
+  "modelUniqueColors": 4516
+}

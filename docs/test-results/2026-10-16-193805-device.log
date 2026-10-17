@@ -1,0 +1,16 @@
+
+OHOS_REPORT_SUM: 4
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=4
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=new_smx_and_luoyang_sites_open_from_real_search
+OHOS_REPORT_STATUS_CODE: 1
+
+TestFinished-ResultCode: -1
+TestFinished-ResultMsg: App died
+user test finished.

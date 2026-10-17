@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-16",
+  "platform": "HarmonyOS 7.0.0.107 / API 26",
+  "device": "YunhejiSyncB",
+  "screen": [
+    1256,
+    2760
+  ],
+  "capturedWith": {
+    "mainPackageSha256": "51C89E54C812EB7AEEE4E25F3C421C348A86F856DD0AFCC944BEBC40C49B4E1A",
+    "testPackageSha256": "0CCA2B756A9180A75CB155D92FD76A7B95638399769E3AE14589CCE823D53741"
+  },
+  "report": {
+    "path": "docs/test-results/2026-10-16-172404-device.log",
+    "sha256": "524D280A5C8456C1675E81BB5AB2CE57C21F2168BD5D849E781BAFB075547DE0",
+    "passed": 4,
+    "total": 4
+  },
+  "visualInspection": "12 张原图逐张查看；仅空表单和本机模式，不公开真实账号、密码、学校、学号；图集仅等比缩放与排列。",
+  "captures": [
+    {
+      "path": "docs/design/profile/login.png",
+      "scene": "独立启动登录页",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "A3F6499A8E84C8B51B459DDD3FB92D5F4C4344C7E83F6E8A12E3F95CB9DA97A6"
+    },
+    {
+      "path": "docs/design/profile/education.png",
+      "scene": "大学 / 学号选填占位",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "5D38046CF16E6D9574724F1A067E009DDE33C51F55527369B89E8A54551AA1C9"
+    },
+    {
+      "path": "docs/design/profile/home.png",
+      "scene": "Dock 外原生“我的”入口",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "D619B7DAA4B1729F5677A660A5AC5B13730E315B9EA0BE0156404BE3D35991A2"
+    },
+    {
+      "path": "docs/design/profile/archive.png",
+      "scene": "仅保留本地资源的档案",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "2B0BCF9A36C4B7ED0F91D3F5606683D32EC90BC9E671571428085D68DE453C87"
+    },
+    {
+      "path": "docs/design/profile/mine.png",
+      "scene": "独立个人页",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "A6B347C89749A2DEAFDE4B6B8FF3C4FCF3F6463CC82D6B598CB18CD18465871C"
+    },
+    {
+      "path": "docs/design/profile/settings.png",
+      "scene": "个人偏好与真实同步状态",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "9BDE802984FEAB2443D30F2CFE431B1BDCFF0A6A33F22BB3943AB38798DBE1E2"
+    },
+    {
+      "path": "docs/design/profile/login-dark.png",
+      "scene": "深色登录页",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "25218164775A490A6A4B1C174D5015CC7025161F6560EE90720FD6764ED7EC74"
+    },
+    {
+      "path": "docs/design/profile/home-dark.png",
+      "scene": "深色原生独立入口",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "7654AB8EE539626BC4D9A5EA8D192DCEC2E1A43D952C89E01AF6FB28ABFAD0A7"
+    },
+    {
+      "path": "docs/design/profile/mine-dark.png",
+      "scene": "深色个人页",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "4785D372F21F743A50D98C0F8F02CD5223B6BF826B77CB964665EC9B836B0F18"
+    },
+    {
+      "path": "docs/design/profile/login-large.png",
+      "scene": "1.5 倍字体登录表单",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "5CE403E7EF32720A1BD56EED6615845F7E60A75A221E7AA2883CBD2A44A67D38"
+    },
+    {
+      "path": "docs/design/profile/home-large.png",
+      "scene": "1.5 倍字体与独立入口",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "51D9EDD4B3D1231EF7B07878ABBAB6DFB154CB2B9B70AA0383B42B97A1861B8B"
+    },
+    {
+      "path": "docs/design/profile/mine-large.png",
+      "scene": "1.5 倍字体个人页",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "0B9C1F2F23422679E963496EA3660B177A07ADACB08417A0A66633551F8A20D1"
+    }
+  ],
+  "galleries": [
+    {
+      "path": "docs/design/profile/overview.png",
+      "sha256": "732B68A5FF1A23B996FE04B4CFC699DDB0F4F6FE0D6CD1C1CEBE73782C44A73F"
+    },
+    {
+      "path": "docs/design/profile/appearance.png",
+      "sha256": "BCC1320EAD0B3CA9B0E4BC53602EBD3A970A5BCDC95A9B83F469D94E6D235A4D"
+    },
+    {
+      "path": "docs/design/profile/education-settings.png",
+      "sha256": "AFDD2B8E22AAA30635B941EB95DCFE36A88D4C7B547716E747762E681FA021FF"
+    }
+  ]
+}

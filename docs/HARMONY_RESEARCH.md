@@ -163,3 +163,44 @@ HDS 没有公开单独停止触点形变的属性。本轮应用关闭光感或�
 服务端在本机使用 Node.js 24 / SQLite，密码采用随机 salt + scrypt，令牌只保存哈希，事务合并保留墓碑 / 冲突落败版本。两台 HarmonyOS 7.0.0.107 模拟器通过各自 HDC reverse port 连接同一服务。8 个真实账号 / 双端场景、两端测试库清理与当前主包的存储 / 浏览、未登录状态和文明连线复验见 [测试报告第 12 节](TEST_REPORT.md)；本地 HTTPS / SQLite 综合测试另列 1/1。
 
 其他在线设备统计是同账号最近 45 秒真实交换的安装实例，不是鸿蒙可信设备发现。当前会话仅在内存；正式服务 / release 配置、离线冷启动会话恢复、华为账号和分布式数据库仍未接入。此处的类型声明与模拟器证据不新增 API 12 兼容或实机签名结论。运行方式、身份 / 数据边界见 [ACCOUNT_SYNC.md](ACCOUNT_SYNC.md)。
+
+## 11. Dock 外独立“我的”入口核查
+
+日期：2026-10-16；本机 SDK 26.0.0.105 / API 26。核对 `hms/ets/api/@hms.hds.hdsBaseComponent.d.ets`：`HdsTabsFloatingStyle.miniBar`、`HdsTabsMiniBar.miniBarBuilder`、`HdsBarStyle.COLLAPSE` 与 `miniBarWidth` 为 HarmonyOS 6.1 / API 23，`HdsBarLayoutMode.HORIZONTAL` 为 API 24。本轮用这一官方通道在三项 TabBar 右侧显示独立圆形个人入口；没有新增第四个 TabContent。
+
+`enableMiniBarBackground=true` 使独立区域跟随 HDS 材质，既有系统能力检测、`NONE` 降级、减少动态策略继续适用。没有为普通正文卡片增加材质，也没有使用绝对定位 / 自绘玻璃模拟官方栏。
+
+`Text.maxFontScale` 最小 API 12，声明核对本机 `openharmony/ets/build-tools/ets-loader/declarations/text.d.ts`。独立导航标签上限为 1.2，图标以 vp 控制，避免系统 1.5 倍字体下固定高度的圆形 miniBar 裁切文字；页面正文与表单仍完整响应系统字号。
+
+登录使用普通 ArkUI Scroll / TextInput / Password，不新增认证平台接口。大学、学号不加入网络与存储；登录前不创建主导航，退出后清理路由与本次教育资料。实际验证及截图见测试报告第 13 节；本节只记录类型与使用范围，不将编译成功等同于所有屏幕与动态性能验收。
+
+## 12. 离线 ArkWeb 图谱核查
+
+日期：2026-10-16；目标 SDK 26.0.0.105 / API 26。仅替换文明连线内部关系画布，页面、NavDestination、HDS 导航、账号和档案数据继续使用既有原生实现。
+
+| 接口 / 能力 | 本机声明的最小版本 | 实际用途 |
+|---|---|---|
+| `Web` / `javaScriptProxy`、`WebviewController.runJavaScript` | Web / 代理为 API 8，当前 `JavaScriptProxy` 类型为 API 12；`runJavaScript` 为 API 9 | 本包 rawfile 画布、节点选择回调、原生状态推送；代理仅两个方法 |
+| `fileAccess(false)` | API 8；API 12 起默认关闭一般文件访问 | 声明明确允许只读资源目录，实际本包 HTML / CSS / JS 加载成功 |
+| `Web.darkMode` / `forceDarkAccess` | API 9 | 跟随主题且不强制反色；准确颜色从 ArkUI 当前语义资源传入，不从光感开关推算 |
+| `onOverrideUrlLoading`、`textAutosizing` | API 12 | 限制导航到本包主文档，画布自行适配字号，原生索引保留系统字体 |
+| `onErrorReceive`、`onRenderExited` | API 8 / 9；当前事件类型为 API 12 | 主文档或渲染进程异常时保留可操作的原生档案索引 |
+| `NavDestination.onShown` / `onWillHide`、可见区域回调 | `onShown` 为 API 10，`onWillHide` 为 API 12；沿用原生可见区域能力 | 页面隐藏、对照打开与画布滚出时暂停动画；Web 内另处理 document visibility / pagehide |
+
+声明来源为本机 `openharmony/ets/component/web.d.ts`、`api/@ohos.web.webview.d.ts`、`build-tools/ets-loader/declarations/nav_destination.d.ts`。官方入口：[Web 组件](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/ts-basic-components-web)、[ArkWeb 渲染框架适配](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-arkweb_rendering_framework)；本轮接口最小版本以本机声明核验为依据。
+
+Three.js 0.180.0 的 WebGLRenderer 要求 WebGL2。本机模拟器实际控制台返回 `A WebGL context could not be created ... disabled by enterprise policy or commandline switch`，应用随后回报 `CULTURE_GRAPH_RENDERER_READY:canvas2d`。没有修改系统参数、Web 安全策略或模拟器全局配置强开 WebGL；当前实际显示与交互证据属于 Canvas 2D 降级，不能声称 WebGL 路径、GPU 性能或真机帧率已经通过。相同数据 / 布局用于两种绘制方式，WebGL 路径留待支持设备验证。
+
+图谱晕圈与流动粒子是普通绘图装饰，不冒充原生沉浸光感；原有 `HarmonyEffects.ets`、API 版本、主页结构、账号同步和数据模型本轮保持原样。原生能力与设备测试结论仍按对应包记录。
+## 2026-10-16：年代空间与 ArkGraphics3D 核验增补
+
+目标仍为 HarmonyOS 7 / API 26，SDK 类型声明为 26.0.0.105；本段不代表 OpenHarmony API 12 或其他镜像已经运行通过。
+
+- SDK 已提供 `@kit.ArkGraphics3D`，无需同名 ohpm 依赖。实际通过 `Scene.load()`、`getResourceFactory()`、异步 `createCamera/createLight/createMesh/createGeometry/createMaterial` 创建场景，`Component3D({ scene })` 消费原生 Scene。
+- `Vec3` / `Quaternion` 是结构接口；相机 `fov` 使用弧度。类型声明没有任务书示例中的 `BoxGeometry`、`TorusGeometry`、`Quat.fromEuler`、`LightType.AMBIENT` 或 `onSceneReady`。本轮使用 `CustomGeometry`、`PrimitiveTopology.TRIANGLE_LIST` 和 `MetallicRoughnessMaterial` 编译程序化网格。
+- `canIUse('SystemCapability.ArkUi.Graphics3D')` 和 Scene 创建返回成功仍不足以证明渲染。当前模拟器最初的 GPU 视口截图为空白，早期按钮用例虽为 Pass=1，视觉验收仍不通过。最终模拟器使用原生 Canvas 对同一网格做 CPU 透视、法线光照与深度排序；真机 GPU 仍待验证。
+- ArkWeb 崩溃栈在 `Chrome_InProcGp` 的 `eglCreateImageKHR/d_eglCreateImage_special`。Canvas CPU 提示、移除动态 CSS 变换、`RenderMode.SYNC_RENDER` 及 `enableAdvancedSecurityMode({ disableWebGL: true })` 的尝试未消除该镜像的崩溃；最终没有保留后两项无效配置。模拟器图谱使用 ArkUI Canvas，其他设备的 Web 路径保留待验。
+- 布局 / 投影属于纯数学，存放 `domain/CultureGraphLayout.ts` 和 `CultureGraphSpace.ts`；离线 Web 产物由 `entry/scripts/compile-graph.mjs` 擦除类型生成。SDK 场景 / 设备探测留在 platform，未引入领域层平台依赖。
+- 该镜像在一次 `-noWindow` 冷启动尝试中发生 init 退出；已保留数据恢复普通 CLI 冷启动，无重置 / 清库。设备操作继续使用 HDC / Hypium，未控制电脑桌面。
+
+官方核验来源、实际渲染范围及演示边界见 [SPATIAL_EXPERIENCE.md](SPATIAL_EXPERIENCE.md)。接口构建成功与设备图形结果分别记录，不把兼容显示标为 ArkGraphics3D / WebGL 已验收。

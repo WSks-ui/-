@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' file: resource:; base-uri 'none'; form-action 'none'">
+  <title>云河纪 · 文化交互视口</title>
+  <link rel="stylesheet" href="engine.css">
+</head>
+<body>
+  <main id="viewport" aria-label="文化三维交互视口">
+    <canvas id="gpu" aria-hidden="true"></canvas>
+    <canvas id="surface" role="img" aria-label="文化程序化学习示意，可拖动旋转并点击热点"></canvas>
+    <div id="caption" aria-live="polite">正在准备离线场景</div>
+    <div id="disclosure">程序化学习示意 · 非文物或遗址复原</div>
+  </main>
+  <script src="core.js"></script>
+  <script src="glb.js"></script>
+  <script src="renderer.js"></script>
+  <script src="engine.js"></script>
+</body>
+</html>

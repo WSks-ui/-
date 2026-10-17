@@ -1,0 +1,120 @@
+> hvigor [32mFinished :entry:default@PreBuild... after 99 ms [39m
+> hvigor [32mFinished :entry:default@CreateModuleInfo... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GenerateMetadata...  [39m
+> hvigor [32mFinished :entry:default@ConfigureCmake... after 1 ms [39m
+> hvigor [32mFinished :entry:default@MergeProfile... after 23 ms [39m
+> hvigor [32mFinished :entry:default@CreateBuildProfile... after 2 ms [39m
+> hvigor [32mFinished :entry:default@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GeneratePkgContextInfo...  [39m
+> hvigor [32mFinished :entry:default@GeneratePkgSdkInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:default@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mFinished :entry:default@MakePackInfo... after 3 ms [39m
+> hvigor [32mFinished :entry:default@SyscapTransform... after 8 ms [39m
+> hvigor [32mFinished :entry:default@ProcessProfile... after 92 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessRouterMap...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessShareConfig...  [39m
+> hvigor [32mFinished :entry:default@ProcessStartupConfig... after 2 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithNinja... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessResource...  [39m
+> hvigor [32mFinished :entry:default@GenerateLoaderJson... after 7 ms [39m
+> hvigor [32mFinished :entry:default@ProcessLibs... after 5 ms [39m
+> hvigor [32mFinished :entry:default@CompileResource... after 225 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@DoNativeStrip...  [39m
+> hvigor [32mFinished :entry:default@BuildJS... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@CacheNativeLibs...  [39m
+> hvigor ERROR: Failed :entry:default@CompileArkTS... 
+> hvigor WARN: 
+1 WARN: ArkTS:WARN: For details about ArkTS syntax errors, see FAQs
+2 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:34:52
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+3 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:35:53
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+4 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/LoginPage.ets:21:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+5 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/LoginPage.ets:22:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+6 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/LoginPage.ets:23:59
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+7 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/LoginPage.ets:24:56
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+8 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/AccountSyncClient.ets:40:36
+ Function may throw exceptions. Special handling is required.
+
+> hvigor ERROR: ArkTS Compiler Error
+1 ERROR: 10605025 ArkTS Compiler Error
+Error Message: Declaring fields in "constructor" is not supported (arkts-no-ctor-prop-decls) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CulturalEngineViewport.ets:8:15
+
+
+2 ERROR: 10605025 ArkTS Compiler Error
+Error Message: Declaring fields in "constructor" is not supported (arkts-no-ctor-prop-decls) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CulturalEngineViewport.ets:8:67
+
+
+3 ERROR: 10605025 ArkTS Compiler Error
+Error Message: Declaring fields in "constructor" is not supported (arkts-no-ctor-prop-decls) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CulturalEngineViewport.ets:9:5
+
+
+4 ERROR: 10605025 ArkTS Compiler Error
+Error Message: Declaring fields in "constructor" is not supported (arkts-no-ctor-prop-decls) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CulturalEngineViewport.ets:9:47
+
+
+5 ERROR: 10605038 ArkTS Compiler Error
+Error Message: Object literal must correspond to some explicitly declared class or interface (arkts-no-untyped-obj-literals) At File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:50:52
+
+
+6 ERROR: 10605038 ArkTS Compiler Error
+Error Message: Object literal must correspond to some explicitly declared class or interface (arkts-no-untyped-obj-literals) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CultureAtlas.ets:49:39
+
+
+7 ERROR: 10605038 ArkTS Compiler Error
+Error Message: Object literal must correspond to some explicitly declared class or interface (arkts-no-untyped-obj-literals) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CultureAtlas.ets:53:39
+
+
+8 ERROR: 10605038 ArkTS Compiler Error
+Error Message: Object literal must correspond to some explicitly declared class or interface (arkts-no-untyped-obj-literals) At File: <PROJECT_ROOT>/entry/src/main/ets/components/CultureAtlas.ets:130:46
+
+
+9 ERROR: 10605038 ArkTS Compiler Error
+Error Message: Object literal must correspond to some explicitly declared class or interface (arkts-no-untyped-obj-literals) At File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:252:53
+
+
+10 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'width' in type 'CulturalEngineViewport' is not assignable to the same property in base type 'CustomComponent'.
+  Type 'number' is not assignable to type '{ (value: Length): CommonAttribute; (widthValue: Length | LayoutPolicy): CommonAttribute; }'. At File: <PROJECT_ROOT>/entry/src/main/ets/components/CulturalEngineViewport.ets:38:11
+
+
+11 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'height' in type 'CulturalEngineViewport' is not assignable to the same property in base type 'CustomComponent'.
+  Type 'number' is not assignable to type '{ (value: Length): CommonAttribute; (heightValue: Length | LayoutPolicy): CommonAttribute; }'. At File: <PROJECT_ROOT>/entry/src/main/ets/components/CulturalEngineViewport.ets:39:11
+
+
+COMPILE RESULT:FAIL {ERROR:12 WARN:8}
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+
+[31m
+FAILURE: Build completed with 1 failure.[31m[39m
+[31m
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task 'default@CompileArkTS'.
+  > Compilation error. See log for more details
+
+[31m* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+[31m[39m
+[31m================================================================================[31m[39m
+> hvigor ERROR: BUILD FAILED in 15 s 479 ms 
+
+25 tasks in total: 18 executed, 7 up-to-date
+

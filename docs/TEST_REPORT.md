@@ -2,7 +2,11 @@
 
 2026-10-14 用户已明确演示使用团队自有鸿蒙设备，模拟器与实机均可，举办方不提供或指定运行平台。此项设备规则已确认，不要求额外的赛事平台兼容验收；实际安装、分布式能力和多端交互继续按本报告测试。规则澄清不新增任何设备测试通过结果，以下历史证据保持原样。
 
-最新测试日期：2026-10-14。所有“通过”仅覆盖表中明确列出的内容。
+最新测试日期：2026-10-16。所有“通过”仅覆盖表中明确列出的内容。
+
+**最新内容 / 图谱：本地 48/48、报告解析 9/9，主包与三版测试包构建成功；新增内容与画布专项分组 4/4，原有图谱 2/2、组合筛选 1/1、存储 / 浏览 6/6，七份完整设备报告 Failure/Error/Ignore 为 0。13 张真实原图已检查。当前模拟器实际使用 Canvas 2D 降级，WebGL 未验证；见第 14 节。**
+
+**最新登录 / 个人页：本地 43/43、报告解析 9/9，主包 / 测试包构建成功；ProfileLoginTest 4/4、存储 / 浏览 6/6、未登录与收藏笔记 CRUD / Ability 重建 2/2，Failure/Error/Ignore 均为 0。12 张截图已检查。独立启动登录、Dock 外原生“我的”、页面拆分和教育计划占位已验证，证据及失败见第 13 节。**
 
 **最新账号双端：本地 43/43、报告解析 9/9、HTTPS / SQLite 服务综合 1/1，主包与两版测试包构建成功；8/8 账号 / 双端场景、2/2 独立库清理、存储 / 浏览 6/6、未登录状态 1/1、文明连线 2/2，Failure/Error/Ignore 为 0。10 张账号原图已检查，证据、两版测试包与保留的失败见第 12 节。当前为本机自建账号的真实网络同步；未将其称为华为账号或鸿蒙分布式数据库。早期 12 项全量回归、失败、超时和工具崩溃仍按对应旧包保留。**
 
@@ -512,3 +516,320 @@ entry-ohosTest-unsigned.hap（当前跟进测试包：未登录与文明连线�
 当前账号档案与游客档案分库，schema v1、字段、墓碑和保存流程不变，无格式迁移。会话仅在进程内，进程退出后需重新登录；离线已登录窗口可保存，但离线冷启动会话恢复未实现。前台每 5 秒自动交换，未做专门延迟测量或承诺 3 秒以内。材质 / 减少动态偏好留在本机，阅读状态仅 `opened`。服务端已保留冲突版本，用户查看 / 恢复页面待实现。
 
 当前是 debug 本机服务，正式公网部署 / release 服务配置未交付，发布前需移除开发 rawfile 并接入正式配置。完整阅读进度、正式内容 / 图片授权、实机签名、平板 / 分屏 / 横屏与真机光效性能仍未验收；五条文化内容继续初稿待校审。运行实现与 API 依据见 [ACCOUNT_SYNC.md](ACCOUNT_SYNC.md)，现场路径见 [DEMO.md](DEMO.md)。
+
+## 13. 独立启动登录与“我的”：2026-10-16 实测
+
+按用户要求拆分档案与个人页，新增独立启动登录 / 注册页，以及在三项 Dock 右侧独立显示的原生“我的”入口。大学、学号为教育计划选填占位，只在本次成功登录后展示，不保存、上传、参与认证或生成计划。
+
+### 13.1 最终结果与包版本
+
+设备为 YunhejiSyncB，HarmonyOS 7.0.0.107 / API 26，1256×2760、density 560；SDK 与工具沿用既有工程。过程中模拟器中断后保留数据恢复启动，HDC 地址从 `127.0.0.1:5557` 变为 `127.0.0.1:5555`，最终三组报告均在恢复后的同一实例运行。全程使用 HDC / Hypium / 模拟器 CLI，没有控制电脑桌面。
+
+| 验证 | 结果 | 原始证据 |
+|---|---|---|
+| 本地规则与 Repository | **43/43**，失败 0；本轮没有修改领域规则或存储格式 | [本地输出](test-results/2026-10-16-profile-local-tests.log) |
+| 设备报告解析 | **9/9** | 同上 |
+| 主包构建 | 成功，已安装模拟器 | [最终主包](test-results/2026-10-16-profile-main-build-stable.log) |
+| 测试包构建 | 成功 | [最终测试包](test-results/2026-10-16-profile-test-build-stable.log) |
+| ProfileLoginTest | **4/4**；约 232 秒，启动页 / 选填 / 失败停留、独立入口 / 页面拆分 / 偏好保存、深色 / 大字、真实注册 / 退出 / 错误密码 / 再登录 | [172404](test-results/2026-10-16-172404-device.log) |
+| ArchiveDeviceTest | **6/6**；真实 Preferences 往返、串行保存、非法 / 损坏 / 孤立备份保护、检索 / 详情 / 空笔记 / 返回 | [172759](test-results/2026-10-16-172759-device.log) |
+| ArchiveUiTest 选定两项 | **2/2**；未登录状态在个人页、收藏分类与笔记增改删、删除墓碑与 Ability 重建 | [172906](test-results/2026-10-16-172906-device.log) |
+| 人工视觉检查 | 12 张原图已查看，含浅 / 深色、大字、档案、个人页、设置与教育占位 | [真实图集](design/profile/README.md)、[原图哈希](design/profile/captures.json) |
+
+三组最终设备报告均为 Failure=0、Error=0、Ignore=0，逐条索引见 [阶段清单](test-results/2026-10-16-profile-phases.json)。不累计重复运行作为新增用例，未将旧包的双端或完整 12 项历史回归算作当前包结果。
+
+```text
+entry-default-unsigned.hap
+51C89E54C812EB7AEEE4E25F3C421C348A86F856DD0AFCC944BEBC40C49B4E1A
+
+entry-ohosTest-unsigned.hap
+0CCA2B756A9180A75CB155D92FD76A7B95638399769E3AE14589CCE823D53741
+```
+
+构建保留未签名、输入控制器系统能力覆盖与测试辅助函数异常传播提示；本机 unsigned 安装成功不代表正式真机签名或所有设备能力通过。
+
+### 13.2 实际操作与数据断言
+
+启动时断言登录页存在、主内容 / Dock 不存在；展开大学 / 学号并确认空值，提交空账号仍停在登录页。离线浏览也必须通过真实按钮进入。独立入口以实际 bounds 核对处于第三页签右侧、与其分开且在屏幕内，没有 `tab-3`；大字时还核对标签范围处于原生入口内。
+
+档案页不再包含账号卡片或偏好开关；从其右下角进入个人页，可读到教育计划占位、真实同步状态与阅读偏好。原生开关变更后清除 Preferences 缓存回读实际落盘，返回仍处于原档案页；从个人页的登录操作再次进入独立启动表单。
+
+真实账号场景通过 UI 生成随机独立账号，填写合成大学 / 学号并注册，进入详情收藏。个人页只展示学号已填写；实际账号快照含收藏，且不含教育资料。退出回到登录页，未登录档案与退出前一致。错误密码由真实服务拒绝，主内容仍未出现；再用正确密码登录，收藏恢复，未重新填写的教育字段为空。学校 / 学号不进入认证请求或持久化。
+
+深色场景断言真实颜色资源，再采登录 / 首页 / 个人页；大字场景实际设为 1.5 倍并重建 Ability，表单和正文可滚动，提交按钮处于横向边界内。12 张原图仅空表单与本机模式，真实账号流程不采身份截图。图集只等比缩放 / 排列，不补画页面。
+
+schema v1、游客 / 账号库规则、统一记录和删除墓碑不变，无格式迁移、清空正式档案或预填演示数据。成功场景结束后清理本轮独立库并恢复应用外观 / 字号，长回归在 finally 恢复熄屏覆盖。
+
+### 13.3 保留的失败与修正
+
+- [163444](test-results/2026-10-16-163444-device.log)为早期页面专项 **3/3**，人工看图仍发现大字“我的”图标 / 标签挤满固定圆形入口。之后改为 vp 图标与导航文字缩放上限，并增加标签在入口范围内的断言；不以早期 3/3 替代最终视觉结果。
+- [164013](test-results/2026-10-16-164013-device.log)为 **3/4、Error=1**，真实注册在软键盘展开后未找到下方选填操作。测试改为输入后通过真实返回收起键盘再滚动，没有注入注册结果。较早包的账号路径随后 [170405](test-results/2026-10-16-170405-device.log) **1/1**，最终包另由 172404 完整验证。
+- [164619](test-results/2026-10-16-164619-device.log)没有完整结束摘要。第二项有开关等待失败，第三项通过，第四项开始后 HDC 中断；随后查不到在线模拟器。没有确认中断根因，不把该运行算作通过；使用 CLI 保留数据恢复启动，没有通过其他手段绕过用户停止操作。
+- [170628](test-results/2026-10-16-170628-device.log)为 **2/3、Error=1**，开关点按后 checked=false 没有出现。测试补充个人页完整可见区域处理，并改用原生拖动手势核对状态 / 落盘；[171434](test-results/2026-10-16-171434-device.log)隔离场景 **1/1**。
+- [171743](test-results/2026-10-16-171743-device.log)仍为 **2/3、Error=1**，开关 checked 条件出现后未稳定。个人页对保存中 / 相同值回调加入防重保护，避免共享状态回写导致重复提交；最终连续四项在 172404 全部通过。没有将隔离重试直接当作连续场景已通过。
+- 调整过程中所有构建日志保留。失败诊断图 / 布局及最初大字截图在忽略的 `entry/build/test-evidence/profile/`，最终图集只使用 172404 对应原图。
+
+### 13.4 复现与未验证范围
+
+```powershell
+.\tools\start-account-server.ps1 -TargetIds @('127.0.0.1:5555')
+.\tools\test.ps1
+.\tools\build.ps1
+.\tools\build.ps1 -Target ohosTest
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass ProfileLoginTest -ExpectedTests 4
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass ArchiveDeviceTest -ExpectedTests 6 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass 'ArchiveUiTest#native_sync_panel_reports_unavailable,ArchiveUiTest#native_favorite_note_crud_and_ability_restart' -ExpectedTests 2 -SkipInstall
+```
+
+先按 `hdc list targets` 核对实际地址。账号专项需要本机 HTTPS 服务；前三项页面 / 外观路径仍可离线验证。教育资料不是实际教育计划或学籍认证；会话仍只在进程内，重启需重新登录。正式服务 / release 配置、华为账号 / 分布式数据库边界沿用第 12 节。
+
+本轮没有重跑旧双端 8 场景、全量长度 / 草稿边界、进程强停、文明连线或原生导航全部专项，也未验证横屏 / 平板 / 分屏、任意字体倍率与真机动态性能。文化内容仍为初稿待校审。新页面行为见 [LOGIN_PROFILE.md](LOGIN_PROFILE.md)。
+
+## 14. 五城内容扩充与离线交互图谱：2026-10-16 实测
+
+按 [下一轮开发任务书](DEV_GUIDE_NEXT.md) 实施优先级 1 与 2：由 5 条扩充到 15 条初稿，文明连线采用包内 ArkWeb 交互画布、力导向布局、节点拖动、高亮与原生档案索引。首页可选改版、阅读进度、备份恢复不计入本轮完成范围。用户另行明确允许必要的内容数量与图谱测试适配，既有业务断言保留。
+
+### 14.1 最终结果与对应包
+
+设备为 YunhejiSyncB，HarmonyOS 7.0.0.107 / API 26，1256×2760、density 560，HDC 为 `127.0.0.1:5555`。全程使用 HDC / Hypium / 模拟器命令行，未控制电脑桌面。主包与测试包均构建成功，当前设备包 SHA-256：
+
+```text
+entry-default-unsigned.hap
+25BF1EAD4F3136C751C7F6F701BD21D82D2250E34A5E7AAF562A219EA7D31D39
+
+测试包：四项新增内容与画布专项
+86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53
+
+测试包：旧图谱滚动适配后的两项回归
+1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5
+
+测试包：筛选可见性与精确条目助手适配后的两组回归
+B66A0414152296A0AF5E9DC698083A89FF78541604936A747DB07EB06C294376
+```
+
+| 验证 | 结果 | 原始证据 |
+|---|---|---|
+| 本地规则与 Repository | **48/48**；失败 0 | [本地输出](test-results/2026-10-16-graph-local-tests.log) |
+| 设备报告解析 | **9/9** | 同上 |
+| 主 HAP 构建 | 成功；同一主包覆盖以下七组 | [主包构建](test-results/2026-10-16-graph-build-attempt2.log) |
+| 测试 HAP 构建 | 三版成功，分别绑定场景 | [新增专项版](test-results/2026-10-16-graph-test-build-attempt4.log)、[图谱适配版](test-results/2026-10-16-graph-test-build-attempt6.log)、[筛选适配版](test-results/2026-10-16-graph-test-build-attempt7.log) |
+| 三门峡与洛阳新增内容 | **1/1** | [195422](test-results/2026-10-16-195422-device.log) |
+| 郑州开封濮阳新增内容 | **1/1** | [195806](test-results/2026-10-16-195806-device.log) |
+| 画布桥接与减少动态 | **1/1** | [200200](test-results/2026-10-16-200200-device.log) |
+| 真实画布点击与拖动 | **1/1** | [200347](test-results/2026-10-16-200347-device.log) |
+| 对照、个人专题、深色与大字 | **2/2** | [201711](test-results/2026-10-16-201711-device.log) |
+| 组合筛选与重置 | **1/1** | [202642](test-results/2026-10-16-202642-device.log) |
+| 存储与原有浏览 | **6/6** | [202824](test-results/2026-10-16-202824-device.log) |
+
+七份最终设备报告分别核对完整摘要、声明 / 实际用例数与成功结束标记；Failure=0、Error=0、Ignore=0，共 13 项独立用例。主包始终相同；第一版测试包用于新增内容 / 画布专项，第二版适配旧图谱滚动定位、画布外留白手势和等待就绪，第三版适配筛选控件可见性与仰韶村精确名称助手。各组逐份绑定实际测试包哈希。重试和中断中的单项状态不累计为新增通过，旧版本账号双端、登录专项或完整 UI 回归不计入本轮新验证。截图、原始报告、包版本与 SHA-256 见 [阶段清单](test-results/2026-10-16-graph-phases.json) 和 [截图清单](design/graph/captures.json)。
+
+### 14.2 实际操作与断言
+
+两个新增内容场景通过真实 SearchField 搜索、提交和列表点击，依次打开庙底沟、虢国墓地、偃师商城、汉魏洛阳城、龙门石窟、大河村、郑韩故城、繁塔、州桥及附近汴河遗址、西水坡。每一项核对实际详情摘要、来源入口与“初稿待校审”，并清除 Preferences 缓存回读对应 `progress` 记录。回到目录后清空搜索，结果为 15 条。
+
+画布专项通过 ArkWeb 可访问树中的实际 `toggleButton` 点击仰韶村节点，核对 ArkUI 选中档案改变；启用减少动态与关闭光感时仍保持浅色资源和可操作索引，展开后可以选择西水坡。另一场景在正常动态模式下真实点击并拖动 HTML 节点，核对节点位置变化、边界范围与选中档案保持一致。没有通过测试注入图谱选择结果。
+
+文明连线原有两项保留对照、两处真实笔记 / 标签、个人图谱与专题过滤、实际深色资源、1.5 倍字体和原生按钮横向边界。组合筛选适配为洛阳两处夏商都城，仍逐项核对真实卡片、排除其他城市、重置为 15 条以及不可能组合为 0。存储 / 浏览六项继续验证真实 Preferences、并发保存、损坏 / 非法值 / 孤立备份保护、检索 / 详情和空笔记拒绝。
+
+本地由 43 项扩展到 48 项：补充内容范围、合法分类、原始 ID / 顺序、精确搜索、真实连线与去重、个人图谱空选择、窄屏 / 大字布局收敛、位置保留及拖动 / 缩放边界。既有推荐与关联断言按新增条目实际排序调整，仍保留郑州商城的夏商关联检查。
+
+### 14.3 WebGL 限制与截图范围
+
+Three.js 0.180.0 已随包携带，WebGL 不可用时改用 Canvas 2D，同一份布局和交互逻辑不依赖网络。当前模拟器的 ArkWeb 控制台明确返回 `A WebGL context could not be created ... disabled by enterprise policy or commandline switch`，应用回报 `CULTURE_GRAPH_RENDERER_READY:canvas2d`，证据见 [绘图能力记录](test-results/2026-10-16-graph-renderer.log)。未修改系统参数或全局安全策略强开 GPU。
+
+本轮真实画面与交互均属于 **Canvas 2D 降级**。不能将 Three.js 打包、构建成功或静态截图称为 WebGL / GPU 实测通过，也没有测量帧率、功耗或宣称桥接延迟低于 5ms。光晕和流动粒子为图谱装饰，不是原生沉浸光感、同步状态或历史传播方向。
+
+13 张原图仅含文化初稿和独立库内的合成笔记，不含账号、密码、大学或学号。图集只等比缩放、排列并在画面外加标题，未补画 UI。已检查图谱、拖动后位置、减少动态、对照 / 个人专题、深色、大字和新增内容提示。见 [图集说明](design/graph/README.md)。
+
+### 14.4 保留的失败与修正
+
+- `graph-build-attempt1.log`：ArkTS 拒绝构造函数参数中的字段声明；改为显式字段与赋值后主包构建成功，见 `graph-build-attempt2.log`。
+- `graph-local-attempt1.log`：**47/48**，1.5 倍字体下节点标签水平范围重叠；按实际列宽约束标签与碰撞范围后，`graph-local-tests.log` 为 **48/48**，报告解析另 **9/9**。
+- [192847](test-results/2026-10-16-192847-device.log)：安装后测试宿主停滞，未进入用例且没有图谱初始化记录；主动停止该进程后原始输出为 `App died`，没有完整摘要。不解释为已确认的应用崩溃，也不计通过。后续安装后显式结束旧进程再发起回归。
+- [193242](test-results/2026-10-16-193242-device.log)：**0/1、Error=1**，测试设置减少动态时，新建 Repository 未先 `load()` 即保存，返回 `ARCHIVE_NOT_READY`；仅修正测试准备顺序。
+- [193438](test-results/2026-10-16-193438-device.log)：**0/1、Error=1**，图谱已就绪但查询了 HTML 节点的 `description`。实际 ArkWeb 将 `aria-label` 暴露为 `toggleButton.text`，按实际属性修正；桥接断言保留。
+- [193805](test-results/2026-10-16-193805-device.log)：长详情来源定位反复小幅滚动，主动停止停滞运行，原始输出缺完整摘要。来源检查改为有次数上限的实际滚动，保留来源与初稿断言。
+- [194234](test-results/2026-10-16-194234-device.log)：内容两项和减少动态单项有成功状态，但第四项期间触及 `aa test -w 600` 总时限，缺完整结束摘要，不能记为 4/4。随后将四项拆开取得完整报告，主包保持相同；旧图谱适配只更新测试包。
+- [200543](test-results/2026-10-16-200543-device.log)：旧图谱两项为 **1/2、Error=1**，外观场景通过，但第一项仍直接在首屏查询位于新画布 / 索引下方的选中档案标题。仅将相关定位改为真实滚动，并在采图前等待画布就绪；测试包重新构建后复验，不删除对照与个人专题断言。
+- [201003](test-results/2026-10-16-201003-device.log)：**0/2、Error=2**。第一项仍用通用 `scrollSearch` 在可拖动的画布区域发起手势，反复拖节点而未滚动，触及单用例 240 秒时限；未结束的调用又使第二项 `Driver.create` 被 UiTest 拒绝并发。之后图谱定位改为从原生左侧留白发起有次数上限的实际手势，保留全部业务断言，结束旧测试进程后重新运行。
+- [202233](test-results/2026-10-16-202233-device.log)：**0/1、Error=1**，筛选控件还在 Dock 覆盖区域，直接点击未出现原生菜单。改为先滚到无遮挡区域再选择；没有修改选项或业务过滤结果。另将专用于打开仰韶村的助手由宽泛“仰韶”改为完整遗址名，并先滚到写笔记按钮；扩充后“仰韶”本来就会命中多处档案，不能继续断言只有一处。
+
+`graph-device-attempt1.log`、`graph-device-attempt2.log` 保留停滞 / 超时执行顺序，`graph-device-attempt3.log` 保留新增四项完整通过与旧定位失败；`graph-device-tail-attempt1.log` 保留通用滚动调用超时，`graph-device-tail.log` 保留旧图谱最终通过与筛选定位失败，`graph-device-core.log` 保留最终筛选 / 存储回归及熄屏恢复。最终采用的七份报告由 `graph-phases.json` 逐条索引。公开日志副本中的本机路径已脱敏，原件在忽略的 `.local/publication-originals/`；断言与摘要未改写。失败诊断保留在忽略的 `.local/graph-development/`，不混入最终图集。
+
+### 14.5 复现与边界
+
+```powershell
+.\tools\test.ps1
+.\tools\build.ps1
+.\tools\build.ps1 -Target ohosTest
+# 安装两包后结束旧进程，避免沿用安装前的测试宿主。
+. .\tools\deveco-path.ps1
+$devEcoPath = Resolve-YunhejiDevEcoHome
+$hdcTool = Join-Path $devEcoPath 'sdk/default/openharmony/toolchains/hdc.exe'
+& $hdcTool -t 127.0.0.1:5555 install entry/build/default/outputs/default/entry-default-unsigned.hap
+& $hdcTool -t 127.0.0.1:5555 install entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap
+& $hdcTool -t 127.0.0.1:5555 shell 'aa force-stop com.chr.myapplication'
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass 'CatalogGraphTest#new_smx_and_luoyang_sites_open_from_real_search' -ExpectedTests 1 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass 'CatalogGraphTest#new_zhengzhou_kaifeng_puyang_sites_open_from_real_search' -ExpectedTests 1 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass 'CatalogGraphTest#offline_web_graph_bridge_and_reduced_motion' -ExpectedTests 1 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass 'CatalogGraphTest#animated_web_nodes_accept_real_click_and_drag' -ExpectedTests 1 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass CultureAtlasTest -ExpectedTests 2 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass 'ArchiveUiTest#native_combined_filters_and_reset' -ExpectedTests 1 -SkipInstall
+.\tools\device-test.ps1 -TargetId 127.0.0.1:5555 -TestClass ArchiveDeviceTest -ExpectedTests 6 -SkipInstall
+```
+
+按实际 HDC 地址替换参数。四项 CatalogGraphTest 合跑可能超过 600 秒总时限，使用上面的分组命令。测试只使用独立 Preferences，完成的场景按本轮库名清理；主动中断不证明退出清理已完成，不枚举或删除正式档案。长回归在 finally 恢复熄屏设置，收尾直接回读确认没有测试时长覆盖，并以正常无测试参数启动应用。
+
+本轮未改 `ArchiveDomain.ts`、账号客户端 / 同步 Gateway、`HarmonyEffects.ets`、`Index.ets`、SDK 配置、`.gitignore` 或服务脚本；八个保护文件与本轮开始时哈希一致。原有五个 ID 与顺序、schema v1、账号库和游客库规则、记录字段及墓碑不变，无格式迁移。15 条均为初稿，仍缺条目级校审与授权实景图。未验证 WebGL 真机、任意字体倍率、平板 / 横屏 / 分屏、进程强停或旧完整双端套件；登录会话仍仅在进程内。API 与实现边界见 [技术核验第 12 节](HARMONY_RESEARCH.md) 和 [内容说明](CONTENT_GRAPH.md)。
+
+## 15. 年代空间与详情形态：2026-10-16 实测
+
+对应 `DEV_GUIDE_NEXT.md` 新增的 2b、2c。本轮交付可旋转的年代空间图谱与详情页形态观察。当前手机模拟器实际使用 **ArkUI Canvas**：图谱复用同一份力导向 / 透视数学，形态使用程序化三维网格的 CPU 投影和法线光照。**ArkWeb 本轮发生 EGL 原生崩溃，ArkGraphics3D 原生 GPU 未通过渲染验收，均不计为已完成的 GPU / 桥接能力。**
+
+### 15.1 构建、本地测试与设备结果
+
+- `tools/test.ps1`：本地 **54/54**、报告解析 **9/9**，Fail=0，无取消或跳过。
+- 主包与测试包构建成功；构建仍保留既有签名和部分设备能力警告，没有降低 SDK 或添加伪造依赖。
+- 七份完整设备报告共 **7/7**，Failure/Error/Ignore 全部为 0；不累计重试、旧包全量回归或初期只通过按钮的 GPU 空白场景。
+- 22 张真实截图、逐图哈希和报告见 [图集](design/spatial/README.md)。原图自动定位的模型区域在减少动态时前后帧完全一致，转动前后像素变化，见 [像素核对](design/spatial/pixel-checks.json)。
+
+| 范围 | 原始报告 | 结果 | 包版本 |
+|---|---|---|---|
+| 年代深度、旋转、复位、双指、拖动与选择 | [2026-10-16-223430-device.log](test-results/2026-10-16-223430-device.log) | 1/1 | 图谱包 |
+| 减少动态时保持稳定、主动旋转与选择 | [2026-10-16-223535-device.log](test-results/2026-10-16-223535-device.log) | 1/1 | 图谱包 |
+| 陶器 / 城台 / 城垣，旋转、拖动和复位 | [2026-10-16-224302-device.log](test-results/2026-10-16-224302-device.log) | 1/1 | 最终包 |
+| 层塔 / 封土与连续进入返回 | [2026-10-16-224504-device.log](test-results/2026-10-16-224504-device.log) | 1/1 | 最终包 |
+| 形态深色 / 1.5 倍字 / 减少动态 | [2026-10-16-224630-device.log](test-results/2026-10-16-224630-device.log) | 1/1 | 最终包 |
+| 真实收藏笔记、个人专题与双档案对照 | [2026-10-16-224839-device.log](test-results/2026-10-16-224839-device.log) | 1/1 | 最终包 |
+| 图谱深色与 1.5 倍字 | [2026-10-16-225155-device.log](test-results/2026-10-16-225155-device.log) | 1/1 | 最终包 |
+
+图谱两项对应主包 `2249C2CED6347CDB7B5D7612BFC89B104C4FFE5FDD66A846ED6384022EFFC256`、测试包 `FBEB24D8F2B32B7809A253DBE48D22AA69F1281610BD66A681430E856D5ECCB7`。随后仅调整形态视口的自动取景，并移除已完成的单次诊断库清理代码，再构建最终两包并完成形态三项与原有图谱两项回归；图谱源保持不变。对应关系逐项写在 [阶段清单](test-results/2026-10-16-spatial-phases.json)，没有把两版包混成同一包的新验收。
+
+当前主包 SHA-256：`94BB7BC75D645C54FBFBE6386E54B0DF7801FFDDFF6B15285442B183079B7D13`。
+
+当前测试包 SHA-256：`CC6CCC6658463886A0CCE66D3794002EEB52CA339507F8BD621BDE3BDC473093`。
+
+最终构建 / 本地输出：`2026-10-16-spatial-main-build-fitted.log`、`spatial-test-build-fitted.log`、`spatial-local-tests-final.log`。公开报告只脱敏本机路径，原始输出保留在本地忽略目录。
+
+### 15.2 实际验证的操作
+
+- 仰韶节点比宋代节点的点击框更大；旋转后位置改变，复位恢复原坐标。通过真实 PointerMatrix 双指输入和实际单节点拖动，再点击选择检查下方档案名。按钮、文字与 Canvas 点 / 线使用相同投影，不拿原生下方索引替代画布交互。
+- 减少动态通过独立 Preferences 落盘、Ability 重建后测试；节点等待后保持相同范围，主动旋转仍生效，材质偏好和减少动态分别回读。
+- 五个实际档案类型分别打开详情，左右转动、陶器拖动、复位及连续返回均完成。窑体没有当前目录条目，只计本地网格验证，不计第六种设备形态。
+- 原生形态检查深色与 1.5 倍字，关闭持续旋转仍允许主动操作。像素核对从原图定位上半屏暖色模型最大连通区域，取前后范围并集比较，排除时钟 / 文字干扰；要求存在足够大的可见模型，避免把空白图算作稳定画面。
+- 原有收藏与两条真实中文笔记 / 标签生成个人专题，双档案对照和个人专题对照继续使用原生页面。图谱外观专项核对实际深色资源和当前 Ability 的 1.5 倍字号。
+- 测试使用独立 `yunheji_test_ui_*` 库，不枚举 / 清空正式档案。单次 HDC 诊断库已在阶段用例中显式清理。图形崩溃阶段的异常退出不等于已完成清理，不据此扫描删除未知库。
+
+### 15.3 保留的失败与修正
+
+- `214147` 和 `215202`：按钮 / 状态用例 Pass=1，但 GPU 视口截图为空白；不作为视觉通过。`214914`：原生 Scene 引用改为非状态字段后，条件短路未触发控件创建，Error=1；随后以 phase 驱动创建。
+- `214435`、`214715`、`215440`、`220524`、`220927`、`221146`：ArkWeb 进程死亡，无完整成功报告。故障栈为 `Chrome_InProcGp → eglCreateImageKHR → d_eglCreateImage_special`；移除 CSS 动态合成、CPU Canvas 提示、同步嵌入和应用内禁用 WebGL 均未消除该镜像问题。最终使用原生 Canvas，并移除无效配置；未修改设备图形参数或强开 WebGL。
+- `221923`：原生按钮闭包持有旧帧坐标，Error=1；改为绑定当前投影状态。`222257`：复位比较发生在力导向收敛前，Error=1；等待真实 180 次布局迭代后再比较。
+- `222511`：高密度屏幕上双指行程太短，位置变化 5px 未达断言；根据 PointerMatrix 的屏幕 px 与手势 vp 区别增加真实行程。`222727`：排齐标签的回退覆盖了手动拖动，Error=1；手动锚点优先，周围标签避让，同时区分父层旋转与子节点拖动。
+- `223050` 是修复后的核心图谱阶段 1/1。取景调整前形态三项通过保留在阶段清单的 historyReports，不重复累计。最终轮在已完成五项后发现城台近侧底边取景不足，调整后源文件新于包，脚本按设计拒绝继续；重建后完成剩余相关回归。
+- 早期编译错误、标签投影测试失败和原始执行日志均保留。本轮未把 App died、缺完整摘要、Error=1 或仅有截图的场景改成通过。
+
+### 15.4 复现与边界
+
+先运行 `tools/build.ps1`、`tools/build.ps1 -Target ohosTest` 和 `tools/test.ps1`。设备先看 `hdc list targets`，以实际地址调用 `tools/device-test.ps1 -TestClass 'SpatialExperienceTest#具体方法名' -ExpectedTests 1`；方法名见阶段清单。原有两项使用相同方式单独指定 `CultureAtlasTest#方法名`，避免长套件总时限。每次重新安装后结束旧进程，再启动测试；原始 Pass/Failure/Error/Ignore 和唯一结束报告均须检查。
+
+数学源修改后用 Node.js 24 运行 `node entry/scripts/compile-graph.mjs` 更新离线 Web 产物；测试核对源哈希。当前模拟器不创建 Web 控件，旧 `CatalogGraphTest` 的 Web 桥接 / HTML 拖动专项未在本轮计作通过。真机 GPU / WebGL、图形帧率与功耗、平板 / 横屏 / 分屏均待验证。旧双端账号、强停恢复和全量存储结果仍属于此前对应包，不直接计入本轮。
+
+代码、包与设备边界详见 [空间体验说明](SPATIAL_EXPERIENCE.md)。本轮没有改核心数据格式、账号 / 同步客户端、主导航、HDS 材质、SDK 或签名。全部文化初稿与几何示意标识保留，未新增未经核验的文化结论。
+
+## 16. 详情形态逐面光照：2026-10-16 实测
+
+按更新后的 DEV_GUIDE_NEXT 优先级 2c 接入逐面 Lambert、22 次幂定向高光、背面剔除与多边形整面描边，并改善陶器纹带、城垣厚度、塔层及地面阴影。当前模拟器实际使用原生 ArkUI Canvas，没有重新启用已知会发生 EGL 崩溃的 ArkWeb 控件。`SiteObject3D` 与详情页改传整个 `site`；系统主题继续独立读取，不使用 `!lightEnabled` 推断深色。
+
+### 16.1 当前包结果
+
+- `tools/test.ps1`：本地 **60/60**，Failure=0、取消 / 跳过=0；设备报告解析 **9/9**。相比上一轮增加六项光照、几何和多视角取景检查。
+- `tools/build.ps1` 与 `tools/build.ps1 -Target ohosTest` 均成功；原有签名 / 设备能力警告继续保留，没有改变 SDK 或签名配置。
+- 同一对最终包的三组设备专项 **3/3**，Failure / Error / Ignore 均为 0；没有把五种形态算成五个测试，也没有累计旧包图谱 / 账号套件。
+- 11 张实际模拟器原图、对照图与像素核对见 [光照图集](design/lighting/README.md)。截图、报告、包哈希绑定在 [阶段清单](test-results/2026-10-16-lighting-phases.json)。
+
+| 场景 | 原始报告 | 结果 |
+|---|---|---|
+| 陶器、城台、城垣；旋转、拖动、复位 | [233843-device.log](test-results/2026-10-16-233843-device.log) | 1/1，Failure=0，Error=0，Ignore=0 |
+| 层塔、封土；连续进入与返回 | [234039-device.log](test-results/2026-10-16-234039-device.log) | 1/1，Failure=0，Error=0，Ignore=0 |
+| 深色、1.5 倍字、减少动态与主动转动 | [234200-device.log](test-results/2026-10-16-234200-device.log) | 1/1，Failure=0，Error=0，Ignore=0 |
+
+主包 SHA-256：`08C731A251C7B5C6CC954959A7BA59DCCA992931482126676B91593D2AB8E835`。
+
+测试包 SHA-256：`1DF158A6625F1A0214C66E6504C1CFD177EF14387DCE986FA03357BF55F147DB`。
+
+最终输出：[本地测试](test-results/2026-10-16-object-lighting-local.log)、[主包构建](test-results/2026-10-16-object-lighting-main-build.log)、[测试包构建](test-results/2026-10-16-object-lighting-test-build.log)。公开构建 / 本地日志只替换本机工程路径，原始输出保留在本地忽略目录。
+
+### 16.2 核对内容与修正记录
+
+逐面法线由旋转后的边叉乘得到；背面剔除使用实际相机和屏幕坐标约定，避免把任务书另一套坐标的符号直接照搬。测试核对 GPU 三角索引与原多边形一致、全部面非退化、内外壁法线相反、纹带不叠加共面网格，以及全目录在两种宽度、三种俯仰与十六个转角下保持有效取景。方向光 / 高光检查覆盖亮暗排序、背光环境项和高光峰值。
+
+首轮本地测试 **55/60**：回转体在生成当前圈顶点时就对下一圈做去重，读到了未创建的点，导致五项失败。改为先生成全部顶点，再生成和去重面；最终 60/60。保留 [首轮原始失败](test-results/2026-10-16-object-lighting-local-attempt1.log)，未删除失败断言或将其标记为通过。本轮设备三组没有重试或失败报告。
+
+已核对五种形态的实际画面与图集。减少动态前后模型区域逐像素一致；旋转前后该区域的 RGB 平均绝对差约为 16.15 / 11.81 / 11.29，见 [像素记录](design/lighting/pixel-checks.json)。定位先要求有足够大的可见暖色模型，再排除时钟、状态文字、按钮和下方插画，不把空白图算作稳定。
+
+所有操作通过 HDC / Hypium 直接连接既有模拟器，未控制电脑桌面。沿用独立测试 Preferences，测试结束清理各自场景库；没有枚举、清空或预填正式用户档案。临时熄屏覆盖在 finally 恢复，回读为 30000ms；字体和颜色模式由原有用例恢复，最后正常启动应用。
+
+### 16.3 范围
+
+初始视角剔除约 48%—58.6% 的多边形，详见 [面数量](design/lighting/culling-counts.json)。这不是耗时、帧率或“效率提升约 40%”的实测，当前软件绘制仍使用平均面深度排序，没有像素深度缓冲或真实阴影映射。
+
+GPU / WebGL 可见画面、真机性能、平板 / 横屏仍未验证。本轮未重跑账号双端、图谱、全量存储或强停套件；此前报告继续对应此前包。核心数据模型、账号 / 同步、主导航、材质层、SDK、签名、服务和构建 / 设备脚本与本轮开始时保持一致；仅在既有授权范围内补充必要领域测试。实现和坐标边界见 [逐面光照说明](OBJECT_LIGHTING.md)。
+
+## 17. 五城目录、探索进度与统一文化视口：2026-10-17 实测
+
+参考新计划先交付 Step 1、Step 2。用户已明确取消 HarmonyOS 6，工程维持 **HarmonyOS 7 / API 26**，没有新增低版本页面或 SDK 降级。目录为五城各四条、共 20 条初稿；原 15 个 ID 与顺序保留。首页沙盘、详情器物、四主题切片与星河图谱复用统一视口，页面、HDS 导航、独立“我的”、正文与存储均仍为 ArkUI 原生实现。
+
+用户在本轮明确将后续验证收敛为比赛演示：不再主动跑大字体、泛化安全或边界测试，不为生产化治理扩展工作。以下大字与完整回归只记录本轮已执行的历史，不是后续每轮门禁；后续围绕实际演示路径和具体问题做必要验证。
+
+### 17.1 本地、构建与设备结果
+
+- `tools/test.ps1`：本地 **81/81**，Fail / Cancel / Skip 均为 0；设备报告解析 **9/9**。
+- `tools/build.ps1`、`tools/build.ps1 -Target ohosTest` 均成功；测试等待拆分后又成功构建 `ohosTest`。保留既有签名与设备能力警告，未更改 SDK 或签名。
+- 按场景绑定三版包的设备六项 **6/6**，Failure / Error / Ignore 均为 0。首页与图谱为初始页面包；进度与模型为热点配色包；外观与原收藏笔记为大字修正后的当前包。三个版本只有详情按钮样式和必要的测试可见性适配变化，首页、图谱、领域与共用绘制源未改。未重复累计同一场景的重试，未将缺摘要、超时或有视觉问题的旧截图计为最终通过。
+- 21 张实际模拟器原图、包与源码 SHA-256 绑定在 [阶段清单](test-results/2026-10-17-engine-phases.json)。[真实图集](design/engine/README.md) 包含总览和逐图证据。
+
+| 范围 | 原始报告 | 结果 | 包版本 |
+|---|---|---|---|
+| 首页五城沙盘；五城各四条实际筛选结果 | [2026-10-17-140850-device.log](test-results/2026-10-17-140850-device.log) | 1/1 | 初始页面包 |
+| 星河图谱五城索引与二里头 / 郑州商城对照 | [2026-10-17-141023-device.log](test-results/2026-10-17-141023-device.log) | 1/1 | 初始页面包 |
+| 明确四主题 0→25→50→75→100；磁盘回读与 Ability 重建 | [2026-10-17-142036-device.log](test-results/2026-10-17-142036-device.log) | 1/1 | 热点配色包 |
+| 陶器、方鼎、层塔、蚌壳点列、城台；旋转、复位与热点 | [2026-10-17-142251-device.log](test-results/2026-10-17-142251-device.log) | 1/1 | 热点配色包 |
+| 深色、1.5 倍字、真实减少动态与主动转动 | [2026-10-17-143541-device.log](test-results/2026-10-17-143541-device.log) | 1/1 | 大字修正后包 |
+| 原有收藏、笔记增删改、墓碑与 Ability 重建 | [2026-10-17-143804-device.log](test-results/2026-10-17-143804-device.log) | 1/1 | 大字修正后包 |
+
+主包 SHA-256：`0649C11401A7C67F4CB4366A61252ACF1BF5D4333873FBF5EEA2D178551937AF`。
+
+测试包 SHA-256：`77BA1E8B5E636DF3767AC1B6F9A5635D82CE76FCFFAA41F32FA52E888F1B8CA8`。
+
+最终输出：[本地测试](test-results/2026-10-17-engine-local.log)、[主包构建](test-results/2026-10-17-engine-main-build-padding.log)、[测试包构建](test-results/2026-10-17-engine-test-build-padding.log)。此前测试包构建和失败仍保留，公开副本只替换本机路径。
+
+### 17.2 实际交互与像素核对
+
+五城各四张卡片逐一核对，图谱通过原生索引选择五城代表档案并打开实际双档案对照。五种详情形态均核对可见视口、主动转动、复位；仰韶三热点正文对应实际资料。切片的四层是内容主题的空间示意，不是具体遗址的考古层序。
+
+打开详情、旋转、复位、切换模式和热点均不增加进度。只有明确标记一个主题并完成本机提交后才增加 25%；页面发布状态后再回读实际 Preferences，四项到达 100%，Ability 结束重建后仍恢复。旧 `opened` 记录仅表示打开过，不能折算进度。主题各一条 `progress:<siteId>:<sectionId>`，沿用 schema v1、现有墓碑与同步合并，不改笔记格式。
+
+减少动态通过真实 Switch 开启并磁盘回读；深色资源与 1.5 倍字体实际检查。对齐原图中的 Canvas 布局范围后，减少动态前后区域逐像素一致，且先要求存在充分可见的场景；五模型转动前后均有像素变化。详见 [像素核对](design/engine/pixel-checks.json)，不把文字状态或空白截图当成绘制通过。
+
+所有设备操作只通过 HDC / Hypium 直接连接模拟器，未控制电脑桌面。每个成功用例使用独立随机 Preferences 并由 `session.run` 清理；没有枚举、删除或预填正式档案。收尾恢复本应用字体与颜色模式、熄屏覆盖，并正常无测试参数启动。
+
+### 17.3 保留的失败与修正
+
+- `134700`：冷启动锁屏导致应用快速后台 / 销毁，无完整摘要，未计通过；通过模拟器输入解除锁屏后继续。
+- `135110`：已有部分页面证据，但人工发现 Canvas 标签使用物理像素导致过小，主动停止本次验证。改用当前 UIContext 的 `fp2px` 后重建两包并重新运行；该次无完整摘要，未计通过。
+- `135416`：首个合并 river＋graph 用例 **240000ms 超时，Pass=0、Error=1**。保留完整原始报告和旧包哈希。将五城与图谱拆为独立场景，并减少已稳定 Scroll 的重复等待，保留 20 张卡片、五次选择与双档案全部断言，没有提高超时上限。
+- `140226` 五城阶段 1/1 后，`140425` 图谱阶段因整屏自动化手势跳过短入口而 **Pass=0、Error=1**。实际失败截图停在全部列表底部；调整搜索滚动的位移与惯性后重建测试包，之后按场景完成最终六项。首轮分组两包哈希与原始结果另保留在 `2026-10-17-engine-phases-river-first.json`，未重复累计首轮通过数。
+- 小步长版本的五城、图谱、进度和五种形态通过后，人工查看原图发现三个热点按钮仍用系统蓝色。补齐暖白 / 玫瑰配色、等分宽度与当前热点选中状态，再构建两包复验详情。首页、图谱及共用引擎源哈希未变，保留其初始包结果；配色前阶段及图片保存在 `engine-phases-before-detail-style.json`。
+- `142511` 外观原始用例 Pass=1，但人工查看 1.5 倍字原图发现热点按钮被系统默认内边距挤出省略号，未计最终大字视觉通过。显式设为左右 4vp 内边距，保留字体缩放，重建两包后定向完成外观复验。旧图片与包保存在 `engine-phases-before-large-text-padding.json`。
+- `142802` 原收藏笔记回归 **Pass=0、Error=1**，等待“已收藏”失败；失败布局显示新增视口下方的收藏区尚未滚出。修正旧用例对详情页的有界可见性检查，从留白小步滚动后点击，并保留真实分类、笔记增删改、磁盘、墓碑与重建断言，未改存储逻辑或超时上限。
+- 首轮本地失败来自旧网格数量 / 段数断言、来源标题与复位浮点比较；适配新网格且保留断言语义。早期构建的 ArkTS 类型限制与已撤回低版本页面引用均保留原始输出。详见 `engine-local-attempt1.log`、`engine-build-attempt1.log`、`engine-build-attempt2.log`。
+
+主动中断或超时不能证明当次独立库已经完成清理，不据此扫描删除未知库。成功的最终六项与早期未完成尝试分别记录。
+
+### 17.4 实现与验收边界
+
+当前模拟器在创建 ArkWeb 之前选择 **ArkUI Canvas 软件透视与逐面光照**，避免已知 EGL 原生崩溃。离线 WebGL2 / GLSL 与 Web Canvas 代码已接入，矩阵、预设、生命周期及静态 GLB 解析有本地检查；本轮没有 WebGL2 / GPU 可见设备画面或着色器编译证据。没有随包真实文物 GLB；解析器限非压缩静态几何、基础色与节点变换，纹理、动画、蒙皮和完整 PBR 未完成。
+
+全部内容与程序化模型继续标示初稿 / 学习示意，没有授权实景图或真实复原。Step 3 手账卡 / 漫游，Step 4 分布式 KV / 冲突裁决 / 备份恢复尚未实施。留影接口保留但入口默认关闭，避免尚无手账接收者时丢弃结果。本轮没有重跑完整账号双端、进程强停或旧全量存储套件，不把历史结果套到当前包。实现与变更文件清单见 [CULTURAL_ENGINE.md](CULTURAL_ENGINE.md)。
+

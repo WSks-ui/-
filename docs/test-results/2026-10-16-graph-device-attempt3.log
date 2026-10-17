@@ -1,0 +1,247 @@
+WakeupDevice is called
+Override screen off time to 1800000
+[Info]App install path:<项目目录>\entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap msg:install bundle successfully. 
+AppMod finish
+force stop process successfully.
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=new_smx_and_luoyang_sites_open_from_real_search
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=new_smx_and_luoyang_sites_open_from_real_search
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=220063
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: suiteconsuming=220063
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=220063
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+force stop process successfully.
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=new_zhengzhou_kaifeng_puyang_sites_open_from_real_search
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=new_zhengzhou_kaifeng_puyang_sites_open_from_real_search
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=231630
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: suiteconsuming=231630
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=231630
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+force stop process successfully.
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=offline_web_graph_bridge_and_reduced_motion
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=offline_web_graph_bridge_and_reduced_motion
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=103823
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: suiteconsuming=103823
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=103823
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+force stop process successfully.
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=animated_web_nodes_accept_real_click_and_drag
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=animated_web_nodes_accept_real_click_and_drag
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=113420
+
+
+OHOS_REPORT_STATUS: class=CatalogGraphTest
+OHOS_REPORT_STATUS: suiteconsuming=113420
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=113420
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+force stop process successfully.
+
+OHOS_REPORT_SUM: 2
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=visible_graph_compare_and_personal_note_topic
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:256:13)
+OHOS_REPORT_STATUS: stream=Error in visible_graph_compare_and_personal_note_topic, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND culture-selected-name
+OHOS_REPORT_STATUS: test=visible_graph_compare_and_personal_note_topic
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=34244
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=visible_graph_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=visible_graph_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=107153
+
+
+OHOS_REPORT_STATUS: class=CultureAtlasTest
+OHOS_REPORT_STATUS: suiteconsuming=141397
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 2, Failure: 0, Error: 1, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=141397
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
+Restore screen off time
+
+-------------------------------[ability]-------------------------------
+
+
+----------------------------------PowerManagerService----------------------------------
+POWER STATE DUMP:
+Current State: AWAKE  Reason: 34  Time: 10416221
+ScreenOffTime: Timeout=30000ms
+DUMP DETAILS:
+Last Screen On: 11234155
+Last Screen Off: 0
+Last SuspendDevice: 0
+Last WakeupDevice: 10416204
+Last Refresh: 11234155
+DUMP EACH STATES:
+State: AWAKE   Reason: SHELL   Time: 10416221
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: FREEZE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: INACTIVE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: STAND_BY   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: DOZE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: SLEEP   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: HIBERNATE   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: SHUTDOWN   Reason: INIT   Time: 0
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+
+State: DIM   Reason: TIMEOUT   Time: 10406320
+   Failure: INIT   Reason:    From: AWAKE   Time: 0
+

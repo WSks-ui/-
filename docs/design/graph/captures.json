@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-16",
+  "platform": "HarmonyOS 7.0.0.107 / API 26",
+  "device": "YunhejiSyncB",
+  "screen": [
+    1256,
+    2760
+  ],
+  "renderer": "Canvas 2D fallback; this emulator disables WebGL",
+  "mainPackageSha256": "25BF1EAD4F3136C751C7F6F701BD21D82D2250E34A5E7AAF562A219EA7D31D39",
+  "testPackagesUsed": [
+    {
+      "scope": "四项新增内容与画布专项",
+      "sha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53"
+    },
+    {
+      "scope": "旧图谱滚动适配后的两项回归",
+      "sha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5"
+    }
+  ],
+  "reports": [
+    {
+      "group": "三门峡与洛阳新增内容",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "66AFD1A36158467F15ECCFDEF6B41D26D778C66E675E2339596971D5ADB39E47",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-195422-device.log",
+      "pass": 1
+    },
+    {
+      "group": "郑州开封濮阳新增内容",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "50FF40719420F56F245C379F0AA14094D040545F74A1264AA66FC92EAB80CB62",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-195806-device.log",
+      "pass": 1
+    },
+    {
+      "group": "画布桥接与减少动态",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "527A95C41F234E063BFC318396B08F6C42168F1AF65783004FD1B2E1D2F02175",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-200200-device.log",
+      "pass": 1
+    },
+    {
+      "group": "真实画布点击与拖动",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "24A781B51653A677BC245402373D668032B783C91C5B88399C81997E90C50EDD",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-200347-device.log",
+      "pass": 1
+    },
+    {
+      "group": "对照、个人专题、深色与大字",
+      "failure": 0,
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "sha256": "B94C2902F363AD53F0C577B1E22B58915C949AE30E7B8416EA67C35B5C66D1CF",
+      "ignore": 0,
+      "total": 2,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-201711-device.log",
+      "pass": 2
+    }
+  ],
+  "captures": [
+    {
+      "path": "docs/design/graph/home.png",
+      "scene": "15 条档案的首页",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "12F6340D766CE569F8D8D44FC5F073EC0ED2D7BBE5892EFBEB9AA000B311678D"
+    },
+    {
+      "path": "docs/design/graph/graph.png",
+      "scene": "五城离线交互图谱",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "F1349F89C9328D41B3A83F253DAD904BC69EE8BED3009F813E0BBE017AAB760C"
+    },
+    {
+      "path": "docs/design/graph/compare.png",
+      "scene": "真实关联与档案对照",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "6DCDE6798B253C07EC34911381E799B8C3B24FC3C656C55A38B8994CD420BC14"
+    },
+    {
+      "path": "docs/design/graph/personal.png",
+      "scene": "由笔记生成的个人图谱",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "4EEA5956471C102292DB11715A8F9BA2905DE61F56856FCECB83F34019653E06"
+    },
+    {
+      "path": "docs/design/graph/personal-compare.png",
+      "scene": "自己的专题线索",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "1D58F1EB38FC03852C6CBF91E208C86CA55A99BD2287F9CD4B7EF4654941BEB4"
+    },
+    {
+      "path": "docs/design/graph/dark.png",
+      "scene": "实际深色资源",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "4A7745464F02A35F4B1D528B938D56044D25E045356C54A237FCEE60C7E9C819"
+    },
+    {
+      "path": "docs/design/graph/large.png",
+      "scene": "1.5 倍字体与原生索引",
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "B05E0B3F312EA492A532542403696888E2123C258BFB0A79C0EA74D57DC90590"
+    },
+    {
+      "path": "docs/design/graph/new-luoyang-detail.png",
+      "scene": "龙门石窟初稿与来源",
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "1A3297D2DDBC6386F6216C93CC50C84975F1D7769040BC1BD857B1AA29D72B2F"
+    },
+    {
+      "path": "docs/design/graph/catalog.png",
+      "scene": "15 条搜索结果",
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "D003DC64EF746D76938164C144E51FC71D997929038B6033EA1DBE3D6D7CC827"
+    },
+    {
+      "path": "docs/design/graph/new-puyang-detail.png",
+      "scene": "西水坡初稿与来源",
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "F7C200AF9DC36EADFE1E8F5E28A7F32BCFBD4A06074B647D487738638A8A2B14"
+    },
+    {
+      "path": "docs/design/graph/catalog-final.png",
+      "scene": "扩充后的离线目录",
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "923D0A90A8271750925A4F832FE59FF005241D16008D7D6FA9B7A46CAA4098DA"
+    },
+    {
+      "path": "docs/design/graph/reduced-motion.png",
+      "scene": "减少动态后的稳定图谱",
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "9B9DE7CD81495637F7D275AFEA5DD0D5B847E57BC96769AA60209736B24A2F34"
+    },
+    {
+      "path": "docs/design/graph/drag.png",
+      "scene": "实际拖动后的节点位置",
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "dimensions": [
+        1256,
+        2760
+      ],
+      "sha256": "9FD195F87E498F11B01E295942F116973D6B0D23462946F581D99ECB92807675"
+    }
+  ],
+  "galleries": [
+    {
+      "path": "docs/design/graph/overview.png",
+      "sha256": "C72832E77DBF2A4161E9BD092BAE098325AF7C1BEB509E2C50CF300C986EACDD"
+    },
+    {
+      "path": "docs/design/graph/interaction.png",
+      "sha256": "7D608512328196326058DD79109322F5F5C55D1335BCC2B585BF403C25F70F97"
+    },
+    {
+      "path": "docs/design/graph/appearance.png",
+      "sha256": "7BA3825D87EF9FE7B35C83B414920EFE4537AF66F7CD57C3B2FC2119678A843B"
+    },
+    {
+      "path": "docs/design/graph/content.png",
+      "sha256": "D79E70B219BD6DF79623E231923DD6BA99218C0ACAE3A4B1DB361CA03DEE45D9"
+    },
+    {
+      "path": "docs/design/graph/qa.png",
+      "sha256": "112D3323B91FC67B5F62FA8D4AB19997CBB9A89E7C2F3BEE0256F8BAFF807901"
+    }
+  ],
+  "visualInspection": "13 张原图逐张检查；图集仅等比缩放与排列，未补画 UI；仅文化初稿和合成笔记，无账号或教育资料。"
+}

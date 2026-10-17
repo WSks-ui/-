@@ -1,6 +1,7 @@
 import type { HeritageSite } from '../domain/ArchiveDomain';
 
-// 首轮仅提供五城最小内容集，reviewStatus 不能在未经逐条校审时改为“已核验”。
+// 五城内容扩充为 15 条；保留首轮五个稳定 ID 与顺序，已有收藏、笔记和浏览记录继续对应原档案。
+// 年代是检索分组，不替代遗址分期结论；未经逐条校审，reviewStatus 不得改为“已核验”。
 // source 为官方机构入口，不冒充已核验的具体文章；正式交付前需替换为条目级出处和授权图片。
 export const HERITAGE_SITES: HeritageSite[] = [
   {
@@ -13,7 +14,7 @@ export const HERITAGE_SITES: HeritageSite[] = [
     poetry: '暂未收录能够明确对应本遗址的诗词，不以泛写黄河的作品替代遗址证据。',
     travel: '地点索引：三门峡市渑池县。开放时间、预约方式和现场通行信息尚未核验，请以管理机构当日公告为准。',
     source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
-    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#9B463E'
+    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#9B463E', photos: []
   },
   {
     id: 'ly-erlitou', name: '二里头遗址', city: '洛阳', era: '夏商', type: '都城遗址',
@@ -21,11 +22,11 @@ export const HERITAGE_SITES: HeritageSite[] = [
     summary: '沿着宫殿区、道路与手工业遗存，寻找早期城市的结构。',
     overview: '二里头遗址位于河南偃师，是研究早期国家与文明发展的重要考古遗址。档案将城市空间与器物研究并列呈现。',
     archaeology: '宫殿建筑基址、道路和手工业遗存构成重要观察线索。具体器物信息与分期结论需要逐项引用考古资料。',
-    history: '“夏商”是本应用的检索分组，不表示将二里头遗址的王朝归属定为没有争议的结论。',
+    history: '“夏商”是本应用的检索分组，不表示将二里头遗址的王朝归属定为没有争议的结论。规划文本并列提到的绿松石龙形器与青铜爵是不同文物，名称、出土信息和馆藏记录应分别校核，本档案不把它们合并。',
     poetry: '暂未收录可与本遗址直接对应的诗词。',
     travel: '地点索引：洛阳市偃师区。遗址与博物馆的参观安排应分别核验，预约及开放信息以官方公告为准。',
     source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
-    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#247568'
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#247568', photos: []
   },
   {
     id: 'zz-shang', name: '郑州商城遗址', city: '郑州', era: '夏商', type: '都城遗址',
@@ -37,7 +38,7 @@ export const HERITAGE_SITES: HeritageSite[] = [
     poetry: '暂未收录可与本遗址直接对应的诗词。',
     travel: '地点索引：郑州市。遗址不同区域的开放与展陈情况应分别核验，勿将城市公园开放等同于考古区域可进入。',
     source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
-    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#426F93'
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#426F93', photos: []
   },
   {
     id: 'kf-iron-pagoda', name: '开封铁塔', city: '开封', era: '宋', type: '古建筑',
@@ -49,7 +50,7 @@ export const HERITAGE_SITES: HeritageSite[] = [
     poetry: '相关诗文将在确认作者、篇名、版本及对应对象后收录。',
     travel: '地点索引：开封市。门票、开放时间和可参观范围尚未核验，以景区及管理部门公告为准。',
     source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
-    reviewStatus: '初稿待校审', illustration: 'motif_pagoda.svg', accent: '#776293'
+    reviewStatus: '初稿待校审', illustration: 'motif_pagoda.svg', accent: '#776293', photos: []
   },
   {
     id: 'py-qicheng', name: '戚城遗址', city: '濮阳', era: '周', type: '城址',
@@ -61,6 +62,186 @@ export const HERITAGE_SITES: HeritageSite[] = [
     poetry: '暂未收录可与本遗址直接对应的诗词。',
     travel: '地点索引：濮阳市。公园、展陈和遗址本体的参观范围需要区分，开放信息以官方公告为准。',
     source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
-    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#677448'
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#677448', photos: []
+  },
+  {
+    id: 'smx-miaodigou', name: '庙底沟遗址', city: '三门峡', era: '仰韶', type: '聚落遗址',
+    tags: ['彩陶', '聚落', '考古'],
+    summary: '从彩陶纹样出发，与仰韶村一起观察史前聚落的生活线索。',
+    overview: '庙底沟遗址位于河南三门峡，是阅读仰韶文化的另一处入口。此档案以彩陶与聚落为主题，提供与仰韶村档案对照的观察问题。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '可以比较两处遗址的命名、研究过程与展示方式；纹样相近不等于已经证实人群迁徙或文化传播的方向。相关历史叙述待逐条核验。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：三门峡。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#9B463E', photos: []
+  },
+  {
+    id: 'smx-guoguo', name: '虢国墓地', city: '三门峡', era: '周', type: '墓葬群',
+    tags: ['青铜', '墓葬', '考古'],
+    summary: '把目光从城址转向墓葬，提出器物、礼制与个人身份的问题。',
+    overview: '虢国墓地位于河南三门峡。本条目提供墓葬与青铜器的阅读入口，与同城聚落档案形成不同遗存类型的对照。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“周”是便于探索的检索分组。墓主人身份、墓葬年代和礼制解释应分别查证，不根据器物主题自行推定。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：三门峡。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#9B463E', photos: []
+  },
+  {
+    id: 'ly-yanshi-shang', name: '偃师商城遗址', city: '洛阳', era: '夏商', type: '都城遗址',
+    tags: ['都城', '青铜', '考古'],
+    summary: '在同一片区域中比较两座早期城市，观察城垣与空间布局。',
+    overview: '偃师商城遗址位于河南洛阳偃师。本条目以城垣与城市空间为阅读主题，可以与二里头、郑州商城档案并列观察。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“夏商”是应用的宽泛检索分组。不同遗址的先后关系、王朝归属与城市功能需要依据具体考古研究，不由图谱连线证明。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：洛阳。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#247568', photos: []
+  },
+  {
+    id: 'ly-hanwei', name: '汉魏洛阳城遗址', city: '洛阳', era: '汉唐', type: '都城遗址',
+    tags: ['都城', '城墙', '考古'],
+    summary: '沿着城址的空间线索，比较不同时期的都城生活。',
+    overview: '汉魏洛阳城遗址是一处了解洛阳古代都城的重要入口。本档案先提出城垣、道路与城市空间的观察问题，具体布局待依据资料补齐。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“汉唐”为应用现有年代筛选中的宽泛分组，不表示遗址自汉至唐连续作为都城，也不替代汉魏等具体时期的区分。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：洛阳。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#247568', photos: []
+  },
+  {
+    id: 'ly-longmen', name: '龙门石窟', city: '洛阳', era: '汉唐', type: '古建筑',
+    tags: ['石刻', '建筑', '艺术'],
+    summary: '从崖壁与石刻的空间关系，打开洛阳文化的另一种观察方式。',
+    overview: '龙门石窟位于河南洛阳。此档案以石刻与文化遗产保护为主题，不用示意插画替代真实造像或现场影像。',
+    archaeology: '具体洞窟、造像题记、营造年代与保护结论需引用权威资料，待第二轮补充。',
+    history: '“汉唐”与“古建筑”沿用应用已有的宽泛筛选类别，不表示石窟始建于汉代，亦不等同于木构建筑分类；具体营造阶段待分别核验。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：洛阳。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pagoda.svg', accent: '#247568', photos: []
+  },
+  {
+    id: 'zz-dahecun', name: '大河村遗址', city: '郑州', era: '仰韶', type: '聚落遗址',
+    tags: ['彩陶', '聚落', '考古'],
+    summary: '从房址与陶器提出问题，连接郑州与三门峡的史前生活主题。',
+    overview: '大河村遗址位于河南郑州。本条目以聚落生活与陶器为探索方向，可与仰韶村、庙底沟进行主题对照。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“仰韶”为本条目的初始阅读分组，不表示遗址只有一个时期的遗存。相同标签仅提示可比较的主题，不作文化传承的结论。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：郑州。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#426F93', photos: []
+  },
+  {
+    id: 'zz-zhenghan', name: '郑韩故城', city: '郑州', era: '周', type: '城址',
+    tags: ['城墙', '城市', '考古'],
+    summary: '以城垣与城市遗存为线索，比较郑州和濮阳的古城记忆。',
+    overview: '郑韩故城位于郑州新郑。本档案提供古城与现代城市空间的观察入口，可与戚城、郑州商城的城址主题相互参照。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“周”为春秋战国相关内容的宽泛检索分组；两座城址具有共同标签，并不表示它们的规模、地位或历史过程相同。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：郑州。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#426F93', photos: []
+  },
+  {
+    id: 'kf-fanta', name: '繁塔', city: '开封', era: '宋', type: '古建筑',
+    tags: ['建筑', '城市', '砖雕'],
+    summary: '把两座古塔放在一起，观察建筑轮廓、材料和装饰的差异。',
+    overview: '繁塔是开封的古建筑之一。本档案以塔的外观与建筑保护为观察主题，可与铁塔条目并列阅读。',
+    archaeology: '建筑构件、装饰题材、修缮记录与具体年代需引用管理机构或权威研究资料，待第二轮补充。',
+    history: '“宋”用于组织相关建筑文化的阅读线索，不表示今天所见的所有构件均保持初建状态。历史变迁与修缮应分别核验。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：开封。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pagoda.svg', accent: '#776293', photos: []
+  },
+  {
+    id: 'kf-zhouqiao', name: '州桥及附近汴河遗址', city: '开封', era: '宋', type: '城址',
+    tags: ['城市', '水系', '考古'],
+    summary: '循着桥与河的线索，把城市交通和日常生活放进同一幅画面。',
+    overview: '州桥及附近汴河遗址位于开封。本条目关注桥梁、水系与城市空间的关系，“城址”是现有筛选中的宽泛归类。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“宋”为本次探索的阅读分组，不代表遗址只有宋代遗存。桥梁形制、地层关系与城市变迁须依据正式发掘资料分别说明。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：开封。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#776293', photos: []
+  },
+  {
+    id: 'py-xishuipo', name: '西水坡遗址', city: '濮阳', era: '仰韶', type: '墓葬群',
+    tags: ['墓葬', '蚌塑', '考古'],
+    summary: '从遗存材料和摆放方式提出问题，为濮阳增加一条史前文化线索。',
+    overview: '西水坡遗址位于河南濮阳。本条目以墓葬与蚌塑为初始阅读方向，与戚城档案呈现不同的遗存观察角度。',
+    archaeology: '具体出土器物与分期结论需引用权威考古资料，待第二轮补充。',
+    history: '“仰韶”与“墓葬群”是本轮内容的检索入口，不涵盖遗址全部遗存。图像含义、天文解释及文化认同等结论不在未经核实的初稿中预设。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：濮阳。开放时间与预约方式尚未核验，以管理机构当日公告为准。',
+    source: { title: '河南省文物局（待补条目级来源）', url: 'https://wwj.henan.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#677448', photos: []
+  },
+  {
+    id: 'smx-xipo', name: '灵宝西坡遗址', city: '三门峡', era: '仰韶', type: '聚落遗址',
+    tags: ['聚落', '史前', '考古'],
+    summary: '以聚落空间和遗存阅读为线索，补充三门峡的史前遗址入口。',
+    overview: '灵宝西坡遗址位于河南灵宝。本档案先作为阅读史前聚落考古的入口；遗址范围、具体分期与发掘成果仍需逐项补充条目级来源。',
+    archaeology: '可从遗址空间、房址和出土材料提出观察问题。未取得可核对的正式发掘资料前，不填写测年、数量、层位或建筑复原结论。',
+    history: '“仰韶”是本应用现有检索分组，不能替代西坡遗址的正式分期。与仰韶村、庙底沟并列只用于比较阅读，不据相似主题推断人群迁徙或文化传播方向。',
+    poetry: '暂未收录可与本遗址直接对应的诗词。',
+    travel: '地点索引：三门峡市灵宝市。开放时间、预约方式及现场可进入范围尚未核验，请以管理机构当日公告为准。',
+    source: { title: '灵宝市人民政府（待补遗址条目级来源）', url: 'https://www.lingbao.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_pottery.svg', accent: '#9B463E', photos: []
+  },
+  {
+    id: 'zz-duling-fangding', name: '杜岭二号方鼎', city: '郑州', era: '夏商', type: '青铜器',
+    tags: ['青铜', '器物', '商代'],
+    summary: '依据河南博物院藏品条目观察一件郑州出土的商代青铜方鼎。',
+    overview: '河南博物院藏品条目记载，杜岭二号方鼎为商代前期青铜礼器，1974年出土于郑州市张寨南街青铜器窖藏坑。此条目以馆藏藏品页为对象，不把器物本身等同于遗址。',
+    archaeology: '馆藏页面记录该鼎的尺寸、纹饰与出土背景。具体形制说明应以藏品页及其引用资料为准；页面中的祭祀坑解释属于研究推测，不在本初稿中扩写为定论。',
+    history: '杜岭方鼎一名涉及同坑出土的不同器物，河南博物院该页指向杜岭二号方鼎。它既不同于规划文本提到的绿松石龙形器，也不同于青铜爵；三者不能合并成同一件文物或共用一个器物预设。',
+    poetry: '暂未收录可与该器物直接对应的诗词。',
+    travel: '藏品信息来源为河南博物院在线条目。馆内展出状态、开放时间与预约方式以博物院当日公告为准。',
+    source: { title: '河南博物院：杜岭二号方鼎', url: 'https://www.chnmus.net/ch/collection/appraise/details.html?id=512159052412506512' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#426F93', photos: []
+  },
+  {
+    id: 'kf-city-wall', name: '开封城墙', city: '开封', era: '城市史', type: '城址',
+    tags: ['城墙', '城市', '保护'],
+    summary: '以城墙遗存和城市空间为线索，观察开封城的延续与保护。',
+    overview: '开封城墙是阅读开封城市空间的一处文化遗产入口。本档案不将现存墙体简单等同于某一朝代的完整城垣，具体遗存范围、修缮年代与保护信息待条目级资料核验。',
+    archaeology: '可围绕城墙本体、城门与周边城市空间建立观察问题。各段墙体的年代、地层关系和历次修缮需分别核实，不能预设为全城统一的固定叠压层。',
+    history: '“城市史”是本条目的主题分组，不属于现有考古年代结论。开封多时期城市遗存应按具体地点和正式资料分别阅读。',
+    poetry: '暂未收录能直接对应本条目具体墙段的诗词。',
+    travel: '地点索引：开封市。可参观范围、开放时间及预约方式尚未核验，以文物管理部门或景区公告为准。',
+    source: { title: '开封市人民政府（待补城墙条目级来源）', url: 'https://www.kaifeng.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#776293', photos: []
+  },
+  {
+    id: 'py-cangjie', name: '仓颉陵与造字传说记忆', city: '濮阳', era: '民间记忆', type: '文化纪念地',
+    tags: ['地方记忆', '汉字文化', '纪念空间'],
+    summary: '从纪念空间与地方传说出发，区分文化记忆和可核实的历史结论。',
+    overview: '濮阳南乐一带流传与仓颉相关的地方文化记忆。本条目把仓颉陵作为纪念与信俗主题的待校审入口，不将传说人物直接认定为已有考古证据证实的历史人物。',
+    archaeology: '陵祠沿革、现存建筑和碑刻资料尚待逐项核实。传说内容不能替代考古材料，也不能证明汉字由单一人物在某一时点独立创制。',
+    history: '可比较地方传说、纪念活动和文字起源研究各自使用的证据类型；具体始建年代与历史人物关系均留待可靠来源支持。',
+    poetry: '暂未收录可与该纪念空间直接对应的诗词。',
+    travel: '地点索引：濮阳市南乐县。现地开放、展陈与预约信息尚未核验，请以属地管理机构公告为准。',
+    source: { title: '南乐县人民政府（待补仓颉陵条目级来源）', url: 'http://www.nanle.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#677448', photos: []
+  },
+  {
+    id: 'py-danguai', name: '单拐革命旧址', city: '濮阳', era: '近现代', type: '革命旧址',
+    tags: ['近现代', '地方史', '纪念空间'],
+    summary: '以近现代地方史和纪念空间为入口，拓展濮阳文化记忆的时间范围。',
+    overview: '单拐革命旧址位于河南清丰县单拐村一带，是近现代地方史的纪念空间。本档案先提供在地历史阅读入口，旧址构成、保护范围和具体事件细节待条目级资料核验。',
+    archaeology: '本条目按近现代旧址与史料阅读，不套用史前遗址的考古地层模板。建筑年代、保护级别和相关史事只在获得可靠档案或管理机构资料后补录。',
+    history: '可结合属地史料与纪念展陈了解区域近现代历史。当前初稿不预写未经核对的人物行程、会议细节或确切日期。',
+    poetry: '暂未收录可与该旧址直接对应的诗词。',
+    travel: '地点索引：濮阳市清丰县。开放时间、展陈内容和预约方式尚未核验，以旧址管理机构公告为准。',
+    source: { title: '清丰县人民政府（待补旧址条目级来源）', url: 'http://www.qingfeng.gov.cn/' },
+    reviewStatus: '初稿待校审', illustration: 'motif_city.svg', accent: '#677448', photos: []
   }
 ];

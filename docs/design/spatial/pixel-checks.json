@@ -1,0 +1,28 @@
+{
+  "modelRegion": {
+    "left": 352,
+    "top": 628,
+    "right": 904,
+    "bottom": 1224
+  },
+  "rotationRegion": {
+    "left": 364,
+    "top": 632,
+    "right": 896,
+    "bottom": 1224
+  },
+  "reducedMotionIdentical": true,
+  "reducedMotionMeanAbsoluteDifference": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "rotationChangesVisiblePixels": true,
+  "rotationMeanAbsoluteDifference": [
+    10.354551920341393,
+    8.678025299735825,
+    8.511627463930095
+  ],
+  "modelViewportUniqueColors": 2807,
+  "source": "原始截图上半屏暖色模型最大连通区域，比较前后范围并集，不含时钟和状态文字"
+}

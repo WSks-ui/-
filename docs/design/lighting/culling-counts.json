@@ -1,0 +1,44 @@
+{
+  "note": "初始视角的多边形数量，非设备帧率或性能提升测量",
+  "yaw": 0.38,
+  "pitch": 0.22,
+  "width": 330,
+  "height": 210,
+  "stats": [
+    {
+      "type": "聚落遗址",
+      "totalFaces": 304,
+      "drawnFaces": 126,
+      "culledFaces": 178,
+      "culledPercent": 58.6
+    },
+    {
+      "type": "都城遗址",
+      "totalFaces": 18,
+      "drawnFaces": 9,
+      "culledFaces": 9,
+      "culledPercent": 50
+    },
+    {
+      "type": "城址",
+      "totalFaces": 96,
+      "drawnFaces": 48,
+      "culledFaces": 48,
+      "culledPercent": 50
+    },
+    {
+      "type": "古建筑",
+      "totalFaces": 120,
+      "drawnFaces": 51,
+      "culledFaces": 69,
+      "culledPercent": 57.5
+    },
+    {
+      "type": "墓葬群",
+      "totalFaces": 198,
+      "drawnFaces": 103,
+      "culledFaces": 95,
+      "culledPercent": 48
+    }
+  ]
+}

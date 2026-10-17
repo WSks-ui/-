@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-16",
+  "testPackageSha256": "B66A0414152296A0AF5E9DC698083A89FF78541604936A747DB07EB06C294376",
+  "device": "YunhejiSyncB",
+  "mainPackageSha256": "25BF1EAD4F3136C751C7F6F701BD21D82D2250E34A5E7AAF562A219EA7D31D39",
+  "renderer": "canvas2d",
+  "testPackages": [
+    {
+      "scope": "四项新增内容与画布专项",
+      "sha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53"
+    },
+    {
+      "scope": "旧图谱滚动适配后的两项回归",
+      "sha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5"
+    },
+    {
+      "scope": "筛选可见性与精确条目助手适配后的两组回归",
+      "sha256": "B66A0414152296A0AF5E9DC698083A89FF78541604936A747DB07EB06C294376"
+    }
+  ],
+  "reports": [
+    {
+      "group": "三门峡与洛阳新增内容",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "66AFD1A36158467F15ECCFDEF6B41D26D778C66E675E2339596971D5ADB39E47",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-195422-device.log",
+      "pass": 1
+    },
+    {
+      "group": "郑州开封濮阳新增内容",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "50FF40719420F56F245C379F0AA14094D040545F74A1264AA66FC92EAB80CB62",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-195806-device.log",
+      "pass": 1
+    },
+    {
+      "group": "画布桥接与减少动态",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "527A95C41F234E063BFC318396B08F6C42168F1AF65783004FD1B2E1D2F02175",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-200200-device.log",
+      "pass": 1
+    },
+    {
+      "group": "真实画布点击与拖动",
+      "failure": 0,
+      "testPackageSha256": "86191DAA298FA819CD1B7139970478CA68CD77D237F9C441952CCC2DF2295B53",
+      "sha256": "24A781B51653A677BC245402373D668032B783C91C5B88399C81997E90C50EDD",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-200347-device.log",
+      "pass": 1
+    },
+    {
+      "group": "对照、个人专题、深色与大字",
+      "failure": 0,
+      "testPackageSha256": "1DC37641796007416CB27D690541C7C1F602F59B82849BDE39976C2B8DC780B5",
+      "sha256": "B94C2902F363AD53F0C577B1E22B58915C949AE30E7B8416EA67C35B5C66D1CF",
+      "ignore": 0,
+      "total": 2,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-201711-device.log",
+      "pass": 2
+    },
+    {
+      "group": "组合筛选与重置",
+      "failure": 0,
+      "testPackageSha256": "B66A0414152296A0AF5E9DC698083A89FF78541604936A747DB07EB06C294376",
+      "sha256": "C5E8DA1ACF4FB40780472E5B5212CAB68E56D18EDC5C987D5594DC9DE3B9D245",
+      "ignore": 0,
+      "total": 1,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-202642-device.log",
+      "pass": 1
+    },
+    {
+      "group": "存储与原有浏览",
+      "failure": 0,
+      "testPackageSha256": "B66A0414152296A0AF5E9DC698083A89FF78541604936A747DB07EB06C294376",
+      "sha256": "A2C3B39E35558A7A5E0E001A23B7EE3503884B0278088A51D5682B063F6A42D7",
+      "ignore": 0,
+      "total": 6,
+      "error": 0,
+      "path": "docs/test-results/2026-10-16-202824-device.log",
+      "pass": 6
+    }
+  ],
+  "target": "127.0.0.1:5555",
+  "webGL": "当前模拟器禁用 WebGL，Three.js GPU 路径未验证"
+}

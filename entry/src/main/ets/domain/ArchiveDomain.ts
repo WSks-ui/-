@@ -20,6 +20,9 @@ export interface HeritageSite {
   reviewStatus: string;
   illustration: string;
   accent: string;
+  // 真实遗址照片文件名列表，放在 resources/base/media/ 下。
+  // 空数组时降级显示 illustration 插画；图片来源与版权由内容录入者负责。
+  photos: string[];
 }
 
 export interface SiteFilter {
@@ -62,8 +65,9 @@ export interface MergeResult {
 }
 
 export const CITIES: string[] = ['全部城市', '三门峡', '洛阳', '郑州', '开封', '濮阳'];
-export const ERAS: string[] = ['全部年代', '仰韶', '龙山', '夏商', '周', '汉唐', '宋'];
-export const TYPES: string[] = ['全部类型', '聚落遗址', '都城遗址', '城址', '墓葬群', '窑址', '古建筑'];
+// 保留原检索顺序，扩展项只补内容分类；“城市史 / 民间记忆”是主题分组，不是考古断代。
+export const ERAS: string[] = ['全部年代', '仰韶', '龙山', '夏商', '周', '汉唐', '宋', '城市史', '民间记忆', '近现代'];
+export const TYPES: string[] = ['全部类型', '聚落遗址', '都城遗址', '城址', '墓葬群', '窑址', '古建筑', '青铜器', '文化纪念地', '革命旧址'];
 export const COLLECTION_TAGS: string[] = ['待实地探访', '已去过', '研究资料'];
 export const MAX_NOTE_LENGTH: number = 4000;
 export const MAX_NOTE_TAGS: number = 20;

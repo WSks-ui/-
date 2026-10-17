@@ -1,0 +1,193 @@
+> hvigor [32mUP-TO-DATE :entry:ohosTest@PreBuild...  [39m
+> hvigor [32mFinished :entry:ohosTest@CreateModuleInfo... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GenerateMetadata...  [39m
+> hvigor [32mFinished :entry:ohosTest@ConfigureCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@MergeProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CreateBuildProfile...  [39m
+> hvigor [32mFinished :entry:ohosTest@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GeneratePkgContextInfo...  [39m
+> hvigor [32mFinished :entry:ohosTest@GeneratePkgSdkInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:ohosTest@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@MakePackInfo...  [39m
+> hvigor [32mFinished :entry:ohosTest@SyscapTransform... after 7 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessRouterMap...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessShareConfig...  [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessStartupConfig... after 2 ms [39m
+> hvigor [32mFinished :entry:ohosTest@BuildNativeWithNinja... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GenerateLoaderJson...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessLibs...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CompileResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@DoNativeStrip...  [39m
+> hvigor [32mFinished :entry:ohosTest@OhosTestBuildJS... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CacheNativeLibs...  [39m
+> hvigor WARN: WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:48:73
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:17:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:18:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:20:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:21:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:26:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:33:70
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:34:54
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:35:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:38:65
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:15:71
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:21:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:22:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:27:73
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:28:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:29:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/main/ets/sync/AccountSyncClient.ets:40:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:24:6
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:29:29
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:30:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:31:78
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:34:116
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:35:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:36:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:37:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:38:75
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:40:49
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:51:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:57:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:65:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:71:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:78:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:80:49
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/AccountSync.test.ets:81:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:14:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:21:65
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:22:58
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:23:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:28:69
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:30:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:10:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:17:16
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:23:56
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:24:56
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:26:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:28:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:29:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/SpatialExperience.test.ets:12:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <项目目录>/entry/src/ohosTest/ets/test/SpatialExperience.test.ets:20:112
+ Function may throw exceptions. Special handling is required.
+
+
+> hvigor [32mFinished :entry:ohosTest@OhosTestCompileArkTS... after 4 s 410 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@OhosTestCopyMockConfigJson...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GeneratePkgModuleJson...  [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessCompiledResources... after 1 ms [39m
+> hvigor [32mFinished :entry:ohosTest@PackageHap... after 356 ms [39m
+> hvigor [32mFinished :entry:ohosTest@PackingCheck... after 7 ms [39m
+> hvigor WARN: Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in <项目目录>\build-profile.json5.
+> hvigor [32mFinished :entry:ohosTest@SignHap... after 3 ms [39m
+> hvigor [32mFinished :entry:ohosTest@CollectDebugSymbol... after 1 ms [39m
+> hvigor [32mFinished :entry:assembleHap... after 1 ms [39m
+> hvigor [32mBUILD SUCCESSFUL in 8 s 231 ms [39m
+
+34 tasks in total: 17 executed, 17 up-to-date

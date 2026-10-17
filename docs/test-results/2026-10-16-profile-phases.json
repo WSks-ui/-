@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-16",
+  "device": "YunhejiSyncB",
+  "mainPackageSha256": "51C89E54C812EB7AEEE4E25F3C421C348A86F856DD0AFCC944BEBC40C49B4E1A",
+  "testPackageSha256": "0CCA2B756A9180A75CB155D92FD76A7B95638399769E3AE14589CCE823D53741",
+  "reports": [
+    {
+      "group": "独立登录与个人页",
+      "path": "docs/test-results/2026-10-16-172404-device.log",
+      "total": 4,
+      "pass": 4,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "sha256": "524D280A5C8456C1675E81BB5AB2CE57C21F2168BD5D849E781BAFB075547DE0"
+    },
+    {
+      "group": "存储与浏览",
+      "path": "docs/test-results/2026-10-16-172759-device.log",
+      "total": 6,
+      "pass": 6,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "sha256": "FC7DE00754F2CACA567B57208C07FD34C9BA2B1C0349761449231BECFBF97A92"
+    },
+    {
+      "group": "未登录与收藏笔记",
+      "path": "docs/test-results/2026-10-16-172906-device.log",
+      "total": 2,
+      "pass": 2,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "sha256": "CEC4D77F672509F31B1B229586357953C58922DB998257BB82B83E93356895B2"
+    }
+  ]
+}

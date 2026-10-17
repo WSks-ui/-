@@ -25,22 +25,22 @@ async function fixture(): Promise<AccountFixture> {
 }
 
 async function signIn(session: ArchiveUiSession, value: AccountFixture, register: boolean = false, other: boolean = false): Promise<string> {
-  console.info('ACCOUNT_UI: 准备切换账号页');
-  await (await session.waitId('tab-2')).click();
-  // HDS 的页签 bounds 不反映 TabContent 的横向入场动画；先等切页，再定位输入区。
-  await session.driver.delayMs(500);
-  await session.waitId('device-scroll');
-  console.info('ACCOUNT_UI: 账号页容器就绪');
-  await (await session.inScroll('device-scroll', ON.id(register ? 'account-mode-register' : 'account-mode-login'))).click();
-  console.info('ACCOUNT_UI: 登录方式已选择');
-  await (await session.inScroll('device-scroll', ON.id('account-username'))).inputText(other ? value.otherUsername : value.username);
-  await (await session.inScroll('device-scroll', ON.id('account-password'))).inputText(other ? value.otherPassword : value.password);
-  await (await session.inScroll('device-scroll', ON.id('account-submit'))).click();
-  console.info('ACCOUNT_UI: 已提交账号请求');
-  await session.inScroll('device-scroll', ON.id('account-title'));
+  // 每次都经独立登录页认证；若当前在离线主页，先从 Dock 外“我的”入口打开登录。
+  if (!await session.driver.findComponent(ON.id('login-scroll'))) {
+    await (await session.waitId('profile-entry')).click();
+    await (await session.inScroll('profile-scroll', ON.id('profile-login'))).click();
+  }
+  await session.waitId('login-scroll');
+  await (await session.inScroll('login-scroll', ON.id(register ? 'account-mode-register' : 'account-mode-login'))).click();
+  await (await session.inScroll('login-scroll', ON.id('account-username'))).inputText(other ? value.otherUsername : value.username);
+  await (await session.inScroll('login-scroll', ON.id('account-password'))).inputText(other ? value.otherPassword : value.password);
+  await session.driver.pressBack();
+  await (await session.inScroll('login-scroll', ON.id('account-submit'))).click();
+  await session.waitId('explore-scroll');
+  await (await session.waitId('profile-entry')).click();
+  await session.inScroll('profile-scroll', ON.id('account-title'));
   await session.waitText(other ? value.otherUsername : value.username);
   await session.waitId('account-refresh');
-  console.info('ACCOUNT_UI: 真实登录与同步完成');
   // 身份由真实账号 API 回读，不从测试注入。只为读取当前账号实际磁盘库取得 ID，
   // 页面注册 / 登录与记录写入仍完全经正式 UI 完成，测试令牌不输出到日志或截图。
   const client = new AccountSyncClient(session.context);
@@ -48,6 +48,7 @@ async function signIn(session: ArchiveUiSession, value: AccountFixture, register
   const identity = await client.authenticate(other ? value.otherUsername : value.username,
     other ? value.otherPassword : value.password, false);
   await client.logout();
+  await session.driver.pressBack();
   return identity.accountId;
 }
 
@@ -76,9 +77,10 @@ async function capture(session: ArchiveUiSession, name: string): Promise<void> {
 async function leaveAccount(session: ArchiveUiSession): Promise<void> {
   await session.driver.pressBack();
   await session.waitId('native-dock');
-  await (await session.waitId('tab-2')).click();
-  await (await session.inScroll('device-scroll', ON.id('account-logout'))).click();
-  await session.waitId('account-submit');
+  await (await session.waitId('profile-entry')).click();
+  await (await session.inScroll('profile-scroll', ON.id('account-logout'))).click();
+  await session.waitId('login-scroll');
+  await session.enterOffline();
 }
 
 export default function accountSyncTest() {
@@ -89,14 +91,12 @@ export default function accountSyncTest() {
     it('account_entry_dark_and_large_text_without_private_fields', 0, async () => {
       const app = TestContext.context.getApplicationContext();
       const originalScale = TestContext.context.config.fontSizeScale || 1;
-      const session = new ArchiveUiSession('account_appearance');
+      const session = new ArchiveUiSession('account_appearance', '', false);
       try {
         app.setFontSizeScale(1);
         await session.run(async () => {
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
-          await (await session.waitId('tab-2')).click();
-          await session.driver.delayMs(500);
-          await session.inScroll('device-scroll', ON.id('account-submit'));
+          await session.inScroll('login-scroll', ON.id('account-submit'));
           expect(await (await session.waitId('account-username')).getText()).assertEqual('');
           expect(await (await session.waitId('account-password')).getText()).assertEqual('');
           await capture(session, 'login');
@@ -108,9 +108,7 @@ export default function accountSyncTest() {
           await session.stop();
           await session.start();
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
-          await (await session.waitId('tab-2')).click();
-          await session.driver.delayMs(500);
-          await session.inScroll('device-scroll', ON.id('account-submit'));
+          await session.inScroll('login-scroll', ON.id('account-submit'));
           const bounds = await (await session.waitId('account-submit')).getBounds();
           const display = await session.driver.getDisplaySize();
           expect(bounds.left >= 0 && bounds.right <= display.x).assertTrue();
@@ -246,6 +244,7 @@ export default function accountSyncTest() {
         const id = await signIn(session, value);
         const snapshot = await waitBody(session, id, OFFLINE_BODY);
         expect(activeRecords(snapshot.records, 'note')[0].body).assertEqual(OFFLINE_BODY);
+        await (await session.waitId('profile-entry')).click();
         await session.waitText('上次同步已完成');
       }, true);
     });

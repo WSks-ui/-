@@ -1,0 +1,74 @@
+
+OHOS_REPORT_SUM: 3
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=3
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=startup_login_optional_education_and_failed_auth_stays_at_gate
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=3
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=startup_login_optional_education_and_failed_auth_stays_at_gate
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=28443
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=3
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=profile_outside_dock_archive_separation_and_settings_are_saved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=3
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:256:13)
+OHOS_REPORT_STATUS: stream=Error in profile_outside_dock_archive_separation_and_settings_are_saved, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND 个人页沉浸光感关闭
+OHOS_REPORT_STATUS: test=profile_outside_dock_archive_separation_and_settings_are_saved
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=46005
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=3
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=login_and_independent_entry_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=3
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=login_and_independent_entry_dark_and_large_text
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=47697
+
+
+OHOS_REPORT_STATUS: class=ProfileLoginTest
+OHOS_REPORT_STATUS: suiteconsuming=122145
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 3, Failure: 0, Error: 1, Pass: 2, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=122145
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

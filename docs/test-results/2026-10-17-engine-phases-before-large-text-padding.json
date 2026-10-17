@@ -1,0 +1,276 @@
+{
+  "date": "2026-10-17",
+  "platform": "HarmonyOS 7 / API 26",
+  "renderer": "ArkUI Canvas native CPU fallback",
+  "mainPackageSha256": "03EF3AB41375245D1C8E2507C46C9C8AA71B51282E6C418FAD63E0A889EB28E8",
+  "testPackageSha256": "576071550841E35AFBB27E33107F4C22DB4C19CBF4699A0C2A317A530E22737D",
+  "reports": [
+    {
+      "label": "river",
+      "test": "EngineExperienceTest#native_river_five_cities_filter_matrix",
+      "path": "docs/test-results/2026-10-17-140850-device.log",
+      "sha256": "B41D8386F71539DCE869B0C447720A54E1030A28231D24A14FD2FB4912594132",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "mainPackageSha256": "9714328E0DE65F9B640CD0CFE4A2641A43067A977D569B143691EF882B1F7183",
+      "testPackageSha256": "66FB16D75E77D6DEEE2CD7EE9C5BD917F983D86BC390329A6A3B840A5CBEF236"
+    },
+    {
+      "label": "graph",
+      "test": "EngineExperienceTest#native_constellation_graph_selection_and_comparison",
+      "path": "docs/test-results/2026-10-17-141023-device.log",
+      "sha256": "00714B53901CC220A98562ACAF08CFCC41F5FA796E359197DDFA8791DF254EEA",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "mainPackageSha256": "9714328E0DE65F9B640CD0CFE4A2641A43067A977D569B143691EF882B1F7183",
+      "testPackageSha256": "66FB16D75E77D6DEEE2CD7EE9C5BD917F983D86BC390329A6A3B840A5CBEF236"
+    },
+    {
+      "label": "progress",
+      "test": "EngineExperienceTest#native_explicit_four_section_progress_and_ability_recreation",
+      "path": "docs/test-results/2026-10-17-142036-device.log",
+      "sha256": "8330BD0A0C5C4BB3B8CADD193DDA9B49B26807660F0AEA74BC0CD53A37D80F09",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "mainPackageSha256": "03EF3AB41375245D1C8E2507C46C9C8AA71B51282E6C418FAD63E0A889EB28E8",
+      "testPackageSha256": "576071550841E35AFBB27E33107F4C22DB4C19CBF4699A0C2A317A530E22737D"
+    },
+    {
+      "label": "models",
+      "test": "EngineExperienceTest#native_five_presets_rotate_hotspots_and_reset",
+      "path": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "A989F19ECC601A5AF62145601B4F1378A9F5BD54DE246403E80132567C05804B",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "mainPackageSha256": "03EF3AB41375245D1C8E2507C46C9C8AA71B51282E6C418FAD63E0A889EB28E8",
+      "testPackageSha256": "576071550841E35AFBB27E33107F4C22DB4C19CBF4699A0C2A317A530E22737D"
+    },
+    {
+      "label": "appearance",
+      "test": "EngineExperienceTest#native_dark_large_text_and_reduced_motion_frames",
+      "path": "docs/test-results/2026-10-17-142511-device.log",
+      "sha256": "D908D6FB6709C9327734519B1AA7E2225C034D48C1A768133534878E0D912814",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "mainPackageSha256": "03EF3AB41375245D1C8E2507C46C9C8AA71B51282E6C418FAD63E0A889EB28E8",
+      "testPackageSha256": "576071550841E35AFBB27E33107F4C22DB4C19CBF4699A0C2A317A530E22737D"
+    }
+  ],
+  "captures": [
+    {
+      "path": "docs/design/engine/river-home.png",
+      "report": "docs/test-results/2026-10-17-140850-device.log",
+      "sha256": "36E5C99DE29DB186B43F8BA596349A9FE014A5C17CF180B35CF9250CC714128E"
+    },
+    {
+      "path": "docs/design/engine/constellation-graph.png",
+      "report": "docs/test-results/2026-10-17-141023-device.log",
+      "sha256": "C49AE5FADE86AB3D909FB93CA21F462CA8661916109385578CFD68CA6F02DE90"
+    },
+    {
+      "path": "docs/design/engine/graph-comparison.png",
+      "report": "docs/test-results/2026-10-17-141023-device.log",
+      "sha256": "F237733E30211D081FE95DFB9B03BEFD51398008A23F262476629D30C9FFF9CF"
+    },
+    {
+      "path": "docs/design/engine/stratum-overview.png",
+      "report": "docs/test-results/2026-10-17-142036-device.log",
+      "sha256": "31F0A3A006B63BA99A8636125827397D6460C4BE66C38ADC33BF3C455F3F5A15"
+    },
+    {
+      "path": "docs/design/engine/progress-complete.png",
+      "report": "docs/test-results/2026-10-17-142036-device.log",
+      "sha256": "3126BBEA6413593A34055EEB201F7689CFE34E0CEBE82C9FD95E4E73B68104FA"
+    },
+    {
+      "path": "docs/design/engine/progress-recreated.png",
+      "report": "docs/test-results/2026-10-17-142036-device.log",
+      "sha256": "F3297A8BDFAE45492674016B7706889F5EC0196840A8E9F766B8AE55FC5C2DA6"
+    },
+    {
+      "path": "docs/design/engine/model-smx-yangshao-before.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "CF29092F2BF9464819A0E2C08C320455D89D07CA395F28CCF8C1160CF7CBFD3A"
+    },
+    {
+      "path": "docs/design/engine/model-smx-yangshao-turned.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "2F0145CAA895C7CB2A979C773A432169F4B01FBD6BFFC5766B50FEB6BCD72C39"
+    },
+    {
+      "path": "docs/design/engine/model-zz-duling-fangding-before.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "ED9EA397677FC1409575565CE1B84765BF29E2FFFCF9C653FC4C2D837938A0F5"
+    },
+    {
+      "path": "docs/design/engine/model-zz-duling-fangding-turned.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "5E368FBBC2A34403A854FAE099F9C6FD7CE836231A461003CDB96002580FDBA2"
+    },
+    {
+      "path": "docs/design/engine/model-kf-iron-pagoda-before.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "76C75D6A05556359DBDA71F727F5B11EEB83D147BC2B0FAC55E4502E52355C47"
+    },
+    {
+      "path": "docs/design/engine/model-kf-iron-pagoda-turned.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "CEF13F5C59DF29818561A6BC6F6253CA14C4334E1A2C310A27A3288FA20098E7"
+    },
+    {
+      "path": "docs/design/engine/model-py-xishuipo-before.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "EB0493A125D0B8E154F4C682B59D70ECD412DB875D5D73A01EBD1B34387D3C87"
+    },
+    {
+      "path": "docs/design/engine/model-py-xishuipo-turned.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "7022B0243883C4ECFA166436FD31CF16565DCBDCBC00EC3B445546056F207BA6"
+    },
+    {
+      "path": "docs/design/engine/model-ly-erlitou-before.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "10505203812E67786C86928764F1EB5F0653F09D59443446C420ECEB3C92DC0B"
+    },
+    {
+      "path": "docs/design/engine/model-ly-erlitou-turned.png",
+      "report": "docs/test-results/2026-10-17-142251-device.log",
+      "sha256": "FE983EDA63C27D5576998738BAF302107985DEF40EC7B99FA154523033CE8BA0"
+    },
+    {
+      "path": "docs/design/engine/history/before-large-text-padding-reduced-before.png",
+      "report": "docs/test-results/2026-10-17-142511-device.log",
+      "sha256": "CA22FE8B1E09F1E3A442AF157761946B2A857D5BC4FA09DAFCB0E248E2F18C13"
+    },
+    {
+      "path": "docs/design/engine/history/before-large-text-padding-reduced-after.png",
+      "report": "docs/test-results/2026-10-17-142511-device.log",
+      "sha256": "CA22FE8B1E09F1E3A442AF157761946B2A857D5BC4FA09DAFCB0E248E2F18C13"
+    },
+    {
+      "path": "docs/design/engine/history/before-large-text-padding-dark-manual-turn.png",
+      "report": "docs/test-results/2026-10-17-142511-device.log",
+      "sha256": "CD96479146A3BA92113C17D76587C3B2E4B7C8EAC66E5232D2B49B158C915793"
+    },
+    {
+      "path": "docs/design/engine/history/before-large-text-padding-large-home.png",
+      "report": "docs/test-results/2026-10-17-142511-device.log",
+      "sha256": "6639B93D1D7CBED7F851747B67CE86AC70698294B4198E8DCF62E2D20FB4B18C"
+    },
+    {
+      "path": "docs/design/engine/history/before-large-text-padding-large-detail.png",
+      "report": "docs/test-results/2026-10-17-142511-device.log",
+      "sha256": "472F638C1596B0CA12C743C2E883122525F09934DF7F586087602617A54DBF47"
+    }
+  ],
+  "historyAttempts": [
+    {
+      "date": "2026-10-17",
+      "reason": "首个五城与图谱合并用例240000ms超时；未计通过",
+      "packages": [
+        {
+          "path": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+          "sha256": "9714328E0DE65F9B640CD0CFE4A2641A43067A977D569B143691EF882B1F7183"
+        },
+        {
+          "path": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap",
+          "sha256": "1C024A92231451005E08C11C5CD41EDE7F9CFEAFC013D3C637A1604722DEFE9C"
+        }
+      ],
+      "report": "docs/test-results/2026-10-17-135416-device.log",
+      "pass": 0,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0
+    }
+  ],
+  "historyPhases": [
+    {
+      "path": "docs/test-results/2026-10-17-engine-phases-river-first.json",
+      "sha256": "D6248706410DDEA3360200632894C38A7537BA9FDFE92866C433F2E91B798470"
+    },
+    {
+      "path": "docs/test-results/2026-10-17-engine-phases-before-detail-style.json",
+      "sha256": "30A61272E4B188D57D09EE90C4F4DF057EE476FD81A6A95574D7AEA080B75209"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "entry/src/main/ets/domain/CulturalContent.ts",
+      "sha256": "A0C39CBE3EE217F8CF99E5DB8D63DC9D100E0686D01D8B3C1FA5EF925E65E87C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ExplorationProgress.ts",
+      "sha256": "D43BE17AE1AB2CC41094F598A413376370CB8519FB9D6C698C23D80DE9DBC2E7"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "sha256": "140DFEB4C65234A5AE70D4A880916370E72815AEAF28FB1655ACAB82150B8453"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectGeometry.ts",
+      "sha256": "EAC39C273DDCF6601B272012594D20701BA66DDB78D5C9DDAC3B946F9F0CF7CD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectRaster.ts",
+      "sha256": "C449A82C9F4B03E2364CC52FAC60D2D1AB8A775FC451FC0E2A52E7A38596AE25"
+    },
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "sha256": "77953F946F80A4499D5CD19AB0FC92FDD3424F49480CAD852420802A58CDE653"
+    },
+    {
+      "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+      "sha256": "614E061C7881BB59EFE1B38816712C6D2E8138F43CAD99A5BC07138247A09BD6"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "sha256": "BE9ACA8C876149AB1D057C528482C9C04E0C0349480C10AFA8073AAB607D09AE"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureAtlas.ets",
+      "sha256": "F590B89385E91EA224FD596B9E0E511FAF352D02206823A61B187305B6FB632B"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "sha256": "0D79DE9828994C7CC39ECDFCBB48A5EFD18C521143F97CCABFEAD8F3888CB7C2"
+    },
+    {
+      "path": "entry/src/main/ets/data/HeritageCatalog.ts",
+      "sha256": "7F7D8EFBBA64E58956911B25F4845BA4F9995A8A0119385DBB423BB895E4B37D"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/EngineExperience.test.ets",
+      "sha256": "6E688BD6FAD29C445935D0E28D757DE6060FCC5FCA4DF5A36022E3C32E307911"
+    }
+  ],
+  "failedReports": [
+    {
+      "label": "notes-regression",
+      "path": "docs/test-results/2026-10-17-142802-device.log",
+      "sha256": "C36EB1689E23755A340AA5045A214B371FD572624F5B9582047190266E12F420",
+      "total": 1,
+      "pass": 0,
+      "error": 1,
+      "failure": 0,
+      "ignore": 0,
+      "reason": "旧UI用例点击详情下方未暴露收藏按钮，等待已收藏失败"
+    }
+  ],
+  "visualIssue": "外观用例有完整1/1报告，但人工原图核对发现1.5字体热点按钮被默认padding挤出省略号，不计最终大字视觉通过；已缩小内边距待定向复验。"
+}
