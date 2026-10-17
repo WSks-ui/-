@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-17",
+  "stage": "核心体验成型阶段 T01—T03",
+  "platform": "HarmonyOS 7 / API 26",
+  "baselineCommit": "c45aff99d9e90b6075ac3753c8d690fc32c41477",
+  "mainPackageSha256": "0A66C9531CE366AE7D363E5CFA003AD3AF82FAD5EC365E61289C0C77E1833622",
+  "testPackageSha256": "FA9FCEC711F6EF0EFCDBCE17130C9130F873FFE86954962819DE1DA85CE76FBD",
+  "report": "docs/test-results/2026-10-17-160042-device.log",
+  "test": "CoreContentTest#native_three_material_studies_questions_visuals_facts_and_sources",
+  "total": 1,
+  "pass": 1,
+  "failure": 0,
+  "error": 0,
+  "ignore": 0,
+  "captures": [
+    {
+      "siteId": "smx-miaodigou",
+      "path": "docs/design/core-content/smx-miaodigou.png",
+      "sha256": "AAA4E4C4125E198B966E22AE0AE08F56B548B28C5F9D0C09FBD16FF98D796BD3"
+    },
+    {
+      "siteId": "zz-dahecun",
+      "path": "docs/design/core-content/zz-dahecun.png",
+      "sha256": "18C8DC56974E28ED93A8795D1D128C4400495C0A92E2A328FBF644BB3EC3732B"
+    },
+    {
+      "siteId": "zz-duling-fangding",
+      "path": "docs/design/core-content/zz-duling-fangding.png",
+      "sha256": "86909671F8709C14BA7D90CCD9362BB99300FC790A61A556188D00CEEA939BF3"
+    }
+  ]
+}

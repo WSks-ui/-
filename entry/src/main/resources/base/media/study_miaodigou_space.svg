@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+  <!-- 项目原创方位关系示意，左西右东；依据国家文物局庙底沟条目绘制，不是实测总平面。
+       点阵、陶色圆环和虚线只表达中西部居住遗存、西部陶窑及东西两侧壕沟。
+       符号数量、位置、间距及范围均为阅读排布，无测绘、地层、年代或复原含义。 -->
+  <rect width="1000" height="600" rx="36" fill="#FAF6F0"/>
+
+  <!-- 居住遗存为宽泛带状范围，与西部陶窑符号重叠，避免虚构互斥功能分区。 -->
+  <rect x="238" y="174" width="434" height="252" rx="126" fill="#8CA79B" fill-opacity="0.10"/>
+  <rect x="218" y="220" width="472" height="160" rx="80" fill="#8CA79B" fill-opacity="0.10"/>
+  <ellipse cx="458" cy="300" rx="194" ry="79" fill="#8CA79B" fill-opacity="0.09"/>
+
+  <!-- 两侧抽象虚线只标识东西方位上的壕沟，不闭合、不补出遗址边界。 -->
+  <path d="M160 136 C144 184 169 214 154 259 C139 305 165 338 153 383 C147 406 151 435 163 463" fill="none" stroke="#8CA79B" stroke-width="5" stroke-dasharray="13 15" stroke-linecap="round"/>
+  <path d="M841 136 C855 179 832 217 846 259 C860 301 837 340 849 381 C855 405 852 436 841 463" fill="none" stroke="#8CA79B" stroke-width="5" stroke-dasharray="13 15" stroke-linecap="round"/>
+
+  <!-- 疏密点阵是居住遗存阅读符号，不对应房址总数或逐处位置。 -->
+  <circle cx="285" cy="243" r="6" fill="#C05B70" fill-opacity="0.50"/>
+  <circle cx="344" cy="221" r="6" fill="#C05B70" fill-opacity="0.40"/>
+  <circle cx="400" cy="237" r="7" fill="#C05B70" fill-opacity="0.56"/>
+  <circle cx="464" cy="214" r="6" fill="#C05B70" fill-opacity="0.45"/>
+  <circle cx="524" cy="238" r="7" fill="#C05B70" fill-opacity="0.56"/>
+  <circle cx="584" cy="224" r="6" fill="#C05B70" fill-opacity="0.40"/>
+  <circle cx="632" cy="253" r="5" fill="#C05B70" fill-opacity="0.38"/>
+  <circle cx="260" cy="296" r="5" fill="#C05B70" fill-opacity="0.43"/>
+  <circle cx="321" cy="279" r="6" fill="#C05B70" fill-opacity="0.50"/>
+  <circle cx="381" cy="302" r="6" fill="#C05B70" fill-opacity="0.53"/>
+  <circle cx="443" cy="279" r="7" fill="#C05B70" fill-opacity="0.58"/>
+  <circle cx="503" cy="306" r="7" fill="#C05B70" fill-opacity="0.57"/>
+  <circle cx="565" cy="281" r="6" fill="#C05B70" fill-opacity="0.49"/>
+  <circle cx="624" cy="311" r="6" fill="#C05B70" fill-opacity="0.45"/>
+  <circle cx="289" cy="354" r="6" fill="#C05B70" fill-opacity="0.43"/>
+  <circle cx="349" cy="375" r="5" fill="#C05B70" fill-opacity="0.40"/>
+  <circle cx="410" cy="350" r="7" fill="#C05B70" fill-opacity="0.55"/>
+  <circle cx="472" cy="381" r="6" fill="#C05B70" fill-opacity="0.44"/>
+  <circle cx="533" cy="354" r="7" fill="#C05B70" fill-opacity="0.53"/>
+  <circle cx="590" cy="373" r="5" fill="#C05B70" fill-opacity="0.38"/>
+  <circle cx="652" cy="357" r="5" fill="#C05B70" fill-opacity="0.34"/>
+
+  <!-- 西部陶窑以暖陶色圆环表示；不描摹真实窑室形状，不以圆环数表示考古数量。 -->
+  <circle cx="301" cy="246" r="26" fill="#B47B50" fill-opacity="0.11" stroke="#B47B50" stroke-width="2.8"/>
+  <circle cx="301" cy="246" r="10" fill="#B47B50" fill-opacity="0.42"/>
+  <circle cx="348" cy="314" r="31" fill="#B47B50" fill-opacity="0.12" stroke="#B47B50" stroke-width="2.8"/>
+  <circle cx="348" cy="314" r="12" fill="#B47B50" fill-opacity="0.45"/>
+  <circle cx="282" cy="363" r="23" fill="#B47B50" fill-opacity="0.10" stroke="#B47B50" stroke-width="2.6"/>
+  <circle cx="282" cy="363" r="8" fill="#B47B50" fill-opacity="0.40"/>
+
+  <!-- 两端短线只帮助横向阅读；中文方位和图例由 ArkUI 正文提供。 -->
+  <line x1="118" y1="500" x2="189" y2="500" stroke="#493D38" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round"/>
+  <line x1="811" y1="500" x2="882" y2="500" stroke="#493D38" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round"/>
+</svg>

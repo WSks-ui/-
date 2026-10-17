@@ -10,6 +10,7 @@ import catalogGraphTest from './CatalogGraph.test';
 import spatialExperienceTest from './SpatialExperience.test';
 import engineExperienceTest from './EngineExperience.test';
 import memoryJourneyTest from './MemoryJourney.test';
+import coreContentTest from './CoreContent.test';
 
 export default function testsuite() {
   archiveDeviceTest();
@@ -24,4 +25,5 @@ export default function testsuite() {
   spatialExperienceTest();
   engineExperienceTest();
   memoryJourneyTest();
+  coreContentTest();
 }

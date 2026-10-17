@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+  <!-- 云河纪原创结构示意：依据馆方形制文字独立绘制，不描摹照片或拓本。
+       左侧只保留口、耳、方腹、四足的识别特征；局部比例不能用于测绘。
+       右侧四个 L 形标记分别跨过两条相邻边，表示以折角为中心的一组纹饰，
+       不能拆成每面两组。图中不复刻兽面纹样，中文说明由原生页面承载。 -->
+  <rect x="0" y="0" width="1000" height="600" fill="#FAF6F0"/>
+  <line x1="502" y1="104" x2="502" y2="532" stroke="#7B968C" stroke-opacity="0.23" stroke-width="2"/>
+
+  <!-- 后侧双足先绘制，由方腹自然遮挡；仍可观察到四个独立足端。 -->
+  <path d="M160 319 L171 432 Q185 451 199 433 L211 323 Z" fill="#7B968C" fill-opacity="0.65" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M366 346 L378 465 Q392 483 405 464 L408 351 Z" fill="#7B968C" fill-opacity="0.76" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <ellipse cx="185" cy="433" rx="13" ry="6" fill="#493D38" fill-opacity="0.10"/>
+  <ellipse cx="392" cy="465" rx="13" ry="6" fill="#493D38" fill-opacity="0.10"/>
+
+  <!-- 两根前足采用渐细轮廓；明暗只帮助读形，不模拟真实铜锈或铸造痕迹。 -->
+  <path d="M100 386 L112 501 Q125 520 138 501 L151 395 Z" fill="#7B968C" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M295 414 L305 531 Q319 550 334 531 L349 402 Z" fill="#7B968C" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M112 420 L122 494" fill="none" stroke="#FAF6F0" stroke-opacity="0.36" stroke-width="4" stroke-linecap="round"/>
+  <path d="M307 444 L316 525" fill="none" stroke="#FAF6F0" stroke-opacity="0.36" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 方腹以前壁和相邻侧壁表达空间；空白腹壁不伪造任何具体兽面纹。 -->
+  <path d="M102 245 L328 274 L408 215 L408 358 L328 418 L102 389 Z" fill="#FAF6F0"/>
+  <path d="M102 245 L328 274 L328 418 L102 389 Z" fill="#7B968C" fill-opacity="0.51" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M328 274 L408 215 L408 358 L328 418 Z" fill="#7B968C" fill-opacity="0.81" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M103 277 L328 306 L407 248" fill="none" stroke="#493D38" stroke-opacity="0.47" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M103 365 L328 394 L407 336" fill="none" stroke="#493D38" stroke-opacity="0.28" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- 双立耳仅作简化开口轮廓，不填写未核实的尺寸及槽部构造。 -->
+  <path d="M126 207 L126 140 Q126 114 146 115 Q168 117 168 142 L168 190 L155 199 L155 143 Q155 132 147 132 Q139 131 139 142 L139 199 Z" fill="#7B968C" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M367 235 L367 155 Q367 128 387 130 Q408 132 408 157 L408 205 L395 215 L395 158 Q395 147 387 147 Q380 147 380 158 L380 225 Z" fill="#7B968C" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- 外折口沿与空口以独立几何面表达；不附加鼎盖。 -->
+  <path d="M90 232 L185 162 L425 192 L330 262 Z" fill="#FAF6F0"/>
+  <path d="M90 232 L185 162 L425 192 L330 262 Z" fill="#7B968C" fill-opacity="0.71" stroke="#493D38" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M113 229 L188 178 L399 198 L327 246 Z" fill="#FAF6F0" stroke="#493D38" stroke-width="2.8" stroke-linejoin="round"/>
+  <path d="M113 229 L188 178 L188 209 L167 236 Z" fill="#493D38" fill-opacity="0.17"/>
+  <path d="M188 178 L399 198 L361 223 L188 209 Z" fill="#493D38" fill-opacity="0.10"/>
+
+  <!-- 俯视关系图：四条边仍构成一个正方形，浅色内框仅帮助识别壁带。 -->
+  <rect x="603" y="180" width="300" height="300" fill="#7B968C" fill-opacity="0.10" stroke="#493D38" stroke-width="3.5"/>
+  <rect x="617" y="194" width="272" height="272" fill="#FAF6F0" stroke="#7B968C" stroke-opacity="0.45" stroke-width="2"/>
+
+  <!-- 四处壁面正中：玫瑰色的单个标记表示一组的位置，标记不是兽面图案。 -->
+  <rect x="725" y="166" width="56" height="28" rx="6" fill="#C05B70" stroke="#493D38" stroke-width="2.5"/>
+  <rect x="889" y="302" width="28" height="56" rx="6" fill="#C05B70" stroke="#493D38" stroke-width="2.5"/>
+  <rect x="725" y="466" width="56" height="28" rx="6" fill="#C05B70" stroke="#493D38" stroke-width="2.5"/>
+  <rect x="589" y="302" width="28" height="56" rx="6" fill="#C05B70" stroke="#493D38" stroke-width="2.5"/>
+
+  <!-- 四处折角：每个 L 形横跨相邻两壁，合计四组，不能按两段重复计数。 -->
+  <path d="M589 215 L589 166 L638 166 L638 194 L617 194 L617 215 Z" fill="#B47B50" stroke="#493D38" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M868 166 L917 166 L917 215 L889 215 L889 194 L868 194 Z" fill="#B47B50" stroke="#493D38" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M889 445 L917 445 L917 494 L868 494 L868 466 L889 466 Z" fill="#B47B50" stroke="#493D38" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M589 445 L617 445 L617 466 L638 466 L638 494 L589 494 Z" fill="#B47B50" stroke="#493D38" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

@@ -4,6 +4,8 @@ import {
   nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose
 } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
+import { MATERIAL_STUDIES, materialStudyForId } from '../data/MaterialStudyCatalog';
+import { MaterialStudyPanel } from './MaterialStudyPanel';
 import { SiteRow, siteIllustration } from './SiteRow';
 import { CulturalEngineViewport } from './CulturalEngineViewport';
 import { CulturalEnginePayload, CulturalEngineLayer, CulturalSceneType } from '../domain/CulturalEngineContract';
@@ -90,7 +92,8 @@ export struct SiteDetail {
   private selectedReading(): string {
     return this.explorationSection === 'overview' ? this.site.overview :
       this.explorationSection === 'archaeology' ? this.site.archaeology :
-        this.explorationSection === 'history' ? this.site.history : `${this.site.poetry}\n${this.site.travel}`;
+        this.explorationSection === 'history' ? this.site.history :
+          [this.site.poetry, this.site.travel].filter((text: string) => text.length > 0).join('\n');
   }
 
   private async completeSection(): Promise<void> {
@@ -355,18 +358,23 @@ export struct SiteDetail {
     NavDestination() {
       Scroll(this.detailScroller) {
         Column() {
+          if (materialStudyForId(this.site.id)) {
+            MaterialStudyPanel({ study: materialStudyForId(this.site.id) || MATERIAL_STUDIES[0] })
+          }
           this.culturalExperience()
-          Stack({ alignContent: Alignment.TopStart }) {
-            Image(siteIllustration(this.site)).width('100%').height(210).objectFit(ImageFit.Cover)
-              .borderRadius(18).accessibilityText('文化主题示意，非遗址实景')
-            Row() {
-              Text(this.site.type).fontSize(F.caption).fontColor(T.mintInk)
-                .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.surface).borderRadius(6)
-              Blank()
-              Text('主题示意').fontSize(F.caption).fontColor(T.muted)
-                .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.surface).borderRadius(6)
-            }.width('100%').padding(14).align(Alignment.TopStart)
-          }.width('100%').margin({ top: 12, bottom: 18 })
+          if (!materialStudyForId(this.site.id)) {
+            Stack({ alignContent: Alignment.TopStart }) {
+              Image(siteIllustration(this.site)).width('100%').height(210).objectFit(ImageFit.Cover)
+                .borderRadius(18).accessibilityText('文化主题示意，非遗址实景')
+              Row() {
+                Text(this.site.type).fontSize(F.caption).fontColor(T.mintInk)
+                  .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.surface).borderRadius(6)
+                Blank()
+                Text('主题示意').fontSize(F.caption).fontColor(T.muted)
+                  .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.surface).borderRadius(6)
+              }.width('100%').padding(14).align(Alignment.TopStart)
+            }.width('100%').margin({ top: 12, bottom: 18 })
+          }
           Column({ space: 10 }) {
             Text(`${this.site.city} · ${this.site.era}`).fontSize(F.small).fontColor(T.accent)
             Text(this.site.name).fontSize(F.display).fontWeight(FontWeight.Bold).fontColor(T.ink)
@@ -401,7 +409,10 @@ export struct SiteDetail {
           this.section('档案概览', this.site.overview)
           this.section('考古与遗存', this.site.archaeology)
           this.section('历史线索', this.site.history)
-          this.section('诗文索引', this.site.poetry)
+          // 没有核实诗文时不制造一段“以后补充”的正文；旧档案有内容时仍正常展示。
+          if (this.site.poetry) {
+            this.section('诗文索引', this.site.poetry)
+          }
           this.section('探访信息', this.site.travel)
           Column({ space: 10 }) {
             Text(this.site.reviewStatus).fontSize(F.caption).fontColor(T.accent)

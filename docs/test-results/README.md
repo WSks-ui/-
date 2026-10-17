@@ -171,3 +171,7 @@ Git 公开交付时，记录中的本机工程 / 工具绝对路径替换为 `<P
 本地89/89、报告解析9/9、主包 / 测试包构建成功；唯一核心演示 [2026-10-17-152242-device.log](2026-10-17-152242-device.log) **1/1**，Failure/Error/Ignore为0。覆盖真实手账保存、画廊、视角回放、点亮1/5和主题路线图谱，四张原图见 [图集](../design/memory/README.md)。本轮不跑大字或泛化安全 / 边界套件。
 
 `2026-10-17-memory-phases.json` 记录实际两包与原图。`150705` 首轮Error1为测试嵌套定位失败，`memory-attempt1.json` 保留旧包信息；`memory-build-attempt1.log` 保留早期编译失败。最终输出为 `memory-main-build.log`、`memory-test-build.log`、`memory-local.log`。
+
+## 2026-10-17 核心体验 T01—T03
+
+本地89/89、报告解析9/9、主包/测试包构建成功；三处问题、原创图、九条事实与主来源入口的单项核心路径 [2026-10-17-160042-device.log](2026-10-17-160042-device.log) **1/1**，Failure/Error/Ignore均为0。两包与三张原图见 `2026-10-17-core-content-phases.json`，实际[图集](../design/core-content/README.md)。首轮本地88/89为旧诗文非空断言，保留 `core-content-local-attempt1.log`；最终日志均以 `2026-10-17-core-content-` 开头。T06新对照UI、T07手账画面与T11双端尚未完成。

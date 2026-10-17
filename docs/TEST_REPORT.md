@@ -845,3 +845,13 @@ GPU / WebGL 可见画面、真机性能、平板 / 横屏仍未验证。本轮�
 三个路线均只用现有目录 ID，75% 显式进度或有效活跃手账点亮节点；全路线纪念章由真实完成状态派生。旧普通笔记缺省不补字段、不自动打卡，schema v1 按需增加四项可选元数据，迁移边界见 [兼容说明](MEMORY_MIGRATION.md)。删除仍保留墓碑；路线连线只表达主题阅读顺序。当前设备使用原生 ArkUI Canvas；完整路线逐点完成、Web/GPU 回放与双端手账同步未在本轮实测，Step 4 尚未实施。
 
 最终构建 / 本地日志为 `2026-10-17-memory-main-build.log`、`memory-test-build.log`、`memory-local.log`。设备只经 HDC / Hypium 直接控制模拟器，使用随机独立库；正常结束清理后恢复熄屏覆盖并正常启动应用。后续按 [手账与漫游说明](MEMORY_JOURNEY.md) 的展示路径继续，不扩大为全套生产验收。
+
+## 19. 核心体验成型阶段 T01—T03：2026-10-17
+
+本里程碑先完成三处内容与素材核验，再将具体问题、原创分析图、九条事实及来源入口接入详情；不将后续热点、手账画面或双端阶段登记为已完成。资料和许可清单见[研究索引](research/core-experience/README.md)，阶段任务见[执行规范](CORE_EXPERIENCE.md)。
+
+本地 **89/89**、设备报告解析 **9/9**，主包和测试包均 `BUILD SUCCESSFUL`。设备唯一核心用例 `CoreContentTest#native_three_material_studies_questions_visuals_facts_and_sources` **1/1**，Failure / Error / Ignore均为0，原始报告为 [2026-10-17-160042-device.log](test-results/2026-10-17-160042-device.log)，耗时239150ms。实际搜索庙底沟、大河村、杜岭二号方鼎，逐处检查问题、Image、发现文案、三条事实正文，点击展开并读取主来源。三张截图均人工检查，问题、图示与解释可见。对应两包及截图见[阶段记录](test-results/2026-10-17-core-content-phases.json)和[图集](design/core-content/README.md)。
+
+首轮本地 **88/89**，失败为旧内容断言要求所有诗文非空；三处无可核诗文时不再留“将来补充”占位，测试仅允许已精做对象的诗文为空，其余字段、身份与初稿状态断言保留。失败输出 `2026-10-17-core-content-local-attempt1.log` 保留，修正后本地89/89。主包、测试包与最终本地日志为 `core-content-main-build.log`、`core-content-test-build.log`、`core-content-local.log`，均以2026-10-17为文件名前缀。本轮没有编译或设备失败，不追加大字、安全及无关边界套件。
+
+三份研究记录由指定模型子代理独立核对官方条目，照片与图库未取得应用分发许可；随包素材是依据文字事实独立绘制的三张SVG，不含外部图片、拓本或贴图。已核对九条事实不等于整个档案已人工校审，三处仍保留初稿状态。T03锁定双连壶/方鼎三维度内容，但原对照UI尚未升级；T04—T13仍待后续实现。全部设备操作只使用HDC/Hypium与独立库，成功结束后清理并恢复模拟器熄屏覆盖，正式档案未清空。

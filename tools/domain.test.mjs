@@ -11,6 +11,7 @@ import {
   MAX_NOTE_TAGS_TEXT_LENGTH, CITIES, ERAS, TYPES
 } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
+import { materialStudyForId } from '../entry/src/main/ets/data/MaterialStudyCatalog.ts';
 import { UnavailableSyncGateway } from '../entry/src/main/ets/sync/SyncGateway.ts';
 import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/ets/platform/ArchiveLaunch.ts';
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
@@ -210,9 +211,12 @@ test('expanded catalog covers 20 entries, valid filters and unchanged original i
     assert.match(site.id, /^(smx|ly|zz|kf|py)-[a-z]+(?:-[a-z]+)*$/);
     assert.equal(site.reviewStatus, '初稿待校审');
     assert.ok(typeof site.source.title === 'string' && site.source.title.length > 0 && /^https?:\/\//.test(site.source.url));
-    for (const field of ['summary', 'overview', 'archaeology', 'history', 'poetry', 'travel']) {
+    for (const field of ['summary', 'overview', 'archaeology', 'history', 'travel']) {
       assert.ok(typeof site[field] === 'string' && site[field].length > 0, `${site.id}: ${field}`);
     }
+    // 精做对象没有核实诗文就不显示诗文段，不能为满足非空断言继续保留“以后补充”。
+    assert.equal(typeof site.poetry, 'string');
+    if (site.poetry.length === 0) assert.ok(materialStudyForId(site.id), `${site.id}: empty poetry requires focused content`);
     assert.equal(filterSites(HERITAGE_SITES, { ...all, keyword: site.name })[0].id, site.id);
   }
 });

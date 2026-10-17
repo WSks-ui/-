@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+  <!-- 项目原创学习示意：依据河南博物院文字记载，概括红衣黑彩、并列双壶与腹部椭圆通口。
+       中央暖白区域表示前壁示意性剖开后的内部空间，灰绿椭圆表示相通的开口。
+       本图比例、壁厚、纹线数量与通口尺寸均非实测，不是文物照片或考古复原。
+       后续调整不得把两腹改成仅用外部把手连接，也不能改为其他器物的白衣彩陶纹样。 -->
+  <rect x="0" y="0" width="1000" height="600" rx="28" fill="#FAF6F0"/>
+  <ellipse cx="500" cy="507" rx="310" ry="15" fill="#8CA79B" fill-opacity="0.16"/>
+
+  <!-- 双体外形仅表达口、颈、腹、底的关系，轮廓为自主设计。 -->
+  <path d="M292 174 C301 202 310 220 300 244 C291 264 255 278 234 307 C205 347 207 397 230 438 C244 463 265 481 286 490 L418 490 C450 467 473 441 487 408 C503 370 498 335 478 306 C458 278 420 263 408 243 C396 223 401 201 410 174 Z" fill="#AC553F" stroke="#493D38" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M590 174 C599 201 604 223 592 243 C580 263 542 278 522 306 C502 335 497 370 513 408 C527 441 550 467 582 490 L714 490 C735 481 756 463 770 438 C793 397 795 347 766 307 C745 278 709 264 700 244 C690 220 699 202 708 174 Z" fill="#AC553F" stroke="#493D38" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M473 323 C489 329 511 329 527 323 L529 411 C509 405 491 405 471 411 Z" fill="#AC553F"/>
+
+  <!-- 口沿与颈线不是实际器物断面测量。 -->
+  <ellipse cx="351" cy="173" rx="59" ry="15" fill="#493D38" stroke="#AC553F" stroke-width="8"/>
+  <ellipse cx="649" cy="173" rx="59" ry="15" fill="#493D38" stroke="#AC553F" stroke-width="8"/>
+  <path d="M306 228 C329 237 377 237 400 228" fill="none" stroke="#493D38" stroke-width="3" stroke-opacity="0.55"/>
+  <path d="M600 228 C623 237 671 237 694 228" fill="none" stroke="#493D38" stroke-width="3" stroke-opacity="0.55"/>
+
+  <!-- 平行带与竖、斜短线采用概括排布，不摹绘实物的具体位置或根数。 -->
+  <path d="M258 285 C306 300 393 300 453 285" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M245 304 C300 319 402 319 468 302" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M547 285 C607 300 694 300 742 285" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M532 302 C598 319 700 319 755 304" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <line x1="302" y1="295" x2="302" y2="313" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="320" y1="298" x2="320" y2="315" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="338" y1="299" x2="338" y2="316" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="380" y1="298" x2="380" y2="315" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="398" y1="296" x2="398" y2="313" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="416" y1="293" x2="416" y2="310" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="584" y1="293" x2="594" y2="310" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="602" y1="296" x2="612" y2="313" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="620" y1="298" x2="630" y2="315" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="662" y1="299" x2="672" y2="316" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="680" y1="298" x2="690" y2="315" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+  <line x1="698" y1="295" x2="708" y2="313" stroke="#493D38" stroke-width="5" stroke-linecap="round"/>
+
+  <path d="M245 438 C298 454 402 454 468 434" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M258 457 C310 471 390 471 451 454" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M532 434 C598 454 702 454 755 438" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+  <path d="M549 454 C610 471 690 471 742 457" fill="none" stroke="#493D38" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- 开放的内部空间横贯两个壶腹；这条通道不能替换成壶外的连接把手。 -->
+  <path d="M258 344 C290 325 342 322 391 333 C428 341 455 351 475 351 L525 351 C545 351 572 341 609 333 C658 322 710 325 742 344 L742 397 C710 416 658 419 609 408 C572 400 545 390 525 390 L475 390 C455 390 428 400 391 408 C342 419 290 416 258 397 Z" fill="#FAF6F0" stroke="#8CA79B" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M277 352 C313 338 354 339 390 347" fill="none" stroke="#8CA79B" stroke-width="3" stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M610 347 C646 339 687 338 723 352" fill="none" stroke="#8CA79B" stroke-width="3" stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M277 388 C313 402 354 401 390 393" fill="none" stroke="#8CA79B" stroke-width="3" stroke-opacity="0.55" stroke-linecap="round"/>
+  <path d="M610 393 C646 401 687 402 723 388" fill="none" stroke="#8CA79B" stroke-width="3" stroke-opacity="0.55" stroke-linecap="round"/>
+  <ellipse cx="500" cy="371" rx="30" ry="46" fill="#FAF6F0" stroke="#8CA79B" stroke-width="8"/>
+  <ellipse cx="500" cy="371" rx="20" ry="34" fill="#8CA79B" fill-opacity="0.2"/>
+
+  <!-- 引导点仅用于提示剖开位置，不表示出土标记、考古编号或测量点。 -->
+  <line x1="500" y1="298" x2="500" y2="276" stroke="#C05B70" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="500" cy="267" r="7" fill="#C05B70"/>
+</svg>

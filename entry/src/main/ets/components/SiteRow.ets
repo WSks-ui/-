@@ -3,6 +3,9 @@ import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 
 export function siteIllustration(site: HeritageSite): Resource {
+  if (site.illustration === 'study_miaodigou_space.svg') return $r('app.media.study_miaodigou_space');
+  if (site.illustration === 'study_dahecun_twin.svg') return $r('app.media.study_dahecun_twin');
+  if (site.illustration === 'study_duling_pattern.svg') return $r('app.media.study_duling_pattern');
   if (site.illustration === 'motif_pottery.svg') return $r('app.media.motif_pottery');
   if (site.illustration === 'motif_pagoda.svg') return $r('app.media.motif_pagoda');
   return $r('app.media.motif_city');
