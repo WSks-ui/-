@@ -1,0 +1,475 @@
+{
+  "date": "2026-10-18",
+  "scope": "用户最新更新后的 GitHub 提交前快照",
+  "previousHead": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+  "branch": "main",
+  "remote": "https://github.com/WSks-ui/-.git",
+  "packages": {
+    "main": {
+      "path": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+      "bytes": 6112301,
+      "sha256": "EF9FCADB10275DE2438486D6766B8E88FB68B17523EA17C60165649D53488F84"
+    },
+    "test": {
+      "path": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap",
+      "bytes": 6252339,
+      "sha256": "3E52F597A80CFCA6DA81F3E739FEE49724C1C470AC1E08B30F247F8EB1802C5F"
+    }
+  },
+  "validation": {
+    "local": {
+      "result": "103/103；报告解析 9/9",
+      "report": {
+        "path": "docs/test-results/2026-10-18-github-final-local-test.log",
+        "bytes": 9159,
+        "sha256": "BA4CD8FF342325D6654AC49CA255C451300BCEAC4CE2C67633A9B4DBF8B94E28"
+      }
+    },
+    "services": {
+      "result": "11/11",
+      "report": {
+        "path": "docs/test-results/2026-10-18-github-final-service-test.log",
+        "bytes": 1444,
+        "sha256": "ADA03DA812775F4FEF9D3BB6A5AA9A3BBC7B4AE00F5907A4D099911A2060244D"
+      }
+    },
+    "mainBuild": {
+      "result": "BUILD SUCCESSFUL",
+      "report": {
+        "path": "docs/test-results/2026-10-18-github-final-main-build.log",
+        "bytes": 2636,
+        "sha256": "05A2C89FE12A84A24CBE8F201BB0209ECADD7BDE620964F6F41B0F1846608B54"
+      }
+    },
+    "testBuild": {
+      "result": "BUILD SUCCESSFUL",
+      "report": {
+        "path": "docs/test-results/2026-10-18-github-final-test-build.log",
+        "bytes": 48313,
+        "sha256": "8F8AD3A3F607AD1E0A9AC3D0749D8CDB56E2EB17ECAB750A98E120A4BB7D7638"
+      }
+    },
+    "device": {
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "result": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0,
+        "durationMs": 94704
+      },
+      "platform": "HarmonyOS 7.0.0.107 / API 26 手机模拟器",
+      "target": "127.0.0.1:5555",
+      "report": {
+        "path": "docs/test-results/2026-10-18-132037-device.log",
+        "bytes": 988,
+        "sha256": "0006D024D3E5A66D44E02B43510BE81A85E14164F361A9C16DC9116808455D97"
+      }
+    }
+  },
+  "sourceHashes": [
+    {
+      "path": "entry/src/main/ets/components/AccountPanel.ets",
+      "bytes": 3539,
+      "sha256": "A0501C8DAEB6B2AB96A4CC63E2818252B5C5CF0F8E2436D10205E245B6ABEDA2"
+    },
+    {
+      "path": "entry/src/main/ets/components/AiObservationPanel.ets",
+      "bytes": 27381,
+      "sha256": "8A6C99F22516B0578177DF8D9AAAF4923FC1820FB7B509C02AF0A1F707B7C82A"
+    },
+    {
+      "path": "entry/src/main/ets/components/ArchiveTheme.ets",
+      "bytes": 2117,
+      "sha256": "D5A06F3F0DD44524E48C89CCD029042848E90F38C7E34CC5022FA34251AB4F3B"
+    },
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "bytes": 29967,
+      "sha256": "6F4C72D2C978A45692547414D98D61BFB0A7DED81220345367305D8DB1840658"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureAtlas.ets",
+      "bytes": 22467,
+      "sha256": "9ED17C0EFF399861FFC64DE1906B5BC5C07313DE58FB4F429E3B13B9760F8AD9"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyPanel.ets",
+      "bytes": 7654,
+      "sha256": "AF0F3F36EA454F86F6C142FA28E6C9B50198FECF905E1D16FF4D2D09C5EEE137"
+    },
+    {
+      "path": "entry/src/main/ets/components/LoginPage.ets",
+      "bytes": 6568,
+      "sha256": "AFC209852CC877A274D73B30C552B0417141FD2196835E1E36ECC4082CE7D5BD"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialComparisonPanel.ets",
+      "bytes": 10433,
+      "sha256": "54417533C0EDDC953D8CE6CAFCD695EBC640C752C6EAFA9E155821579903725E"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialStudyPanel.ets",
+      "bytes": 4699,
+      "sha256": "1F77917A12A3212550591B5D59689699086799DF6B2D1D5268895F8B8916A2F8"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryDetailPage.ets",
+      "bytes": 8306,
+      "sha256": "C6704AC47EC0F991F19F1C2E473179F044F0476D11933F4B54068FA8447BE1AF"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+      "bytes": 7260,
+      "sha256": "B184FFDA0A25F641D8CD28A7FFEBFEE970653D9D6AF52580BEF92146ED986BA2"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+      "bytes": 8334,
+      "sha256": "84CD2C74F6E7B735499E97402CB2A51BAAE7ABE9AC73741FC7F6BF5DDCF6202A"
+    },
+    {
+      "path": "entry/src/main/ets/components/ProfilePage.ets",
+      "bytes": 10206,
+      "sha256": "A30987D8DC9AA9E7798162A1BA623839F85FAC0697B9487E59DE922B2449DB15"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteCard.ets",
+      "bytes": 3824,
+      "sha256": "210F04EFFB2AD776D0C08D498CBF607E6F50C66CC8CCA4515B0491D2B0B0A3A8"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "bytes": 46670,
+      "sha256": "CEC19FE806ECEE2015A5FE64043FDFC3890774F0C00E22E2BCB3CE011D513F71"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteRow.ets",
+      "bytes": 2141,
+      "sha256": "10B12EB153686C99140BC3366358DFCF2E1FC8143EA179D38E0B2F792244D4C0"
+    },
+    {
+      "path": "entry/src/main/ets/data/HeritageCatalog.ts",
+      "bytes": 30784,
+      "sha256": "5D0E7557F84D26AFDAA690FE8EF3A51A41414A06E5B789A7EC31735D9BA85F03"
+    },
+    {
+      "path": "entry/src/main/ets/data/MaterialStudyCatalog.ts",
+      "bytes": 9258,
+      "sha256": "EE7759714601AC1EF5D73499E934BE51C9F6F6F8ADF685F4B1F9F10BFC4620E0"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AiObservation.ts",
+      "bytes": 15275,
+      "sha256": "9913ABF53B80B54FD9E7CA57222FF56DACB9D31FD6B9292D258EB97C572B5C5D"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AiObservationKnowledge.ts",
+      "bytes": 1061,
+      "sha256": "DBEB38F09718C43B950BC81B1214E64E179506DCBE56A534B2FC7E8CCAF43164"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ArchiveDomain.ts",
+      "bytes": 18950,
+      "sha256": "67C3DA4D6EAE33891DCC52B49C63F55566A5BDC6FAF06F176FD9B85A5449709E"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "bytes": 11656,
+      "sha256": "C405E0AE9BE71950029170B8E324B9D3206DBB9D1F24B9D33613642374CE3C29"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservation.ts",
+      "bytes": 1525,
+      "sha256": "E4FF0288D0EFB55BA311CAA779DDC5C658695DFC29631CF8CBDE89B90D4E3BCD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+      "bytes": 2868,
+      "sha256": "BC67652A90580F8A45531EBBA7C30E2BF58818CCAAA37FE6B6C021531E9A1525"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+      "bytes": 5100,
+      "sha256": "AE6D1C5B66BDE744F9ADD7494B20101E272724A3EAA23C7605C0DF2FD6361E4D"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+      "bytes": 1663,
+      "sha256": "4D87B948ADD25C171101BCF452A1417ED38C87ABC1D37ED0FB8124F002E1FEA1"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "bytes": 69514,
+      "sha256": "78698692AD6E85B5B53EE600FBA57C90B0401BC3105FBEEEBDF596698564DE24"
+    },
+    {
+      "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+      "bytes": 10616,
+      "sha256": "F05136EF98540EB1780EE453B4A99579AA9F482C97F587BD1CA005CE6386D0F9"
+    },
+    {
+      "path": "entry/src/main/ets/sync/AccountSyncClient.ets",
+      "bytes": 7325,
+      "sha256": "8089BBF831F27A00DE90930658E1EA531E0022C5BF3770BFB6CE42D1FC166C1C"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/color.json",
+      "bytes": 1116,
+      "sha256": "629378DB93403DAB173F4162A1B16E4A2987BD6343EF35B7299964A49EB9F32D"
+    },
+    {
+      "path": "entry/src/main/resources/dark/element/color.json",
+      "bytes": 1116,
+      "sha256": "E7ED1CD656A4F7F941D8DAB2E3541916117D4AB4CE67DF4C47D67D3904A9355A"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets",
+      "bytes": 7076,
+      "sha256": "616A33352472026B6571DA56696EDDF37B47838838062C1AFEED97F9D39B3B64"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets",
+      "bytes": 8398,
+      "sha256": "92DE0C219ED8C50E86AC1B77D5049E5E5269099C1A3FA6D68CD10D64B05A8343"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveUi.test.ets",
+      "bytes": 13904,
+      "sha256": "0FFB51ACF3CC4DF56D0ED277CDD55F699179516240C172950CEBC2F2724A2C26"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveUiSession.ets",
+      "bytes": 18016,
+      "sha256": "E41DE951E32060153F3C8B44745B084CF0DBE9A111A3DF1F030C773FF03CC00F"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/DemoRehearsal.test.ets",
+      "bytes": 14774,
+      "sha256": "48DC5DFBB27486C1586A384C849BD590C67187B8759C0F49CAA8581A364509B9"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ExpandedObservation.test.ets",
+      "bytes": 19209,
+      "sha256": "B6CC586D865BC34E2DCAB26D62E1DE7200281B36C19EC91F436D1E19317D10E9"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+      "bytes": 18728,
+      "sha256": "B4D14D68417E459C98B940D156FC770E9CAB2E0CB1E65E21AC9A07229A30C322"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "bytes": 1626,
+      "sha256": "1ED7702135171142CBDD4FC76450BC14781AD11ACF5FDB8B017F08841A3B4ADB"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/MemoryJourney.test.ets",
+      "bytes": 13069,
+      "sha256": "B8D8936FB05EB95167236739F0DB61E7E98D4577E7F7B14BC33625B53AAF59BD"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/MemorySync.test.ets",
+      "bytes": 29480,
+      "sha256": "9C9E238C39F3BBD5844F5762561085B702D6963F0C97FA977A756FC63C8C35A9"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ObservationMemory.test.ets",
+      "bytes": 14365,
+      "sha256": "5286E304EEF809F551967BEE129205A01ADDB9497B0D16841D1A7C83B718FC1F"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/PageHierarchy.test.ets",
+      "bytes": 13399,
+      "sha256": "B8A7299A60592777390692E4E056FF9FE3FE453756AD88FFA07F69461535BBAA"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ProfileLogin.test.ets",
+      "bytes": 11705,
+      "sha256": "15A3388CB9B584CA3EB43D26FA321C98C81F8E85CE43C59106B1920BC32EF7DA"
+    },
+    {
+      "path": "server/account-service.mjs",
+      "bytes": 11855,
+      "sha256": "91513259977F53B4C27F9C790548840997A5170DE2B599ACC3F0322A8FEC187D"
+    },
+    {
+      "path": "server/ai-observation.mjs",
+      "bytes": 16835,
+      "sha256": "FD4DADB3B6F1D3F33F79A30AA895FD7203ED03004DF388CF3A3957BB036D1D98"
+    },
+    {
+      "path": "server/ai-observation.test.mjs",
+      "bytes": 9438,
+      "sha256": "A933D4D8CB6A5D36C6D8CE2B4ADC2B45B2943F850DD08C3D05AD50F759407430"
+    },
+    {
+      "path": "tools/account-offline-test.ps1",
+      "bytes": 3282,
+      "sha256": "C839981BCC777F4696EE3FD5DC91A7C437949F3472D74795D526163EF83A3FB9"
+    },
+    {
+      "path": "tools/account-test.ps1",
+      "bytes": 3694,
+      "sha256": "B862B6728A8DA60981FA4CC535AB5AA132F646C7EE53F9B81A0E4C9B18D1B5B1"
+    },
+    {
+      "path": "tools/ai-observation.test.mjs",
+      "bytes": 11493,
+      "sha256": "CF9DB9D2D7EB2E63E41B6563D6EE9AE3351B498283C57E791ADCB69647373A8B"
+    },
+    {
+      "path": "tools/build.ps1",
+      "bytes": 2336,
+      "sha256": "A1398C8F7588E1C315DA98D30DDEE003AF7BF9471A6A973F1EBE3BA036819567"
+    },
+    {
+      "path": "tools/deveco-path.ps1",
+      "bytes": 967,
+      "sha256": "57EEE2A912BE7788369C05DF655C8E3E0F489DACCDF3B86BF8B0E75A6EB0E29E"
+    },
+    {
+      "path": "tools/device-report.ps1",
+      "bytes": 1713,
+      "sha256": "A1BFC224D4A9E6299549B2AA809C22CC5B2A32FC41098DC2AE16C21481024455"
+    },
+    {
+      "path": "tools/device-report.test.ps1",
+      "bytes": 2276,
+      "sha256": "1FA38542ABA3E7AC4336B7F9BF2FF8E593F2C469595763077512E9A187AC1949"
+    },
+    {
+      "path": "tools/device-test.ps1",
+      "bytes": 5339,
+      "sha256": "DE76EE4347AB79307D57D2A76BE8C8F39663038D1D7E3C3562F0F9194B85061A"
+    },
+    {
+      "path": "tools/domain.test.mjs",
+      "bytes": 34642,
+      "sha256": "74E5BBB17A0ABCEA912DC27C1BBD1FA3CB9803AA35F2AA6D123B6CDC2DEF2074"
+    },
+    {
+      "path": "tools/memory-journal.test.mjs",
+      "bytes": 12190,
+      "sha256": "990CBF78A87F5AC6A42EE4DADBBF47A012FC966DFE6E2D0167097C92068D74AB"
+    },
+    {
+      "path": "tools/restart-test.ps1",
+      "bytes": 2587,
+      "sha256": "5F92F38FFDB540A829D53638A643D67A505D7FF58F6ECBAC3741E808DD435412"
+    },
+    {
+      "path": "tools/start-account-server.ps1",
+      "bytes": 4360,
+      "sha256": "09FC60AEF70EDA631FAE9F18322DA500393825281DB8C762785A7F01BE5D8E22"
+    },
+    {
+      "path": "tools/test.ps1",
+      "bytes": 893,
+      "sha256": "F1514AC4808E0CECA6BB9AF2D46CC12B5449B1A84932169D7F2D9C31098C731F"
+    }
+  ],
+  "photoHashes": [
+    {
+      "path": "entry/src/main/resources/rawfile/photos/cangjie-gate.jpg",
+      "bytes": 245008,
+      "sha256": "4F80B2D130AB218957A7DD46919BF770D1EA97EFFB18FC40356111F5177914A8"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/dahecun-foundations.jpg",
+      "bytes": 246333,
+      "sha256": "9D30C0625B832BE7C95D9E39F1A1C2354F8F232E2BB0A80D1446C4C3ACF9C736"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/duling-ding.jpg",
+      "bytes": 125468,
+      "sha256": "F67FC49DD6C18B0713A63FA7FD86D05A4EC9EBBCD5DD8839A03B746EE827DD70"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/erlitou-site.jpg",
+      "bytes": 263949,
+      "sha256": "55B99297B7B79EC83A433143F2D71EB238F47813792AE1D3D1F7EA8D60E30039"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/fanta.jpg",
+      "bytes": 251112,
+      "sha256": "AA8479348350ABAFA2B121ECAF8263158CB50975199E16F8F939E45B9A0DB5B7"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/guoguo-bronzes.jpg",
+      "bytes": 138166,
+      "sha256": "F52ECEC158601E0C7132CF7D073EB1BE540648C4E6870B280606BFA3D1C9837A"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/hanwei-palace.jpg",
+      "bytes": 237652,
+      "sha256": "956529852C481BCB724C159B1AD83CF0EFF2E48177132D28D64BFE1EC90C0D0C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/iron-pagoda.jpg",
+      "bytes": 136425,
+      "sha256": "E417BB8A9514E24F69836B8373FEB3F21ECD379217B88C74318AD24B0716CAD1"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/kaifeng-wall.jpg",
+      "bytes": 270957,
+      "sha256": "EF43873E1994A9C067AFFCBB8C1E256CE42E5B918F1A853939F9CE1678F9171C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/longmen.jpg",
+      "bytes": 242703,
+      "sha256": "576E93D5ECDA9A5D9C927BFC525DE4DC673E565A47E4A20DD88A43F49D6B2A33"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/miaodigou-basin.jpg",
+      "bytes": 64762,
+      "sha256": "F8F416A175BFB0EEA1927AB52A8B3D2D7DEB83C252CF4EA1B20319C545D45BDB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/xishuipo.jpg",
+      "bytes": 110339,
+      "sha256": "109D199832749A693C29A3C56B883A8D8F0B561B56198ED2FE50CF7EF1C9FC04"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/yangshao-strata.jpg",
+      "bytes": 270701,
+      "sha256": "270E3DA2CC0AF4EFC1C52594986513082E66813A8E23C76A88D926B9C7D25D7C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/yanshi-site.jpg",
+      "bytes": 297842,
+      "sha256": "9F06B50F03115D0886B1478B32470CE5E2AA35DB0CA13209DFA5A01BF3A62B8D"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/zhenghan-wall.jpg",
+      "bytes": 172796,
+      "sha256": "E0F5E9F528A6E694CFC68232FBA56C1F551454F81A3610AEBB2E59C604F2C55D"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/zhengzhou-wall.jpg",
+      "bytes": 228724,
+      "sha256": "4A2B78BFCE9621C86F43FB8C1B26030073B066978321BBA5E33D97126B133B1F"
+    }
+  ],
+  "deliverables": [
+    {
+      "path": "docs/deliverables/云河纪-校赛选拔设计文档.docx",
+      "bytes": 1167850,
+      "sha256": "4E811C61455BAA83B2F7EDFFB22DC8C71B1288C1D8DA752B82EBDB9CFE4A15D8"
+    },
+    {
+      "path": "docs/IMAGE_CREDITS.md",
+      "bytes": 6109,
+      "sha256": "58802EF87F83F5086A41D713E6E5816DFA1D7729F51735A0F78E8ABACDB78C64"
+    }
+  ],
+  "notes": [
+    "源码及素材哈希为提交前工作区的原始字节；不同系统的换行可能不同，仓库内容以实际提交为准。",
+    "公开构建日志仅替换本机工程及工具路径，原始输出保留在本机忽略目录。",
+    "本轮没有修改应用功能、数据格式或签名；Office 临时目录已加入忽略规则。",
+    "没有重跑完整历史 UI、真实供应商 AI、当前包双端、真人计时或录像。",
+    "旧阶段快照保留原包与原源码哈希，没有改写成最新版本验证。",
+    "具体提交与推送结果以 Git 历史和远程分支为准。"
+  ]
+}

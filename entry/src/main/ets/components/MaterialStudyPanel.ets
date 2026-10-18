@@ -24,7 +24,7 @@ export struct MaterialStudyPanel {
     Column({ space: 14 }) {
       Row() {
         Text('泥火成器 · 细节阅读').fontSize(F.caption).fontColor(T.accent).layoutWeight(1)
-        Text('原创分析图').fontSize(F.caption).fontColor(T.mintInk)
+        Text('资料依据').fontSize(F.caption).fontColor(T.mintInk)
           .padding({ left: 8, right: 8, top: 5, bottom: 5 }).backgroundColor(T.mint).borderRadius(8)
       }.width('100%')
       Text(this.study.question).fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
@@ -33,11 +33,6 @@ export struct MaterialStudyPanel {
         .borderRadius(14).accessibilityText(this.study.visualCaption).id('material-study-visual')
       Text(this.study.visualCaption).fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
         .id('material-study-caption')
-      Column({ space: 5 }) {
-        ForEach(this.study.visualLegend, (line: string) => {
-          Text(line).fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
-        })
-      }.width('100%').alignItems(HorizontalAlign.Start)
       Text(this.study.discovery).fontSize(F.body).fontColor(T.ink).fontWeight(FontWeight.Medium)
         .lineHeight(26).width('100%').padding(12).backgroundColor(T.accentSoft).borderRadius(12)
         .id('material-study-discovery')
@@ -49,14 +44,16 @@ export struct MaterialStudyPanel {
           Text(`资料依据 ${this.sourceNumbers(fact)}`).fontSize(F.caption).fontColor(T.accent).width('100%')
         }.width('100%').alignItems(HorizontalAlign.Start).padding({ top: 7, bottom: 7 })
       }, (fact: MaterialStudyFact) => fact.id)
-      Text(this.study.evidenceLimit).fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
-      Button(this.sourcesOpen ? '收起资料依据' : '查看事实的资料依据', { type: ButtonType.Normal })
+      Button(this.sourcesOpen ? '收起资料依据' : '查看资料依据', { type: ButtonType.Normal })
         .id('material-study-sources-toggle').fontSize(F.small).fontColor(T.accent).height(42).width('100%')
         .backgroundColor(T.accentSoft).borderRadius(12).onClick(() => { this.sourcesOpen = !this.sourcesOpen; })
       if (this.sourcesOpen) {
         Column({ space: 14 }) {
-          Text('下列三条事实已核对官方正文；完整档案仍为初稿待校审。')
-            .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
+          Text('资料边界').fontSize(F.caption).fontWeight(FontWeight.Medium).fontColor(T.ink).width('100%')
+          Text(this.study.evidenceLimit).fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
+          ForEach(this.study.visualLegend, (line: string) => {
+            Text(line).fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+          })
           ForEach(this.study.sources, (source: MaterialEvidenceSource, index: number) => {
             Column({ space: 5 }) {
               Text(`〔${index + 1}〕${source.publisher} · ${source.title}`)

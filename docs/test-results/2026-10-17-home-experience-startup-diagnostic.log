@@ -1,0 +1,14 @@
+10-17 19:42:30.094  1378  1378 W A0421d/WMSRotation: [a92ab15f25c5118, 3bf12af, 1b390fa] [getTargetRotation] bundleName:com.chr.myapplication requestOrientation:0 isScreenLocked:true isPlacedRotateFriendlyDevicePlaced:false fixedRotation: -1 rotationCommand: {"screenId":-1,"isIgnorePlacedState":false,"isFromDropDown":false}
+10-17 19:42:30.200  1378  1378 W A0421d/WMSRotation: [a92ab15f25c5118, 3bf12af, 1b390fa] [getTargetRotation] bundleName:com.chr.myapplication requestOrientation:0 isScreenLocked:true isPlacedRotateFriendlyDevicePlaced:false fixedRotation: -1 rotationCommand: {"screenId":-1,"isIgnorePlacedState":false,"isFromDropDown":false}
+10-17 19:42:30.916  1378  1378 I A04223/SCBMain: [a92ab15f25c5118, e2fd7e, 17dfb82] [id:28]on sessionException errorReason: handleForegroundTimeout, shouldSkipKillInStartup: false, needRemoveSession: false needClearCallerLink: true
+10-17 19:42:31.560  8039  8039 I A03d00/JSAPP: [Hypium]native_home_theme_recent_memory_route_replay specStart start print success
+10-17 19:42:32.315  1378  1378 W A0421d/WMSRotation: [a92ab25f284488e, 146828, 319b64d] [getTargetRotation] bundleName:com.chr.myapplication requestOrientation:0 isScreenLocked:true isPlacedRotateFriendlyDevicePlaced:false fixedRotation: -1 rotationCommand: {"screenId":-1,"isIgnorePlacedState":false,"isFromDropDown":false}
+10-17 19:42:32.363  1378  1378 W A0421d/WMSRotation: [a92ab25f284488e, 146828, 319b64d] [getTargetRotation] bundleName:com.chr.myapplication requestOrientation:0 isScreenLocked:true isPlacedRotateFriendlyDevicePlaced:false fixedRotation: -1 rotationCommand: {"screenId":-1,"isIgnorePlacedState":false,"isFromDropDown":false}
+10-17 19:42:32.383  8039  8039 I A00000/testTag: [a92ab25f284488e, 146268, 17499f2] Ability onCreate
+10-17 19:42:32.404  8039  8039 I A00000/testTag: [a92ab25f284488e, 146268, 17499f2] Ability onWindowStageCreate
+10-17 19:42:32.428  1378  1378 I A04223/SCBMain: [a92ab25f284488e, 1f87d2b, 2f96ae9] [id:29]on sessionException errorReason: handleForegroundTimeout, shouldSkipKillInStartup: false, needRemoveSession: false needClearCallerLink: true
+10-17 19:42:32.428  8039  8039 I A00000/testTag: [a92ab25f284488e, 146268, 17499f2] Ability onForeground
+10-17 19:42:32.552  8039  8039 I A00000/testTag: [a92ab25f284488e, 2dceac9, 26aae78] Ability onBackground
+10-17 19:42:32.772  8039  8039 I A00000/testTag: [a92ab25f284488e, 30c6185, 23a714d] Ability onWindowStageDestroy
+10-17 19:42:32.772  8039  8039 I A00000/testTag: [a92ab25f284488e, 30c6185, 23a714d] Ability onDestroy
+10-17 19:42:32.827  1378  1378 W A01a00/SYS_UI: [a92ab25f284488e, 2b1b74c, 9e0a6b] AppLifeCycleManager: onProcessDied, uid: 20020063, bundleName: com.chr.myapplication, pid: 8039

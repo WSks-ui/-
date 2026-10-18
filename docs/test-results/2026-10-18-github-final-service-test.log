@@ -1,0 +1,22 @@
+(node:8240) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ HTTPS account isolation, durable merge, offline edits, tombstones, conflicts and revoked sessions (193.5982ms)
+AI_OBSERVE_OK provider=deepseek model=deepseek-test site=zz-duling-fangding purpose=draft_memory status=grounded facts=1 actions=1 elapsedMs=0 account=authenticated
+✔ AI configuration reports availability without exposing the key (1.1894ms)
+✔ unconfigured AI returns a real failure state instead of a canned answer (0.5799ms)
+✔ draft request without a user observation asks for one without calling the model (0.1934ms)
+✔ real adapter sends facts, JSON mode and returns a validated application reply (1.107ms)
+✔ draft reply is normalized and keeps only validated fact references (0.5604ms)
+✔ invalid model content, facts or actions fail the whole reply (0.6155ms)
+✔ timeouts, provider errors and rate limits map to distinct states (0.3956ms)
+✔ server rejects another site or unknown hotspot before calling the model (0.1644ms)
+✔ prompt keeps the three fact bodies and forbids unsupported conclusions (0.1022ms)
+✔ revisiting a note includes only its confirmed observation as personal expression (0.1509ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 321.7643

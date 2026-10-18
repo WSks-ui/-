@@ -11,5 +11,7 @@
 **/.test
 /.appanalyzer
 /.local
+# Office 文档处理生成的临时解包目录；正式交付文件保留在 docs/deliverables。
+/.dsh-office-*/
 /entry/src/main/resources/rawfile/account-sync-dev.json
 /entry/src/ohosTest/resources/rawfile/account-sync-test.json

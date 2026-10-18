@@ -1,0 +1,512 @@
+{
+  "schemaVersion": 1,
+  "stage": "页面功能、层级与 AI 重访",
+  "date": "2026-10-18",
+  "git": {
+    "head": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+    "state": "工作区含未提交改动，本轮未提交、推送或发布；HEAD 不代表本轮完整源码。"
+  },
+  "platform": {
+    "target": "HarmonyOS 7 / API 26 原生工程",
+    "deviceOs": "HarmonyOS 7.0.0.107",
+    "device": "Pura 90 Pro 配置手机模拟器",
+    "hdcTarget": "127.0.0.1:5555",
+    "width": 1256,
+    "height": 2760,
+    "density": 560,
+    "archiveIsolation": "独立 Preferences，合成账号及测试文字；没有清空正式用户档案。"
+  },
+  "packages": {
+    "finalMain": {
+      "path": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+      "bytes": 2787007,
+      "sha256": "B88D1ACA32FFD56ECC35CA7EA93FB405CC206EC1CFA1C927DBFCCC593CB4ABC4"
+    },
+    "finalTest": {
+      "path": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap",
+      "bytes": 2937284,
+      "sha256": "4059EA160F9F589471273F08A2F390FE3C114CA5B37B7CB3C5CB8E0A0A8E5FAA"
+    }
+  },
+  "sourceSnapshot": {
+    "note": "收尾时的当前源码哈希，供最终包与交接复核；未补造 111850 或更早阶段的源码快照。完成最终设备验证后仅整理文档、日志路径脱敏及截图总览。",
+    "files": [
+      {
+        "path": "entry/src/main/ets/pages/Index.ets",
+        "bytes": 69359,
+        "sha256": "F2E0C7704E3C96E374E711AED9E8E1414E771C8761BE05DA82F63D723A9DA0CB"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryDetailPage.ets",
+        "bytes": 8306,
+        "sha256": "C6704AC47EC0F991F19F1C2E473179F044F0476D11933F4B54068FA8447BE1AF"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+        "bytes": 8334,
+        "sha256": "72FD1CF3A6C71AF490CD5F7A4516958B41B0159352FFA2076C129C8EEEF30771"
+      },
+      {
+        "path": "entry/src/main/ets/components/ProfilePage.ets",
+        "bytes": 10012,
+        "sha256": "2C06E2092472DAF0578EE2B6B661F3C29BF29882CDAEE06ED083812182538597"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "bytes": 45164,
+        "sha256": "4BC95F2F2C5D2DF6797C4554F84AFE7D49D57A07882FB194A2BD5C68AA419FFA"
+      },
+      {
+        "path": "entry/src/main/ets/components/AiObservationPanel.ets",
+        "bytes": 27381,
+        "sha256": "8A6C99F22516B0578177DF8D9AAAF4923FC1820FB7B509C02AF0A1F707B7C82A"
+      },
+      {
+        "path": "entry/src/main/ets/domain/AiObservation.ts",
+        "bytes": 15275,
+        "sha256": "9913ABF53B80B54FD9E7CA57222FF56DACB9D31FD6B9292D258EB97C572B5C5D"
+      },
+      {
+        "path": "entry/src/main/ets/domain/AiObservationKnowledge.ts",
+        "bytes": 1061,
+        "sha256": "DBEB38F09718C43B950BC81B1214E64E179506DCBE56A534B2FC7E8CCAF43164"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "bytes": 5100,
+        "sha256": "AE6D1C5B66BDE744F9ADD7494B20101E272724A3EAA23C7605C0DF2FD6361E4D"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/PageHierarchy.test.ets",
+        "bytes": 13399,
+        "sha256": "B8A7299A60592777390692E4E056FF9FE3FE453756AD88FFA07F69461535BBAA"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/ArchiveUiSession.ets",
+        "bytes": 18016,
+        "sha256": "E41DE951E32060153F3C8B44745B084CF0DBE9A111A3DF1F030C773FF03CC00F"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/List.test.ets",
+        "bytes": 1626,
+        "sha256": "1ED7702135171142CBDD4FC76450BC14781AD11ACF5FDB8B017F08841A3B4ADB"
+      },
+      {
+        "path": "server/ai-observation.mjs",
+        "bytes": 16835,
+        "sha256": "FD4DADB3B6F1D3F33F79A30AA895FD7203ED03004DF388CF3A3957BB036D1D98"
+      },
+      {
+        "path": "server/ai-observation.test.mjs",
+        "bytes": 9438,
+        "sha256": "A933D4D8CB6A5D36C6D8CE2B4ADC2B45B2943F850DD08C3D05AD50F759407430"
+      },
+      {
+        "path": "tools/ai-observation.test.mjs",
+        "bytes": 11493,
+        "sha256": "CF9DB9D2D7EB2E63E41B6563D6EE9AE3351B498283C57E791ADCB69647373A8B"
+      },
+      {
+        "path": "tools/test.ps1",
+        "bytes": 893,
+        "sha256": "F1514AC4808E0CECA6BB9AF2D46CC12B5449B1A84932169D7F2D9C31098C731F"
+      },
+      {
+        "path": "tools/device-report.test.ps1",
+        "bytes": 2276,
+        "sha256": "1FA38542ABA3E7AC4336B7F9BF2FF8E593F2C469595763077512E9A187AC1949"
+      }
+    ]
+  },
+  "phases": [
+    {
+      "id": "final-114604",
+      "packages": [
+        "finalMain",
+        "finalTest"
+      ],
+      "report": {
+        "path": "docs/test-results/2026-10-18-114604-device.log",
+        "bytes": 1556,
+        "sha256": "40AE8B575FFAE17D900CABBD2B7B456E2D65409323FFE1D7962583F667AE8204"
+      },
+      "result": {
+        "total": 2,
+        "pass": 2,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0,
+        "durationMs": 269260
+      },
+      "cases": [
+        {
+          "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+          "durationMs": 92641,
+          "coverage": [
+            "记忆空态与收藏分区",
+            "20 / 1 / 0 处检索结果、重置与关键词",
+            "游客 AI、返回保留筛选",
+            "我的概况与二级页",
+            "偏好落盘与 AI 手账筛选入口"
+          ]
+        },
+        {
+          "test": "PageHierarchyTest#real_ai_focus_save_and_resume_from_memory",
+          "durationMs": 176619,
+          "provider": "真实 DeepSeek 服务",
+          "coverage": [
+            "真实回答与四个折角聚焦",
+            "完整模型可见及继续追问",
+            "个人观察到草稿、采纳与落盘",
+            "aiAssist 与 corners 相机参数",
+            "记忆冻结依据、带回问题与本篇正文"
+          ],
+          "revisitBoundary": "设备核对到原问题和单篇正文预填；未自动再发一轮重访请求。请求带入个人表达由服务契约测试验证。"
+        }
+      ],
+      "screenshotCount": 12
+    },
+    {
+      "id": "memory-repair-111850",
+      "packages": {
+        "mainSha256": null,
+        "testSha256": null,
+        "note": "该修复包未采集哈希；不得使用最终包的哈希替代或宣称此项在最终包重跑。"
+      },
+      "report": {
+        "path": "docs/test-results/2026-10-18-111850-device.log",
+        "bytes": 984,
+        "sha256": "5C88D9F78C8564A698008FB0C4F6123C4ACC9E4022213C1196331FB84EFF06B3"
+      },
+      "result": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0,
+        "durationMs": 99713
+      },
+      "test": "PageHierarchyTest#memory_fulltext_edit_replay_search_and_tombstone",
+      "coverage": [
+        "长正文全文阅读",
+        "同 ID 全文替换、磁盘与返回显示一致",
+        "原视角保留与正式回放",
+        "搜索空态及恢复",
+        "删除墓碑保留视角参数"
+      ],
+      "subsequentChanges": [
+        "关于页去掉重复标题",
+        "AI 个人观察输入框增高到 116vp",
+        "延迟焦点异常保护与销毁检查"
+      ],
+      "screenshotCount": 3
+    }
+  ],
+  "localVerification": [
+    {
+      "command": ".\\tools\\test.ps1",
+      "result": "103/103，fail 0",
+      "report": {
+        "path": "docs/test-results/2026-10-18-page-hierarchy-local-test.log",
+        "bytes": 9117,
+        "sha256": "B88407FC66325355DE8DB80B8CF94FC584AD832C9F4EE4C115FD7904F9C96028"
+      },
+      "reportParserResult": "9/9",
+      "reportParserEvidence": "同次脚本控制台 Write-Host 结果；保存的标准输出日志仅包含 Node 103 项，不包含该主机流。"
+    },
+    {
+      "command": "node --test server/ai-observation.test.mjs",
+      "result": "10/10，fail 0",
+      "report": {
+        "path": "docs/test-results/2026-10-18-page-hierarchy-ai-service-test.log",
+        "bytes": 1159,
+        "sha256": "B58F02C24DA15A672717A7314664BA0E099BEA1D36D2EA2EF1B2B41F261E12E0"
+      },
+      "note": "受控模型替身验证服务契约；真实供应商调用见 final-114604 设备路径。"
+    },
+    {
+      "command": ".\\tools\\build.ps1",
+      "result": "BUILD SUCCESSFUL",
+      "report": {
+        "path": "docs/test-results/2026-10-18-page-hierarchy-main-build.log",
+        "bytes": 2636,
+        "sha256": "E025597FB8DDB1F0A16C2ECE8BEAB24CA01DD0FFCA12708453F462E622C6FCFE"
+      },
+      "note": "只将本机工程路径替换为 <PROJECT_ROOT>；原始日志保留在本机忽略目录。"
+    },
+    {
+      "command": ".\\tools\\build.ps1 -Target ohosTest",
+      "result": "BUILD SUCCESSFUL",
+      "report": {
+        "path": "docs/test-results/2026-10-18-page-hierarchy-test-build.log",
+        "bytes": 2764,
+        "sha256": "368AF16C7FD5953301057581962DFE5EAAC86D36D9811D38C207BCCF416A15B3"
+      },
+      "note": "只将本机工程路径替换为 <PROJECT_ROOT>；原始日志保留在本机忽略目录。"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/design/page-hierarchy/memory-empty.png",
+      "bytes": 288836,
+      "sha256": "1849252BB11E76644078FDD5DAE9F783094F9AEDD76109034712AE38CB28162B",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/library.png",
+      "bytes": 447771,
+      "sha256": "FFEDBF1DF2C774B1FB38C9C90BF50CE42E8160CC93EC3EE7713E3BE0D9AAB899",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/library-empty.png",
+      "bytes": 350699,
+      "sha256": "0DCAD87358CB907F094453F167B36C80B5FCB7F0A3CEF7FB02E360A271E5A693",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/ai-guest.png",
+      "bytes": 322367,
+      "sha256": "39976E8D9998B9B70A7229F0E9BDCA15C32ACF46AA1652174440476889BCD056",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/profile.png",
+      "bytes": 293459,
+      "sha256": "0121A108F43F1AF43BCA701D1D4B62BC1C8B59BEDECCF0A65169324C78472827",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/journeys.png",
+      "bytes": 375812,
+      "sha256": "138BF1CCB004265257CBC23A40B70B4E93722B8540C0807966AB1AB9E283B2D7",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/preferences.png",
+      "bytes": 148085,
+      "sha256": "04A42693EC502609CA1EA9B48F43F6D6CA96E9EB88760C1C6D603B31AADAAE09",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/about.png",
+      "bytes": 376082,
+      "sha256": "781647BD9B880A362A5FD0D601D441BA46F8E4F15CD2520D89FF8A4DE23C2E39",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/ai-focus.png",
+      "bytes": 470678,
+      "sha256": "5D8624548E563EF80B3AE222CF20DD96F76F08F53554423552BED380C37DDB5C",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#real_ai_focus_save_and_resume_from_memory",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/ai-memory.png",
+      "bytes": 397658,
+      "sha256": "25687623A4D18E1A4AAD15879ECE3E1A587B6D6929B3B3C1CA170EE5AB02BF81",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#real_ai_focus_save_and_resume_from_memory",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/ai-saved-evidence.png",
+      "bytes": 394480,
+      "sha256": "90E5345AD5E21E176077085D9F86347A772D8F71953862ABBCC6B8A938CF3996",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#real_ai_focus_save_and_resume_from_memory",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/ai-resume.png",
+      "bytes": 341962,
+      "sha256": "C3714439A11E0D63928B8BCA0098C9173BBCEDFF3CB79F145A301AE54A081929",
+      "phase": "final-114604",
+      "test": "PageHierarchyTest#real_ai_focus_save_and_resume_from_memory",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/memory-read.png",
+      "bytes": 442414,
+      "sha256": "75DACFC44045A710105200345908AB4A8569D99A541F891E37B1958A3795FC1C",
+      "phase": "memory-repair-111850",
+      "test": "PageHierarchyTest#memory_fulltext_edit_replay_search_and_tombstone",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/memory-replay.png",
+      "bytes": 450617,
+      "sha256": "A203B1988CA92C19ADD0EEEFD654DD5F5E611DAF14A093B610918591B9BC1102",
+      "phase": "memory-repair-111850",
+      "test": "PageHierarchyTest#memory_fulltext_edit_replay_search_and_tombstone",
+      "width": 1256,
+      "height": 2760
+    },
+    {
+      "path": "docs/design/page-hierarchy/memory-list.png",
+      "bytes": 373761,
+      "sha256": "3BFC58AC653C299EB8F09D22F7C5FE036FDFB397758DBED4FE8DD1FED33AEE1A",
+      "phase": "memory-repair-111850",
+      "test": "PageHierarchyTest#memory_fulltext_edit_replay_search_and_tombstone",
+      "width": 1256,
+      "height": 2760
+    }
+  ],
+  "originalScreenshotCount": 15,
+  "compositions": [
+    {
+      "path": "docs/design/page-hierarchy/overview.png",
+      "bytes": 366449,
+      "sha256": "4ECF0568C34EBF339E6C9CC0E53CF8B3A9CF8ED38455BC16FCE51A94263313D2",
+      "kind": "composition",
+      "sources": [
+        "docs/design/page-hierarchy/ai-memory.png",
+        "docs/design/page-hierarchy/library.png",
+        "docs/design/page-hierarchy/profile.png"
+      ],
+      "note": "仅缩放排列三张原生截图并加标题，未补画页面；三图来自独立测试状态，不表示同一账号的连续画面。"
+    }
+  ],
+  "intermediateRuns": [
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-104654-device.log",
+        "bytes": 988,
+        "sha256": "F4C53C6EF5F245F6F7D09DBF6EA2BEEF3453D60A9F1564752191DEA08476E1C3"
+      },
+      "result": "1/1",
+      "durationMs": 80835,
+      "note": "页面层级早期通过；最终包已复验，不重复计数。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-104925-device.log",
+        "bytes": 1187,
+        "sha256": "EFCCE6B0AC82773101DE99F92D0D8569292B6ACBE39B4F9359FC2182EDE7D7DF"
+      },
+      "result": "0/1，Error 1",
+      "durationMs": 49850,
+      "note": "输入后按返回再保存，编辑器未关闭；测试改为直接点固定保存按钮。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-105404-device.log",
+        "bytes": 2004,
+        "sha256": "A1D610421968218FECF676D20048691C9D3AC2FD5D0A576F150FC04A13AF31F1"
+      },
+      "result": "0/1，Error 1",
+      "durationMs": 83925,
+      "note": "编辑返回显示旧正文，普通 inputText 只改前段；改用真实键盘全选删除。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-110251-device.log",
+        "bytes": 1212,
+        "sha256": "798BEFFFF9DF0816455C5265DA9F67C0862BF54B30C7582520789D6A21D4D538"
+      },
+      "result": "0/1，Error 1",
+      "durationMs": 62132,
+      "note": "等待屏外字数计数不可达；改为核对输入框为空。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-110722-device.log",
+        "bytes": 1638,
+        "sha256": "E799F6D5426E14FE9D8C8ACA4264076E91614261C994A488811C76A07A56261C"
+      },
+      "result": "0/1，Error 1",
+      "durationMs": 69394,
+      "note": "已获取新记录但 Builder 保留旧内容；以 id:updatedAt 重建内容区后修复。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-111337-device.log",
+        "bytes": 1638,
+        "sha256": "4266856B5E3842AD935BAF78347522EB3E0C8B804FCB501D94A3FA7593B8E0E2"
+      },
+      "result": "0/1，Error 1",
+      "durationMs": 76986,
+      "note": "旧正文问题复现；111850 完整路径随后通过。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-112234-device.log",
+        "bytes": 417,
+        "sha256": "3BEE314D9F0D22EDA79BB5AA87C6D395EF95AFB0548D4C090E6102C5EEE55D51"
+      },
+      "result": "无完整结束摘要，App died",
+      "durationMs": null,
+      "note": "延迟 requestFocus 抛出 150002；增加销毁检查和异常保护。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    },
+    {
+      "report": {
+        "path": "docs/test-results/2026-10-18-112950-device.log",
+        "bytes": 973,
+        "sha256": "7D7A72C1C4F90036F18AB8B2BF5532A7BD9A1393636C63A1CD34EA73BF2CBE36"
+      },
+      "result": "1/1",
+      "durationMs": 171226,
+      "note": "焦点修复后真实 AI 路径通过；增加输入框高度后在最终包复验，不重复计数。",
+      "packageHashes": null,
+      "packageNote": "当时未采集包哈希，不能以当前最终包代替。"
+    }
+  ],
+  "crashSummary": {
+    "path": "docs/test-results/2026-10-18-page-hierarchy-crash-summary.txt",
+    "bytes": 977,
+    "sha256": "E1B285AFCCA07C01F6A74EF5008DEFB01E5AB73362C2B075C54AD506BF7C6DD7"
+  },
+  "limitations": [
+    "AI 当前只支持杜岭二号方鼎，其余 19 处没有被本轮扩展为可 AI 观察。",
+    "重访设备验收到预填，未自动再发第二轮请求。",
+    "本轮未重跑完整历史 UI、当前包双端 AI、供应商故障注入、真机或平板矩阵。",
+    "历史手工 A/B AI 接收与回放结果保持原版本边界，不是当前包双端验收。",
+    "记忆检索是本地文本匹配，个人统计由真实记录派生，均不宣称为 AI 生成。",
+    "真人三分钟计时与录像未完成，未因本轮专项自动改变状态。",
+    "笔记 schema 未变，删除保留墓碑；内容仍为初稿待校审；同账号同步使用既有 HTTPS 服务。"
+  ]
+}

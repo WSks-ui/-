@@ -1,0 +1,97 @@
+10-17 22:37:29.169 22848 22848 I A03d00/JSAPP: DEMO_SEGMENT:save:166930
+10-17 22:37:43.139 22848 22848 I A03d00/JSAPP: DEMO_CANVAS_FRAME:home-recent-memory-preview-canvas:{"bottom":1499,"displayId":0,"left":101,"right":1155,"top":1065}
+10-17 22:37:47.653 22848 22848 I A03d00/JSAPP: MEMORY_REPLAY_FRAME:{"siteId":"smx-miaodigou","sceneType":"relic_inspector","proceduralPreset":"miaodigou_pottery","sceneRevision":2,"selectedId":"kilns","yaw":0.5726990816987241,"pitch":0.77,"zoom":0.99,"width":294.85714285714283,"height":300}
+10-17 22:38:06.362 22848 22848 I A03d00/JSAPP: DEMO_CANVAS_FRAME:engine-native-relic_inspector:{"bottom":2121,"displayId":0,"left":112,"right":1144,"top":1071}
+10-17 22:38:07.125 22848 22848 I A03d00/JSAPP: DEMO_SEGMENT:replay:204886
+10-17 22:38:07.125 22848 22848 I A03d00/JSAPP: DEMO_TOTAL_A:204886
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: [Hypium][pass]rehearsal_a_main_line ; consuming 214912ms
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: class=DemoRehearsalTest
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: current=1
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: id=JS
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: numtests=1
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: stream=
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: test=rehearsal_a_main_line
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS_CODE: 0
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: consuming=214912
+10-17 22:38:09.691 22848 22848 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:38:09.692 22848 22848 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:38:09.692 22848 22848 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:38:09.693 22848 22848 I A03d00/JSAPP: [Hypium]rehearsal_a_main_line specDone end print success
+10-17 22:38:09.693 22848 22848 I A03d00/JSAPP: [suite end] DemoRehearsalTest consuming 214912 ms
+10-17 22:38:09.693 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: class=DemoRehearsalTest
+10-17 22:38:09.693 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: suiteconsuming=214912
+10-17 22:38:09.694 22848 22848 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:38:09.694 22848 22848 I A03d00/JSAPP: [Hypium]DemoRehearsalTest suiteDone print success
+10-17 22:38:09.695 22848 22848 I A03d00/JSAPP: [Hypium]total cases:1;failure 0,error 0,pass 1; consuming 214912ms
+10-17 22:38:09.695 22848 22848 I A03d00/JSAPP: [Hypium][end] run suites end
+10-17 22:38:09.695 22848 22848 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-17 22:38:09.695 22848 22848 I A03d00/JSAPP: OHOS_REPORT_CODE: 0
+10-17 22:38:09.695 22848 22848 I A03d00/JSAPP: OHOS_REPORT_STATUS: taskconsuming=214912
+10-17 22:38:09.695 22848 22848 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:38:09.696 22848 22848 I A03d00/JSAPP: [Hypium]report print success
+10-17 22:39:59.763 26885 26885 W A03d00/JSAPP: [a92ab188bf7856b, c3430f, fd5ca9] UiTestKit_exporter: systemParameter "persist.ace.testmode.enabled" is not set!
+10-17 22:39:59.772 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, c3430f, fd5ca9] UiTestKit_exporter: ScheduleProbeAndEstablishConnection, token=com.chr.myapplication@26885@20020064@1
+10-17 22:39:59.773 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, c3430f, fd5ca9] UiTestKit_exporter: Begin executing shell command to start server-daemon
+10-17 22:40:00.085 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 30c3ac9, c5671c] UiTestKit_exporter: Start server-daemon finished: {"stdResult":"","exitCode":0}
+10-17 22:40:00.515 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]parameters:{"class":"MemorySyncTest#device_a_publish_kiln_memory","timeout":"240000"}
+10-17 22:40:00.516 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]filter params:0
+10-17 22:40:00.516 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]filter suite : ArchiveDeviceTest
+10-17 22:40:00.517 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]filter suite : ArchiveUiTest
+10-17 22:40:00.526 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]stress length : 1
+10-17 22:40:00.526 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]filter it :device_b_receive_preview_and_replay
+10-17 22:40:00.526 26885 26885 I A03d00/JSAPP: [a92ab188bf7856b, 241a1e9, 26b9b40] [Hypium]filter it :cleanup_only_this_run_test_preferences
+10-17 22:40:00.576 26885 26885 I A03d00/JSAPP: [Hypium] rootSuite:{"description":"","childSuites":[{"description":"MemorySyncTest","childSuites":[],"specs":[{"description":"device_a_publish_kiln_memory","fi":0,"duration":0,"startTime":0,"isExecuted":false,"isSkip":false,"skipReason":"","expectMsg":""}],"beforeAll":[],"afterAll":[],"beforeItSpecified":{},"afterItSpecified":{},"beforeEach":[],"beforeEachIt":[],"afterEach":[],"afterEachIt":[],"duration":0,"hookError":null,"isSkip":false,"skipReason":""}],"specs":[],"beforeAll":[],"afterAll":[],"beforeItSpecified":{},"afterItSpecified":{},"beforeEach":[],"beforeEachIt":[],"afterEach":[],"afterEachIt":[],"duration":0,"hookError":null,"isSkip":false,"skipReason":""}
+10-17 22:40:00.576 26885 26885 I A03d00/JSAPP: [Hypium][start] start run suites
+10-17 22:40:00.576 26885 26885 I A03d00/JSAPP: [Hypium][suite start]MemorySyncTest
+10-17 22:40:00.576 26885 26885 I A03d00/JSAPP: OHOS_REPORT_SUM: 1
+10-17 22:40:00.576 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: class=MemorySyncTest
+10-17 22:40:00.576 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:40:00.577 26885 26885 I A03d00/JSAPP: [Hypium]MemorySyncTest suiteStart print success
+10-17 22:40:00.578 26885 26885 I A03d00/JSAPP: [Hypium]start running case 'device_a_publish_kiln_memory'
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: class=MemorySyncTest
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: current=1
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: id=JS
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: numtests=1
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: stream=
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: test=device_a_publish_kiln_memory
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS_CODE: 1
+10-17 22:40:00.579 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:40:00.580 26885 26885 I A03d00/JSAPP: [Hypium]device_a_publish_kiln_memory specStart start print success
+10-17 22:40:09.295  1356  1356 I A03d00/JSAPP: Succeeded in unsubscribing.
+10-17 22:40:40.812 26885 26885 I A03d00/JSAPP: T11_A_FRESH:{"deviceId":"1680f34b-549d-4c45-bf90-42814c9e1079","records":0}
+10-17 22:41:21.646 26885 26885 I A03d00/JSAPP: T11_CANVAS_FRAME:engine-native-relic_inspector:{"page":"detail-scroll","area":{"left":0,"right":1256,"top":356,"bottom":2582},"canvas":{"bottom":1915,"displayId":0,"left":112,"right":1144,"top":865}}
+10-17 22:41:22.014 26885 26885 I A03d00/JSAPP: T11_CAPTURE_CANVAS:a-saved-view:{"bottom":1915,"displayId":0,"left":112,"right":1144,"top":865}
+10-17 22:41:24.836 26885 26885 I A03d00/JSAPP: OBSERVATION_SAVED_VIEW:{"siteId":"smx-miaodigou","pose":{"version":1,"sceneType":"relic_inspector","yaw":0.5726990816987241,"pitch":0.77,"zoom":0.99,"hotspotId":"kilns","sectionId":"","label":"西部陶窑 · 33°","proceduralPreset":"miaodigou_pottery","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}}}
+10-17 22:41:33.226 26885 26885 I A03d00/JSAPP: T11_CANVAS_FRAME:memory-draft-preview-canvas:{"page":"note-editor-scroll","area":{"left":70,"right":1186,"top":461,"bottom":2393},"canvas":{"bottom":1067,"displayId":0,"left":70,"right":1186,"top":437}}
+10-17 22:41:46.499  1356  1356 I A03d00/JSAPP: Succeeded in unsubscribing.
+10-17 22:42:10.791 26885 26885 I A03d00/JSAPP: T11_A_SAVED:{"id":"note:1680f34b-549d-4c45-bf90-42814c9e1079:1792248130205","kind":"note","siteId":"smx-miaodigou","body":"在陶窑与居住遗存之间，记下我对庙底沟西部空间关系的观察。","tags":["庙底沟","陶窑","空间观察","跨端样板1792247956642_b761c44d"],"updatedAt":1792248130205,"deviceId":"1680f34b-549d-4c45-bf90-42814c9e1079","deleted":false,"stampType":"河洛拾遗","paperTheme":"ochre","quotedPoemOrFact":"制作陶器的陶窑集中分布在遗址西部。居住遗存与陶窑都涉及西部，不能把它们画成互不重叠的两个功能区。","snapshot3DPose":{"version":1,"sceneType":"relic_inspector","yaw":0.5726990816987241,"pitch":0.77,"zoom":0.99,"hotspotId":"kilns","sectionId":"","label":"西部陶窑 · 33°","proceduralPreset":"miaodigou_pottery","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}}}
+10-17 22:42:10.791 26885 26885 I A03d00/JSAPP: T11_A_SAVED_AT:1792248130791
+10-17 22:42:28.923 26885 26885 I A03d00/JSAPP: T11_CANVAS_FRAME:home-recent-memory-preview-canvas:{"page":"explore-scroll","area":{"left":0,"right":1256,"top":335,"bottom":2505},"canvas":{"bottom":2172,"displayId":0,"left":101,"right":1155,"top":1738}}
+10-17 22:42:29.273 26885 26885 I A03d00/JSAPP: T11_CAPTURE_CANVAS:a-home-preview:{"bottom":2172,"displayId":0,"left":101,"right":1155,"top":1738}
+10-17 22:42:36.353 26885 26885 I A03d00/JSAPP: T11_A_SYNC:上次同步已完成
+10-17 22:42:37.116 26885 26885 I A03d00/JSAPP: T11_A_PHASE_MS:155880
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: [Hypium][pass]device_a_publish_kiln_memory ; consuming 159100ms
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: class=MemorySyncTest
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: current=1
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: id=JS
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: numtests=1
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: stream=
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: test=device_a_publish_kiln_memory
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS_CODE: 0
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: consuming=159100
+10-17 22:42:39.678 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: [Hypium]device_a_publish_kiln_memory specDone end print success
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: [suite end] MemorySyncTest consuming 159100 ms
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: class=MemorySyncTest
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: suiteconsuming=159100
+10-17 22:42:39.679 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: [Hypium]MemorySyncTest suiteDone print success
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: [Hypium]total cases:1;failure 0,error 0,pass 1; consuming 159100ms
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: [Hypium][end] run suites end
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: OHOS_REPORT_CODE: 0
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: OHOS_REPORT_STATUS: taskconsuming=159100
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: [Hypium]printSync called ...
+10-17 22:42:39.680 26885 26885 I A03d00/JSAPP: [Hypium]report print success

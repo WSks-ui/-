@@ -1,4 +1,4 @@
-function Read-HypiumReport {
+﻿function Read-HypiumReport {
     param([string]$Report, [int]$ProcessExitCode, [int]$ExpectedTests = 0)
     $summaries = [regex]::Matches($Report, 'Tests run:\s*(\d+),\s*Failure:\s*(\d+),\s*Error:\s*(\d+),\s*Pass:\s*(\d+),\s*Ignore:\s*(\d+)')
     $suites = [regex]::Matches($Report, '(?m)^OHOS_REPORT_SUM:\s*(\d+)\s*$')

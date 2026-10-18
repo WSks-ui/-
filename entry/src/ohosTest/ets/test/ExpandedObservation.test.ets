@@ -199,12 +199,12 @@ async function runExpandedObservation(scenario: ExpandedObservationScenario): Pr
 
     await (await inPage(session, 'detail-scroll', ON.id('engine-remember-view'))).click();
     await session.waitId('note-editor-scroll');
-    await session.wait(ON.id('memory-draft-preview-status').text('已重建保存画面'), '草稿画布已实际重绘');
+    await session.wait(ON.id('memory-draft-preview-status').text('已恢复当时视角'), '草稿画布已实际重绘');
     const draftCanvas = await session.wait(ON.id('memory-draft-preview-canvas').type('Canvas'), '真实草稿预览画布');
     const draftBounds = await draftCanvas.getBounds();
     expect(draftBounds.right - draftBounds.left > 120 && draftBounds.bottom - draftBounds.top > 120).assertTrue();
     expect(await (await inPage(session, 'note-editor-scroll', ON.id('memory-draft-preview-status'))).getText())
-      .assertEqual('已重建保存画面');
+      .assertEqual('已恢复当时视角');
     expect((await (await inPage(session, 'note-editor-scroll', ON.id('memory-draft-pose'))).getText())
       .includes(finalDetail.label)).assertTrue();
     await (await inPage(session, 'note-editor-scroll', ON.id('note-body')))
@@ -251,9 +251,9 @@ async function runExpandedObservation(scenario: ExpandedObservationScenario): Pr
     await session.waitId('archive-scroll');
     await (await inPage(session, 'archive-scroll', ON.id('memory-view-gallery'))).click();
     const previewId = `memory-preview-${note.id}`;
-    await inPage(session, 'archive-scroll', ON.id(`${previewId}-status`).text('已重建保存画面')
+    await inPage(session, 'archive-scroll', ON.id(`${previewId}-status`).text('已恢复当时视角')
       .within(ON.id('archive-scroll')));
-    await session.wait(ON.id(`${previewId}-status`).text('已重建保存画面').within(ON.id('archive-scroll')),
+    await session.wait(ON.id(`${previewId}-status`).text('已恢复当时视角').within(ON.id('archive-scroll')),
       '画廊预览已实际绘制');
     const previewCanvasId = `${previewId}-canvas`;
     await frameCanvas(session, 'archive-scroll', previewCanvasId,

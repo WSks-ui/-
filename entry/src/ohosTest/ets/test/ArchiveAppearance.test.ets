@@ -39,12 +39,14 @@ export default function archiveAppearanceTest() {
           await session.inScroll('explore-scroll', ON.id('site-row-smx-yangshao').within(ON.id('explore-site-grid')));
           await capture(session, 'catalog');
           await (await session.waitId('explore-scroll')).scrollToTop(40000);
-          // 首屏三个快捷入口必须使用真实导航，不用装饰卡片冒充功能。
-          await (await session.waitId('memory-entry')).click();
+          // 首屏快捷入口必须使用真实导航，不用装饰卡片冒充功能。新版首页把“河流记忆”
+          // 与“从彩陶读起”放到纸页入口区，先滚动到真实控件再点击，断言不变。
+          await (await session.inScroll('explore-scroll', ON.id('memory-entry'))).click();
           await session.waitId('collection-filter');
           await (await session.waitId('tab-0')).click();
-          await (await session.waitId('featured-site')).click();
-          await visibleControl(session, 'write-note');
+          await (await session.inScroll('explore-scroll', ON.id('featured-site'))).click();
+          // 详情第一屏是文化视口，收藏与写手账在下方；按真实详情 Scroll 滚到控件再核对可见范围。
+          await session.inScroll('detail-scroll', ON.id('write-note'));
           await capture(session, 'detail');
           await (await session.waitId('favorite-toggle')).click();
           await session.waitText('已收藏');
@@ -57,9 +59,10 @@ export default function archiveAppearanceTest() {
           await session.editorClosed();
           await session.driver.pressBack();
           await (await session.waitId('tab-1')).click();
-          await session.waitId('collection-filter');
+          // 统计与筛选不在同一屏：先读顶部统计，再滚动到真实筛选控件截图。
           expect(await (await session.waitId('collection-count')).getText()).assertEqual('1');
           expect(await (await session.waitId('note-count')).getText()).assertEqual('1');
+          await session.inScroll('archive-scroll', ON.id('collection-filter'));
           await capture(session, 'collection');
           await (await session.waitId('profile-entry')).click();
           await session.inScroll('profile-scroll', ON.id('last-sync-value'));
@@ -70,8 +73,8 @@ export default function archiveAppearanceTest() {
           await (await session.waitId('tab-0')).click();
           await (await session.waitId('explore-scroll')).scrollToTop(40000);
           await capture(session, 'home-dark');
-          await (await session.waitId('featured-site')).click();
-          await visibleControl(session, 'write-note');
+          await (await session.inScroll('explore-scroll', ON.id('featured-site'))).click();
+          await session.inScroll('detail-scroll', ON.id('write-note'));
           await capture(session, 'detail-dark');
 
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);

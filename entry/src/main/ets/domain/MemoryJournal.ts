@@ -50,7 +50,7 @@ export function memorySeasonLabel(timestamp: number): string {
   SEASONAL_MARKERS.forEach((marker: SeasonalMarker) => {
     if (monthDay >= marker.monthDay) label = marker.label;
   });
-  return `${label} · 时令近似`;
+  return `${label}`;
 }
 
 export function memoryPoseLabel(pose?: MemoryPose): string {

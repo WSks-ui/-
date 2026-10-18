@@ -13,39 +13,34 @@ export struct SiteCard {
 
   build() {
     Button({ type: ButtonType.Normal }) {
-      Column({ space: 10 }) {
+      Column({ space: 9 }) {
         Stack() {
           Image(siteIllustration(this.site)).width('100%').height('100%')
-            .objectFit(ImageFit.Cover).borderRadius(10)
-            .accessibilityText('文化主题示意，非遗址实景')
+            .objectFit(ImageFit.Cover).borderRadius(12)
+            .accessibilityText('原创文化主题插画')
           Column() {
             Row() {
               Text(this.site.era).fontSize(F.caption).fontColor(T.mintInk)
-                .padding({ left: 7, right: 7, top: 4, bottom: 4 })
-                .backgroundColor(T.surface).borderRadius(6)
+                .padding({ left: 8, right: 8, top: 4, bottom: 4 })
+                .backgroundColor(T.surface).borderRadius(7)
               Blank()
               if (this.collected) {
                 SymbolGlyph($r('sys.symbol.bookmark')).fontSize(18).fontColor([T.accent])
               }
             }.width('100%')
-            Blank()
-            Row() {
-              Blank()
-              Text('主题示意').fontSize(10).fontColor(T.muted)
-                .padding({ left: 5, right: 5, top: 3, bottom: 3 }).backgroundColor(T.surface).borderRadius(4)
-            }.width('100%')
           }.width('100%').height('100%').padding(8).hitTestBehavior(HitTestMode.None)
-        }.width('100%').aspectRatio(1.25)
-        Column({ space: 5 }) {
+        }.width('100%').aspectRatio(1.18)
+        Column({ space: 4 }) {
           Text(this.site.name).fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
             .maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
-          Text(`${this.site.city} · ${this.site.type}`).fontSize(F.caption).fontColor(T.muted).maxLines(2)
-          Text(this.site.summary).fontSize(F.caption).fontColor(T.muted).lineHeight(19)
+          Text(`${this.site.city} · ${this.site.type}`).fontSize(F.caption).fontColor(T.muted).maxLines(1)
+          Text(this.site.summary).fontSize(F.caption).fontColor(T.muted).lineHeight(18)
             .maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
-        }.width('100%').alignItems(HorizontalAlign.Start).padding({ left: 2, right: 2, bottom: 3 })
+        }.width('100%').alignItems(HorizontalAlign.Start).padding({ left: 2, right: 2, bottom: 2 })
       }.width('100%').padding(10).alignItems(HorizontalAlign.Start)
     }.width('100%').padding(0).borderRadius(T.cardRadius).backgroundColor(T.surface)
-      .stateStyles({ pressed: { .opacity(0.7) } })
+      .border({ width: 1, color: T.line, radius: T.cardRadius })
+      .stateStyles({ pressed: { .opacity(0.72) } })
       .accessibilityText(`${this.site.name}，${this.site.city}，${this.site.era}，查看档案`)
       .id(`site-row-${this.site.id}`).onClick(() => this.onOpen(this.site))
   }

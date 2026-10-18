@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$DevEcoHome = $env:DEVECO_HOME,
     [Parameter(Mandatory=$true)][ValidatePattern('^[\w.:-]+$')][string]$TargetId
 )

@@ -1,0 +1,16 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=real_ai_focus_save_and_resume_from_memory
+OHOS_REPORT_STATUS_CODE: 1
+
+TestFinished-ResultCode: -1
+TestFinished-ResultMsg: App died
+user test finished.

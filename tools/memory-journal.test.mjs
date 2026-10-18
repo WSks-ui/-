@@ -176,7 +176,7 @@ test('journal helpers use explicit decoration, existing catalog prose and approx
   assert.equal(memoryQuoteForSite({ ...HERITAGE_SITES[1], summary: '', overview: '遗址'.repeat(100) }).length, 160);
   assert.equal(memoryPoseLabel(pose()), '器形观察');
   assert.equal(memoryPoseLabel(), '未记录视角');
-  assert.equal(memorySeasonLabel(new Date(2026, 9, 17, 12).getTime()), '寒露 · 时令近似');
+  assert.equal(memorySeasonLabel(new Date(2026, 9, 17, 12).getTime()), '寒露');
   assert.equal(isMemoryPostcard(note({ paperTheme: 'rose' })), true);
   assert.equal(isMemoryPostcard(note({ stampType: '河洛拾遗' })), true);
   assert.equal(isMemoryPostcard(note({ stampType: '未知主题' })), false);

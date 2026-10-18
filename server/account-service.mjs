@@ -7,6 +7,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { pathToFileURL } from 'node:url';
 import { mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
 import { validateAccountInput } from '../entry/src/main/ets/domain/AccountSync.ts';
+import { createAiObservationService, describeAiConfiguration, loadAiConfiguration } from './ai-observation.mjs';
 
 const derivePassword = promisify(scrypt);
 const digest = value => createHash('sha256').update(value).digest('hex');
@@ -15,7 +16,7 @@ const sessionDuration = 12 * 60 * 60 * 1000;
 
 // 独立账号服务只实现已授权的演示范围：注册 / 登录、账号隔离、真实 HTTPS 同步。
 // SQLite 持久化记录与冲突版本；不把网络传输宣传为鸿蒙分布式数据库。
-export function createAccountService({ databasePath, cert, key, now = Date.now }) {
+export function createAccountService({ databasePath, cert, key, now = Date.now, ai = undefined }) {
   const db = new DatabaseSync(databasePath);
   db.exec(`PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;
     CREATE TABLE IF NOT EXISTS accounts(id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL,
@@ -25,6 +26,7 @@ export function createAccountService({ databasePath, cert, key, now = Date.now }
     CREATE TABLE IF NOT EXISTS conflicts(account_id TEXT NOT NULL REFERENCES accounts(id),
       content_hash TEXT NOT NULL, record TEXT NOT NULL, PRIMARY KEY(account_id,content_hash));`);
   const limits = new Map();
+  const aiLimits = new Map();
   function rateLimit(key) {
     const bucket = limits.get(key) ?? { count: 0, until: now() + 60000 };
     if (bucket.until < now()) { bucket.count = 0; bucket.until = now() + 60000; }
@@ -32,6 +34,15 @@ export function createAccountService({ databasePath, cert, key, now = Date.now }
     limits.set(key, bucket);
     if (limits.size > 2000) for (const [name, value] of limits) if (value.until < now()) limits.delete(name);
     if (bucket.count > 15) throw fail('ACCOUNT_RATE_LIMITED', 429);
+  }
+  function aiRateLimit(accountId) {
+    // 在线模型有真实费用，按已认证账号而不是 IP 限流；与登录限流分开，避免互相吞配额。
+    const bucket = aiLimits.get(accountId) ?? { count: 0, until: now() + 60000 };
+    if (bucket.until < now()) { bucket.count = 0; bucket.until = now() + 60000; }
+    bucket.count++;
+    aiLimits.set(accountId, bucket);
+    if (aiLimits.size > 2000) for (const [name, value] of aiLimits) if (value.until < now()) aiLimits.delete(name);
+    if (bucket.count > 20) throw fail('AI_RATE_LIMITED', 429);
   }
   function send(res, status, value) {
     res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8',
@@ -98,6 +109,14 @@ export function createAccountService({ databasePath, cert, key, now = Date.now }
         db.prepare('DELETE FROM sessions WHERE token_hash=?').run(session.token_hash);
         send(res, 200, { loggedOut: true }); return;
       }
+      if (path === '/ai/observe') {
+        // AI 路由在现有 /sync 排他判断之前分派，不占用同步数据库事务；仍要求已认证账号。
+        if (!ai || !ai.available) throw fail('AI_NOT_CONFIGURED', 503);
+        aiRateLimit(session.account_id);
+        const body = await readBody(req);
+        const reply = await ai.run(body, session);
+        send(res, 200, reply); return;
+      }
       if (path !== '/sync') throw fail('ACCOUNT_NOT_FOUND', 404);
       const body = await readBody(req);
       if (!body || typeof body.deviceId !== 'string' || !/^[a-zA-Z0-9_-]{1,128}$/.test(body.deviceId)) {
@@ -133,9 +152,12 @@ export function createAccountService({ databasePath, cert, key, now = Date.now }
       send(res, 200, { accountId: session.account_id, records: merged.records,
         otherDevices: online, conflictCount, serverTime: now() });
     } catch (error) {
-      const expected = typeof error.message === 'string' && error.message.startsWith('ACCOUNT_');
-      send(res, expected ? (error.status ?? 400) : 500, { code: expected ? error.message : 'ACCOUNT_SERVICE_ERROR' });
-      // 不记录 URL 参数、账号、正文、密码或访问令牌；错误日志只保留类别。
+      // 账号错误与 AI 错误都只返回稳定的类别码；供应商状态、密钥和原始正文不进入响应或日志。
+      const known = typeof error.message === 'string' && /^(ACCOUNT|AI)_[A-Z_]+$/.test(error.message);
+      const code = known ? error.message : 'ACCOUNT_SERVICE_ERROR';
+      const expected = code !== 'ACCOUNT_SERVICE_ERROR';
+      send(res, expected ? (error.status ?? 400) : 500, { code });
+      // 不记录 URL 参数、账号、正文、密码、访问令牌或模型问题；错误日志只保留类别。
       if (!expected) process.stderr.write('账号服务处理失败：ACCOUNT_SERVICE_ERROR\n');
     }
   });
@@ -149,9 +171,23 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const root = resolve(rootIndex >= 0 ? process.argv[rootIndex + 1] : '.local/account-sync');
   mkdirSync(root, { recursive: true });
   const config = JSON.parse(readFileSync(join(root, 'service.json'), 'utf8').replace(/^\uFEFF/, ''));
+  // 模型配置不进仓库：默认读取被忽略的 .local/ai-observation/config.json，也可用 --ai-config 指定。
+  const aiConfigIndex = process.argv.indexOf('--ai-config');
+  const aiConfigPath = aiConfigIndex >= 0 ? resolve(process.argv[aiConfigIndex + 1]) : join(root, '..', 'ai-observation', 'config.json');
+  let aiService;
+  try {
+    aiService = createAiObservationService({ configuration: loadAiConfiguration({ configPath: aiConfigPath }) });
+  } catch {
+    // 配置损坏时明确保持未配置；不要用示例回复冒充在线 AI，也不影响账号与同步。
+    aiService = createAiObservationService({ configuration: { configured: false } });
+  }
   const service = createAccountService({ databasePath: join(root, 'accounts.sqlite'),
-    cert: readFileSync(join(root, 'server.pem')), key: readFileSync(join(root, 'server.key')) });
-  service.server.listen(config.port, '127.0.0.1', () => process.stdout.write(`云河纪账号服务已启动：HTTPS / 端口 ${config.port}\n`));
+    cert: readFileSync(join(root, 'server.pem')), key: readFileSync(join(root, 'server.key')), ai: aiService });
+  service.server.listen(config.port, '127.0.0.1', () => {
+    const ai = describeAiConfiguration(aiService.describe());
+    process.stdout.write(`云河纪账号服务已启动：HTTPS / 端口 ${config.port}\n` +
+      `AI 观察导览：${ai.configured ? `已配置 ${ai.provider}/${ai.model}` : '未配置（/ai/observe 返回 AI_NOT_CONFIGURED）'}\n`);
+  });
   const stop = async () => { await service.close(); process.exit(0); };
   process.on('SIGTERM', stop);
   process.on('SIGINT', stop);

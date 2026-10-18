@@ -17,5 +17,5 @@ export const DULING_OBSERVATION: MaterialObservationDefinition = {
       visibleDetail: '沿浅色点状带看每壁两侧和腹部近底端的边框。点数仅为示意；它们与玫瑰、陶土标记解释的上腹八组分开。',
       point: { x: 0.34, y: -0.105, z: 0.592 }, yaw: 0.5, pitch: 0.42, zoom: 1 }
   ],
-  notice: '原创位置关系示意，非实物复原 · 玫瑰：壁面正中四组；陶土：折角四组。标记不摹画兽面，比例与乳钉点数均已简化，足部纹饰不计入八组。'
+  notice: '原创位置示意，非兽面纹摹本；比例与乳钉点数已简化，足部纹饰不计入八组。'
 };

@@ -1,0 +1,95 @@
+{
+  "source": "同次 HDC/Hypium 原始截图、dumpLayout 与连续 JSAPP 日志",
+  "siteId": "smx-miaodigou",
+  "pose": {
+    "version": 1,
+    "sceneType": "relic_inspector",
+    "yaw": 0.5726990816987241,
+    "pitch": 0.77,
+    "zoom": 0.99,
+    "hotspotId": "kilns",
+    "sectionId": "",
+    "label": "西部陶窑 · 33°",
+    "proceduralPreset": "miaodigou_pottery",
+    "sceneRevision": 2,
+    "rendererProfile": "native-raster-v1",
+    "viewFrame": {
+      "width": 294.85714285714283,
+      "height": 300,
+      "textDensity": 3.5,
+      "dark": false
+    }
+  },
+  "drawnReplayCamera": {
+    "siteId": "smx-miaodigou",
+    "sceneType": "relic_inspector",
+    "proceduralPreset": "miaodigou_pottery",
+    "sceneRevision": 2,
+    "selectedId": "kilns",
+    "yaw": 0.5726990816987241,
+    "pitch": 0.77,
+    "zoom": 0.99,
+    "width": 294.85714285714283,
+    "height": 300
+  },
+  "canvasBounds": {
+    "saved": [
+      112,
+      865,
+      1144,
+      1915
+    ],
+    "preview": [
+      101,
+      1738,
+      1155,
+      2172
+    ],
+    "replay": [
+      112,
+      1071,
+      1144,
+      2121
+    ]
+  },
+  "saveReplayComparison": {
+    "imageSize": [
+      1032,
+      1050
+    ],
+    "comparedPixels": 1083600,
+    "changedPixels": 0,
+    "maximumChannelDifference": 0,
+    "modelComparedPixels": 361127,
+    "modelChangedPixels": 0,
+    "allowedMaximumBackgroundChannelDifference": 1,
+    "sameComposition": true
+  },
+  "homePreviewComparison": {
+    "canvasSize": [
+      1054,
+      434
+    ],
+    "savedVirtualFrame": {
+      "width": 294.85714285714283,
+      "height": 300,
+      "textDensity": 3.5,
+      "dark": false
+    },
+    "containContentBounds": [
+      314,
+      0,
+      740,
+      434
+    ],
+    "contentSize": [
+      426,
+      434
+    ],
+    "meanAbsoluteDifferenceAfterLanczos": 1.0232524177321995,
+    "rgbCorrelation": 0.9971631690498743,
+    "maximumMeanAbsoluteDifference": 6,
+    "minimumRgbCorrelation": 0.97,
+    "sameComposition": true
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "recordedAtLocal": "2026-10-18T01:28:00+08:00",
+  "siteId": "zz-duling-fangding",
+  "sceneRevision": 2,
+  "contentRevision": 1,
+  "model": "deepseek-flash",
+  "devices": {
+    "a": {
+      "name": "Pura 90 Pro",
+      "hdc": "127.0.0.1:5555"
+    },
+    "b": {
+      "name": "YunhejiSyncB",
+      "hdc": "127.0.0.1:5557"
+    }
+  },
+  "packages": {
+    "mainSha256": "C8E2BF6CE8F251E55D4BFB9357D42529CF8A37CAB76606708FB3D9DB67ADDA21",
+    "testSha256UsedForRegression": "B6437F95CBD42192D0109F411207276C9168DC608CB5535852582F50DAA4D6EF",
+    "aManualScreenshotSha256": "C132F7FB328CFFA0DF1FFBDAFE77CBD498484F36F8A8BF4EF5F8DDB64BBCE57E"
+  },
+  "savedRecord": {
+    "id": "note:78fbec36-6207-4384-9585-37203e00ba27:1792256874296",
+    "kind": "note",
+    "siteId": "zz-duling-fangding",
+    "updatedAt": 1792256874296,
+    "deleted": false,
+    "bodyPreview": "我先数到四个正面的兽面，转到折角才明白另外四组在哪里。上腹兽面纹环绕一周：每壁正中一组，四个折角各一组，合计八组；两侧边与近底端的乳钉纹带另成边框，不计入八组。",
+    "tags": [
+      "八组纹饰",
+      "折角观察",
+      "位置示意"
+    ],
+    "stampType": "商都吉金",
+    "paperTheme": "rose",
+    "quotedPoemOrFactPreview": "上腹兽面纹环绕一周：每壁正中一组，每个折角处再各一组，合计八组。两侧边与腹部近底端的乳钉纹带另成边框。",
+    "aiAssist": {
+      "version": 1,
+      "question": "我只看到四个，带我看看另外几个。",
+      "factIds": [
+        "duling-eight"
+      ],
+      "contentRevision": 1,
+      "facts": [
+        {
+          "id": "duling-eight",
+          "title": "四面正中，加上四个折角",
+          "body": "上腹兽面纹环绕一周：每壁正中一组，每个折角处再各一组，合计八组。两侧边与腹部近底端的乳钉纹带另成边框。",
+          "sourceIds": [
+            "museum-duling-two"
+          ]
+        }
+      ]
+    },
+    "snapshot3DPose": {
+      "version": 1,
+      "sceneType": "relic_inspector",
+      "yaw": 0.5,
+      "pitch": 0.42,
+      "zoom": 1,
+      "hotspotId": "frame",
+      "sectionId": "",
+      "label": "乳钉边框 · 29°",
+      "proceduralPreset": "duling_fangding",
+      "sceneRevision": 2,
+      "rendererProfile": "native-raster-v1",
+      "viewFrame": {
+        "width": 294.85714285714283,
+        "height": 300,
+        "textDensity": 3.5,
+        "dark": false
+      }
+    }
+  },
+  "bReceived": {
+    "viaHttps": true,
+    "homeBadge": "AI 辅助整理 · 依据资料 v1",
+    "previewStatus": "已重建保存画面",
+    "replayStatus": "已回到手账视角",
+    "replayHotspot": "frame",
+    "replayLabel": "乳钉边框 · 29°"
+  },
+  "evidence": {
+    "gallery": "docs/design/ai-observation/README.md",
+    "testReport": "docs/TEST_REPORT.md#25-ai-观察导览与-ai-辅助手账2026-10-18",
+    "modelEvaluation": "docs/test-results/2026-10-18-ai-observation-evaluation.md",
+    "serviceTests": "docs/test-results/2026-10-18-ai-observation-service-test.log",
+    "accountServiceTest": "docs/test-results/2026-10-18-ai-account-service-test.log"
+  },
+  "limitations": [
+    "A/B 为手工设备路径，不是 AI 专用 Hypium 自动化。",
+    "B 端通过 HTTPS 收到记录并实际回放；未做整屏像素差异，AI 文字区不属于 Canvas。",
+    "未做设备端未配置 / 超时 / 供应商故障注入；这些状态由服务测试覆盖。",
+    "未做真人三分钟计时与录像。",
+    "账号为一次性随机测试账号，已退出；本文件不含账号 ID、用户名、密码或密钥。"
+  ],
+  "regression": {
+    "log": "docs/test-results/2026-10-18-013028-device.log",
+    "elapsedMs": 219882,
+    "passed": 1,
+    "failed": 0,
+    "error": 0,
+    "ignored": 0
+  }
+}

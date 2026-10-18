@@ -1,0 +1,436 @@
+[
+  {
+    "stage": "核心体验成型阶段：T09/T10 首页主题与最近真实记忆",
+    "phase": "home-core",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+    "mainPackageSha256": "E00977B4FA7E16A50BD29D0C7CD3C1E3C06747218016282F28CDD3B4F7B57732",
+    "testPackageSha256": "1B8552F9160AC2A74A753A07D4AF7829AF7E255B1A9D8FC9F9B2A406AAD88C89",
+    "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+    "report": "docs/test-results/2026-10-17-194229-device.log",
+    "status": "failed",
+    "captures": [],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/pages/Index.ets",
+        "sha256": "5657E39CA1CC014200BC99656F1E45A983A3D1EB180D94A5ED00C4CA24EB8E92"
+      },
+      {
+        "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+        "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+        "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+      },
+      {
+        "path": "entry/src/main/ets/components/JourneyPanel.ets",
+        "sha256": "C7A5590B8663B73AC36DD227A69C98580EBED1BCE5CAFDE78251B67F58689912"
+      },
+      {
+        "path": "entry/src/main/ets/components/ProfilePage.ets",
+        "sha256": "F3498AA33FBD2B4C23C317DE4E631F1EFAEBFA39DDD98B30EA19AA5AB86F8CBA"
+      }
+    ],
+    "testSourceHashes": [
+      {
+        "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+        "sha256": "4B535F5DA0E1F857ADF91CC51B414082AAC637F040038862EEDB28F41AEF6F00"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/List.test.ets",
+        "sha256": "BCA111A1C8A94B9F3AD8EC49B33734C26D8CEFD2763D60BBB04497AED23DC1D6"
+      }
+    ],
+    "reportState": "incomplete",
+    "diagnostic": "设备测试缺少完整且唯一的结束报告，或进程异常/超时。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-194229-device.log",
+    "reasonNotFinal": "模拟器冷启动仍为锁屏，SceneBoard 对测试宿主和 EntryAbility 报 handleForegroundTimeout 并销毁进程；确认进程退出后结束本次 HDC 客户端，无结束摘要与截图，不计设备通过。"
+  },
+  {
+    "stage": "核心体验成型阶段：T09/T10 首页主题与最近真实记忆",
+    "phase": "home-footer",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+    "mainPackageSha256": "E00977B4FA7E16A50BD29D0C7CD3C1E3C06747218016282F28CDD3B4F7B57732",
+    "testPackageSha256": "15CE014A3E446CC8DCCFA39F6BC3F482B630AEEE7AEDE2C49EB7BFE3A0DB916D",
+    "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+    "report": "docs/test-results/2026-10-17-200155-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "home-experience-empty",
+        "path": "docs/design/home-experience/intermediate-home-footer-home-experience-empty.png",
+        "sha256": "88BE891B34DEB2E643F30DF2B7E5F4B9A586700C5CF4E1D2E188DDF16B86DB35"
+      },
+      {
+        "name": "home-experience-saved-view",
+        "path": "docs/design/home-experience/intermediate-home-footer-home-experience-saved-view.png",
+        "sha256": "D2A697236758276BFD16EBDB264E15F75B0092742E52508E15727D613CF61E8D"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/pages/Index.ets",
+        "sha256": "5657E39CA1CC014200BC99656F1E45A983A3D1EB180D94A5ED00C4CA24EB8E92"
+      },
+      {
+        "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+        "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+        "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+      },
+      {
+        "path": "entry/src/main/ets/components/JourneyPanel.ets",
+        "sha256": "C7A5590B8663B73AC36DD227A69C98580EBED1BCE5CAFDE78251B67F58689912"
+      },
+      {
+        "path": "entry/src/main/ets/components/ProfilePage.ets",
+        "sha256": "F3498AA33FBD2B4C23C317DE4E631F1EFAEBFA39DDD98B30EA19AA5AB86F8CBA"
+      }
+    ],
+    "testSourceHashes": [
+      {
+        "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+        "sha256": "B1D6337B9957A3191F73580F0C1748D93B90442A37CEDC94E5F68C8E755E890E"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/List.test.ets",
+        "sha256": "BCA111A1C8A94B9F3AD8EC49B33734C26D8CEFD2763D60BBB04497AED23DC1D6"
+      }
+    ],
+    "total": 1,
+    "failure": 0,
+    "error": 1,
+    "passed": 0,
+    "ignore": 0,
+    "durationMs": 91545,
+    "reportState": "complete",
+    "diagnostic": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-200155-device.log",
+    "reasonNotFinal": "真实保存、磁盘回读及首页新记忆卡已通过，但主题进度与下一处仍停留初始值，业务断言捕获实际产品刷新问题。修正Index主题卡对最新snapshot.records的显式依赖后重建两包，并保留1/4和大河村断言复验。",
+    "failureCapture": {
+      "path": "docs/design/home-experience/intermediate-home-footer-failure.png",
+      "sha256": "38C1E697D58A05A1D4EFD339019ABB0AE02E8B192C4A3C13C391D6F22EE6A716"
+    }
+  },
+  {
+    "stage": "核心体验成型阶段：T09/T10 首页主题与最近真实记忆",
+    "phase": "home-retry",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+    "mainPackageSha256": "E00977B4FA7E16A50BD29D0C7CD3C1E3C06747218016282F28CDD3B4F7B57732",
+    "testPackageSha256": "1B8552F9160AC2A74A753A07D4AF7829AF7E255B1A9D8FC9F9B2A406AAD88C89",
+    "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+    "report": "docs/test-results/2026-10-17-194648-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "home-experience-empty",
+        "path": "docs/design/home-experience/intermediate-home-retry-home-experience-empty.png",
+        "sha256": "19C9C57E344237EB25E3D8F60D1604F4637F10EA23A06702E347946B4D39ABE4"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/pages/Index.ets",
+        "sha256": "5657E39CA1CC014200BC99656F1E45A983A3D1EB180D94A5ED00C4CA24EB8E92"
+      },
+      {
+        "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+        "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+        "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+      },
+      {
+        "path": "entry/src/main/ets/components/JourneyPanel.ets",
+        "sha256": "C7A5590B8663B73AC36DD227A69C98580EBED1BCE5CAFDE78251B67F58689912"
+      },
+      {
+        "path": "entry/src/main/ets/components/ProfilePage.ets",
+        "sha256": "F3498AA33FBD2B4C23C317DE4E631F1EFAEBFA39DDD98B30EA19AA5AB86F8CBA"
+      }
+    ],
+    "testSourceHashes": [
+      {
+        "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+        "sha256": "4B535F5DA0E1F857ADF91CC51B414082AAC637F040038862EEDB28F41AEF6F00"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/List.test.ets",
+        "sha256": "BCA111A1C8A94B9F3AD8EC49B33734C26D8CEFD2763D60BBB04497AED23DC1D6"
+      }
+    ],
+    "total": 1,
+    "failure": 0,
+    "error": 1,
+    "passed": 0,
+    "ignore": 0,
+    "durationMs": 65560,
+    "reportState": "complete",
+    "diagnostic": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-194648-device.log",
+    "reasonNotFinal": "同一对包重跑已进入真实首页和庙底沟；新增测试把导航栏档案标题错误限制在 detail-scroll 内，定位失败。只修正测试标题作用域并增加目标诊断，保留业务断言及240000ms上限。",
+    "failureCapture": {
+      "path": "docs/design/home-experience/intermediate-home-retry-failure.png",
+      "sha256": "1AB18F43D4057B82A270AC934D2C8D42589CA33081FF373CF0684E8AF34F6D0C"
+    }
+  },
+  {
+    "stage": "核心体验成型阶段：T09/T10 首页主题与最近真实记忆",
+    "phase": "home-target-fix",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+    "mainPackageSha256": "E00977B4FA7E16A50BD29D0C7CD3C1E3C06747218016282F28CDD3B4F7B57732",
+    "testPackageSha256": "F3999AD08D5B704C6D845E41C5618095FED0DAD773B7FE5484065ABCADB590D6",
+    "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+    "report": "docs/test-results/2026-10-17-195320-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "home-experience-empty",
+        "path": "docs/design/home-experience/intermediate-home-target-fix-home-experience-empty.png",
+        "sha256": "C132BC640C9BA65A3A458433BD352CF7AE3943A41D683F448577E8EE6F827191"
+      },
+      {
+        "name": "home-experience-saved-view",
+        "path": "docs/design/home-experience/intermediate-home-target-fix-home-experience-saved-view.png",
+        "sha256": "6BEDEA44156B484AE73F8F57DCD5332571C2D9770B736F266B8C7B68854797AB"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/pages/Index.ets",
+        "sha256": "5657E39CA1CC014200BC99656F1E45A983A3D1EB180D94A5ED00C4CA24EB8E92"
+      },
+      {
+        "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+        "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+        "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+      },
+      {
+        "path": "entry/src/main/ets/components/JourneyPanel.ets",
+        "sha256": "C7A5590B8663B73AC36DD227A69C98580EBED1BCE5CAFDE78251B67F58689912"
+      },
+      {
+        "path": "entry/src/main/ets/components/ProfilePage.ets",
+        "sha256": "F3498AA33FBD2B4C23C317DE4E631F1EFAEBFA39DDD98B30EA19AA5AB86F8CBA"
+      }
+    ],
+    "testSourceHashes": [
+      {
+        "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+        "sha256": "B62CF2CBDAA39181006BC0B64989952D867555AB545A0A2BF658CE64A7F342F9"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/List.test.ets",
+        "sha256": "BCA111A1C8A94B9F3AD8EC49B33734C26D8CEFD2763D60BBB04497AED23DC1D6"
+      }
+    ],
+    "total": 1,
+    "failure": 0,
+    "error": 1,
+    "passed": 0,
+    "ignore": 0,
+    "durationMs": 83889,
+    "reportState": "complete",
+    "diagnostic": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-195320-device.log",
+    "reasonNotFinal": "已完成首页直达、选西部陶窑、主动右转和保存前取景；编辑器画布真实完整可见且已重建，但新测试把额外80px留白误当成剪裁边界。仅改用Scroll及导航实际可见边界核对完整Canvas，保留业务与画面断言。",
+    "failureCapture": {
+      "path": "docs/design/home-experience/intermediate-home-target-fix-failure.png",
+      "sha256": "9C3EA19B0DB4391D53B35BE2299D186776E58FE1992707430650AB6C2A614579"
+    }
+  },
+  {
+    "stage": "核心体验成型阶段：T09/T10 首页主题与最近真实记忆",
+    "phase": "home-visible-bounds",
+    "platform": "HarmonyOS 7 / API 26",
+    "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+    "mainPackageSha256": "E00977B4FA7E16A50BD29D0C7CD3C1E3C06747218016282F28CDD3B4F7B57732",
+    "testPackageSha256": "0856FA15B7A0D45DF62E1E60A6067298E8D1FAADE8499A8AA4C6A4A4DED2894A",
+    "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+    "report": "docs/test-results/2026-10-17-195716-device.log",
+    "status": "failed",
+    "captures": [
+      {
+        "name": "home-experience-empty",
+        "path": "docs/design/home-experience/intermediate-home-visible-bounds-home-experience-empty.png",
+        "sha256": "C592C9B7E43769D68303BC71C1016463ED84516AA03958DBE6059332575CC10E"
+      },
+      {
+        "name": "home-experience-saved-view",
+        "path": "docs/design/home-experience/intermediate-home-visible-bounds-home-experience-saved-view.png",
+        "sha256": "1A25A602B4C291118708299154866C55E7AB575D21226BC3E941D6AC0E0D1358"
+      }
+    ],
+    "sourceHashes": [
+      {
+        "path": "entry/src/main/ets/pages/Index.ets",
+        "sha256": "5657E39CA1CC014200BC99656F1E45A983A3D1EB180D94A5ED00C4CA24EB8E92"
+      },
+      {
+        "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+        "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+        "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+        "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+      },
+      {
+        "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+        "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+      },
+      {
+        "path": "entry/src/main/ets/components/SiteDetail.ets",
+        "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+      },
+      {
+        "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+        "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+        "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+      },
+      {
+        "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+        "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+      },
+      {
+        "path": "entry/src/main/ets/components/JourneyPanel.ets",
+        "sha256": "C7A5590B8663B73AC36DD227A69C98580EBED1BCE5CAFDE78251B67F58689912"
+      },
+      {
+        "path": "entry/src/main/ets/components/ProfilePage.ets",
+        "sha256": "F3498AA33FBD2B4C23C317DE4E631F1EFAEBFA39DDD98B30EA19AA5AB86F8CBA"
+      }
+    ],
+    "testSourceHashes": [
+      {
+        "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+        "sha256": "0DA2120488A7B7CDDE55C6B2A8B5A5898F77A8FB994D47EA2FCA6E18AE37636E"
+      },
+      {
+        "path": "entry/src/ohosTest/ets/test/List.test.ets",
+        "sha256": "BCA111A1C8A94B9F3AD8EC49B33734C26D8CEFD2763D60BBB04497AED23DC1D6"
+      }
+    ],
+    "total": 1,
+    "failure": 0,
+    "error": 1,
+    "passed": 0,
+    "ignore": 0,
+    "durationMs": 125604,
+    "reportState": "complete",
+    "diagnostic": "设备测试未全部通过或数量不完整：Pass=0 / Total=1，Failure=0，Error=1，Ignore=0。 原始结果：<项目目录>\\docs\\test-results\\2026-10-17-195716-device.log",
+    "reasonNotFinal": "已通过编辑器预览、真实正文和标签输入；新测试又把固定底部save-note按钮限制在Scroll可见区域，定位失败。仅改为等待稳定的真实footer再点击，并复核本用例其他页面外目标，保留保存、磁盘、相机和路线断言。",
+    "failureCapture": {
+      "path": "docs/design/home-experience/intermediate-home-visible-bounds-failure.png",
+      "sha256": "011AEEB76FE0634FFD6BE1C4709E18263658976057EB966EC48DC89CD45B27D8"
+    }
+  }
+]

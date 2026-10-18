@@ -1,0 +1,423 @@
+{
+  "recordedAt": "2026-10-17T17:00:18.920Z",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "baseUrl": "https://api.deepseek.com",
+  "mode": "OpenAI-compatible chat/completions, forced function calling (submit_observation), thinking disabled",
+  "knowledgeRevision": 1,
+  "siteId": "zz-duling-fangding",
+  "sceneRevision": 2,
+  "note": "账号为一次性随机测试账号，已退出；结果不含账号凭证、密钥或私人笔记。",
+  "results": [
+    {
+      "id": "count-eight",
+      "question": "只有四面，八组是怎么数出来的？",
+      "elapsedMs": 2036,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256400494-1",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "grounded",
+        "answer": "八组来自“每壁正中一组，四个折角处再各一组”：四面正中四组，加上四个折角各一组，合计八组。示意中玫瑰标记代表壁面正中，陶土色折片代表折角，均为位置关系简化，不摹画兽面。可先数玫瑰标记，再沿折角数陶土色折片，最后看两侧边与近底端的乳钉纹带，它另成边框，不计入八组。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "show-other-four",
+      "question": "我只看到四个，带我看看另外几个。",
+      "elapsedMs": 1965,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256402530-2",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "grounded",
+        "answer": "你数到的应是每壁正中的四组。上腹兽面纹环绕一周，除每壁正中一组外，每个折角处再各一组，合计八组。请把视线移到鼎的四个折角，那里各有一组，与壁面正中四组合起来正好八组；两侧边和近底端的乳钉纹带只是边框，不计入这八组。示意图中玫瑰标记对应壁面正中，陶土色折片对应折角，均为位置示意，非实物复原。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "corner-not-double-counted",
+      "question": "一个转角跨两面，是不是被算了两次？",
+      "elapsedMs": 1928,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256404495-3",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "grounded",
+        "answer": "按资料，八组是每壁正中一组共四组，加上每个折角处各一组共四组，折角组是独立的一组，不是把同一组数两次。资料只说明位置关系，未说明折角纹样如何跨面分布，这一点当前资料不足。可先看壁面正中四组，再沿四个折角各找一组，核对总数是否为八。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "studs-are-frame",
+      "question": "那些小圆点也算八组里面的吗？",
+      "elapsedMs": 1883,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256406423-4",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "grounded",
+        "answer": "不算。八组指上腹兽面纹：每壁正中一组，四个折角各一组，共八组；乳钉纹带在两侧边与腹部近底端，另成边框。示意中玫瑰标记为壁面正中四组，陶土色折片为折角四组，乳钉点数已简化。可先看壁面正中，再沿折角数到四，最后看边框乳钉带。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "frame",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看乳钉边框"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unsupported-ritual",
+      "question": "是谁用它祭祀哪位神？",
+      "elapsedMs": 1919,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256408306-5",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "insufficient_evidence",
+        "answer": "当前资料不足，无法回答祭祀对象。现有资料只说明它是商代前期青铜礼器，1974年9月出土于郑州张寨南街青铜器窖藏坑，现藏河南博物院；并未记载它用于祭祀哪位神，也未涉及纹样寓意或族属。可先观察上腹兽面纹：每壁正中一组，四个折角各一组，合计八组。",
+        "factIds": [
+          "duling-object",
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-object",
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "simplify-without-new-story",
+      "question": "换个简单的说法，别增加新故事。",
+      "elapsedMs": 2409,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256410225-6",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "insufficient_evidence",
+        "answer": "简单说：不知道。现有资料只讲它是商代前期青铜礼器、1974年9月出土于郑州张寨南街窖藏坑、现藏河南博物院，没写祭祀哪位神，也没写纹样寓意或族属，这些当前资料不足。你可以先看壁面正中与四个折角：上腹兽面纹每壁正中一组，折角再各一组，共八组。",
+        "factIds": [
+          "duling-object",
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-object",
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "draft-memory",
+      "question": "把这次观察整理为手账",
+      "elapsedMs": 2259,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256412634-7",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "grounded",
+        "answer": "你的观察与资料吻合：每壁正中一组共四组，四个折角处再各一组，合计八组。折角组是独立的一组，并非同一组被数两次；至于折角纹样如何跨面分布，当前资料不足。可对照示意，先点壁面正中四处，再点折角四处，确认八组。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ],
+        "draft": {
+          "body": "我先数到四个正面的兽面，转到折角才明白另外四组在哪里。按资料，每壁正中一组共四组，四个折角处再各一组，合计八组，折角组不是重复计数。折角纹样如何跨面分布，当前资料不足。",
+          "tags": [
+            "杜岭二号方鼎",
+            "八组兽面纹",
+            "折角观察"
+          ],
+          "factIds": [
+            "duling-eight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unpreset-frame",
+      "question": "乳钉边框为什么不算在八组里？",
+      "elapsedMs": 2109,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256414893-8",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "grounded",
+        "answer": "八组专指上腹环绕一周的兽面纹：每壁正中一组，四个折角处各一组，合计八组。乳钉纹带位于两侧边与腹部近底端，作用是另成边框，属于另一圈纹饰，所以不计入。至于乳钉纹的寓意，当前资料不足。可先看壁面正中，再沿折角数到四，最后看下方乳钉带。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "frame",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看乳钉边框"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unpreset-casting",
+      "question": "这些纹饰是在铸造时就做好的吗？",
+      "elapsedMs": 1916,
+      "httpStatus": 200,
+      "reply": {
+        "version": 1,
+        "requestId": "eval-1792256417002-9",
+        "siteId": "zz-duling-fangding",
+        "contentRevision": 1,
+        "status": "insufficient_evidence",
+        "answer": "当前资料不足，无法判断这些纹饰是否为铸造时形成，也不涉及铸造工艺细节。现有资料只说明上腹兽面纹环绕一周：每壁正中一组，四个折角处各一组，合计八组，两侧边与近底端另有乳钉纹带作边框。可先按示意核对这八组的位置关系，再点开依据查看馆方表述。",
+        "factIds": [
+          "duling-eight"
+        ],
+        "actions": [
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "centers",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看壁面正中"
+          },
+          {
+            "type": "focus_hotspot",
+            "hotspotId": "corners",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "看四个折角"
+          },
+          {
+            "type": "show_evidence",
+            "hotspotId": "",
+            "factIds": [
+              "duling-eight"
+            ],
+            "label": "查看依据"
+          }
+        ]
+      }
+    }
+  ]
+}

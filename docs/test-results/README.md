@@ -1,6 +1,8 @@
 # 原始验证记录
 
-更新日期：2026-10-17。这里保留成功、失败、超时和工具崩溃的原始结果；不能以目录中存在日志或命令退出码为 0 判定通过。最新三处观察扩展本地95/95、报告解析9/9和两包构建成功；新增两处最终同包核心路径2/2，Failure / Error / Ignore均为0，12张原图及保存 / 回放整幅Canvas零差异已归档。七条中间记录仍按实际版本保留。验收范围以[测试报告第21节](../TEST_REPORT.md#21-三处独立观察与画面手账扩展2026-10-17)为准，首页、新手账双端与录像另验收。
+最新页面层级与 AI 重访（2026-10-18）：最终包两条专项 **2/2**，见 `2026-10-18-114604-device.log`；手账全文 / 编辑 / 回放 / 搜索 / 墓碑在本轮修复包 **1/1**，见 `2026-10-18-111850-device.log`。本地 **103/103**、报告解析 **9/9**、AI 服务 **10/10**，对应 `2026-10-18-page-hierarchy-*-test.log`；两包构建见 `2026-10-18-page-hierarchy-*-build.log`。包、源码和截图绑定见 `2026-10-18-page-hierarchy-phases.json`；中间失败与崩溃摘要保留，详细范围见[测试报告第 27 节](../TEST_REPORT.md#27-页面功能层级与-ai-重访2026-10-18)。
+
+更新日期：2026-10-18。这里保留成功、失败、超时和工具崩溃的原始结果；不能以目录中存在日志或命令退出码为 0 判定通过。最新 AI 观察与 AI 辅助手账：本地 103/103、报告解析 9/9、AI 服务契约 9/9、账号服务回归 1/1，主包与测试包构建成功；真实模型固定小样 9/9（1883—2409ms），A/B 手工路径完成，方鼎原观察 / 保存 / 回放回归 1/1（219882ms）。AI 专用 Hypium 双端、设备端故障注入、真人三分钟计时与录像仍未完成。验收范围以[测试报告第25节](../TEST_REPORT.md#25-ai-观察导览与-ai-辅助手账2026-10-18)为准。此前的 T11 双端手账闭环见[第23节](../TEST_REPORT.md#23-双端新手账同账号闭环与主线排练2026-10-17)，三处观察扩展见[第21节](../TEST_REPORT.md#21-三处独立观察与画面手账扩展2026-10-17)，首页见[第22节](../TEST_REPORT.md#22-首页主题与最近真实记忆2026-10-17)。
 
 Git 公开交付时，记录中的本机工程 / 工具绝对路径替换为 `<PROJECT_ROOT>` / `<DEVECO_HOME>`，测试结果和失败内容保留。未脱敏原文件存放于已忽略的 `.local/publication-originals/`；哈希清单对应仓库里的公开副本。2026-10-14 Git 交付当次沿用已有验证，没有重复运行应用测试；后续开发轮次的新实测分别列在下方。
 
@@ -204,3 +206,72 @@ Git 公开交付时，记录中的本机工程 / 工具绝对路径替换为 `<P
 - [主包构建](2026-10-17-expanded-observation-main-build.log)与[测试包构建](2026-10-17-expanded-observation-test-build.log)：均为 `BUILD SUCCESSFUL`，最终包哈希见阶段清单。
 
 Git基线 `89c18c1406dcb7b42193fc512ffd85ee9e2f42cd` 已中文提交并推送，后续开发尚未二次提交。三处旧 revision 1 场景继续保留，格式与 schema 不变；T09/T10 首页入口、T11 新手账双端和 T13 三分钟录像不计本轮完成。
+
+## 2026-10-17 首页主题与最近真实记忆
+
+本地95/95、报告解析9/9，两包构建成功；唯一首页核心路径 [2026-10-17-200742-device.log](2026-10-17-200742-device.log) **1/1**，Failure / Error / Ignore均为0，耗时161021ms。覆盖主题直达、仅浏览仍0/4、选热点右转真实保存 / 磁盘回读、首页最新正文与原画幅预览、点击首页画面正式回放，以及个人页完整四节点只点亮1/4。
+
+五组原图及布局、保存前 / 回放 / 首页预览画面见[图集](../design/home-experience/README.md)；保存前 / 回放Canvas变化0像素，预览RGB相关系数0.997163169。包与来源代码绑定见[阶段清单](2026-10-17-home-experience-phases.json)，原始本地与构建日志均以 `2026-10-17-home-experience-` 开头。
+
+[中间清单](2026-10-17-home-experience-intermediate.json)保留194229冷启动锁屏导致进程销毁、无结束摘要且无截图，不补造Hypium计数；194648为0/1 Error1、65560ms，新增测试错误限制导航标题作用域；195320为0/1 Error1、83889ms，把完整位于Scroll顶部的编辑器Canvas因额外80px余白误判剪裁；195716为0/1 Error1、125604ms，将固定页脚保存按钮错误限定于Scroll内。最终仅修测试真实定位 / 可见边界，保留断言及240000ms，200155为0/1 Error1、91545ms，实际捕获手账已落盘且新卡出现但主题进度未刷新的产品问题；修复显式状态依赖后重建两包，原业务断言保留。完整说明见测试报告第22节。
+
+三处观察扩展已以中文提交并推送为 `99328acc41457a280d5b2a4233920e1fdf9578f7`；此后首页开发尚未再次提交。T11新手账双端及T13真实录像不计本轮完成。
+
+## 2026-10-17 双端新手账同账号闭环与主线排练
+
+设备 A `Pura 90 Pro`（`127.0.0.1:5555`）、B `YunhejiSyncB`（`127.0.0.1:5557`），均 HarmonyOS 7.0.0.107 / API 26、1256×2760、density 560；实例与端口按模拟器进程实际监听端口核对。主包 SHA-256 `C6CB8C4B467958E59C84460983D1DC5489548DF4108F30087FDF347313510AD2`，最终测试包 `1B1E9B548D29B9E19B2DD4B19A3582E6E0C4E32A4E3E5B9F99A772C8A59514FD`；fixture 运行编号 `1792247956642_b761c44d`。
+
+- [2026-10-17-223959-device.log](2026-10-17-223959-device.log)：A 端真实注册、保存、磁盘回读与首页刷新 **1/1，Failure / Error / Ignore=0，159100ms**。
+- [2026-10-17-224249-device.log](2026-10-17-224249-device.log)：B 端同账号接收、首页预览与正式回放 **1/1，Failure / Error / Ignore=0，104368ms**。
+- [2026-10-17-224447-device.log](2026-10-17-224447-device.log)：T13.1 A 段主线排练 **1/1，Failure / Error / Ignore=0，219088ms**；自动化分段累计 207663ms，不等于真人三分钟计时。
+- [2026-10-17-224846-device.log](2026-10-17-224846-device.log)、[2026-10-17-224859-device.log](2026-10-17-224859-device.log)：两端独立测试库清理各 **1/1**。
+
+双端同一条 note 的字段、相机、原画幅与实际绘制值见[测试报告第23节](../TEST_REPORT.md#23-双端新手账同账号闭环与主线排练2026-10-17)；两端整幅 Canvas **1032×1050 零像素差异**，模型 390753 像素一致，首页预览两端也 0 像素差异。图集与差异图见[双端图集](../design/memory-sync/README.md)。包、源码、测试源码、原图与报告绑定见[阶段清单](2026-10-17-memory-sync-phases.json)。
+
+[中间清单](2026-10-17-memory-sync-intermediate.json)保留三条测试侧失败，不计通过：`221626` 在 UI 注册前调用账号 API；`221707` 个人页深层同步行不可达；`223154` 对照维度按钮不在滚动区。同一清单也保留更早测试包与旧 fixture 上的 A/B 通过（`222134`、`222402`）和排练通过（`223433`），不与最终同包结果累计。
+
+本地与构建原始输出：
+
+- [本地测试](2026-10-17-memory-sync-local-test.log)：95/95，报告解析 9/9。
+- [主包构建](2026-10-17-memory-sync-main-build.log)与[最终测试包构建](2026-10-17-memory-sync-test-build.log)：均为 `BUILD SUCCESSFUL`。
+- 连续 JSAPP 日志：[A](2026-10-17-memory-sync-a-jsapp.log)、[B](2026-10-17-memory-sync-b-jsapp.log)、[排练](2026-10-17-memory-sync-rehearsal-jsapp.log)；不含账号凭证。
+
+录像（T13.2）按用户本轮明确指示不由代理录制，当前无可播放备用录像；T13 整体不计完成。
+
+## 2026-10-17 首页 UI 与布局改版
+
+用户要求恢复此前更满意的首页结构并整体优化。改版后本地 **95/95**、报告解析 **9/9**，主包与测试包 `BUILD SUCCESSFUL`；首页核心路径 [2026-10-17-234825-device.log](2026-10-17-234825-device.log) **1/1**，Failure / Error / Ignore 均为 0，耗时 **203638ms**。纸页入口增加白描边贴纸、半凸出卡片边缘与 `surface_sunken` 底纸叠层，主玫瑰色 / 小字灰棕收紧以提升对比度；全部为实色叠放，无阴影或渐变。实际页面、布局与哈希见[首页改版图集](../design/home-redesign/README.md)，包 / 源码 / 报告绑定见[阶段清单](2026-10-17-home-redesign-phases.json)。
+
+- [本地测试](2026-10-17-home-redesign-local-test.log)：95/95，报告解析 9/9。
+- [主包构建](2026-10-17-home-redesign-main-build.log)与[测试包构建](2026-10-17-home-redesign-test-build.log)：均为 `BUILD SUCCESSFUL`。
+- 连续 JSAPP 日志：[2026-10-17-home-redesign-jsapp.log](2026-10-17-home-redesign-jsapp.log)。
+
+[中间清单](2026-10-17-home-redesign-intermediate.json)保留两版中间通过及旧套件的失败，均不累计到最终 1/1：`231128` 首版首页 **1/1**；`233257` 结构改版完成、层次与配色收紧前 **1/1**；`231555`、`231809`、`232051` 为外观套件的旧入口 / 首屏假设，已改为真实滚动；`232416` 外观套件超过 240 秒上限；`232846` 登录套件仍期待仅会话内保留的大学资料。后两类未改产品、未提高超时，也不作为首页验收。
+
+T11 双端结果为改版前首页布局，同步与 B 端逻辑未改，本轮没有重跑双端。
+
+## 2026-10-18 AI 观察导览与 AI 辅助手账
+
+只对杜岭二号方鼎接入真实 DeepSeek `deepseek-flash`；本地 **103/103**、报告解析 **9/9**，AI 服务契约 **9/9**，账号服务回归 **1/1**，主包和测试包 `BUILD SUCCESSFUL`。A/B 为手工设备主线，B 端同账号经 HTTPS 收到 `aiAssist`、预览并实际回放；没有 AI 专用 Hypium 用例。
+
+- [2026-10-18-ai-observation-local-test.log](2026-10-18-ai-observation-local-test.log)：本地 103/103、报告解析 9/9。
+- [2026-10-18-ai-observation-main-build.log](2026-10-18-ai-observation-main-build.log)、[test-build.log](2026-10-18-ai-observation-test-build.log)：主包与测试包构建成功。
+- [2026-10-18-ai-observation-service-test.log](2026-10-18-ai-observation-service-test.log)：AI 服务契约 9/9，使用明确标注的替身，不调用真实供应商。
+- [2026-10-18-ai-account-service-test.log](2026-10-18-ai-account-service-test.log)：新增 `/ai/observe` 后账号 / 同步服务回归 1/1。
+- [2026-10-18-ai-observation-evaluation.json](2026-10-18-ai-observation-evaluation.json) 与[说明](2026-10-18-ai-observation-evaluation.md)：真实模型固定小样 9/9，单次 1883—2409ms；保留 JSON 模式空内容失败。
+- [2026-10-18-ai-observation-ab-record.json](2026-10-18-ai-observation-ab-record.json)：A 保存记录、`aiAssist`、相机 / 原画幅、B 接收 / 回放状态与包哈希映射；不含账号 ID、用户名、密码或密钥。
+- [2026-10-18-013028-device.log](2026-10-18-013028-device.log)：方鼎原观察 / 保存 / 画廊 / 回放回归 **1/1**，Failure / Error / Ignore=0，219882ms；这不是 AI 面板自动化。
+- [AI 观察图集](../design/ai-observation/README.md)：首页入口、提问、聚焦、依据、草稿、AI 手账编辑器和 B 端接收 / 回放实际截图。
+
+主包 SHA-256 `C8E2BF6CE8F251E55D4BFB9357D42529CF8A37CAB76606708FB3D9DB67ADDA21`；设备回归所用测试包 `B6437F95CBD42192D0109F411207276C9168DC608CB5535852582F50DAA4D6EF`，与最终主包同轮重建。A 端手工截图拍摄于重新打包前的主包 `C132F7FB…`，源码差异仅为一次注释增删回退，功能与最终主包相同。设备为 A `Pura 90 Pro`（`127.0.0.1:5555`）与 B `YunhejiSyncB`（`127.0.0.1:5557`），均 HarmonyOS 7.0.0.107 / API 26、1256×2760、density 560；账号为一次性随机测试账号，已退出，记录不含账号凭证或密钥。
+
+未覆盖：AI 专用双端 Hypium、设备端未配置 / 超时 / 供应商故障注入、真人三分钟计时、录像、整屏 A/B 像素差异、公网 / release 服务配置。
+
+## 2026-10-18 UI/UX 改版
+
+- `2026-10-18-085335-device.log`：首页核心路径 `HomeExperienceTest#native_home_theme_recent_memory_route_replay` **1/1**，Failure / Error / Ignore 0，233042ms。
+- `2026-10-18-085741-device.log`：方鼎观察 / 保存 / 回放 `ExpandedObservationTest#native_duling_observe_save_gallery_replay` **1/1**，Failure / Error / Ignore 0，190017ms。
+- `2026-10-18-022630-device.log`、`2026-10-18-022845-device.log`、`2026-10-18-023055-device.log`：改版过程中保留的失败（`note-editor-scroll` 被第二个 bindSheet 覆盖、首页最近记忆正文不在可视树）；不是通过。
+- 本地最终 **103/103**、报告解析 **9/9**；主包与测试包 `BUILD SUCCESSFUL`。最终主包 SHA-256 `0E8561656A2B326BF0E6A4626A88D3C0E094896C71E6D21B3977CD04CA374BA7`，测试包 `78191312FAB0C42145D93E07DEE67FE1B108CC9D8CDA6A4EEEC141D7F17B8021`。
+- 实际画面见 `../design/ui-refresh/`；过程与边界见测试报告第 26 节。
+- 两条设备用例在最终包上通过；未重跑完整 UI 套件，不能当作全量复验。

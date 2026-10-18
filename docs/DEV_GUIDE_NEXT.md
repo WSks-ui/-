@@ -1,5 +1,7 @@
 # 云河纪：下一轮开发指导文档
 
+> **当前交接入口（2026-10-18）：** 继续开发请使用[AI观察导览与可重访手账任务书](AI_OBSERVATION_TASKBOOK.md)，AI01—AI08均待执行。[双端记忆任务书](NEXT_STAGE_TASKBOOK.md)保留为上一阶段执行记录。本文件保留2026-10-16历史方案；其中的旧待办、文件限制与状态须结合最新用户指令及交接记录判断，不作为重新执行T01—T10或宣称AI已接入的依据。
+
 版本：v1.0，2026-10-16。面向 AI 代理全权开发，对应 gpt-6.1-sol。
 
 ## 核心约定
@@ -35,7 +37,7 @@
 
 ### 目标
 
-将 [`entry/src/main/ets/data/HeritageCatalog.ts`](entry/src/main/ets/data/HeritageCatalog.ts) 中的 `HERITAGE_SITES` 数组扩充到 **15～20 条**。
+将 [`entry/src/main/ets/data/HeritageCatalog.ts`](../entry/src/main/ets/data/HeritageCatalog.ts) 中的 `HERITAGE_SITES` 数组扩充到 **15～20 条**。
 
 覆盖范围要求（对应赛题）：
 
@@ -89,7 +91,7 @@ reviewStatus: '初稿待校审'
 
 ### tags 字段对关联图谱的影响
 
-`tags` 直接决定"文明连线"中两个节点之间是否出现连线（见 [`CultureConnections.ts:31`](entry/src/main/ets/domain/CultureConnections.ts:31)）。内容扩充时，相同文化脉络的遗址应共享 tag：
+`tags` 直接决定"文明连线"中两个节点之间是否出现连线（见 [`CultureConnections.ts:31`](../entry/src/main/ets/domain/CultureConnections.ts#L31)）。内容扩充时，相同文化脉络的遗址应共享 tag：
 
 - 仰韶文化聚落类：`['彩陶', '聚落', '考古']`
 - 都城类：`['都城', '青铜', '考古']`
@@ -102,7 +104,7 @@ reviewStatus: '初稿待校审'
 
 > **2026-10-16 实际状态：** 本轮已完成并通过设备验证。图谱运行在 ArkWeb 内嵌的 **Canvas 2D** 上，不是 WebGL。当前鸿蒙模拟器的 ArkWeb 禁用了 WebGL，Canvas 2D 是已验证的生产路径。Three.js 已离线打包，其 WebGL 渲染路径需要在支持 WebGL 的真机上另行验证。后续优化应继续在 Canvas 2D 基础上进行，不要以"升级到 WebGL"为前提。
 
-**目标效果：** 将 [`CultureGraph.ets`](entry/src/main/ets/components/CultureGraph.ets) 中现有的 Canvas 2D 静态折线图，升级为带物理弹簧动画的力导向图谱，发光节点，连线随选中高亮流动。
+**目标效果：** 将 [`CultureGraph.ets`](../entry/src/main/ets/components/CultureGraph.ets) 中现有的 Canvas 2D 静态折线图，升级为带物理弹簧动画的力导向图谱，发光节点，连线随选中高亮流动。
 
 **架构方案：** ArkUI 壳 + 内嵌本地离线 ArkWeb 画布（Canvas 2D）。这条路线：
 - 不改动任何已有的 ArkUI 页面结构和账号逻辑
@@ -411,7 +413,7 @@ export struct CultureGraphWeb {
 
 ### 第三步：在 CultureAtlas.ets 中替换图谱组件
 
-在 [`CultureAtlas.ets`](entry/src/main/ets/components/CultureAtlas.ets) 顶部将现有 `CultureGraph` 的 import 改为 `CultureGraphWeb`：
+在 [`CultureAtlas.ets`](../entry/src/main/ets/components/CultureAtlas.ets) 顶部将现有 `CultureGraph` 的 import 改为 `CultureGraphWeb`：
 
 ```typescript
 // 替换：
@@ -1020,7 +1022,7 @@ window.resetView=function()   { rotX=-0.30; rotY=0.40; renderFrame(); };
 
 ### 对应的 ArkTS 封装组件
 
-在 [`SiteObject3D.ets`](entry/src/main/ets/components/SiteObject3D.ets) 中，把 `onSceneReady` 的整体方案换成下面的 ArkWeb 方案（如果旧文件用的是 `Component3D`，整体替换）：
+在 [`SiteObject3D.ets`](../entry/src/main/ets/components/SiteObject3D.ets) 中，把 `onSceneReady` 的整体方案换成下面的 ArkWeb 方案（如果旧文件用的是 `Component3D`，整体替换）：
 
 ```typescript
 import { webview } from '@kit.ArkWeb';
@@ -1260,7 +1262,7 @@ export struct SiteObject3D {
 
 ### 在 SiteDetail.ets 中加入视口
 
-在 [`entry/src/main/ets/components/SiteDetail.ets`](entry/src/main/ets/components/SiteDetail.ets) 顶部加入 import：
+在 [`entry/src/main/ets/components/SiteDetail.ets`](../entry/src/main/ets/components/SiteDetail.ets) 顶部加入 import：
 
 ```typescript
 import { SiteObject3D } from './SiteObject3D';

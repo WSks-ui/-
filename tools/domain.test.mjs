@@ -215,9 +215,9 @@ test('expanded catalog covers 20 entries, valid filters and unchanged original i
     for (const field of ['summary', 'overview', 'archaeology', 'history', 'travel']) {
       assert.ok(typeof site[field] === 'string' && site[field].length > 0, `${site.id}: ${field}`);
     }
-    // 精做对象没有核实诗文就不显示诗文段，不能为满足非空断言继续保留“以后补充”。
+    // 没有核实诗文时保持空字符串，由 SiteDetail 统一隐藏诗文段；
+    // 不再用“暂未收录”占位正文，也不要求只有精做对象才能留空。
     assert.equal(typeof site.poetry, 'string');
-    if (site.poetry.length === 0) assert.ok(materialStudyForId(site.id), `${site.id}: empty poetry requires focused content`);
     assert.equal(filterSites(HERITAGE_SITES, { ...all, keyword: site.name })[0].id, site.id);
   }
 });

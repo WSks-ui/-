@@ -20,9 +20,12 @@ export interface HeritageSite {
   reviewStatus: string;
   illustration: string;
   accent: string;
-  // 真实遗址照片文件名列表，放在 resources/base/media/ 下。
+  // 真实遗址照片文件名列表，放在 resources/rawfile/photos/ 下。
   // 空数组时降级显示 illustration 插画；图片来源与版权由内容录入者负责。
   photos: string[];
+  // 单张照片的说明与授权署名；当前每条档案只展示首张照片。
+  photoCaption?: string;
+  photoCredit?: string;
 }
 
 export interface SiteFilter {
@@ -58,6 +61,23 @@ export interface MemoryPose {
   viewFrame?: MemoryViewFrame;
 }
 
+// AI 参考元数据冻结采纳时的资料事实，资料日后修订仍能解释这页手账当时依据了什么。
+// 它不是“整页由 AI 生成”的证明：正文由用户确认，字段只说明这页曾参考 AI 辅助整理。
+export interface AiFactSnapshot {
+  id: string;
+  title: string;
+  body: string;
+  sourceIds: string[];
+}
+
+export interface AiMemoryAssist {
+  version: number;
+  question: string;
+  factIds: string[];
+  contentRevision: number;
+  facts: AiFactSnapshot[];
+}
+
 // 收藏、笔记、进度共用版本信封。删除保留墓碑，后续设备重连时不能把旧记录复活。
 // updatedAt 由单设备逻辑时钟生成；跨设备时钟偏差仍需同步适配层处理，不能承诺物理时间绝对准确。
 export interface ArchiveRecord {
@@ -74,6 +94,8 @@ export interface ArchiveRecord {
   paperTheme?: string;
   quotedPoemOrFact?: string;
   snapshot3DPose?: MemoryPose;
+  // 仅在用户采纳或修改 AI 草稿后确认保存时写入；只问答、放弃草稿或失败均不补标。
+  aiAssist?: AiMemoryAssist;
 }
 
 export interface ArchiveSnapshot {
@@ -96,6 +118,15 @@ export interface MergeResult {
 }
 
 export const CITIES: string[] = ['全部城市', '三门峡', '洛阳', '郑州', '开封', '濮阳'];
+
+// 五城简介只解释阅读线索，不把城市宣传语当作考古结论；换城市时同步显示。
+export const CITY_INTROS: Record<string, string> = {
+  '三门峡': '黄河入豫的第一段，仰韶村、庙底沟与西坡把“早期中国”的聚落线索串在一起。',
+  '洛阳': '从二里头到汉魏洛阳城，再到龙门石窟，五都荟洛，适合按时间顺序慢读。',
+  '郑州': '商代王都叠压在现代城市之下，大河村、郑韩故城与杜岭方鼎补充了更早与更晚的章节。',
+  '开封': '宋都的中轴线、铁塔与繁塔、州桥和城墙，把一座城的兴废与黄河水患写在同一层地面上。',
+  '濮阳': '西水坡的蚌塑龙、戚城的会盟台、仓颉陵的地方记忆与单拐的抗战旧址，组成一条跨时代的龙乡线索。'
+};
 // 保留原检索顺序，扩展项只补内容分类；“城市史 / 民间记忆”是主题分组，不是考古断代。
 export const ERAS: string[] = ['全部年代', '仰韶', '龙山', '夏商', '周', '汉唐', '宋', '城市史', '民间记忆', '近现代'];
 export const TYPES: string[] = ['全部类型', '聚落遗址', '都城遗址', '城址', '墓葬群', '窑址', '古建筑', '青铜器', '文化纪念地', '革命旧址'];
@@ -130,6 +161,19 @@ export function copyMemoryPose(pose: MemoryPose): MemoryPose {
   return copy;
 }
 
+export function copyAiFactSnapshot(fact: AiFactSnapshot): AiFactSnapshot {
+  return { id: fact.id, title: fact.title, body: fact.body, sourceIds: fact.sourceIds.slice() };
+}
+
+export function copyAiMemoryAssist(assist: AiMemoryAssist): AiMemoryAssist {
+  // 冻结事实与引用数组都深拷贝；手账草稿、快照和同步请求不能共享可变数组。
+  return {
+    version: assist.version, question: assist.question, factIds: assist.factIds.slice(),
+    contentRevision: assist.contentRevision,
+    facts: assist.facts.map((fact: AiFactSnapshot): AiFactSnapshot => copyAiFactSnapshot(fact))
+  };
+}
+
 export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
   return {
     schemaVersion: snapshot.schemaVersion,
@@ -145,6 +189,9 @@ export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
       if (record.quotedPoemOrFact !== undefined) copy.quotedPoemOrFact = record.quotedPoemOrFact;
       if (record.snapshot3DPose !== undefined) {
         copy.snapshot3DPose = copyMemoryPose(record.snapshot3DPose);
+      }
+      if (record.aiAssist !== undefined) {
+        copy.aiAssist = copyAiMemoryAssist(record.aiAssist);
       }
       return copy;
     }),
@@ -184,13 +231,17 @@ export function compareText(a: string, b: string): number {
 function recordContent(record: ArchiveRecord): string {
   const pose = record.snapshot3DPose;
   const frame = pose === undefined ? undefined : pose.viewFrame;
+  const assist = record.aiAssist;
   // 明确字段顺序，不依赖 JSON 对象的属性插入顺序。可选字段缺省在数组里规范化为 null。
   // 新手账字段也参与版本比较，正文相同而纸色、印章或视角不同的记录不能被判为同一版本。
+  // AI 参考元数据包含冻结事实正文，必须参与比较；否则同一页删改依据后会被误判为相同版本。
   return JSON.stringify([record.kind, record.siteId, record.body, record.tags,
     record.stampType, record.paperTheme, record.quotedPoemOrFact,
     pose === undefined ? null : [pose.version, pose.sceneType, pose.yaw, pose.pitch, pose.zoom,
       pose.hotspotId, pose.sectionId, pose.label, pose.proceduralPreset, pose.sceneRevision, pose.rendererProfile,
-      frame === undefined ? null : [frame.width, frame.height, frame.textDensity, frame.dark]]]);
+      frame === undefined ? null : [frame.width, frame.height, frame.textDensity, frame.dark]],
+    assist === undefined ? null : [assist.version, assist.question, assist.factIds, assist.contentRevision,
+      assist.facts.map((fact: AiFactSnapshot): (string | string[])[] => [fact.id, fact.title, fact.body, fact.sourceIds])]]);
 }
 
 // 相同时间戳必须有稳定的次序，否则 A 合并 B 与 B 合并 A 会得出不同结果。
@@ -270,7 +321,8 @@ export function parseSnapshot(raw: string): ArchiveSnapshot {
       (record.stampType !== undefined && typeof record.stampType !== 'string') ||
       (record.paperTheme !== undefined && typeof record.paperTheme !== 'string') ||
       (record.quotedPoemOrFact !== undefined && typeof record.quotedPoemOrFact !== 'string') ||
-      (record.snapshot3DPose !== undefined && !isValidMemoryPose(record.snapshot3DPose))) {
+      (record.snapshot3DPose !== undefined && !isValidMemoryPose(record.snapshot3DPose)) ||
+      (record.aiAssist !== undefined && !isValidAiMemoryAssist(record.aiAssist))) {
       throw new Error('ARCHIVE_INVALID_RECORD');
     }
     ids.push(record.id);
@@ -298,4 +350,26 @@ function validMemoryViewFrame(frame: MemoryViewFrame): boolean {
     Number.isFinite(frame.height) && frame.height > 0 &&
     (frame.textDensity === undefined || (Number.isFinite(frame.textDensity) && frame.textDensity > 0)) &&
     (frame.dark === undefined || typeof frame.dark === 'boolean');
+}
+
+function validFactSnapshot(fact: AiFactSnapshot): boolean {
+  return !!fact && typeof fact.id === 'string' && /^[a-z0-9-]{1,60}$/.test(fact.id) &&
+    typeof fact.title === 'string' && fact.title.trim().length > 0 && fact.title.length <= 120 &&
+    typeof fact.body === 'string' && fact.body.trim().length > 0 && fact.body.length <= 1000 &&
+    Array.isArray(fact.sourceIds) && fact.sourceIds.length > 0 && fact.sourceIds.length <= 4 &&
+    fact.sourceIds.every((id: string) => typeof id === 'string' && /^[a-z0-9-]{1,80}$/.test(id));
+}
+
+export function isValidAiMemoryAssist(assist: AiMemoryAssist): boolean {
+  // 只校验保留的数据形状；资料版本是否仍可解析由界面按冻结事实显示，不在这里删字段或改写记录。
+  return !!assist && Number.isSafeInteger(assist.version) && assist.version > 0 &&
+    typeof assist.question === 'string' && assist.question.trim().length > 0 && assist.question.length <= 200 &&
+    Array.isArray(assist.factIds) && assist.factIds.length > 0 && assist.factIds.length <= 3 &&
+    assist.factIds.every((id: string) => typeof id === 'string' && /^[a-z0-9-]{1,60}$/.test(id)) &&
+    new Set<string>(assist.factIds).size === assist.factIds.length &&
+    Number.isSafeInteger(assist.contentRevision) && assist.contentRevision > 0 &&
+    Array.isArray(assist.facts) && assist.facts.length > 0 && assist.facts.length <= 3 &&
+    assist.facts.every((fact: AiFactSnapshot) => validFactSnapshot(fact)) &&
+    assist.facts.every((fact: AiFactSnapshot) => assist.factIds.includes(fact.id)) &&
+    assist.factIds.every((id: string) => assist.facts.some((fact: AiFactSnapshot) => fact.id === id));
 }

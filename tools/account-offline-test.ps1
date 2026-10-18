@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$DevEcoHome = $env:DEVECO_HOME,
     [ValidatePattern('^[\w.:-]+$')][string]$TargetId = '127.0.0.1:5557'
 )

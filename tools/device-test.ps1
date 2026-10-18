@@ -1,8 +1,9 @@
-param(
+﻿param(
     [string]$DevEcoHome = $env:DEVECO_HOME,
     [ValidatePattern('^[\w.:-]+$')][string]$TargetId = '',
     [ValidatePattern('^[A-Za-z][\w#,.]*$')][string]$TestClass = '',
     [ValidateRange(0, 10000)][int]$ExpectedTests = 0,
+    [ValidateRange(60000, 600000)][int]$TestTimeoutMs = 240000,
     [ValidatePattern('^yunheji_test_ui_restart_[a-z0-9_]{1,60}$')][string]$RestartStore = '',
     [ValidatePattern('^yunheji_test_ui_[0-9]+_maximum$')][string]$MaximumStore = '',
     [switch]$SkipInstall
@@ -24,8 +25,17 @@ $testPackage = Join-Path $workspace 'entry\build\default\outputs\ohosTest\entry-
 foreach ($package in @($mainPackage, $testPackage)) {
     if (-not (Test-Path -LiteralPath $package)) { throw '缺少主包或测试包，请先运行构建脚本。' }
 }
-$mainInputs = @(& rg --files (Join-Path $workspace 'entry\src\main') (Join-Path $workspace 'AppScope'))
-$testInputs = @(& rg --files (Join-Path $workspace 'entry\src\ohosTest'))
+# 不依赖外部 rg 命令：直接枚举真实源文件，避免未安装 ripgrep 时无法核对包的新鲜度。
+$mainInputs = @(
+    Get-ChildItem -LiteralPath (Join-Path $workspace 'entry\src\main') -Recurse -File |
+        ForEach-Object { $_.FullName }
+    Get-ChildItem -LiteralPath (Join-Path $workspace 'AppScope') -Recurse -File |
+        ForEach-Object { $_.FullName }
+)
+$testInputs = @(
+    Get-ChildItem -LiteralPath (Join-Path $workspace 'entry\src\ohosTest') -Recurse -File |
+        ForEach-Object { $_.FullName }
+)
 foreach ($sourcePath in $mainInputs) {
     if ((Get-Item -LiteralPath $sourcePath).LastWriteTimeUtc -gt (Get-Item -LiteralPath $mainPackage).LastWriteTimeUtc) {
         throw '主包早于最新源码，请先运行 tools/build.ps1。'
@@ -66,7 +76,7 @@ if (-not $SkipInstall) {
 $timestamp = [TimeZoneInfo]::ConvertTimeFromUtc([DateTime]::UtcNow,
     [TimeZoneInfo]::FindSystemTimeZoneById('China Standard Time')).ToString('yyyy-MM-dd-HHmmss')
 $logPath = Join-Path $resultDirectory "$timestamp-device.log"
-$testCommand = 'aa test -b com.chr.myapplication -m entry_test -s unittest OpenHarmonyTestRunner -s timeout 240000 -w 600'
+$testCommand = "aa test -b com.chr.myapplication -m entry_test -s unittest OpenHarmonyTestRunner -s timeout $TestTimeoutMs -w 600"
 if ($TestClass) { $testCommand += " -s class $TestClass" }
 if ($RestartStore) { $testCommand += " -s archiveRestartStore $RestartStore" }
 if ($MaximumStore) { $testCommand += " -s archiveMaximumStore $MaximumStore" }

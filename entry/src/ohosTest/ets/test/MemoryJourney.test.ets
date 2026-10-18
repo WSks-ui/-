@@ -198,6 +198,7 @@ export default function memoryJourneyTest() {
         await session.waitId('archive-scroll');
         await (await session.waitId('profile-entry')).click();
         await session.waitId('profile-scroll');
+        await (await session.inScroll('profile-scroll', ON.id('profile-journeys'))).click();
         const route = 'seeking-xia';
         await inPage(session, 'profile-scroll', ON.id(`journey-route-${route}`).within(ON.id('profile-scroll')));
         const progress = await inPage(session, 'profile-scroll',

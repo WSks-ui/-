@@ -48,8 +48,28 @@ export class CulturalNativeRenderer {
         const rawY = -point.y * factor * frame.scale + frame.offsetY;
         const x = width / 2 + (rawX - width / 2) * zoom;
         const y = height / 2 + (rawY - height / 2) * zoom;
-        targets.push({ id: anchor.id, type: anchor.type, x, y, radius: type === 'river_sandbox' ? 30 : 22 });
+        targets.push({ id: anchor.id, type: anchor.type, x, y, radius: type === 'river_sandbox' ? 42 : 22 });
         const selected = payload.selectedId === anchor.id;
+        if (type === 'river_sandbox') {
+          // 城市用“纸签 + 圆点”表达，避免在沙盘上堆叠细柱和重复文字。
+          const pinRadius = selected ? 13 : 10;
+          context.beginPath();
+          context.ellipse(rawX, rawY + 18, pinRadius + 4, 4, 0, 0, Math.PI * 2);
+          context.fillStyle = dark ? 'rgba(0,0,0,0.22)' : 'rgba(92,64,44,0.10)';
+          context.fill();
+          if (selected) {
+            context.beginPath(); context.arc(rawX, rawY, pinRadius + 7, 0, Math.PI * 2);
+            context.strokeStyle = 'rgba(196,90,106,0.30)'; context.lineWidth = 1.4; context.stroke();
+          }
+          context.beginPath(); context.arc(rawX, rawY, pinRadius, 0, Math.PI * 2);
+          context.fillStyle = dark ? '#3A302B' : '#FFFBF6'; context.fill();
+          context.strokeStyle = selected ? '#C45A6A' : (dark ? '#8FA9A1' : '#8FB2A7');
+          context.lineWidth = selected ? 2.2 : 1.4; context.stroke();
+          context.beginPath(); context.arc(rawX, rawY, selected ? 5 : 4, 0, Math.PI * 2);
+          context.fillStyle = selected ? '#C45A6A' : '#5B8E8A'; context.fill();
+          // 城市名由沙盘下方的原生城市按钮承担，画布上不再排五块文字签，避免互相遮挡。
+          return;
+        }
         context.beginPath(); context.arc(rawX, rawY, selected ? 7 : 5, 0, Math.PI * 2);
         context.fillStyle = selected ? '#C45A6A' : '#C88A4B'; context.fill();
         if (type === 'relic_inspector' && payload.sceneRevision === 2) {
@@ -82,11 +102,6 @@ export class CulturalNativeRenderer {
             context.textBaseline = 'alphabetic';
           }
           return;
-        }
-        if (type === 'river_sandbox') {
-          // 流光仅来自可见动画相位，减少动态时 phase 不推进；没有传输或同步含义。
-          context.beginPath(); context.arc(rawX, rawY, 9 + Math.sin(phase) * 2, 0, Math.PI * 2);
-          context.strokeStyle = 'rgba(196,90,106,0.28)'; context.lineWidth = 1; context.stroke();
         }
         // 原生 Canvas 字体字符串使用物理 px；坐标以 vp 布局，字体需单独按设备密度与 fp 放大。
         context.font = `${11 * textDensity}px sans-serif`; context.textAlign = 'center';

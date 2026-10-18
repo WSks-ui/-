@@ -254,10 +254,10 @@ export class ArchiveUiSession {
       const input = await this.waitId('note-body');
       await input.click();
       // 旧 inputText 会按字符逐个退格清空既有正文，4000 字会耗时数分钟。
-      // 用真实键盘全选/删除，再明确核对计数归零；不能用延长超时掩盖低效清空。
+      // 用真实键盘全选/删除，再核对输入框本身已清空；字数计数在滚动区下方时可能不在可访问树。
       await this.driver.triggerCombineKeys(KeyCode.KEYCODE_CTRL_LEFT, KeyCode.KEYCODE_A);
       await this.driver.triggerKey(KeyCode.KEYCODE_DEL);
-      await this.waitText('0 / 4000');
+      expect(await (await this.waitId('note-body')).getText()).assertEqual('');
       await (await this.waitId('note-body')).inputText(text, { paste: true, addition: true });
     } catch (error) { throw new Error(`UI_REPLACE_FAILED: ${(error as Error).message}`); }
   }

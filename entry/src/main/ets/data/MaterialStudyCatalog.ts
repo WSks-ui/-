@@ -53,9 +53,9 @@ export const MATERIAL_STUDIES: MaterialStudy[] = [
         url: 'https://wwj.henan.gov.cn/2023/07-20/2781482.html', publishedAt: '2023-07-19', checkedAt: CHECKED_AT }
     ],
     illustration: 'study_miaodigou_space.svg',
-    visualCaption: '依据官方概述绘制 · 方位关系示意 · 非实测平面',
+    visualCaption: '依据官方概述绘制 · 方位关系示意',
     visualLegend: ['左为西，中为遗址中部，右为东', '淡绿带与玫瑰点：居住遗存的大致分布', '陶色圆环：陶窑；两侧虚线：壕沟'],
-    evidenceLimit: '符号数量、距离和带状范围没有测绘含义。这些分布不能证明生产组织、人群迁徙或技术传播方向。'
+    evidenceLimit: '符号数量、距离和带状范围没有测绘含义；不能据此证明生产组织、人群迁徙或技术传播方向。'
   },
   {
     siteId: 'zz-dahecun',
@@ -80,9 +80,9 @@ export const MATERIAL_STUDIES: MaterialStudy[] = [
         url: 'https://www.henan.gov.cn/2024/11-06/3082451.html', publishedAt: '2024-11-06', checkedAt: CHECKED_AT }
     ],
     illustration: 'study_dahecun_twin.svg',
-    visualCaption: '云河纪原创结构分析 · 红衣黑彩与腹部通口示意 · 非实物复原',
+    visualCaption: '云河纪原创结构分析 · 红衣黑彩与腹部通口示意',
     visualLegend: ['两只壶并列，分别有自己的壶口', '浅绿色区域：腹部内部连通关系', '黑色横带与短线：纹线类型，非原纹样摹本'],
-    evidenceLimit: '通口、纹线与比例均经简化。此件是红衣黑彩，不等于大河村全部彩陶；结构相通也不能证明某种礼仪或具体历史事件。'
+    evidenceLimit: '通口、纹线与比例均经简化；此件不等于大河村全部彩陶，结构相通也不能证明某种礼仪或历史事件。'
   },
   {
     siteId: 'zz-duling-fangding',
@@ -105,9 +105,9 @@ export const MATERIAL_STUDIES: MaterialStudy[] = [
         publishedAt: '未标日期', checkedAt: CHECKED_AT }
     ],
     illustration: 'study_duling_pattern.svg',
-    visualCaption: '云河纪原创结构分析 · 八组纹饰位置关系 · 非测绘复原',
+    visualCaption: '云河纪原创结构分析 · 八组位置关系示意',
     visualLegend: ['左：方腹、双立耳与四柱足的简化轮廓', '右：玫瑰标记为四面正中，陶色折线为四个折角', '八组仅指上腹兽面纹，足部纹饰不计入'],
-    evidenceLimit: '图中没有摹画真实兽面纹或精确乳钉数量。馆方页面还包含一号鼎的比较图，不能把一号鼎的形制数据移用于本件。'
+    evidenceLimit: '图中没有摹画真实兽面纹或精确乳钉数量；馆方页面还包含一号鼎比较图，不能把一号鼎数据移用于本件。'
   }
 ];
 

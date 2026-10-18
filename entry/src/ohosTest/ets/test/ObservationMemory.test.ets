@@ -151,12 +151,12 @@ export default function observationMemoryTest() {
         await capture(session, 'source-frame', canvasId);
         await (await inPage(session, 'detail-scroll', ON.id('engine-remember-view'))).click();
         await session.waitId('note-editor-scroll');
-        await session.wait(ON.id('memory-draft-preview-status').text('已重建保存画面'), '草稿已实际绘制');
+        await session.wait(ON.id('memory-draft-preview-status').text('已恢复当时视角'), '草稿已实际绘制');
         const draftCanvas = await session.wait(ON.id('memory-draft-preview-canvas').type('Canvas'), '真实草稿预览画布');
         const draftBounds = await draftCanvas.getBounds();
         expect(draftBounds.right - draftBounds.left > 120 && draftBounds.bottom - draftBounds.top > 120).assertTrue();
         expect(await (await inPage(session, 'note-editor-scroll', ON.id('memory-draft-preview-status'))).getText())
-          .assertEqual('已重建保存画面');
+          .assertEqual('已恢复当时视角');
         await (await inPage(session, 'note-editor-scroll', ON.id('note-body')))
           .inputText(body, { paste: true, addition: true });
         await (await inPage(session, 'note-editor-scroll', ON.id('note-tags')))
@@ -205,7 +205,7 @@ export default function observationMemoryTest() {
         const previewId = `memory-preview-${note.id}`;
         const previewStatus = ON.id(`${previewId}-status`).within(ON.id('archive-scroll'));
         await inPage(session, 'archive-scroll', previewStatus);
-        await session.wait(ON.id(`${previewId}-status`).text('已重建保存画面').within(ON.id('archive-scroll')), '画廊已实际绘制');
+        await session.wait(ON.id(`${previewId}-status`).text('已恢复当时视角').within(ON.id('archive-scroll')), '画廊已实际绘制');
         const previewCanvasId = `${previewId}-canvas`;
         await frameCanvas(session, 'archive-scroll', previewCanvasId,
           ON.text(site.name).within(ON.id(`memory-card-${note.id}`)));

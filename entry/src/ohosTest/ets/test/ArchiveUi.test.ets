@@ -19,7 +19,8 @@ export default function archiveUiTest() {
         // 未登录的真实同步状态在独立“我的”页，登录表单仅在启动页。
         await session.inScroll('profile-scroll', ON.id('profile-login'));
         expect(!await session.driver.findComponent(ON.id('account-sync-state'))).assertTrue();
-        expect(await (await session.inScroll('profile-scroll', ON.id('connected-devices-value'))).getText()).assertEqual('尚未接入');
+        await (await session.inScroll('profile-scroll', ON.id('profile-account'))).click();
+        expect(await (await session.inScroll('profile-scroll', ON.id('connected-devices-value'))).getText()).assertEqual('暂无同步记录');
         expect(await (await session.inScroll('profile-scroll', ON.id('last-sync-value'))).getText()).assertEqual('尚未接入');
       });
     });
@@ -79,6 +80,7 @@ export default function archiveUiTest() {
         await session.start();
         console.info('UI_CRUD: EntryAbility 已重建');
         await (await session.waitId('tab-1')).click();
+        await (await session.waitId('memory-section-1')).click();
         await session.select('collection-filter', '研究资料');
         await (await session.inScroll('archive-scroll', ON.id('site-row-smx-yangshao'))).click();
         await session.inScroll('detail-scroll', ON.text('已收藏').within(ON.id('favorite-toggle')));

@@ -1,0 +1,374 @@
+{
+    "stage":  "下一阶段 T11：双端新手账同账号完整性（含 T13.1 主线排练）",
+    "date":  "2026-10-17",
+    "platform":  "HarmonyOS 7.0.0.107 / API 26",
+    "devices":  {
+                    "A":  {
+                              "instance":  "Pura 90 Pro",
+                              "target":  "127.0.0.1:5555",
+                              "note":  "模拟器 CLI coldboot 保留数据；HDC 端口按实际进程监听端口核对，不按历史端口推断实例。"
+                          },
+                    "B":  {
+                              "instance":  "YunhejiSyncB",
+                              "target":  "127.0.0.1:5557",
+                              "note":  "同一 HarmonyOS 7 / API 26 手机镜像，保留原数据。"
+                          }
+                },
+    "screen":  {
+                   "width":  1256,
+                   "height":  2760,
+                   "densityDpi":  560
+               },
+    "service":  {
+                    "protocol":  "HTTPS",
+                    "port":  18443,
+                    "database":  "SQLite",
+                    "reversePorts":  [
+                                         "127.0.0.1:5555",
+                                         "127.0.0.1:5557"
+                                     ],
+                    "note":  "本机自建账号服务；两端经 HDC 反向端口访问同一数据库与证书。领域合并代码由服务直接导入工程源码。"
+                },
+    "fixture":  {
+                    "run":  "1792247956642_b761c44d",
+                    "sha256":  "3D4008E8DDA243A7E4734D4A098CDE3216E7016B72FA97E161E0C867A4502B06"
+                },
+    "packages":  {
+                     "main":  {
+                                  "sha256":  "C6CB8C4B467958E59C84460983D1DC5489548DF4108F30087FDF347313510AD2",
+                                  "built":  "2026-10-17 22:15:05"
+                              },
+                     "test":  {
+                                  "sha256":  "1B1E9B548D29B9E19B2DD4B19A3582E6E0C4E32A4E3E5B9F99A772C8A59514FD",
+                                  "built":  "2026-10-17 22:39:47"
+                              }
+                 },
+    "testSourceHashes":  [
+                             {
+                                 "path":  "entry/src/ohosTest/ets/test/MemorySync.test.ets",
+                                 "sha256":  "700239081B9019016362175856D6EFDCBB95CDEC6F6B332980A73688DE81694F"
+                             },
+                             {
+                                 "path":  "entry/src/ohosTest/ets/test/List.test.ets",
+                                 "sha256":  "67E2D7DCCBF2755C91479226E5CD563D65F8B89A44E11173E514CD5C6D97F120"
+                             },
+                             {
+                                 "path":  "entry/src/ohosTest/ets/test/ArchiveUiSession.ets",
+                                 "sha256":  "C7BB506548B93A9316637580500713FFF7C3915BAEC368851C373EC7333A6458"
+                             },
+                             {
+                                 "path":  "entry/src/ohosTest/ets/test/DemoRehearsal.test.ets",
+                                 "sha256":  "2D4F67F0F623F5551688053235048037CA67CD812AA08D4767F444677ED75D16"
+                             }
+                         ],
+    "phases":  [
+                   {
+                       "phase":  "A 端真实保存",
+                       "test":  "MemorySyncTest#device_a_publish_kiln_memory",
+                       "report":  "docs/test-results/2026-10-17-223959-device.log",
+                       "result":  "1/1",
+                       "failure":  0,
+                       "error":  0,
+                       "ignore":  0,
+                       "durationMs":  159100,
+                       "freshAccount":  {
+                                            "deviceId":  "1680f34b-549d-4c45-bf90-42814c9e1079",
+                                            "records":  0
+                                        },
+                       "savedNote":  {
+                                         "id":  "note:1680f34b-549d-4c45-bf90-42814c9e1079:1792248130205",
+                                         "kind":  "note",
+                                         "siteId":  "smx-miaodigou",
+                                         "body":  "在陶窑与居住遗存之间，记下我对庙底沟西部空间关系的观察。",
+                                         "tags":  [
+                                                      "庙底沟",
+                                                      "陶窑",
+                                                      "空间观察",
+                                                      "跨端样板1792247956642_b761c44d"
+                                                  ],
+                                         "updatedAt":  1792248130205,
+                                         "deviceId":  "1680f34b-549d-4c45-bf90-42814c9e1079",
+                                         "deleted":  false,
+                                         "stampType":  "河洛拾遗",
+                                         "paperTheme":  "ochre",
+                                         "quotedPoemOrFact":  "制作陶器的陶窑集中分布在遗址西部。居住遗存与陶窑都涉及西部，不能把它们画成互不重叠的两个功能区。",
+                                         "snapshot3DPose":  {
+                                                                "version":  1,
+                                                                "sceneType":  "relic_inspector",
+                                                                "yaw":  0.5726990816987241,
+                                                                "pitch":  0.77,
+                                                                "zoom":  0.99,
+                                                                "hotspotId":  "kilns",
+                                                                "sectionId":  "",
+                                                                "label":  "西部陶窑 · 33°",
+                                                                "proceduralPreset":  "miaodigou_pottery",
+                                                                "sceneRevision":  2,
+                                                                "rendererProfile":  "native-raster-v1",
+                                                                "viewFrame":  {
+                                                                                  "width":  294.85714285714283,
+                                                                                  "height":  300,
+                                                                                  "textDensity":  3.5,
+                                                                                  "dark":  false
+                                                                              }
+                                                            }
+                                     },
+                       "syncStatus":  {
+                                          "raw":  "上次同步已完成"
+                                      },
+                       "captures":  [
+                                        {
+                                            "name":  "a-saved-view",
+                                            "gallery":  "docs/design/memory-sync/a-saved-view.png",
+                                            "sha256":  "153797A05233369C82478653E292A895645F8F0FA648CB47FE1E4BBA2C47598F"
+                                        },
+                                        {
+                                            "name":  "a-home-preview",
+                                            "gallery":  "docs/design/memory-sync/a-home-preview.png",
+                                            "sha256":  "4DB92FAAA937DDCB53A2295AFE5275CC1F59428C77D901DD8D64922E7DF96414"
+                                        }
+                                    ]
+                   },
+                   {
+                       "phase":  "B 端同账号接收、预览与回放",
+                       "test":  "MemorySyncTest#device_b_receive_preview_and_replay",
+                       "report":  "docs/test-results/2026-10-17-224249-device.log",
+                       "result":  "1/1",
+                       "failure":  0,
+                       "error":  0,
+                       "ignore":  0,
+                       "durationMs":  104368,
+                       "precondition":  {
+                                            "deviceId":  "cde58b28-4b8d-401d-994c-902eaa857649",
+                                            "records":  0
+                                        },
+                       "receivedNote":  {
+                                            "id":  "note:1680f34b-549d-4c45-bf90-42814c9e1079:1792248130205",
+                                            "kind":  "note",
+                                            "siteId":  "smx-miaodigou",
+                                            "body":  "在陶窑与居住遗存之间，记下我对庙底沟西部空间关系的观察。",
+                                            "tags":  [
+                                                         "庙底沟",
+                                                         "陶窑",
+                                                         "空间观察",
+                                                         "跨端样板1792247956642_b761c44d"
+                                                     ],
+                                            "updatedAt":  1792248130205,
+                                            "deviceId":  "1680f34b-549d-4c45-bf90-42814c9e1079",
+                                            "deleted":  false,
+                                            "stampType":  "河洛拾遗",
+                                            "paperTheme":  "ochre",
+                                            "quotedPoemOrFact":  "制作陶器的陶窑集中分布在遗址西部。居住遗存与陶窑都涉及西部，不能把它们画成互不重叠的两个功能区。",
+                                            "snapshot3DPose":  {
+                                                                   "version":  1,
+                                                                   "sceneType":  "relic_inspector",
+                                                                   "yaw":  0.5726990816987241,
+                                                                   "pitch":  0.77,
+                                                                   "zoom":  0.99,
+                                                                   "hotspotId":  "kilns",
+                                                                   "sectionId":  "",
+                                                                   "label":  "西部陶窑 · 33°",
+                                                                   "proceduralPreset":  "miaodigou_pottery",
+                                                                   "sceneRevision":  2,
+                                                                   "rendererProfile":  "native-raster-v1",
+                                                                   "viewFrame":  {
+                                                                                     "width":  294.85714285714283,
+                                                                                     "height":  300,
+                                                                                     "textDensity":  3.5,
+                                                                                     "dark":  false
+                                                                                 }
+                                                               }
+                                        },
+                       "replayFrame":  {
+                                           "siteId":  "smx-miaodigou",
+                                           "sceneType":  "relic_inspector",
+                                           "proceduralPreset":  "miaodigou_pottery",
+                                           "sceneRevision":  2,
+                                           "selectedId":  "kilns",
+                                           "yaw":  0.5726990816987241,
+                                           "pitch":  0.77,
+                                           "zoom":  0.99,
+                                           "width":  294.85714285714283,
+                                           "height":  300
+                                       },
+                       "timing":  {
+                                      "loginAt":  1792248211705,
+                                      "receivedAt":  1792248211708,
+                                      "latencyMs":  3
+                                  },
+                       "syncStatus":  {
+                                          "raw":  "上次同步已完成"
+                                      },
+                       "finalSnapshot":  {
+                                             "noteId":  "note:1680f34b-549d-4c45-bf90-42814c9e1079:1792248130205",
+                                             "recordCount":  2
+                                         },
+                       "captures":  [
+                                        {
+                                            "name":  "b-home-preview",
+                                            "gallery":  "docs/design/memory-sync/b-home-preview.png",
+                                            "sha256":  "9C7D1D1E13690BD1553FA8167BC8289604437AB3687D04668DFF701055849523"
+                                        },
+                                        {
+                                            "name":  "b-replay",
+                                            "gallery":  "docs/design/memory-sync/b-replay.png",
+                                            "sha256":  "DF686C80E54EEBD53B28C1ADDB6101E94A0FF63FBE6E8FA1D48B6402F4354F3C"
+                                        }
+                                    ]
+                   },
+                   {
+                       "phase":  "T13.1 主线排练（A 端全段）",
+                       "test":  "DemoRehearsalTest#rehearsal_a_main_line",
+                       "report":  "docs/test-results/2026-10-17-224447-device.log",
+                       "result":  "1/1",
+                       "failure":  0,
+                       "error":  0,
+                       "ignore":  0,
+                       "durationMs":  219088,
+                       "segments":  [
+                                        {
+                                            "segment":  "home-ready",
+                                            "cumulativeMs":  2551
+                                        },
+                                        {
+                                            "segment":  "observation",
+                                            "cumulativeMs":  32587
+                                        },
+                                        {
+                                            "segment":  "comparison",
+                                            "cumulativeMs":  72215
+                                        },
+                                        {
+                                            "segment":  "save",
+                                            "cumulativeMs":  170342
+                                        },
+                                        {
+                                            "segment":  "replay",
+                                            "cumulativeMs":  207663
+                                        }
+                                    ],
+                       "totalMs":  207663,
+                       "comparisonSource":  {
+                                                "raw":  "河南博物院 · 彩陶双连壶"
+                                            },
+                       "captures":  [
+                                        {
+                                            "name":  "home-empty",
+                                            "gallery":  "docs/design/memory-sync/rehearsal-home-empty.png",
+                                            "sha256":  "8844CDA07152E31C1F0AD911950C9BC2C13E077E88EDF61318C26479313AD6FB"
+                                        },
+                                        {
+                                            "name":  "observation",
+                                            "gallery":  "docs/design/memory-sync/rehearsal-observation.png",
+                                            "sha256":  "46AAB78063ECCE329C70BAB7128466D266581E9E93B09999F0BE781CCD48D2D9"
+                                        },
+                                        {
+                                            "name":  "comparison",
+                                            "gallery":  "docs/design/memory-sync/rehearsal-comparison.png",
+                                            "sha256":  "88588720FD29A7A6D7E9F81B98661A3CB5630E1BEBFC1C09E0F3D2D4C43959DC"
+                                        },
+                                        {
+                                            "name":  "saved-view",
+                                            "gallery":  "docs/design/memory-sync/rehearsal-saved-view.png",
+                                            "sha256":  "4BC46D8CDC4F81FAE0C7D431B0F4DD8C990F9BCB5B46501F07A8522EF675D3B0"
+                                        },
+                                        {
+                                            "name":  "home-recent",
+                                            "gallery":  "docs/design/memory-sync/rehearsal-home-recent.png",
+                                            "sha256":  "5BF6342B382F4346F2D9BC83211C48E98F9ABBD50A7911DC18FDB22EDF878404"
+                                        },
+                                        {
+                                            "name":  "replay",
+                                            "gallery":  "docs/design/memory-sync/rehearsal-replay.png",
+                                            "sha256":  "8BD5CFC952CDF70A705B5ACBBCF8AC278810979EC665C9471D6F95522484DA43"
+                                        }
+                                    ]
+                   }
+               ],
+    "pixelChecks":  {
+                        "source":  "同一测试包运行的双端真实截图与 dumpLayout Canvas 边界",
+                        "canvas":  {
+                                       "size":  [
+                                                    1032,
+                                                    1050
+                                                ],
+                                       "changedPixels":  0,
+                                       "maxChannelDiff":  0,
+                                       "meanAbsChannelDiff":  0.0,
+                                       "aModelPixels":  390753,
+                                       "bModelPixels":  390753,
+                                       "aBounds":  [
+                                                       112,
+                                                       865,
+                                                       1144,
+                                                       1915
+                                                   ],
+                                       "bBounds":  [
+                                                       112,
+                                                       1071,
+                                                       1144,
+                                                       2121
+                                                   ]
+                                   },
+                        "preview":  {
+                                        "frame":  {
+                                                      "width":  294.85714285714283,
+                                                      "height":  300.0
+                                                  },
+                                        "previewSize":  [
+                                                            1054,
+                                                            434
+                                                        ],
+                                        "drawSize":  [
+                                                         427,
+                                                         434
+                                                     ],
+                                        "offset":  [
+                                                       313,
+                                                       0
+                                                   ],
+                                        "aVsB":  {
+                                                     "size":  [
+                                                                  1054,
+                                                                  434
+                                                              ],
+                                                     "changedPixels":  0,
+                                                     "maxChannelDiff":  0,
+                                                     "meanAbsChannelDiff":  0.0
+                                                 },
+                                        "aVsB correlation":  1.0,
+                                        "aVsReconstructed":  {
+                                                                 "size":  [
+                                                                              1054,
+                                                                              434
+                                                                          ],
+                                                                 "changedPixels":  43166,
+                                                                 "maxChannelDiff":  138,
+                                                                 "meanAbsChannelDiff":  0.7763191645024294
+                                                             },
+                                        "aVsReconstructed correlation":  0.9884491801945107,
+                                        "bVsReconstructed":  {
+                                                                 "size":  [
+                                                                              1054,
+                                                                              434
+                                                                          ],
+                                                                 "changedPixels":  43166,
+                                                                 "maxChannelDiff":  138,
+                                                                 "meanAbsChannelDiff":  0.7763191645024294
+                                                             },
+                                        "bVsReconstructed correlation":  0.9884491801945107
+                                    }
+                    },
+    "cleanup":  {
+                    "A":  {
+                              "test":  "MemorySyncTest#cleanup_only_this_run_test_preferences",
+                              "report":  "docs/test-results/2026-10-17-224846-device.log",
+                              "result":  "1/1"
+                          },
+                    "B":  {
+                              "test":  "MemorySyncTest#cleanup_only_this_run_test_preferences",
+                              "report":  "docs/test-results/2026-10-17-224859-device.log",
+                              "result":  "1/1"
+                          },
+                    "note":  "只删除本轮 yunheji_test_ui_* 独立测试库；未清空正式档案或服务数据库。"
+                }
+}

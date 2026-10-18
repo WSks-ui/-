@@ -1,4 +1,4 @@
-$ErrorActionPreference = 'Stop'
+﻿$ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'device-report.ps1')
 $validReport = @'
 OHOS_REPORT_SUM: 1

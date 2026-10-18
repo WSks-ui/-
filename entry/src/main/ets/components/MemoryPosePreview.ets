@@ -16,8 +16,8 @@ export struct MemoryPosePreview {
   @State private sourceReady: boolean = false;
   @State private frameReady: boolean = false;
   @State private frameDark: boolean = false;
-  @State private emptyTitle: string = '这页保留文字记忆';
-  @State private statusMessage: string = '没有保存观察画面，文字手账仍可阅读';
+  @State private emptyTitle: string = '文字手记';
+  @State private statusMessage: string = '这页没有记录观察视角';
   private pose: MemoryPose | undefined = undefined;
   private payload: CulturalEnginePayload = { version: 1 };
   private painter: CulturalNativeRenderer = new CulturalNativeRenderer();
@@ -44,7 +44,7 @@ export struct MemoryPosePreview {
       const pose: MemoryPose | undefined = this.poseJson.trim() ? JSON.parse(this.poseJson) as MemoryPose : undefined;
       const resolution = resolveMemoryReplay(this.siteId, pose);
       if (!pose) {
-        this.unavailable('这页保留文字记忆', resolution.message);
+        this.unavailable('文字手记', resolution.message);
         return;
       }
       if (resolution.state !== 'ready' || !resolution.canReplay) {
@@ -99,7 +99,7 @@ export struct MemoryPosePreview {
       this.context.restore();
     }
     this.frameReady = rendered;
-    this.statusMessage = rendered ? '已重建保存画面' : '保存画面暂不能重建，文字手账仍可阅读';
+    this.statusMessage = rendered ? '已恢复当时视角' : '画面暂不可用，文字仍可阅读';
   }
 
   build() {
@@ -122,7 +122,6 @@ export struct MemoryPosePreview {
         Row({ space: 8 }) {
           Text(this.statusMessage).id(`${this.previewId}-status`).fontSize(F.caption).fontColor(T.muted)
             .layoutWeight(1)
-          Text('程序化学习示意').fontSize(F.caption).fontColor(T.tertiary)
         }.width('100%').alignItems(VerticalAlign.Top)
       } else {
         Column({ space: 4 }) {

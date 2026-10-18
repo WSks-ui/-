@@ -1,4 +1,4 @@
-function Resolve-YunhejiDevEcoHome {
+﻿function Resolve-YunhejiDevEcoHome {
     param([string]$DevEcoHome)
 
     # 工具安装目录属于本机配置，不写入公开仓库。显式参数 / 环境变量优先；

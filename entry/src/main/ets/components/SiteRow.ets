@@ -21,8 +21,8 @@ export struct SiteRow {
     Button({ type: ButtonType.Normal }) {
       Row({ space: 14 }) {
         Image(siteIllustration(this.site))
-          .width(80).height(88).objectFit(ImageFit.Cover).borderRadius(10)
-          .accessibilityText('文化主题示意图，非遗址实景')
+          .width(80).height(88).objectFit(ImageFit.Cover).borderRadius(12)
+          .accessibilityText('原创文化主题插画')
         Column({ space: 6 }) {
           Text(`${this.site.city} · ${this.site.era}`)
             .fontSize(F.caption).fontColor(T.muted)

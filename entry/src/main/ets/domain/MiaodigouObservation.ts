@@ -17,5 +17,5 @@ export const MIAODIGOU_OBSERVATION: MaterialObservationDefinition = {
       visibleDetail: '对照“西”和“东”两侧的灰绿色浅槽：两条线段的端部开放，没有连成围墙。槽深、长度与端点均为学习示意，不能当作实测壕沟轮廓。',
       point: { x: 1.05, y: -0.19, z: 0.08 }, yaw: -0.08, pitch: 0.80, zoom: 0.94 }
   ],
-  notice: '依据官方概述绘制 · 方位关系学习示意 · 非实测平面；+X 为东、-X 为西，字标随沙盘旋转。符号数量、间距与高低无测绘或地层含义。'
+  notice: '依据官方概述绘制，方位关系为学习示意，非实测平面。'
 };

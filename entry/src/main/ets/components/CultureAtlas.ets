@@ -181,7 +181,7 @@ export struct CultureAtlas {
       Row({ space: 12 }) {
         Column({ space: 6 }) {
           Text('双连壶与方鼎对照').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
-          Text('三项具体差异 · 原创结构示意 · 逐项资料依据').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
+          Text('三项差异 · 逐项证据').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
         }.layoutWeight(1).alignItems(HorizontalAlign.Start)
         SymbolGlyph($r('sys.symbol.arrow_left_arrow_right')).fontSize(22).fontColor([T.accent])
       }.width('100%').padding(15)
@@ -207,7 +207,7 @@ export struct CultureAtlas {
       Progress({ value: progress.percent, total: 100, type: ProgressType.Linear }).width('100%').color(progress.route.color)
       Text(progress.route.siteIds.map((id: string) => HERITAGE_SITES.find((site: HeritageSite) => site.id === id)?.name || id).join(' → '))
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%').id('culture-journey-order')
-      Text('主题阅读路线，不是历史先后、真实交通线或统一地层。连线只表示阅读编排，不作为历史证据。')
+      Text('路线只表示阅读编排，不是历史先后或交通线。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
       if (progress.route.id === 'earth-and-fire') {
         this.materialComparisonEntry()
@@ -257,7 +257,7 @@ export struct CultureAtlas {
   compareColumn(site: HeritageSite, prefix: string) {
     Column({ space: 12 }) {
       Image(siteIllustration(site)).width('100%').height(100).objectFit(ImageFit.Contain)
-        .accessibilityText('文化主题示意图')
+        .accessibilityText('原创文化插画')
       Text(site.name).fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink).id(`${prefix}-name`)
       Text(`${site.city} · ${site.era}`).fontSize(F.caption).fontColor(T.accent)
       Text(site.type).fontSize(F.small).fontColor(T.muted)
@@ -303,7 +303,7 @@ export struct CultureAtlas {
             }.width('100%')
           }, (reason: string) => reason)
         }.width('100%').alignItems(HorizontalAlign.Start).id('culture-common-reasons')
-        Text('资料关联取自档案年代、类型及标签；主题阅读路线只表示编排，非历史证据。文化内容初稿待校审。')
+        Text('资料关联来自档案年代、类型与标签；路线只表示编排。')
           .fontSize(F.caption).fontColor(T.muted).lineHeight(20)
       }.width('100%').padding({ left: 20, right: 20, top: 16, bottom: 28 })
     }.width('100%').height('100%').align(Alignment.Top).id('culture-comparison-scroll')
@@ -384,7 +384,7 @@ export struct CultureAtlas {
               }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}`)
             }
           }
-          Text('图形为关联示意 · 文化内容初稿待校审').fontSize(F.caption).fontColor(T.muted).padding({ top: 8, bottom: 12 })
+          Text('关联示意').fontSize(F.caption).fontColor(T.muted).padding({ top: 8, bottom: 12 })
         }.width('100%').constraintSize({ maxWidth: 760 }).padding({ left: 16, right: 16, top: 16, bottom: 24 })
       }.width('100%').height('100%').align(Alignment.Top).id('culture-atlas-scroll')
     }.title('文明连线', { systemMaterial: HarmonyEffects.material(this.snapshot.lightEnabled, this.snapshot.reducedMotion) })

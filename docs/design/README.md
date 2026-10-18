@@ -2,6 +2,8 @@
 
 截图来自当前 HarmonyOS API 26 手机模拟器，原图均为 1256 × 2760 像素。通过 HDC、Hypium/UiTest 直接操作模拟器取得；使用独立测试档案，示例笔记是测试过程中实际输入、保存的内容。
 
+当前最新的记忆、档案、我的与 AI 重访见 [page-hierarchy 图集](page-hierarchy/README.md)；上一轮首页、五城河洛和详情改版见 [ui-refresh 图集](ui-refresh/README.md)。本页保留早期目录、详情、深色与大字证据，不能代表 2026-10-18 改版后的页面。
+
 `overview.png` 仅将六张原图缩放并排列，加上页名，便于整体检查。它没有补画、重排或修改应用页面。
 
 ![六页图集](overview.png)

@@ -175,7 +175,7 @@ export struct MaterialComparisonPanel {
           ForEach(this.studies(), (study: MaterialStudy) => {
             this.visual(study)
           }, (study: MaterialStudy) => study.siteId)
-          Text('本页只比较上述已核对事实；完整档案仍为初稿待校审。图像为云河纪原创学习示意，比例、纹线与位置标记经简化。')
+          Text('只比较上述已核对事实；图像为原创学习示意。')
             .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
         }.width('100%').constraintSize({ maxWidth: 720 }).alignItems(HorizontalAlign.Start)
           .padding({ left: 18, right: 18, top: 4, bottom: 28 })

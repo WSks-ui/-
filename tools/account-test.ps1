@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$DevEcoHome = $env:DEVECO_HOME,
     [ValidatePattern('^[\w.:-]+$')][string]$DeviceA = '127.0.0.1:5555',
     [ValidatePattern('^[\w.:-]+$')][string]$DeviceB = '127.0.0.1:5557',

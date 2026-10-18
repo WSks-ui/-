@@ -9,6 +9,8 @@ import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 
 interface EngineCameraReply { yaw: number; pitch: number; distance: number; }
 interface EngineViewReply { view: EngineCameraReply; }
+interface FocusRequest { hotspotId: string; request: number; }
+interface PoseRequest { request: number; }
 
 function needsNativeCultureViewport(): boolean {
   try { return needsObjectCanvas() || !canIUse('SystemCapability.Web.Webview.Core'); }
@@ -45,12 +47,17 @@ export struct CulturalEngineViewport {
   @Prop captureEnabled: boolean = false;
   @Prop rememberEnabled: boolean = false;
   @Prop @Watch('applyMemoryPose') memoryPoseJson: string = '';
+  // 详情页/AI 面板用独立请求序号触发聚焦与取景，不依赖 selectedId 是否变化；
+  // 同一热点连续请求也能再次聚焦，且不会复用“已回到手账视角”的回放成功文案。
+  @Prop @Watch('applyFocusRequest') focusRequestJson: string = '';
+  @Prop @Watch('applyPoseRequest') poseRequestJson: string = '';
   @LocalStorageProp('appForeground') @Watch('syncMotion') foreground: boolean = true;
   onNodeSelected: (id: string, type: string) => void = () => {};
   onProgressUnlocked: (id: string, value: number) => void = () => {};
   onCaptureSnapshot: (value: string) => void = () => {};
   onRememberView: (pose: MemoryPose) => void = () => {};
   onReplayResult: (success: boolean, message: string) => void = () => {};
+  onRememberFailure: (message: string) => void = () => {};
   @State private native: boolean = needsNativeCultureViewport();
   @State private automatic: boolean = true;
   @State private angleLabel: string = '初始视角';
@@ -120,8 +127,9 @@ export struct CulturalEngineViewport {
       // 物件和模式切换采用各自初始镜头；不继承上个沙盘的极端旋转或双指放大。
       this.sceneKey = nextKey; this.yaw = 0.25; this.pitch = this.sceneType === 'river_sandbox' ? 0.42 : 0.3;
       this.zoom = 1; this.phase = 0;
-      this.automatic = this.payload.sceneRevision !== 2;
-      this.angleLabel = '初始视角'; this.captureMessage = '';
+      // 河谷和精细观察保持静止，避免无意义地持续重绘；只有文化切片 / 图谱保留缓慢动态。
+      this.automatic = this.payload.sceneRevision !== 2 && this.sceneType !== 'river_sandbox';
+      this.angleLabel = ''; this.captureMessage = '';
     } else if (oldSelection !== (this.payload.selectedId || '')) {
       this.automatic = false;
     }
@@ -195,22 +203,54 @@ export struct CulturalEngineViewport {
     }
   }
 
-  private async rememberView(): Promise<void> {
-    if (!this.displayActive()) return;
+  private applyFocusRequest(): void {
+    if (!this.focusRequestJson) return;
+    try {
+      const request = JSON.parse(this.focusRequestJson) as FocusRequest;
+      if (this.sceneType !== 'relic_inspector' || this.disposed) return;
+      const observation = materialObservationForPreset(this.payload.proceduralPreset || '', this.payload.sceneRevision || 1);
+      const detail = observation?.hotspots.find(item => item.id === request.hotspotId);
+      if (!detail) return;
+      // 无论 selectedId 是否变化都执行一次真实聚焦；手动聚焦清除旧回放取景和“已回到手账视角”文案。
+      this.focus(request.hotspotId, true, true);
+      this.angleLabel = `已聚焦 · ${detail.label}`;
+      this.captureMessage = '';
+      this.draw();
+    } catch {}
+  }
+
+  private applyPoseRequest(): void {
+    if (!this.poseRequestJson) return;
+    // AI 草稿采纳发生在视口下方，画布可能已滚出屏幕；取景只读当前相机参数，不要求此刻可见。
+    this.rememberView(true);
+  }
+
+  private async rememberView(force: boolean = false): Promise<void> {
+    // 用户已经点“留住此刻”时，画布可能因页面滚动只露出一部分；
+    // 相机和原画幅仍然有效，不能因为不可见就静默丢弃这次保存。
+    if (this.disposed) return;
     this.pauseAutomatic();
     if (this.native && (!this.canvasReady || !this.painter.hasFrame)) {
-      this.captureMessage = '观察画面正在生成，请稍后留住此刻'; return;
+      this.captureMessage = '观察画面正在生成，请稍后再试';
+      this.onRememberFailure(this.captureMessage); return;
     }
     // 手账保存相机参数而非大图；同一程序化模型可重建视角，账号同步无需传输截图。
     // Web 使用自身当前相机回读，不能拿原生分支的未更新变量冒充用户刚操作的视角。
-    if (!this.native && this.loaded) {
+    if (!this.native) {
+      if (!this.loaded) {
+        this.captureMessage = '观察画面尚未就绪，请稍后再试';
+        this.onRememberFailure(this.captureMessage); return;
+      }
       try {
         let raw = await this.controller.runJavaScript('window.engineGetState()');
         if (raw.startsWith('"')) raw = JSON.parse(raw) as string;
         const state = JSON.parse(raw) as EngineViewReply;
         this.yaw = state.view.yaw; this.pitch = state.view.pitch;
         this.zoom = Math.max(0.7, Math.min(1.6, 4.8 / state.view.distance));
-      } catch { this.captureMessage = '暂未取到视角，请稍后再试'; return; }
+      } catch {
+        this.captureMessage = '暂未取到视角，请稍后再试';
+        this.onRememberFailure(this.captureMessage); return;
+      }
     }
     const selected = this.payload.selectedId || '';
     const pose: MemoryPose = { version: 1, sceneType: this.sceneType, yaw: this.yaw, pitch: this.pitch,
@@ -357,7 +397,7 @@ export struct CulturalEngineViewport {
       this.context.fillRect(0, this.canvasHeight - 25, this.canvasWidth, 25);
       this.context.fillStyle = this.dark() ? '#C2B2A8' : '#5C4D46';
       this.context.font = '10px sans-serif'; this.context.textAlign = 'center';
-      this.context.fillText(this.sceneType === 'stratum_slice' ? '阅读主题学习示意 · 非实际考古地层' : '云河纪 · 程序化学习示意',
+      this.context.fillText(this.sceneType === 'stratum_slice' ? '阅读主题' : '云河纪 · 观察',
         this.canvasWidth / 2, this.canvasHeight - 10);
       this.context.restore();
       // 本机 API 26 声明核验：CanvasRenderingContext2D.toDataURL 自 API 8 提供。
@@ -365,9 +405,13 @@ export struct CulturalEngineViewport {
       this.acceptCapture(this.context.toDataURL('image/png')); this.draw();
     } catch { this.captureMessage = '当前暂不能留影'; this.draw(); }
   }
+  private cameraHint(): string {
+    return this.reducedMotion ? '已减少动态' : '拖动旋转 · 双指缩放';
+  }
+
   build() {
     Column({ space: 12 }) {
-      Stack() {
+      Stack({ alignContent: Alignment.BottomEnd }) {
         if (this.native) {
           Canvas(this.context).width('100%').height('100%').id(`engine-native-${this.sceneType}`)
             .onReady(() => { this.canvasReady = true; this.syncMotion(); })
@@ -398,25 +442,47 @@ export struct CulturalEngineViewport {
             .onErrorReceive((event: OnErrorReceiveEvent) => { if (event.request.isMainFrame()) this.useNative(); })
             .onRenderExited(() => this.useNative())
         }
+        // 河谷沙盘只保留拖动 / 双指缩放和下方城市按钮，不再放左转、右转、复位一排工具。
+        // 精细观察仍保留小胶囊，因为热点注释需要精确转角和复位；它不再占据整行。
+        if (this.sceneType === 'river_sandbox') {
+          Row({ space: 7 }) {
+            Text('西').fontSize(10).fontColor(T.tertiary)
+            Row().width(34).height(1).backgroundColor(T.line)
+            Text('东').fontSize(10).fontColor(T.tertiary)
+          }.width('100%').justifyContent(FlexAlign.Center)
+            .position({ x: 0, y: this.viewportHeight - 26 }).hitTestBehavior(HitTestMode.None)
+        }
+        if (this.sceneType !== 'river_sandbox') {
+          Row({ space: 2 }) {
+            Button({ type: ButtonType.Circle }) {
+              Text('‹').fontSize(20).fontColor(T.accent).fontWeight(FontWeight.Medium)
+            }.width(30).height(30).backgroundColor(T.surface).id('engine-left')
+              .accessibilityText('左转视角').onClick(() => this.turn(-Math.PI / 8))
+            Button({ type: ButtonType.Circle }) {
+              Text('›').fontSize(20).fontColor(T.accent).fontWeight(FontWeight.Medium)
+            }.width(30).height(30).backgroundColor(T.surface).id('engine-right')
+              .accessibilityText('右转视角').onClick(() => this.turn(Math.PI / 8))
+            Button({ type: ButtonType.Circle }) {
+              Text('↺').fontSize(16).fontColor(T.accent)
+            }.width(30).height(30).backgroundColor(T.surface).id('engine-reset')
+              .accessibilityText('复位视角').onClick(() => this.reset())
+            if (!this.reducedMotion) {
+              Button({ type: ButtonType.Circle }) {
+                Text(this.automatic ? 'Ⅱ' : '▷').fontSize(14).fontColor(T.accent)
+              }.width(30).height(30).backgroundColor(T.surface).id('engine-motion')
+                .accessibilityText(this.automatic ? '暂停自动动态' : '继续自动动态')
+                .onClick(() => this.toggleAutomatic())
+            }
+          }.padding(3).margin({ bottom: 10, right: 10 }).backgroundColor(T.surface)
+            .border({ width: 1, color: T.line, radius: 19 }).borderRadius(19).opacity(0.94)
+        }
       }.width('100%').height(this.viewportHeight).borderRadius(20).clip(true).backgroundColor(this.frameBackground)
         .id(`engine-viewport-${this.sceneType}`)
         .accessibilityText(this.sceneType === 'stratum_slice' ? '四个阅读主题的空间学习示意' : '可拖动旋转、双指缩放的文化示意视口')
         .onVisibleAreaChange([0, 0.1], (visible: boolean, ratio: number) => { this.visible = visible && ratio > 0; this.syncMotion(); })
-      Row({ space: 8 }) {
-        Button('左转').id('engine-left').onClick(() => this.turn(-Math.PI / 8))
-          .layoutWeight(1).height(40).borderRadius(12).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.soft)
-        Button('右转').id('engine-right').onClick(() => this.turn(Math.PI / 8))
-          .layoutWeight(1).height(40).borderRadius(12).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.soft)
-        Button('复位').id('engine-reset').onClick(() => this.reset())
-          .layoutWeight(1).height(40).borderRadius(12).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.soft)
-        if (!this.reducedMotion) {
-          Button(this.automatic ? '暂停' : '自动').id('engine-motion').onClick(() => this.toggleAutomatic())
-            .layoutWeight(1).height(40).borderRadius(12).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.soft)
-            .accessibilityText(this.automatic ? '暂停视口自动动态' : '继续视口自动动态')
-        }
-      }.width('100%')
       Row({ space: 12 }) {
-        Text(this.captureMessage || `${this.angleLabel} · ${this.reducedMotion ? '已减少动态' : '拖动旋转 · 双指缩放'}`)
+        Text(this.captureMessage || (this.sceneType === 'river_sandbox' ? '拖动查看河谷 · 点选城市' :
+          (this.angleLabel ? `${this.angleLabel} · ${this.cameraHint()}` : this.cameraHint())))
           .fontSize(F.caption).fontColor(T.muted).id('engine-angle').layoutWeight(1)
         if (this.captureEnabled) {
           Button('留影').id('engine-capture').onClick(() => this.capture())

@@ -2,7 +2,7 @@ import { AccountView, guestAccountView } from '../domain/AccountSync';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 
 // 独立启动页：认证成功或明确选择离线浏览后才创建主导航。
-// 学校 / 学号只是教育计划的界面预留，不进入认证、存储或同步请求。
+// 账号只用于同一账号的收藏、手账与浏览记录同步；不收集学校或学号。
 @Component
 export struct LoginPage {
   @Prop view: AccountView = guestAccountView();
@@ -13,22 +13,15 @@ export struct LoginPage {
   onOffline: () => void = () => {};
   onRetryLocal: () => void = () => {};
   @State registering: boolean = false;
-  @State educationOpen: boolean = false;
   @State username: string = '';
   @State password: string = '';
-  @State university: string = '';
-  @State studentNumber: string = '';
   private usernameController: TextInputController = new TextInputController();
   private passwordController: TextInputController = new TextInputController();
-  private universityController: TextInputController = new TextInputController();
-  private studentController: TextInputController = new TextInputController();
 
   private async submit(): Promise<void> {
     if (this.view.busy || this.initializing) return;
     this.usernameController.stopEditing(); this.passwordController.stopEditing();
-    this.universityController.stopEditing(); this.studentController.stopEditing();
-    if (await this.onAuthenticate(this.username.trim(), this.password, this.registering,
-      this.university.trim(), this.studentNumber.trim())) this.password = '';
+    if (await this.onAuthenticate(this.username.trim(), this.password, this.registering, '', '')) this.password = '';
   }
 
   build() {
@@ -46,7 +39,7 @@ export struct LoginPage {
             Text('从一处文明，走进自己的故事。').fontSize(F.small).fontColor(T.muted).lineHeight(22)
           }.layoutWeight(1).alignItems(HorizontalAlign.Start)
           Image($r('app.media.motif_pottery')).width(82).height(106).objectFit(ImageFit.Cover)
-            .borderRadius(18).rotate({ angle: 7 }).accessibilityText('彩陶主题示意插画')
+            .borderRadius(18).rotate({ angle: 7 }).accessibilityText('彩陶纹样插画')
         }.width('100%').padding({ top: 10, bottom: 2 })
         Column({ space: 16 }) {
           Text(this.registering ? '开启你的河流记忆' : '登录云河纪').fontSize(F.section)
@@ -75,30 +68,6 @@ export struct LoginPage {
               .height(48).borderRadius(T.inputRadius).maxLength(128).enabled(!this.view.busy).id('account-password')
               .onChange((value: string) => { this.password = value; })
           }.width('100%').alignItems(HorizontalAlign.Start)
-          Button({ type: ButtonType.Normal }) {
-            Row({ space: 8 }) {
-              SymbolGlyph($r('sys.symbol.book')).fontSize(18).fontColor([T.accent])
-              Text('学习档案').fontSize(F.small).fontColor(T.ink).layoutWeight(1).textAlign(TextAlign.Start)
-              Text('选填 · 预留').fontSize(F.caption).fontColor(T.muted)
-              SymbolGlyph(this.educationOpen ? $r('sys.symbol.chevron_up') : $r('sys.symbol.chevron_down'))
-                .fontSize(13).fontColor([T.muted])
-            }.width('100%')
-          }.width('100%').height(44).padding(0).backgroundColor(Color.Transparent).enabled(!this.view.busy)
-            .id('education-toggle').onClick(() => { this.educationOpen = !this.educationOpen; })
-          if (this.educationOpen) {
-            Column({ space: 12 }) {
-              Text('教育计划尚未开放。以下信息仅在本次登录后展示，不保存或上传，也不参与身份认证。')
-                .fontSize(F.caption).fontColor(T.muted).lineHeight(20).id('education-placeholder-hint')
-              TextInput({ text: this.university, placeholder: '大学 / 院校名称（选填）', controller: this.universityController })
-                .height(48).fontSize(F.small).fontColor(T.ink).placeholderColor(T.muted).backgroundColor(T.soft)
-                .borderRadius(T.inputRadius).maxLength(80).enabled(!this.view.busy).id('education-university')
-                .onChange((value: string) => { this.university = value; })
-              TextInput({ text: this.studentNumber, placeholder: '学号（选填）', controller: this.studentController })
-                .height(48).fontSize(F.small).fontColor(T.ink).placeholderColor(T.muted).backgroundColor(T.soft)
-                .borderRadius(T.inputRadius).maxLength(32).enabled(!this.view.busy).id('education-student-number')
-                .onChange((value: string) => { this.studentNumber = value; })
-            }.width('100%').alignItems(HorizontalAlign.Start)
-          }
           if (this.view.message) {
             Text(this.view.message).fontSize(F.caption).fontColor(T.accent).lineHeight(20).id('account-message')
           }
@@ -106,7 +75,7 @@ export struct LoginPage {
             { type: ButtonType.Normal }).width('100%').height(48).borderRadius(T.buttonRadius)
             .fontSize(F.body).backgroundColor(T.accent).fontColor(T.onAccent).enabled(!this.view.busy && !this.initializing)
             .id('account-submit').onClick(() => { this.submit(); })
-          Text('登录同一账号，让收藏、笔记和探索足迹随身。').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
+          Text('同一账号，记忆随身。').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
         }.width('100%').alignItems(HorizontalAlign.Start).padding(20).backgroundColor(T.surface).borderRadius(24)
         Column({ space: 6 }) {
           if (this.localError) {
@@ -118,7 +87,7 @@ export struct LoginPage {
           Button('离线浏览本机档案', { type: ButtonType.Normal }).fontSize(F.small).fontColor(T.muted)
             .height(44).padding({ left: 16, right: 16 }).backgroundColor(Color.Transparent)
             .enabled(this.localAvailable && !this.view.busy && !this.initializing).id('login-offline').onClick(this.onOffline)
-          Text('未登录记录保留在本机，登录后使用独立账号档案。')
+          Text('本机记录与账号档案分开保存。')
             .fontSize(F.caption).fontColor(T.tertiary).textAlign(TextAlign.Center).lineHeight(20)
         }.width('100%')
       }.width('100%').constraintSize({ maxWidth: 480 }).padding({ left: 22, right: 22, top: 20, bottom: 28 })

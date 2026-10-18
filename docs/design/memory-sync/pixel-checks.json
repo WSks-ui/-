@@ -1,0 +1,74 @@
+{
+  "source": "同一测试包运行的双端真实截图与 dumpLayout Canvas 边界",
+  "canvas": {
+    "size": [
+      1032,
+      1050
+    ],
+    "changedPixels": 0,
+    "maxChannelDiff": 0,
+    "meanAbsChannelDiff": 0.0,
+    "aModelPixels": 390753,
+    "bModelPixels": 390753,
+    "aBounds": [
+      112,
+      865,
+      1144,
+      1915
+    ],
+    "bBounds": [
+      112,
+      1071,
+      1144,
+      2121
+    ]
+  },
+  "preview": {
+    "frame": {
+      "width": 294.85714285714283,
+      "height": 300.0
+    },
+    "previewSize": [
+      1054,
+      434
+    ],
+    "drawSize": [
+      427,
+      434
+    ],
+    "offset": [
+      313,
+      0
+    ],
+    "aVsB": {
+      "size": [
+        1054,
+        434
+      ],
+      "changedPixels": 0,
+      "maxChannelDiff": 0,
+      "meanAbsChannelDiff": 0.0
+    },
+    "aVsB correlation": 1.0,
+    "aVsReconstructed": {
+      "size": [
+        1054,
+        434
+      ],
+      "changedPixels": 43166,
+      "maxChannelDiff": 138,
+      "meanAbsChannelDiff": 0.7763191645024294
+    },
+    "aVsReconstructed correlation": 0.9884491801945107,
+    "bVsReconstructed": {
+      "size": [
+        1054,
+        434
+      ],
+      "changedPixels": 43166,
+      "maxChannelDiff": 138,
+      "meanAbsChannelDiff": 0.7763191645024294
+    },
+    "bVsReconstructed correlation": 0.9884491801945107
+  }
+}

@@ -1,7 +1,8 @@
 import {
   activeRecords, ArchiveRecord, ArchiveSnapshot, COLLECTION_TAGS, copySnapshot,
   HeritageSite, MAX_NOTE_LENGTH, MAX_NOTE_TAGS, MAX_NOTE_TAG_LENGTH, MAX_NOTE_TAGS_TEXT_LENGTH,
-  nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose, copyMemoryPose
+  nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose, copyMemoryPose,
+  AiMemoryAssist, copyAiMemoryAssist
 } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { MATERIAL_STUDIES, materialStudyForId } from '../data/MaterialStudyCatalog';
@@ -18,6 +19,10 @@ import { HarmonyEffects } from '../platform/HarmonyEffects';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 import { MemoryPostcardItem } from './MemoryPostcardItem';
 import { defaultStampForSite, PAPER_THEMES, paperThemeLabel, STAMP_TYPES, memoryQuoteForSite } from '../domain/MemoryJournal';
+import type { AiDraftAdoption, AiObservationReply, AiObservationRequest } from '../domain/AiObservation';
+import { buildAiMemoryAssist } from '../domain/AiObservation';
+import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
+import { AiObservationPanel } from './AiObservationPanel';
 
 interface MemoryPoseRequest extends MemoryPose { request: number; }
 
@@ -26,8 +31,19 @@ export struct SiteDetail {
   @Prop site: HeritageSite = HERITAGE_SITES[0];
   @Link snapshot: ArchiveSnapshot;
   @Prop initialPoseJson: string = '';
+  @Prop aiSignedIn: boolean = false;
+  @Prop aiServiceConfigured: boolean = false;
+  @Prop startAiPanel: boolean = false;
+  @Prop initialNoteId: string = '';
+  @Prop initialAiQuestion: string = '';
+  @Prop initialAiObservation: string = '';
+  onReadMemory: (note: ArchiveRecord) => void = () => {};
   onCommit: (next: ArchiveSnapshot) => Promise<boolean> = async () => false;
   onOpen: (site: HeritageSite) => void = () => {};
+  onAiRequest: (request: AiObservationRequest) => Promise<AiObservationReply> = async () => {
+    throw new Error('AI_NOT_CONFIGURED');
+  };
+  onAiCancel: () => void = () => {};
   @State draft: string = '';
   @State originalDraft: string = '';
   @State editingId: string = '';
@@ -46,14 +62,26 @@ export struct SiteDetail {
   @State private quoteEnabled: boolean = true;
   @State private quotedText: string = '';
   @State private draftPose: MemoryPose | undefined = undefined;
+  @State private memoryPoseRequestJson: string = '';
   @State private poseRequestJson: string = '';
+  @State private focusRequestJson: string = '';
   @State private replayRevision: number = 0;
   @State private replayMessage: string = '';
   @State private replayBlocked: boolean = false;
+  // AI 草稿采纳后先等待视口回传真实相机参数，再打开编辑器；保存时冻结资料事实供另一端解析。
+  @State private pendingAiDraft: AiDraftAdoption | undefined = undefined;
+  @State private aiDraft: AiDraftAdoption | undefined = undefined;
+  @State private editingAiAssist: AiMemoryAssist | undefined = undefined;
+  @State private aiNotice: string = '';
+  @State private aiReturnVisible: boolean = false;
+  @State private aiReturnText: string = '';
+  @State private infoOpen: boolean = false;
+  private aiPanelOffset: number = 0;
   private originalDecoration: string = '';
   private detailScroller: Scroller = new Scroller();
   private bodyController: TextAreaController = new TextAreaController();
   private tagsController: TextInputController = new TextInputController();
+  private pageDisposed: boolean = false;
 
   aboutToAppear(): void {
     const observation = materialObservationForSite(this.site.id);
@@ -62,6 +90,22 @@ export struct SiteDetail {
       try { this.restoreMemoryPose(JSON.parse(this.initialPoseJson) as MemoryPose); }
       catch { this.replayMessage = '保存的观察参数暂不能读取，文字手账仍可查看'; this.replayBlocked = true; }
     }
+    // 从首页“陪我观察”进入时，等详情布局完成后再把 AI 面板带入视野；
+    // 仍保留上方方鼎和热点按钮，用户可随时上滑回到模型，不另建聊天页。
+    if (this.startAiPanel || this.initialNoteId) {
+      this.pageDisposed = false;
+      setTimeout(() => {
+        if (this.pageDisposed) return;
+        if (this.initialNoteId) {
+          const note = this.notes().find(item => item.id === this.initialNoteId);
+          if (note) this.editNote(note);
+        } else this.detailScroller.scrollTo({ xOffset: 0, yOffset: Math.max(0, this.aiPanelOffset - 12) });
+      }, 420);
+    }
+  }
+
+  aboutToDisappear(): void {
+    this.pageDisposed = true;
   }
 
   private restoreMemoryPose(pose: MemoryPose): void {
@@ -79,7 +123,8 @@ export struct SiteDetail {
     // 附加请求序号，使同一张卡在手动旋转后仍可再次恢复；序号不存入档案。
     const request = copyMemoryPose(pose) as MemoryPoseRequest;
     request.request = Date.now();
-    this.poseRequestJson = JSON.stringify(request);
+    this.memoryPoseRequestJson = JSON.stringify(request);
+    this.focusRequestJson = '';
     this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 });
   }
 
@@ -103,14 +148,38 @@ export struct SiteDetail {
   }
 
   private selectHotspot(id: string): void {
-    this.poseRequestJson = ''; this.replayMessage = ''; this.replayBlocked = false;
+    this.memoryPoseRequestJson = ''; this.poseRequestJson = '';
+    this.replayMessage = ''; this.replayBlocked = false;
+    this.focusRequestJson = '';
+    this.aiReturnVisible = false;
     this.hotspot = id;
   }
 
   private startObservation(mode: CulturalSceneType = 'relic_inspector'): void {
-    this.replayRevision = 0; this.replayMessage = ''; this.replayBlocked = false; this.poseRequestJson = '';
+    this.replayRevision = 0; this.replayMessage = ''; this.replayBlocked = false;
+    this.memoryPoseRequestJson = ''; this.poseRequestJson = '';
+    this.focusRequestJson = '';
     this.engineMode = mode;
     this.hotspot = materialObservationForSite(this.site.id)?.hotspots[0].id || 'form';
+  }
+
+  private focusFromAi(hotspotId: string): void {
+    const observation = this.observation();
+    if (!observation || !observation.hotspots.some((item: MaterialObservationHotspot) => item.id === hotspotId)) return;
+    // 先落选中状态再发独立请求序号；同一热点连续请求也能再次聚焦，不复用回放成功文案。
+    this.selectHotspot(hotspotId);
+    this.focusRequestJson = JSON.stringify({ hotspotId, request: Date.now() });
+    this.aiReturnText = `已聚焦 · ${this.selectedObservationLabel()}`;
+    this.aiReturnVisible = true;
+    // 回答面板在页面下方；点观察动作后必须把真实模型带回可见区域，否则旋转发生在屏幕外。
+    this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0, animation: { duration: 350 } });
+  }
+
+  private adoptAiDraft(draft: AiDraftAdoption): void {
+    // 不直接用模型建议的默认镜头保存；先请视口回传用户此刻真实相机参数与原画幅。
+    this.pendingAiDraft = draft;
+    this.aiNotice = '正在读取当前观察视角…';
+    this.poseRequestJson = JSON.stringify({ request: Date.now() });
   }
 
   private decoration(): string {
@@ -135,11 +204,18 @@ export struct SiteDetail {
     return JSON.stringify(payload);
   }
 
+  private hasPoetry(): boolean {
+    const poetry = this.site.poetry.trim();
+    // “暂未收录”本身不是诗文，不再单独占一张空白卡片；资料状态仍由详情页的校审标识说明。
+    return poetry.length > 0 && !poetry.startsWith('暂未收录') && !poetry.startsWith('相关诗文将在');
+  }
+
   private selectedReading(): string {
     return this.explorationSection === 'overview' ? this.site.overview :
       this.explorationSection === 'archaeology' ? this.site.archaeology :
         this.explorationSection === 'history' ? this.site.history :
-          [this.site.poetry, this.site.travel].filter((text: string) => text.length > 0).join('\n');
+          [this.hasPoetry() ? this.site.poetry : '', this.site.travel]
+            .filter((text: string) => text.length > 0).join('\n');
   }
 
   private async completeSection(): Promise<void> {
@@ -152,6 +228,42 @@ export struct SiteDetail {
       // 先落盘才发布完成状态；每个主题独立版本信封，离线探索不同主题不会覆盖彼此。
       await this.onCommit(next);
     } finally { this.busy = false; }
+  }
+
+  @Builder
+  photoCard() {
+    if (this.site.photos.length > 0) {
+      Column({ space: 7 }) {
+        Image($rawfile(this.site.photos[0])).width('100%').height(210)
+          .objectFit(ImageFit.Cover).borderRadius(16)
+          .accessibilityText(this.site.photoCaption || `${this.site.name}实景照片`)
+        Column({ space: 3 }) {
+          Text(this.site.photoCaption || `${this.site.name}实景`)
+            .fontSize(F.caption).fontColor(T.ink).width('100%').maxLines(2)
+          Text(this.site.photoCredit || '图片来源见资料说明')
+            .fontSize(F.caption).fontColor(T.tertiary).width('100%').maxLines(2)
+        }.width('100%').alignItems(HorizontalAlign.Start)
+      }.width('100%').padding(12).backgroundColor(T.soft).borderRadius(T.cardRadius)
+        .margin({ bottom: 16 }).id('site-photo-card')
+    }
+  }
+
+  @Builder
+  infoSheet() {
+    Column({ space: 12 }) {
+      Text('资料说明').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
+      Text(this.observation()?.notice || '插画与几何为原创学习示意。')
+        .fontSize(F.caption).fontColor(T.ink).lineHeight(21).width('100%')
+      Text(materialStudyForId(this.site.id)?.visualCaption || '封面插画为主题示意。')
+        .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+      Text(materialStudyForId(this.site.id)?.evidenceLimit || '图像比例与细节经过简化。')
+        .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+      Text(`文化内容：${this.site.reviewStatus}；事实与来源以详情中的官方页面为准，插画与程序化几何不是文物照片、测绘或考古复原。`)
+        .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+      Text('AI 参考解读只依据本对象已核事实；资料不足时会明确说明，不替代馆方原文或人工校审。')
+        .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+    }.width('100%').padding(14).backgroundColor(T.soft).borderRadius(12)
+      .id('detail-info-sheet')
   }
 
   @Builder
@@ -178,8 +290,25 @@ export struct SiteDetail {
           .fontColor(T.accent).backgroundColor(T.accentSoft).onClick(() => this.startObservation())
       } else {
         CulturalEngineViewport({ sceneType: this.engineMode, payloadJson: this.enginePayload(), viewportHeight: 300,
-        rememberEnabled: true, memoryPoseJson: this.poseRequestJson,
-        onRememberView: (pose: MemoryPose) => this.editNote(undefined, pose),
+        rememberEnabled: true, memoryPoseJson: this.memoryPoseRequestJson,
+        focusRequestJson: this.focusRequestJson, poseRequestJson: this.poseRequestJson,
+        onRememberView: (pose: MemoryPose) => {
+          const pending = this.pendingAiDraft;
+          if (pending) {
+            // 只有视口回传真实相机参数后才打开 AI 草稿编辑器，不能保存默认镜头冒充用户取景。
+            this.pendingAiDraft = undefined;
+            this.aiNotice = '';
+            this.editNote(undefined, pose, pending);
+          } else this.editNote(undefined, pose);
+        },
+        onRememberFailure: (message: string) => {
+          if (this.pendingAiDraft) {
+            this.pendingAiDraft = undefined;
+            this.poseRequestJson = '';
+            this.aiNotice = message;
+            this.getUIContext().getPromptAction().showToast({ message });
+          }
+        },
         onReplayResult: (success: boolean, message: string) => {
           this.replayMessage = message;
           if (!success) this.replayBlocked = true;
@@ -190,6 +319,27 @@ export struct SiteDetail {
           const section = EXPLORATION_SECTIONS.find(section => section.id === id);
           if (type === 'layer' && section) this.explorationSection = section.id;
         } })
+      }
+      if (this.aiReturnVisible) {
+        Row({ space: 8 }) {
+          Text(this.aiReturnText).fontSize(F.caption).fontColor(T.mintInk).layoutWeight(1).maxLines(1).id('ai-focus-visible')
+          Button('继续追问', { type: ButtonType.Normal }).id('ai-continue').height(30).fontSize(F.caption)
+            .padding({ left: 10, right: 10 }).fontColor(T.mintInk).backgroundColor(T.surface).borderRadius(8)
+            .onClick(() => {
+              this.aiReturnVisible = false;
+              // 回到当前布局中面板的位置，保留问答；资料展开后也不依赖固定偏移。
+              this.detailScroller.scrollTo({ xOffset: 0, yOffset: Math.max(0, this.aiPanelOffset - 12), animation: { duration: 400 } });
+              // 再聚焦原输入框，键盘和回答一起回来；不清空已输入的追问草稿。
+              setTimeout(() => {
+                if (this.pageDisposed) return;
+                // 快速返回或面板尚在滚动时，输入框可能暂时不可聚焦；聚焦只是便捷操作，
+                // 不能让一次失败的焦点请求变成应用进程崩溃，用户仍可手动点击输入框。
+                try { this.getUIContext().getFocusController().requestFocus('ai-question-input'); }
+                catch { /* 页面已离开或控件暂不可聚焦时保留当前滚动位置。 */ }
+              }, 420);
+            })
+        }.width('100%').padding({ left: 10, right: 8, top: 6, bottom: 6 })
+          .backgroundColor(T.mint).borderRadius(10).margin({ top: 8 })
       }
       if (this.engineMode === 'relic_inspector') {
         if (this.observation()) {
@@ -226,8 +376,38 @@ export struct SiteDetail {
         Text(this.observation() ? this.selectedObservationReading() :
           (this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history))
           .fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%').id('engine-hotspot-reading')
+          .maxLines(this.site.id === 'zz-duling-fangding' ? 1 : 20).textOverflow({ overflow: TextOverflow.Ellipsis })
+          .maxLines(3).textOverflow({ overflow: TextOverflow.Ellipsis })
         Text(this.observation()?.notice || '按档案主题生成的几何与装饰示意，非文物或遗址复原。')
           .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').id('site-object-notice')
+          .maxLines(this.site.id === 'zz-duling-fangding' ? 1 : 20).textOverflow({ overflow: TextOverflow.Ellipsis })
+        Row() {
+          Blank()
+          Button(this.infoOpen ? '收起说明' : '资料说明', { type: ButtonType.Normal }).id('detail-info').height(30).fontSize(F.caption)
+            .padding({ left: 10, right: 10 }).fontColor(T.accent).backgroundColor(T.accentSoft).borderRadius(8)
+            .onClick(() => { this.infoOpen = !this.infoOpen; })
+        }.width('100%')
+        if (this.infoOpen) { this.infoSheet() }
+        if (this.observation() && this.site.id === 'zz-duling-fangding') {
+          Column() {
+          AiObservationPanel({
+            siteId: this.site.id, sceneRevision: this.sceneRevision(), hotspotId: this.hotspot,
+            signedIn: this.aiSignedIn, serviceConfigured: this.aiServiceConfigured,
+            startExpanded: this.startAiPanel, reducedMotion: this.snapshot.reducedMotion,
+            initialQuestion: this.initialAiQuestion, initialObservation: this.initialAiObservation,
+            onFocusHotspot: (id: string) => this.focusFromAi(id),
+            onAdoptDraft: (draft: AiDraftAdoption) => this.adoptAiDraft(draft),
+            onAiRequest: this.onAiRequest, onAiCancel: this.onAiCancel
+          })
+          }.width('100%').onAreaChange((_old: Area, area: Area) => {
+            // 这里位于详情的首个内容 Column，位置是实际布局坐标，避免硬编码滚动 320vp。
+            this.aiPanelOffset = Number(area.position.y);
+          })
+          if (this.aiNotice) {
+            Text(this.aiNotice).fontSize(F.caption).fontColor(T.mintInk).lineHeight(19).width('100%')
+              .padding(10).backgroundColor(T.mint).borderRadius(10).id('ai-view-notice')
+          }
+        }
       } else {
         Text('四层表示阅读主题，未核实为该遗址的真实考古层序。')
           .fontSize(F.caption).fontColor(T.accent).lineHeight(20).width('100%')
@@ -264,7 +444,7 @@ export struct SiteDetail {
     this.busy = false;
   }
 
-  private editNote(note?: ArchiveRecord, pose?: MemoryPose): void {
+  private editNote(note?: ArchiveRecord, pose?: MemoryPose, aiDraft?: AiDraftAdoption): void {
     this.editingId = note ? note.id : '';
     this.draft = note ? note.body : '';
     this.noteTags = note ? note.tags.join('，') : '';
@@ -276,9 +456,27 @@ export struct SiteDetail {
     this.quotedText = note?.quotedPoemOrFact || memoryQuoteForSite(this.site);
     if (!note && pose && this.selectedObservationReading()) this.quotedText = this.selectedObservationReading();
     this.draftPose = pose || note?.snapshot3DPose;
+    this.aiDraft = aiDraft;
+    this.editingAiAssist = note?.aiAssist;
+    this.pendingAiDraft = undefined;
+    this.aiNotice = aiDraft ? 'AI 草稿只整理你的观察；事实摘录取自原始资料。' : '';
+    if (aiDraft) {
+      // 草稿正文和标签进入可编辑字段，保存前由用户确认或修改；引用事实另存，不混进正文。
+      this.draft = aiDraft.body;
+      this.noteTags = aiDraft.tags.join('，');
+      this.quoteEnabled = true;
+      this.quotedText = aiDraft.facts.length > 0 ? aiDraft.facts[0].body : memoryQuoteForSite(this.site);
+    }
     this.originalDecoration = this.decoration();
     this.validation = '';
     this.editorOpen = true;
+  }
+
+  private clearAiDraftState(): void {
+    this.pendingAiDraft = undefined;
+    this.aiDraft = undefined;
+    this.editingAiAssist = undefined;
+    this.aiNotice = '';
   }
 
   private async saveNote(): Promise<void> {
@@ -291,6 +489,16 @@ export struct SiteDetail {
       this.validation = '笔记最多 4000 字；最多 20 个标签，每个标签不超过 40 字';
       return;
     }
+    // AI 参考元数据只在用户采纳或修改草稿后确认保存时写入；编辑旧 AI 手账则原样继承。
+    let aiAssist: AiMemoryAssist | undefined = undefined;
+    if (this.aiDraft) {
+      const scope = aiKnowledgeScope(this.site.id);
+      if (!scope) { this.validation = '当前资料范围不可用，暂不能保存 AI 参考信息'; return; }
+      try { aiAssist = buildAiMemoryAssist(this.aiDraft, scope); }
+      catch { this.validation = 'AI 草稿引用的资料版本不可用，请重新生成草稿后再保存'; return; }
+    } else if (this.editingAiAssist) {
+      aiAssist = copyAiMemoryAssist(this.editingAiAssist);
+    }
     this.busy = true;
     const next = copySnapshot(this.snapshot);
     const time = nextTimestamp(next.records, Date.now());
@@ -302,6 +510,7 @@ export struct SiteDetail {
     record.paperTheme = this.paperTheme;
     if (this.quoteEnabled && this.quotedText) record.quotedPoemOrFact = this.quotedText;
     if (this.draftPose) record.snapshot3DPose = this.draftPose;
+    if (aiAssist) record.aiAssist = aiAssist;
     next.records = putRecord(next.records, record);
     if (await this.onCommit(next)) {
       this.editorOpen = false;
@@ -309,6 +518,7 @@ export struct SiteDetail {
       this.originalDraft = '';
       this.noteTags = '';
       this.originalTags = '';
+      this.clearAiDraftState();
     }
     this.busy = false;
   }
@@ -319,11 +529,14 @@ export struct SiteDetail {
     if (this.draft !== this.originalDraft || this.noteTags !== this.originalTags || this.decoration() !== this.originalDecoration) {
       this.getUIContext().showAlertDialog({
         title: '放弃尚未保存的修改？',
-        message: '已保存的笔记不会被删除。',
+        message: '已保存的笔记不会被删除；本次 AI 草稿也不会写入记录。',
         primaryButton: { value: '继续编辑', action: () => {} },
-        secondaryButton: { value: '放弃修改', action: () => { this.editorOpen = false; } }
+        secondaryButton: { value: '放弃修改', action: () => { this.clearAiDraftState(); this.editorOpen = false; } }
       });
-    } else this.editorOpen = false;
+    } else {
+      this.clearAiDraftState();
+      this.editorOpen = false;
+    }
   }
 
   private finishEditing(): void {
@@ -372,7 +585,8 @@ export struct SiteDetail {
       Row() {
         Column({ space: 6 }) {
           Text(this.site.name).fontSize(F.caption).fontColor(T.accent)
-          Text(this.editingId ? '编辑拾遗手账' : '留一页，记住此刻').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
+          Text(this.aiDraft ? '整理 AI 草稿' : this.editingId ? '编辑拾遗手账' : '留一页，记住此刻')
+            .fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
         }.alignItems(HorizontalAlign.Start).layoutWeight(1)
         Button({ type: ButtonType.Circle }) {
           SymbolGlyph($r('sys.symbol.xmark')).fontSize(18).fontColor([T.muted])
@@ -383,6 +597,19 @@ export struct SiteDetail {
       // 不再用 FIT_CONTENT 配合固定 Column，否则键盘会盖住标签和保存按钮。
       Scroll() {
         Column({ space: 14 }) {
+          if (this.aiDraft) {
+            Column({ space: 4 }) {
+              Text('AI 辅助草稿 · 请确认或修改后保存').fontSize(F.small).fontWeight(FontWeight.Medium)
+                .fontColor(T.accent).width('100%').id('note-ai-draft-badge')
+              Text(`参考事实：${this.aiDraft.factIds.join(' · ')} · 资料 v${this.aiDraft.contentRevision}`)
+                .fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+              Text(this.aiNotice).fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+            }.width('100%').alignItems(HorizontalAlign.Start).padding(11).backgroundColor(T.accentSoft).borderRadius(10)
+          } else if (this.editingAiAssist) {
+            Text(`这页曾参考 AI 辅助整理 · 依据 ${this.editingAiAssist.factIds.join(' · ')} · 资料 v${this.editingAiAssist.contentRevision}`)
+              .fontSize(F.caption).fontColor(T.mintInk).lineHeight(19).width('100%').padding(10)
+              .backgroundColor(T.mint).borderRadius(10).id('note-ai-assist-badge')
+          }
           if (this.draftPose) {
             MemoryPosePreview({ siteId: this.site.id, poseJson: JSON.stringify(this.draftPose),
               previewHeight: 180, previewId: 'memory-draft-preview' })
@@ -451,12 +678,9 @@ export struct SiteDetail {
           if (!materialStudyForId(this.site.id)) {
             Stack({ alignContent: Alignment.TopStart }) {
               Image(siteIllustration(this.site)).width('100%').height(210).objectFit(ImageFit.Cover)
-                .borderRadius(18).accessibilityText('文化主题示意，非遗址实景')
+                .borderRadius(18).accessibilityText('原创文化主题插画')
               Row() {
                 Text(this.site.type).fontSize(F.caption).fontColor(T.mintInk)
-                  .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.surface).borderRadius(6)
-                Blank()
-                Text('主题示意').fontSize(F.caption).fontColor(T.muted)
                   .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.surface).borderRadius(6)
               }.width('100%').padding(14).align(Alignment.TopStart)
             }.width('100%').margin({ top: 12, bottom: 18 })
@@ -492,11 +716,12 @@ export struct SiteDetail {
               .font({ size: F.small }).fontColor(T.ink).backgroundColor(T.surface).borderRadius(10).height(44)
               .margin({ bottom: 16 }).enabled(!this.busy).id('favorite-category')
           }
+          this.photoCard()
           this.section('档案概览', this.site.overview)
           this.section('考古与遗存', this.site.archaeology)
           this.section('历史线索', this.site.history)
           // 没有核实诗文时不制造一段“以后补充”的正文；旧档案有内容时仍正常展示。
-          if (this.site.poetry) {
+          if (this.hasPoetry()) {
             this.section('诗文索引', this.site.poetry)
           }
           this.section('探访信息', this.site.travel)
@@ -506,7 +731,10 @@ export struct SiteDetail {
             Text(this.site.source.title).fontSize(F.caption).fontColor(T.muted)
             Text(this.site.source.url).fontSize(F.caption).fontColor(T.muted)
               .copyOption(CopyOptions.LocalDevice)
-            Text('封面为主题示意图，非文物或遗址复原。').fontSize(F.caption).fontColor(T.muted).lineHeight(20)
+            if (this.site.source.title.endsWith('机构入口')) {
+              Text('当前链接为机构入口，尚未对应到条目级出处。')
+                .fontSize(F.caption).fontColor(T.tertiary).lineHeight(20)
+            }
           }.width('100%').alignItems(HorizontalAlign.Start).padding(16).backgroundColor(T.soft).borderRadius(12)
           Text(`拾遗手账 · ${this.notes().length}`).fontSize(F.section).fontWeight(FontWeight.Bold)
             .fontColor(T.ink).width('100%').margin({ top: 24, bottom: 12 })
@@ -519,7 +747,7 @@ export struct SiteDetail {
           }
           ForEach(this.notes(), (note: ArchiveRecord) => {
             MemoryPostcardItem({ note, site: this.site, editable: true, busy: this.busy,
-              onOpen: (): void => { this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 }); },
+              onOpen: (): void => this.onReadMemory(note),
               onPose: () => {
                 if (note.snapshot3DPose) this.restoreMemoryPose(note.snapshot3DPose);
                 else this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0 });

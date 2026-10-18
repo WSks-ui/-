@@ -1,0 +1,104 @@
+{
+  "stage": "首页 UI 设计与布局改版（用户指定：恢复原结构并整体优化）",
+  "date": "2026-10-17",
+  "platform": "HarmonyOS 7.0.0.107 / API 26",
+  "device": {
+    "instance": "Pura 90 Pro",
+    "target": "127.0.0.1:5555",
+    "screen": "1256×2760 / density 560"
+  },
+  "packages": {
+    "main": {
+      "sha256": "935E945F1A438ECD4454328B95D7A8683FC048647E4CD24EF94643AC1E735BAE",
+      "built": "2026-10-17 23:44"
+    },
+    "test": {
+      "sha256": "13222779FBE8945F6473A198736A238B7934B7C2C947E90087A159EF30798BA4",
+      "built": "2026-10-17 23:44"
+    }
+  },
+  "sourceHashes": [
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "sha256": "19239D81DE81CAE65890CA70988B9E77DBA8D6E30312A046425CE2AA5079A7F6"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/color.json",
+      "sha256": "629378DB93403DAB173F4162A1B16E4A2987BD6343EF35B7299964A49EB9F32D"
+    },
+    {
+      "path": "entry/src/main/resources/dark/element/color.json",
+      "sha256": "E7ED1CD656A4F7F941D8DAB2E3541916117D4AB4CE67DF4C47D67D3904A9355A"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+      "sha256": "B1D6337B9957A3191F73580F0C1748D93B90442A37CEDC94E5F68C8E755E890E"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets",
+      "sha256": "616A33352472026B6571DA56696EDDF37B47838838062C1AFEED97F9D39B3B64"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ProfileLogin.test.ets",
+      "sha256": "140F39BB61CC4BE83CE9236ECC1F953BCE16EA7D437362CDDE9B2FA9DDAE330B"
+    }
+  ],
+  "phases": [
+    {
+      "phase": "改版后首页核心路径（含纸片叠层与配色收紧）",
+      "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+      "report": "docs/test-results/2026-10-17-234825-device.log",
+      "result": "1/1",
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "durationMs": 203638,
+      "coverage": "主题直达、空态、真实保存、首页最新记忆与1/4、124vp原画幅预览、点击回放、完整四节点",
+      "captures": [
+        {
+          "file": "docs/design/home-redesign/home-empty.png",
+          "sha256": "70785F0451BDCA12ACBB880373A00D41B53BD9DDB8233F6F7C9A49EDC0F138E2"
+        },
+        {
+          "file": "docs/design/home-redesign/home-recent.png",
+          "sha256": "21EBED86EF66211B45BF7401D1BFF7E9B472F0452577E20B928033FC43FDFAF6"
+        },
+        {
+          "file": "docs/design/home-redesign/home-preview.png",
+          "sha256": "F02C3D0B3E8EA3F399EC9B9B6494DB49EBE1954F3536B60F0E2F6B7B42A20A1C"
+        },
+        {
+          "file": "docs/design/home-redesign/home-replay.png",
+          "sha256": "1BB777850FFBA2583CF2698388C493CBA23E8CA2CBB1938BBDB9FE2718A18D42"
+        },
+        {
+          "file": "docs/design/home-redesign/home-board.png",
+          "sha256": "54B853EBB122FB551D8B3A0AB35A84CED0F01D19A15E47926F11B13C26333A82"
+        },
+        {
+          "file": "docs/design/home-redesign/home-search.png",
+          "sha256": "EC8B5D84E637EEEF47EBDD659C3EF286CB815477C09DDFDE8F5311A44A646EF5"
+        }
+      ]
+    },
+    {
+      "phase": "本地逻辑与报告解析",
+      "report": "docs/test-results/2026-10-17-home-redesign-local-test.log",
+      "result": "95/95，报告解析 9/9"
+    },
+    {
+      "phase": "构建",
+      "main": "docs/test-results/2026-10-17-home-redesign-main-build.log",
+      "test": "docs/test-results/2026-10-17-home-redesign-test-build.log",
+      "result": "均 BUILD SUCCESSFUL"
+    }
+  ],
+  "notes": [
+    "首页恢复沙盘、文明连线、黄河寻迹漫游、纸页入口、城市索引与检索分区，并保留主题直达和最近真实记忆。",
+    "纸页入口增加白色厚描边贴纸、半凸出卡片边缘与 sunken 底纸叠层；主题卡插画也使用叠纸。全部为实色叠放，无阴影 / 渐变。",
+    "主玫瑰色由 #C45A6A 收紧到 #B24C5E，小字灰棕由 #96847B 收紧到 #7D6A60，深色 tertiary 由 #85756C 提亮到 #A08E83，提升可读性。",
+    "所有既有测试 id 保留；memory-entry、featured-site 位于纸页入口区，需要真实滚动才能点击。",
+    "深色截图拍摄于贴纸 / 底纸强化前；强化沿用 surface / sunken 语义令牌，未新增硬编码颜色。",
+    "T11 双端同步结果对应改版前首页布局；同步与 B 端逻辑未改，本轮未重跑双端。"
+  ]
+}

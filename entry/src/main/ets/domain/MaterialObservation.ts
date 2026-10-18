@@ -40,7 +40,7 @@ const DAHECUN_OBSERVATION: MaterialObservationDefinition = {
       visibleDetail: '在红色器腹表面寻找黑彩平行横线，再看横线之间的竖向、斜向短线。',
       point: { x: 0.56, y: 0.095, z: 0.44 }, yaw: -0.16, pitch: 0.12, zoom: 1.04 }
   ],
-  notice: '原创结构学习示意 · 比例与纹线已简化，非实物复原；腹部通口采用剖开解释。'
+  notice: '原创结构示意；比例与纹线已简化，腹部通口采用剖开解释。'
 };
 
 // 每处保留独立的内容与几何模块；这里只登记真实可提供的场景，不给其他档案套通用热点。

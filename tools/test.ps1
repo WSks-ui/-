@@ -8,7 +8,7 @@ Push-Location (Split-Path $PSScriptRoot -Parent)
 $previousTs = $env:YUNHEJI_TYPESCRIPT
 try {
     $env:YUNHEJI_TYPESCRIPT = Join-Path $DevEcoHome 'sdk\default\openharmony\ets\build-tools\ets-loader\node_modules\typescript\lib\typescript.js'
-    & $node --experimental-strip-types --test tools/domain.test.mjs tools/repository.test.mjs
+    & $node --experimental-strip-types --test tools/domain.test.mjs tools/repository.test.mjs tools/ai-observation.test.mjs
     if ($LASTEXITCODE -ne 0) { throw "Tests failed: $LASTEXITCODE" }
     & (Join-Path $PSScriptRoot 'device-report.test.ps1')
 } finally {

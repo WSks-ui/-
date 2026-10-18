@@ -64,8 +64,8 @@ export default function archiveImmersiveTest() {
           await capture(session, 'scrolled');
           // Component.scrollToBottom 的默认手势会从浮动 Dock 内开始，可能误切页。
           // 使用已避开覆盖区的真实滚动定位，并断言当前页尾；截图文件存在不等于场景正确。
-          const footer = await session.inScroll('explore-scroll', ON.text('图形为主题示意 · 文化内容初稿待校审'));
-          expect(await footer.getText()).assertEqual('图形为主题示意 · 文化内容初稿待校审');
+          const footer = await session.inScroll('explore-scroll', ON.text('— 五城二十处 · 沿河而读 —'));
+          expect(await footer.getText()).assertEqual('— 五城二十处 · 沿河而读 —');
           await session.waitId('explore-scroll');
           await capture(session, 'scroll-bottom');
           await (await session.waitId('top-collection')).click();

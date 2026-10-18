@@ -81,3 +81,11 @@
 新手账的本机保存、预览和回放与同账号双端完整性是不同验收项。现有账号传输继续使用 HTTPS，不能因本机能够重建画面，就宣称新元信息已到达另一端或另一端画面已经一致。本轮双端尚未验收，不称为分布式 KV。
 
 限定的[ObservationMemoryTest](../entry/src/ohosTest/ets/test/ObservationMemory.test.ets)提供大河村核心路径，[ExpandedObservationTest](../entry/src/ohosTest/ets/test/ExpandedObservation.test.ets)分两条提供庙底沟与二号方鼎核心路径：三部位、主动右转、真实保存后移除缓存回读、画廊和正式回放；只有明确选择对应测试类才启用。用例保留画布布局供实际画面核对。此处只说明验证入口，不记录其执行或通过结果。阶段任务仍以[核心体验执行规范](CORE_EXPERIENCE.md)为准。
+
+## AI 观察导览（2026-10-18）
+
+方鼎详情在原生视口和三个热点按钮之后增加可收起的 `AiObservationPanel`。面板请求真实 DeepSeek 模型，但只使用本对象的三条事实和 `centers / corners / frame` 三个热点；回答中的聚焦动作通过 `focusRequestJson` 独立序号交给 `CulturalEngineViewport`，同一热点连续请求也会再次聚焦，不复用“已回到手账视角”的回放文案。
+
+回答到达不自动转动镜头、不自动保存；用户点击聚焦后仍可继续手动旋转。依据在面板内原地展开，事实、来源名称与核验日期由应用资料生成，不使用模型生成的 URL。用户写一句自己的观察后请求 AI 草稿；采纳后由视口回传当时实际相机和原画幅，再打开既有手账编辑器。只有确认保存才写入 `aiAssist`，见[AI 观察说明](AI_OBSERVATION.md)与[手账兼容说明](MEMORY_MIGRATION.md)。
+
+AI 面板不改变方鼎的原生几何、热点含义和“位置标记非兽面纹摹本”的边界。实际设备路径、真实模型小样和保留失败见[测试报告第 25 节](TEST_REPORT.md)与[AI 观察图集](design/ai-observation/README.md)。

@@ -13,7 +13,11 @@ import memoryJourneyTest from './MemoryJourney.test';
 import coreContentTest from './CoreContent.test';
 import observationMemoryTest from './ObservationMemory.test';
 import expandedObservationTest from './ExpandedObservation.test';
+import homeExperienceTest from './HomeExperience.test';
 import materialComparisonTest from './MaterialComparison.test';
+import memorySyncTest from './MemorySync.test';
+import demoRehearsalTest from './DemoRehearsal.test';
+import pageHierarchyTest from './PageHierarchy.test';
 
 export default function testsuite() {
   archiveDeviceTest();
@@ -31,5 +35,9 @@ export default function testsuite() {
   coreContentTest();
   observationMemoryTest();
   expandedObservationTest();
+  homeExperienceTest();
   materialComparisonTest();
+  memorySyncTest();
+  demoRehearsalTest();
+  pageHierarchyTest();
 }

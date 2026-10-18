@@ -5,9 +5,18 @@ import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 @Component
 export struct AccountPanel {
   @Prop view: AccountView = guestAccountView();
+  @Prop compact: boolean = false;
   onLogin: () => void = () => {};
   onLogout: () => void = () => {};
   onSync: () => void = () => {};
+
+  private syncTime(): string {
+    if (!this.view.lastSync) return '';
+    const value = new Date(this.view.lastSync);
+    const hour = value.getHours().toString().padStart(2, '0');
+    const minute = value.getMinutes().toString().padStart(2, '0');
+    return `${hour}:${minute}`;
+  }
 
   build() {
     Column({ space: 16 }) {
@@ -27,21 +36,25 @@ export struct AccountPanel {
         Divider().color(T.line)
         Row({ space: 12 }) {
           Column({ space: 5 }) {
-            Text(this.view.message ? '同步需要重试' : (this.view.syncing ? '正在交换记录'
-              : (this.view.lastSync > 0 ? '上次同步已完成' : '等待连接')))
+            Text(this.view.message ? '需要重试' : (this.view.syncing ? '正在同步'
+              : (this.view.lastSync > 0 ? '已同步' : '等待连接')))
               .fontSize(F.card).fontWeight(FontWeight.Medium).fontColor(T.accent).id('account-sync-state')
-            Text(this.view.lastSync > 0 ? `最近同步 ${new Date(this.view.lastSync).toLocaleTimeString()}` : '本机保存仍然可用')
+            Text(this.view.lastSync > 0 ? `最近 ${this.syncTime()}` : '本机保存仍然可用')
               .fontSize(F.caption).fontColor(T.muted).id('account-last-sync')
           }.layoutWeight(1).alignItems(HorizontalAlign.Start)
+          if (!this.compact) {
           Button('刷新', { type: ButtonType.Normal }).fontSize(F.small).height(42).borderRadius(10)
             .backgroundColor(T.accentSoft).fontColor(T.accent).enabled(!this.view.busy && !this.view.syncing)
             .id('account-refresh').onClick(this.onSync)
+          }
         }.width('100%')
-        Text('收藏、分类、笔记、标签和浏览记录随账号同步。离线修改先保存在本机，恢复连接后重试。')
+        if (!this.compact) {
+        Text('收藏与手账随账号同步；离线修改先保存在本机。')
           .fontSize(F.caption).fontColor(T.muted).lineHeight(20)
         Button(this.view.busy ? '正在退出' : '退出登录', { type: ButtonType.Normal }).fontSize(F.small).height(40).borderRadius(10)
           .backgroundColor(T.soft).fontColor(T.muted).enabled(!this.view.busy && !this.view.syncing)
           .id('account-logout').onClick(this.onLogout)
+        }
       } else {
         Button('登录云河纪', { type: ButtonType.Normal }).width('100%').height(46).fontSize(F.body)
           .borderRadius(T.buttonRadius).backgroundColor(T.accent).fontColor(T.onAccent).id('profile-login').onClick(this.onLogin)

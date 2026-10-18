@@ -1,0 +1,60 @@
+{
+  "stage": "首页改版中间记录",
+  "note": "旧过宽套件（外观、登录）在本轮改版后暴露与首页入口位置、详情首屏和教育信息仅会话内有关的历史假设；它们不是本轮首页验收项，未计通过。",
+  "entries": [
+    {
+      "report": "docs/test-results/2026-10-17-231128-device.log",
+      "phase": "首版改版首页核心路径",
+      "result": "1/1，Failure / Error / Ignore=0",
+      "durationMs": 213669,
+      "note": "首版视觉与最终版不同（卡片高度、纸页入口、搜索文案后续调整），仅作中间通过，不绑定最终包。"
+    },
+    {
+      "report": "docs/test-results/2026-10-17-233257-device.log",
+      "phase": "改版完成、层次与配色收紧前",
+      "result": "1/1，Failure / Error / Ignore=0",
+      "durationMs": 206925,
+      "note": "结构改版已通过；随后又加强纸片贴纸 / 底纸层次，并把主色与小字灰棕收紧，故仅作中间通过，不绑定最终包。"
+    },
+    {
+      "report": "docs/test-results/2026-10-17-231555-device.log",
+      "phase": "外观套件首次",
+      "result": "0/1 Error=1",
+      "error": "UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND collection-filter",
+      "cause": "memory-entry 已移到纸页入口区，首屏外直接点击未切换记忆页。",
+      "fix": "测试改为按真实 explore-scroll 滚动到 memory-entry 再点击；断言不变。"
+    },
+    {
+      "report": "docs/test-results/2026-10-17-231809-device.log",
+      "phase": "外观套件第二次",
+      "result": "0/1 Error=1",
+      "error": "UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND write-note",
+      "cause": "详情首屏为文化视口，写手账在下方；旧用例假设 write-note 已在可访问树中。",
+      "fix": "测试改为在 detail-scroll 中滚动到 write-note 再核对；断言不变。"
+    },
+    {
+      "report": "docs/test-results/2026-10-17-232051-device.log",
+      "phase": "外观套件第三次",
+      "result": "0/1 Error=1",
+      "error": "UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND collection-filter",
+      "cause": "记忆页手账卡变长后，收藏筛选位于首屏外。",
+      "fix": "测试改为先读顶部统计，再滚动到 collection-filter 截图。"
+    },
+    {
+      "report": "docs/test-results/2026-10-17-232416-device.log",
+      "phase": "外观套件第四次",
+      "result": "0/1 Error=1",
+      "error": "execute timeout 240000ms",
+      "cause": "外观套件覆盖外观/深色/大字/重启，新增滚动后超过单用例 240 秒上限。",
+      "fix": "未提高超时，也未删除断言；该套件不作为本轮首页验收，保留超时记录。"
+    },
+    {
+      "report": "docs/test-results/2026-10-17-232846-device.log",
+      "phase": "登录 / 注册套件",
+      "result": "0/1 Error=1",
+      "error": "UI_SCROLL_FAILED(profile-scroll): UI_SCROLL_TARGET_NOT_FOUND",
+      "cause": "大学资料按设计仅保留在本次会话；退出再登录后个人页不再显示该行，旧用例仍期待其存在。",
+      "fix": "未改产品；该历史假设不属于首页改版范围，未计通过。"
+    }
+  ]
+}

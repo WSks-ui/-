@@ -144,29 +144,44 @@ export function nativeCulturalScene(type: CulturalSceneType, payload: CulturalEn
     return { shape: { title: '四个阅读主题 · 空间示意', meshes }, anchors };
   }
   if (type === 'river_sandbox') {
-    const terrain = polygonMesh('river-valley', '#D4B18B');
-    const water = polygonMesh('river-water', '#C88A4B');
-    const meshes = [terrain, water];
+    // 河谷用两层缓坡、一条水带和一条浅色水线表达，不逐格绘制高密度网格。
+    // 地形高度、河湾和城市位置都是浏览路线示意，不是测绘地形。
+    const terrainBack = polygonMesh('river-terrain-back', '#E6D3BB');
+    const terrainFront = polygonMesh('river-terrain-front', '#D6B896');
+    const water = polygonMesh('river-water', '#9FBFB6');
+    const waterLine = polygonMesh('river-water-line', '#C7DCD4');
+    const bank = polygonMesh('river-bank', '#F0E1CE');
+    const meshes = [terrainBack, terrainFront, bank, water, waterLine];
     const anchors: NativeEngineAnchor[] = [];
-    const curve = (x: number): number => Math.sin(x * 2.4) * 0.24;
-    // 河流只表达五城从西向东的浏览次序；高度和河湾是程序化沙盘，非测绘地形。
-    for (let i = 0; i < 36; i++) {
-      const left = -1.3 + i / 36 * 2.6, right = -1.3 + (i + 1) / 36 * 2.6;
-      for (let row = 0; row < 8; row++) {
-        const near = -0.7 + row / 8 * 1.4, far = -0.7 + (row + 1) / 8 * 1.4;
-        const point = (x: number, z: number): ObjectPoint => ({ x, y: -0.32 + Math.abs(z) * 0.22 + Math.sin(x * 4 + z * 3) * 0.035, z: z + curve(x) });
-        face(terrain, [point(left, near), point(left, far), point(right, far), point(right, near)]);
+    const curve = (x: number): number => Math.sin(x * 2.4) * 0.22;
+    const point = (x: number, z: number, y: number): ObjectPoint => ({
+      x, y: y + Math.abs(z) * 0.16 + Math.sin(x * 4 + z * 3) * 0.025, z: z + curve(x)
+    });
+    for (let i = 0; i < 24; i++) {
+      const left = -1.3 + i / 24 * 2.6, right = -1.3 + (i + 1) / 24 * 2.6;
+      for (let row = 0; row < 4; row++) {
+        const near = 0.14 + row / 4 * 0.72, far = 0.14 + (row + 1) / 4 * 0.72;
+        face(terrainBack, [point(left, near, -0.30), point(left, far, -0.30),
+          point(right, far, -0.30), point(right, near, -0.30)]);
       }
-      face(water, [{ x: left, y: -0.27, z: curve(left) - 0.075 }, { x: left, y: -0.27, z: curve(left) + 0.075 },
-        { x: right, y: -0.27, z: curve(right) + 0.075 }, { x: right, y: -0.27, z: curve(right) - 0.075 }]);
+      for (let row = 0; row < 2; row++) {
+        const near = -0.82 + row / 2 * 0.82, far = -0.82 + (row + 1) / 2 * 0.82;
+        face(terrainFront, [point(left, near, -0.38), point(left, far, -0.38),
+          point(right, far, -0.38), point(right, near, -0.38)]);
+      }
+      face(water, [{ x: left, y: -0.25, z: curve(left) - 0.13 }, { x: left, y: -0.25, z: curve(left) + 0.13 },
+        { x: right, y: -0.25, z: curve(right) + 0.13 }, { x: right, y: -0.25, z: curve(right) - 0.13 }]);
+      face(waterLine, [{ x: left, y: -0.242, z: curve(left) - 0.025 }, { x: left, y: -0.242, z: curve(left) + 0.025 },
+        { x: right, y: -0.242, z: curve(right) + 0.025 }, { x: right, y: -0.242, z: curve(right) - 0.025 }]);
+      face(bank, [{ x: left, y: -0.255, z: curve(left) - 0.23 }, { x: left, y: -0.255, z: curve(left) - 0.13 },
+        { x: right, y: -0.255, z: curve(right) - 0.13 }, { x: right, y: -0.255, z: curve(right) - 0.23 }]);
     }
     (payload.nodes || []).forEach((node, index) => {
-      const x = -1.06 + index * 0.53, z = curve(x) + (index % 2 ? -0.24 : 0.24);
-      const selected = node.id === payload.selectedId;
-      meshes.push(box(node.id, x, -0.05, z, 0.045, selected ? 0.27 : 0.17, 0.045, selected ? '#C45A6A' : '#5B8E8A'));
-      anchors.push({ id: node.id, label: node.label, type: 'city', point: { x, y: selected ? 0.4 : 0.23, z } });
+      const x = -1.14 + index * 0.57;
+      const z = curve(x) + (index % 2 ? -0.44 : 0.40);
+      anchors.push({ id: node.id, label: node.label, type: 'city', point: { x, y: 0.07, z } });
     });
-    return { shape: { title: '五城河洛 · 程序化沙盘', meshes }, anchors };
+    return { shape: { title: '五城河洛 · 河谷示意', meshes }, anchors };
   }
   // 第 2 版三处精细观察均有独立几何；缺省 / 第 1 版仍保留原形态和旧热点，旧手账不得被替换。
   const observation = type === 'relic_inspector' ? materialObservationForPreset(payload.proceduralPreset || '',

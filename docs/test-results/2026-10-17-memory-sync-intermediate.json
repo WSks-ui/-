@@ -1,0 +1,57 @@
+{
+    "stage":  "T11 / T13 中间记录",
+    "note":  "失败与修复均发生在测试代码或测试定位，不为让用例通过而删除业务断言；旧测试包通过单独保留，不累计到最终同包通过数。",
+    "entries":  [
+                    {
+                        "classification":  "failure",
+                        "report":  "docs/test-results/2026-10-17-221626-device.log",
+                        "phase":  "A 首次尝试",
+                        "result":  "0/1 Error=1",
+                        "error":  "ACCOUNT_INVALID_CREDENTIALS",
+                        "cause":  "测试在 UI 注册新账号之前调用账号 API 回读身份，账号尚不存在。",
+                        "fix":  "调整为先经真实登录页注册，再回读身份并校验新账号档案为 0 条；未改产品代码。"
+                    },
+                    {
+                        "classification":  "failure",
+                        "report":  "docs/test-results/2026-10-17-221707-device.log",
+                        "phase":  "A 第二次尝试",
+                        "result":  "0/1 Error=1",
+                        "error":  "MEMORY_SYNC_TARGET_NOT_EXPOSED:profile-scroll:last-sync-value",
+                        "cause":  "个人页账号同步明细位于三条主题路线之后，滚动查找未暴露该行的真实坐标。",
+                        "fix":  "改读个人页顶部账号面板的“上次同步已完成”真实文字并截图；同步明细保留在个人页供人查看。"
+                    },
+                    {
+                        "classification":  "prior-package-pass",
+                        "report":  "docs/test-results/2026-10-17-222134-device.log",
+                        "phase":  "先前测试包 A 端",
+                        "result":  "1/1，Failure / Error / Ignore=0",
+                        "durationMs":  137111,
+                        "note":  "测试包 E6D55E（fixture 1792246872…）；最终测试包与账号更换后另行复跑，本条不计最终通过。"
+                    },
+                    {
+                        "classification":  "prior-package-pass",
+                        "report":  "docs/test-results/2026-10-17-222402-device.log",
+                        "phase":  "先前测试包 B 端",
+                        "result":  "1/1，Failure / Error / Ignore=0",
+                        "durationMs":  90108,
+                        "note":  "同上先前测试包与 fixture；最终同包结果为 2026-10-17-224249-device.log。"
+                    },
+                    {
+                        "classification":  "failure",
+                        "report":  "docs/test-results/2026-10-17-223154-device.log",
+                        "phase":  "T13.1 首次排练",
+                        "result":  "0/1 Error=1",
+                        "error":  "DEMO_TARGET_NOT_EXPOSED:material-comparison-scroll:material-comparison-body",
+                        "cause":  "对照维度按钮位于面板固定头部，不在 material-comparison-scroll 的滚动内容内。",
+                        "fix":  "直接等待并点击固定头部按钮，其余对照事实与来源仍按真实滚动核对。"
+                    },
+                    {
+                        "classification":  "prior-package-pass",
+                        "report":  "docs/test-results/2026-10-17-223433-device.log",
+                        "phase":  "T13.1 先前测试包排练",
+                        "result":  "1/1，Failure / Error / Ignore=0",
+                        "durationMs":  214912,
+                        "note":  "测试源码相同但 fixture 不同的测试包；最终同包排练为 2026-10-17-224447-device.log，本条不计最终通过。"
+                    }
+                ]
+}

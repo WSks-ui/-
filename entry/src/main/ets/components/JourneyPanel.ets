@@ -131,7 +131,7 @@ export struct JourneyPanel {
       Column({ space: 6 }) {
         Text('探索达 75%，或留下一张有效拾遗手账，即可点亮一处。整条点亮后，纪念章随真实记录收入记忆。')
           .fontSize(F.caption).fontColor(T.muted).lineHeight(21)
-        Text('主题阅读路线，不是历史先后、真实交通线或统一地层。文化内容仍为初稿待校审。')
+        Text('路线只表示阅读编排，不是历史先后或交通线。')
           .fontSize(F.caption).fontColor(T.tertiary).lineHeight(21)
       }.width('100%').alignItems(HorizontalAlign.Start).padding({ left: 2, right: 2, bottom: 4 })
     }.width('100%').alignItems(HorizontalAlign.Start).id('journey-panel')

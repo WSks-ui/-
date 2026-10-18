@@ -1,0 +1,19 @@
+2026-10-18 页面层级与 AI 重访：进程退出定位摘要
+
+对应设备原始报告：2026-10-18-112234-device.log
+系统：HarmonyOS 7.0.0.107 / API 26 手机模拟器
+发生时间：2026-10-18 11:23:16.127（设备时间）
+应用：com.chr.myapplication，debug 0.1.0
+
+Reason: Error
+Error message: This component has unfocusable ancestor.
+Error code: 150002
+关键堆栈：
+  requestFocus (ArkUI JSUIContext)
+  anonymous entry (entry/src/main/ets/components/SiteDetail.ets:310:58)
+
+原因：点“继续追问”后延迟请求焦点，快速返回或控件暂不可聚焦时，系统同步抛出异常。
+修复：回调检查页面销毁状态；对便捷焦点请求捕获异常，保留滚动位置及手动点选输入。
+复验：2026-10-18-112950-device.log 单项 1/1；最终包 2026-10-18-114604-device.log 两项 2/2。
+
+本文件只摘录定位所需内容。完整系统转储保留在本机忽略目录，未附带账号输入、凭证或机器路径。

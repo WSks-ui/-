@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-17",
+  "stage": "T09/T10 首页主题与最近真实记忆",
+  "platform": "HarmonyOS 7 / API 26",
+  "device": "YunhejiSyncB",
+  "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+  "mainPackageSha256": "00B1774C2D4F858C7F5F52738C16AC02FE5B39660A3C33B4672FE44263791D94",
+  "testPackageSha256": "485CE18969CF307465C15E7F7263E72C65A33F382A06709197C45C3A36F1BD18",
+  "total": 1,
+  "passed": 1,
+  "failure": 0,
+  "error": 0,
+  "ignore": 0,
+  "phases": [
+    {
+      "stage": "核心体验成型阶段：T09/T10 首页主题与最近真实记忆",
+      "phase": "home-refresh",
+      "platform": "HarmonyOS 7 / API 26",
+      "baselineCommit": "99328acc41457a280d5b2a4233920e1fdf9578f7",
+      "mainPackageSha256": "00B1774C2D4F858C7F5F52738C16AC02FE5B39660A3C33B4672FE44263791D94",
+      "testPackageSha256": "485CE18969CF307465C15E7F7263E72C65A33F382A06709197C45C3A36F1BD18",
+      "test": "HomeExperienceTest#native_home_theme_recent_memory_route_replay",
+      "report": "docs/test-results/2026-10-17-200742-device.log",
+      "status": "pass",
+      "captures": [
+        {
+          "name": "home-experience-empty",
+          "path": "docs/design/home-experience/home-experience-empty.png",
+          "sha256": "7F3A82F7924DE4F3F944485D54194492880BEF406D42D47AB679520D899D9DF4",
+          "layoutPath": "docs/design/home-experience/home-experience-empty.json",
+          "layoutSha256": "EC040198FC0B1C98B06D3D2A24FE9CF4D5A38D1381A58E046641E37F4FB51498"
+        },
+        {
+          "name": "home-experience-saved-view",
+          "path": "docs/design/home-experience/home-experience-saved-view.png",
+          "sha256": "16356C979BA7722DFE4B8B5981DD4283F555533623DA0AE85AF3DB18AD13E72A",
+          "layoutPath": "docs/design/home-experience/home-experience-saved-view.json",
+          "layoutSha256": "7873C14A0756CF7B3080DACADAF7E2B273D314165D914E2A571631E25C5EFCA4"
+        },
+        {
+          "name": "home-experience-recent",
+          "path": "docs/design/home-experience/home-experience-recent.png",
+          "sha256": "5ED4EA6063815B811661E05A958C7352FE8914862E00853B831FD21F9A28112C",
+          "layoutPath": "docs/design/home-experience/home-experience-recent.json",
+          "layoutSha256": "A8A5AB305A1646E58E770B57BE37319EED8181C94728C0B5D15F45B1E9E8C7C5"
+        },
+        {
+          "name": "home-experience-home-preview",
+          "path": "docs/design/home-experience/home-experience-home-preview.png",
+          "sha256": "5ED4EA6063815B811661E05A958C7352FE8914862E00853B831FD21F9A28112C",
+          "layoutPath": "docs/design/home-experience/home-experience-home-preview.json",
+          "layoutSha256": "A8A5AB305A1646E58E770B57BE37319EED8181C94728C0B5D15F45B1E9E8C7C5"
+        },
+        {
+          "name": "home-experience-replay",
+          "path": "docs/design/home-experience/home-experience-replay.png",
+          "sha256": "F74AAF952CD73C13DF31EF22C581E4903357C8E0802EE856DE08429BA3E80D23",
+          "layoutPath": "docs/design/home-experience/home-experience-replay.json",
+          "layoutSha256": "A083DE5E077D252EFF79F32C693211A9EDF8D253CB162359CD2ADAA29B8A0B4B"
+        }
+      ],
+      "sourceHashes": [
+        {
+          "path": "entry/src/main/ets/pages/Index.ets",
+          "sha256": "88E59E95F02EE756739E03D02771120CB26615ACCB466AC75B98E4D43FECF143"
+        },
+        {
+          "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+          "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+          "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+          "sha256": "03001E2B7413EB8D56B88862E50CA8B171D7962440949CADEF99E1843C2D3ACB"
+        },
+        {
+          "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+          "sha256": "292D2C4ECA4A0F108C9D00367B06BABE5D9C6337AF45D72A4E917E1492840612"
+        },
+        {
+          "path": "entry/src/main/ets/components/SiteDetail.ets",
+          "sha256": "B47F6D31330AD13F3BF9754B1002CACDECCAE60E76506DEBBAFF00D6075F7F0C"
+        },
+        {
+          "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+          "sha256": "C5D53F174B954767DC8A3939F9737B1F0D7094ABFF1C63FA7A93EC911D43C0BD"
+        },
+        {
+          "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+          "sha256": "A44EE6D7A57C76C1790555FCEB814A32700F4E801EF12BED24BDDB294973BE1A"
+        },
+        {
+          "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+          "sha256": "321CBD9A75D9BC91FBEC40A1E0F9A8CCC4B06488E15DC6ECA5EAD1A9A59313B1"
+        },
+        {
+          "path": "entry/src/main/ets/components/JourneyPanel.ets",
+          "sha256": "C7A5590B8663B73AC36DD227A69C98580EBED1BCE5CAFDE78251B67F58689912"
+        },
+        {
+          "path": "entry/src/main/ets/components/ProfilePage.ets",
+          "sha256": "F3498AA33FBD2B4C23C317DE4E631F1EFAEBFA39DDD98B30EA19AA5AB86F8CBA"
+        }
+      ],
+      "testSourceHashes": [
+        {
+          "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+          "sha256": "B1D6337B9957A3191F73580F0C1748D93B90442A37CEDC94E5F68C8E755E890E"
+        },
+        {
+          "path": "entry/src/ohosTest/ets/test/List.test.ets",
+          "sha256": "BCA111A1C8A94B9F3AD8EC49B33734C26D8CEFD2763D60BBB04497AED23DC1D6"
+        }
+      ],
+      "total": 1,
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "durationMs": 161021,
+      "pixelChecks": "docs/design/home-experience/pixel-checks.json"
+    }
+  ],
+  "scope": "首页直达、真实保存与首页预览回放、完整路线；新手账双端和录像另验收"
+}

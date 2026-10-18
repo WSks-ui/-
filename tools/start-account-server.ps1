@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$DevEcoHome = $env:DEVECO_HOME,
     [ValidateRange(1024,65535)][int]$Port = 18443,
     [string[]]$TargetIds = @()
