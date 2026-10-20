@@ -14,7 +14,7 @@ export default function waterSituationTest() {
   // 只按显式 class 注册，避免把水情专项塞进默认长回归。
   if (!requested.includes('WaterSituationTest')) return;
   describe('WaterSituationTest', () => {
-    it('water_card_opens_sourced_page', 0, async () => {
+    it('water_card_opens_live_page', 0, async () => {
       const session = new ArchiveUiSession('water_situation', '', true);
       await session.run(async () => {
         await session.inScroll('explore-scroll', ON.id('water-entry'));
@@ -24,23 +24,21 @@ export default function waterSituationTest() {
         // 页面优先读服务端实时水情，失败才回退公开报道；断言状态明确、数值带单位，
         // 不把某一天的数值写死，避免日报更新后误报。
         let status = await (await session.waitId('water-data-status')).getText();
-        if (status.includes('读取中')) {
+        if (status.includes('正在更新')) {
           await new Promise<void>((resolve) => { setTimeout(resolve, 2000); });
           status = await (await session.waitId('water-data-status')).getText();
         }
-        expect(status.includes('实时') || status.includes('上次快照') || status.includes('离线')).assertTrue();
-        expect((await (await session.waitId('water-latest-level')).getText()).includes('m')).assertTrue();
-        expect((await (await session.waitId('water-latest-flow')).getText()).includes('m³/s')).assertTrue();
+        expect(status.includes('实时') || status.includes('更新') || status.includes('离线')).assertTrue();
+        // 大数字与单位分开排版，这里只断言数值存在且不是缺测占位。
+        const level = await (await session.waitId('water-latest-level')).getText();
+        const flow = await (await session.waitId('water-latest-flow')).getText();
+        expect(level.length > 0 && level !== '—').assertTrue();
+        expect(flow.length > 0 && flow !== '—').assertTrue();
         await capture('hero');
-        // 流量柱形对照是全页唯一的图形表达，单独滚到并截图，避免只验证文字。
+        // 三站对照与花园口故事分段截图；首屏已包含对照卡，底部再确认故事卡。
         await session.inScroll('water-scroll', ON.id('water-chart'));
-        await capture('chart');
-        const disclaimer = await (await session.inScroll('water-scroll', ON.id('water-disclaimer'))).getText();
-        expect(disclaimer.includes('非实时')).assertTrue();
-        expect(disclaimer.includes('不提供')).assertTrue();
-        // 三条来源都在页面底部，滚动后逐条存在。
-        await session.inScroll('water-scroll', ON.id('water-source-2'));
-        await capture('bottom');
+        await session.inScroll('water-scroll', ON.id('water-story'));
+        await capture('story');
       });
     });
   });

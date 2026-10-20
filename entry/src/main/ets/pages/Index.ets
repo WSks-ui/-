@@ -323,15 +323,15 @@ struct Index {
   }
 
   private waterCardLabel(): string {
-    if (this.waterLiveState === 'live') return '实时';
-    if (this.waterLiveState === 'cached') return '上次快照';
-    return '公开报道';
+    return this.waterLiveState === 'live' ? '实时' : '今日';
   }
 
   private waterCardSubtitle(): string {
+    if (this.waterLiveState === 'loading') return '花园口 · 正在更新';
     const live = this.waterLiveYuan();
-    if (live) return `花园口 · ${live.observedAt} · ${this.waterLiveState === 'live' ? '实时' : '上次快照'}`;
-    return `花园口 · 最近 ${this.waterLatest()?.observedAt || ''} · 非实时`;
+    if (live && this.waterLiveState === 'live') return `花园口 · ${live.observedAt.slice(11)} 更新`;
+    if (live && this.waterLiveState === 'cached') return '花园口 · 上次更新';
+    return '花园口 · 离线数据';
   }
 
   private openWater(): void {
@@ -825,30 +825,38 @@ struct Index {
 
   @Builder
   waterEntryCard() {
-    // 水情入口只展示可核对的最新公开报道，不写成“今日实时”。
-    Button({ type: ButtonType.Normal }) {
-      Row({ space: 12 }) {
-        Column({ space: 4 }) {
+    // 深青水面卡：与详情页同一水情感，首页不展示来源清单，只保留更新状态。
+    Stack({ alignContent: Alignment.BottomStart }) {
+      Column({ space: 6 }) {
+        Row().width('115%').height(10).backgroundColor('#10FFFFFF').borderRadius(20)
+        Row().width('135%').height(10).backgroundColor('#0AFFFFFF').borderRadius(20)
+      }.width('100%').alignItems(HorizontalAlign.Center).margin({ bottom: -4 })
+      Row({ space: 10 }) {
+        Column({ space: 6 }) {
           Row({ space: 6 }) {
-            Text('黄河水情观察').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
-            Text(this.waterCardLabel()).fontSize(F.caption)
-              .fontColor(this.waterLiveState === 'cached' ? T.yellowInk : T.mintInk)
-              .padding({ left: 7, right: 7, top: 2, bottom: 2 })
-              .backgroundColor(this.waterLiveState === 'cached' ? T.yellow : T.mint).borderRadius(6)
-              .id('water-entry-status')
+            Text('黄河水情').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor('#F7F0E6')
+            Text(this.waterCardLabel()).fontSize(9).fontColor('#F7F0E6')
+              .padding({ left: 6, right: 6, top: 2, bottom: 2 })
+              .backgroundColor('#1FFFFFFF').borderRadius(5).id('water-entry-status')
           }.width('100%')
-          Text(this.waterCardSubtitle())
-            .fontSize(F.caption).fontColor(T.muted).maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
+          Text(this.waterCardSubtitle()).fontSize(F.caption).fontColor('#B9CDC4')
+            .maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
+          Row({ space: 14 }) {
+            Row({ space: 3 }) {
+              Text('水位').fontSize(10).fontColor('#9FB8AD')
+              Text(this.waterLevelText()).fontSize(18).fontWeight(FontWeight.Bold).fontColor('#F7F0E6')
+            }.alignItems(VerticalAlign.Bottom)
+            Row({ space: 3 }) {
+              Text('流量').fontSize(10).fontColor('#9FB8AD')
+              Text(this.waterFlowText()).fontSize(18).fontWeight(FontWeight.Bold).fontColor('#A8D5C2')
+            }.alignItems(VerticalAlign.Bottom)
+          }.width('100%')
         }.layoutWeight(1).alignItems(HorizontalAlign.Start)
-        Column({ space: 1 }) {
-          Text(this.waterLevelText()).fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.mintInk)
-          Text(this.waterFlowText()).fontSize(F.caption).fontColor(T.mintInk)
-        }.alignItems(HorizontalAlign.End)
-        SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(15).fontColor([T.muted])
-      }.width('100%').padding(14)
-    }.width('100%').padding(0).backgroundColor(T.surface).borderRadius(18)
-      .border({ width: 1, color: T.line, radius: 18 }).id('water-entry')
-      .accessibilityText('打开黄河水情观察，查看花园口公开报道摘录')
+        SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(16).fontColor(['#F7F0E6'])
+      }.width('100%').padding(16)
+    }.width('100%').borderRadius(20).clip(true)
+      .linearGradient({ angle: 135, colors: [['#0F2F2B', 0.0], ['#2A6557', 1.0]] })
+      .id('water-entry').accessibilityText('打开黄河水情')
       .onClick(() => this.openWater())
   }
 
