@@ -1552,6 +1552,10 @@ struct Index {
               TabContent() { this.archive() }.tabBar(this.tabStyle(1, '记忆', $r('sys.symbol.bookmark')))
               TabContent() { this.device() }.tabBar(this.tabStyle(2, '档案', $r('sys.symbol.folder')))
             }.width('100%').layoutWeight(1)
+              // HdsTabs 的 index 是受控属性：用户点击切页后必须把最新 index 写回 currentTab，
+              // 否则任意状态重渲染（如 5 秒同步定时器）都会把内容弹回旧页，
+              // 表现为“点了记忆 Tab，画面仍停在档案页”。只同步状态，不改任何视觉。
+              .onChange((index: number) => { this.currentTab = index; })
               .barPosition(BarPosition.End).barOverlap(true).barBackgroundColor(Color.Transparent)
               .barFloatingStyle(HarmonyEffects.dockStyle(this.snapshot.lightEnabled, this.snapshot.reducedMotion, () => { this.profileEntry(); }))
               .scrollable(false).animationDuration(this.snapshot.reducedMotion ? 0 : 220)
