@@ -249,5 +249,66 @@ export default function pageHierarchyTest() {
         if (identity) await preferences.deletePreferences(session.context, accountStoreName(identity, session.name));
       }
     });
+
+    it('memory_sort_tag_batch_and_profile_data', 0, async () => {
+      const session = new ArchiveUiSession('memory_manage');
+      await session.run(async () => {
+        await (await session.waitId('tab-2')).click();
+        await click(session, 'device-scroll', 'library-ai-open');
+        await (await session.waitId('detail-scroll')).scrollToTop(40000);
+        await click(session, 'detail-scroll', 'engine-remember-view');
+        const body = '批量管理与标签筛选验证手账。';
+        await (await session.inScroll('note-editor-scroll', ON.id('note-body'))).inputText(body);
+        await (await session.inScroll('note-editor-scroll', ON.id('note-tags'))).inputText('测试标签');
+        await (await session.waitId('save-note')).click();
+        await session.editorClosed();
+        const saved = activeRecords((await session.read()).records, 'note')[0];
+        expect(saved.body).assertEqual(body);
+        expect(saved.tags.includes('测试标签')).assertTrue();
+        await session.driver.pressBack();
+        await (await session.waitId('tab-1')).click();
+        await session.waitId('memory-manage');
+        await capture('memory-manage-entry');
+        await (await session.waitId('memory-manage')).click();
+        await session.waitId('memory-selection-bar');
+        await click(session, 'archive-scroll', `memory-select-${saved.id}`);
+        expect(await (await session.waitId('memory-selected-count')).getText()).assertEqual('已选 1 篇');
+        await capture('memory-selected');
+        await (await session.waitId('memory-copy-selected')).click();
+        await (await session.waitId('memory-manage')).click();
+        // 标签筛选只影响回顾视图，不删除或改写记录。
+        await click(session, 'archive-scroll', 'memory-tag-0');
+        await session.waitId(`memory-card-${saved.id}`);
+        await capture('memory-tag-filter');
+        // 档案页“已浏览”应只留下刚打开过的方鼎，数量与“我的”统计一致。
+        await (await session.waitId('tab-2')).click();
+        await click(session, 'device-scroll', 'library-scope-2');
+        expect(await (await session.waitId('library-result-count')).getText()).assertEqual('1 处');
+        await capture('archive-visited');
+        await (await session.waitId('profile-entry')).click();
+        await session.waitId('profile-scroll');
+        await capture('profile-stats');
+        await click(session, 'profile-scroll', 'profile-data');
+        expect(await (await session.waitId('data-notes')).getText()).assertEqual('1 篇');
+        expect(await (await session.waitId('data-visited')).getText()).assertEqual('1 / 20 处');
+        expect((await (await session.waitId('data-storage')).getText()).includes('KB')).assertTrue();
+        await capture('profile-data');
+        // 数据页是压在“我的”之上的独立 NavDestination：第一次返回个人页，第二次才回到 Tab。
+        await session.driver.pressBack();
+        await session.waitId('profile-scroll');
+        await session.driver.pressBack();
+        await session.waitId('device-scroll');
+        await (await session.waitId('tab-1')).click();
+        await (await session.waitId('memory-manage')).click();
+        await click(session, 'archive-scroll', `memory-select-${saved.id}`);
+        await (await session.waitId('memory-delete-selected')).click();
+        // 工具栏也有“删除”，批量确认必须用不同的动作文案，避免误点回工具栏。
+        await (await session.waitText('确认删除')).click();
+        await session.waitId('archive-scroll');
+        const tombstone = (await session.read()).records.find(item => item.id === saved.id);
+        expect(tombstone?.deleted).assertTrue();
+        expect(activeRecords((await session.read()).records, 'note').length).assertEqual(0);
+      });
+    });
   });
 }

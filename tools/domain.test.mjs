@@ -13,6 +13,7 @@ import {
 } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import { materialStudyForId } from '../entry/src/main/ets/data/MaterialStudyCatalog.ts';
+import { groupMemoryRecords, memoryMonthLabel } from '../entry/src/main/ets/domain/MemoryJournal.ts';
 import { UnavailableSyncGateway } from '../entry/src/main/ets/sync/SyncGateway.ts';
 import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/ets/platform/ArchiveLaunch.ts';
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
@@ -660,4 +661,20 @@ test('water live reply validation accepts sourced stations and rejects unnamed r
   assert.equal(validateWaterLiveReply(reply).stations.length, 1);
   assert.throws(() => validateWaterLiveReply({ ...reply, stations: [{ ...reply.stations[0], station: '' }] }),
     /WATER_INVALID_REPLY/);
+});
+
+
+test('memory month groups keep caller order and merge adjacent months', () => {
+  const note = (id, updatedAt) => ({
+    id, kind: 'note', siteId: 'zz-duling-fangding', body: id, tags: [], updatedAt,
+    deviceId: 'device', deleted: false
+  });
+  const october = new Date(2026, 9, 20, 8, 0).getTime();
+  const september = new Date(2026, 8, 21, 8, 0).getTime();
+  const august = new Date(2026, 7, 12, 8, 0).getTime();
+  const groups = groupMemoryRecords([note('b', october), note('a', october), note('c', september), note('d', august)]);
+  assert.deepEqual(groups.map(group => group.label), ['2026 年 10 月', '2026 年 9 月', '2026 年 8 月']);
+  assert.deepEqual(groups[0].notes.map(item => item.id), ['b', 'a']);
+  assert.equal(memoryMonthLabel(0), '时间未知');
+  assert.equal(memoryMonthLabel(Number.NaN), '时间未知');
 });

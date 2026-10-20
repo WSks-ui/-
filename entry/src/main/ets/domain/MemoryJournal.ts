@@ -96,3 +96,27 @@ export function memoryQuoteForSite(site: HeritageSite): string {
   // 只摘录档案已有摘要，摘要空缺时才取概览；继承原文“初稿待校审”状态，不生成诗词或新事实。
   return (site.summary.trim() || site.overview.trim()).slice(0, 160);
 }
+
+// 记忆页按自然月分组。时间戳无效的记录归入“时间未知”，不猜测日期；
+// 输入顺序由调用方决定（最近或最早），本函数只做相邻同月合并，便于保持用户选择的排序。
+export interface MemoryMonthGroup {
+  label: string;
+  notes: ArchiveRecord[];
+}
+
+export function memoryMonthLabel(timestamp: number): string {
+  const date = new Date(timestamp);
+  if (!Number.isFinite(timestamp) || !Number.isFinite(date.getTime()) || timestamp <= 0) return '时间未知';
+  return `${date.getFullYear()} 年 ${date.getMonth() + 1} 月`;
+}
+
+export function groupMemoryRecords(notes: ArchiveRecord[]): MemoryMonthGroup[] {
+  const groups: MemoryMonthGroup[] = [];
+  notes.forEach((note: ArchiveRecord) => {
+    const label = memoryMonthLabel(note.updatedAt);
+    const last = groups.length > 0 ? groups[groups.length - 1] : undefined;
+    if (last && last.label === label) last.notes.push(note);
+    else groups.push({ label, notes: [note] });
+  });
+  return groups;
+}

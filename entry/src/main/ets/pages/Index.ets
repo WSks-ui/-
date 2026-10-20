@@ -1,4 +1,5 @@
 import { common } from '@kit.AbilityKit';
+import { pasteboard } from '@kit.BasicServicesKit';
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 import { HdsNavigation, HdsNavigationTitleMode, HdsTabs, HdsTabsController } from '@kit.UIDesignKit';
 import {
@@ -25,7 +26,7 @@ import { MemoryPostcardItem } from '../components/MemoryPostcardItem';
 import { MemoryDetailPage } from '../components/MemoryDetailPage';
 import { MemoryPosePreview } from '../components/MemoryPosePreview';
 import { JOURNEY_ROUTES, JourneyProgress, JourneyRoute, journeyProgress } from '../domain/JourneyRoutes';
-import { memorySeasonLabel } from '../domain/MemoryJournal';
+import { groupMemoryRecords, MemoryMonthGroup, memorySeasonLabel } from '../domain/MemoryJournal';
 import { AccountSyncClient } from '../sync/AccountSyncClient';
 import { AccountView, accountErrorMessage, accountStoreName, changedAccountView, guestAccountView } from '../domain/AccountSync';
 import type { AiObservationReply, AiObservationRequest } from '../domain/AiObservation';
@@ -63,14 +64,23 @@ struct Index {
   @State memorySection: string = '手账';
   @State memoryKeyword: string = '';
   @State memoryAiOnly: boolean = false;
+  // 记忆页自己的检索状态：排序与标签只影响回顾视图，不写回记录，也不与首页筛选共享。
+  @State memorySort: string = '最近';
+  @State memoryTag: string = '全部标签';
+  @State memorySelectMode: boolean = false;
+  @State memorySelectedIds: string[] = [];
   // 首页 AI 卡片可在方鼎与双连壶之间切换；默认仍是方鼎，保持原演示路径。
   @State homeAiSiteId: string = AI_OBSERVATION_SITE_ID;
   @State private waterLive: WaterLiveReply | undefined = undefined;
   @State private waterLiveState: string = 'loading';
   @State libraryKeyword: string = '';
+  // 档案页城市必须独立于首页沙盘；共用一个 city 会让两页互相改写筛选条件。
+  @State libraryCity: string = CITIES[0];
   @State libraryEra: string = ERAS[0];
   @State libraryType: string = TYPES[0];
   @State libraryAiOnly: boolean = false;
+  @State libraryScope: string = '全部';
+  @State librarySort: string = '目录';
   @State currentTab: number = 0;
   @State wide: boolean = false;
   @State featuredHeight: number = 242;
@@ -349,23 +359,178 @@ struct Index {
       `${site.name} ${site.city} ${site.tags.join(' ')}`.toLowerCase().includes(this.memoryKeyword.trim().toLowerCase()));
   }
 
+  private collectedSiteIds(): string[] {
+    return activeRecords(this.snapshot.records, 'favorite').map((record: ArchiveRecord) => record.siteId);
+  }
+
+  private visitedSiteIds(): string[] {
+    // 浏览记录与主题探索共用 progress kind；按 siteId 去重后供档案卡与筛选复用。
+    return HERITAGE_SITES.filter((site: HeritageSite) => this.snapshot.records.some((record: ArchiveRecord) =>
+      record.kind === 'progress' && !record.deleted && record.siteId === site.id))
+      .map((site: HeritageSite) => site.id);
+  }
+
   private memoryNotes(): ArchiveRecord[] {
     const keyword = this.memoryKeyword.trim().toLowerCase();
-    return activeRecords(this.snapshot.records, 'note').filter((note: ArchiveRecord) =>
+    const notes = activeRecords(this.snapshot.records, 'note').filter((note: ArchiveRecord) =>
       (!this.memoryAiOnly || note.aiAssist !== undefined) &&
-      `${this.memorySite(note).name} ${note.body} ${note.tags.join(' ')} ${note.aiAssist?.question || ''}`
+      (this.memoryTag === '全部标签' || note.tags.includes(this.memoryTag)) &&
+      `${this.memorySite(note).name} ${note.body} ${note.tags.join(' ')} ${note.quotedPoemOrFact || ''} ${note.aiAssist?.question || ''}`
         .toLowerCase().includes(keyword));
+    // activeRecords 默认按更新时间倒序；这里只在用户显式切换时重排副本。
+    if (this.memorySort === '最早') {
+      notes.sort((a: ArchiveRecord, b: ArchiveRecord) =>
+        a.updatedAt - b.updatedAt || (a.id < b.id ? -1 : 1));
+    } else if (this.memorySort === '按档案') {
+      notes.sort((a: ArchiveRecord, b: ArchiveRecord) => {
+        const left = this.memorySite(a).name;
+        const right = this.memorySite(b).name;
+        if (left !== right) return left < right ? -1 : 1;
+        return b.updatedAt - a.updatedAt;
+      });
+    }
+    return notes;
+  }
+
+  private memoryTags(): string[] {
+    const tags: string[] = [];
+    activeRecords(this.snapshot.records, 'note').forEach((note: ArchiveRecord) => {
+      note.tags.forEach((tag: string) => {
+        if (tag && tags.length < 8 && !tags.includes(tag)) tags.push(tag);
+      });
+    });
+    return tags;
+  }
+
+  private memoryGroups(): MemoryMonthGroup[] {
+    // 按档案排序时月份不再连续，分组会反复断开；直接用单组平铺，避免出现重复月份标题。
+    if (this.memorySort === '按档案') return [{ label: '', notes: this.memoryNotes() }];
+    return groupMemoryRecords(this.memoryNotes());
+  }
+
+  private lastOpenedAt(siteId: string): number {
+    return this.snapshot.records.reduce((latest: number, record: ArchiveRecord) =>
+      record.kind === 'progress' && !record.deleted && record.siteId === siteId
+        ? Math.max(latest, record.updatedAt) : latest, 0);
   }
 
   private libraryResults(): HeritageSite[] {
-    return filterSites(HERITAGE_SITES, { keyword: this.libraryKeyword, city: this.city,
+    const collected = this.collectedSiteIds();
+    const visited = this.visitedSiteIds();
+    const results = filterSites(HERITAGE_SITES, { keyword: this.libraryKeyword, city: this.libraryCity,
       era: this.libraryEra, type: this.libraryType })
-      .filter((site: HeritageSite) => !this.libraryAiOnly || isAiObservationSite(site.id));
+      .filter((site: HeritageSite) => {
+        if (this.libraryAiOnly && !isAiObservationSite(site.id)) return false;
+        if (this.libraryScope === '已收藏') return collected.includes(site.id);
+        if (this.libraryScope === '已浏览') return visited.includes(site.id);
+        if (this.libraryScope === '未浏览') return !visited.includes(site.id);
+        return true;
+      });
+    if (this.librarySort === '最近浏览') {
+      // 未读档案排在已读之后，已读内部按最近一次打开时间倒序；不改写任何记录。
+      results.sort((a: HeritageSite, b: HeritageSite) =>
+        this.lastOpenedAt(b.id) - this.lastOpenedAt(a.id) || (a.name < b.name ? -1 : 1));
+    }
+    return results;
   }
 
   private editMemory(note: ArchiveRecord): void {
     const site = this.siteFor(note.siteId);
     if (site) this.openSite(site, '', false, note.id);
+  }
+
+  private toggleNoteSelection(noteId: string): void {
+    const index = this.memorySelectedIds.indexOf(noteId);
+    if (index >= 0) this.memorySelectedIds.splice(index, 1);
+    else this.memorySelectedIds.push(noteId);
+    this.memorySelectedIds = this.memorySelectedIds.slice();
+  }
+
+  private exitNoteSelection(): void {
+    this.memorySelectMode = false;
+    this.memorySelectedIds = [];
+  }
+
+  private selectedNotes(): ArchiveRecord[] {
+    // 选中集合独立于当前筛选：切换标签或搜索后，已选记录仍应完整复制/删除。
+    return activeRecords(this.snapshot.records, 'note')
+      .filter((note: ArchiveRecord) => this.memorySelectedIds.includes(note.id));
+  }
+
+  private selectedMarkdown(): string {
+    return this.selectedNotes().map((note: ArchiveRecord) => {
+      const site = this.memorySite(note);
+      const tags = note.tags.map((tag: string) => `#${tag}`).join(' ');
+      const ai = note.aiAssist ? `\n\n> AI 问题：${note.aiAssist.question}` : '';
+      return `## ${site.name}\n\n${new Date(note.updatedAt).toLocaleString()}\n\n${note.body}` +
+        `${tags ? `\n\n${tags}` : ''}${ai}`;
+    }).join('\n\n---\n\n');
+  }
+
+  private async copySelectedNotes(): Promise<void> {
+    if (this.memorySelectedIds.length === 0) return;
+    try {
+      const data = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, this.selectedMarkdown());
+      await pasteboard.getSystemPasteboard().setData(data);
+      this.getUIContext().getPromptAction().showToast({ message: `已复制 ${this.memorySelectedIds.length} 篇手账` });
+    } catch {
+      this.getUIContext().getPromptAction().showToast({ message: '复制失败，请稍后重试' });
+    }
+  }
+
+  private confirmDeleteSelected(): void {
+    const count = this.memorySelectedIds.length;
+    if (count === 0 || this.saving) return;
+    this.getUIContext().showAlertDialog({
+      title: `删除 ${count} 页手账？`, message: '删除会随同一账号同步。',
+      primaryButton: { value: '保留', action: () => {} },
+      secondaryButton: { value: '确认删除', action: () => { this.deleteSelectedNotes(); } }
+    });
+  }
+
+  private async deleteSelectedNotes(): Promise<void> {
+    if (this.saving || this.memorySelectedIds.length === 0) return;
+    const ids = this.memorySelectedIds.slice();
+    const next = copySnapshot(this.snapshot);
+    let changed = 0;
+    next.records.forEach((record: ArchiveRecord) => {
+      if (record.kind === 'note' && !record.deleted && ids.includes(record.id)) {
+        // 与单篇删除一致：只写墓碑，保留视角与 AI 依据，供另一端同步时正确合并。
+        record.deleted = true;
+        record.updatedAt = nextTimestamp(next.records, Date.now());
+        record.deviceId = next.deviceId;
+        changed += 1;
+      }
+    });
+    if (changed === 0) return;
+    if (await this.commit(next)) {
+      this.getUIContext().getPromptAction().showToast({ message: `已删除 ${changed} 页手账` });
+      this.exitNoteSelection();
+    }
+  }
+
+  private confirmDeleteNote(note: ArchiveRecord): void {
+    if (this.saving) return;
+    this.getUIContext().showAlertDialog({
+      title: '删除这页手账？', message: '删除会随同一账号同步。',
+      primaryButton: { value: '保留', action: () => {} },
+      secondaryButton: { value: '删除', action: () => { this.deleteNoteRecord(note.id); } }
+    });
+  }
+
+  private async deleteNoteRecord(noteId: string): Promise<void> {
+    if (this.saving) return;
+    const next = copySnapshot(this.snapshot);
+    const note = next.records.find((item: ArchiveRecord) =>
+      item.id === noteId && item.kind === 'note' && !item.deleted);
+    if (!note) return;
+    // 与详情页一致：只写墓碑，保留视角和 AI 依据，避免另一端同步时把旧记录复活。
+    note.deleted = true;
+    note.updatedAt = nextTimestamp(next.records, Date.now());
+    note.deviceId = next.deviceId;
+    if (await this.commit(next)) {
+      this.getUIContext().getPromptAction().showToast({ message: '手账已删除' });
+    }
   }
 
   private askMemory(note: ArchiveRecord): void {
@@ -379,13 +544,15 @@ struct Index {
   }
 
   private showMemory(section: string = '手账', aiOnly: boolean = false): void {
-    this.memorySection = section; this.memoryAiOnly = aiOnly; this.memoryKeyword = ''; this.currentTab = 1;
+    // 从外部入口进入时回到默认识图，避免上次的排序或标签把结果藏起来。
+    this.memorySection = section; this.memoryAiOnly = aiOnly; this.memoryKeyword = '';
+    this.memorySort = '最近'; this.memoryTag = '全部标签'; this.exitNoteSelection(); this.currentTab = 1;
   }
 
-  private showLibrary(city: string = CITIES[0]): void {
-    // 显式入口只携带自己的城市条件，不被上一次空搜索或 AI 筛选悄悄限制。
-    this.city = city; this.libraryKeyword = ''; this.libraryEra = ERAS[0]; this.libraryType = TYPES[0];
-    this.libraryAiOnly = false; this.currentTab = 2;
+  private showLibrary(city: string = CITIES[0], scope: string = '全部'): void {
+    // 显式入口只携带自己的条件；档案页城市独立于首页沙盘，不写 this.city。
+    this.libraryCity = city; this.libraryKeyword = ''; this.libraryEra = ERAS[0]; this.libraryType = TYPES[0];
+    this.libraryAiOnly = false; this.libraryScope = scope; this.librarySort = '目录'; this.currentTab = 2;
   }
 
   private siteFor(id: string): HeritageSite | undefined {
@@ -441,8 +608,7 @@ struct Index {
 
   private visitedCount(): number {
     // 同一档案的 opened 和四个探索主题共用 progress kind，统计必须按 siteId 去重。
-    return HERITAGE_SITES.filter((site: HeritageSite) => this.snapshot.records.some((record: ArchiveRecord) =>
-      record.kind === 'progress' && !record.deleted && record.siteId === site.id)).length;
+    return this.visitedSiteIds().length;
   }
 
   private riverPayload(): string {
@@ -547,6 +713,12 @@ struct Index {
         onOpenMemory: (aiOnly: boolean) => {
           this.paths.clear(); this.showMemory('手账', aiOnly);
         },
+        onOpenCollection: () => {
+          this.paths.clear(); this.showMemory('收藏');
+        },
+        onOpenLibrary: (scope: string) => {
+          this.paths.clear(); this.showLibrary(CITIES[0], scope);
+        },
         university: this.university, studentNumber: this.studentNumber,
         onOpenSite: (id: string) => { const site = this.siteFor(id); if (site) this.openSite(site); },
         onOpenJourneyGraph: (id: string) => this.paths.pushPathByName('culture', { journeyId: id } as JourneyGraphRoute,
@@ -612,6 +784,16 @@ struct Index {
       }
     }.width('100%').padding({ top: 28, bottom: 28, left: 16, right: 16 })
       .backgroundColor(T.surface).borderRadius(T.cardRadius).margin({ bottom: 12 })
+  }
+
+  @Builder
+  filterChip(label: string, active: boolean, id: string, action: () => void) {
+    Button(label, { type: ButtonType.Normal }).id(id).height(32).fontSize(F.caption)
+      .padding({ left: 11, right: 11 }).fontColor(active ? T.onAccent : T.muted)
+      .backgroundColor(active ? T.accent : T.surface).borderRadius(9)
+      .border({ width: 1, color: active ? T.accent : T.line, radius: 9 })
+      .margin({ right: 6, bottom: 4 })
+      .accessibilityText(label).onClick(action)
   }
 
   @Builder
@@ -1072,7 +1254,7 @@ struct Index {
           this.emptyState('没有符合条件的档案', $r('sys.symbol.magnifyingglass'))
         }
         SiteGrid({ sites: this.results(), gridId: 'explore-site-grid',
-          collectedIds: activeRecords(this.snapshot.records, 'favorite').map((record: ArchiveRecord) => record.siteId),
+          collectedIds: this.collectedSiteIds(), visitedIds: this.visitedSiteIds(),
           onOpen: (site: HeritageSite) => this.openSite(site) })
         Text('— 五城二十处 · 沿河而读 —').fontSize(F.caption).fontColor(T.tertiary)
           .width('100%').textAlign(TextAlign.Center).padding({ top: 10, bottom: 8 }).id('explore-tail')
@@ -1085,8 +1267,19 @@ struct Index {
   archive() {
     Scroll(this.archiveScroller) {
       Column({ space: 14 }) {
-        Row() {
+        Row({ space: 8 }) {
           Text('我的记忆').fontSize(F.title).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
+          if (this.memorySection === '手账' && (this.memoryNotes().length > 0 || this.memorySelectMode)) {
+            Button(this.memorySelectMode ? '完成' : '管理', { type: ButtonType.Normal })
+              .height(38).fontSize(F.caption).padding({ left: 12, right: 12 })
+              .fontColor(this.memorySelectMode ? T.onAccent : T.accent)
+              .backgroundColor(this.memorySelectMode ? T.accent : T.accentSoft).borderRadius(9)
+              .id('memory-manage')
+              .onClick(() => {
+                if (this.memorySelectMode) this.exitNoteSelection();
+                else this.memorySelectMode = true;
+              })
+          }
           Button({ type: ButtonType.Normal }) {
             SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(22).fontColor([T.accent])
           }.width(42).height(42).backgroundColor(T.accentSoft).borderRadius(8)
@@ -1106,9 +1299,29 @@ struct Index {
             Button(section, { type: ButtonType.Normal }).layoutWeight(1).height(40).fontSize(F.small)
               .fontColor(this.memorySection === section ? T.onAccent : T.muted)
               .backgroundColor(this.memorySection === section ? T.accent : Color.Transparent).borderRadius(7)
-              .id(`memory-section-${index}`).onClick(() => { this.memorySection = section; this.memoryKeyword = ''; })
+              .id(`memory-section-${index}`).onClick(() => {
+                this.memorySection = section; this.memoryKeyword = ''; this.exitNoteSelection();
+              })
           })
         }.width('100%').padding(4).backgroundColor(T.soft).borderRadius(8)
+        if (this.memorySection === '手账' && this.memorySelectMode) {
+          Row({ space: 8 }) {
+            Text(`已选 ${this.memorySelectedIds.length} 篇`).fontSize(F.caption).fontWeight(FontWeight.Medium)
+              .fontColor(T.ink).layoutWeight(1).id('memory-selected-count')
+            Button('复制', { type: ButtonType.Normal }).id('memory-copy-selected')
+              .height(34).fontSize(F.caption).padding({ left: 12, right: 12 })
+              .fontColor(T.mintInk).backgroundColor(T.mint).borderRadius(9)
+              .enabled(this.memorySelectedIds.length > 0 && !this.saving)
+              .onClick(() => { this.copySelectedNotes(); })
+            Button('删除', { type: ButtonType.Normal }).id('memory-delete-selected')
+              .height(34).fontSize(F.caption).padding({ left: 12, right: 12 })
+              .fontColor(T.accent).backgroundColor(T.accentSoft).borderRadius(9)
+              .enabled(this.memorySelectedIds.length > 0 && !this.saving)
+              .onClick(() => { this.confirmDeleteSelected(); })
+          }.width('100%').padding({ left: 12, right: 8, top: 6, bottom: 6 })
+            .backgroundColor(T.surface).borderRadius(11).border({ width: 1, color: T.line, radius: 11 })
+            .id('memory-selection-bar')
+        }
         Search({ value: this.memoryKeyword, controller: this.memorySearchController,
           placeholder: this.memorySection === '手账' ? '搜索手账、标签或曾经的问题' : '搜索收藏的档案' })
           .height(44).fontColor(T.ink).placeholderColor(T.muted).backgroundColor(T.surface).borderRadius(8)
@@ -1133,21 +1346,81 @@ struct Index {
             .fontColor(this.memoryGallery ? T.accent : T.muted).backgroundColor(this.memoryGallery ? T.accentSoft : T.soft)
             .onClick(() => { this.memoryGallery = true; })
         }.width('100%')
+        // 排序用胶囊而非下拉，三项可直接切换；标签从现有手账动态生成，不维护第二份标签表。
+        Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
+          Text('排序').fontSize(F.caption).fontColor(T.muted).margin({ right: 2, bottom: 4 })
+          ForEach(['最近', '最早', '按档案'], (label: string, index: number) => {
+            this.filterChip(label, this.memorySort === label, `memory-sort-${index}`, () => { this.memorySort = label; })
+          }, (label: string) => `sort-${label}-${this.memorySort === label}`)
+        }.width('100%')
+        if (this.memoryTags().length > 0) {
+          Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
+            Text('标签').fontSize(F.caption).fontColor(T.muted).margin({ right: 2, bottom: 4 })
+            // 把“全部”并入同一个 ForEach，key 含选中态；否则直接调用的胶囊会复用旧背景。
+            ForEach(['全部'].concat(this.memoryTags()), (tag: string, index: number) => {
+              this.filterChip(tag === '全部' ? '全部' : `#${tag}`,
+                tag === '全部' ? this.memoryTag === '全部标签' : this.memoryTag === tag,
+                tag === '全部' ? 'memory-tag-all' : `memory-tag-${index - 1}`,
+                () => {
+                  this.memoryTag = tag === '全部' ? '全部标签' :
+                    (this.memoryTag === tag ? '全部标签' : tag);
+                })
+            }, (tag: string) => `tag-${tag}-${tag === '全部' ? this.memoryTag === '全部标签' : this.memoryTag === tag}`)
+          }.width('100%')
+        }
         if (this.memoryNotes().length === 0) {
-          this.emptyState(this.memoryKeyword ? '没有找到这段记忆' : (this.memoryAiOnly ? '还没有 AI 辅助手账' : '还没有留下手账'),
-            $r('sys.symbol.square_and_pencil'), this.memoryKeyword ? '换一个档案名、问题或标签试试。' : '从一个好奇的问题开始。')
-          Button(this.memoryKeyword ? '清空搜索' : '与 AI 一起观察', { type: ButtonType.Normal })
+          this.emptyState(this.memoryKeyword ? '没有找到这段记忆' :
+            (this.memoryAiOnly ? '还没有 AI 辅助手账' :
+              (this.memoryTag !== '全部标签' ? `#${this.memoryTag} 还没有手账` : '还没有留下手账')),
+            $r('sys.symbol.square_and_pencil'),
+            this.memoryKeyword ? '换一个档案名、问题或标签试试。' :
+              (this.memoryTag !== '全部标签' ? '换一个标签，或清除筛选查看全部。' : '从一个好奇的问题开始。'))
+          Button(this.memoryKeyword ? '清空搜索' :
+            (this.memoryTag !== '全部标签' ? '清除标签筛选' : '与 AI 一起观察'), { type: ButtonType.Normal })
             .width('100%').constraintSize({ minHeight: 42 }).fontColor(T.mintInk).backgroundColor(T.mint)
             .id('memory-empty-action')
-            .onClick(() => { if (this.memoryKeyword) this.memoryKeyword = ''; else this.openAiSite(this.homeAiSiteId); })
+            .onClick(() => {
+              if (this.memoryKeyword) this.memoryKeyword = '';
+              else if (this.memoryTag !== '全部标签') this.memoryTag = '全部标签';
+              else this.openAiSite(this.homeAiSiteId);
+            })
         }
-        ForEach(this.memoryNotes(), (note: ArchiveRecord) => {
-          MemoryPostcardItem({ note, site: this.memorySite(note), compact: !this.memoryGallery,
-            syncLabel: this.accountView.signedIn && this.accountView.lastSync >= note.updatedAt ? '已完成账号同步' : '已保存在本机',
-            canAsk: isAiObservationSite(note.siteId), onAsk: () => this.askMemory(note),
-            onOpen: () => this.openMemory(note, false),
-            onPose: () => this.openMemory(note, true) })
-        }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}:${this.memoryGallery}`)
+        if (this.memoryGallery) {
+          ForEach(this.memoryNotes(), (note: ArchiveRecord) => {
+            MemoryPostcardItem({ note, site: this.memorySite(note), compact: false,
+              syncLabel: this.accountView.signedIn && this.accountView.lastSync >= note.updatedAt ? '已完成账号同步' : '已保存在本机',
+              canAsk: isAiObservationSite(note.siteId), editable: true, busy: this.saving,
+              selectMode: this.memorySelectMode, selected: this.memorySelectedIds.includes(note.id),
+              onSelect: () => this.toggleNoteSelection(note.id),
+              onEdit: () => this.editMemory(note), onDelete: () => this.confirmDeleteNote(note),
+              onAsk: () => this.askMemory(note),
+              onOpen: () => this.openMemory(note, false),
+              onPose: () => this.openMemory(note, true) })
+          }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}:gallery`)
+        } else {
+          ForEach(this.memoryGroups(), (group: MemoryMonthGroup) => {
+            if (group.label) {
+              Row({ space: 8 }) {
+                Text(group.label).fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink)
+                Text(`${group.notes.length} 篇`).fontSize(F.caption).fontColor(T.muted)
+                Blank()
+                Row().width(28).height(1).backgroundColor(T.line)
+              }.width('100%').padding({ top: 8, bottom: 2 }).id(`memory-month-${group.label}`)
+            }
+            ForEach(group.notes, (note: ArchiveRecord) => {
+              MemoryPostcardItem({ note, site: this.memorySite(note), compact: true,
+                syncLabel: this.accountView.signedIn && this.accountView.lastSync >= note.updatedAt ? '已完成账号同步' : '已保存在本机',
+                canAsk: isAiObservationSite(note.siteId), editable: true, busy: this.saving,
+                selectMode: this.memorySelectMode, selected: this.memorySelectedIds.includes(note.id),
+                onSelect: () => this.toggleNoteSelection(note.id),
+                onEdit: () => this.editMemory(note), onDelete: () => this.confirmDeleteNote(note),
+                onAsk: () => this.askMemory(note),
+                onOpen: () => this.openMemory(note, false),
+                onPose: () => this.openMemory(note, true) })
+            }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}:list`)
+          }, (group: MemoryMonthGroup) =>
+            `${group.label}:${group.notes.length}:${group.notes[0]?.id || ''}:${group.notes[0]?.updatedAt || 0}`)
+        }
         } else {
         Row() {
           Text('收藏档案').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
@@ -1160,7 +1433,7 @@ struct Index {
           this.emptyState('这个分类还没有收藏', $r('sys.symbol.bookmark'), '遇到喜欢的文化档案，点一下收藏。')
         }
         SiteGrid({ sites: this.collections(), gridId: 'archive-site-grid',
-          collectedIds: activeRecords(this.snapshot.records, 'favorite').map((record: ArchiveRecord) => record.siteId),
+          collectedIds: this.collectedSiteIds(), visitedIds: this.visitedSiteIds(),
           onOpen: (site: HeritageSite) => this.openSite(site) })
         if (this.collections().length === 0) {
           Button('去档案看看', { type: ButtonType.Normal }).id('memory-browse-archives').width('100%').height(42)
@@ -1178,7 +1451,7 @@ struct Index {
       Column({ space: 14 }) {
         Row() {
           Text('文化档案').fontSize(F.title).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
-          Text(`${HERITAGE_SITES.length} 处 · 离线可读`).fontSize(F.caption).fontColor(T.mintInk)
+          Text(`${HERITAGE_SITES.length} 处 · 已读 ${this.visitedCount()}`).fontSize(F.caption).fontColor(T.mintInk)
         }.width('100%')
         Search({ value: this.libraryKeyword, controller: this.librarySearchController, placeholder: '搜索遗址、文物或文化线索' })
           .height(46).fontColor(T.ink).placeholderColor(T.muted).backgroundColor(T.surface).borderRadius(8)
@@ -1195,10 +1468,10 @@ struct Index {
           this.archiveAiRow('zz-dahecun', 'library-ai-open-dahecun')
         }.width('100%').padding(12).backgroundColor(T.mint).borderRadius(18).id('library-ai-card')
         Row({ space: 6 }) {
-          Select(CITIES.map((value: string): SelectOption => ({ value }))).value(this.city)
-            .selected(CITIES.indexOf(this.city)).layoutWeight(1).font({ size: F.caption }).height(40)
+          Select(CITIES.map((value: string): SelectOption => ({ value }))).value(this.libraryCity)
+            .selected(CITIES.indexOf(this.libraryCity)).layoutWeight(1).font({ size: F.caption }).height(40)
             .fontColor(T.ink).backgroundColor(T.soft).id('library-city')
-            .onSelect((_index: number, value: string) => { this.city = value; })
+            .onSelect((_index: number, value: string) => { this.libraryCity = value; })
           Select(ERAS.map((value: string): SelectOption => ({ value }))).value(this.libraryEra)
             .selected(ERAS.indexOf(this.libraryEra)).layoutWeight(1).font({ size: F.caption }).height(40)
             .fontColor(T.ink).backgroundColor(T.soft).id('library-era')
@@ -1220,16 +1493,31 @@ struct Index {
           Text(`${this.libraryResults().length} 处`).fontSize(F.caption).fontColor(T.muted).id('library-result-count')
           Button('重置', { type: ButtonType.Normal }).height(34).fontSize(F.caption).fontColor(T.accent)
             .backgroundColor(Color.Transparent).id('library-reset').onClick(() => {
-              this.libraryKeyword = ''; this.city = CITIES[0]; this.libraryEra = ERAS[0]; this.libraryType = TYPES[0];
-              this.libraryAiOnly = false;
+              this.libraryKeyword = ''; this.libraryCity = CITIES[0]; this.libraryEra = ERAS[0]; this.libraryType = TYPES[0];
+              this.libraryAiOnly = false; this.libraryScope = '全部'; this.librarySort = '目录';
             })
+        }.width('100%')
+        // 范围筛选补上“已读 / 未读”，让档案页能直接承接回顾，而不是只能靠记忆页找收藏。
+        Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
+          Text('范围').fontSize(F.caption).fontColor(T.muted).margin({ right: 2, bottom: 4 })
+          ForEach(['全部', '已收藏', '已浏览', '未浏览'], (label: string, index: number) => {
+            this.filterChip(label, this.libraryScope === label, `library-scope-${index}`,
+              () => { this.libraryScope = label; })
+          }, (label: string) => `scope-${label}-${this.libraryScope === label}`)
+        }.width('100%')
+        Flex({ wrap: FlexWrap.Wrap, alignItems: ItemAlign.Center }) {
+          Text('排序').fontSize(F.caption).fontColor(T.muted).margin({ right: 2, bottom: 4 })
+          ForEach(['目录', '最近浏览'], (label: string, index: number) => {
+            this.filterChip(label, this.librarySort === label, `library-sort-${index}`,
+              () => { this.librarySort = label; })
+          }, (label: string) => `library-sort-${label}-${this.librarySort === label}`)
         }.width('100%')
         if (this.libraryResults().length === 0) {
           this.emptyState('没有符合条件的档案', $r('sys.symbol.magnifyingglass'), '可清空关键词或重置筛选。')
         }
         SiteGrid({ sites: this.libraryResults(),
           gridId: 'archive-library-grid',
-          collectedIds: activeRecords(this.snapshot.records, 'favorite').map((record: ArchiveRecord) => record.siteId),
+          collectedIds: this.collectedSiteIds(), visitedIds: this.visitedSiteIds(),
           onOpen: (site: HeritageSite) => this.openSite(site) })
         Text(this.saving ? '正在保存本机档案' : '收藏、手账与浏览记录保存在本机，登录后随账号同步。')
           .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').padding({ top: 6, bottom: 10 })

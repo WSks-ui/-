@@ -23,6 +23,10 @@ export struct MemoryPostcardItem {
   @Prop canAsk: boolean = false;
   @Prop editable: boolean = false;
   @Prop busy: boolean = false;
+  // 管理模式下整张卡只响应选择，避免编辑/删除与多选手势互相抢占。
+  @Prop selectMode: boolean = false;
+  @Prop selected: boolean = false;
+  onSelect: () => void = () => {};
 
   private hasPose(): boolean {
     return this.note.snapshot3DPose !== undefined;
@@ -69,6 +73,11 @@ export struct MemoryPostcardItem {
     Column() {
       Column({ space: this.compact ? 10 : 13 }) {
         Row({ space: 8 }) {
+          if (this.selectMode) {
+            Checkbox({ name: `memory-select-${this.note.id}` }).select(this.selected)
+              .selectedColor(T.accent).width(20).height(20).id(`memory-select-${this.note.id}`)
+              .onChange(() => { this.onSelect(); })
+          }
           Row({ space: 7 }) {
             Row().width(7).height(7).borderRadius(4).backgroundColor(T.accent)
             Text('云河手记').fontSize(F.caption).fontColor(T.accent).fontWeight(FontWeight.Medium)
@@ -84,7 +93,7 @@ export struct MemoryPostcardItem {
                 .id(`memory-ai-assist-${this.note.id}`)
             }
           }.layoutWeight(1)
-          if (this.editable) {
+          if (this.editable && !this.selectMode) {
             Button({ type: ButtonType.Normal }) {
               SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(15).fontColor([T.accent])
             }.width(34).height(34).backgroundColor(T.accentSoft).borderRadius(10)

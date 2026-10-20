@@ -9,6 +9,7 @@ import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 export struct SiteCard {
   @Prop site: HeritageSite = HERITAGE_SITES[0];
   @Prop collected: boolean = false;
+  @Prop visited: boolean = false;
   onOpen: (site: HeritageSite) => void = () => {};
 
   build() {
@@ -20,9 +21,16 @@ export struct SiteCard {
             .accessibilityText('原创文化主题插画')
           Column() {
             Row() {
-              Text(this.site.era).fontSize(F.caption).fontColor(T.mintInk)
+              Text(this.site.era).fontSize(F.caption).fontColor(T.mintInk).maxLines(1)
                 .padding({ left: 8, right: 8, top: 4, bottom: 4 })
                 .backgroundColor(T.surface).borderRadius(7)
+              if (this.visited) {
+                // 已读与收藏是两个维度：书签在右上，已读紧邻年代，避免用同一图标表达两件事。
+                Text('已读').fontSize(F.caption).fontColor(T.mintInk).maxLines(1)
+                  .padding({ left: 7, right: 7, top: 3, bottom: 3 })
+                  .backgroundColor(T.mint).borderRadius(6)
+                  .margin({ left: 6 })
+              }
               Blank()
               if (this.collected) {
                 SymbolGlyph($r('sys.symbol.bookmark')).fontSize(18).fontColor([T.accent])
@@ -41,7 +49,7 @@ export struct SiteCard {
     }.width('100%').padding(0).borderRadius(T.cardRadius).backgroundColor(T.surface)
       .border({ width: 1, color: T.line, radius: T.cardRadius })
       .stateStyles({ pressed: { .opacity(0.72) } })
-      .accessibilityText(`${this.site.name}，${this.site.city}，${this.site.era}，查看档案`)
+      .accessibilityText(`${this.site.name}，${this.site.city}，${this.site.era}${this.visited ? '，已读' : ''}，查看档案`)
       .id(`site-row-${this.site.id}`).onClick(() => this.onOpen(this.site))
   }
 }
@@ -50,6 +58,7 @@ export struct SiteCard {
 export struct SiteGrid {
   @Prop sites: HeritageSite[] = [];
   @Prop collectedIds: string[] = [];
+  @Prop visitedIds: string[] = [];
   @Prop gridId: string = 'site-grid';
   onOpen: (site: HeritageSite) => void = () => {};
 
@@ -61,12 +70,14 @@ export struct SiteGrid {
       ForEach(this.sites.filter((_site: HeritageSite, index: number) => index % 2 === 0), (site: HeritageSite, pair: number) => {
         Row({ space: 12 }) {
           Column() {
-            SiteCard({ site, collected: this.collectedIds.includes(site.id), onOpen: this.onOpen })
+            SiteCard({ site, collected: this.collectedIds.includes(site.id),
+              visited: this.visitedIds.includes(site.id), onOpen: this.onOpen })
           }.layoutWeight(1)
           Column() {
             if (this.sites[pair * 2 + 1]) {
               SiteCard({ site: this.sites[pair * 2 + 1],
-                collected: this.collectedIds.includes(this.sites[pair * 2 + 1].id), onOpen: this.onOpen })
+                collected: this.collectedIds.includes(this.sites[pair * 2 + 1].id),
+                visited: this.visitedIds.includes(this.sites[pair * 2 + 1].id), onOpen: this.onOpen })
             }
           }.layoutWeight(1)
         }.width('100%').alignItems(VerticalAlign.Top).margin({ bottom: 12 })
