@@ -3,6 +3,7 @@ import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { memoryPoseLabel, paperThemeLabel } from '../domain/MemoryJournal';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 import { MemoryPosePreview } from './MemoryPosePreview';
+import { PunchRow } from './PunchRow';
 
 // 一张手账卡只保留“看什么、写了什么、何时留下、下一步做什么”。
 // 旧文字笔记不再渲染空白视角框，避免把缺失的观察画面伪装成待开发占位。
@@ -70,6 +71,9 @@ export struct MemoryPostcardItem {
   }
 
   build() {
+    // Stack 只用于把打孔串覆盖到留白带：卡片本体仍是原来那个 Column，
+    // 尺寸、圆角、边框、阴影与交互全部不变。
+    Stack() {
     Column() {
       Column({ space: this.compact ? 10 : 13 }) {
         Row({ space: 8 }) {
@@ -182,6 +186,8 @@ export struct MemoryPostcardItem {
     }
     .width('100%').padding(3)
     .backgroundColor(this.paperSurface()).border({ width: 1, color: T.line, radius: 20 }).borderRadius(20)
-    .id(`memory-card-${this.note.id}`)
+    // 顶部留白带上一排横向打孔：孔洞透出页面画布色，只留孔形态，不做整圈齿边。
+    PunchRow({ offsetX: 19, offsetY: 8 })
+    }.width('100%').id(`memory-card-${this.note.id}`)
   }
 }
