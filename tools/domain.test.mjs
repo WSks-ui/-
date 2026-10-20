@@ -17,6 +17,8 @@ import { UnavailableSyncGateway } from '../entry/src/main/ets/sync/SyncGateway.t
 import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/ets/platform/ArchiveLaunch.ts';
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
 import { accountStoreName, changedAccountView, guestAccountView, validateAccountInput, validateAccountSession, validateAccountReply, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
+import { WATER_SITUATION } from '../entry/src/main/ets/data/WaterSituationCatalog.ts';
+import { latestSnapshot, snapshotsForStation, sourceFor, validateWaterSituation } from '../entry/src/main/ets/domain/WaterSituation.ts';
 import './memory-journal.test.mjs';
 import './journey-routes.test.mjs';
 
@@ -612,4 +614,37 @@ test('custom note topic creates a real personal connection and removes with dele
   records[1].deleted = true;
   assert.deepEqual(connectionReasons(HERITAGE_SITES[0], HERITAGE_SITES[3], records), []);
   assert.equal(personalCultureSites(HERITAGE_SITES, records, '我的专题').length, 1);
+});
+
+
+test('water situation catalog is sourced, dated and explicitly non-realtime', () => {
+  assert.deepEqual(validateWaterSituation(WATER_SITUATION), []);
+  const list = snapshotsForStation(WATER_SITUATION, 'huayuankou');
+  assert.equal(list.length, 3);
+  assert.deepEqual(list.map(snapshot => snapshot.observedAt),
+    ['2026-08-12 09:42', '2026-08-14 02:00', '2026-09-21']);
+  assert.equal(latestSnapshot(WATER_SITUATION, 'huayuankou').flowM3s, 607);
+  assert.ok(WATER_SITUATION.disclaimer.includes('非实时'));
+  assert.ok(WATER_SITUATION.disclaimer.includes('不提供'));
+  for (const snapshot of list) {
+    assert.ok(sourceFor(WATER_SITUATION, snapshot.sourceId), `source ${snapshot.sourceId}`);
+  }
+});
+
+test('water situation keeps missing values instead of zero filling', () => {
+  const list = snapshotsForStation(WATER_SITUATION, 'huayuankou');
+  // 8/14 只通报了最大流量，没有同日水位；不能被补成 0 或插值。
+  assert.equal(list[1].waterLevelM, undefined);
+  assert.equal(list[1].flowM3s, 2040);
+  assert.equal(list[0].sedimentKgM3, undefined);
+  assert.equal(list[2].waterLevelM, 88.42);
+});
+
+test('water situation refuses unknown sources', () => {
+  const broken = {
+    ...WATER_SITUATION,
+    snapshots: [{ ...WATER_SITUATION.snapshots[0], sourceId: 'missing-source' }]
+  };
+  const problems = validateWaterSituation(broken);
+  assert.ok(problems.some(problem => problem.includes('未知来源')));
 });

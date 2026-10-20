@@ -31,6 +31,9 @@ import { AccountView, accountErrorMessage, accountStoreName, changedAccountView,
 import type { AiObservationReply, AiObservationRequest } from '../domain/AiObservation';
 import { AI_OBSERVATION_SITE_ID, aiAssistBadge, isAiObservationSite } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
+import { latestSnapshot, WaterSnapshot } from '../domain/WaterSituation';
+import { WATER_SITUATION } from '../data/WaterSituationCatalog';
+import { WaterSituationPage } from '../components/WaterSituationPage';
 
 interface SiteRoute { siteId: string; poseJson?: string; observe?: boolean; noteId?: string; question?: string; observation?: string; }
 interface JourneyGraphRoute { journeyId: string; }
@@ -282,6 +285,24 @@ struct Index {
     this.openAiSite(AI_OBSERVATION_SITE_ID);
   }
 
+  private waterLatest(): WaterSnapshot | undefined {
+    return latestSnapshot(WATER_SITUATION, 'huayuankou');
+  }
+
+  private waterLevelText(): string {
+    const latest = this.waterLatest();
+    return latest?.waterLevelM !== undefined ? `${latest!.waterLevelM} m` : '未给出';
+  }
+
+  private waterFlowText(): string {
+    const latest = this.waterLatest();
+    return latest?.flowM3s !== undefined ? `${latest!.flowM3s} m³/s` : '未给出';
+  }
+
+  private openWater(): void {
+    this.paths.pushPathByName('water', '', !this.snapshot.reducedMotion);
+  }
+
   private results(): HeritageSite[] {
     return filterSites(HERITAGE_SITES, { keyword: this.keyword, city: this.city, era: this.era, type: this.type });
   }
@@ -470,6 +491,8 @@ struct Index {
           }.width('100%').padding(24)
         }.title('档案暂不可用').backgroundColor(T.canvas)
       }
+    } else if (name === 'water') {
+      WaterSituationPage()
     } else if (name === 'culture') {
       CultureAtlas({ snapshot: $snapshot, journeyId: (parameter as JourneyGraphRoute)?.journeyId || '', onOpen: (site: HeritageSite) => this.openSite(site) })
     } else if (name === 'memory-detail') {
@@ -766,6 +789,32 @@ struct Index {
   }
 
   @Builder
+  waterEntryCard() {
+    // 水情入口只展示可核对的最新公开报道，不写成“今日实时”。
+    Button({ type: ButtonType.Normal }) {
+      Row({ space: 12 }) {
+        Column({ space: 4 }) {
+          Row({ space: 6 }) {
+            Text('黄河水情观察').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
+            Text('公开报道').fontSize(F.caption).fontColor(T.mintInk)
+              .padding({ left: 7, right: 7, top: 2, bottom: 2 }).backgroundColor(T.mint).borderRadius(6)
+          }.width('100%')
+          Text(`花园口 · 最近 ${this.waterLatest()?.observedAt || ''} · 非实时`)
+            .fontSize(F.caption).fontColor(T.muted).maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
+        }.layoutWeight(1).alignItems(HorizontalAlign.Start)
+        Column({ space: 1 }) {
+          Text(this.waterLevelText()).fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.mintInk)
+          Text(this.waterFlowText()).fontSize(F.caption).fontColor(T.mintInk)
+        }.alignItems(HorizontalAlign.End)
+        SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(15).fontColor([T.muted])
+      }.width('100%').padding(14)
+    }.width('100%').padding(0).backgroundColor(T.surface).borderRadius(18)
+      .border({ width: 1, color: T.line, radius: 18 }).id('water-entry')
+      .accessibilityText('打开黄河水情观察，查看花园口公开报道摘录')
+      .onClick(() => this.openWater())
+  }
+
+  @Builder
   homeMemory() {
     Column({ space: 9 }) {
       Row({ space: 9 }) {
@@ -933,6 +982,7 @@ struct Index {
         this.homeMemory()
         this.sectionTitle('循河探索', '五城文化目录')
         this.riverSandbox()
+        this.waterEntryCard()
         this.cultureEntry()
         this.sectionTitle('拾页入口', '收藏、手账与档案')
         this.entryBoard()

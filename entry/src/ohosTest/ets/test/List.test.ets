@@ -18,6 +18,7 @@ import materialComparisonTest from './MaterialComparison.test';
 import memorySyncTest from './MemorySync.test';
 import demoRehearsalTest from './DemoRehearsal.test';
 import pageHierarchyTest from './PageHierarchy.test';
+import waterSituationTest from './WaterSituation.test';
 
 export default function testsuite() {
   archiveDeviceTest();
@@ -40,4 +41,5 @@ export default function testsuite() {
   memorySyncTest();
   demoRehearsalTest();
   pageHierarchyTest();
+  waterSituationTest();
 }
