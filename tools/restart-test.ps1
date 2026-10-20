@@ -16,20 +16,20 @@ $resultLog = Join-Path (Split-Path $PSScriptRoot -Parent) "docs\test-results\$st
 
 # 启动已保存的测试档案，让真实 EntryAbility 处于运行状态，再由 HDC 强停进程。
 # 不使用 bm clear、卸载或用户档案清理；只终止本应用，独立测试库由验证阶段清理。
-$started = & $hdcTool -t $TargetId shell "aa start -a EntryAbility -b com.chr.myapplication --ps yunhejiTestStore $storeName"
+$started = & $hdcTool -t $TargetId shell "aa start -a EntryAbility -b com.yunheji.archive --ps yunhejiTestStore $storeName"
 if ($LASTEXITCODE -ne 0 -or ($started -join "`n") -notmatch 'start ability successfully') { throw '重启测试准备后的应用启动失败。' }
 $beforePid = ''
 for ($attempt = 0; $attempt -lt 40; $attempt++) {
-    $beforePid = (& $hdcTool -t $TargetId shell 'pidof com.chr.myapplication' | Out-String).Trim()
+    $beforePid = (& $hdcTool -t $TargetId shell 'pidof com.yunheji.archive' | Out-String).Trim()
     if ($beforePid -match '^\d+$') { break }
     Start-Sleep -Milliseconds 250
 }
 if ($beforePid -notmatch '^\d+$') { throw '无法确认应用进程，未执行强停。' }
-$stopped = & $hdcTool -t $TargetId shell 'aa force-stop com.chr.myapplication'
+$stopped = & $hdcTool -t $TargetId shell 'aa force-stop com.yunheji.archive'
 if ($LASTEXITCODE -ne 0) { throw '应用强停失败。' }
 $remainingPid = ''
 for ($attempt = 0; $attempt -lt 40; $attempt++) {
-    $remainingPid = (& $hdcTool -t $TargetId shell 'pidof com.chr.myapplication' | Out-String).Trim()
+    $remainingPid = (& $hdcTool -t $TargetId shell 'pidof com.yunheji.archive' | Out-String).Trim()
     if (-not $remainingPid) { break }
     Start-Sleep -Milliseconds 250
 }

@@ -2,10 +2,14 @@ import type { AiFactSnapshot, AiMemoryAssist } from './ArchiveDomain';
 import type { MaterialObservationDefinition, MaterialObservationHotspot } from './MaterialObservation';
 import type { MaterialEvidenceSource, MaterialStudy, MaterialStudyFact } from '../data/MaterialStudyCatalog';
 
-// 本阶段只对杜岭二号方鼎开放在线 AI；对象、场景修订、事实和热点白名单都从现有内容目录读取，
-// 不在协议层另写一份容易漂移的正文。资料修订号用于识别“这页手账当时依据的资料版本”。
+// 在线 AI 的开放对象采用显式白名单：对象、场景修订、事实和热点都从现有内容目录读取，
+// 不在协议层另写一份容易漂移的正文。新增对象必须先有已核事实与 revision 2 热点，
+// 再加进这里；不在清单内的档案仍保留手动观察、资料与手写手账。
+// 资料修订号用于识别“这页手账当时依据的资料版本”。
 export const AI_OBSERVATION_VERSION: number = 1;
-export const AI_OBSERVATION_SITE_ID: string = 'zz-duling-fangding';
+export const AI_OBSERVATION_SITE_IDS: string[] = ['zz-duling-fangding', 'zz-dahecun'];
+// 首页“本期观察”仍以方鼎为主入口；多对象入口由白名单统一判断。
+export const AI_OBSERVATION_SITE_ID: string = AI_OBSERVATION_SITE_IDS[0];
 export const AI_CONTENT_REVISION: number = 1;
 export const AI_MAX_QUESTION_LENGTH: number = 200;
 export const AI_MAX_OBSERVATION_LENGTH: number = 300;
@@ -36,7 +40,9 @@ export interface AiHotspotScope {
 
 export interface AiKnowledgeScope {
   siteId: string;
+  objectName: string;
   question: string;
+  starters: string[];
   sceneRevision: number;
   contentRevision: number;
   facts: AiFactSnapshot[];
@@ -45,6 +51,11 @@ export interface AiKnowledgeScope {
   notice: string;
   visualCaption: string;
   evidenceLimit: string;
+}
+
+// UI 与请求分发共用同一条判断，避免“面板能开、服务端却拒绝”的错位。
+export function isAiObservationSite(siteId: string): boolean {
+  return AI_OBSERVATION_SITE_IDS.includes(siteId);
 }
 
 export interface AiObservationRequest {
@@ -108,7 +119,8 @@ export function buildAiKnowledgeScope(study: MaterialStudy,
     id: hotspot.id, label: hotspot.label, factId: hotspot.factId
   }));
   return {
-    siteId: study.siteId, question: study.question, sceneRevision: observation.sceneRevision,
+    siteId: study.siteId, objectName: study.objectName, question: study.question,
+    starters: study.starters.slice(), sceneRevision: observation.sceneRevision,
     contentRevision: AI_CONTENT_REVISION, facts, sources, hotspots,
     notice: observation.notice, visualCaption: study.visualCaption, evidenceLimit: study.evidenceLimit
   };
@@ -268,6 +280,8 @@ export function aiErrorMessage(code: string): string {
   if (code === 'AI_NOT_CONFIGURED') return '服务端尚未配置模型凭证，本次没有调用 AI；本地观察与手写仍可使用。';
   if (code === 'AI_TIMEOUT') return '模型响应超时，本次没有生成回答；问题仍保留，可以重试。';
   if (code === 'AI_PROVIDER_ERROR') return '模型服务暂时不可用，本次没有生成回答，请稍后重试。';
+  if (code === 'AI_PROVIDER_AUTH') return '模型凭证无效或已过期，本次没有生成回答；请联系演示负责人更换凭证。';
+  if (code === 'AI_PROVIDER_QUOTA') return '模型账户余额不足，本次没有生成回答；本地观察与手写仍可使用。';
   if (code === 'AI_INVALID_REPLY') return '模型返回的内容未通过应用校验，本次没有采用，请重试。';
   if (code === 'AI_RATE_LIMITED') return 'AI 请求过于频繁，请稍后再试；问题仍保留。';
   if (code === 'AI_REQUEST_CANCELLED') return '已停止等待，问题仍保留。';

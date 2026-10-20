@@ -29,7 +29,8 @@ import { memorySeasonLabel } from '../domain/MemoryJournal';
 import { AccountSyncClient } from '../sync/AccountSyncClient';
 import { AccountView, accountErrorMessage, accountStoreName, changedAccountView, guestAccountView } from '../domain/AccountSync';
 import type { AiObservationReply, AiObservationRequest } from '../domain/AiObservation';
-import { AI_OBSERVATION_SITE_ID, aiAssistBadge } from '../domain/AiObservation';
+import { AI_OBSERVATION_SITE_ID, aiAssistBadge, isAiObservationSite } from '../domain/AiObservation';
+import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
 
 interface SiteRoute { siteId: string; poseJson?: string; observe?: boolean; noteId?: string; question?: string; observation?: string; }
 interface JourneyGraphRoute { journeyId: string; }
@@ -58,6 +59,8 @@ struct Index {
   @State memorySection: string = '手账';
   @State memoryKeyword: string = '';
   @State memoryAiOnly: boolean = false;
+  // 首页 AI 卡片可在方鼎与双连壶之间切换；默认仍是方鼎，保持原演示路径。
+  @State homeAiSiteId: string = AI_OBSERVATION_SITE_ID;
   @State libraryKeyword: string = '';
   @State libraryEra: string = ERAS[0];
   @State libraryType: string = TYPES[0];
@@ -257,14 +260,26 @@ struct Index {
     this.accountClient?.cancelAi();
   }
 
-  private openDulingAi(): void {
-    const site = this.siteFor(AI_OBSERVATION_SITE_ID);
+  private aiObjectName(siteId: string): string {
+    return aiKnowledgeScope(siteId)?.objectName || this.siteFor(siteId)?.name || '这件器物';
+  }
+
+  private aiQuestionFor(siteId: string): string {
+    return aiKnowledgeScope(siteId)?.question || '这件器物该从哪里看？';
+  }
+
+  private openAiSite(siteId: string): void {
+    const site = this.siteFor(siteId);
     if (!site) {
-      this.getUIContext().getPromptAction().showToast({ message: '方鼎档案暂不在当前目录中' });
+      this.getUIContext().getPromptAction().showToast({ message: '这件档案暂不在当前目录中' });
       return;
     }
-    // 首页入口直接打开方鼎并展开 AI 面板；模型、热点与手动操作仍在原详情内，不另建聊天首页。
+    // AI 入口直接打开对应对象并展开面板；模型、热点与手动操作仍在原详情内，不另建聊天首页。
     this.openSite(site, '', true);
+  }
+
+  private openDulingAi(): void {
+    this.openAiSite(AI_OBSERVATION_SITE_ID);
   }
 
   private results(): HeritageSite[] {
@@ -289,7 +304,7 @@ struct Index {
   private libraryResults(): HeritageSite[] {
     return filterSites(HERITAGE_SITES, { keyword: this.libraryKeyword, city: this.city,
       era: this.libraryEra, type: this.libraryType })
-      .filter((site: HeritageSite) => !this.libraryAiOnly || site.id === AI_OBSERVATION_SITE_ID);
+      .filter((site: HeritageSite) => !this.libraryAiOnly || isAiObservationSite(site.id));
   }
 
   private editMemory(note: ArchiveRecord): void {
@@ -299,12 +314,12 @@ struct Index {
 
   private askMemory(note: ArchiveRecord): void {
     const site = this.siteFor(note.siteId);
-    if (!site || site.id !== AI_OBSERVATION_SITE_ID) return;
+    if (!site || !isAiObservationSite(site.id)) return;
     // 只预填这一篇手账的问题与观察，用户点击后才请求模型，不上传整个记忆库。
     const pose = note.snapshot3DPose;
     const poseJson = pose?.sceneRevision === 2 && pose.sceneType === 'relic_inspector' ? JSON.stringify(pose) : '';
     this.openSite(site, poseJson, true, '',
-      note.aiAssist?.question || '请结合我的观察，带我继续看这件方鼎。', note.body);
+      note.aiAssist?.question || '请结合我的观察，带我继续看这件器物。', note.body);
   }
 
   private showMemory(section: string = '手账', aiOnly: boolean = false): void {
@@ -683,30 +698,71 @@ struct Index {
   }
 
   @Builder
-  homeAiQuestionCard() {
-    // 首页只增加一个明确的方鼎问题入口；原“泥火成器”下一节点、最近记忆和路线点亮规则保持不变。
+  aiObjectChip(siteId: string, label: string) {
     Button({ type: ButtonType.Normal }) {
-      Column({ space: 10 }) {
-        Row({ space: 8 }) {
-          Text('本期观察 · AI 导览').fontSize(F.caption).fontWeight(FontWeight.Medium).fontColor(T.mintInk)
-          Text('杜岭二号方鼎').fontSize(F.caption).fontColor(T.muted)
-          Blank()
-          SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(16).fontColor([T.mintInk])
-        }.width('100%')
-        Text('四面方鼎，为什么有八组上腹兽面纹？').fontSize(F.card).fontWeight(FontWeight.Bold)
-          .fontColor(T.ink).width('100%').maxLines(2)
-        Text('把不懂的地方直接问出来：AI 依据已核事实，带你找壁面正中与四个折角，依据可原地核对。')
-          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').maxLines(3)
-          .textOverflow({ overflow: TextOverflow.Ellipsis })
+      Text(label).fontSize(F.caption)
+        .fontWeight(this.homeAiSiteId === siteId ? FontWeight.Medium : FontWeight.Normal)
+        .fontColor(T.mintInk)
+    }.height(30).padding({ left: 10, right: 10 })
+      .backgroundColor(this.homeAiSiteId === siteId ? T.surface : Color.Transparent)
+      .borderRadius(8).border({ width: 1, color: this.homeAiSiteId === siteId ? T.surface : T.line, radius: 8 })
+      .margin({ right: 8, bottom: 4 })
+      .id(`home-ai-object-${siteId === 'zz-dahecun' ? 'dahecun' : 'duling'}`)
+      .accessibilityText(`切换到${label}`)
+      // 只切换卡片内容，不直接进入详情；进入由卡片底部 CTA 承担，避免误触。
+      .onClick(() => { this.homeAiSiteId = siteId; })
+  }
+
+  @Builder
+  homeAiQuestionCard() {
+    // 首页保留单张主卡，但允许在方鼎与双连壶之间切换；默认方鼎，原演示路径不变。
+    Column({ space: 10 }) {
+      Row({ space: 8 }) {
+        Text('本期观察 · AI').fontSize(F.caption).fontWeight(FontWeight.Medium).fontColor(T.mintInk)
+        Blank()
+        Text('两件可观察').fontSize(F.caption).fontColor(T.mintInk)
+      }.width('100%')
+      Flex({ wrap: FlexWrap.Wrap }) {
+        this.aiObjectChip('zz-duling-fangding', '杜岭二号方鼎')
+        this.aiObjectChip('zz-dahecun', '大河村双连壶')
+      }.width('100%')
+      Text(this.aiQuestionFor(this.homeAiSiteId)).fontSize(F.card).fontWeight(FontWeight.Bold)
+        .fontColor(T.ink).width('100%').maxLines(2)
+      Text('AI 只使用本件已核事实，带你找具体部位，依据可原地核对。')
+        .fontSize(F.caption).fontColor(T.mintInk).lineHeight(20).width('100%').maxLines(2)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+      Button({ type: ButtonType.Normal }) {
         Row({ space: 8 }) {
           Text('陪我观察').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.mintInk).layoutWeight(1)
-          Text('进入方鼎').fontSize(F.caption).fontColor(T.mintInk)
+          Text(`进入${this.aiObjectName(this.homeAiSiteId)}`).fontSize(F.caption).fontColor(T.mintInk)
+            .maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
           SymbolGlyph($r('sys.symbol.arrow_right')).fontSize(15).fontColor([T.mintInk])
         }.width('100%')
-      }.width('100%').padding(16)
-    }.width('100%').padding(0).backgroundColor(T.mint).borderRadius(20).margin({ top: 4, bottom: 12 })
-      .id('home-ai-observation').accessibilityText('打开杜岭二号方鼎 AI 观察导览')
-      .onClick(() => this.openDulingAi())
+      }.width('100%').padding(0).backgroundColor(Color.Transparent).id('home-ai-open')
+        .accessibilityText(`打开${this.aiObjectName(this.homeAiSiteId)}的 AI 观察`)
+        .onClick(() => this.openAiSite(this.homeAiSiteId))
+    }.width('100%').padding(16).backgroundColor(T.mint).borderRadius(20).margin({ top: 4, bottom: 12 })
+      .id('home-ai-observation')
+  }
+
+  @Builder
+  archiveAiRow(siteId: string, entryId: string) {
+    Button({ type: ButtonType.Normal }) {
+      Row({ space: 10 }) {
+        if (this.siteFor(siteId)) {
+          Image(siteIllustration(this.siteFor(siteId)!)).width(42).height(48).objectFit(ImageFit.Contain)
+        }
+        Column({ space: 3 }) {
+          Text(this.aiObjectName(siteId)).fontSize(F.small).fontWeight(FontWeight.Medium)
+            .fontColor(T.mintInk).maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
+          Text(this.aiQuestionFor(siteId)).fontSize(F.caption).fontColor(T.ink).maxLines(1)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+        }.layoutWeight(1).alignItems(HorizontalAlign.Start)
+        SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(15).fontColor([T.mintInk])
+      }.width('100%').padding(10)
+    }.width('100%').padding(0).backgroundColor(T.surface).borderRadius(12).id(entryId)
+      .accessibilityText(`和 AI 一起观察${this.aiObjectName(siteId)}`)
+      .onClick(() => this.openAiSite(siteId))
   }
 
   @Builder
@@ -965,9 +1021,14 @@ struct Index {
           .onSubmit(() => this.memorySearchController.stopEditing())
         if (this.memorySection === '手账') {
         Row({ space: 8 }) {
-          Checkbox({ name: 'ai-memory' }).select(this.memoryAiOnly).selectedColor(T.mintInk).id('memory-ai-filter')
-            .onChange((value: boolean) => { this.memoryAiOnly = value; })
-          Text('AI 辅助').fontSize(F.caption).fontColor(T.mintInk)
+          Row({ space: 4 }) {
+            Checkbox({ name: 'ai-memory' }).select(this.memoryAiOnly).selectedColor(T.mintInk)
+              .width(18).height(18).id('memory-ai-filter')
+              .onChange((value: boolean) => { this.memoryAiOnly = value; })
+            Text('AI 辅助').fontSize(F.caption)
+              .fontColor(this.memoryAiOnly ? T.mintInk : T.muted)
+          }.padding({ left: 4, right: 10, top: 3, bottom: 3 })
+            .backgroundColor(this.memoryAiOnly ? T.mint : T.soft).borderRadius(8)
           Blank()
           Button('列表').id('memory-view-list').fontSize(F.caption).height(36).padding({ left: 10, right: 10 })
             .fontColor(this.memoryGallery ? T.muted : T.accent).backgroundColor(this.memoryGallery ? T.soft : T.accentSoft)
@@ -979,14 +1040,15 @@ struct Index {
         if (this.memoryNotes().length === 0) {
           this.emptyState(this.memoryKeyword ? '没有找到这段记忆' : (this.memoryAiOnly ? '还没有 AI 辅助手账' : '还没有留下手账'),
             $r('sys.symbol.square_and_pencil'), this.memoryKeyword ? '换一个档案名、问题或标签试试。' : '从一个好奇的问题开始。')
-          Button(this.memoryKeyword ? '清空搜索' : '与 AI 观察方鼎', { type: ButtonType.Normal })
-            .width('100%').height(42).fontColor(T.mintInk).backgroundColor(T.mint).id('memory-empty-action')
-            .onClick(() => { if (this.memoryKeyword) this.memoryKeyword = ''; else this.openDulingAi(); })
+          Button(this.memoryKeyword ? '清空搜索' : '与 AI 一起观察', { type: ButtonType.Normal })
+            .width('100%').constraintSize({ minHeight: 42 }).fontColor(T.mintInk).backgroundColor(T.mint)
+            .id('memory-empty-action')
+            .onClick(() => { if (this.memoryKeyword) this.memoryKeyword = ''; else this.openAiSite(this.homeAiSiteId); })
         }
         ForEach(this.memoryNotes(), (note: ArchiveRecord) => {
           MemoryPostcardItem({ note, site: this.memorySite(note), compact: !this.memoryGallery,
             syncLabel: this.accountView.signedIn && this.accountView.lastSync >= note.updatedAt ? '已完成账号同步' : '已保存在本机',
-            canAsk: note.siteId === AI_OBSERVATION_SITE_ID, onAsk: () => this.askMemory(note),
+            canAsk: isAiObservationSite(note.siteId), onAsk: () => this.askMemory(note),
             onOpen: () => this.openMemory(note, false),
             onPose: () => this.openMemory(note, true) })
         }, (note: ArchiveRecord) => `${note.id}:${note.updatedAt}:${this.memoryGallery}`)
@@ -1027,20 +1089,15 @@ struct Index {
           .searchButton('检索', { fontColor: T.accent }).id('library-search')
           .onChange((value: string) => { this.libraryKeyword = value; })
           .onSubmit(() => this.librarySearchController.stopEditing())
-        Button({ type: ButtonType.Normal }) {
-        Row({ space: 10 }) {
-          if (this.siteFor(AI_OBSERVATION_SITE_ID)) {
-            Image(siteIllustration(this.siteFor(AI_OBSERVATION_SITE_ID)!)).width(64).height(72).objectFit(ImageFit.Contain)
-          }
-          Column({ space: 5 }) {
-            Text('和 AI 一起看方鼎').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.mintInk)
-            Text('四面与八组，转到折角寻找答案').fontSize(F.caption).fontColor(T.ink).maxLines(2)
-            Text('杜岭二号方鼎 · 可提问与查依据').fontSize(F.caption).fontColor(T.muted).maxLines(2)
-          }.layoutWeight(1).alignItems(HorizontalAlign.Start)
-          SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(16).fontColor([T.mintInk])
-        }.width('100%').padding(12)
-        }.width('100%').padding(0).backgroundColor(T.mint).borderRadius(8).id('library-ai-open')
-          .onClick(() => this.openDulingAi())
+        Column({ space: 8 }) {
+          Row({ space: 8 }) {
+            Text('和 AI 一起观察').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.mintInk)
+            Blank()
+            Text('2 件可问').fontSize(F.caption).fontColor(T.mintInk)
+          }.width('100%')
+          this.archiveAiRow('zz-duling-fangding', 'library-ai-open')
+          this.archiveAiRow('zz-dahecun', 'library-ai-open-dahecun')
+        }.width('100%').padding(12).backgroundColor(T.mint).borderRadius(18).id('library-ai-card')
         Row({ space: 6 }) {
           Select(CITIES.map((value: string): SelectOption => ({ value }))).value(this.city)
             .selected(CITIES.indexOf(this.city)).layoutWeight(1).font({ size: F.caption }).height(40)
@@ -1056,9 +1113,13 @@ struct Index {
             .onSelect((_index: number, value: string) => { this.libraryType = value; })
         }.width('100%')
         Row({ space: 6 }) {
-          Checkbox({ name: 'ai-library' }).select(this.libraryAiOnly).selectedColor(T.mintInk).id('library-ai-filter')
-            .onChange((value: boolean) => { this.libraryAiOnly = value; })
-          Text('可 AI 观察').fontSize(F.caption).fontColor(T.mintInk)
+          Row({ space: 4 }) {
+            Checkbox({ name: 'ai-library' }).select(this.libraryAiOnly).selectedColor(T.mintInk)
+              .width(18).height(18).id('library-ai-filter')
+              .onChange((value: boolean) => { this.libraryAiOnly = value; })
+            Text('可 AI 观察').fontSize(F.caption).fontColor(this.libraryAiOnly ? T.mintInk : T.muted)
+          }.padding({ left: 4, right: 10, top: 3, bottom: 3 })
+            .backgroundColor(this.libraryAiOnly ? T.mint : T.soft).borderRadius(8)
           Blank()
           Text(`${this.libraryResults().length} 处`).fontSize(F.caption).fontColor(T.muted).id('library-result-count')
           Button('重置', { type: ButtonType.Normal }).height(34).fontSize(F.caption).fontColor(T.accent)

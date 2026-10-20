@@ -26,7 +26,7 @@ export class ArchiveUiSession {
     try {
       const delegator = abilityDelegatorRegistry.getAbilityDelegator();
       await delegator.startAbility({
-        bundleName: 'com.chr.myapplication', abilityName: 'EntryAbility',
+        bundleName: 'com.yunheji.archive', abilityName: 'EntryAbility',
         parameters: { yunhejiTestStore: this.name }
       });
       // 正式启动首先显示独立登录页。旧的离线路径测试也必须经真实按钮进入，
@@ -307,7 +307,7 @@ export class ArchiveUiSession {
       console.error(`UI_CASE_FAILED: ${(error as Error).message}`);
       try {
         const delegator = abilityDelegatorRegistry.getAbilityDelegator();
-        await delegator.executeShellCommand('uitest dumpLayout -p /data/local/tmp/yunheji-ui-failure.json -b com.chr.myapplication');
+        await delegator.executeShellCommand('uitest dumpLayout -p /data/local/tmp/yunheji-ui-failure.json -b com.yunheji.archive');
         await delegator.executeShellCommand('uitest screenCap -p /data/local/tmp/yunheji-ui-failure.png');
       } catch { console.error('UI failure diagnostics unavailable'); }
       throw new Error((error as Error).message);

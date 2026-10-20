@@ -76,7 +76,7 @@ if (-not $SkipInstall) {
 $timestamp = [TimeZoneInfo]::ConvertTimeFromUtc([DateTime]::UtcNow,
     [TimeZoneInfo]::FindSystemTimeZoneById('China Standard Time')).ToString('yyyy-MM-dd-HHmmss')
 $logPath = Join-Path $resultDirectory "$timestamp-device.log"
-$testCommand = "aa test -b com.chr.myapplication -m entry_test -s unittest OpenHarmonyTestRunner -s timeout $TestTimeoutMs -w 600"
+$testCommand = "aa test -b com.yunheji.archive -m entry_test -s unittest OpenHarmonyTestRunner -s timeout $TestTimeoutMs -w 600"
 if ($TestClass) { $testCommand += " -s class $TestClass" }
 if ($RestartStore) { $testCommand += " -s archiveRestartStore $RestartStore" }
 if ($MaximumStore) { $testCommand += " -s archiveMaximumStore $MaximumStore" }

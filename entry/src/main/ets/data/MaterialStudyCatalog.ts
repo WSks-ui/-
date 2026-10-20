@@ -18,7 +18,12 @@ export interface MaterialStudyFact {
 
 export interface MaterialStudy {
   siteId: string;
+  // AI 观察面向“器物 / 对象”，档案名不一定等于用户眼前看到的东西；
+  // objectName 用于提示词、面板标题与输入提示，避免把遗址名当成器物名。
+  objectName: string;
   question: string;
+  // 起始问法必须能用本对象的三条事实回答；换对象时不要沿用上一件器物的问法。
+  starters: string[];
   discovery: string;
   facts: MaterialStudyFact[];
   sources: MaterialEvidenceSource[];
@@ -33,7 +38,9 @@ const CHECKED_AT: string = '2026-10-17';
 export const MATERIAL_STUDIES: MaterialStudy[] = [
   {
     siteId: 'smx-miaodigou',
+    objectName: '庙底沟遗址',
     question: '陶窑和居住遗存分别在哪里？',
+    starters: ['陶窑为什么集中在西部？', '居住遗存和陶窑在方位上有什么关系？', '两侧壕沟能说明什么？'],
     discovery: '西部既有居住遗存，也是陶窑集中的方位。',
     facts: [
       { id: 'miaodigou-living', title: '居住区：中部与西部',
@@ -59,7 +66,9 @@ export const MATERIAL_STUDIES: MaterialStudy[] = [
   },
   {
     siteId: 'zz-dahecun',
+    objectName: '大河村彩陶双连壶',
     question: '两只并排的壶，怎样成为一件内部相通的器物？',
+    starters: ['两只壶各有自己的口，为什么还算一件器物？', '腹部相通的位置在哪里？', '红衣上的黑彩有哪几种线条？'],
     discovery: '连接不只在外形上：腹部接合处有椭圆形通口。',
     facts: [
       { id: 'dahecun-object', title: '从遗址走到一件具体器物',
@@ -86,7 +95,9 @@ export const MATERIAL_STUDIES: MaterialStudy[] = [
   },
   {
     siteId: 'zz-duling-fangding',
+    objectName: '杜岭二号方鼎',
     question: '四面方鼎，为什么有八组上腹兽面纹？',
+    starters: ['只有四面，八组是怎么数出来的？', '我只看到四个，带我看看另外几个。', '那些小圆点也算八组里面的吗？'],
     discovery: '四面正中各一组，四个折角处又各一组。',
     facts: [
       { id: 'duling-object', title: '先认清二号鼎',

@@ -42,6 +42,10 @@ export default function archiveAppearanceTest() {
           // 首屏快捷入口必须使用真实导航，不用装饰卡片冒充功能。新版首页把“河流记忆”
           // 与“从彩陶读起”放到纸页入口区，先滚动到真实控件再点击，断言不变。
           await (await session.inScroll('explore-scroll', ON.id('memory-entry'))).click();
+          // 记忆页默认是“手账”分区，收藏筛选只在“收藏”分区出现；
+          // 外观用例显式切到收藏，避免把默认分区当成固定前提。
+          await session.waitId('memory-section-0');
+          await (await session.inScroll('archive-scroll', ON.id('memory-section-1'))).click();
           await session.waitId('collection-filter');
           await (await session.waitId('tab-0')).click();
           await (await session.inScroll('explore-scroll', ON.id('featured-site'))).click();
@@ -65,7 +69,9 @@ export default function archiveAppearanceTest() {
           await session.inScroll('archive-scroll', ON.id('collection-filter'));
           await capture(session, 'collection');
           await (await session.waitId('profile-entry')).click();
-          await session.inScroll('profile-scroll', ON.id('last-sync-value'));
+          // 个人页是独立导航页，先等滚动容器挂载；同步值在“账号与同步”分区内，
+          // 外观用例只需要个人页主视图，不把账号分区是否展开当成前提。
+          await session.waitId('profile-scroll');
           await capture(session, 'device');
 
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
@@ -80,13 +86,21 @@ export default function archiveAppearanceTest() {
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
           app.setFontSizeScale(1.5);
           // 重建 EntryAbility，让纸片高度读取本次真实字体配置；档案仍使用同一专属库。
+          // 已知未通过（2026-10-20）：stop/start 后 Ability 未存活，后续在 archive-scroll
+          // 处报目标不存在；设备 faultlogger 没有当日新 crash / freeze。修复重启流程前不得记为通过。
           await session.stop();
           await session.start();
-          // 卡片内容必须全部在纸片范围内；仅检查按钮可点击会漏掉大字时文字溢出容器。
+          // 重建 EntryAbility 后回到首页，先显式进入记忆页再核对大字布局；
+          // 不能沿用重启前的页面位置，否则会把“当前不在记忆页”误报成文字溢出。
+          await (await session.waitId('tab-1')).click();
+          // 1.5 倍字体下纸片可能被推到首屏之外；先把纸片滚入视口，再同时读取内外边界，
+          // 避免因“未可见”把正常布局误报为文字溢出。
+          await session.inScroll('archive-scroll', ON.id('memory-paper'));
           const content = await (await session.waitId('memory-content')).getBounds();
           const paper = await (await session.waitId('memory-paper')).getBounds();
           expect(content.bottom <= paper.bottom).assertTrue();
           await capture(session, 'home-large');
+          await (await session.waitId('tab-0')).click();
           await session.inScroll('explore-scroll', ON.id('featured-site'));
           await visibleControl(session, 'featured-site');
           await (await session.waitId('featured-site')).click();

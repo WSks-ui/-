@@ -2,7 +2,7 @@ import { common } from '@kit.AbilityKit';
 import { http } from '@kit.NetworkKit';
 import { util } from '@kit.ArkTS';
 import { DEBUG } from 'BuildProfile';
-import { AccountSession, AccountSyncReply, validateAccountInput, validateAccountReply, validateAccountSession } from '../domain/AccountSync';
+import { AccountSession, AccountSyncReply, validateAccountInput, validateAccountReply, validateAccountSession, validateServiceEndpoint } from '../domain/AccountSync';
 import { ArchiveRecord, ArchiveSnapshot, copySnapshot, mergeRecords, parseSnapshot } from '../domain/ArchiveDomain';
 import { AiObservationReply, AiObservationRequest, validateAiObservationReply, validateAiObservationRequest } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
@@ -22,13 +22,14 @@ export class AccountSyncClient {
   constructor(context: common.Context) { this.context = context; }
 
   async configure(): Promise<boolean> {
-    // 仅 debug 演示包读取本机服务的公开证书。正式发行须接入具有正式 TLS 的
-    // 服务配置；不能把本机地址、开发证书或访问令牌带进 release。
+    // 仅 debug 演示包读取本机 / 局域网服务的公开证书。正式发行须接入具有正式 TLS 的
+    // 服务配置；不能把开发机地址、自签证书或访问令牌带进 release。
+    // 端点规则集中在领域层校验，避免客户端与服务脚本各写一份正则而漂移。
     if (!DEBUG) return false;
     try {
       const bytes = await this.context.resourceManager.getRawFileContent('account-sync-dev.json');
       const config = JSON.parse(new util.TextDecoder().decodeToString(bytes).replace(/^\uFEFF/, '')) as ServiceConfiguration;
-      if (!/^https:\/\/127\.0\.0\.1:[0-9]{4,5}$/.test(config.endpoint) ||
+      if (!validateServiceEndpoint(config.endpoint, DEBUG) ||
         typeof config.caData !== 'string' || !config.caData.startsWith('-----BEGIN CERTIFICATE-----')) return false;
       this.configuration = config;
       return true;

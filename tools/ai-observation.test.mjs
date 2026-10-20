@@ -4,10 +4,11 @@ import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import { materialStudyForId } from '../entry/src/main/ets/data/MaterialStudyCatalog.ts';
 import { DULING_OBSERVATION } from '../entry/src/main/ets/domain/DulingObservation.ts';
 import {
-  AI_CONTENT_REVISION, AI_OBSERVATION_SITE_ID, acceptAiReply, aiErrorMessage,
-  buildAiKnowledgeScope, buildAiMemoryAssist, collectAiReplyFactIds, validateAiObservationReply,
-  validateAiObservationRequest
+  AI_CONTENT_REVISION, AI_OBSERVATION_SITE_ID, AI_OBSERVATION_SITE_IDS, acceptAiReply, aiErrorMessage,
+  buildAiKnowledgeScope, buildAiMemoryAssist, collectAiReplyFactIds, isAiObservationSite,
+  validateAiObservationReply, validateAiObservationRequest
 } from '../entry/src/main/ets/domain/AiObservation.ts';
+import { DAHECUN_OBSERVATION } from '../entry/src/main/ets/domain/DahecunObservation.ts';
 import {
   activeRecords, compareVersions, copySnapshot, emptySnapshot, mergeRecords, parseSnapshot
 } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
@@ -36,6 +37,23 @@ test('AI knowledge scope comes from the existing Ding catalog and hotspots', () 
   assert.deepEqual(scope.hotspots.map(hotspot => hotspot.id), ['centers', 'corners', 'frame']);
   assert.equal(scope.sources[0].publisher, '河南博物院');
   assert.ok(HERITAGE_SITES.some(site => site.id === AI_OBSERVATION_SITE_ID));
+});
+
+test('AI supports the twin vessel with its own facts, hotspots and starters', () => {
+  // 第二对象必须使用自己的事实与热点；方鼎的八组问法不能复用到双连壶。
+  const dahecun = buildAiKnowledgeScope(materialStudyForId('zz-dahecun'), DAHECUN_OBSERVATION);
+  assert.deepEqual(AI_OBSERVATION_SITE_IDS, ['zz-duling-fangding', 'zz-dahecun']);
+  assert.equal(dahecun.objectName, '大河村彩陶双连壶');
+  assert.equal(dahecun.sceneRevision, 2);
+  assert.deepEqual(dahecun.facts.map(fact => fact.id), ['dahecun-object', 'dahecun-opening', 'dahecun-lines']);
+  assert.deepEqual(dahecun.hotspots.map(hotspot => hotspot.id), ['mouth', 'opening', 'paint']);
+  assert.equal(dahecun.starters.length, 3);
+  assert.equal(isAiObservationSite('zz-dahecun'), true);
+  // 有资料但没有开放 AI 的对象保持不可问，避免入口与服务端错位。
+  assert.equal(isAiObservationSite('smx-miaodigou'), false);
+  const twinRequest = { ...request(), siteId: 'zz-dahecun', hotspotId: 'opening', question: dahecun.question };
+  assert.equal(validateAiObservationRequest(twinRequest, dahecun).siteId, 'zz-dahecun');
+  assert.throws(() => validateAiObservationRequest(twinRequest, scope), /AI_INVALID_REQUEST/);
 });
 
 test('AI request validation rejects another site, scene revision, hotspot or oversized context', () => {

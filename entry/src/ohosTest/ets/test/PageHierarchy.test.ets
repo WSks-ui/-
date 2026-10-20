@@ -36,7 +36,8 @@ export default function pageHierarchyTest() {
         await (await session.waitId('device-scroll')).scrollToTop(40000);
         await capture('library');
         await click(session, 'device-scroll', 'library-ai-filter');
-        expect(await (await session.waitId('library-result-count')).getText()).assertEqual('1 处');
+        // 2026-10-19 起白名单含杜岭二号方鼎与大河村双连壶两处，筛选结果不再是单一对象。
+        expect(await (await session.waitId('library-result-count')).getText()).assertEqual('2 处');
         await click(session, 'device-scroll', 'library-city');
         await (await session.wait(ON.text('洛阳').type('Option'))).click();
         expect(await (await session.waitId('library-result-count')).getText()).assertEqual('0 处');
@@ -201,6 +202,48 @@ export default function pageHierarchyTest() {
           expect(await (await session.inScroll('detail-scroll', ON.id('ai-observation-input'))).getText()).assertEqual(note.body.slice(0, 300));
           expect(!await session.driver.findComponent(ON.id('ai-answer'))).assertTrue();
           await capture('ai-resume');
+        });
+      } finally {
+        if (identity) await preferences.deletePreferences(session.context, accountStoreName(identity, session.name));
+      }
+    });
+
+    it('twin_vessel_ai_entry_uses_its_own_starters', 0, async () => {
+      // 只验证入口、对象化起始问题与热点归属，不请求真实模型：
+      // 双连壶必须用“壶口 / 通口 / 黑彩”，不能沿用方鼎的“八组”问法。
+      const session = new ArchiveUiSession('twin_ai_entry', '', false);
+      const username = `twin_${Date.now()}`;
+      const password = util.generateRandomUUID(true);
+      let identity = '';
+      try {
+        await session.run(async () => {
+          await (await session.waitId('account-mode-register')).click();
+          await (await session.inScroll('login-scroll', ON.id('account-username'))).inputText(username);
+          await (await session.inScroll('login-scroll', ON.id('account-password'))).inputText(password);
+          await session.driver.pressBack();
+          await click(session, 'login-scroll', 'account-submit');
+          await session.waitId('explore-scroll');
+          const client = new AccountSyncClient(session.context);
+          expect(await client.configure()).assertTrue();
+          identity = (await client.authenticate(username, password, false)).accountId;
+          await client.logout();
+          await (await session.waitId('tab-2')).click();
+          const search = ON.type('SearchField').within(ON.id('library-search'));
+          await (await session.inScroll('device-scroll', search)).inputText('双连壶');
+          await (await session.wait(ON.text('检索').type('Button'))).click();
+          expect(await (await session.inScroll('device-scroll', ON.id('library-result-count'))).getText()).assertEqual('1 处');
+          await click(session, 'device-scroll', 'site-row-zz-dahecun');
+          // 面板位于详情首屏下方，先确认详情已打开，再由 click 帮助器滚动到面板开关。
+          await session.waitId('detail-scroll');
+          await click(session, 'detail-scroll', 'ai-panel-toggle');
+          // 起始问题是“序号 + 文本 + 箭头”的复合按钮，Button.text 不承载问题文本；
+          // 读取按钮内的文本节点，仍然逐字核对对象化问法。
+          expect(await (await session.inScroll('detail-scroll', ON.id('ai-starter-text-0'))).getText())
+            .assertEqual('两只壶各有自己的口，为什么还算一件器物？');
+          expect(await (await session.inScroll('detail-scroll', ON.id('ai-starter-text-2'))).getText())
+            .assertEqual('红衣上的黑彩有哪几种线条？');
+          expect(!await session.driver.findComponent(ON.id('ai-starter-3'))).assertTrue();
+          await capture('twin-ai-entry');
         });
       } finally {
         if (identity) await preferences.deletePreferences(session.context, accountStoreName(identity, session.name));

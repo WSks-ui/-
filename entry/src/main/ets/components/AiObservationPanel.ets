@@ -4,8 +4,8 @@ import type {
   AiObservationRequest, AiSourceScope, AiTurn
 } from '../domain/AiObservation';
 import {
-  AI_MAX_OBSERVATION_LENGTH, AI_MAX_QUESTION_LENGTH, AI_MAX_TURNS, acceptAiReply, aiErrorMessage,
-  aiStatusLabel, collectAiReplyFactIds
+  AI_MAX_DRAFT_TAGS, AI_MAX_OBSERVATION_LENGTH, AI_MAX_QUESTION_LENGTH, AI_MAX_TURNS, acceptAiReply,
+  aiErrorMessage, aiStatusLabel, collectAiReplyFactIds
 } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
@@ -32,6 +32,8 @@ export struct AiObservationPanel {
 
   @State private expanded: boolean = false;
   @State private question: string = '';
+  // 输入校验用行内提示，不再写进只在 phase=error 时渲染的错误块。
+  @State private questionHint: string = '';
   @State private turns: AiTurn[] = [];
   @State private phase: string = 'idle';
   @State private status: string = '';
@@ -51,6 +53,8 @@ export struct AiObservationPanel {
   @State private draftTags: string = '';
   @State private draftFactIds: string[] = [];
   @State private draftQuestion: string = '';
+  // 草稿预览默认只露出 4 行，避免长文把“采纳 / 放弃”推到屏幕外。
+  @State private draftExpanded: boolean = false;
 
   private scope: AiKnowledgeScope | undefined = undefined;
   private questionController: TextAreaController = new TextAreaController();
@@ -163,6 +167,7 @@ export struct AiObservationPanel {
       this.draftFactIds = reply.draft.factIds.slice();
       this.draftQuestion = questionText;
       this.draftVisible = true;
+      this.draftExpanded = false;
       this.infoText = '草稿已生成，可在编辑器中修改。';
     } else {
       this.draftVisible = false;
@@ -182,6 +187,7 @@ export struct AiObservationPanel {
     this.answerExpanded = false;
     this.evidenceFactIds = [];
     this.draftVisible = false;
+    this.draftExpanded = false;
     this.startTimer();
     try {
       const reply = await this.onAiRequest(request);
@@ -216,13 +222,14 @@ export struct AiObservationPanel {
     }
     const text = (questionOverride || this.question).trim();
     if (!text) {
-      this.errorText = '先写下你想问的问题。';
+      this.questionHint = '先写下你想问的问题。';
       return;
     }
     if (text.length > AI_MAX_QUESTION_LENGTH) {
-      this.errorText = `问题最多 ${AI_MAX_QUESTION_LENGTH} 字。`;
+      this.questionHint = `问题最多 ${AI_MAX_QUESTION_LENGTH} 字。`;
       return;
     }
+    this.questionHint = '';
     this.question = text;
     this.observationHint = '';
     const request = this.newRequest('observe', text, this.initialObservation ? this.observationText.trim() : '');
@@ -268,20 +275,9 @@ export struct AiObservationPanel {
     }
   }
 
-  private showEvidence(action: AiObservationAction): void {
-    if (action.type === 'show_evidence') {
-      this.evidenceFactIds = action.factIds.slice();
-    }
-    this.evidenceOpen = true;
-  }
-
   private toggleEvidence(): void {
     this.evidenceOpen = !this.evidenceOpen;
     if (this.evidenceOpen && this.evidenceFactIds.length === 0) this.evidenceFactIds = this.replyFactIds.slice();
-  }
-
-  private hasEvidenceAction(): boolean {
-    return this.actions.some((action: AiObservationAction) => action.type === 'show_evidence');
   }
 
   private factsFor(ids: string[]): AiFactSnapshot[] {
@@ -310,6 +306,42 @@ export struct AiObservationPanel {
     return this.scope?.hotspots.find((item: AiHotspotScope) => item.id === id)?.label || '';
   }
 
+  private objectName(): string {
+    return this.scope?.objectName || '这件器物';
+  }
+
+  // 只把“聚焦部位”渲染成可点操作；依据由面板统一的“依据 · N 条”开关承载，
+  // 避免同一个动作在回答下方出现两次（模型动作一次、固定按钮一次）。
+  private focusActions(): AiObservationAction[] {
+    return this.actions.filter((action: AiObservationAction) => action.type === 'focus_hotspot' && !!action.hotspotId);
+  }
+
+  private factTitles(ids: string[]): string {
+    const titles: string[] = [];
+    ids.forEach((id: string) => {
+      const fact = this.scope?.facts.find((item: AiFactSnapshot) => item.id === id);
+      if (fact && !titles.includes(fact.title)) titles.push(fact.title);
+    });
+    return titles.join('、');
+  }
+
+  private statusInk(status: string): Resource {
+    if (status === 'insufficient_evidence') return T.yellowInk;
+    if (status === 'needs_clarification') return T.muted;
+    return T.mintInk;
+  }
+
+  private statusSurface(status: string): Resource {
+    if (status === 'insufficient_evidence') return T.yellow;
+    if (status === 'needs_clarification') return T.soft;
+    return T.mint;
+  }
+
+  private draftTagList(): string[] {
+    return this.draftTags.split(/[,，]/).map((tag: string) => tag.trim())
+      .filter((tag: string) => tag.length > 0).slice(0, AI_MAX_DRAFT_TAGS);
+  }
+
   private adoptDraft(): void {
     if (!this.scope || !this.draftBody.trim() || this.draftFactIds.length === 0) return;
     const facts = this.factsFor(this.draftFactIds);
@@ -333,6 +365,7 @@ export struct AiObservationPanel {
     this.draftBody = '';
     this.draftTags = '';
     this.draftFactIds = [];
+    this.draftExpanded = false;
     this.infoText = '已放弃这份草稿，问答记录仍保留。';
   }
 
@@ -352,18 +385,19 @@ export struct AiObservationPanel {
 
   @Builder
   evidenceBlock() {
-    Column({ space: 8 }) {
-      Row({ space: 8 }) {
+    Column({ space: 10 }) {
+      Row({ space: 7 }) {
+        SymbolGlyph($r('sys.symbol.bookmark')).fontSize(15).fontColor([T.mintInk])
         Text('原始资料').fontSize(F.caption).fontWeight(FontWeight.Medium).fontColor(T.mintInk)
-        Text('馆方来源 · 不是模型生成').fontSize(F.caption).fontColor(T.muted)
-        Blank()
-        Button('收起', { type: ButtonType.Normal }).height(30).fontSize(F.caption)
-          .fontColor(T.mintInk).backgroundColor(Color.Transparent).onClick(() => { this.evidenceOpen = false; })
+        Text('馆方来源 · 不是模型生成').fontSize(F.caption).fontColor(T.muted).layoutWeight(1).maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
       }.width('100%')
       ForEach(this.evidenceFacts(), (fact: AiFactSnapshot) => {
         this.evidenceCard(fact)
       }, (fact: AiFactSnapshot) => fact.id)
-      Text(this.scope?.evidenceLimit || '').fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+      if (this.scope?.evidenceLimit) {
+        Text(this.scope.evidenceLimit).fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+      }
     }.width('100%').alignItems(HorizontalAlign.Start).padding(12).backgroundColor(T.mint).borderRadius(14)
       .id('ai-evidence-list')
   }
@@ -371,83 +405,98 @@ export struct AiObservationPanel {
   @Builder
   answerBlock() {
     Column({ space: 10 }) {
-      Row({ space: 8 }) {
-        Text(aiStatusLabel(this.status)).fontSize(F.caption).fontWeight(FontWeight.Medium)
-          .fontColor(T.accent).padding({ left: 8, right: 8, top: 3, bottom: 3 })
-          .backgroundColor(T.accentSoft).borderRadius(7).id('ai-answer-status')
-        if (this.status === 'insufficient_evidence') {
-          Text('当前资料不足，未作推测').fontSize(F.caption).fontColor(T.yellowInk)
-        }
-        Blank()
-        if (this.hotspotId) {
-          Text(`当前观察 · ${this.hotspotLabel(this.hotspotId)}`).fontSize(F.caption).fontColor(T.muted).maxLines(1)
-        }
-      }.width('100%')
-      Text(this.answer).fontSize(F.body).fontColor(T.ink).lineHeight(26).width('100%').id('ai-answer')
-        .maxLines(this.answerExpanded ? 999 : 3).textOverflow({ overflow: TextOverflow.Ellipsis })
-      if (this.actions.length > 0) {
-        Column({ space: 8 }) {
-          ForEach(this.actions, (action: AiObservationAction, index: number) => {
+      Column({ space: 10 }) {
+        Row({ space: 8 }) {
+          Text(aiStatusLabel(this.status)).fontSize(F.caption).fontWeight(FontWeight.Medium)
+            .fontColor(this.statusInk(this.status)).padding({ left: 8, right: 8, top: 4, bottom: 4 })
+            .backgroundColor(this.statusSurface(this.status)).borderRadius(8).id('ai-answer-status')
+          Blank()
+          if (this.evidenceFactIds.length > 0 || this.replyFactIds.length > 0) {
+            // 依据只有一个入口：模型返回的 show_evidence 动作合并到这里，不再重复第二颗按钮。
             Button({ type: ButtonType.Normal }) {
-              Row({ space: 7 }) {
-                SymbolGlyph(action.type === 'focus_hotspot' ? $r('sys.symbol.map') : $r('sys.symbol.bookmark'))
-                  .fontSize(16).fontColor([T.accent])
-                Text(action.label).fontSize(F.small).fontColor(T.accent).maxLines(1)
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-              }.width('100%').justifyContent(FlexAlign.Start)
-            }.width('100%').height(40).padding({ left: 12, right: 12 })
-              .backgroundColor(T.surface).borderRadius(11).border({ width: 1, color: T.line, radius: 11 })
-              .id(`ai-action-${index}`)
-              .onClick(() => {
-                if (action.type === 'focus_hotspot') this.focusAction(action);
-                else this.showEvidence(action);
-              })
-          }, (action: AiObservationAction, index: number) => `${index}:${action.type}:${action.hotspotId}`)
+              Row({ space: 5 }) {
+                SymbolGlyph($r('sys.symbol.bookmark')).fontSize(14).fontColor([T.mintInk])
+                Text(this.evidenceOpen ? '收起依据' :
+                  `依据 · ${this.evidenceFactIds.length || this.replyFactIds.length} 条`)
+                  .fontSize(F.caption).fontColor(T.mintInk)
+              }.padding({ left: 8, right: 8 })
+            }.height(30).backgroundColor(this.evidenceOpen ? T.mint : Color.Transparent).borderRadius(8)
+              .id('ai-evidence-toggle')
+              .accessibilityText(this.evidenceOpen ? '收起依据' : '查看本次回答引用的资料')
+              .onClick(() => { this.toggleEvidence(); })
+          }
         }.width('100%')
-      }
-      if (this.answer.length > 80) {
-        Button(this.answerExpanded ? '收起完整解释' : '展开完整解释', { type: ButtonType.Normal })
-          .id('ai-answer-toggle').height(32).fontSize(F.caption).fontColor(T.muted)
-          .backgroundColor(Color.Transparent).onClick(() => { this.answerExpanded = !this.answerExpanded; })
-      }
-      if ((!this.hasEvidenceAction() || this.evidenceOpen) &&
-        (this.replyFactIds.length > 0 || this.evidenceFactIds.length > 0)) {
-        Button(this.evidenceOpen ? '收起依据' : `查看本次依据 · ${this.evidenceFactIds.length || this.replyFactIds.length} 条`)
-          .id('ai-evidence-toggle').width('100%').height(38).fontSize(F.caption)
-          .fontColor(T.mintInk).backgroundColor(T.mint).borderRadius(11).onClick(() => this.toggleEvidence())
-      }
+        Text(this.answer).fontSize(F.body).fontColor(T.ink).lineHeight(26).width('100%').id('ai-answer')
+          .maxLines(this.answerExpanded ? 999 : 3).textOverflow({ overflow: TextOverflow.Ellipsis })
+        if (this.answer.length > 80) {
+          Button(this.answerExpanded ? '收起完整解释' : '展开完整解释', { type: ButtonType.Normal })
+            .id('ai-answer-toggle').height(30).fontSize(F.caption).fontColor(T.muted)
+            .padding({ left: 0, right: 0 }).backgroundColor(Color.Transparent)
+            .onClick(() => { this.answerExpanded = !this.answerExpanded; })
+        }
+        if (this.focusActions().length > 0) {
+          // 动作按内容宽度换行：窄屏两个一行，宽屏自然排成一行，不写死百分比宽度。
+          Flex({ wrap: FlexWrap.Wrap }) {
+            ForEach(this.focusActions(), (action: AiObservationAction) => {
+              Button({ type: ButtonType.Normal }) {
+                Row({ space: 6 }) {
+                  SymbolGlyph($r('sys.symbol.map')).fontSize(15).fontColor([T.mintInk])
+                  Text(action.label).fontSize(F.small).fontColor(T.mintInk).maxLines(1)
+                    .textOverflow({ overflow: TextOverflow.Ellipsis })
+                }.padding({ left: 11, right: 11 })
+              }.constraintSize({ minHeight: 38 }).padding(0).margin({ right: 8, bottom: 8 })
+                .backgroundColor(T.surface).borderRadius(11).border({ width: 1, color: T.line, radius: 11 })
+                .id(`ai-action-${action.hotspotId}`)
+                .accessibilityText(`聚焦观察部位：${action.label}`)
+                .onClick(() => { this.focusAction(action); })
+            }, (action: AiObservationAction) => `${action.type}:${action.hotspotId}`)
+          }.width('100%')
+        }
+      }.width('100%').alignItems(HorizontalAlign.Start).padding(14).backgroundColor(T.soft).borderRadius(14)
       if (this.evidenceOpen) { this.evidenceBlock() }
-    }.width('100%').alignItems(HorizontalAlign.Start).padding(12).backgroundColor(T.soft).borderRadius(14)
+    }.width('100%').alignItems(HorizontalAlign.Start)
   }
 
   @Builder
   waitingBlock() {
-    Column({ space: 10 }) {
+    Column({ space: 12 }) {
       Row({ space: 10 }) {
-        LoadingProgress().width(22).height(22).color(T.accent)
-        Column({ space: 3 }) {
-          Text('AI 正在依据本件资料组织解释').fontSize(F.small).fontColor(T.ink)
+        LoadingProgress().width(22).height(22).color(T.mintInk)
+        Column({ space: 4 }) {
+          Text('正在依据本件资料组织解释').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink)
           Text(`已等待 ${this.elapsedSeconds} 秒 · 不会自动转动镜头或保存`).fontSize(F.caption).fontColor(T.muted)
         }.layoutWeight(1).alignItems(HorizontalAlign.Start)
       }.width('100%')
-      Button('停止等待', { type: ButtonType.Normal }).id('ai-stop').width('100%').height(38).fontSize(F.caption)
-        .fontColor(T.accent).backgroundColor(T.surface).borderRadius(11).onClick(() => this.stopWaiting())
-    }.width('100%').padding(12).backgroundColor(T.accentSoft).borderRadius(14).id('ai-waiting')
+      // 三条静态占位只稳定面板高度，不伪造进度或回答内容。
+      Column({ space: 7 }) {
+        Text('').width('88%').height(9).backgroundColor(T.line).borderRadius(5).opacity(0.55)
+        Text('').width('96%').height(9).backgroundColor(T.line).borderRadius(5).opacity(0.55)
+        Text('').width('72%').height(9).backgroundColor(T.line).borderRadius(5).opacity(0.55)
+      }.width('100%').alignItems(HorizontalAlign.Start)
+      Button('停止等待', { type: ButtonType.Normal }).id('ai-stop')
+        .width('100%').constraintSize({ minHeight: 38 }).fontSize(F.caption)
+        .fontColor(T.mintInk).backgroundColor(T.surface).borderRadius(11)
+        .onClick(() => { this.stopWaiting(); })
+    }.width('100%').padding(14).backgroundColor(T.mint).borderRadius(14).id('ai-waiting')
   }
 
   @Builder
   draftBlock() {
     Column({ space: 10 }) {
       Row({ space: 8 }) {
-        Text('把这次发现留下').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink).layoutWeight(1)
-        Text('AI 草稿可编辑').fontSize(F.caption).fontColor(T.accent)
+        Text('把这次发现留下').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink).layoutWeight(1)
+        Text('AI 整理').fontSize(F.caption).fontColor(T.mintInk).padding({ left: 7, right: 7, top: 3, bottom: 3 })
+          .backgroundColor(T.mint).borderRadius(7)
       }.width('100%')
-      Text('写下你自己的观察，AI 帮你整理。').fontSize(F.caption).fontColor(T.muted)
+      Text('先写一句自己的观察，AI 只帮你整理成可编辑草稿。').fontSize(F.caption).fontColor(T.muted)
         .lineHeight(19).width('100%')
-      TextArea({ text: this.observationText, placeholder: '例如：我先数到正面四组，转到折角才明白另外四组在哪里…' })
+      TextArea({ text: this.observationText,
+        placeholder: this.scope?.siteId === 'zz-dahecun' ?
+          '例如：我先看两只壶口，再顺着腹部找到那个椭圆通口…' : '例如：我先数到正面四组，转到折角才明白另外四组在哪里…' })
         // 从已保存手账带入较长观察时，要在编辑前看见多行上下文；超出高度仍可在输入框内滚动。
-        .height(116).maxLength(AI_MAX_OBSERVATION_LENGTH).fontSize(F.small).fontColor(T.ink)
-        .placeholderColor(T.muted).backgroundColor(T.surface).borderRadius(11).padding(10)
+        .constraintSize({ minHeight: 112 }).maxLength(AI_MAX_OBSERVATION_LENGTH).fontSize(F.small)
+        .fontColor(T.ink).placeholderColor(T.muted).backgroundColor(T.soft).borderRadius(11).padding(11)
+        .border({ width: 1, color: T.line, radius: 11 })
         .id('ai-observation-input').onChange((text: string) => {
           this.observationText = text; this.observationHint = '';
         })
@@ -455,112 +504,186 @@ export struct AiObservationPanel {
         Text(this.observationHint).fontSize(F.caption).fontColor($r('app.color.danger')).width('100%')
       }
       Button(this.phase === 'waiting' ? '正在整理' : '整理为手账草稿', { type: ButtonType.Normal })
-        .id('ai-draft-request').width('100%').height(40).fontSize(F.small).fontColor(T.accent)
-        .backgroundColor(T.accentSoft).borderRadius(11).enabled(this.phase !== 'waiting')
+        .id('ai-draft-request').width('100%').constraintSize({ minHeight: 42 }).fontSize(F.small)
+        .fontColor(T.accent).backgroundColor(T.accentSoft).borderRadius(11).enabled(this.phase !== 'waiting')
+        .accessibilityText('把个人观察整理为可编辑的 AI 手账草稿')
         .onClick(() => { this.askDraft(); })
       if (this.draftVisible) {
-        Column({ space: 8 }) {
-          Text('AI 建议草稿 · 可在编辑器中继续修改').fontSize(F.caption).fontWeight(FontWeight.Medium)
-            .fontColor(T.accent).width('100%')
-          Text(this.draftBody).fontSize(F.small).fontColor(T.ink).lineHeight(23).width('100%')
-            .id('ai-draft-body')
-          if (this.draftTags.trim()) {
-            Text(`建议标签：${this.draftTags}`).fontSize(F.caption).fontColor(T.muted).width('100%')
-          }
-          Text(`参考事实：${this.draftFactIds.join(' · ')}`).fontSize(F.caption).fontColor(T.muted).width('100%')
+        Column({ space: 10 }) {
           Row({ space: 8 }) {
-            Button('采纳并编辑', { type: ButtonType.Normal }).id('ai-draft-adopt').layoutWeight(1).height(40)
-              .fontSize(F.small).fontColor(T.onAccent).backgroundColor(T.accent).borderRadius(11)
-              .onClick(() => this.adoptDraft())
-            Button('放弃草稿', { type: ButtonType.Normal }).id('ai-draft-discard').layoutWeight(1).height(40)
-              .fontSize(F.small).fontColor(T.accent).backgroundColor(T.surface).borderRadius(11)
-              .onClick(() => this.discardDraft())
+            Text('AI 建议草稿').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.mintInk).layoutWeight(1)
+            Text('可在编辑器中修改').fontSize(F.caption).fontColor(T.muted)
           }.width('100%')
-        }.width('100%').alignItems(HorizontalAlign.Start).padding(12).backgroundColor(T.surface)
-          .borderRadius(12).border({ width: 1, color: T.line, radius: 12 }).id('ai-draft-card')
+          Text(this.draftBody).fontSize(F.small).fontColor(T.ink).lineHeight(23).width('100%')
+            .maxLines(this.draftExpanded ? 999 : 4).textOverflow({ overflow: TextOverflow.Ellipsis })
+            .id('ai-draft-body')
+          if (this.draftBody.length > 120) {
+            Button(this.draftExpanded ? '收起草稿' : '展开完整草稿', { type: ButtonType.Normal })
+              .id('ai-draft-toggle').height(30).fontSize(F.caption).fontColor(T.mintInk)
+              .padding({ left: 0, right: 0 }).backgroundColor(Color.Transparent)
+              .onClick(() => { this.draftExpanded = !this.draftExpanded; })
+          }
+          if (this.draftTagList().length > 0) {
+            Flex({ wrap: FlexWrap.Wrap }) {
+              ForEach(this.draftTagList(), (tag: string) => {
+                Text(`#${tag}`).fontSize(F.caption).fontColor(T.mintInk)
+                  .padding({ left: 7, right: 7, top: 3, bottom: 3 })
+                  .backgroundColor(T.mint).borderRadius(6).margin({ right: 6, bottom: 6 })
+              }, (tag: string) => tag)
+            }.width('100%')
+          }
+          Text(`依据：${this.factTitles(this.draftFactIds) || '本件已核资料'}`)
+            .fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+          Row({ space: 10 }) {
+            Button('采纳并编辑', { type: ButtonType.Normal }).id('ai-draft-adopt').layoutWeight(1)
+              .constraintSize({ minHeight: 42 }).fontSize(F.small).fontColor(T.onAccent)
+              .backgroundColor(T.accent).borderRadius(11)
+              .accessibilityText('采纳这份草稿并打开手账编辑器')
+              .onClick(() => this.adoptDraft())
+            Button('放弃', { type: ButtonType.Normal }).id('ai-draft-discard')
+              .constraintSize({ minHeight: 42 }).fontSize(F.small).fontColor(T.muted)
+              .backgroundColor(Color.Transparent).onClick(() => this.discardDraft())
+          }.width('100%').alignItems(VerticalAlign.Center)
+        }.width('100%').alignItems(HorizontalAlign.Start).padding(12).backgroundColor(T.soft)
+          .borderRadius(12).id('ai-draft-card')
       }
-    }.width('100%').alignItems(HorizontalAlign.Start).padding(12).margin({ top: 4 })
+    }.width('100%').alignItems(HorizontalAlign.Start).padding(14).margin({ top: 4 })
       .backgroundColor(T.surface).borderRadius(14).border({ width: 1, color: T.line, radius: 14 })
   }
 
   @Builder
   inputBlock() {
     Column({ space: 8 }) {
-      TextArea({ text: this.question, placeholder: '问一个关于这件方鼎的具体问题…', controller: this.questionController })
-        .height(78).maxLength(AI_MAX_QUESTION_LENGTH).fontSize(F.small).fontColor(T.ink)
-        .placeholderColor(T.muted).backgroundColor(T.surface).borderRadius(11).padding(10)
-        .id('ai-question-input').enabled(this.phase !== 'waiting')
-        .onChange((text: string) => { this.question = text; this.errorText = ''; })
       Row({ space: 8 }) {
-        Text(`${this.question.length} / ${AI_MAX_QUESTION_LENGTH}`).fontSize(F.caption).fontColor(T.muted).layoutWeight(1)
-        Button(this.phase === 'waiting' ? '等待中' : '提问', { type: ButtonType.Normal }).id('ai-send')
-          .height(40).padding({ left: 18, right: 18 }).fontSize(F.small).fontColor(T.onAccent)
-          .backgroundColor(T.accent).borderRadius(11).enabled(this.phase !== 'waiting')
-          .onClick(() => { this.submit(); })
-      }.width('100%').alignItems(VerticalAlign.Center)
-    }.width('100%').padding(12).backgroundColor(T.soft).borderRadius(14)
+        Text('问这件器物').fontSize(F.caption).fontWeight(FontWeight.Medium).fontColor(T.mintInk).layoutWeight(1)
+        Text(`${this.question.length} / ${AI_MAX_QUESTION_LENGTH}`).fontSize(F.caption).fontColor(T.tertiary)
+      }.width('100%')
+      TextArea({ text: this.question, placeholder: `关于${this.objectName()}，你还想确认什么？`, controller: this.questionController })
+        .constraintSize({ minHeight: 76 }).maxLength(AI_MAX_QUESTION_LENGTH).fontSize(F.small).fontColor(T.ink)
+        .placeholderColor(T.tertiary).backgroundColor(T.soft).borderRadius(11).padding(11)
+        .border({ width: 1, color: T.line, radius: 11 })
+        .id('ai-question-input').enabled(this.phase !== 'waiting')
+        .accessibilityText(`向 AI 提问，关于${this.objectName()}`)
+        .onChange((text: string) => { this.question = text; this.errorText = ''; this.questionHint = ''; })
+      if (this.questionHint) {
+        Text(this.questionHint).fontSize(F.caption).fontColor($r('app.color.danger')).width('100%')
+          .id('ai-question-hint')
+      }
+      Button(this.phase === 'waiting' ? '等待回答' : '提问', { type: ButtonType.Normal }).id('ai-send')
+        .width('100%').constraintSize({ minHeight: 42 }).fontSize(F.small).fontColor(T.onAccent)
+        .backgroundColor(T.accent).borderRadius(11).enabled(this.phase !== 'waiting')
+        .accessibilityText('发送问题给 AI')
+        .onClick(() => { this.submit(); })
+    }.width('100%').padding({ top: 2 })
   }
 
   @Builder
   starters() {
-    Column({ space: 6 }) {
-      Text('试试这样问').fontSize(F.caption).fontColor(T.muted).width('100%')
-      Button('只有四面，八组是怎么数出来的？', { type: ButtonType.Normal }).id('ai-starter-0')
-        .width('100%').height(36).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.surface)
-        .borderRadius(9).onClick(() => { this.submit('只有四面，八组是怎么数出来的？'); })
-      Button('我只看到四个，带我看看另外几个。', { type: ButtonType.Normal }).id('ai-starter-1')
-        .width('100%').height(36).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.surface)
-        .borderRadius(9).onClick(() => { this.submit('我只看到四个，带我看看另外几个。'); })
-      Button('那些小圆点也算八组里面的吗？', { type: ButtonType.Normal }).id('ai-starter-2')
-        .width('100%').height(36).fontSize(F.caption).fontColor(T.accent).backgroundColor(T.surface)
-        .borderRadius(9).onClick(() => { this.submit('那些小圆点也算八组里面的吗？'); })
+    Column({ space: 8 }) {
+      Text('从一个具体问题开始').fontSize(F.caption).fontColor(T.muted).width('100%')
+      // 起始问法随对象切换；不能把方鼎的“八组”问法带到双连壶上。
+      ForEach(this.scope?.starters || [], (question: string, index: number) => {
+        Button({ type: ButtonType.Normal }) {
+          Row({ space: 10 }) {
+            Text(`0${index + 1}`).fontSize(F.caption).fontColor(T.mintInk).width(22)
+            Text(question).fontSize(F.small).fontColor(T.ink).layoutWeight(1).maxLines(2)
+              .textOverflow({ overflow: TextOverflow.Ellipsis }).textAlign(TextAlign.Start)
+              .id(`ai-starter-text-${index}`)
+            SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(14).fontColor([T.tertiary])
+          }.width('100%')
+        }.width('100%').constraintSize({ minHeight: 44 }).padding({ left: 12, right: 12, top: 10, bottom: 10 })
+          .backgroundColor(T.surface).borderRadius(12).border({ width: 1, color: T.line, radius: 12 })
+          .id(`ai-starter-${index}`).accessibilityText(`提问：${question}`)
+          .onClick(() => { this.submit(question); })
+      }, (question: string) => question)
     }.width('100%').alignItems(HorizontalAlign.Start)
   }
 
   @Builder
   lockedBlock() {
-    Column({ space: 6 }) {
-      Text(this.signedIn ? '本机未配置账号服务' : '登录后可与 AI 一起观察').fontSize(F.small)
-        .fontWeight(FontWeight.Medium).fontColor(T.ink).width('100%')
+    Column({ space: 8 }) {
+      Row({ space: 10 }) {
+        Column() {
+          SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(18).fontColor([T.mintInk])
+        }.width(34).height(34).borderRadius(11).backgroundColor(T.mint)
+          .alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
+        Text(this.signedIn ? '本机未配置账号服务' : '登录后与 AI 一起观察')
+          .fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink).layoutWeight(1)
+      }.width('100%')
       Text(this.signedIn ?
         '在线 AI 暂不可用；手动聚焦、原始资料和手写手账仍可继续。' :
-        '在线 AI 只读取本件已核事实并引导观察；游客仍可手动转动模型、查看资料和写手账。')
+        'AI 只依据本件已核事实解释，资料不足会明确说明，不替代馆方原文。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
-    }.width('100%').alignItems(HorizontalAlign.Start).padding(12).backgroundColor(T.soft).borderRadius(12)
+      if (!this.signedIn) {
+        Text('登录入口：我的 → 账号与同步。离线仍可转动模型、查看资料和写手账。')
+          .fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+      }
+    }.width('100%').alignItems(HorizontalAlign.Start).padding(14).backgroundColor(T.soft).borderRadius(14)
       .id('ai-locked')
   }
 
   build() {
-    Column({ space: 10 }) {
+    Column({ space: 12 }) {
+      // 整条标题栏都可点击展开 / 收起，不再只依赖右上角的小按钮。
       Row({ space: 10 }) {
         Column() {
-          SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(21).fontColor([T.accent])
-        }.width(40).height(40).borderRadius(13).backgroundColor(T.accentSoft)
+          SymbolGlyph($r('sys.symbol.square_and_pencil')).fontSize(19).fontColor([T.mintInk])
+        }.width(36).height(36).borderRadius(12).backgroundColor(T.mint)
           .alignItems(HorizontalAlign.Center).justifyContent(FlexAlign.Center)
         Column({ space: 3 }) {
-          Text('AI 观察导览').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink).id('ai-panel-title')
-          Text(this.online() ? '在线模型 · 本件已核事实' : (this.signedIn ? '服务未配置 · 本地观察可用' : '登录后可用'))
-            .fontSize(F.caption).fontColor(T.muted)
+          Text('AI 观察').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink).id('ai-panel-title')
+          Text(this.online() ? '在线模型 · 已核事实' :
+            (this.signedIn ? '服务未配置 · 本地观察可用' : '登录后可用'))
+            .fontSize(F.caption).fontColor(T.muted).maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
         }.layoutWeight(1).alignItems(HorizontalAlign.Start)
-        Button(this.expanded ? '收起' : '展开', { type: ButtonType.Normal }).id('ai-panel-toggle')
-          .height(34).padding({ left: 12, right: 12 }).fontSize(F.caption).fontColor(T.accent)
-          .backgroundColor(T.accentSoft).borderRadius(10).onClick(() => this.toggle())
+        SymbolGlyph($r('sys.symbol.chevron_right')).fontSize(16).fontColor([T.mintInk])
+          .rotate({ angle: this.expanded ? 90 : 0 })
       }.width('100%').alignItems(VerticalAlign.Center)
+        .id('ai-panel-toggle')
+        .accessibilityText(this.expanded ? '收起 AI 观察' : '展开 AI 观察')
+        .onClick(() => this.toggle())
+
       if (!this.expanded) {
-        Text('“四面方鼎，为什么有八组上腹兽面纹？” 让 AI 带你找壁面正中与四个折角。')
-          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+        Column({ space: 7 }) {
+          Text(this.scope?.question || '这件器物该从哪里看？').fontSize(F.small).fontColor(T.ink)
+            .lineHeight(22).width('100%').maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
+          Row({ space: 6 }) {
+            Text(`和 AI 一起看${this.objectName()}`).fontSize(F.caption).fontColor(T.mintInk).layoutWeight(1)
+            SymbolGlyph($r('sys.symbol.arrow_right')).fontSize(14).fontColor([T.mintInk])
+          }.width('100%')
+        }.width('100%').padding(12).backgroundColor(T.soft).borderRadius(12)
+          .onClick(() => this.toggle())
       } else {
         if (!this.online()) {
           this.lockedBlock()
         } else {
+          // 当前对象与部位只出现一次，作为整段观察的上下文，不再和回答状态争夺一行。
+          Text(this.hotspotId && this.hotspotLabel(this.hotspotId) ?
+            `${this.objectName()} · ${this.hotspotLabel(this.hotspotId)}` : this.objectName())
+            .fontSize(F.caption).fontColor(T.mintInk).width('100%')
+            .padding({ left: 9, right: 9, top: 5, bottom: 5 }).backgroundColor(T.mint).borderRadius(8)
+            .maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
           if (this.phase === 'waiting') { this.waitingBlock() }
           if (this.phase === 'error') {
-            Column({ space: 8 }) {
+            Column({ space: 10 }) {
+              Row({ space: 8 }) {
+                Text('!').fontSize(F.small).fontWeight(FontWeight.Bold).fontColor($r('app.color.danger'))
+                  .width(18).height(18).textAlign(TextAlign.Center).backgroundColor(T.surface).borderRadius(9)
+                Text('这次没有生成回答').fontSize(F.small).fontWeight(FontWeight.Medium)
+                  .fontColor(T.ink).layoutWeight(1)
+              }.width('100%')
               Text(this.errorText).fontSize(F.caption).fontColor($r('app.color.danger')).lineHeight(20).width('100%')
-              Button('重试这次提问', { type: ButtonType.Normal }).id('ai-retry').width('100%').height(38)
-                .fontSize(F.caption).fontColor(T.accent).backgroundColor(T.surface).borderRadius(11)
-                .onClick(() => { this.submit(this.question); })
-            }.width('100%').padding(12).backgroundColor(T.accentSoft).borderRadius(12).id('ai-error')
+              Row({ space: 10 }) {
+                Button('重试', { type: ButtonType.Normal }).id('ai-retry').layoutWeight(1)
+                  .constraintSize({ minHeight: 40 }).fontSize(F.small).fontColor(T.accent)
+                  .backgroundColor(T.surface).borderRadius(11).border({ width: 1, color: T.accent, radius: 11 })
+                  .onClick(() => { this.submit(this.question); })
+                Button('手动观察', { type: ButtonType.Normal }).id('ai-error-manual').layoutWeight(1)
+                  .constraintSize({ minHeight: 40 }).fontSize(F.small).fontColor(T.muted)
+                  .backgroundColor(Color.Transparent).onClick(() => { this.expanded = false; })
+              }.width('100%')
+            }.width('100%').alignItems(HorizontalAlign.Start).padding(14)
+              .backgroundColor(T.accentSoft).borderRadius(14).id('ai-error')
           }
           if (this.phase === 'answered') { this.answerBlock() }
           if (this.infoText) {
@@ -568,11 +691,16 @@ export struct AiObservationPanel {
               .padding(10).backgroundColor(T.mint).borderRadius(10).id('ai-info')
           }
           if (this.phase === 'idle' && this.turns.length === 0 && !this.errorText && !this.initialQuestion) { this.starters() }
-          if ((this.phase === 'answered' && this.status === 'grounded') || this.initialObservation) { this.draftBlock() }
+          // 追问输入紧跟回答；草稿是第二步，放在输入之后，避免把“继续问”推到屏幕外。
           this.inputBlock()
+          if ((this.phase === 'answered' && this.status === 'grounded') || this.initialObservation) { this.draftBlock() }
+          Divider().color(T.line)
+          Text(`AI 仅使用本件 ${this.scope?.facts.length || 0} 条已核事实与 ` +
+            `${this.scope?.hotspots.length || 0} 个观察部位；资料不足会明确说明。`)
+            .fontSize(F.caption).fontColor(T.muted).lineHeight(18).width('100%')
         }
       }
-    }.width('100%').padding(14).backgroundColor(T.surface).borderRadius(18)
+    }.width('100%').padding(16).backgroundColor(T.surface).borderRadius(18)
       .border({ width: 1, color: T.line, radius: 18 }).margin({ top: 4 })
       .id('ai-observation-panel')
   }

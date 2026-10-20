@@ -56,7 +56,7 @@ export struct ProfilePage {
           Text(`${activeRecords(this.snapshot.records, 'note').length}`).fontSize(26).fontColor(T.ink).fontWeight(FontWeight.Bold)
           Text('我的手账').fontSize(F.caption).fontColor(T.muted)
         }.width('100%').padding({ top: 18, bottom: 18 })
-      }.layoutWeight(1).padding(0).backgroundColor(T.blue).borderRadius(8).id('profile-memories')
+      }.layoutWeight(1).padding(0).backgroundColor(T.blue).borderRadius(14).id('profile-memories')
         .onClick(() => this.onOpenMemory(false))
       Button({ type: ButtonType.Normal }) {
         Column({ space: 5 }) {
@@ -64,10 +64,10 @@ export struct ProfilePage {
             .fontSize(26).fontColor(T.mintInk).fontWeight(FontWeight.Bold)
           Text('AI 辅助手账').fontSize(F.caption).fontColor(T.mintInk)
         }.width('100%').padding({ top: 18, bottom: 18 })
-      }.layoutWeight(1).padding(0).backgroundColor(T.mint).borderRadius(8).id('profile-ai-memories')
+      }.layoutWeight(1).padding(0).backgroundColor(T.mint).borderRadius(14).id('profile-ai-memories')
         .onClick(() => this.onOpenMemory(true))
     }.width('100%').margin({ top: 18, bottom: 8 })
-    this.menuRow('AI 观察导览', '杜岭二号方鼎 · 提问、看部位、查依据', $r('sys.symbol.square_and_pencil'),
+    this.menuRow('AI 观察', '方鼎与双连壶 · 提问、看部位、查依据', $r('sys.symbol.square_and_pencil'),
       'profile-ai-open', this.onOpenAi)
     this.menuRow('我的主题漫游', '三条路线与真实探索进度', $r('sys.symbol.map'),
       'profile-journeys', () => this.onOpenSection('journeys'))
@@ -121,8 +121,8 @@ export struct ProfilePage {
       Text('图像与模型').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.accent).width('100%')
       Text('封面插画与程序化几何为原创学习示意，不是文物照片、测绘或考古复原；比例、纹样和标记均已简化。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
-      Text('AI 参考解读').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.accent).width('100%')
-      Text('AI 只依据本对象的已核事实解释，资料不足时会明确说明；回答是参考解读，不替代馆方原文或人工校审。')
+      Text('AI 参考解读').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.mintInk).width('100%')
+      Text('当前开放杜岭二号方鼎与大河村彩陶双连壶两件；AI 只依据本对象已核事实解释，资料不足时会明确说明，不替代馆方原文或人工校审。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
       Text('提问会发送到在线模型服务，仅用于生成这次回答；请勿输入个人敏感信息。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')

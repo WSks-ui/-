@@ -1,7 +1,7 @@
 {
   "app": {
-    "bundleName": "com.chr.myapplication",
-    "vendor": "example",
+    "bundleName": "com.yunheji.archive",
+    "vendor": "yunheji",
     "versionCode": 10000,
     "versionName": "0.1.0",
     "buildVersion": "1",

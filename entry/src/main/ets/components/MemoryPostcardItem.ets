@@ -78,8 +78,9 @@ export struct MemoryPostcardItem {
                 .backgroundColor(this.paperSurface()).borderRadius(8)
             }
             if (this.note.aiAssist) {
-              Text('AI 辅助').fontSize(F.caption).fontColor(T.accent)
-                .padding({ left: 7, right: 7, top: 3, bottom: 3 }).backgroundColor(T.accentSoft).borderRadius(8)
+              // AI 辅助用青色语义，和纸色 / 印章等装饰标签区分；不占用主色玫瑰。
+              Text('AI 辅助').fontSize(F.caption).fontColor(T.mintInk)
+                .padding({ left: 7, right: 7, top: 3, bottom: 3 }).backgroundColor(T.mint).borderRadius(8)
                 .id(`memory-ai-assist-${this.note.id}`)
             }
           }.layoutWeight(1)
@@ -161,7 +162,8 @@ export struct MemoryPostcardItem {
             .accessibilityText(`阅读${this.site.name}手账全文`).onClick(() => this.onOpen())
           if (this.canAsk) {
             Button('问 AI', { type: ButtonType.Normal }).id(`memory-ask-${this.note.id}`)
-              .height(38).fontSize(F.caption).fontColor(T.mintInk).backgroundColor(T.mint).borderRadius(8)
+              .constraintSize({ minHeight: 38 }).fontSize(F.caption).fontColor(T.mintInk)
+              .backgroundColor(T.mint).borderRadius(11).accessibilityText('带着这页手账继续问 AI')
               .onClick(() => this.onAsk())
           }
         }.width('100%')

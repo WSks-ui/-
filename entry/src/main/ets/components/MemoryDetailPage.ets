@@ -1,6 +1,6 @@
 import { activeRecords, AiFactSnapshot, ArchiveRecord, ArchiveSnapshot, copySnapshot, nextTimestamp } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
-import { AI_OBSERVATION_SITE_ID } from '../domain/AiObservation';
+import { isAiObservationSite } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
 import { MemoryPosePreview } from './MemoryPosePreview';
@@ -93,27 +93,43 @@ export struct MemoryDetailPage {
       }
       if (note.aiAssist) {
         Divider().color(T.line)
-        Text('这次观察的问题').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.mintInk).width('100%')
-        Text(note.aiAssist.question).fontSize(F.body).fontColor(T.ink).lineHeight(26).width('100%')
-          .id('memory-detail-question')
-        Button(this.evidenceOpen ? '收起保存时的依据' : `保存时的依据 · ${note.aiAssist.facts.length} 条`,
-          { type: ButtonType.Normal }).id('memory-detail-evidence').height(40).width('100%')
-          .fontColor(T.mintInk).backgroundColor(T.mint).onClick(() => { this.evidenceOpen = !this.evidenceOpen; })
-        if (this.evidenceOpen) {
-          ForEach(note.aiAssist.facts, (fact: AiFactSnapshot) => {
-            Column({ space: 8 }) {
-              Text(fact.title).fontSize(F.small).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
-              Text(fact.body).fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%')
-              Text(fact.sourceIds.map((id: string) => this.sourceLabel(id)).join('\n'))
-                .fontSize(F.caption).fontColor(T.mintInk).lineHeight(20).width('100%')
-            }.width('100%').alignItems(HorizontalAlign.Start).id(`memory-fact-${fact.id}`)
-          }, (fact: AiFactSnapshot) => fact.id)
-          Text(`AI 辅助整理 · 保存时资料 v${note.aiAssist.contentRevision}`).fontSize(F.caption).fontColor(T.muted)
-        }
+        Column({ space: 10 }) {
+          Row({ space: 8 }) {
+            Text('AI 辅助记录').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.mintInk).layoutWeight(1)
+            Text(`资料 v${note.aiAssist.contentRevision}`).fontSize(F.caption).fontColor(T.tertiary)
+          }.width('100%')
+          Text('这次观察的问题').fontSize(F.caption).fontColor(T.muted).width('100%')
+          Text(note.aiAssist.question).fontSize(F.body).fontColor(T.ink).lineHeight(26).width('100%')
+            .id('memory-detail-question')
+          Button(this.evidenceOpen ? '收起保存时的依据' : `保存时的依据 · ${note.aiAssist.facts.length} 条`,
+            { type: ButtonType.Normal }).id('memory-detail-evidence').width('100%')
+            .constraintSize({ minHeight: 40 }).fontSize(F.small).fontColor(T.mintInk).backgroundColor(T.mint)
+            .borderRadius(11).onClick(() => { this.evidenceOpen = !this.evidenceOpen; })
+          if (this.evidenceOpen) {
+            Column({ space: 12 }) {
+              ForEach(note.aiAssist.facts, (fact: AiFactSnapshot) => {
+                Column({ space: 8 }) {
+                  Text(fact.title).fontSize(F.small).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
+                  Text(fact.body).fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%')
+                  Text(fact.sourceIds.map((id: string) => this.sourceLabel(id)).join('\n'))
+                    .fontSize(F.caption).fontColor(T.mintInk).lineHeight(20).width('100%')
+                }.width('100%').alignItems(HorizontalAlign.Start).padding(12).backgroundColor(T.surface)
+                  .borderRadius(11).border({ width: 1, color: T.line, radius: 11 })
+                  .id(`memory-fact-${fact.id}`)
+              }, (fact: AiFactSnapshot) => fact.id)
+            }.width('100%')
+          }
+        }.width('100%').alignItems(HorizontalAlign.Start).padding(14).backgroundColor(T.soft).borderRadius(14)
+          .id('memory-ai-block')
       }
-      if (note.siteId === AI_OBSERVATION_SITE_ID) {
-        Button('带着这页手账问 AI', { type: ButtonType.Normal }).id('memory-detail-ai').width('100%').height(44)
-          .fontColor(T.mintInk).backgroundColor(T.mint).onClick(() => this.onAsk(note))
+      // 单一入口：有 AI 依据时用主色强调，普通手账用青色；不重复声明同一个控件 id。
+      if (isAiObservationSite(note.siteId)) {
+        Button('带着这页手账问 AI', { type: ButtonType.Normal }).id('memory-detail-ai').width('100%')
+          .constraintSize({ minHeight: 44 }).fontSize(F.small)
+          .fontColor(note.aiAssist ? T.onAccent : T.mintInk)
+          .backgroundColor(note.aiAssist ? T.accent : T.mint).borderRadius(11)
+          .accessibilityText('带着这页手账继续问 AI')
+          .onClick(() => this.onAsk(note))
       }
       Row({ space: 12 }) {
         Button('编辑手账', { type: ButtonType.Normal }).id('memory-detail-edit').height(42).layoutWeight(1)

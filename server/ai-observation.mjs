@@ -2,10 +2,13 @@ import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import {
-  AI_CONTENT_REVISION, AI_OBSERVATION_SITE_ID, aiHotspotLabel, buildAiKnowledgeScope,
-  validateAiObservationReply, validateAiObservationRequest
+  AI_CONTENT_REVISION, AI_OBSERVATION_SITE_ID, AI_OBSERVATION_SITE_IDS, aiHotspotLabel, buildAiKnowledgeScope,
+  isAiObservationSite, validateAiObservationReply, validateAiObservationRequest
 } from '../entry/src/main/ets/domain/AiObservation.ts';
 import { materialStudyForId } from '../entry/src/main/ets/data/MaterialStudyCatalog.ts';
+// Node 运行期不会为无扩展名导入做解析，因此服务端直接引用每个对象的独立热点模块，
+// 不经过 MaterialObservation.ts 这个 ArkTS 侧的聚合入口；两边共用同一份常量。
+import { DAHECUN_OBSERVATION } from '../entry/src/main/ets/domain/DahecunObservation.ts';
 import { DULING_OBSERVATION } from '../entry/src/main/ets/domain/DulingObservation.ts';
 
 // 模型适配层只做三件事：按服务端掌握的资料组装提示、发起一次受控请求、把结果归一成应用契约。
@@ -16,12 +19,24 @@ const DEFAULT_BASE_URL = 'https://api.deepseek.com';
 const DEFAULT_CONFIG_URL = new URL('../.local/ai-observation/config.json', import.meta.url);
 const MODEL_PATTERN = /^[A-Za-z0-9._:-]{1,80}$/;
 
-// 服务端直接读取现有内容目录与热点定义，和客户端共用同一份事实正文；不另外维护题库正文。
-const DULING_STUDY = materialStudyForId(AI_OBSERVATION_SITE_ID);
-const DULING_SCOPE = DULING_STUDY ? buildAiKnowledgeScope(DULING_STUDY, DULING_OBSERVATION) : undefined;
+// 服务端直接读取现有内容目录与热点定义，和客户端共用同一份事实与热点；
+// 作用域按白名单预组装。缺少事实或 revision 2 场景的对象不会悄悄降级成通用热点，
+// 而是从清单中缺席，请求会被当作非法对象拒绝。
+const OBSERVATIONS = new Map([
+  [DAHECUN_OBSERVATION.siteId, DAHECUN_OBSERVATION],
+  [DULING_OBSERVATION.siteId, DULING_OBSERVATION]
+]);
+const SCOPES = new Map();
+for (const siteId of AI_OBSERVATION_SITE_IDS) {
+  const study = materialStudyForId(siteId);
+  const observation = OBSERVATIONS.get(siteId);
+  if (study && observation && observation.sceneRevision === 2) {
+    SCOPES.set(siteId, buildAiKnowledgeScope(study, observation));
+  }
+}
 
 export function aiScopeFor(siteId) {
-  return siteId === AI_OBSERVATION_SITE_ID ? DULING_SCOPE : undefined;
+  return isAiObservationSite(siteId) ? SCOPES.get(siteId) : undefined;
 }
 
 const fail = (code, status = 400) => Object.assign(new Error(code), { status });
@@ -90,8 +105,9 @@ export function buildObservationMessages(scope, request) {
     '本次 purpose 是 draft_memory：还必须填写 draft（body 40—120 字可编辑草稿、1—3 个短标签、合法 factIds）。草稿保留用户原意，不虚构到馆、亲眼见到实物或未提供的行程；不要包含自动保存指令。' :
     '本次 purpose 是 observe：不要填写 draft。';
   const system = [
-    '你是“云河纪”的中文文化观察导览，只服务一件文物：杜岭二号方鼎（zz-duling-fangding）。',
+    `你是“云河纪”的中文文化观察导览，只服务一件对象：${scope.objectName}（${scope.siteId}）。`,
     '你的任务不是讲百科，而是依据下列资料，引导用户观察原生示意中的具体部位，并允许用户核对依据。',
+    `本件引导问题：${scope.question}`,
     '资料事实（唯一允许引用的事实）：',
     JSON.stringify(scope.facts),
     '来源（不得编造其他来源、作者或网址）：',
@@ -103,7 +119,7 @@ export function buildObservationMessages(scope, request) {
     '图注与资料边界：',
     `${scope.visualCaption}；${scope.evidenceLimit}`,
     '必须区分三类信息：资料事实；场景说明（玫瑰标记、陶土色折片、镜头与简化几何）；个人表达。',
-    '资料没有支持的纹样寓意、祭祀对象、族属、制作细节、传承关系或其他文物信息，必须明确说“当前资料不足”，不要猜测，不要补写来源。',
+    '资料没有支持的用途、寓意、祭祀对象、族属、制作工艺、传承关系或其他对象信息，必须明确说“当前资料不足”，不要猜测，不要补写来源。',
     '回答控制在 80—180 个汉字：先直接回答，再给一个可执行的观察动作；不要重复用户问题；不要使用 Markdown。',
     'status 只能取 grounded、needs_clarification、insufficient_evidence；grounded 必须至少引用一个合法 factId。',
     'actions 只能从 focus_hotspot 和 show_evidence 中选：focus_hotspot 必须给合法 hotspotId；show_evidence 必须给合法 factIds。可以不返回动作。',
@@ -162,7 +178,7 @@ export function observationTool(request) {
     type: 'function',
     function: {
       name: 'submit_observation',
-      description: '提交依据已核资料事实的方鼎观察导览回答',
+      description: '提交依据已核资料事实的文化观察导览回答',
       parameters: { type: 'object', properties, required }
     }
   };
@@ -200,6 +216,16 @@ function normalizeAction(raw, scope) {
   return undefined;
 }
 
+function normalizeChineseSpacing(text) {
+  // 防御性归一化：不同供应商 / 终端可能把汉字之间的空白或零宽字符放大成可见断字。
+  // 只折叠“汉字 + 空白 + 汉字”并移除零宽字符，保留数字、英文、单位与标点周围的空格；
+  // 该归一化只影响展示与保存文本，不改变事实、引用或动作校验。
+  // 先去掉零宽字符（模型偶尔夹带 U+200B 等不可见分隔符），再用前向断言折叠空白：
+  // “所 以 要”这类连续伪影只删除空白、不消耗后一个汉字，否则全局替换会漏掉紧邻项。
+  const cleaned = text.replace(/[\u200b\u200c\u200d\u2060\ufeff]/g, '');
+  return cleaned.replace(/([\u4e00-\u9fff])\s+(?=[\u4e00-\u9fff])/g, '$1');
+}
+
 function normalizeReply(raw, request, scope) {
   // 模型只提供内容字段；请求身份、对象和资料修订由服务端设置，不能靠模型猜。
   let actions = [];
@@ -218,7 +244,7 @@ function normalizeReply(raw, request, scope) {
   if (request.purpose === 'draft_memory' && raw.draft !== undefined) {
     if (!raw.draft || typeof raw.draft !== 'object' || Array.isArray(raw.draft)) throw fail('AI_INVALID_REPLY', 502);
     draft = {
-      body: typeof raw.draft.body === 'string' ? raw.draft.body : '',
+      body: typeof raw.draft.body === 'string' ? normalizeChineseSpacing(raw.draft.body) : '',
       tags: stringArray(raw.draft.tags),
       factIds: stringArray(raw.draft.factIds)
     };
@@ -227,7 +253,7 @@ function normalizeReply(raw, request, scope) {
     version: request.version, requestId: request.requestId, siteId: request.siteId,
     contentRevision: scope.contentRevision,
     status: typeof raw.status === 'string' ? raw.status : '',
-    answer: typeof raw.answer === 'string' ? raw.answer : '',
+    answer: typeof raw.answer === 'string' ? normalizeChineseSpacing(raw.answer) : '',
     factIds, actions, draft
   };
 }
@@ -289,8 +315,11 @@ export function createAiObservationService({ configuration, fetchImpl = globalTh
     }
     if (!response || !response.ok) {
       // 不读取或记录供应商错误正文，避免把密钥、请求内容或账号信息带进日志。
-      throw fail(response && response.status === 429 ? 'AI_RATE_LIMITED' : 'AI_PROVIDER_ERROR',
-        response && response.status === 429 ? 429 : 502);
+      // 401/402 单独成码：现场能区分“凭证失效”与“余额不足”，而不是笼统的网络错误。
+      const status = response ? response.status : 0;
+      if (status === 401) throw fail('AI_PROVIDER_AUTH', 503);
+      if (status === 402) throw fail('AI_PROVIDER_QUOTA', 503);
+      throw fail(status === 429 ? 'AI_RATE_LIMITED' : 'AI_PROVIDER_ERROR', status === 429 ? 429 : 502);
     }
     let payload;
     try { payload = await response.json(); }
@@ -321,11 +350,36 @@ export function createAiObservationService({ configuration, fetchImpl = globalTh
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   // 便于不启动 HTTPS 服务时单独检查配置与真实调用；密钥仍只从配置或环境读取。
   const config = loadAiConfiguration();
-  const service = createAiObservationService({ configuration: config });
-  const question = process.argv.slice(2).join(' ') || '只有四面，八组是怎么数出来的？';
+  // stdout 只输出结构化结果，调用元数据走 stderr，便于脚本落盘与逐条比对。
+  const service = createAiObservationService({
+    configuration: config,
+    logger: { info: (message) => process.stderr.write(`${message}\n`) }
+  });
+  // 用法：node ... server/ai-observation.mjs --site zz-dahecun --hotspot opening "问题"
+  // 追加 --draft "个人观察" 可检查 AI 手账草稿路径；未指定的对象仍为方鼎；
+  // 问题缺省时使用该对象的引导问题，便于逐对象检查真实回答。
+  const args = process.argv.slice(2);
+  let siteId = AI_OBSERVATION_SITE_ID;
+  let hotspotId = '';
+  let draftObservation = '';
+  const questionParts = [];
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--site') { siteId = args[++i] || ''; }
+    else if (args[i] === '--hotspot') { hotspotId = args[++i] || ''; }
+    else if (args[i] === '--draft') { draftObservation = args[++i] || ''; }
+    else questionParts.push(args[i]);
+  }
+  const scope = aiScopeFor(siteId);
+  if (!scope) {
+    process.stderr.write(`不支持的 AI 对象：${siteId}\n`);
+    process.exit(1);
+  }
+  if (!hotspotId) hotspotId = scope.hotspots.length > 0 ? scope.hotspots[0].id : '';
+  const question = questionParts.join(' ').trim() || scope.question;
   const request = {
-    version: 1, requestId: `cli-${Date.now()}`, siteId: 'zz-duling-fangding', sceneRevision: 2,
-    hotspotId: 'centers', purpose: 'observe', question, turns: [], userObservation: ''
+    version: 1, requestId: `cli-${Date.now()}`, siteId, sceneRevision: scope.sceneRevision,
+    hotspotId, purpose: draftObservation ? 'draft_memory' : 'observe',
+    question, turns: [], userObservation: draftObservation
   };
   try {
     const reply = await service.run(request, { account_id: 'cli' });

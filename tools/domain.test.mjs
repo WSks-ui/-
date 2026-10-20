@@ -16,7 +16,7 @@ import { materialStudyForId } from '../entry/src/main/ets/data/MaterialStudyCata
 import { UnavailableSyncGateway } from '../entry/src/main/ets/sync/SyncGateway.ts';
 import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/ets/platform/ArchiveLaunch.ts';
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
-import { accountStoreName, changedAccountView, guestAccountView, validateAccountInput, validateAccountSession, validateAccountReply } from '../entry/src/main/ets/domain/AccountSync.ts';
+import { accountStoreName, changedAccountView, guestAccountView, validateAccountInput, validateAccountSession, validateAccountReply, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
 import './memory-journal.test.mjs';
 import './journey-routes.test.mjs';
 
@@ -40,6 +40,25 @@ test('account authentication and sync responses reject invalid identity and stat
   validateAccountReply(reply, session.accountId);
   assert.throws(() => validateAccountReply(reply, 'b'.repeat(32)));
   assert.throws(() => validateAccountReply({ ...reply, otherDevices: -1 }, session.accountId));
+});
+
+test('service endpoint accepts only loopback or private LAN over HTTPS in debug builds', () => {
+  // 校赛演示允许服务跑在开发机或同网段电脑；release 与公网地址必须被拒绝。
+  assert.equal(validateServiceEndpoint('https://127.0.0.1:18443', true), true);
+  assert.equal(validateServiceEndpoint('https://localhost:18443', true), true);
+  assert.equal(validateServiceEndpoint('https://192.168.1.20:18443', true), true);
+  assert.equal(validateServiceEndpoint('https://10.0.0.5:8443', true), true);
+  assert.equal(validateServiceEndpoint('https://172.16.3.4:18443', true), true);
+  assert.equal(validateServiceEndpoint('https://172.31.255.254:18443', true), true);
+  assert.equal(validateServiceEndpoint('https://172.32.0.1:18443', true), false);
+  assert.equal(validateServiceEndpoint('https://8.8.8.8:18443', true), false);
+  assert.equal(validateServiceEndpoint('https://192.169.1.1:18443', true), false);
+  assert.equal(validateServiceEndpoint('https://192.168.1.256:18443', true), false);
+  assert.equal(validateServiceEndpoint('http://127.0.0.1:18443', true), false);
+  assert.equal(validateServiceEndpoint('https://127.0.0.1:80', true), false);
+  assert.equal(validateServiceEndpoint('https://127.0.0.1:18443/sync', true), false);
+  assert.equal(validateServiceEndpoint('https://user@127.0.0.1:18443', true), false);
+  assert.equal(validateServiceEndpoint('https://127.0.0.1:18443', false), false);
 });
 
 test('account view never manufactures sync success for a guest or unavailable service', () => {

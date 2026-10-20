@@ -20,7 +20,7 @@ import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 import { MemoryPostcardItem } from './MemoryPostcardItem';
 import { defaultStampForSite, PAPER_THEMES, paperThemeLabel, STAMP_TYPES, memoryQuoteForSite } from '../domain/MemoryJournal';
 import type { AiDraftAdoption, AiObservationReply, AiObservationRequest } from '../domain/AiObservation';
-import { buildAiMemoryAssist } from '../domain/AiObservation';
+import { buildAiMemoryAssist, isAiObservationSite } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
 import { AiObservationPanel } from './AiObservationPanel';
 
@@ -169,7 +169,7 @@ export struct SiteDetail {
     // 先落选中状态再发独立请求序号；同一热点连续请求也能再次聚焦，不复用回放成功文案。
     this.selectHotspot(hotspotId);
     this.focusRequestJson = JSON.stringify({ hotspotId, request: Date.now() });
-    this.aiReturnText = `已聚焦 · ${this.selectedObservationLabel()}`;
+    this.aiReturnText = `AI 已定位 · ${this.selectedObservationLabel()}`;
     this.aiReturnVisible = true;
     // 回答面板在页面下方；点观察动作后必须把真实模型带回可见区域，否则旋转发生在屏幕外。
     this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0, animation: { duration: 350 } });
@@ -322,8 +322,10 @@ export struct SiteDetail {
       }
       if (this.aiReturnVisible) {
         Row({ space: 8 }) {
+          SymbolGlyph($r('sys.symbol.map')).fontSize(15).fontColor([T.mintInk])
           Text(this.aiReturnText).fontSize(F.caption).fontColor(T.mintInk).layoutWeight(1).maxLines(1).id('ai-focus-visible')
-          Button('继续追问', { type: ButtonType.Normal }).id('ai-continue').height(30).fontSize(F.caption)
+          Button('继续追问', { type: ButtonType.Normal }).id('ai-continue').constraintSize({ minHeight: 34 })
+            .fontSize(F.caption)
             .padding({ left: 10, right: 10 }).fontColor(T.mintInk).backgroundColor(T.surface).borderRadius(8)
             .onClick(() => {
               this.aiReturnVisible = false;
@@ -373,22 +375,9 @@ export struct SiteDetail {
             .backgroundColor(this.hotspot === 'story' ? T.accentSoft : T.soft)
         }.width('100%')
         }
-        Text(this.observation() ? this.selectedObservationReading() :
-          (this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history))
-          .fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%').id('engine-hotspot-reading')
-          .maxLines(this.site.id === 'zz-duling-fangding' ? 1 : 20).textOverflow({ overflow: TextOverflow.Ellipsis })
-          .maxLines(3).textOverflow({ overflow: TextOverflow.Ellipsis })
-        Text(this.observation()?.notice || '按档案主题生成的几何与装饰示意，非文物或遗址复原。')
-          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').id('site-object-notice')
-          .maxLines(this.site.id === 'zz-duling-fangding' ? 1 : 20).textOverflow({ overflow: TextOverflow.Ellipsis })
-        Row() {
-          Blank()
-          Button(this.infoOpen ? '收起说明' : '资料说明', { type: ButtonType.Normal }).id('detail-info').height(30).fontSize(F.caption)
-            .padding({ left: 10, right: 10 }).fontColor(T.accent).backgroundColor(T.accentSoft).borderRadius(8)
-            .onClick(() => { this.infoOpen = !this.infoOpen; })
-        }.width('100%')
-        if (this.infoOpen) { this.infoSheet() }
-        if (this.observation() && this.site.id === 'zz-duling-fangding') {
+        // AI 入口放在热点按钮之后、长正文之前：折叠态只占一条问题卡，首屏即可发现；
+        // 入口仍跟随白名单，没有 revision 2 场景或不在清单内的档案只保留手动观察。
+        if (this.observation() && isAiObservationSite(this.site.id)) {
           Column() {
           AiObservationPanel({
             siteId: this.site.id, sceneRevision: this.sceneRevision(), hotspotId: this.hotspot,
@@ -400,7 +389,7 @@ export struct SiteDetail {
             onAiRequest: this.onAiRequest, onAiCancel: this.onAiCancel
           })
           }.width('100%').onAreaChange((_old: Area, area: Area) => {
-            // 这里位于详情的首个内容 Column，位置是实际布局坐标，避免硬编码滚动 320vp。
+            // 位置来自实际布局坐标，不硬编码滚动距离；面板上移后继续用于“继续追问”。
             this.aiPanelOffset = Number(area.position.y);
           })
           if (this.aiNotice) {
@@ -408,6 +397,20 @@ export struct SiteDetail {
               .padding(10).backgroundColor(T.mint).borderRadius(10).id('ai-view-notice')
           }
         }
+        Text(this.observation() ? this.selectedObservationReading() :
+          (this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history))
+          .fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%').id('engine-hotspot-reading')
+          .maxLines(3).textOverflow({ overflow: TextOverflow.Ellipsis })
+        Text(this.observation()?.notice || '按档案主题生成的几何与装饰示意，非文物或遗址复原。')
+          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').id('site-object-notice')
+          .maxLines(3).textOverflow({ overflow: TextOverflow.Ellipsis })
+        Row() {
+          Blank()
+          Button(this.infoOpen ? '收起说明' : '资料说明', { type: ButtonType.Normal }).id('detail-info').height(30).fontSize(F.caption)
+            .padding({ left: 10, right: 10 }).fontColor(T.accent).backgroundColor(T.accentSoft).borderRadius(8)
+            .onClick(() => { this.infoOpen = !this.infoOpen; })
+        }.width('100%')
+        if (this.infoOpen) { this.infoSheet() }
       } else {
         Text('四层表示阅读主题，未核实为该遗址的真实考古层序。')
           .fontSize(F.caption).fontColor(T.accent).lineHeight(20).width('100%')

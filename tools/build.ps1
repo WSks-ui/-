@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$DevEcoHome = $env:DEVECO_HOME,
     [string]$Task = 'assembleHap',
     [string]$Target = 'default'
@@ -6,6 +6,8 @@ param(
 
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'deveco-path.ps1')
+# 先清理大小写重复的代理变量，否则下面的 Start-Process 会直接抛字典重复键。
+Remove-DuplicateProxyEnvironment
 $DevEcoHome = Resolve-YunhejiDevEcoHome -DevEcoHome $DevEcoHome
 $node = Join-Path $DevEcoHome 'tools\node\node.exe'
 $hvigor = Join-Path $DevEcoHome 'tools\hvigor\bin\hvigorw.js'

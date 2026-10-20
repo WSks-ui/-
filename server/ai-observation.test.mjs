@@ -142,19 +142,44 @@ test('timeouts, provider errors and rate limits map to distinct states', async (
     fetchImpl: async () => ({ ok: false, status: 429, json: async () => ({}) })
   });
   await assert.rejects(() => limited.run(request(), {}), error => error.message === 'AI_RATE_LIMITED' && error.status === 429);
+  // 凭证与余额分别成码，避免现场把 401/402 误判成网络故障。
+  const unauthorized = createAiObservationService({
+    configuration: configuration(),
+    fetchImpl: async () => ({ ok: false, status: 401, json: async () => ({}) })
+  });
+  await assert.rejects(() => unauthorized.run(request(), {}), error => error.message === 'AI_PROVIDER_AUTH' && error.status === 503);
+  const unpaid = createAiObservationService({
+    configuration: configuration(),
+    fetchImpl: async () => ({ ok: false, status: 402, json: async () => ({}) })
+  });
+  await assert.rejects(() => unpaid.run(request(), {}), error => error.message === 'AI_PROVIDER_QUOTA' && error.status === 503);
 });
 
-test('server rejects another site or unknown hotspot before calling the model', async () => {
+test('server rejects unsupported sites or unknown hotspot before calling the model', async () => {
   let calls = 0;
   const service = createAiObservationService({
     configuration: configuration(),
     fetchImpl: async () => { calls++; return response(modelReply()); }
   });
-  await assert.rejects(() => service.run(request({ siteId: 'zz-dahecun' }), {}), error => error.message === 'AI_INVALID_REQUEST');
+  // 庙底沟有资料但未开放 AI；双连壶已开放，但 paint 是它的热点，不能用于方鼎请求。
+  await assert.rejects(() => service.run(request({ siteId: 'smx-miaodigou' }), {}), error => error.message === 'AI_INVALID_REQUEST');
   await assert.rejects(() => service.run(request({ hotspotId: 'paint' }), {}), error => error.message === 'AI_INVALID_REQUEST');
   assert.equal(calls, 0);
-  assert.equal(aiScopeFor('zz-dahecun'), undefined);
+  assert.equal(aiScopeFor('smx-miaodigou'), undefined);
   assert.equal(aiScopeFor('zz-duling-fangding').facts.length, 3);
+  assert.equal(aiScopeFor('zz-dahecun').facts.length, 3);
+});
+
+test('twin vessel prompt uses its own object, facts and hotspots', () => {
+  const scope = aiScopeFor('zz-dahecun');
+  const twinRequest = request({ siteId: 'zz-dahecun', hotspotId: 'opening', question: scope.question });
+  const messages = buildObservationMessages(scope, twinRequest);
+  const system = messages[0].content;
+  assert.ok(system.includes('大河村彩陶双连壶'));
+  assert.ok(system.includes('椭圆形通口'));
+  assert.ok(system.includes('opening'));
+  assert.ok(!system.includes('上腹兽面纹'));
+  assert.ok(messages[1].content.includes('内部相通'));
 });
 
 test('prompt keeps the three fact bodies and forbids unsupported conclusions', () => {
@@ -169,6 +194,21 @@ test('prompt keeps the three fact bodies and forbids unsupported conclusions', (
   assert.match(system, /show_evidence/);
   assert.match(system, /submit_observation/);
   assert.ok(messages[1].content.includes('只有四面'));
+});
+
+test('model output normalizes spaces between Chinese characters only', async () => {
+  // 防御性归一化：即使供应商在汉字间夹带空白或零宽字符，也只折叠汉字之间的部分；
+  // 数字、英文和单位周围的空格必须保留，避免把有意义的排版一起改掉。
+  const service = createAiObservationService({
+    configuration: configuration(),
+    fetchImpl: async () => response(modelReply({
+      answer: '所 以 要看折角，竖\u200b向，共 8 组，详见 Han 8。',
+      draft: { body: '我把四面 和折角分开看。', tags: ['观察'], factIds: ['duling-eight'] }
+    }))
+  });
+  const reply = await service.run(request({ purpose: 'draft_memory', userObservation: '我先看了四面。' }), {});
+  assert.equal(reply.answer, '所以要看折角，竖向，共 8 组，详见 Han 8。');
+  assert.equal(reply.draft.body, '我把四面和折角分开看。');
 });
 
 test('revisiting a note includes only its confirmed observation as personal expression', () => {

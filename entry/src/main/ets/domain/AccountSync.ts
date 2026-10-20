@@ -86,6 +86,31 @@ export function validateAccountReply(reply: AccountSyncReply, accountId: string)
   if (!Array.isArray(reply.records)) throw new Error('ACCOUNT_INVALID_RESPONSE');
 }
 
+// 校赛演示的服务端点白名单：只允许本机回环与私有局域网 IPv4，并且只在 debug 包生效。
+// 原因：账号与 AI 服务跑在开发机（或同网段电脑）上，模拟器经 HDC 反向端口 / 局域网访问；
+// release 不能继续信任自签证书，因此这里直接拒绝，正式发布须另配受信任的 TLS 端点。
+// 修改边界：调整 host / 端口规则时，必须同步更新 tools/domain.test.mjs 的边界用例，
+// 并确认 tools/start-account-server.ps1 写入的证书 SAN 覆盖新地址，否则 HTTPS 会校验证书失败。
+export function validateServiceEndpoint(endpoint: string, debug: boolean): boolean {
+  if (!debug) return false;
+  const match = /^https:\/\/([^/:]+):(\d{4,5})$/.exec(endpoint);
+  if (!match) return false;
+  const port = Number(match[2]);
+  if (!Number.isInteger(port) || port < 1024 || port > 65535) return false;
+  const host = match[1];
+  if (host === 'localhost') return true;
+  const parts = host.split('.').map((value: string) => Number(value));
+  if (parts.length !== 4) return false;
+  for (const value of parts) {
+    if (!Number.isInteger(value) || value < 0 || value > 255) return false;
+  }
+  // 127.0.0.0/8 为回环；10/8、172.16/12、192.168/16 为私有网段。
+  if (parts[0] === 127 || parts[0] === 10) return true;
+  if (parts[0] === 192 && parts[1] === 168) return true;
+  if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return true;
+  return false;
+}
+
 export function accountErrorMessage(code: string): string {
   switch (code) {
     case 'ACCOUNT_INVALID_NAME': return '账号使用 4—32 位字母、数字或下划线。';

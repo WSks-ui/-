@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "date": "2026-10-19",
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "endpoint": "https://api.deepseek.com/chat/completions",
+    "mode": "forced tool call submit_observation; thinking disabled; max_tokens 1200",
+    "packageSha256": "a60ddf5b6f36fc87648c0a5a94a3e4d7a81e5ca534c74455a2780adc4c593b42",
+    "gitHead": "d214c7f",
+    "note": "账号为演示账号；原始输出不含密钥、密码或私人记录。首次尝试因 402 余额不足中断，充值后重采。"
+  },
+  "summary": {
+    "samples": 5,
+    "passed": 5,
+    "elapsedMinMs": 1670,
+    "elapsedMaxMs": 2024
+  },
+  "samples": [
+    {
+      "id": 1,
+      "siteId": "zz-dahecun",
+      "hotspotId": "mouth",
+      "purpose": "observe",
+      "question": "两只壶各有自己的口，为什么还算一件器物？",
+      "httpStatus": 200,
+      "elapsedMs": 1795,
+      "status": "grounded",
+      "factIds": [
+        "dahecun-object",
+        "dahecun-opening"
+      ],
+      "actions": [
+        {
+          "type": "focus_hotspot",
+          "hotspotId": "opening",
+          "label": "看腹部通口",
+          "factIds": [
+            "dahecun-opening"
+          ]
+        },
+        {
+          "type": "show_evidence",
+          "hotspotId": "",
+          "label": "查看依据",
+          "factIds": [
+            "dahecun-opening",
+            "dahecun-object"
+          ]
+        }
+      ],
+      "answer": "两只壶虽各有壶口，却在腹部并列接合，接合处留有一个椭圆形通口，使两壶内部相通，因此被视为一件器物。示意中浅绿色通道即表达这一内部关系，属剖开解释，比例与纹线已简化。请把视线移到两壶腹部相接处，找到那个椭圆通口，再沿浅绿色通道看它如何连通两侧壶腔。",
+      "judgment": "通过：以腹部椭圆通口说明两壶内部相连，未推断用途或寓意。"
+    },
+    {
+      "id": 2,
+      "siteId": "zz-dahecun",
+      "hotspotId": "opening",
+      "purpose": "observe",
+      "question": "腹部相通的位置在哪里？",
+      "httpStatus": 200,
+      "elapsedMs": 1675,
+      "status": "grounded",
+      "factIds": [
+        "dahecun-opening",
+        "dahecun-object"
+      ],
+      "actions": [
+        {
+          "type": "focus_hotspot",
+          "hotspotId": "opening",
+          "label": "看腹部通口",
+          "factIds": [
+            "dahecun-opening"
+          ]
+        },
+        {
+          "type": "show_evidence",
+          "hotspotId": "",
+          "label": "查看依据",
+          "factIds": [
+            "dahecun-opening"
+          ]
+        }
+      ],
+      "answer": "相通处不在壶口，而在两只陶壶并列的腹部接合处：那里留有一个椭圆形通口，使两壶内部连通。示意中用浅绿色通道表达这一内部关系，属剖开解释，不是考古原貌。请把视线移到两壶相贴的腹部中央，找到那个椭圆开口，再沿浅绿色通道看它如何通向两侧壶腔。至于此口的具体用途或寓意，当前资料不足。",
+      "judgment": "通过：位置描述准确；主动说明剖开解释，并明确用途与寓意资料不足。"
+    },
+    {
+      "id": 3,
+      "siteId": "zz-dahecun",
+      "hotspotId": "paint",
+      "purpose": "observe",
+      "question": "红衣上的黑彩有哪几种线条？",
+      "httpStatus": 200,
+      "elapsedMs": 1670,
+      "status": "grounded",
+      "factIds": [
+        "dahecun-lines",
+        "dahecun-object"
+      ],
+      "actions": [
+        {
+          "type": "focus_hotspot",
+          "hotspotId": "paint",
+          "label": "看红衣黑彩",
+          "factIds": [
+            "dahecun-lines"
+          ]
+        },
+        {
+          "type": "show_evidence",
+          "hotspotId": "",
+          "label": "查看依据",
+          "factIds": [
+            "dahecun-lines"
+          ]
+        }
+      ],
+      "answer": "器物为泥质红陶，红衣黑彩。腹部以平行横线构成纹带，横线之间穿插竖向与斜向短线，重复纹带中线条方向有变化。示意纹线已简化，不等于原件全部细节。可先看腹部横线，再找其中竖、斜短线。",
+      "judgment": "通过：红陶红衣黑彩、横线与竖/斜短线区分正确；声明示意简化，不摹写原纹样。"
+    },
+    {
+      "id": 4,
+      "siteId": "zz-dahecun",
+      "hotspotId": "opening",
+      "purpose": "draft_memory",
+      "question": "两只并排的壶，怎样成为一件内部相通的器物？",
+      "httpStatus": 200,
+      "elapsedMs": 1903,
+      "status": "grounded",
+      "factIds": [
+        "dahecun-object",
+        "dahecun-opening"
+      ],
+      "actions": [
+        {
+          "type": "focus_hotspot",
+          "hotspotId": "opening",
+          "label": "看腹部通口",
+          "factIds": [
+            "dahecun-opening"
+          ]
+        },
+        {
+          "type": "show_evidence",
+          "hotspotId": "",
+          "label": "查看依据",
+          "factIds": [
+            "dahecun-opening",
+            "dahecun-object"
+          ]
+        }
+      ],
+      "answer": "两只壶并列连接，腹部接合处留有一个椭圆形通口，两壶内部由此相通，所以并排的壶体在结构上是一件器物。示意中的浅绿色通道只是剖开解释，比例与纹线均已简化。可再点开腹部通口，对照资料核对这一处接合关系。",
+      "judgment": "通过：保留个人观察，补充已核事实与剖开解释；未虚构到馆或亲眼见到实物；草稿 98 字、3 个标签。",
+      "draft": {
+        "body": "我先看了两只壶口，再顺着腹部找到那个椭圆通口，觉得它把两个壶体连成了一件器物。资料说两壶并列连接，腹部接合处留有椭圆形通口，使内部相通；示意中的浅绿色通道是剖开解释，比例与纹线已简化。",
+        "tags": [
+          "双连壶",
+          "腹部通口",
+          "结构观察"
+        ],
+        "factIds": [
+          "dahecun-object",
+          "dahecun-opening"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "siteId": "zz-duling-fangding",
+      "hotspotId": "centers",
+      "purpose": "observe",
+      "question": "只有四面，八组是怎么数出来的？",
+      "httpStatus": 200,
+      "elapsedMs": 2024,
+      "status": "grounded",
+      "factIds": [
+        "duling-eight"
+      ],
+      "actions": [
+        {
+          "type": "focus_hotspot",
+          "hotspotId": "centers",
+          "label": "看壁面正中",
+          "factIds": [
+            "duling-eight"
+          ]
+        },
+        {
+          "type": "focus_hotspot",
+          "hotspotId": "corners",
+          "label": "看四个折角",
+          "factIds": [
+            "duling-eight"
+          ]
+        },
+        {
+          "type": "show_evidence",
+          "hotspotId": "",
+          "label": "查看依据",
+          "factIds": [
+            "duling-eight"
+          ]
+        }
+      ],
+      "answer": "因为兽面纹不只落在四个壁面上，还落在转折处：每壁正中各一组，共四组；四个折角处再各一组，又四组，合为八组。这是环绕上腹一周的排布，两侧边与近底乳钉纹带只作边框，不计入八组。可先点壁面正中数出四组，再沿折角逐个核对另外四组；示意为简化几何，非兽面纹摹本。",
+      "judgment": "通过（回归）：四面正中加四折角，乳钉边框不计入八组。"
+    }
+  ]
+}

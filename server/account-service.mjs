@@ -6,7 +6,7 @@ import { promisify } from 'node:util';
 import { DatabaseSync } from 'node:sqlite';
 import { pathToFileURL } from 'node:url';
 import { mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
-import { validateAccountInput } from '../entry/src/main/ets/domain/AccountSync.ts';
+import { validateAccountInput, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
 import { createAiObservationService, describeAiConfiguration, loadAiConfiguration } from './ai-observation.mjs';
 
 const derivePassword = promisify(scrypt);
@@ -183,9 +183,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   }
   const service = createAccountService({ databasePath: join(root, 'accounts.sqlite'),
     cert: readFileSync(join(root, 'server.pem')), key: readFileSync(join(root, 'server.key')), ai: aiService });
-  service.server.listen(config.port, '127.0.0.1', () => {
+  // 监听地址与客户端共用同一条领域规则：默认回环；局域网演示时绑定指定私有 IPv4。
+  // 不默认监听 0.0.0.0，避免把调试服务无意暴露到其他网卡。
+  const host = typeof config.host === 'string' && config.host ? config.host : '127.0.0.1';
+  if (!validateServiceEndpoint(`https://${host}:${config.port}`, true)) {
+    throw new Error('服务监听地址只支持 localhost、127.0.0.0/8 或私有 IPv4。');
+  }
+  service.server.listen(config.port, host, () => {
     const ai = describeAiConfiguration(aiService.describe());
-    process.stdout.write(`云河纪账号服务已启动：HTTPS / 端口 ${config.port}\n` +
+    process.stdout.write(`云河纪账号服务已启动：HTTPS / ${host}:${config.port}\n` +
       `AI 观察导览：${ai.configured ? `已配置 ${ai.provider}/${ai.model}` : '未配置（/ai/observe 返回 AI_NOT_CONFIGURED）'}\n`);
   });
   const stop = async () => { await service.close(); process.exit(0); };
