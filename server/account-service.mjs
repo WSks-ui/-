@@ -8,6 +8,7 @@ import { pathToFileURL } from 'node:url';
 import { mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
 import { validateAccountInput, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
 import { createAiObservationService, describeAiConfiguration, loadAiConfiguration } from './ai-observation.mjs';
+import { createWaterSituationService } from './water-situation.mjs';
 
 const derivePassword = promisify(scrypt);
 const digest = value => createHash('sha256').update(value).digest('hex');
@@ -16,7 +17,7 @@ const sessionDuration = 12 * 60 * 60 * 1000;
 
 // 独立账号服务只实现已授权的演示范围：注册 / 登录、账号隔离、真实 HTTPS 同步。
 // SQLite 持久化记录与冲突版本；不把网络传输宣传为鸿蒙分布式数据库。
-export function createAccountService({ databasePath, cert, key, now = Date.now, ai = undefined }) {
+export function createAccountService({ databasePath, cert, key, now = Date.now, ai = undefined, water = undefined }) {
   const db = new DatabaseSync(databasePath);
   db.exec(`PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;
     CREATE TABLE IF NOT EXISTS accounts(id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL,
@@ -73,6 +74,12 @@ export function createAccountService({ databasePath, cert, key, now = Date.now, 
       const path = req.url;
       if (req.method === 'GET' && path === '/health') {
         send(res, 200, { service: 'yunheji-account', version: 1 }); return;
+      }
+      if (req.method === 'GET' && path === '/water/situation') {
+        // 公开水情只读，不需要账号会话；抓取、解析与缓存全在服务端，App 不直接访问 HTTP 源站。
+        if (!water) { send(res, 503, { source: '黄河实时水情', stale: true, stations: [], error: 'WATER_UNAVAILABLE' }); return; }
+        const reply = await water.snapshot();
+        send(res, reply.stations.length ? 200 : 503, reply); return;
       }
       if (req.method !== 'POST') throw fail('ACCOUNT_NOT_FOUND', 404);
       if (path === '/auth/register' || path === '/auth/login') {
@@ -181,8 +188,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     // 配置损坏时明确保持未配置；不要用示例回复冒充在线 AI，也不影响账号与同步。
     aiService = createAiObservationService({ configuration: { configured: false } });
   }
+  const waterService = createWaterSituationService({ cacheDir: join(root, '..', 'water-situation') });
   const service = createAccountService({ databasePath: join(root, 'accounts.sqlite'),
-    cert: readFileSync(join(root, 'server.pem')), key: readFileSync(join(root, 'server.key')), ai: aiService });
+    cert: readFileSync(join(root, 'server.pem')), key: readFileSync(join(root, 'server.key')),
+    ai: aiService, water: waterService });
   // 监听地址与客户端共用同一条领域规则：默认回环；局域网演示时绑定指定私有 IPv4。
   // 不默认监听 0.0.0.0，避免把调试服务无意暴露到其他网卡。
   const host = typeof config.host === 'string' && config.host ? config.host : '127.0.0.1';
@@ -192,7 +201,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   service.server.listen(config.port, host, () => {
     const ai = describeAiConfiguration(aiService.describe());
     process.stdout.write(`云河纪账号服务已启动：HTTPS / ${host}:${config.port}\n` +
-      `AI 观察导览：${ai.configured ? `已配置 ${ai.provider}/${ai.model}` : '未配置（/ai/observe 返回 AI_NOT_CONFIGURED）'}\n`);
+      `AI 观察导览：${ai.configured ? `已配置 ${ai.provider}/${ai.model}` : '未配置（/ai/observe 返回 AI_NOT_CONFIGURED）'}\n` +
+      '水情观察：/water/situation（服务端抓取黄河实时水情，带缓存与失败回退）\n');
   });
   const stop = async () => { await service.close(); process.exit(0); };
   process.on('SIGTERM', stop);

@@ -31,8 +31,9 @@ import { AccountView, accountErrorMessage, accountStoreName, changedAccountView,
 import type { AiObservationReply, AiObservationRequest } from '../domain/AiObservation';
 import { AI_OBSERVATION_SITE_ID, aiAssistBadge, isAiObservationSite } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
-import { latestSnapshot, WaterSnapshot } from '../domain/WaterSituation';
+import { latestSnapshot, liveFlowText, liveLevelText, liveStation, WaterLiveReply, WaterLiveStation, WaterSnapshot } from '../domain/WaterSituation';
 import { WATER_SITUATION } from '../data/WaterSituationCatalog';
+import { WaterSituationClient } from '../sync/WaterSituationClient';
 import { WaterSituationPage } from '../components/WaterSituationPage';
 
 interface SiteRoute { siteId: string; poseJson?: string; observe?: boolean; noteId?: string; question?: string; observation?: string; }
@@ -64,6 +65,8 @@ struct Index {
   @State memoryAiOnly: boolean = false;
   // 首页 AI 卡片可在方鼎与双连壶之间切换；默认仍是方鼎，保持原演示路径。
   @State homeAiSiteId: string = AI_OBSERVATION_SITE_ID;
+  @State private waterLive: WaterLiveReply | undefined = undefined;
+  @State private waterLiveState: string = 'loading';
   @State libraryKeyword: string = '';
   @State libraryEra: string = ERAS[0];
   @State libraryType: string = TYPES[0];
@@ -89,6 +92,7 @@ struct Index {
   aboutToAppear(): void {
     this.loadArchive();
     this.configureAccount();
+    this.loadWaterLive();
     // 前台每 5 秒交换已确认保存的数据；写锁 / 在途请求时跳过本次，不堆积轮询。
     // 后台只保留本机档案，避免无意义网络请求；返回前台后继续真实交换。
     this.accountTimer = setInterval(() => { if (this.appForeground) this.syncAccount(); }, 5000);
@@ -285,18 +289,49 @@ struct Index {
     this.openAiSite(AI_OBSERVATION_SITE_ID);
   }
 
+  private async loadWaterLive(): Promise<void> {
+    try {
+      const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const client = new WaterSituationClient(context);
+      if (!(await client.configure())) { this.waterLiveState = 'offline'; return; }
+      const reply = await client.fetch();
+      this.waterLive = reply;
+      this.waterLiveState = reply.stale ? 'cached' : 'live';
+    } catch { this.waterLiveState = 'offline'; }
+  }
+
+  private waterLiveYuan(): WaterLiveStation | undefined {
+    return liveStation(this.waterLive, '花园口');
+  }
+
   private waterLatest(): WaterSnapshot | undefined {
     return latestSnapshot(WATER_SITUATION, 'huayuankou');
   }
 
   private waterLevelText(): string {
+    const live = this.waterLiveYuan();
+    if (live) return liveLevelText(live.waterLevelM);
     const latest = this.waterLatest();
     return latest?.waterLevelM !== undefined ? `${latest!.waterLevelM} m` : '未给出';
   }
 
   private waterFlowText(): string {
+    const live = this.waterLiveYuan();
+    if (live) return liveFlowText(live.flowM3s);
     const latest = this.waterLatest();
     return latest?.flowM3s !== undefined ? `${latest!.flowM3s} m³/s` : '未给出';
+  }
+
+  private waterCardLabel(): string {
+    if (this.waterLiveState === 'live') return '实时';
+    if (this.waterLiveState === 'cached') return '上次快照';
+    return '公开报道';
+  }
+
+  private waterCardSubtitle(): string {
+    const live = this.waterLiveYuan();
+    if (live) return `花园口 · ${live.observedAt} · ${this.waterLiveState === 'live' ? '实时' : '上次快照'}`;
+    return `花园口 · 最近 ${this.waterLatest()?.observedAt || ''} · 非实时`;
   }
 
   private openWater(): void {
@@ -796,10 +831,13 @@ struct Index {
         Column({ space: 4 }) {
           Row({ space: 6 }) {
             Text('黄河水情观察').fontSize(F.card).fontWeight(FontWeight.Bold).fontColor(T.ink)
-            Text('公开报道').fontSize(F.caption).fontColor(T.mintInk)
-              .padding({ left: 7, right: 7, top: 2, bottom: 2 }).backgroundColor(T.mint).borderRadius(6)
+            Text(this.waterCardLabel()).fontSize(F.caption)
+              .fontColor(this.waterLiveState === 'cached' ? T.yellowInk : T.mintInk)
+              .padding({ left: 7, right: 7, top: 2, bottom: 2 })
+              .backgroundColor(this.waterLiveState === 'cached' ? T.yellow : T.mint).borderRadius(6)
+              .id('water-entry-status')
           }.width('100%')
-          Text(`花园口 · 最近 ${this.waterLatest()?.observedAt || ''} · 非实时`)
+          Text(this.waterCardSubtitle())
             .fontSize(F.caption).fontColor(T.muted).maxLines(1).textOverflow({ overflow: TextOverflow.Ellipsis })
         }.layoutWeight(1).alignItems(HorizontalAlign.Start)
         Column({ space: 1 }) {

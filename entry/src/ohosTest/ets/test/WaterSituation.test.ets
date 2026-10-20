@@ -21,9 +21,16 @@ export default function waterSituationTest() {
         await capture('home-entry');
         await (await session.waitId('water-entry')).click();
         await session.waitId('water-page');
-        // 最新一条是 2026-09-21 的公开报道，不是实时值；页面顶部必须同时给出日期与来源。
-        expect(await (await session.waitId('water-latest-level')).getText()).assertEqual('88.42 m');
-        expect(await (await session.waitId('water-latest-flow')).getText()).assertEqual('607 m³/s');
+        // 页面优先读服务端实时水情，失败才回退公开报道；断言状态明确、数值带单位，
+        // 不把某一天的数值写死，避免日报更新后误报。
+        let status = await (await session.waitId('water-data-status')).getText();
+        if (status.includes('读取中')) {
+          await new Promise<void>((resolve) => { setTimeout(resolve, 2000); });
+          status = await (await session.waitId('water-data-status')).getText();
+        }
+        expect(status.includes('实时') || status.includes('上次快照') || status.includes('离线')).assertTrue();
+        expect((await (await session.waitId('water-latest-level')).getText()).includes('m')).assertTrue();
+        expect((await (await session.waitId('water-latest-flow')).getText()).includes('m³/s')).assertTrue();
         await capture('hero');
         // 流量柱形对照是全页唯一的图形表达，单独滚到并截图，避免只验证文字。
         await session.inScroll('water-scroll', ON.id('water-chart'));

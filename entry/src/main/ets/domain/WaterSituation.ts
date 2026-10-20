@@ -87,3 +87,48 @@ export function validateWaterSituation(catalog: WaterSituationCatalog): string[]
   });
   return problems;
 }
+
+// 服务端 /water/situation 的实时返回。字段与日报页面一致：河名、站名、时间、水位、流量；
+// 当前页面不提供含沙量，统一为 null，不用 0 代替。stale 表示“上次快照”或观测日期不是今天。
+export interface WaterLiveStation {
+  river: string;
+  station: string;
+  observedAt: string;
+  waterLevelM: number | null;
+  flowM3s: number | null;
+  sedimentKgM3: number | null;
+}
+
+export interface WaterLiveReply {
+  source: string;
+  sourceUrl: string;
+  fetchedAt: string;
+  observedAt: string;
+  stale: boolean;
+  stations: WaterLiveStation[];
+  error?: string | null;
+}
+
+export function validateWaterLiveReply(reply: WaterLiveReply): WaterLiveReply {
+  if (!reply || typeof reply.source !== 'string' || typeof reply.observedAt !== 'string' ||
+    !Array.isArray(reply.stations)) throw new Error('WATER_INVALID_REPLY');
+  reply.stations.forEach((station: WaterLiveStation) => {
+    if (typeof station.station !== 'string' || !station.station.trim() ||
+      typeof station.observedAt !== 'string' || !station.observedAt.trim()) {
+      throw new Error('WATER_INVALID_REPLY');
+    }
+  });
+  return reply;
+}
+
+export function liveStation(reply: WaterLiveReply | undefined, name: string): WaterLiveStation | undefined {
+  return reply?.stations.find((station: WaterLiveStation) => station.station === name);
+}
+
+export function liveLevelText(value: number | null | undefined): string {
+  return value === null || value === undefined ? '未给出' : `${value} m`;
+}
+
+export function liveFlowText(value: number | null | undefined): string {
+  return value === null || value === undefined ? '未给出' : `${value} m³/s`;
+}

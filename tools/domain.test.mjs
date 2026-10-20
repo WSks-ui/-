@@ -18,7 +18,7 @@ import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
 import { accountStoreName, changedAccountView, guestAccountView, validateAccountInput, validateAccountSession, validateAccountReply, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
 import { WATER_SITUATION } from '../entry/src/main/ets/data/WaterSituationCatalog.ts';
-import { latestSnapshot, snapshotsForStation, sourceFor, validateWaterSituation } from '../entry/src/main/ets/domain/WaterSituation.ts';
+import { latestSnapshot, snapshotsForStation, sourceFor, validateWaterLiveReply, validateWaterSituation } from '../entry/src/main/ets/domain/WaterSituation.ts';
 import './memory-journal.test.mjs';
 import './journey-routes.test.mjs';
 
@@ -647,4 +647,17 @@ test('water situation refuses unknown sources', () => {
   };
   const problems = validateWaterSituation(broken);
   assert.ok(problems.some(problem => problem.includes('未知来源')));
+});
+
+
+test('water live reply validation accepts sourced stations and rejects unnamed rows', () => {
+  const reply = {
+    source: '黄河实时水情', sourceUrl: 'http://example.test/water', fetchedAt: '2026-10-20T06:00:00Z',
+    observedAt: '2026-10-20 08:00', stale: false,
+    stations: [{ river: '黄河', station: '花园口', observedAt: '2026-10-20 08:00',
+      waterLevelM: 88.94, flowM3s: 911, sedimentKgM3: null }], error: null
+  };
+  assert.equal(validateWaterLiveReply(reply).stations.length, 1);
+  assert.throws(() => validateWaterLiveReply({ ...reply, stations: [{ ...reply.stations[0], station: '' }] }),
+    /WATER_INVALID_REPLY/);
 });
