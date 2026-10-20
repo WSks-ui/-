@@ -1208,12 +1208,13 @@ struct Index {
         if (this.homeJourney(this.snapshot.records)) { this.homeThemeCard() }
         this.homeAiQuestionCard()
         this.homeMemory()
+        // 入口卡在“最近记忆”之后、五城探索之前：比原来提前三个模块，又不打断主题与最近记忆的连续阅读。
+        this.sectionTitle('拾页入口', '收藏、手账与档案')
+        this.entryBoard()
         this.sectionTitle('循河探索', '五城文化目录')
         this.riverSandbox()
         this.waterEntryCard()
         this.cultureEntry()
-        this.sectionTitle('拾页入口', '收藏、手账与档案')
-        this.entryBoard()
         this.sectionTitle('循城而入', '五座城市')
         this.cityIndex()
         Column({ space: 10 }) {
