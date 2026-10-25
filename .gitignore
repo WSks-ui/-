@@ -13,5 +13,10 @@
 /.local
 # Office 文档处理生成的临时解包目录；正式交付文件保留在 docs/deliverables。
 /.dsh-office-*/
+# 本机设备调试残留：手工编辑粘贴的代码残片与截屏目录，均不进入仓库。
+/.tmp_device.txt
+/.device-shots/
 /entry/src/main/resources/rawfile/account-sync-dev.json
+/entry/src/main/resources/rawfile/account-service.json
 /entry/src/ohosTest/resources/rawfile/account-sync-test.json
+/entry/src/ohosTest/resources/rawfile/roaming-sync-test.json
