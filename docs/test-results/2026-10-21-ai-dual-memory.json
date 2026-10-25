@@ -1,0 +1,644 @@
+{
+  "stage": "C08 双对象 AI 与同账号记忆重访",
+  "date": "2026-10-21",
+  "sourceBaseCommit": "910324679288e23f5c20d4803210e1c798c6ca03",
+  "branch": "main",
+  "uncommitted": true,
+  "result": "本轮定向演示路径完成；未覆盖整份比赛任务书",
+  "packages": {
+    "M1": {
+      "bytes": 6526186,
+      "sha256": "6473CAE6585884BFCC5F6096BEEF04EAB8D337A179701F9E30E21E31B5C858E2"
+    },
+    "T1": {
+      "bytes": 6559896,
+      "sha256": "6DDC8F8987918F90328163FDCF832CC2A5DD9F0F05732CBED4FFCD4407E446FB",
+      "installed": false
+    },
+    "T2": {
+      "bytes": 6560198,
+      "sha256": "C14BE8FCA69A9D12B3E55905586D54F9080DDB4DB32F29CAB11D06AAA8FE61BD"
+    },
+    "M2": {
+      "bytes": 6526994,
+      "sha256": "2D1815955405B3CA354B83871B9E0A7598996FD892C47A6FE7C67EC2695BB7FE"
+    },
+    "T3": {
+      "bytes": 6560631,
+      "sha256": "1F51528D0D357F7A99C8D2C994101072C3B0B198EA52DD7FE3DEE377470293B1"
+    },
+    "T4": {
+      "bytes": 6560631,
+      "sha256": "8B4861DFFEC7164C0604053DAAD6DE4C19BB5685FCEF49C2E7D608F7397647B2"
+    },
+    "T5": {
+      "bytes": 6564943,
+      "sha256": "66E76882522F82925AE2F0DA1DDD0FB5AAA861C979106279000736C16696D6F1"
+    },
+    "T6": {
+      "bytes": 6562934,
+      "sha256": "DEBE33BA5DCB56B78E3C4D390289D9721ACE20C0C26755016B2DACBDFFB3984E"
+    },
+    "T7": {
+      "bytes": 6563170,
+      "sha256": "538920A5CDB665B9008BADBF7E59514DED92F642E066EEB55ADBF3A5A487F424"
+    },
+    "T8": {
+      "bytes": 6563300,
+      "sha256": "075BFB3D4CCC07804D9B164E5FE9E3C3CD55A23336B120CF5DD3BCE86BBB1198"
+    }
+  },
+  "currentMainPackage": "M2",
+  "currentTestPackage": "T8",
+  "packageNotes": "M2主包相同；单端双连壶T5、A保存/方鼎T6、B接收T7、B显式再问T8分别验证。T7/T8保留T6的同一fixture与原note，只调整测试定位，不声称一次同测试包全套通过。T1被新鲜度检查拒绝，没有安装或执行aa。",
+  "devices": [
+    {
+      "role": "A",
+      "instance": "YunhejiSyncB",
+      "target": "127.0.0.1:5555",
+      "emulatorPid": 5464,
+      "system": "HarmonyOS 7.0.0.107",
+      "api": 26,
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560
+    },
+    {
+      "role": "B",
+      "instance": "Pura 90 Pro",
+      "target": "127.0.0.1:5557",
+      "emulatorPid": 6972,
+      "system": "HarmonyOS 7.0.0.107",
+      "api": 26,
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560
+    }
+  ],
+  "transport": {
+    "account": "自建账号",
+    "channel": "HTTPS",
+    "endpoint": "本机服务 + HDC反向端口",
+    "nativeCrossDevice": "尚未完成",
+    "huaweiAccount": "尚未接入",
+    "distributedKv": "已接入本机不可变版本库，不能作为原生跨端通过证据"
+  },
+  "checks": {
+    "local": {
+      "passed": 122,
+      "failed": 0,
+      "skipped": 0,
+      "report": "docs/test-results/2026-10-21-ai-dual-local-final.log"
+    },
+    "reportParser": {
+      "passed": 9,
+      "failed": 0
+    },
+    "service": {
+      "passed": 15,
+      "failed": 0,
+      "report": "docs/test-results/2026-10-21-ai-dual-service.log"
+    },
+    "aiContractsCombined": {
+      "passed": 26,
+      "failed": 0,
+      "overlap": "工具侧计入本地122，服务侧计入服务15，不累加",
+      "report": "docs/test-results/2026-10-21-ai-dual-contracts-green.log"
+    },
+    "firstRed": {
+      "passed": 0,
+      "failed": 2,
+      "exitCode": 1,
+      "provenance": "当时原始工具会话输出原样转存，未撤销修复重跑",
+      "report": "docs/test-results/2026-10-21-ai-dual-contracts-first-red.log"
+    }
+  },
+  "phases": [
+    {
+      "phase": "twin-single",
+      "package": "T5",
+      "device": "B",
+      "log": "2026-10-21-021508-363b57cb-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 221626,
+      "report": "docs/test-results/2026-10-21-021508-363b57cb-device.log",
+      "reportSha256": "23820B348F7064682B54B813C90E91B02A1C766AA3B4DF92E80105D838E8A255",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "a-save",
+      "package": "T6",
+      "device": "A",
+      "log": "2026-10-21-022049-faba9975-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 170508,
+      "report": "docs/test-results/2026-10-21-022049-faba9975-device.log",
+      "reportSha256": "4127244269C0C1940D8337EA1CDEF9997191A3D1DEB9F40205FCA0B082C9AA02",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "ding-regression",
+      "package": "T6",
+      "device": "B",
+      "log": "2026-10-21-022049-c2ad4fa3-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 191320,
+      "report": "docs/test-results/2026-10-21-022049-c2ad4fa3-device.log",
+      "reportSha256": "49060EF6FC2A13ED8C9CCFB0CB6F29359C302D5FEDC4C23F58622A7DAF492802",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "b-receive",
+      "package": "T7",
+      "device": "B",
+      "log": "2026-10-21-022456-cde2c928-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 91583,
+      "report": "docs/test-results/2026-10-21-022456-cde2c928-device.log",
+      "reportSha256": "2043E24B4F5376AB78861ADDEEB3EEEC024F0A7A65EEB5198B88C1214DD59B38",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "b-explicit-ask",
+      "package": "T8",
+      "device": "B",
+      "log": "2026-10-21-022939-cf4f6a60-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 68354,
+      "report": "docs/test-results/2026-10-21-022939-cf4f6a60-device.log",
+      "reportSha256": "39D548EEE8D7EA8A925078CAAE01FA6CDAF724E67D9A3D154F677E5575D44922",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "final-cleanup",
+      "package": "T8",
+      "device": "A",
+      "log": "2026-10-21-023138-a481aa5e-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 5055,
+      "report": "docs/test-results/2026-10-21-023138-a481aa5e-device.log",
+      "reportSha256": "7E701961720F0F2A3974DAF01054C8FD1070C990BCE2B668AF738F7D0F829035",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "final-cleanup",
+      "package": "T8",
+      "device": "B",
+      "log": "2026-10-21-023137-8a73ac97-device.log",
+      "pass": 1,
+      "error": 0,
+      "ms": 5164,
+      "report": "docs/test-results/2026-10-21-023137-8a73ac97-device.log",
+      "reportSha256": "2484D5BF8CE4792FA69FA228EA7EF6BE4E5A646DB091BA2ABB2C2E30F382FB56",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    }
+  ],
+  "failures": [
+    {
+      "phase": "twin-single-offscreen",
+      "package": "T2",
+      "device": "B",
+      "log": "2026-10-21-020152-714af8d8-device.log",
+      "pass": 0,
+      "error": 1,
+      "ms": 49352,
+      "report": "docs/test-results/2026-10-21-020152-714af8d8-device.log",
+      "reportSha256": "5D81C3E114E616908B09C6D93A18C682CF45B9383B16FC77A694794E554B0CE4",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "a-navigation-back",
+      "package": "T2",
+      "device": "A",
+      "log": "2026-10-21-020152-467b2828-device.log",
+      "pass": 0,
+      "error": 1,
+      "ms": 99733,
+      "report": "docs/test-results/2026-10-21-020152-467b2828-device.log",
+      "reportSha256": "A394A03A7491BCEDAD99CFEF0CF59C070A02A69CF2204BAFB95154CAB9FB96CF",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "twin-archive-name",
+      "package": "T4",
+      "device": "B",
+      "log": "2026-10-21-020851-8ceecb70-device.log",
+      "pass": 0,
+      "error": 1,
+      "ms": 117782,
+      "report": "docs/test-results/2026-10-21-020851-8ceecb70-device.log",
+      "reportSha256": "F246B8359C5B7199E9D3E7D9CA5DE1746ED6CCE3E81D81EC355F2F9376E92430",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "a-scroll-direction",
+      "package": "T4",
+      "device": "A",
+      "log": "2026-10-21-020850-a788acbb-device.log",
+      "pass": 0,
+      "error": 1,
+      "ms": 148540,
+      "report": "docs/test-results/2026-10-21-020850-a788acbb-device.log",
+      "reportSha256": "70D4A1B77451F1262ED105DD8933528B26598851FDE76EA1C49096E348639FFF",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "a-login-helper",
+      "package": "T5",
+      "device": "A",
+      "log": "2026-10-21-021508-a85816e9-device.log",
+      "pass": 0,
+      "error": 1,
+      "ms": 52515,
+      "report": "docs/test-results/2026-10-21-021508-a85816e9-device.log",
+      "reportSha256": "8663A497BC59A618D36B73618022E45756F67B6F7E030D9C53ABA66D355D5A09",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "phase": "b-ask-scroll-origin",
+      "package": "T7",
+      "device": "B",
+      "log": "2026-10-21-022655-957e2c13-device.log",
+      "pass": 0,
+      "error": 1,
+      "ms": 59212,
+      "report": "docs/test-results/2026-10-21-022655-957e2c13-device.log",
+      "reportSha256": "19AF563BB802B752CE9C23148B52E9B2DC63F8760552DDCC857C4AFEF58FC658",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    }
+  ],
+  "previousFixtureCleanups": [
+    {
+      "package": "T3",
+      "device": "A",
+      "log": "2026-10-21-020742-b443f520-device.log",
+      "report": "docs/test-results/2026-10-21-020742-b443f520-device.log",
+      "reportSha256": "2D3138763F14754EB104E31A49AC8A89BD5CCD1D32728B4B28E6BEE2E2F56DED",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "package": "T3",
+      "device": "B",
+      "log": "2026-10-21-020742-eadcf33d-device.log",
+      "report": "docs/test-results/2026-10-21-020742-eadcf33d-device.log",
+      "reportSha256": "4F15834CA7DBCAFB7798228717D49C4B1F7E4A69C39E6A7C6BEBD79CB554EDE1",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "package": "T4",
+      "device": "A",
+      "log": "2026-10-21-021157-86c59549-device.log",
+      "report": "docs/test-results/2026-10-21-021157-86c59549-device.log",
+      "reportSha256": "2300DB1ED6BE90794D62885DAFBA528DB7548AFE8B4F687651D95319922DBEC9",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "package": "T4",
+      "device": "B",
+      "log": "2026-10-21-021157-77ba95c9-device.log",
+      "report": "docs/test-results/2026-10-21-021157-77ba95c9-device.log",
+      "reportSha256": "ECE12CB2653BD6434CC6E4084EFAA635D1E8AF22943B8367675917681AE054DD",
+      "mainPackage": "M1",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "package": "T5",
+      "device": "A",
+      "log": "2026-10-21-021713-38bc6ad1-device.log",
+      "report": "docs/test-results/2026-10-21-021713-38bc6ad1-device.log",
+      "reportSha256": "3B45EABF4B49945AE98A4E9E594A781A83823FB661E9785FB406B3D49D9E819B",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    },
+    {
+      "package": "T5",
+      "device": "B",
+      "log": "2026-10-21-021914-79d27490-device.log",
+      "report": "docs/test-results/2026-10-21-021914-79d27490-device.log",
+      "reportSha256": "26097866654879347F6443CE3866286D039A11F80A62DE9632E120518FEAA245",
+      "mainPackage": "M2",
+      "failure": 0,
+      "ignore": 0
+    }
+  ],
+  "recordComparison": {
+    "report": "docs/test-results/2026-10-21-ai-memory-compare.json",
+    "result": "PASS",
+    "fields": [
+      "aiAssist",
+      "body",
+      "deleted",
+      "deviceId",
+      "id",
+      "kind",
+      "paperTheme",
+      "quotedPoemOrFact",
+      "siteId",
+      "snapshot3DPose",
+      "stampType",
+      "tags",
+      "updatedAt"
+    ],
+    "canonicalRecordSha256": "DF289B6E678CC0CA27E14493B3BEBEE75C03267D425BFC16C777850C0DE3CEEB",
+    "noteId": "note:18b3483e-0b2b-4f53-b34d-dfba73a60e04:1792520612022",
+    "fragmentsPerRecord": 4,
+    "charactersPerRecord": 1220,
+    "allNestedFieldsCompared": true,
+    "unchangedAfterExplicitAsk": true
+  },
+  "canvasComparison": {
+    "report": "docs/test-results/2026-10-21-ai-dual-canvas-compare.json",
+    "method": "同次原始 layout 读取 Canvas bounds；原图按整数坐标裁切，未缩放、未屏蔽像素",
+    "aImage": "design/ai-dual-memory/a-opening-focus.png",
+    "bImage": "design/ai-dual-memory/b-replay.png",
+    "aBounds": [
+      112,
+      960,
+      1144,
+      2010
+    ],
+    "bBounds": [
+      112,
+      1166,
+      1144,
+      2216
+    ],
+    "size": [
+      1032,
+      1050
+    ],
+    "totalPixels": 1083600,
+    "changedPixels": 4,
+    "identical": false,
+    "maximumChannelDifference": 1
+  },
+  "provider": {
+    "name": "deepseek",
+    "model": "deepseek-flash",
+    "wholeRoundSuccessEvents": 12,
+    "wholeRoundIncludesFailedUiPhases": true,
+    "successfulFinalPathsRequests": 7,
+    "beforeBReceive": 11,
+    "afterBReceive": 11,
+    "afterExplicitAsk": 12,
+    "explicitAskMs": 1616,
+    "report": "docs/test-results/2026-10-21-ai-dual-provider-events.log"
+  },
+  "sourceHashes": [
+    {
+      "path": "entry/src/main/ets/domain/AiObservation.ts",
+      "sha256": "935A22FD00F9C9A4AEB9689BFC662EC3DF70BF2EA9232DD55B5ED4704C3FBCFA"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "sha256": "8CD0BDA99F4581B7BF6589FB9878ADBD832B0F2BAD4B4A11CF1A9DEAC2ED3DD6"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/PageHierarchy.test.ets",
+      "sha256": "A7C8C3E0B7EAA7ADCDDF56431EBD0E4AAC7998EB73B301716174D253F5327F9D"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/AiMemorySync.test.ets",
+      "sha256": "1B712E4FB3C0BAC678CAE100735A0CAED36E7AD5613F36C5A9C003E1566FA6E3"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "sha256": "9F8FC9A0A7D77AE29AB769856C29123BFD26AB928BC6C328000D76D0F96DAA25"
+    },
+    {
+      "path": "tools/ai-observation.test.mjs",
+      "sha256": "E8D288AD9ECF817773172A09B8C520E26C9635BC63438660FC2A46C688067347"
+    },
+    {
+      "path": "server/ai-observation.test.mjs",
+      "sha256": "5B0690AB65348673902F43685B1377082C4DCF49F6E2503AB647409C7665AB4D"
+    },
+    {
+      "path": "tools/compare-ai-memory.mjs",
+      "sha256": "50C0A5FB4B40A3FA8A306DBDEAF9DAD12AB1C8C187464B3C955CCBD780E3CB0A"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/design/ai-dual-memory/a-answer-evidence.png",
+      "bytes": 430776,
+      "sha256": "22AEB0858F2C8D4F7D8B7A8636BB57569F2CCF2332919316931960729E366EFF"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/a-canvas.png",
+      "bytes": 229388,
+      "sha256": "71CC0F7BFB8DE570BCABB43B882C537E9E967B547FCF952B32FFCB0E585E5D0C"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/a-editor-confirm.png",
+      "bytes": 331950,
+      "sha256": "2E2A7359526209F48124BC94BFA9B85F308B7526D2AC7A62ABD12DD385406B8E"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/a-opening-focus.json",
+      "bytes": 53779,
+      "sha256": "4E706D44388CA0B0F45B953B8941FFB86D59A11EC3889D4B31811FD8FF741782"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/a-opening-focus.png",
+      "bytes": 508207,
+      "sha256": "ECC022ABB0938166D424DC86BED1D5B29FCB917739503D0FAC42E4D123344390"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-active-answer-evidence.png",
+      "bytes": 425488,
+      "sha256": "A184E7E84765D8E4A93C6E79EE28683A639535CE8C19DE599B4706F00B9A1541"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-canvas.png",
+      "bytes": 229389,
+      "sha256": "94F788A09421364D5116AEBAEF412B2259F0C7D8CDD98BC991D3C5C50E3342CC"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-frozen-evidence.png",
+      "bytes": 398193,
+      "sha256": "B5C0936F0013D2AFD403B62AD822CACADA1B50F7E652C2045D017A120743E443"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-replay.json",
+      "bytes": 51725,
+      "sha256": "4DB3681E6D2086DE153E748933A8EAF3A232CD1814C038A2A275D30A2C47F4E4"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-replay.png",
+      "bytes": 505327,
+      "sha256": "15299C512301D2992765DAE440783C754FAFEA2ACF44BBD0CDB644A4C3F2AB9B"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-resume-before-send.json",
+      "bytes": 55187,
+      "sha256": "ED432D558025408E7A4C8C0C6BA80D4ABAD2FF2948999BA58C8EE4DF0FC7A677"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/b-resume-before-send.png",
+      "bytes": 384402,
+      "sha256": "9AFF20E8CBC8C1FE2EF941080E9E185952115C08D11A36205636971811E9FD4C"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/ding-focus.png",
+      "bytes": 470678,
+      "sha256": "1F16345C96F63247B441B290D6E9DE88C64799D270C5358653FD7F5427659D9E"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/ding-memory.png",
+      "bytes": 449723,
+      "sha256": "3C82C66E3B5DA5B95F3339BF7A70481437544FB45E6EBD9EBD6C341C507853F4"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/ding-resume.png",
+      "bytes": 345237,
+      "sha256": "D098701DD01A6AB32822100A79CD19F1274BFDBB50F27A45C98B6308C962995B"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/ding-saved-evidence.png",
+      "bytes": 405494,
+      "sha256": "157BDC5AD6938BEBB2B9280175A9ABA685BBFC5DF8B3D72D7873F75B98A9C8F0"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/dual-journey-contact.png",
+      "bytes": 345155,
+      "sha256": "299E2FC5B036FA6A1CE14FC40ADF99F4D5FD9A1D61AF8985A90388B8C6944C10"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/first-a-navigation-failure.png",
+      "bytes": 444730,
+      "sha256": "50AD0AF56190C095D07CCA67EDA0DE63293EE4C82410D94A308EDD696A9C751D"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/first-b-ask-scroll-failure.png",
+      "bytes": 436754,
+      "sha256": "DB15C1ECE1AE01AB3E4D6BE55C4F4BB3DA1EBBBD8B51BF6F1E123C8D5A71F939"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/first-twin-visibility-failure.png",
+      "bytes": 802376,
+      "sha256": "DD80EF092159659B75E9D6897051DB05D9D504CAE54CCF811EDAFB1EA368725A"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/second-a-keyboard-scroll-failure.png",
+      "bytes": 551127,
+      "sha256": "5364AFFE835D0862DA7C7D486C4ECE57F488DBD0E956DF898FB662C278097C9C"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/second-twin-associated-name-failure.png",
+      "bytes": 802376,
+      "sha256": "EF1F05800F97288B1A40743D95E581BD5B27CCAD5BB35541C459494F5BE62132"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/single-journey-contact.png",
+      "bytes": 478065,
+      "sha256": "D23681F74EBC5B7D8F3A4F9308095BFDB035AE3737B79936B212EC16825B4363"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/twin-evidence.png",
+      "bytes": 416165,
+      "sha256": "64D0ACD9B87C09FFE4B7AA311AD2DDD0735747C989A356A7A6F988E03D872CE9"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/twin-focus.png",
+      "bytes": 508113,
+      "sha256": "683A15BDC521D4903C78141A9DD9844F3D4AB58DE96CA8200560BC8365C6D5E4"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/twin-memory.png",
+      "bytes": 369136,
+      "sha256": "628613EF90592E37C83F3949FC3C5F6B1AB76D1C91997BDC88A08E2DF426D235"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/twin-resume.png",
+      "bytes": 352122,
+      "sha256": "4D9EE1F0FFF17D4827ABF6B99E85EF0A90B2B269875BDD4D0BE08389D6A7C9F9"
+    },
+    {
+      "path": "docs/design/ai-dual-memory/twin-saved-evidence.png",
+      "bytes": 427390,
+      "sha256": "60F1A52DF7DBFA1947AF615D2CBFD697E20562C9BE632F9ACCD0331F59DBEF70"
+    }
+  ],
+  "cleanup": {
+    "independentTestStoresOnly": true,
+    "formalArchiveCleared": false,
+    "localServerRetainsTestAccounts": true,
+    "emulatorStopVerifiedAfterAllTests": true,
+    "stopped": [
+      {
+        "instance": "YunhejiSyncB",
+        "pidStillRunning": false,
+        "portStillListening": false
+      },
+      {
+        "instance": "Pura 90 Pro",
+        "pidStillRunning": false,
+        "portStillListening": false
+      }
+    ],
+    "httpsHealth": {
+      "service": "yunheji-account",
+      "version": 1
+    }
+  },
+  "pending": [
+    "C09个人长卷未实现",
+    "原生可信组网与平台跨端传输",
+    "华为账号授权",
+    "平板布局",
+    "完整恢复",
+    "真人三分钟计时及最终录像",
+    "Word/视频/比赛压缩包未更新"
+  ],
+  "publication": {
+    "committed": false,
+    "pushed": false,
+    "sourceCredentialsPublished": false,
+    "logNormalization": "公开日志仅替换本机路径/移除ANSI，原始输出留在忽略目录；不修改测试摘要"
+  }
+}

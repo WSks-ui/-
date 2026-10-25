@@ -1,0 +1,1517 @@
+{
+  "scope": "原生平板跨Text摘录拖放、两次真实旋转与两条记忆目录切换",
+  "date": "2026-10-23",
+  "status": "两条定向用例分别在所列包版本上通过",
+  "pathBase": "repository-root",
+  "device": {
+    "kind": "tablet",
+    "nativeEntryAbility": true,
+    "landscapePng": {
+      "width": 2880,
+      "height": 1920
+    },
+    "portraitPng": {
+      "width": 1920,
+      "height": 2880
+    }
+  },
+  "parameters": {
+    "ExpectedTests": 1,
+    "TestTimeoutMs": 600000,
+    "execution": "逐例独立游客库"
+  },
+  "totals": {
+    "successfulCases": 2,
+    "distinctPackageBatches": 2,
+    "artifactPairs": 11,
+    "originalArtifactFiles": 22,
+    "singlePackageAggregate": false
+  },
+  "artifactPolicy": {
+    "originalBytesPreserved": true,
+    "sha256Compared": true,
+    "packageHapHashesRecomputed": true,
+    "redrawn": false,
+    "cropped": false,
+    "composited": false,
+    "privateIdentityNodesFound": 0,
+    "developerAbsolutePathsFound": 0,
+    "credentialsOrHapPublished": false,
+    "mixedEventLogPublished": false,
+    "onlySuccessfulSessionEventsParsed": true
+  },
+  "cases": [
+    {
+      "key": "excerpt",
+      "name": "跨Text原生选摘、拖入草稿、两次旋转后保存",
+      "test": "RoamingTabletTest#native_excerpt_drag_survives_portrait_and_landscape_before_save",
+      "packages": {
+        "main": {
+          "label": "M11",
+          "bytes": 7625477,
+          "sha256": "E5C170AE1393E15DD2D4A77F638E583BCE5E23FADB4405A56FC6EE03499A5338",
+          "ignoredHashManifest": ".local/roaming-rebuild-20261023/packages/M11-T9-hashes.json",
+          "actualRetainedHapVerified": true,
+          "binaryPublished": false
+        },
+        "test": {
+          "label": "T11",
+          "bytes": 7011271,
+          "sha256": "3E4A471529E95EAC157D22D69BA79760BF1C86AB6DF042672CC8908648A7DBAA",
+          "ignoredHashManifest": ".local/roaming-rebuild-20261023/packages/T11-hash.json",
+          "actualRetainedHapVerified": true,
+          "binaryPublished": false
+        }
+      },
+      "report": "docs/test-results/2026-10-23-033111-9a3c9460-device.log",
+      "reportSha256": "F70C36ED11096EEFC87911CCE114FA0DBA598AC69C40DDCA0CDE9659D9BB4BEC",
+      "result": {
+        "testsRun": 1,
+        "passed": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0,
+        "consumingMs": 113514
+      },
+      "sourceSession": {
+        "ignoredMixedLog": ".local/roaming-rebuild-20261023/tablet-events-live.log",
+        "processId": "22516",
+        "sourceLines": [
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "testStore": "yunheji_test_ui_1792697473908_roaming_tablet_excerpt",
+        "otherSessionsExcluded": true
+      },
+      "nativeSteps": [
+        {
+          "step": "NATIVE_DRAG",
+          "time": "10-23 03:32:01.851",
+          "sourceLine": 26
+        }
+      ],
+      "orientations": [
+        {
+          "phase": "excerpt-landscape-start",
+          "time": "10-23 03:31:17.465",
+          "sourceLine": 24,
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 2880,
+            "height": 1920
+          }
+        },
+        {
+          "phase": "excerpt-portrait",
+          "time": "10-23 03:32:23.093",
+          "sourceLine": 27,
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 2880
+          }
+        },
+        {
+          "phase": "excerpt-landscape-return",
+          "time": "10-23 03:32:45.314",
+          "sourceLine": 28,
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 2880,
+            "height": 1920
+          }
+        }
+      ],
+      "chapterBounds": [
+        {
+          "time": "10-23 03:31:31.661",
+          "sourceLine": 25,
+          "bounds": {
+            "bottom": 1920,
+            "displayId": 0,
+            "left": 721,
+            "right": 2880,
+            "top": 86
+          }
+        },
+        {
+          "time": "10-23 03:32:47.329",
+          "sourceLine": 29,
+          "bounds": {
+            "bottom": 1920,
+            "displayId": 0,
+            "left": 721,
+            "right": 2880,
+            "top": 86
+          }
+        }
+      ],
+      "noteReadbacks": [
+        {
+          "phase": "excerpt-final-disk",
+          "time": "10-23 03:33:04.086",
+          "sourceLines": [
+            30,
+            31
+          ],
+          "recordJsonSha256": "C1A5F7A5F29B1EF512F4EAB27D4377DCFD9732231715BE0A6A5E3DC31E6A83FF",
+          "record": {
+            "id": "note:8682c031-6145-49f4-8017-794810e089b8:1792697580295",
+            "kind": "note",
+            "siteId": "roam-kf-crossing",
+            "body": "在平板上把街与河的关系摘下来，转成竖屏后，我仍想保留这一次自己的理解。",
+            "tags": [
+              "平板摘录",
+              "街河相遇"
+            ],
+            "updatedAt": 1792697580295,
+            "deviceId": "8682c031-6145-49f4-8017-794810e089b8",
+            "deleted": false,
+            "stampType": "河洛拾遗",
+            "paperTheme": "jade",
+            "quotedPoemOrFact": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+            "roamingContext": {
+              "version": 1,
+              "chapterId": "roam-kf-night",
+              "clueId": "roam-kf-crossing",
+              "sceneRevision": 1,
+              "choiceId": "kf-street-river",
+              "excerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+              "title": "点亮汴京的一夜 · 找到街与河的交会",
+              "city": "开封",
+              "sources": [
+                {
+                  "id": "roam-source-zhouqiao",
+                  "title": "中国历史研究院·州桥及附近汴河遗址资料",
+                  "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+                  "accessedAt": "2026-10-23"
+                }
+              ],
+              "contentRevision": 1
+            }
+          }
+        }
+      ],
+      "actualResult": {
+        "phase": "excerpt",
+        "time": "10-23 03:33:04.459",
+        "sourceLine": 32,
+        "value": {
+          "store": "yunheji_test_ui_1792697473908_roaming_tablet_excerpt",
+          "noteId": "note:8682c031-6145-49f4-8017-794810e089b8:1792697580295",
+          "excerpt": "native-selection-two-texts",
+          "drag": "Component.dragTo",
+          "rotations": 2,
+          "activeNotes": 1
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-before-native-drag.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-before-native-drag.json",
+          "bytes": 158859,
+          "sha256": "1FA6BCBED087CF51FCF5D7FE9566086F819F6344A057036BAC4C6D54AE0BE382",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roaming-chapter-page",
+              "text": "",
+              "bounds": "[721,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-chapter-wide-scroll",
+              "text": "",
+              "bounds": "[721,190][1550,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-feedback",
+              "text": "从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[761,1774][1510,1818]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-column",
+              "text": "",
+              "bounds": "[1552,190][2215,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-paragraph-0",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。",
+              "bounds": "[1588,632][2179,856]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-excerpt-card",
+              "text": "",
+              "bounds": "[1588,1150][2179,1774]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-writing-column",
+              "text": "",
+              "bounds": "[2217,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-body",
+              "text": "",
+              "bounds": "[2281,345][2816,665]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-drop",
+              "text": "",
+              "bounds": "[2281,693][2816,1219]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[2311,767][2786,1135]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-tags",
+              "text": "",
+              "bounds": "[2281,1247][2816,1333]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-save-note",
+              "text": "确认，存入我的记忆",
+              "bounds": "[2281,1465][2816,1559]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-before-native-drag.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-before-native-drag.png",
+          "bytes": 951243,
+          "sha256": "665AD1102CB9951318AA2E513FB0C34A8873ACFC5F9E749E3DA38266680118E5",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-landscape-draft.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-landscape-draft.json",
+          "bytes": 159738,
+          "sha256": "BE7B58D3981C7DC2092AF7872C1D63DDCE0E20038B0713FB39F2949C1260FF1B",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roaming-chapter-page",
+              "text": "",
+              "bounds": "[721,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-chapter-wide-scroll",
+              "text": "",
+              "bounds": "[721,190][1550,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-feedback",
+              "text": "从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[761,1774][1510,1818]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-column",
+              "text": "",
+              "bounds": "[1552,190][2215,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-paragraph-0",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。",
+              "bounds": "[1588,632][2179,856]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-excerpt-card",
+              "text": "",
+              "bounds": "[1588,1150][2179,1774]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-writing-column",
+              "text": "",
+              "bounds": "[2217,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-body",
+              "text": "在平板上把街与河的关系摘下来，转成竖屏后，我仍想保留这一次自己的理解。",
+              "bounds": "[2281,345][2816,665]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-drop",
+              "text": "",
+              "bounds": "[2281,693][2816,1249]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[2311,767][2786,1089]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-tags",
+              "text": "平板摘录，街河相遇",
+              "bounds": "[2281,1277][2816,1363]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-save-note",
+              "text": "确认，存入我的记忆",
+              "bounds": "[2281,1495][2816,1589]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-landscape-draft.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-landscape-draft.png",
+          "bytes": 959400,
+          "sha256": "8C4D94CDAF385F173A62EDA41865E379D4FC87E415756E11F0BB467120BCB658",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-landscape-restored-draft.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-landscape-restored-draft.json",
+          "bytes": 159738,
+          "sha256": "EDFCD070A3D69118A04B8D62F251F3938F60972890601A4F9B1238C612176622",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roaming-chapter-page",
+              "text": "",
+              "bounds": "[721,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-chapter-wide-scroll",
+              "text": "",
+              "bounds": "[721,190][1550,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-feedback",
+              "text": "从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[761,1774][1510,1818]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-column",
+              "text": "",
+              "bounds": "[1552,190][2215,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-paragraph-0",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。",
+              "bounds": "[1588,632][2179,856]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-excerpt-card",
+              "text": "",
+              "bounds": "[1588,1150][2179,1774]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-writing-column",
+              "text": "",
+              "bounds": "[2217,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-body",
+              "text": "在平板上把街与河的关系摘下来，转成竖屏后，我仍想保留这一次自己的理解。",
+              "bounds": "[2281,345][2816,665]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-drop",
+              "text": "",
+              "bounds": "[2281,693][2816,1249]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[2311,767][2786,1089]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-tags",
+              "text": "平板摘录，街河相遇",
+              "bounds": "[2281,1277][2816,1363]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-save-note",
+              "text": "确认，存入我的记忆",
+              "bounds": "[2281,1495][2816,1589]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-landscape-restored-draft.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-landscape-restored-draft.png",
+          "bytes": 959385,
+          "sha256": "E10E6E1E1F19DDE9BE7F2112D3073A1AECB6009C8EFA1893ABA93F978C2CBC7D",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-landscape-saved.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-landscape-saved.json",
+          "bytes": 160400,
+          "sha256": "5973DAB18E5988533392BE20B4AC6B80A725C3589A8DCE1D20ABD464C9149524",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roaming-chapter-page",
+              "text": "",
+              "bounds": "[721,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-chapter-wide-scroll",
+              "text": "",
+              "bounds": "[721,190][1550,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-feedback",
+              "text": "从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[761,1774][1510,1818]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-column",
+              "text": "",
+              "bounds": "[1552,190][2215,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-reading-paragraph-0",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。",
+              "bounds": "[1588,632][2179,856]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-excerpt-card",
+              "text": "",
+              "bounds": "[1588,1150][2179,1774]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-writing-column",
+              "text": "",
+              "bounds": "[2217,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-body",
+              "text": "在平板上把街与河的关系摘下来，转成竖屏后，我仍想保留这一次自己的理解。",
+              "bounds": "[2281,345][2816,665]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-drop",
+              "text": "",
+              "bounds": "[2281,693][2816,1249]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[2311,767][2786,1089]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-tags",
+              "text": "平板摘录，街河相遇",
+              "bounds": "[2281,1277][2816,1363]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-save-note",
+              "text": "这一页已保存",
+              "bounds": "[2281,1495][2816,1589]",
+              "enabled": "false",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-landscape-saved.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-landscape-saved.png",
+          "bytes": 956535,
+          "sha256": "9051A55DAB1940B595010876B99C6531FFFEA4C52B2492B997BF450E47462013",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-portrait-writing-sheet.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-portrait-writing-sheet.json",
+          "bytes": 144322,
+          "sha256": "01F353D2954F43932CC680B5DDCCB1E311C752D4B65239394D0C02D0CCD8033B",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,78][1920,2880]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roaming-chapter-page",
+              "text": "",
+              "bounds": "[721,78][1920,2880]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-feedback",
+              "text": "从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[761,1767][1880,1811]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-sheet-scroll",
+              "text": "",
+              "bounds": "[961,1820][1681,2812]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-drop",
+              "text": "",
+              "bounds": "[1037,1820][1605,2306]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-draft-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[1067,1870][1575,2146]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-note-tags",
+              "text": "平板摘录，街河相遇",
+              "bounds": "[1037,2334][1605,2420]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-save-note",
+              "text": "确认，存入我的记忆",
+              "bounds": "[1037,2552][1605,2646]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/excerpt/excerpt-portrait-writing-sheet.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-excerpt-r4/excerpt-portrait-writing-sheet.png",
+          "bytes": 689921,
+          "sha256": "52563C839BA43312EC5A70CAE700A9C2E9B0383FE7C6A8391BAA0D2E1E747513",
+          "originalBytesEqual": true,
+          "width": 1920,
+          "height": 2880
+        }
+      ],
+      "selectedImages": [
+        "docs/design/roaming/tablet/excerpt/excerpt-before-native-drag.png",
+        "docs/design/roaming/tablet/excerpt/excerpt-landscape-draft.png",
+        "docs/design/roaming/tablet/excerpt/excerpt-portrait-writing-sheet.png",
+        "docs/design/roaming/tablet/excerpt/excerpt-landscape-restored-draft.png",
+        "docs/design/roaming/tablet/excerpt/excerpt-landscape-saved.png"
+      ],
+      "selectionProof": {
+        "firstText": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。",
+        "secondText": "从州桥所在的位置，观察城市道路与水道的联系。",
+        "separator": "\n",
+        "exactCrossTextExcerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n从州桥所在的位置，观察城市道路与水道的联系。",
+        "persistedExcerptExact": true,
+        "landscapeDraftAndRestoredBodyExact": true,
+        "allFourDraftExcerptAndTagSnapshotsExact": true,
+        "portraitBodyOutsideCapturedScroll": true,
+        "portraitBodyCheckedByPassingTest": true
+      }
+    },
+    {
+      "key": "memory",
+      "name": "两条记忆左目录切换与旋转后保留选中记录",
+      "test": "RoamingTabletTest#native_memory_directory_keeps_selected_note_after_orientation_changes",
+      "packages": {
+        "main": {
+          "label": "M12",
+          "bytes": 7629427,
+          "sha256": "FD6E7B3C89A155528FC9166B012AF96DB029DFE8AA379EC4ED669FBECD517094",
+          "ignoredHashManifest": ".local/roaming-rebuild-20261023/packages/M12-T12-hashes.json",
+          "actualRetainedHapVerified": true,
+          "binaryPublished": false
+        },
+        "test": {
+          "label": "T12",
+          "bytes": 7011271,
+          "sha256": "80414E8A33898028010BA17D50EA1EB5DECB58303A57B6B1796037D87FDF0E32",
+          "ignoredHashManifest": ".local/roaming-rebuild-20261023/packages/M12-T12-hashes.json",
+          "actualRetainedHapVerified": true,
+          "binaryPublished": false
+        }
+      },
+      "report": "docs/test-results/2026-10-23-034327-a4e2774e-device.log",
+      "reportSha256": "30105426DDEC08DC995541998C0A588EA86079FD7B579A59A69317C210ACB10D",
+      "result": {
+        "testsRun": 1,
+        "passed": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0,
+        "consumingMs": 209582
+      },
+      "sourceSession": {
+        "ignoredMixedLog": ".local/roaming-rebuild-20261023/tablet-events-live.log",
+        "processId": "31546",
+        "sourceLines": [
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52
+        ],
+        "testStore": "yunheji_test_ui_1792698209658_roaming_tablet_directory",
+        "otherSessionsExcluded": true
+      },
+      "nativeSteps": [],
+      "orientations": [
+        {
+          "phase": "directory-landscape-start",
+          "time": "10-23 03:43:33.025",
+          "sourceLine": 39,
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 2880,
+            "height": 1920
+          }
+        },
+        {
+          "phase": "directory-portrait",
+          "time": "10-23 03:46:20.265",
+          "sourceLine": 46,
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 1920,
+            "height": 2880
+          }
+        },
+        {
+          "phase": "directory-landscape-return",
+          "time": "10-23 03:46:37.021",
+          "sourceLine": 47,
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "width": 2880,
+            "height": 1920
+          }
+        }
+      ],
+      "chapterBounds": [
+        {
+          "time": "10-23 03:43:47.578",
+          "sourceLine": 40,
+          "bounds": {
+            "bottom": 1920,
+            "displayId": 0,
+            "left": 721,
+            "right": 2880,
+            "top": 86
+          }
+        },
+        {
+          "time": "10-23 03:44:48.297",
+          "sourceLine": 43,
+          "bounds": {
+            "bottom": 1920,
+            "displayId": 0,
+            "left": 721,
+            "right": 2880,
+            "top": 86
+          }
+        }
+      ],
+      "noteReadbacks": [
+        {
+          "phase": "directory-kf-night-saved",
+          "time": "10-23 03:44:30.878",
+          "sourceLines": [
+            41,
+            42
+          ],
+          "recordJsonSha256": "F2314DBEA92230B70AD5919059C5F5DA12C53F8BB74B07002D3E44232A616CD3",
+          "record": {
+            "id": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698267142",
+            "kind": "note",
+            "siteId": "roam-kf-crossing",
+            "body": "开封的第一段记忆：街市沿着河流展开，我想记住桥连接两岸日常的关系。",
+            "tags": [
+              "平板开封"
+            ],
+            "updatedAt": 1792698267142,
+            "deviceId": "3c9c7d6b-c637-4180-b78a-fc5d2281f456",
+            "deleted": false,
+            "stampType": "河洛拾遗",
+            "paperTheme": "jade",
+            "quotedPoemOrFact": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+            "roamingContext": {
+              "version": 1,
+              "chapterId": "roam-kf-night",
+              "clueId": "roam-kf-crossing",
+              "sceneRevision": 1,
+              "choiceId": "kf-street-river",
+              "excerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+              "title": "点亮汴京的一夜 · 找到街与河的交会",
+              "city": "开封",
+              "sources": [
+                {
+                  "id": "roam-source-zhouqiao",
+                  "title": "中国历史研究院·州桥及附近汴河遗址资料",
+                  "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+                  "accessedAt": "2026-10-23"
+                }
+              ],
+              "contentRevision": 1
+            }
+          }
+        },
+        {
+          "phase": "directory-ly-spring-saved",
+          "time": "10-23 03:45:32.118",
+          "sourceLines": [
+            44,
+            45
+          ],
+          "recordJsonSha256": "FE484F79B082919F725D6DB722158F834DCAB37C65B8BED6B50FCD790B533D52",
+          "record": {
+            "id": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698328599",
+            "kind": "note",
+            "siteId": "roam-ly-longmen",
+            "body": "洛阳的第一段记忆：站在河岸读两山与石窟，把这一页留给春日的山水。",
+            "tags": [
+              "平板洛阳"
+            ],
+            "updatedAt": 1792698328599,
+            "deviceId": "3c9c7d6b-c637-4180-b78a-fc5d2281f456",
+            "deleted": false,
+            "stampType": "河洛拾遗",
+            "paperTheme": "jade",
+            "quotedPoemOrFact": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+            "roamingContext": {
+              "version": 1,
+              "chapterId": "roam-ly-spring",
+              "clueId": "roam-ly-longmen",
+              "sceneRevision": 1,
+              "choiceId": "ly-river",
+              "excerpt": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+              "title": "这一城春色，为谁而开 · 让伊河进入景窗",
+              "city": "洛阳",
+              "sources": [
+                {
+                  "id": "roam-source-longmen",
+                  "title": "河南省人民政府·龙门石窟资料",
+                  "url": "https://m.henan.gov.cn/2026/08-06/3383102.html",
+                  "accessedAt": "2026-10-23"
+                }
+              ],
+              "contentRevision": 1
+            }
+          }
+        },
+        {
+          "phase": "directory-final-disk",
+          "time": "10-23 03:46:56.175",
+          "sourceLines": [
+            48,
+            49
+          ],
+          "recordJsonSha256": "F2314DBEA92230B70AD5919059C5F5DA12C53F8BB74B07002D3E44232A616CD3",
+          "record": {
+            "id": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698267142",
+            "kind": "note",
+            "siteId": "roam-kf-crossing",
+            "body": "开封的第一段记忆：街市沿着河流展开，我想记住桥连接两岸日常的关系。",
+            "tags": [
+              "平板开封"
+            ],
+            "updatedAt": 1792698267142,
+            "deviceId": "3c9c7d6b-c637-4180-b78a-fc5d2281f456",
+            "deleted": false,
+            "stampType": "河洛拾遗",
+            "paperTheme": "jade",
+            "quotedPoemOrFact": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+            "roamingContext": {
+              "version": 1,
+              "chapterId": "roam-kf-night",
+              "clueId": "roam-kf-crossing",
+              "sceneRevision": 1,
+              "choiceId": "kf-street-river",
+              "excerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+              "title": "点亮汴京的一夜 · 找到街与河的交会",
+              "city": "开封",
+              "sources": [
+                {
+                  "id": "roam-source-zhouqiao",
+                  "title": "中国历史研究院·州桥及附近汴河遗址资料",
+                  "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+                  "accessedAt": "2026-10-23"
+                }
+              ],
+              "contentRevision": 1
+            }
+          }
+        },
+        {
+          "phase": "directory-final-disk",
+          "time": "10-23 03:46:56.175",
+          "sourceLines": [
+            50,
+            51
+          ],
+          "recordJsonSha256": "FE484F79B082919F725D6DB722158F834DCAB37C65B8BED6B50FCD790B533D52",
+          "record": {
+            "id": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698328599",
+            "kind": "note",
+            "siteId": "roam-ly-longmen",
+            "body": "洛阳的第一段记忆：站在河岸读两山与石窟，把这一页留给春日的山水。",
+            "tags": [
+              "平板洛阳"
+            ],
+            "updatedAt": 1792698328599,
+            "deviceId": "3c9c7d6b-c637-4180-b78a-fc5d2281f456",
+            "deleted": false,
+            "stampType": "河洛拾遗",
+            "paperTheme": "jade",
+            "quotedPoemOrFact": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+            "roamingContext": {
+              "version": 1,
+              "chapterId": "roam-ly-spring",
+              "clueId": "roam-ly-longmen",
+              "sceneRevision": 1,
+              "choiceId": "ly-river",
+              "excerpt": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+              "title": "这一城春色，为谁而开 · 让伊河进入景窗",
+              "city": "洛阳",
+              "sources": [
+                {
+                  "id": "roam-source-longmen",
+                  "title": "河南省人民政府·龙门石窟资料",
+                  "url": "https://m.henan.gov.cn/2026/08-06/3383102.html",
+                  "accessedAt": "2026-10-23"
+                }
+              ],
+              "contentRevision": 1
+            }
+          }
+        }
+      ],
+      "actualResult": {
+        "phase": "directory",
+        "time": "10-23 03:46:56.175",
+        "sourceLine": 52,
+        "value": {
+          "store": "yunheji_test_ui_1792698209658_roaming_tablet_directory",
+          "activeNotes": 2,
+          "selectedNoteId": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698328599",
+          "rotations": 2,
+          "recordsUnchanged": true
+        }
+      },
+      "artifacts": [
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-kaifeng-selected-sources.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-kaifeng-selected-sources.json",
+          "bytes": 153381,
+          "sha256": "B58C9B64AFF20896B21E2EFFE39A354811EA67E37B6E0A4CDD02A93C22AD74DE",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "archive-scroll",
+              "text": "",
+              "bounds": "[0,78][720,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-scroll",
+              "text": "",
+              "bounds": "[721,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-title",
+              "text": "点亮汴京的一夜 · 找到街与河的交会",
+              "bounds": "[945,303][2657,364]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-body",
+              "text": "开封的第一段记忆：街市沿着河流展开，我想记住桥连接两岸日常的关系。",
+              "bounds": "[945,1064][2657,1124]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[981,1437][2621,1637]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-kaifeng-selected-sources.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-kaifeng-selected-sources.png",
+          "bytes": 726387,
+          "sha256": "D5C4B492A0050ADFB703B569DCA39DFE452FD186792C1437F187221980A0AB8F",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-kaifeng-selected.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-kaifeng-selected.json",
+          "bytes": 153381,
+          "sha256": "B58C9B64AFF20896B21E2EFFE39A354811EA67E37B6E0A4CDD02A93C22AD74DE",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "archive-scroll",
+              "text": "",
+              "bounds": "[0,78][720,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-scroll",
+              "text": "",
+              "bounds": "[721,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-title",
+              "text": "点亮汴京的一夜 · 找到街与河的交会",
+              "bounds": "[945,303][2657,364]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-body",
+              "text": "开封的第一段记忆：街市沿着河流展开，我想记住桥连接两岸日常的关系。",
+              "bounds": "[945,1064][2657,1124]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-excerpt",
+              "text": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+              "bounds": "[981,1437][2621,1637]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-kaifeng-selected.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-kaifeng-selected.png",
+          "bytes": 726387,
+          "sha256": "D5C4B492A0050ADFB703B569DCA39DFE452FD186792C1437F187221980A0AB8F",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-landscape-luoyang-retained.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-landscape-luoyang-retained.json",
+          "bytes": 154716,
+          "sha256": "F5706D4F606822905FDF50880BC7F35149FE2C8A698F89A492B0C4426172CE3E",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "archive-scroll",
+              "text": "",
+              "bounds": "[0,78][720,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-scroll",
+              "text": "",
+              "bounds": "[721,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-title",
+              "text": "这一城春色，为谁而开 · 让伊河进入景窗",
+              "bounds": "[945,303][2657,364]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-body",
+              "text": "洛阳的第一段记忆：站在河岸读两山与石窟，把这一页留给春日的山水。",
+              "bounds": "[945,1064][2657,1124]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-excerpt",
+              "text": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+              "bounds": "[981,1437][2621,1637]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-landscape-luoyang-retained.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-landscape-luoyang-retained.png",
+          "bytes": 711315,
+          "sha256": "BA15C1BB7B2C86543ACBCAEAEC5AA828234632C4A7D24A827432D2D560B1A253",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-luoyang-selected-sources.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-luoyang-selected-sources.json",
+          "bytes": 154716,
+          "sha256": "F5706D4F606822905FDF50880BC7F35149FE2C8A698F89A492B0C4426172CE3E",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "archive-scroll",
+              "text": "",
+              "bounds": "[0,78][720,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-scroll",
+              "text": "",
+              "bounds": "[721,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-title",
+              "text": "这一城春色，为谁而开 · 让伊河进入景窗",
+              "bounds": "[945,303][2657,364]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-body",
+              "text": "洛阳的第一段记忆：站在河岸读两山与石窟，把这一页留给春日的山水。",
+              "bounds": "[945,1064][2657,1124]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-excerpt",
+              "text": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+              "bounds": "[981,1437][2621,1637]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-luoyang-selected-sources.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-luoyang-selected-sources.png",
+          "bytes": 711315,
+          "sha256": "BA15C1BB7B2C86543ACBCAEAEC5AA828234632C4A7D24A827432D2D560B1A253",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-luoyang-selected.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-luoyang-selected.json",
+          "bytes": 154716,
+          "sha256": "F5706D4F606822905FDF50880BC7F35149FE2C8A698F89A492B0C4426172CE3E",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,86][2880,1920]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "archive-scroll",
+              "text": "",
+              "bounds": "[0,78][720,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-scroll",
+              "text": "",
+              "bounds": "[721,190][2880,1864]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-title",
+              "text": "这一城春色，为谁而开 · 让伊河进入景窗",
+              "bounds": "[945,303][2657,364]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-body",
+              "text": "洛阳的第一段记忆：站在河岸读两山与石窟，把这一页留给春日的山水。",
+              "bounds": "[945,1064][2657,1124]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-excerpt",
+              "text": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+              "bounds": "[981,1437][2621,1637]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-luoyang-selected.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-luoyang-selected.png",
+          "bytes": 711315,
+          "sha256": "BA15C1BB7B2C86543ACBCAEAEC5AA828234632C4A7D24A827432D2D560B1A253",
+          "originalBytesEqual": true,
+          "width": 2880,
+          "height": 1920
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-portrait-luoyang-retained.json",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-portrait-luoyang-retained.json",
+          "bytes": 155411,
+          "sha256": "100869A0E4083FB5E37371F49C34C7A149F36CDE7B6762D3005C73910CD86A4F",
+          "originalBytesEqual": true,
+          "privateIdentityNodes": 0,
+          "selectedNodes": [
+            {
+              "id": "native-navigation",
+              "text": "",
+              "bounds": "[0,78][1920,2880]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "archive-scroll",
+              "text": "",
+              "bounds": "[0,78][720,2824]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-scroll",
+              "text": "",
+              "bounds": "[721,190][1920,2824]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-title",
+              "text": "这一城春色，为谁而开 · 让伊河进入景窗",
+              "bounds": "[765,303][1876,364]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-body",
+              "text": "洛阳的第一段记忆：站在河岸读两山与石窟，把这一页留给春日的山水。",
+              "bounds": "[765,1064][1876,1184]",
+              "enabled": "true",
+              "visible": "true"
+            },
+            {
+              "id": "roam-memory-excerpt",
+              "text": "龙门石窟分布在伊河两岸的山体上，石窟与河流共同构成这里的观看环境。先把视线放在山与水的关系，再进入具体造像和营造年代。这里的远景是原创叙事示意，延伸档案可继续查看龙门资料。\n\n我选择：从河面望向两岸。让伊河成为进入龙门山水环境的一条线。",
+              "bounds": "[801,1497][1840,1747]",
+              "enabled": "true",
+              "visible": "true"
+            }
+          ]
+        },
+        {
+          "file": "docs/design/roaming/tablet/memory/directory-portrait-luoyang-retained.png",
+          "ignoredOriginal": ".local/roaming-rebuild-20261023/tablet-memory-r2/directory-portrait-luoyang-retained.png",
+          "bytes": 687363,
+          "sha256": "52683FE539DBFF93686B9CE4269B6699C8E4B7DCC46C2C0A8D5B298D3F6203CA",
+          "originalBytesEqual": true,
+          "width": 1920,
+          "height": 2880
+        }
+      ],
+      "selectedImages": [
+        "docs/design/roaming/tablet/memory/directory-kaifeng-selected.png",
+        "docs/design/roaming/tablet/memory/directory-kaifeng-selected-sources.png",
+        "docs/design/roaming/tablet/memory/directory-luoyang-selected.png",
+        "docs/design/roaming/tablet/memory/directory-luoyang-selected-sources.png",
+        "docs/design/roaming/tablet/memory/directory-portrait-luoyang-retained.png",
+        "docs/design/roaming/tablet/memory/directory-landscape-luoyang-retained.png"
+      ],
+      "versionComparisons": [
+        {
+          "noteId": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698267142",
+          "city": "开封",
+          "updatedAtBefore": 1792698267142,
+          "updatedAtAfter": 1792698267142,
+          "recordJsonSha256Before": "F2314DBEA92230B70AD5919059C5F5DA12C53F8BB74B07002D3E44232A616CD3",
+          "recordJsonSha256After": "F2314DBEA92230B70AD5919059C5F5DA12C53F8BB74B07002D3E44232A616CD3",
+          "rawRecordJsonEqual": true,
+          "fullRoamingContextEqual": true,
+          "bodyAndTagsEqual": true
+        },
+        {
+          "noteId": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698328599",
+          "city": "洛阳",
+          "updatedAtBefore": 1792698328599,
+          "updatedAtAfter": 1792698328599,
+          "recordJsonSha256Before": "FE484F79B082919F725D6DB722158F834DCAB37C65B8BED6B50FCD790B533D52",
+          "recordJsonSha256After": "FE484F79B082919F725D6DB722158F834DCAB37C65B8BED6B50FCD790B533D52",
+          "rawRecordJsonEqual": true,
+          "fullRoamingContextEqual": true,
+          "bodyAndTagsEqual": true
+        }
+      ],
+      "selectionProof": {
+        "selectionSequence": [
+          "开封",
+          "洛阳"
+        ],
+        "afterPortrait": "洛阳",
+        "afterLandscape": "洛阳",
+        "reselectedAfterRotation": false,
+        "bodyAndFrozenExcerptMatchAllThreeLayouts": true,
+        "selectedNoteId": "note:3c9c7d6b-c637-4180-b78a-fc5d2281f456:1792698328599"
+      }
+    }
+  ],
+  "visualReview": {
+    "method": "逐张实际查看原始PNG；文档预览缩放不修改文件",
+    "reviewedImages": [
+      "docs/design/roaming/tablet/excerpt/excerpt-before-native-drag.png",
+      "docs/design/roaming/tablet/excerpt/excerpt-landscape-draft.png",
+      "docs/design/roaming/tablet/excerpt/excerpt-portrait-writing-sheet.png",
+      "docs/design/roaming/tablet/excerpt/excerpt-landscape-restored-draft.png",
+      "docs/design/roaming/tablet/excerpt/excerpt-landscape-saved.png",
+      "docs/design/roaming/tablet/memory/directory-kaifeng-selected.png",
+      "docs/design/roaming/tablet/memory/directory-kaifeng-selected-sources.png",
+      "docs/design/roaming/tablet/memory/directory-luoyang-selected.png",
+      "docs/design/roaming/tablet/memory/directory-luoyang-selected-sources.png",
+      "docs/design/roaming/tablet/memory/directory-portrait-luoyang-retained.png",
+      "docs/design/roaming/tablet/memory/directory-landscape-luoyang-retained.png"
+    ],
+    "excerpt": "拖拽前卡片、拖入后连续摘录、亲笔正文、标签、竖屏Sheet、回横屏草稿与禁用的已保存按钮可见。竖屏图已滚动，正文框在截图上方。",
+    "memory": "开封与洛阳详情正文、图景、冻结来源可区分；左栏显示两条本机记忆；竖屏和回横屏仍为洛阳。"
+  },
+  "previousFailures": [
+    {
+      "batch": "摘录R1",
+      "reason": "锁屏导致启动中断，没有完整结束摘要，不计通过"
+    },
+    {
+      "batch": "摘录R2",
+      "reason": "测试未先执行所需滑动，却使用已观察状态作为前提；修正真实动作后重跑"
+    },
+    {
+      "batch": "摘录R3",
+      "reason": "软键盘遮住标签；改为真实收起键盘后再定位标签"
+    },
+    {
+      "batch": "目录首轮M11",
+      "reason": "保存开封后默认系统Back退出App，未返回首页",
+      "fix": "M12目的页明确调用同一NavPathStack.pop并return true",
+      "validatedBy": "M12/T12目录成功报告"
+    }
+  ],
+  "failureReportIndex": {
+    "file": "docs/TEST_REPORT.md",
+    "section": 34
+  },
+  "limits": [
+    "摘录成功属于M11/T11，未改记为M12；目录成功属于M12/T12。",
+    "不代表同一M12包全部平板用例通过或全应用回归。",
+    "截图不是拖拽连续录像；以同轮NATIVE_DRAG、真实Component.dragTo、草稿变化、磁盘回读和原始报告共同核对。",
+    "不代表华为账号、鸿蒙原生KV跨端、所有平板或文化资料已校审。"
+  ]
+}

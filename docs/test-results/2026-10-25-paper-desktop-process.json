@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-25",
+  "kind": "人工定向原生设备操作，不增加Hypium Tests/Pass",
+  "mainPackage": "paper-M14",
+  "target": "API26 tablet 2880×1920",
+  "scope": "独立视觉库，记录与正式账号隔离",
+  "method": "通过应用内AddFormMenuItem主动添加两卡；外部HDC aa force-stop后实际pidof为空，再点桌面精确formId。原始CLI返回见本次对话工具输出，以下为人工观察摘要，图片及layout落盘。",
+  "routes": [
+    { "formId": "1711419616", "mode": "process-cold", "pidAbsentBeforeClick": true,
+      "pageId": "paper-journey-page", "cityId": "paper-py", "goalWasCompleted": true,
+      "image": "docs/design/paper-journey/tablet-card-cold-paper.jpeg" },
+    { "formId": "77642583", "mode": "hot-onNewWant", "pageId": "paper-memory-page",
+      "noteId": "note:e4e4dafb-b9f8-4ab3-aa0b-3f337d6c1aae:1792929165669",
+      "identityBoundary": "独立库只有这一篇确认保存的三门峡note，原图及只存作品说明相符；未在人工步骤新增整库深比较",
+      "image": "docs/design/paper-journey/tablet-card-hot-memory.jpeg" },
+    { "formId": "77642583", "mode": "process-cold", "pidAbsentBeforeClick": true,
+      "pageId": "paper-memory-page", "noteId": "note:e4e4dafb-b9f8-4ab3-aa0b-3f337d6c1aae:1792929165669",
+      "image": "docs/design/paper-journey/tablet-card-cold-memory.jpeg" },
+    { "formId": "1711419616", "mode": "hot-onNewWant", "pageId": "paper-journey-page", "cityId": "paper-py",
+      "image": "docs/design/paper-journey/tablet-card-hot-paper.jpeg" }
+  ],
+  "cleanup": {
+    "removedOnlyCreatedFormIds": ["1711419616", "77642583"],
+    "method": "逐卡长按→移除→系统明确确认；原位置节点不再包含这两个formId",
+    "otherVisibleFormIdsPreserved": ["1657584280", "460827096"],
+    "visualStorePreservedForReview": true,
+    "privacy": "清理后桌面可能露出其他既有卡片，原图仅留本机；公开摘要保留本轮formId与移除结论，不展示旧卡内容。"
+  },
+  "automaticDeepComparison": "另见193737-ade3eb47设备原始报告及paper-forms-events.log；不把本人工结果冒充自动整库断言。"
+}

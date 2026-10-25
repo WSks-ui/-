@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "localLinksChecked": 781,
+  "sourceHashesChecked": 13,
+  "artifactsChecked": 50,
+  "deviceReportsChecked": 11,
+  "currentPackagesChecked": [
+    "M3",
+    "T4"
+  ],
+  "method": "交接链接、实际文件哈希、完整原始报告摘要核对；没有重跑旧套件"
+}

@@ -1,0 +1,240 @@
+{
+  "docx": {
+    "path": "docs\\deliverables\\云河纪-省赛五城漫游说明-20261023.docx",
+    "bytes": 7071635,
+    "sha256": "303C98CA648FA64D40DBB02964CD05EB9201F096A281D8A112384FE5D9528B46"
+  },
+  "pdf": {
+    "path": "docs\\deliverables\\云河纪-省赛五城漫游说明-20261023.pdf",
+    "bytes": 1472765,
+    "sha256": "2AD25F8EAA713B3A530DF0BF25A1523CD787B8C33ED62ADF91E1DC38008C9B17"
+  },
+  "structure": {
+    "headings": 12,
+    "embedded_images": 16,
+    "paragraphs": 134
+  },
+  "rendering": {
+    "method": "isolated-word-com",
+    "pages": 12,
+    "page_pngs": [
+      ".local\\roaming-materials-20261023\\qa\\page-01.png",
+      ".local\\roaming-materials-20261023\\qa\\page-02.png",
+      ".local\\roaming-materials-20261023\\qa\\page-03.png",
+      ".local\\roaming-materials-20261023\\qa\\page-04.png",
+      ".local\\roaming-materials-20261023\\qa\\page-05.png",
+      ".local\\roaming-materials-20261023\\qa\\page-06.png",
+      ".local\\roaming-materials-20261023\\qa\\page-07.png",
+      ".local\\roaming-materials-20261023\\qa\\page-08.png",
+      ".local\\roaming-materials-20261023\\qa\\page-09.png",
+      ".local\\roaming-materials-20261023\\qa\\page-10.png",
+      ".local\\roaming-materials-20261023\\qa\\page-11.png",
+      ".local\\roaming-materials-20261023\\qa\\page-12.png"
+    ],
+    "visual_review": "passed",
+    "reviewed_pages": 12,
+    "reviewed_at": "2026-10-22T20:31:46.861355+00:00",
+    "dpi": 140,
+    "individual_pages": [
+      {
+        "page": 1,
+        "path": ".local/roaming-materials-20261023/qa/page-01.png",
+        "bytes": 204336,
+        "sha256": "D4697E060202661FE55B1F05F870F0943D9720A8B3A62EC8EFDD11AD85A63323",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 2,
+        "path": ".local/roaming-materials-20261023/qa/page-02.png",
+        "bytes": 322397,
+        "sha256": "53A3A81C1A31191D3CECF48D0616E529441C20EDDF8DD59713AB9B8FE5CBE3E7",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 3,
+        "path": ".local/roaming-materials-20261023/qa/page-03.png",
+        "bytes": 258580,
+        "sha256": "49455AF639D35881BBCFC25CD0BA5207C43426AA49405D697CB7D50CACD315A1",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 4,
+        "path": ".local/roaming-materials-20261023/qa/page-04.png",
+        "bytes": 284223,
+        "sha256": "C95F36854529825C8FCFD482174319F8E775D217803860653390AA39578A3305",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 5,
+        "path": ".local/roaming-materials-20261023/qa/page-05.png",
+        "bytes": 269772,
+        "sha256": "1143D70C156C950B2A3E8760E474EEC6F4B27C11990DE69EF7E9E22A241162CA",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 6,
+        "path": ".local/roaming-materials-20261023/qa/page-06.png",
+        "bytes": 305073,
+        "sha256": "68BACEDE6316A9C094F143A6590C98164E14507C3C31B35FD8FD2472315F3906",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 7,
+        "path": ".local/roaming-materials-20261023/qa/page-07.png",
+        "bytes": 312646,
+        "sha256": "BAAFEB5137A5FC29AACAD07FA196ABBA6B06FD8AD7F10E04E48C708F2DCF2A28",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 8,
+        "path": ".local/roaming-materials-20261023/qa/page-08.png",
+        "bytes": 571030,
+        "sha256": "B22C32B1CA294F6CB9F930185E47119CC67626C96D047405CC3E581EA68B72D8",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 9,
+        "path": ".local/roaming-materials-20261023/qa/page-09.png",
+        "bytes": 457350,
+        "sha256": "F9ECEB48F1129517D8AE6E6709C97D52D82069AFEF0D8F30EFD82822D55ED96F",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 10,
+        "path": ".local/roaming-materials-20261023/qa/page-10.png",
+        "bytes": 468737,
+        "sha256": "2A5F87F1224EA8CDE44D295AF0B7B7493B96F9EA9532E9898FDD6CC78D628D62",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 11,
+        "path": ".local/roaming-materials-20261023/qa/page-11.png",
+        "bytes": 323018,
+        "sha256": "4A1A2B01A6562702E3D851BFB12D18C41D6E1128AD5F80442E3854DE4ED216B7",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      },
+      {
+        "page": 12,
+        "path": ".local/roaming-materials-20261023/qa/page-12.png",
+        "bytes": 275515,
+        "sha256": "2190FBF726E3CDC5C0A787C4C5E4FEC71E861E801AF932262A62992F52B2A623",
+        "pixels": [
+          1158,
+          1638
+        ],
+        "visual_review": "passed",
+        "review": "按原始分辨率逐页查看，标题、正文、截图、表格与页码无裁切、遮挡、乱码或孤页"
+      }
+    ],
+    "stale_page_count": 0
+  },
+  "manifest": ".local\\roaming-materials-20261023\\evidence.json",
+  "old_materials": [
+    {
+      "name": "云河纪-校赛选拔设计文档.docx",
+      "bytes": 1167850,
+      "sha256": "4E811C61455BAA83B2F7EDFFB22DC8C71B1288C1D8DA752B82EBDB9CFE4A15D8",
+      "unchanged": true
+    },
+    {
+      "name": "云河纪设计方案.docx",
+      "bytes": 3801416,
+      "sha256": "EB5B67E9888E444A0FF9A16D12E319A24AC4D6682F9374EE6220E5AD0836DB94",
+      "unchanged": true
+    }
+  ],
+  "original_images": {
+    "embedded_originals": 16,
+    "all_original_bytes_equal": true,
+    "redrawn": false,
+    "cropped": false
+  },
+  "heading_style": {
+    "all_black": true,
+    "colors": [
+      "000000"
+    ]
+  },
+  "renderer_diagnostic": {
+    "packaged_renderer_attempted": true,
+    "failure": "FileNotFoundError: LibreOffice soffice.exe was not found on PATH",
+    "log": ".local/roaming-materials-20261023/render_docx-attempt.log",
+    "successful_fallback": "isolated-word-com",
+    "word_audit": ".local/roaming-materials-20261023/word-pdf-export.json"
+  },
+  "markers": {
+    "docx": {
+      "kind": "docx",
+      "started_at": "2026-10-22T20:19:45.335388+00:00",
+      "returncode": 0
+    },
+    "pdf": {
+      "kind": "pdf",
+      "started_at": "2026-10-22T20:19:45.921943+00:00",
+      "returncode": 0
+    }
+  },
+  "source_evidence": {
+    "manifest": "docs/test-results/2026-10-23-roaming.json",
+    "source_manifest": "docs/test-results/2026-10-23-roaming-source.json",
+    "code_revision": "HEAD 910324679288e23f5c20d4803210e1c798c6ca03；未提交产品源码快照 SHA256 468DC77FA82AFA7C563EC8541B4B929976377947955F28B5DBC690F5CA779124",
+    "readiness": "2026-10-23 主任务显式 evidence-ready"
+  },
+  "status": "material-ready",
+  "missing_required_evidence": []
+}

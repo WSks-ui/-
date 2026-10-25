@@ -1,0 +1,323 @@
+{
+  "total": 20,
+  "cities": {
+    "三门峡": 4,
+    "洛阳": 4,
+    "郑州": 4,
+    "开封": 4,
+    "濮阳": 4
+  },
+  "eras": {
+    "仰韶": 5,
+    "夏商": 4,
+    "宋": 3,
+    "周": 3,
+    "汉唐": 2,
+    "城市史": 1,
+    "民间记忆": 1,
+    "近现代": 1
+  },
+  "types": {
+    "聚落遗址": 4,
+    "都城遗址": 4,
+    "古建筑": 3,
+    "城址": 4,
+    "墓葬群": 2,
+    "文化纪念地": 1,
+    "革命旧址": 1,
+    "青铜器": 1
+  },
+  "emptyEraOptions": [
+    "龙山"
+  ],
+  "emptyTypeOptions": [
+    "窑址"
+  ],
+  "poetryCount": 5,
+  "sourcedCount": 20,
+  "photoCount": 16,
+  "missingAssets": [],
+  "reviewStatuses": {
+    "初稿待校审": 20
+  },
+  "sites": [
+    {
+      "id": "smx-yangshao",
+      "name": "仰韶村遗址",
+      "city": "三门峡",
+      "era": "仰韶",
+      "type": "聚落遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "国家文物局：河南渑池仰韶村遗址",
+        "url": "http://www.ncha.gov.cn/art/2022/3/19/art_2587_74.html"
+      }
+    },
+    {
+      "id": "ly-erlitou",
+      "name": "二里头遗址",
+      "city": "洛阳",
+      "era": "夏商",
+      "type": "都城遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "河南省人民政府：二里头遗址文明之光",
+        "url": "https://www.henan.gov.cn/2025/04-09/3145831.html"
+      }
+    },
+    {
+      "id": "zz-shang",
+      "name": "郑州商城遗址",
+      "city": "郑州",
+      "era": "夏商",
+      "type": "都城遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "国家文物局：河南郑州商城遗址",
+        "url": "http://www.ncha.gov.cn/art/2022/3/19/art_2588_93.html"
+      }
+    },
+    {
+      "id": "kf-iron-pagoda",
+      "name": "开封铁塔",
+      "city": "开封",
+      "era": "宋",
+      "type": "古建筑",
+      "hasPoetry": true,
+      "photos": 1,
+      "source": {
+        "title": "河南省人民政府：开封铁塔",
+        "url": "https://www.henan.gov.cn/2025/09-24/3229831.html"
+      }
+    },
+    {
+      "id": "py-qicheng",
+      "name": "戚城遗址",
+      "city": "濮阳",
+      "era": "周",
+      "type": "城址",
+      "hasPoetry": false,
+      "photos": 0,
+      "source": {
+        "title": "河南省人民政府：戚城遗址",
+        "url": "https://m.henan.gov.cn/2026/08-06/3383154.html"
+      }
+    },
+    {
+      "id": "smx-miaodigou",
+      "name": "庙底沟遗址",
+      "city": "三门峡",
+      "era": "仰韶",
+      "type": "聚落遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "国家文物局：河南三门峡庙底沟遗址",
+        "url": "http://www.ncha.gov.cn/art/2022/3/19/art_2587_75.html"
+      }
+    },
+    {
+      "id": "smx-guoguo",
+      "name": "虢国墓地",
+      "city": "三门峡",
+      "era": "周",
+      "type": "墓葬群",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "国家文物局：河南三门峡虢国墓地",
+        "url": "http://www.ncha.gov.cn/art/2022/3/18/art_2589_28.html"
+      }
+    },
+    {
+      "id": "ly-yanshi-shang",
+      "name": "偃师商城遗址",
+      "city": "洛阳",
+      "era": "夏商",
+      "type": "都城遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "国家文物局：河南偃师商城遗址",
+        "url": "http://www.ncha.gov.cn/art/2022/7/26/art_2588_110.html"
+      }
+    },
+    {
+      "id": "ly-hanwei",
+      "name": "汉魏洛阳城遗址",
+      "city": "洛阳",
+      "era": "汉唐",
+      "type": "都城遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "国家文物局：河南汉魏洛阳城遗址",
+        "url": "http://www.ncha.gov.cn/art/2022/3/18/art_2591_44.html"
+      }
+    },
+    {
+      "id": "ly-longmen",
+      "name": "龙门石窟",
+      "city": "洛阳",
+      "era": "汉唐",
+      "type": "古建筑",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "河南省人民政府：龙门石窟",
+        "url": "https://m.henan.gov.cn/2026/08-06/3383102.html"
+      }
+    },
+    {
+      "id": "zz-dahecun",
+      "name": "大河村遗址",
+      "city": "郑州",
+      "era": "仰韶",
+      "type": "聚落遗址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "河南省人民政府：大河村国家考古遗址公园开园",
+        "url": "https://www.henan.gov.cn/2025/12-06/3271201.html"
+      }
+    },
+    {
+      "id": "zz-zhenghan",
+      "name": "郑韩故城",
+      "city": "郑州",
+      "era": "周",
+      "type": "城址",
+      "hasPoetry": true,
+      "photos": 1,
+      "source": {
+        "title": "河南省人民政府：探访郑韩故城",
+        "url": "https://m.henan.gov.cn/2025/03-10/3134723.html"
+      }
+    },
+    {
+      "id": "kf-fanta",
+      "name": "繁塔",
+      "city": "开封",
+      "era": "宋",
+      "type": "古建筑",
+      "hasPoetry": true,
+      "photos": 1,
+      "source": {
+        "title": "开封市民政局：繁塔",
+        "url": "http://mzj.kaifeng.gov.cn/kfsmzjwz/fjms/pc/content/content_1991687698129862656.html"
+      }
+    },
+    {
+      "id": "kf-zhouqiao",
+      "name": "州桥及附近汴河遗址",
+      "city": "开封",
+      "era": "宋",
+      "type": "城址",
+      "hasPoetry": true,
+      "photos": 0,
+      "source": {
+        "title": "中国历史研究院：北宋东京城州桥重见天日",
+        "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml"
+      }
+    },
+    {
+      "id": "py-xishuipo",
+      "name": "西水坡遗址",
+      "city": "濮阳",
+      "era": "仰韶",
+      "type": "墓葬群",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "中国社会科学网：河南西水坡蚌龙图案的实证价值",
+        "url": "https://www.cssn.cn/lsx/lsx_kgx/202210/t20221024_5552751.shtml"
+      }
+    },
+    {
+      "id": "smx-xipo",
+      "name": "灵宝西坡遗址",
+      "city": "三门峡",
+      "era": "仰韶",
+      "type": "聚落遗址",
+      "hasPoetry": false,
+      "photos": 0,
+      "source": {
+        "title": "河南省人民政府：灵宝铸鼎原遗址群",
+        "url": "https://www.henan.gov.cn/2025/05-20/3159951.html"
+      }
+    },
+    {
+      "id": "kf-city-wall",
+      "name": "开封城墙",
+      "city": "开封",
+      "era": "城市史",
+      "type": "城址",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "河南省人民政府：开封城墙贯通工程",
+        "url": "https://www.henan.gov.cn/2020/12-30/2069373.html"
+      }
+    },
+    {
+      "id": "py-cangjie",
+      "name": "仓颉陵与造字传说记忆",
+      "city": "濮阳",
+      "era": "民间记忆",
+      "type": "文化纪念地",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "南乐县人民政府：仓颉陵文化旅游景区",
+        "url": "http://www.nanle.gov.cn/content/2024/856209.html"
+      }
+    },
+    {
+      "id": "py-danguai",
+      "name": "单拐革命旧址",
+      "city": "濮阳",
+      "era": "近现代",
+      "type": "革命旧址",
+      "hasPoetry": true,
+      "photos": 0,
+      "source": {
+        "title": "河南省人民政府：红色单拐的抗战记忆",
+        "url": "https://m.henan.gov.cn/2025/07-07/3178088.html"
+      }
+    },
+    {
+      "id": "zz-duling-fangding",
+      "name": "杜岭二号方鼎",
+      "city": "郑州",
+      "era": "夏商",
+      "type": "青铜器",
+      "hasPoetry": false,
+      "photos": 1,
+      "source": {
+        "title": "河南博物院：杜岭二号方鼎",
+        "url": "https://www.chnmus.net/sitesources/hnsbwy/page_pc/dzjp/mzyp/dlehfd/list1.html"
+      }
+    }
+  ],
+  "recommendationExample": [
+    {
+      "name": "郑州商城遗址",
+      "score": 8,
+      "reason": "同属夏商时期 · 同在郑州 · 关联青铜"
+    },
+    {
+      "name": "二里头遗址",
+      "score": 5,
+      "reason": "同属夏商时期 · 关联青铜"
+    },
+    {
+      "name": "偃师商城遗址",
+      "score": 5,
+      "reason": "同属夏商时期 · 关联青铜"
+    }
+  ],
+  "allBrowsedRecommendationCount": 0
+}

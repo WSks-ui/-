@@ -1,0 +1,363 @@
+{
+  "date": "2026-10-20",
+  "sourceHead": "910324679288e23f5c20d4803210e1c798c6ca03",
+  "applicationSourceChanged": false,
+  "verificationFilesChanged": [
+    "entry/src/ohosTest/ets/test/ArchiveUiSession.ets",
+    "entry/src/ohosTest/ets/test/MemorySync.test.ets",
+    "tools/device-test.ps1"
+  ],
+  "environment": {
+    "os": "HarmonyOS 7.0.0.107",
+    "api": 26,
+    "devices": 2,
+    "deviceType": "phone emulator",
+    "resolution": [
+      1256,
+      2760
+    ],
+    "transportUnderTest": "custom-account HTTPS, not Harmony distributed KV"
+  },
+  "mainPackage": {
+    "name": "entry-default-unsigned.hap",
+    "bytes": 6395153,
+    "sha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+    "modifiedUtc": "2026-10-20T14:13:13.8827318Z"
+  },
+  "baselineTestPackage": {
+    "name": "entry-ohosTest-unsigned.hap",
+    "bytes": 6295099,
+    "sha256": "2DE022D4948712BF4B0B3A044DDA5E25BDC8BEAFB58C7B3FB9114C4813C1F333",
+    "modifiedUtc": "2026-10-20T14:13:27.9223376Z"
+  },
+  "finalTestPackage": {
+    "name": "entry-ohosTest-unsigned.hap",
+    "bytes": 6296025,
+    "sha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825"
+  },
+  "localTests": {
+    "pass": 113,
+    "total": 113,
+    "reportParserPass": 9,
+    "reportParserTotal": 9
+  },
+  "serviceTests": {
+    "pass": 13,
+    "total": 13,
+    "note": "includes controlled model substitutes"
+  },
+  "realModelRequests": [
+    {
+      "purpose": "observe",
+      "elapsedMs": 1888
+    },
+    {
+      "purpose": "draft_memory",
+      "elapsedMs": 2205
+    }
+  ],
+  "deviceReports": [
+    {
+      "phase": "page_initial",
+      "case": "PageHierarchyTest",
+      "report": "docs/test-results/2026-10-20-224139-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "2DE022D4948712BF4B0B3A044DDA5E25BDC8BEAFB58C7B3FB9114C4813C1F333",
+      "total": 5,
+      "pass": 4,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 473564
+    },
+    {
+      "phase": "water",
+      "case": "WaterSituationTest",
+      "report": "docs/test-results/2026-10-20-224825-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "2DE022D4948712BF4B0B3A044DDA5E25BDC8BEAFB58C7B3FB9114C4813C1F333",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 51696
+    },
+    {
+      "phase": "legacy_graph_failed",
+      "case": "CultureAtlasTest",
+      "report": "docs/test-results/2026-10-20-224921-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "2DE022D4948712BF4B0B3A044DDA5E25BDC8BEAFB58C7B3FB9114C4813C1F333",
+      "total": 1,
+      "pass": 0,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 40273
+    },
+    {
+      "phase": "navigation_rerun",
+      "case": "PageHierarchyTest#library_filters_memory_tabs_and_profile_navigation",
+      "report": "docs/test-results/2026-10-20-225531-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 113602
+    },
+    {
+      "phase": "native_graph",
+      "case": "EngineExperienceTest#native_constellation_graph_selection_and_comparison",
+      "report": "docs/test-results/2026-10-20-225728-3f77b0a3-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 95866
+    },
+    {
+      "phase": "sync_A",
+      "case": "MemorySyncTest#device_a_publish_kiln_memory",
+      "report": "docs/test-results/2026-10-20-225756-dc9971bf-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 149123
+    },
+    {
+      "phase": "sync_B",
+      "case": "MemorySyncTest#device_b_receive_preview_and_replay",
+      "report": "docs/test-results/2026-10-20-230112-02351f49-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 86843
+    },
+    {
+      "phase": "cleanup_A",
+      "case": "MemorySyncTest#cleanup_only_this_run_test_preferences",
+      "report": "docs/test-results/2026-10-20-230543-95807c66-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 10162
+    },
+    {
+      "phase": "cleanup_B",
+      "case": "MemorySyncTest#cleanup_only_this_run_test_preferences",
+      "report": "docs/test-results/2026-10-20-230544-f3010eac-device.log",
+      "mainSha256": "D7BAEF8FC882E15C21405CC14C577187ABB0D5257222CC393AD237EC5A66CA6C",
+      "testSha256": "B7F8194E1492F7B165A4AB0A081AED1112B272D2B5C26466656C55323B61B825",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "finished": true,
+      "consumingMs": 10617
+    }
+  ],
+  "unusableRuns": [
+    {
+      "phase": "first_parallel_native_graph",
+      "reason": "same-second log filename collision, no complete B report; not counted as pass"
+    }
+  ],
+  "builds": {
+    "main": "BUILD SUCCESSFUL",
+    "baselineTest": "BUILD SUCCESSFUL",
+    "firstRefreshedTest": "failed: arkts-limited-throw in test helper",
+    "finalRefreshedTest": "BUILD SUCCESSFUL",
+    "signingConfigured": false
+  },
+  "pixelComparison": {
+    "width": 1032,
+    "height": 1050,
+    "comparedPixels": 1083600,
+    "changedPixels": 4,
+    "maxChannelDelta": 1,
+    "samePixelRatio": 0.9999963086009598,
+    "differenceBounds": [
+      628,
+      953,
+      996,
+      1014
+    ],
+    "firstChanges": [
+      {
+        "x": 996,
+        "y": 953,
+        "a": [
+          241,
+          232,
+          228,
+          255
+        ],
+        "b": [
+          242,
+          232,
+          228,
+          255
+        ]
+      },
+      {
+        "x": 986,
+        "y": 985,
+        "a": [
+          248,
+          242,
+          238,
+          255
+        ],
+        "b": [
+          248,
+          243,
+          238,
+          255
+        ]
+      },
+      {
+        "x": 628,
+        "y": 1014,
+        "a": [
+          240,
+          229,
+          227,
+          255
+        ],
+        "b": [
+          240,
+          229,
+          226,
+          255
+        ]
+      },
+      {
+        "x": 898,
+        "y": 1014,
+        "a": [
+          240,
+          229,
+          227,
+          255
+        ],
+        "b": [
+          240,
+          229,
+          226,
+          255
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "path": "docs/reviews/2026-10-20-assets/01-ai-focus.png",
+      "bytes": 470678,
+      "sha256": "8B18E1A92E259DA6EA4393DADFD90D4FC5E0987BAAB213D0E6A0F9BFE16620C0"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/02-memory-first-screen.png",
+      "bytes": 449723,
+      "sha256": "E89C7A720CFD87A937E1E6293FE316DD204A90337FEE486AAABBC1801DEE67DB"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/03-library.png",
+      "bytes": 469992,
+      "sha256": "49559791F2DB3464B64F17B5BD214555267607B01CB1E947F0BCD52311DC0D3D"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/04-memory-manage.png",
+      "bytes": 551919,
+      "sha256": "D08E10E584906E402D37190A95A2671D688FCA46BC665FC18DD02D8489E1043E"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/05-profile.png",
+      "bytes": 265392,
+      "sha256": "F91880A358526E4340A74C709F1B214EB0E4DE273080642CF37ED56320C2407D"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/06-data.png",
+      "bytes": 264310,
+      "sha256": "90D22541C7409F8F91178542A3EB99C7E07C75D205CEE2074BB6904F53858014"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/07-water.png",
+      "bytes": 451378,
+      "sha256": "4DB09722BE8D60DFC8224086BB399999917111EBD36AF5A8918C659906B76E89"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/08-native-graph.png",
+      "bytes": 438821,
+      "sha256": "D44F49483AFFDD344A5743B5A1983E87BEE463F00CDC9BA4DD826FB7EFC2DCB2"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/09-native-comparison.png",
+      "bytes": 299744,
+      "sha256": "D3E4DA12018F3DBBC0B5C71CBD0564C0127D51DF65E0E69E9E23AC3BE7DB4452"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/10-A-home-memory.png",
+      "bytes": 716346,
+      "sha256": "6322CA3BA8B09BC59A0F5F97C186C148BFA7731117A4F8366D59771B4234520B"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/11-A-saved-view.png",
+      "bytes": 496590,
+      "sha256": "0D3D37733DD57D4CAAE87910E152388CFCEEE96C76AA71CFF412588D83265B85"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/12-home-first-screen.png",
+      "bytes": 617112,
+      "sha256": "03C1AD38161DE6008DFA426A20EDA6F97BD64CC7A57EF3FDA139F9B4A6D5219C"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/13-B-home-memory.png",
+      "bytes": 728635,
+      "sha256": "0B7BEBB4A9AB2903CB12F65214EF0E13486B028DB9B9A92B4373EB2FC1CD0E84"
+    },
+    {
+      "path": "docs/reviews/2026-10-20-assets/14-B-replay.png",
+      "bytes": 470454,
+      "sha256": "2EF7E2ABBFCD2642ED59E81FFF612297B2BE466ED910CABCC2F327FD39DDBE05"
+    }
+  ],
+  "notVerified": [
+    "Harmony distributed KV/DataObject",
+    "Huawei account login",
+    "tablet/physical devices",
+    "twin-vessel AI save/replay across devices",
+    "updated personal-topic UI full route",
+    "offline account cold start",
+    "backup restore",
+    "human 180-second timing/video"
+  ],
+  "published": false
+}

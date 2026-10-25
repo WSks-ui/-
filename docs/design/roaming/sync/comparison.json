@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-23",
+  "transport": "自建同账号 HTTPS，本机服务经 HDC 反向端口；没有云部署",
+  "scope": "原手机A保存→真实平板B接收/继续/编辑→原手机A重新登录接收；独立测试档案",
+  "checks": {
+    "initialBExactlyReceivedA": true,
+    "retryBNoteAndProgressExactlyRetained": true,
+    "retryBCheckpointSameBody": true,
+    "originalABeforeResumeStillOriginal": true,
+    "BEditedSameNoteId": true,
+    "BChangedBodyAndVersion": true,
+    "BFrozenContextUnchanged": true,
+    "BRetainedOriginalProgress": true,
+    "BCompletedThreeClues": true,
+    "AReturnExactlyReceivedB": true
+  },
+  "checkpointRetryExplanation": "初次B已打开第二条线索，页面按正式规则更新同一阅读位置的时间和设备；重试B收到的note/context/progress仍与A完全相同，checkpoint正文相同而版本更新。",
+  "originalABaseline": {
+    "beforeAppResume": true,
+    "rawBytes": 6530,
+    "sha256": "24C4AEF1EA98481F77FC6FEE675516C1BCF3CBDADE3D8BEFDC091D4D64ECD3ED"
+  },
+  "newFieldsRetained": [
+    "contentRevision",
+    "sceneRevision",
+    "choiceId",
+    "excerpt",
+    "sources"
+  ],
+  "notes": [
+    "只提取相应成功会话的JSAPP定长分片，按编号完整拼接后逐字段及嵌套值比较。",
+    "初次B收到后发生测试助手定位错误，接收事实保留，但该首轮报告仍为Error1。",
+    "原始账号身份/XML、凭据与测试HAP不公开。",
+    "华为账号与鸿蒙原生可信跨端尚未完成。"
+  ]
+}

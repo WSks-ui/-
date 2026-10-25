@@ -1,0 +1,172 @@
+✔ water parser reads five columns, keeps missing flow null and joins page date (2.7996ms)
+✔ water parser rejects pages without target station (0.4085ms)
+✔ water service caches the last good snapshot and marks it stale after failure (14.653ms)
+✔ AI knowledge scope comes from the existing Ding catalog and hotspots (1.8029ms)
+✔ AI supports the twin vessel with its own facts, hotspots and starters (0.9814ms)
+✔ AI request validation rejects another site, scene revision, hotspot or oversized context (0.501ms)
+✔ AI reply validation closes request identity, facts and executable actions (0.7367ms)
+✔ insufficient evidence and draft replies keep their own contract (0.3071ms)
+✔ late AI replies cannot overwrite a stopped or changed observation (0.1603ms)
+✔ adopted AI draft freezes catalog facts and deep copies source ids (0.4351ms)
+✔ AI note metadata survives parse, deep copy and deterministic merge (2.24ms)
+✔ AI error copy never disguises failure as a successful answer (0.3594ms)
+(node:20208) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ three reading journeys refer only to current catalog IDs and retain their themed order (1.5275ms)
+✔ nodes require at least 75 percent exploration or an active supported postcard (6.0467ms)
+✔ route badges and graph nodes derive from complete live records and retract after a tombstone (0.4165ms)
+✔ completed journeys share nodes without duplicating graph unlocks (2.0287ms)
+✔ legacy v1 notes stay ordinary notes without invented postcard fields (0.9443ms)
+✔ postcard metadata round trips, copies deeply and remains on deletion tombstones (3.3532ms)
+✔ metadata differences take part in deterministic versions and cross-device conflict retention (1.9863ms)
+✔ recorded framing metadata survives copies, tombstones and snapshot round trips without migration (1.4906ms)
+✔ scene and framing changes participate in canonical versions and sync conflicts (3.1417ms)
+✔ replay separates old camera recovery from fully recorded native framing (14.2463ms)
+✔ unmatched archives, revisions, selections and camera values never report a replay as ready (0.6334ms)
+✔ journal helpers use explicit decoration, existing catalog prose and approximate calendar labels (1.4315ms)
+✔ both expanded observations preserve their own selected detail and recorded frame through archive replay (0.6732ms)
+✔ account stores isolate account identity and test sessions without changing guest data (0.3112ms)
+✔ account authentication and sync responses reject invalid identity and statistics (0.3012ms)
+✔ service endpoint accepts only loopback or private LAN over HTTPS in debug builds (0.2363ms)
+✔ account view never manufactures sync success for a guest or unavailable service (0.1142ms)
+✔ late sync response confirms only returned record versions, including tombstones (0.1751ms)
+✔ all seed cities are covered and stable ids are unique (0.0914ms)
+✔ empty query returns all records (0.1866ms)
+✔ city era type and keyword filters intersect (0.146ms)
+✔ impossible combination is empty rather than ignoring filters (0.1046ms)
+✔ whitespace-only search is empty query (0.0649ms)
+✔ active records hide tombstones and sort latest first (0.1156ms)
+✔ upsert replaces one logical record (0.0622ms)
+✔ logical timestamp handles local clock rollback (0.0553ms)
+✔ latest timestamp wins and losing content is retained (0.0652ms)
+✔ same timestamp has deterministic device tie break (0.0625ms)
+✔ semantic equality ignores property insertion order (1.4636ms)
+✔ equal timestamp deletion wins over live record (0.2562ms)
+✔ old offline version cannot resurrect deleted record (0.0783ms)
+✔ merge is idempotent and has no conflict for identical records (0.0513ms)
+✔ merge is commutative across multiple ids and versions (0.0759ms)
+✔ snapshot copies cannot mutate source tags (0.0905ms)
+✔ snapshot round trips unicode and timestamps (0.1065ms)
+✔ corrupt or future snapshots are rejected (0.1928ms)
+✔ invalid records and duplicate ids are rejected (0.2105ms)
+✔ maximum legal note and tags round trip without truncation (0.4903ms)
+✔ UI test store is accepted only for a bounded debug-only namespace (0.1539ms)
+✔ recommendations exclude current and favorites and explain ranking (0.3455ms)
+✔ cold start recommendations are deterministic (0.1132ms)
+✔ progress is an input to local recommendations (0.3794ms)
+✔ landing recommendations do not repeat already viewed content (0.1373ms)
+✔ unconfigured sync never claims success (0.3672ms)
+✔ all catalog illustrations are bundled offline (1.1515ms)
+✔ light and dark themes contain identical resource keys (1.0375ms)
+✔ culture graph explains shared era and content without inventing links (0.5607ms)
+✔ expanded catalog covers 22 entries, valid filters and unchanged original identities (1.2319ms)
+✔ Longshan and kiln intersections return sourced new entries without relabeling older records (0.3107ms)
+✔ native and offline web graph math share checked generated sources (1.5856ms)
+✔ era projection has real depth, centered rotation and reversible node dragging (0.6296ms)
+✔ rotated graph keeps narrow-screen and large-text node targets inside the viewport (109.348ms)
+✔ projected labels avoid each other at standard and enlarged font sizes (210.8803ms)
+✔ manual graph dragging takes precedence over the readable-row packing fallback (43.3078ms)
+✔ six procedural object types produce bounded meshes with valid indices and unit normals (2.856ms)
+✔ object polygon faces have nondegenerate winding and agree with GPU triangle indices (3.6696ms)
+✔ Lambert lighting separates terrace top front side and unlit faces (0.1857ms)
+✔ directional gloss peaks toward the specified highlight and remains bounded (0.0948ms)
+✔ pottery has three continuous twenty-four-sector bands without coplanar overlay faces (1.3349ms)
+✔ city wall has outward outer walls inward inner walls and a horizontal crown (0.2039ms)
+✔ chamfered terrace faces point outward and supply the same hard normals to GPU (0.5843ms)
+✔ object raster culls backfaces and keeps all five shapes inside rotated viewports (214.3048ms)
+✔ graph edges have real reasons, no duplicates and all selected connections (0.6415ms)
+✔ personal graph has only known live nodes and handles an absent selection (0.285ms)
+✖ force layout settles expanded nodes inside narrow and large-text viewports (31.6869ms)
+✔ catalog adds sourced Longshan and kiln entries while preserving all original ids and order (0.212ms)
+✔ every catalog record has separate procedural metadata and neutral learning sections (0.1337ms)
+✔ legacy opened progress stays at zero until a section is explicitly completed (0.0854ms)
+✔ each completed section has its own stable additive archive record (0.1389ms)
+✔ next progress is ordered, idempotent and reaches 100% only after four sections (0.1272ms)
+✔ deleted, malformed and other-site records do not increase progress (0.1008ms)
+✔ encoding rejects invalid progress keys and timestamps (0.0758ms)
+✔ 任务书与当前22条元数据预设都有对应有限网格，非陶器条目不会落到陶罐 (90.6841ms)
+✔ 软件投影与 GPU MVP 在旋转、俯视、推拉后的坐标一致 (0.7655ms)
+✖ 通用资料预设显式绘制资料卡，不落到城墙或陶器分支 (1.5885ms)
+✔ 五城锚点有序，主题切片保持传入 ids，图谱只保留实际有效关联 (8.3263ms)
+✔ 输入边界拒绝畸形 JSON、外网模型与路径穿越，视角不会被 NaN 破坏 (0.4285ms)
+✔ 真实 GLB 静态三角面经过节点变换后居中，明确只报告几何预览 (0.9679ms)
+✔ GLB 拒绝越界 accessor、压缩扩展、外部缓冲和循环节点，不伪报成功 (0.6442ms)
+✔ 热点/切片聚焦不产生进度，只有显式完成命令去重回调 (15.5462ms)
+✔ 减少动态只按需绘制，后台与销毁取消帧；软件网格缓存避免重复三角投影 (25.6402ms)
+✔ 原生旋转/缩放/复位/截图命令可达，截图回调包含数据 URL (17.6369ms)
+✔ 异步旧模型加载结果不会覆盖新场景，释放后不重建资源 (23.5059ms)
+✔ three focused observations bind each visible part to evidence and keep legacy geometry separate (68.0225ms)
+✔ native fallback creates a visible river with five valid city selection anchors (1.0003ms)
+✔ native learning slices expose four explicit themes and keep selection separate from progress (2.073ms)
+✔ native procedural presets preserve distinct silhouettes and bounded finite geometry (1.6319ms)
+✔ new sourced sites share an explicit abstract study scene instead of another site model (0.3295ms)
+✔ force layout preserves existing nodes and bounds drag and resize (69.3692ms)
+✔ personal graph derives only from live known favorites and notes (0.1652ms)
+✔ custom note topic creates a real personal connection and removes with deleted note (0.1609ms)
+✔ water situation catalog is sourced, dated and explicitly non-realtime (0.3472ms)
+✔ water situation keeps missing values instead of zero filling (0.065ms)
+✔ water situation refuses unknown sources (0.0731ms)
+✔ water live reply validation accepts sourced stations and rejects unnamed rows (0.1283ms)
+✔ memory month groups keep caller order and merge adjacent months (0.1641ms)
+✔ restored account workspace validates identity without persisting a network token (0.1993ms)
+✔ public service origin permits trusted HTTPS domains separately from simulator CA configuration (0.2175ms)
+✔ repository initializes a genuinely absent snapshot and persists installation id (2.3563ms)
+✔ repository reopens existing snapshot without rewriting it (0.7061ms)
+✔ repository rejects existing empty, corrupt and wrong-type values without clearing them (2.0395ms)
+✔ repository does not initialize over an orphaned backup (0.5298ms)
+✔ failed flush leaves disk and current in-memory cache on confirmed snapshot (0.6108ms)
+✔ queue recovers after a failed write (0.6843ms)
+✔ save captures input before caller mutates it (0.7892ms)
+✔ queued writes persist the last request and retain the previous confirmed version (0.7094ms)
+✔ invalid schema is rejected before any write (0.624ms)
+ℹ tests 119
+ℹ suites 0
+ℹ pass 117
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1240.4922
+
+✖ failing tests:
+
+test at tools\domain.test.mjs:514:1
+✖ force layout settles expanded nodes inside narrow and large-text viewports (31.6869ms)
+  AssertionError [ERR_ASSERTION]: 328/1: overlapping py-qicheng, ly-yanshi-shang
+      at TestContext.<anonymous> (file:///<workspace>/tools/domain.test.mjs:528:16)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at entry\src\main\resources\rawfile\engine\engine.test.cjs:47:1
+✖ 通用资料预设显式绘制资料卡，不落到城墙或陶器分支 (1.5885ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - '通用资料学习示意'
+  
+      at TestContext.<anonymous> (<workspace>\entry\src\main\resources\rawfile\engine\engine.test.cjs:49:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:787:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: '通用资料学习示意',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

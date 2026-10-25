@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-23",
+  "status": "completed-local-delivery",
+  "mainPackage": "M12",
+  "mainPackageSha256": "FD6E7B3C89A155528FC9166B012AF96DB029DFE8AA379EC4ED669FBECD517094",
+  "onsitePackage": {
+    "fileName": "云河纪-省赛五城现场包-20261023.zip",
+    "files": 243,
+    "zipBytes": 58635975,
+    "zipSha256": "4DD2361790036CA8F11E2D598B84F715D899DEE7477783191EFE913B5CDC484E",
+    "workspaceDesktopAndZipBytesVerified": true,
+    "sourceSnapshotIncluded": false,
+    "onlyHap": "packages/M12.hap",
+    "zipCrcVerified": true
+  },
+  "materials": {
+    "pages": 12,
+    "allPagesRenderedAndVisuallyReviewed": true,
+    "sha256": {
+      "docx": "303C98CA648FA64D40DBB02964CD05EB9201F096A281D8A112384FE5D9528B46",
+      "pdf": "2AD25F8EAA713B3A530DF0BF25A1523CD787B8C33ED62ADF91E1DC38008C9B17"
+    },
+    "verification": "docs/test-results/2026-10-23-roaming-materials.json"
+  },
+  "audit": {
+    "date": "2026-10-23",
+    "status": "passed",
+    "productFileFingerprintsChecked": 156,
+    "allFingerprintsChecked": 187,
+    "privateCredentialAndKeyTextFilesScanned": 147,
+    "privateViolations": [],
+    "relativeFileLinksChecked": 257,
+    "mainHapIsM12": true,
+    "testMaterialInMainHap": false,
+    "errors": []
+  },
+  "sourceFingerprints": "docs/test-results/2026-10-23-roaming-source.json",
+  "testResults": "docs/test-results/2026-10-23-roaming.json",
+  "preservation": {
+    "oldMaterialsAndPackagesUntouched": true,
+    "formalArchivesCleared": false,
+    "testHapCredentialsOrSigningMaterialIncluded": false
+  },
+  "deviceCloseout": {
+    "phoneAndTabletKeptAvailable": true,
+    "both18443ReversePortsRestored": true,
+    "ownRoamingLogReadersStopped": true,
+    "localServiceKeptAvailable": true
+  },
+  "notClaimed": [
+    "正式平台提交或上传",
+    "Git提交推送",
+    "已签名实机分发包",
+    "云部署",
+    "原生可信跨端或华为账号",
+    "完整文件恢复",
+    "真人时长校准或备用录像"
+  ]
+}

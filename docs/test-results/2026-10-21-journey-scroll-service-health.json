@@ -1,0 +1,11 @@
+{
+  "initialHealth": "连接被拒绝，未监听",
+  "restoredUsingExistingConfiguration": true,
+  "certificateUnchanged": true,
+  "clientConfigurationUnchanged": true,
+  "health": {
+    "service": "yunheji-account",
+    "version": 1
+  },
+  "checkedUtc": "2026-10-21T03:51:32.1056052Z"
+}

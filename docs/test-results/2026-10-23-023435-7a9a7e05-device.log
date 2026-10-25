@@ -1,0 +1,167 @@
+
+OHOS_REPORT_SUM: 6
+OHOS_REPORT_STATUS: class=RoamingTest
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_guest_five_city_entries_do_not_auto_complete
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_guest_five_city_entries_do_not_auto_complete
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=112901
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=kaifeng_real_three_clues_memory_crud_and_plain_note_preserved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:86:24)
+OHOS_REPORT_STATUS: stream=Error in kaifeng_real_three_clues_memory_crud_and_plain_note_preserved, execute timeout 240000ms
+OHOS_REPORT_STATUS: test=kaifeng_real_three_clues_memory_crud_and_plain_note_preserved
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=240003
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=sanmenxia_real_hotspots_pit_house_and_paper_cut
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at ArchiveUiSession entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:17:36)
+    at RoamingUiSession entry (entry/src/ohosTest/ets/test/Roaming.test.ets:17:59)
+    at completeOfflineCity entry (entry/src/ohosTest/ets/test/Roaming.test.ets:238:19)
+    at anonymous entry (entry/src/ohosTest/ets/test/Roaming.test.ets:452:13)
+    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:90:19)
+    at getFuncWithArgsZero @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:82:12)
+    at processedFunc @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:161:24)
+    at asyncRun @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:1030:24)
+    at asyncRunSpecs @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:729:32)
+OHOS_REPORT_STATUS: stream=Error in sanmenxia_real_hotspots_pit_house_and_paper_cut, uitest-api dose not allow calling concurrently, current processing:Component.scrollSearch, incoming: Driver.create
+OHOS_REPORT_STATUS: test=sanmenxia_real_hotspots_pit_house_and_paper_cut
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=luoyang_real_window_poem_and_water_banquet
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at ArchiveUiSession entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:17:36)
+    at RoamingUiSession entry (entry/src/ohosTest/ets/test/Roaming.test.ets:17:59)
+    at completeOfflineCity entry (entry/src/ohosTest/ets/test/Roaming.test.ets:238:19)
+    at anonymous entry (entry/src/ohosTest/ets/test/Roaming.test.ets:456:13)
+    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:90:19)
+    at getFuncWithArgsZero @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:82:12)
+    at processedFunc @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:161:24)
+    at asyncRun @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:1030:24)
+    at asyncRunSpecs @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:729:32)
+OHOS_REPORT_STATUS: stream=Error in luoyang_real_window_poem_and_water_banquet, uitest-api dose not allow calling concurrently, current processing:Component.scrollSearch, incoming: Driver.create
+OHOS_REPORT_STATUS: test=luoyang_real_window_poem_and_water_banquet
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=0
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=zhengzhou_real_gate_poem_and_meeting
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at ArchiveUiSession entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:17:36)
+    at RoamingUiSession entry (entry/src/ohosTest/ets/test/Roaming.test.ets:17:59)
+    at completeOfflineCity entry (entry/src/ohosTest/ets/test/Roaming.test.ets:238:19)
+    at anonymous entry (entry/src/ohosTest/ets/test/Roaming.test.ets:460:13)
+    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:90:19)
+    at getFuncWithArgsZero @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:82:12)
+    at processedFunc @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:161:24)
+    at asyncRun @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:1030:24)
+    at asyncRunSpecs @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:729:32)
+OHOS_REPORT_STATUS: stream=Error in zhengzhou_real_gate_poem_and_meeting, uitest-api dose not allow calling concurrently, current processing:Component.scrollSearch, incoming: Driver.create
+OHOS_REPORT_STATUS: test=zhengzhou_real_gate_poem_and_meeting
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=0
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=puyang_real_shell_legend_and_fair
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at ArchiveUiSession entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:17:36)
+    at RoamingUiSession entry (entry/src/ohosTest/ets/test/Roaming.test.ets:17:59)
+    at completeOfflineCity entry (entry/src/ohosTest/ets/test/Roaming.test.ets:238:19)
+    at anonymous entry (entry/src/ohosTest/ets/test/Roaming.test.ets:464:13)
+    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:90:19)
+    at getFuncWithArgsZero @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:82:12)
+    at processedFunc @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:161:24)
+    at asyncRun @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:1030:24)
+    at asyncRunSpecs @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:729:32)
+OHOS_REPORT_STATUS: stream=Error in puyang_real_shell_legend_and_fair, uitest-api dose not allow calling concurrently, current processing:Component.scrollSearch, incoming: Driver.create
+OHOS_REPORT_STATUS: test=puyang_real_shell_legend_and_fair
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=0
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: suiteconsuming=352905
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 6, Failure: 0, Error: 5, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=352905
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

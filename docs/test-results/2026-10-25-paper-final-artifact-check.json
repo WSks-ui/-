@@ -1,0 +1,22 @@
+{
+  "defaultViews": [
+    {
+      "device": "phone",
+      "nativeHomePresent": true,
+      "accountUiVisible": false
+    },
+    {
+      "device": "pad",
+      "nativeHomePresent": true,
+      "accountUiVisible": false
+    }
+  ],
+  "brokenHandoverLinks": [],
+  "galleryFilesVerified": 43,
+  "deviceReports": 17,
+  "retainedReportsWithError": 6,
+  "finalSyncComparison": "PASS",
+  "main": "M14",
+  "lastTargetedTest": "T15",
+  "testFixtureRestored": true
+}

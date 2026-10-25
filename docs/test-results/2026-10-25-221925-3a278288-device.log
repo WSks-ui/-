@@ -1,0 +1,35 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=RiverMarketTest
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_strategy_save_plain_memory_cold_reopen_and_restart_preserve_note_and_old_favorite
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_strategy_save_plain_memory_cold_reopen_and_restart_preserve_note_and_old_favorite
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=149134
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: suiteconsuming=149134
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=149134
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

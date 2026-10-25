@@ -1,0 +1,100 @@
+{
+  "status": "completed",
+  "detail": "单端原生操作、保存与原文/出处回读已完成。",
+  "stage": "native-share-cancel",
+  "runId": "20261023-035528-a7f7f7",
+  "phone": "127.0.0.1:5555",
+  "tabletManualOnly": null,
+  "isolatedStore": "yunheji_test_ui_roaming_demo_m12_r3",
+  "shareRequested": true,
+  "commandCount": 383,
+  "evidence": [
+    {
+      "stage": "prepare-home",
+      "screenshot": "01-native-home.png",
+      "layout": "01-native-home.layout.json",
+      "sha256": "0ae649b4c8678dec049f9a4040eea481fd74b3c549bba80026259dc1ce02e8a6"
+    },
+    {
+      "stage": "five-cities",
+      "screenshot": "02-kaifeng-selected.png",
+      "layout": "02-kaifeng-selected.layout.json",
+      "sha256": "b742a0ff2124aac56bd8367f0bda3a766da502797e03592775e224269081aaf5"
+    },
+    {
+      "stage": "kaifeng-1",
+      "screenshot": "03-kaifeng-interaction.png",
+      "layout": "03-kaifeng-interaction.layout.json",
+      "sha256": "8865ae17e84b7023d5d1d1b689f0e19f5d6700adafa24b6fa3867c3de27c3c6e"
+    },
+    {
+      "stage": "kaifeng-2",
+      "screenshot": "04-kaifeng-interaction.png",
+      "layout": "04-kaifeng-interaction.layout.json",
+      "sha256": "7e3497a52d46d1ec361db64419f356cbdd8031372d75d2620a606ba0452ae327"
+    },
+    {
+      "stage": "kaifeng-lantern",
+      "screenshot": "05-lantern-reading.png",
+      "layout": "05-lantern-reading.layout.json",
+      "sha256": "52294975d49c205f307bfb7ef1135f4b8d579ae321ecaab89b3a342aafe8ae1e"
+    },
+    {
+      "stage": "kaifeng-lantern",
+      "screenshot": "06-lantern-lit.png",
+      "layout": "06-lantern-lit.layout.json",
+      "sha256": "32b2162088a27395e6c8f1cc494feb9522d22e4c0133036004fa915d75342b0d"
+    },
+    {
+      "stage": "blank-personal-thought",
+      "screenshot": "07-blank-personal-thought.png",
+      "layout": "07-blank-personal-thought.layout.json",
+      "sha256": "cc75c2302d48f0c82cf7c8f71c623b1d9c85ba50dcea9f18d5b0674ed3dc50cc"
+    },
+    {
+      "stage": "input-personal-thought",
+      "screenshot": "08-personal-thought-input.png",
+      "layout": "08-personal-thought-input.layout.json",
+      "sha256": "57aaad52816d226516d3e6262017afd711cc96b082202fcee02a5a44d0edf6f5"
+    },
+    {
+      "stage": "confirm-save",
+      "screenshot": "09-saved-on-device.png",
+      "layout": "09-saved-on-device.layout.json",
+      "sha256": "7bff3d3d3b6e5d0b2641542e33e57304bcd787978dd1faed912379d9c50bf525"
+    },
+    {
+      "stage": "top-recent-note",
+      "screenshot": "10-top-recent-note.png",
+      "layout": "10-top-recent-note.layout.json",
+      "sha256": "5373ce65a5dea5f4a3f5679d957287462b4336ebf4d8f83739107c8a7cfd1c4e"
+    },
+    {
+      "stage": "top-recent-note",
+      "screenshot": "11-saved-memory-body.png",
+      "layout": "11-saved-memory-body.layout.json",
+      "sha256": "274a915f97989198dff79e85e02493a1b7c85110957c43e989fd3fe0e63ebbc4"
+    },
+    {
+      "stage": "frozen-source",
+      "screenshot": "12-saved-memory-source.png",
+      "layout": "12-saved-memory-source.layout.json",
+      "sha256": "babb87d1a370628098857a5fc6383f8cce3b76c5efcf9ccc90a06c700dd0acce"
+    },
+    {
+      "stage": "native-share-cancel",
+      "screenshot": "13-native-share-sheet.png",
+      "layout": "13-native-share-sheet.layout.json",
+      "sha256": "63d3c81d4c352ae74a9d0f6e395604219575253e0726513a8562efdcd99a26cf"
+    },
+    {
+      "stage": "native-share-cancel",
+      "screenshot": "14-share-cancelled.png",
+      "layout": "14-share-cancelled.layout.json",
+      "sha256": "20a0be7e904596c31c51e243e489be3b22844869664fbd755778a09d98bc529a"
+    }
+  ],
+  "testNoteText": "沿水线找到街与河的交会，再拨开城市的层次。灯亮起来时，我想记住街巷里温暖的光。（本机演示 20261023-035528-a7f7f7）",
+  "twoDeviceSyncVerified": false,
+  "remoteTemporaryBase": "/data/local/tmp/yunheji-roaming-demo-20261023-035528-a7f7f7"
+}

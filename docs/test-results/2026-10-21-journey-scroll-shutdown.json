@@ -1,0 +1,13 @@
+{
+  "instance": "YunhejiSyncB",
+  "pid": 17200,
+  "target": "127.0.0.1:5555",
+  "identityAndPortVerifiedBeforeStop": true,
+  "pidPresent": false,
+  "portListening": false,
+  "hdcTargetPresent": false,
+  "confirmedStopped": true,
+  "userDataPreserved": true,
+  "resetPerformed": false,
+  "checkedUtc": "2026-10-21T03:51:31.7963441Z"
+}

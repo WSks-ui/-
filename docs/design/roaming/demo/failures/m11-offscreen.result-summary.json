@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "detail": "等待超时：roam-chapter-progress；停止，不重复点击。",
+  "stage": "kaifeng-lantern",
+  "runId": "20261023-031115-cdff6d",
+  "phone": "127.0.0.1:5555",
+  "isolatedStore": "yunheji_test_ui_roaming_demo_m11",
+  "shareRequested": true,
+  "commandCount": 237,
+  "twoDeviceSyncVerified": false,
+  "mainPackage": "M11",
+  "sourceResultSha256": "d79cec2cee1e2cb14168558e9732a28979a9226f46779cc9407f23572389a6a8",
+  "publishedAs": "原始失败结果的安全字段摘要；完整失败中间帧、命令日志与原始键盘fixture未公开",
+  "blankThoughtOpened": false,
+  "personalThoughtEntered": false,
+  "personalMemorySaved": false,
+  "failureScreenshot": "failures/demo-m11-lantern-failure.png"
+}

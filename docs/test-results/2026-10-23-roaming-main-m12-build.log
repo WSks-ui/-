@@ -1,0 +1,194 @@
+> hvigor [32mUP-TO-DATE :entry:default@PreBuild...  [39m
+> hvigor [32mFinished :entry:default@CreateModuleInfo... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GenerateMetadata...  [39m
+> hvigor [32mFinished :entry:default@ConfigureCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@MergeProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@CreateBuildProfile...  [39m
+> hvigor [32mFinished :entry:default@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GeneratePkgContextInfo...  [39m
+> hvigor [32mFinished :entry:default@GeneratePkgSdkInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:default@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@MakePackInfo...  [39m
+> hvigor [32mFinished :entry:default@SyscapTransform... after 11 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessRouterMap...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessShareConfig...  [39m
+> hvigor [32mFinished :entry:default@ProcessStartupConfig... after 2 ms [39m
+> hvigor [32mFinished :entry:default@BuildNativeWithNinja... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@GenerateLoaderJson...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@ProcessLibs...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@CompileResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:default@DoNativeStrip...  [39m
+> hvigor [32mFinished :entry:default@BuildJS... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@CacheNativeLibs...  [39m
+> hvigor [32mFinished :entry:default@CompileArkTS... after 5 s 581 ms [39m
+> hvigor [32mUP-TO-DATE :entry:default@GeneratePkgModuleJson...  [39m
+> hvigor [32mFinished :entry:default@ProcessCompiledResources... after 1 ms [39m
+> hvigor [32mFinished :entry:default@PackageHap... after 398 ms [39m
+> hvigor [32mFinished :entry:default@PackingCheck... after 5 ms [39m
+> hvigor [32mFinished :entry:default@SignHap... after 2 ms [39m
+> hvigor [32mFinished :entry:default@CollectDebugSymbol... after 1 ms [39m
+> hvigor [32mFinished :entry:assembleHap... after 1 ms [39m
+> hvigor [32mBUILD SUCCESSFUL in 9 s 428 ms [39m
+
+33 tasks in total: 17 executed, 16 up-to-date
+> hvigor [33mWARN: [33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:63:15
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:64:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:117:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:160:11
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:161:11
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:168:9
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:169:9
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:176:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:27:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:28:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:29:57
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:61:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:62:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:63:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:74:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:75:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:76:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ The system capacity of this api 'createMd' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ The system capacity of this api 'update' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ The system capacity of this api 'digest' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:85:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:90:62
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:166:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/AiObservationPanel.ets:61:56
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/SiteDetail.ets:88:52
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/SiteDetail.ets:89:53
+ The system capacity of this api 'TextInputController' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/LoginPage.ets:18:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/LoginPage.ets:19:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/ProfilePage.ets:67:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/AccountSyncClient.ets:37:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/sync/WaterSituationClient.ets:25:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/WaterSituationPage.ets:43:47
+ 'getContext' has been deprecated.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:199:48
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:216:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:217:18
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:219:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:238:8
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/RoamingSystemPage.ets:39:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/components/RoamingSystemPage.ets:44:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:401:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:453:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:642:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:875:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:905:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:930:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:984:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1016:48
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1037:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33mArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1405:12
+ The current component id "home-recent-memory-body" is duplicate with <workspace>/entry/src/main/ets/pages/Index.ets:1395:16.[39m[39m
+[39m
+> hvigor [33mWARN: Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in <workspace>\build-profile.json5.[39m

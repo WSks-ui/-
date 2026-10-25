@@ -1,0 +1,50 @@
+{
+  "result": "PASS",
+  "method": "完整 HiLog 分片还原后逐字段深比较；不是同步状态文案比较",
+  "siteId": "zz-dahecun",
+  "noteId": "note:18b3483e-0b2b-4f53-b34d-dfba73a60e04:1792520612022",
+  "receivedExactly": true,
+  "unchangedAfterExplicitAsk": true,
+  "comparedFields": [
+    "aiAssist",
+    "body",
+    "deleted",
+    "deviceId",
+    "id",
+    "kind",
+    "paperTheme",
+    "quotedPoemOrFact",
+    "siteId",
+    "snapshot3DPose",
+    "stampType",
+    "tags",
+    "updatedAt"
+  ],
+  "factIds": [
+    "dahecun-opening",
+    "dahecun-object"
+  ],
+  "frozenFactCount": 2,
+  "cameraAndFrame": {
+    "version": 1,
+    "sceneType": "relic_inspector",
+    "yaw": 0.34,
+    "pitch": 0.14,
+    "zoom": 0.98,
+    "hotspotId": "opening",
+    "sectionId": "",
+    "label": "腹部通口 · 19°",
+    "proceduralPreset": "dahecun_pottery",
+    "sceneRevision": 2,
+    "rendererProfile": "native-raster-v1",
+    "viewFrame": {
+      "width": 294.85714285714283,
+      "height": 300,
+      "textDensity": 3.5,
+      "dark": false
+    }
+  },
+  "paperTheme": "ochre",
+  "stampType": "河洛拾遗",
+  "canonicalRecordSha256": "DF289B6E678CC0CA27E14493B3BEBEE75C03267D425BFC16C777850C0DE3CEEB"
+}

@@ -1,0 +1,112 @@
+
+OHOS_REPORT_SUM: 5
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=library_filters_memory_tabs_and_profile_navigation
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:313:13)
+OHOS_REPORT_STATUS: stream=Error in library_filters_memory_tabs_and_profile_navigation, UI_SCROLL_FAILED(profile-scroll): UI_WAIT_FAILED: Widget: {selfMatcher=[{attrName:visible; value:true; Pattern:0},{attrName:id; value:profile-scroll; Pattern:0},]}29:2115dose not exist on current UI! Check if the UI has changed after you got the widget object(NoCandidates)
+OHOS_REPORT_STATUS: test=library_filters_memory_tabs_and_profile_navigation
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=93265
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_fulltext_edit_replay_search_and_tombstone
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_fulltext_edit_replay_search_and_tombstone
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=101763
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=real_ai_focus_save_and_resume_from_memory
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=real_ai_focus_save_and_resume_from_memory
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=138985
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=twin_vessel_ai_entry_uses_its_own_starters
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=twin_vessel_ai_entry_uses_its_own_starters
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=51967
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_sort_tag_batch_and_profile_data
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_sort_tag_batch_and_profile_data
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=87584
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: suiteconsuming=473564
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 5, Failure: 0, Error: 1, Pass: 4, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=473564
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

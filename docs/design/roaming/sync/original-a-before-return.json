@@ -1,0 +1,67 @@
+{
+  "kind": "Read-only HDC copy of exact original A test archive before EntryAbility resumed",
+  "scope": "yunheji_test_ui_roam1023_ba246c49_roamsync_a",
+  "beforeAppResume": true,
+  "recordCount": 3,
+  "activeNotes": 1,
+  "completedClues": 1,
+  "rawArchiveBytes": 6530,
+  "rawArchiveSha256": "24C4AEF1EA98481F77FC6FEE675516C1BCF3CBDADE3D8BEFDC091D4D64ECD3ED",
+  "note": {
+    "id": "note:79ea34fa-f12d-49fb-8c83-dabe1f901d5c:1792697740299",
+    "kind": "note",
+    "siteId": "roam-kf-crossing",
+    "body": "我沿着水线找到州桥，想把街与河交会的这一刻留给下一次阅读。",
+    "tags": [
+      "漫游跨端roam1023_ba246c49",
+      "开封"
+    ],
+    "updatedAt": 1792697740299,
+    "deviceId": "79ea34fa-f12d-49fb-8c83-dabe1f901d5c",
+    "deleted": false,
+    "stampType": "河洛拾遗",
+    "paperTheme": "jade",
+    "quotedPoemOrFact": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+    "roamingContext": {
+      "version": 1,
+      "chapterId": "roam-kf-night",
+      "clueId": "roam-kf-crossing",
+      "sceneRevision": 1,
+      "choiceId": "kf-street-river",
+      "excerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+      "title": "点亮汴京的一夜 · 找到街与河的交会",
+      "city": "开封",
+      "sources": [
+        {
+          "id": "roam-source-zhouqiao",
+          "title": "中国历史研究院·州桥及附近汴河遗址资料",
+          "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+          "accessedAt": "2026-10-23"
+        }
+      ],
+      "contentRevision": 1
+    }
+  },
+  "progress": [
+    {
+      "id": "progress:roam:v1:roam-kf-night:roam-kf-crossing",
+      "kind": "progress",
+      "siteId": "roam-kf-night",
+      "body": "{\"version\":1,\"chapterId\":\"roam-kf-night\",\"clueId\":\"roam-kf-crossing\",\"choiceId\":\"kf-street-river\",\"completed\":true}",
+      "tags": [],
+      "updatedAt": 1792697701695,
+      "deviceId": "79ea34fa-f12d-49fb-8c83-dabe1f901d5c",
+      "deleted": false
+    }
+  ],
+  "checkpoint": {
+    "id": "progress:roaming-position:v1",
+    "kind": "progress",
+    "siteId": "roam-kf-night",
+    "body": "{\"version\":1,\"chapterId\":\"roam-kf-night\",\"clueId\":\"roam-kf-layers\"}",
+    "tags": [],
+    "updatedAt": 1792697752747,
+    "deviceId": "79ea34fa-f12d-49fb-8c83-dabe1f901d5c",
+    "deleted": false
+  }
+}

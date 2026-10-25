@@ -1,0 +1,286 @@
+{
+  "status": "completed",
+  "date": "2026-10-23",
+  "runId": "20261023-035528-a7f7f7",
+  "mainPackage": {
+    "label": "M12",
+    "bytes": 7629427,
+    "sha256": "FD6E7B3C89A155528FC9166B012AF96DB029DFE8AA379EC4ED669FBECD517094"
+  },
+  "device": {
+    "kind": "phone",
+    "hdcTarget": "127.0.0.1:5555",
+    "imageWidth": 1256,
+    "imageHeight": 2760
+  },
+  "result": "result.json",
+  "shareComparison": "share-cancel-comparison.json",
+  "commandAudit": {
+    "actualCommandCount": 383,
+    "numbersConsecutive": true,
+    "allTargetPhone": true,
+    "allExitedZero": true,
+    "allOutcomesCompleted": true,
+    "stageCounts": {
+      "prepare-home": 24,
+      "five-cities": 61,
+      "kaifeng-1": 37,
+      "kaifeng-2": 37,
+      "kaifeng-lantern": 58,
+      "blank-personal-thought": 17,
+      "input-personal-thought": 24,
+      "confirm-save": 27,
+      "top-recent-note": 34,
+      "frozen-source": 19,
+      "native-share-cancel": 45
+    },
+    "sourceCommandsSha256": "554b75b83a54b26cc53d6767c285e4f2abcb9b021f368872c4a68e7551586dc8",
+    "rawCommandsPublished": false,
+    "reason": "原始命令含本机工具与临时目录，仅保留本机；公开此审核结果和源文件哈希"
+  },
+  "pathVerified": [
+    "五城题签选择",
+    "开封真实水线滑条、时间观察窗、祝愿与点灯",
+    "空白感想框",
+    "原生输入并逐字回读",
+    "明确确认保存",
+    "顶部最近记忆",
+    "亲笔原文、冻结文化摘录及来源网址",
+    "真实系统分享面板及取消后原文回读"
+  ],
+  "thoughtText": "沿水线找到街与河的交会，再拨开城市的层次。灯亮起来时，我想记住街巷里温暖的光。（本机演示 20261023-035528-a7f7f7）",
+  "twoDeviceSyncVerified": false,
+  "network": {
+    "boundary": "全程只断开手机到任务账号服务的 tcp:18443 HDC reverse；没有关闭设备全部网络。",
+    "wholeDeviceNetworkDisconnected": false,
+    "taskServiceReverseDisconnectedDuringRun": true,
+    "rawPortStates": [
+      {
+        "role": "before",
+        "rawOutput": "127.0.0.1:5555    tcp:18443 tcp:18443    [Reverse]\n127.0.0.1:5557    tcp:18443 tcp:18443    [Reverse]\n",
+        "sourceSha256": "6b82b0cc5f98b4508edb379423a27e8cd998d8601457eac6b0904f0dc84b8377"
+      },
+      {
+        "role": "phone-task-service-reverse-disconnected",
+        "rawOutput": "127.0.0.1:5557    tcp:18443 tcp:18443    [Reverse]\n",
+        "sourceSha256": "57aee326a50220c9930dab1a3a6957bef35a473d3c53a901f34d1fa9d97498c3"
+      },
+      {
+        "role": "restored",
+        "rawOutput": "127.0.0.1:5555    tcp:18443 tcp:18443    [Reverse]\n127.0.0.1:5557    tcp:18443 tcp:18443    [Reverse]\n",
+        "sourceSha256": "6b82b0cc5f98b4508edb379423a27e8cd998d8601457eac6b0904f0dc84b8377"
+      }
+    ]
+  },
+  "shareCancellation": {
+    "scope": "yunheji_test_ui_roaming_demo_m12_r3",
+    "wholePreferencesBytes": 6705,
+    "wholePreferencesIdentical": true,
+    "sha256Before": "D215232CB8E443D887D43E320FC6321473BF761C81FB092056FBA18D1D283A86",
+    "sha256After": "D215232CB8E443D887D43E320FC6321473BF761C81FB092056FBA18D1D283A86",
+    "xmlPublished": false,
+    "separateCheck": "同一独立库另做的分享取消专项对比，不计入脚本383条命令，也不公开XML内容"
+  },
+  "earlierFailures": [
+    {
+      "package": "M11",
+      "status": "failed",
+      "stage": "kaifeng-lantern",
+      "commandCount": 237,
+      "summary": "failures/m11-offscreen.result-summary.json",
+      "screenshot": "failures/demo-m11-lantern-failure.png",
+      "boundary": "灯景已确认，页首进度被裁出布局；尚未进入个人感想保存。"
+    },
+    {
+      "package": "M12",
+      "status": "failed",
+      "stage": "input-personal-thought",
+      "commandCount": 241,
+      "summary": "failures/m12-keyboard-guard.result-summary.json",
+      "screenshot": "failures/demo-m12-input-failure.png",
+      "boundary": "三条线索已完成，空白感想聚焦后系统键盘栏误拦截；尚未输入或保存。"
+    }
+  ],
+  "privacyReview": {
+    "all14SuccessPngActuallyViewed": true,
+    "bothFailurePngActuallyViewed": true,
+    "layoutCredentialProfileNodesFound": 0,
+    "privateXmlPublished": false,
+    "privateFixturePublished": false,
+    "privateHapPublished": false,
+    "mixedAccountEventLogPublished": false,
+    "originalPngAndLayoutBytesPreserved": true
+  },
+  "files": [
+    {
+      "path": "01-native-home.layout.json",
+      "bytes": 249381,
+      "sha256": "602a35ebc866c7f1cca8e085691a0638689a5864990fdeaccaa3ecd39ecfe4ee"
+    },
+    {
+      "path": "01-native-home.png",
+      "bytes": 441356,
+      "sha256": "0ae649b4c8678dec049f9a4040eea481fd74b3c549bba80026259dc1ce02e8a6"
+    },
+    {
+      "path": "02-kaifeng-selected.layout.json",
+      "bytes": 223011,
+      "sha256": "00f754ee7671ee764f58f62e057a4fc7c162353543ad0dcc797849769aac9204"
+    },
+    {
+      "path": "02-kaifeng-selected.png",
+      "bytes": 409005,
+      "sha256": "b742a0ff2124aac56bd8367f0bda3a766da502797e03592775e224269081aaf5"
+    },
+    {
+      "path": "03-kaifeng-interaction.layout.json",
+      "bytes": 108623,
+      "sha256": "17a291d742cd9bf9c76a821880ea255c321624784715f41eab1da300b786dd1f"
+    },
+    {
+      "path": "03-kaifeng-interaction.png",
+      "bytes": 332779,
+      "sha256": "8865ae17e84b7023d5d1d1b689f0e19f5d6700adafa24b6fa3867c3de27c3c6e"
+    },
+    {
+      "path": "04-kaifeng-interaction.layout.json",
+      "bytes": 108661,
+      "sha256": "1cbe97ee61b0df06b5b086913a704865516fddaef7eda097079e87c233cfbc58"
+    },
+    {
+      "path": "04-kaifeng-interaction.png",
+      "bytes": 315972,
+      "sha256": "7e3497a52d46d1ec361db64419f356cbdd8031372d75d2620a606ba0452ae327"
+    },
+    {
+      "path": "05-lantern-reading.layout.json",
+      "bytes": 197649,
+      "sha256": "6f1573ef3c30129a7e3cef2dea717dc7626ce51323e9c595df03799ab42a8491"
+    },
+    {
+      "path": "05-lantern-reading.png",
+      "bytes": 325135,
+      "sha256": "52294975d49c205f307bfb7ef1135f4b8d579ae321ecaab89b3a342aafe8ae1e"
+    },
+    {
+      "path": "06-lantern-lit.layout.json",
+      "bytes": 100730,
+      "sha256": "1e844eeb8613c9bcae828a33cdd342bb69093940020f9dd0d9f5040faf520001"
+    },
+    {
+      "path": "06-lantern-lit.png",
+      "bytes": 410691,
+      "sha256": "32b2162088a27395e6c8f1cc494feb9522d22e4c0133036004fa915d75342b0d"
+    },
+    {
+      "path": "07-blank-personal-thought.layout.json",
+      "bytes": 162429,
+      "sha256": "fd7eab46c2713d0ba641dbdc82dc9bd39495cd3486f22c1c674dd39a1f936df6"
+    },
+    {
+      "path": "07-blank-personal-thought.png",
+      "bytes": 365002,
+      "sha256": "cc75c2302d48f0c82cf7c8f71c623b1d9c85ba50dcea9f18d5b0674ed3dc50cc"
+    },
+    {
+      "path": "08-personal-thought-input.layout.json",
+      "bytes": 162747,
+      "sha256": "29b5d30847282bd601e37ae504b913f035ed8d9cef7ac4e142a423a43013c44e"
+    },
+    {
+      "path": "08-personal-thought-input.png",
+      "bytes": 417710,
+      "sha256": "57aaad52816d226516d3e6262017afd711cc96b082202fcee02a5a44d0edf6f5"
+    },
+    {
+      "path": "09-saved-on-device.layout.json",
+      "bytes": 158032,
+      "sha256": "ec52983560f0096d983fb6a92c54200f157d30813b4f29395178eca09aa63a99"
+    },
+    {
+      "path": "09-saved-on-device.png",
+      "bytes": 359039,
+      "sha256": "7bff3d3d3b6e5d0b2641542e33e57304bcd787978dd1faed912379d9c50bf525"
+    },
+    {
+      "path": "10-top-recent-note.layout.json",
+      "bytes": 75200,
+      "sha256": "bccd2e14969134740d411400e017d924b1ac65f1838ae848622b809c3a6c5f48"
+    },
+    {
+      "path": "10-top-recent-note.png",
+      "bytes": 345422,
+      "sha256": "5373ce65a5dea5f4a3f5679d957287462b4336ebf4d8f83739107c8a7cfd1c4e"
+    },
+    {
+      "path": "11-saved-memory-body.layout.json",
+      "bytes": 51399,
+      "sha256": "031c7e391170a7c779b73389cd63d39b10646c88a0154e8f21632be2c1610dc5"
+    },
+    {
+      "path": "11-saved-memory-body.png",
+      "bytes": 558825,
+      "sha256": "274a915f97989198dff79e85e02493a1b7c85110957c43e989fd3fe0e63ebbc4"
+    },
+    {
+      "path": "12-saved-memory-source.layout.json",
+      "bytes": 52579,
+      "sha256": "90770bfc1da0e3355d0422dfd79d4965d05c12db489f762554331ccf2e735e0c"
+    },
+    {
+      "path": "12-saved-memory-source.png",
+      "bytes": 444060,
+      "sha256": "babb87d1a370628098857a5fc6383f8cce3b76c5efcf9ccc90a06c700dd0acce"
+    },
+    {
+      "path": "13-native-share-sheet.layout.json",
+      "bytes": 306414,
+      "sha256": "3f8286ae6361b2f25df6f174dc384d991e5028790e70f1d92d32ed7f28947cc8"
+    },
+    {
+      "path": "13-native-share-sheet.png",
+      "bytes": 425839,
+      "sha256": "63d3c81d4c352ae74a9d0f6e395604219575253e0726513a8562efdcd99a26cf"
+    },
+    {
+      "path": "14-share-cancelled.layout.json",
+      "bytes": 51399,
+      "sha256": "031c7e391170a7c779b73389cd63d39b10646c88a0154e8f21632be2c1610dc5"
+    },
+    {
+      "path": "14-share-cancelled.png",
+      "bytes": 559360,
+      "sha256": "20a0be7e904596c31c51e243e489be3b22844869664fbd755778a09d98bc529a"
+    },
+    {
+      "path": "failures/demo-m11-lantern-failure.png",
+      "bytes": 449302,
+      "sha256": "52bb66715038eb1d559f62564c9396d365e5d26df9a21aff593595d979079761"
+    },
+    {
+      "path": "failures/demo-m12-input-failure.png",
+      "bytes": 449302,
+      "sha256": "20a2f0e268e60e3822bbc8f122467c1ef494d64dc9b618aa09ebc0fd3d7da811"
+    },
+    {
+      "path": "failures/m11-offscreen.result-summary.json",
+      "bytes": 765,
+      "sha256": "ceb9c266cd274cf52f9b799881694f3cefab74d8a9c3dcad4c2492396c071036"
+    },
+    {
+      "path": "failures/m12-keyboard-guard.result-summary.json",
+      "bytes": 775,
+      "sha256": "f93013add57281938286dc50a3221a21e706f05c3430385aba9c91ba31cfddff"
+    },
+    {
+      "path": "result.json",
+      "bytes": 3970,
+      "sha256": "4f056f3f792a462945035ac180a4e2191cb551e39422a51d2ca64b53527db7af"
+    },
+    {
+      "path": "share-cancel-comparison.json",
+      "bytes": 285,
+      "sha256": "c8da08648940563c5be12df1f9aafb0cbcc33d6d31996a86fb620e4d7081c4c3"
+    }
+  ]
+}

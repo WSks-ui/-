@@ -1,0 +1,70 @@
+
+OHOS_REPORT_SUM: 5
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=library_filters_memory_tabs_and_profile_navigation
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=library_filters_memory_tabs_and_profile_navigation
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=125200
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_fulltext_edit_replay_search_and_tombstone
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_fulltext_edit_replay_search_and_tombstone
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=117881
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=real_ai_focus_save_and_resume_from_memory
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=real_ai_focus_save_and_resume_from_memory
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=226699
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=5
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=twin_vessel_ai_entry_uses_its_own_starters
+OHOS_REPORT_STATUS_CODE: 1
+

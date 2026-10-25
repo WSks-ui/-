@@ -1,0 +1,2 @@
+10-21 00:29:30.531 26181 26181 I A03d00/JSAPP: NATIVE_TRUST_RESULT:{"phase":"waiting","message":"系统未发现可用可信设备；账号网络同步可继续使用","recordCount":0,"deviceCount":0,"lastSuccessfulSync":0}
+10-21 00:29:38.821 26181 26181 I A03d00/JSAPP: NATIVE_KV_RESULT:{"phase":"waiting","message":"系统未发现可用可信设备；账号网络同步可继续使用","recordCount":1,"deviceCount":0,"lastSuccessfulSync":0}

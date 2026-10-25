@@ -1,0 +1,657 @@
+{
+  "stage": "C09 首批：泥火成器个人长卷",
+  "date": "2026-10-21",
+  "sourceBaseCommit": "910324679288e23f5c20d4803210e1c798c6ca03",
+  "branch": "main",
+  "uncommitted": true,
+  "result": "单主题正常字号离线原生演示路径完成；不代表整份比赛任务书完成",
+  "packages": {
+    "M1": {
+      "bytes": 6672936,
+      "sha256": "9A6F049AF20A10C2757B9EB9FC5019967378429AC17D9CBFBFC7DA11947D6DC6"
+    },
+    "T1": {
+      "bytes": 6649124,
+      "sha256": "84BBB1057D526E7AC6BCA83677EBA0980DA7719F0EE26920E9D9CB0108D8489C"
+    },
+    "M2": {
+      "bytes": 6673241,
+      "sha256": "D579804478FFC63E37FA0E00120D981CD5C0758B3A1790341D13EF1929135316"
+    },
+    "T2": {
+      "bytes": 6647657,
+      "sha256": "EF8ABD31CB57A27606EC1C39C50BCF8AC7ABEBC63A3AA15F89AAF522D8A70CA7"
+    },
+    "M3": {
+      "bytes": 6676399,
+      "sha256": "E5F7439669F32F111D63105BD39B3E97398F0DC9318AA5EF608EA3294C72FDC4",
+      "currentPath": "entry/build/default/outputs/default/entry-default-unsigned.hap"
+    },
+    "T3": {
+      "bytes": 6670235,
+      "sha256": "58FF6E679A20645B583A924C0ED672F8105CED85A9F3A435A3BAD737EB597E8E"
+    },
+    "T4": {
+      "bytes": 6680585,
+      "sha256": "7E7DC33CE236B4A626E0CF82DFD34AADE9AC39D0E9B18BCCDF94808D65F3C454",
+      "currentPath": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap"
+    }
+  },
+  "currentMainPackage": "M3",
+  "currentTestPackage": "T4",
+  "packageNotes": "主包M3相同；保存及读取/回放由T3通过，编辑、删除、最终空态与清理由T4按同一原库继续。T3超时已保留，T4编辑先经真实UI还原标签后完整重走；不是一次同测试包全套通过。",
+  "devices": [
+    {
+      "instance": "YunhejiSyncB",
+      "target": "127.0.0.1:5555",
+      "emulatorPid": 17200,
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560,
+      "facts": [
+        {
+          "key": "const.ohos.fullname",
+          "value": "OpenHarmony-7.0.0.105"
+        },
+        {
+          "key": "const.ohos.apiversion",
+          "value": "26"
+        },
+        {
+          "key": "const.product.software.version",
+          "value": "emulator 7.0.0.107(SP8DEVC00E999R4P11)"
+        },
+        {
+          "key": "const.ohos.releasetype",
+          "value": "Release"
+        },
+        {
+          "key": "const.product.os.dist.name",
+          "value": "HarmonyOS"
+        },
+        {
+          "key": "const.product.os.dist.version",
+          "value": "7.0.0"
+        }
+      ]
+    }
+  ],
+  "local": {
+    "tests": 127,
+    "pass": 127,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0,
+    "durationMs": 2849.1259,
+    "deviceReportParser": {
+      "total": 9,
+      "pass": 9
+    },
+    "report": "docs/test-results/2026-10-21-journey-scroll-local.log"
+  },
+  "phases": [
+    {
+      "name": "M2空态复验",
+      "mainPackage": "M2",
+      "testPackage": "T2",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-105625-ec13d7c4-device.log",
+      "reportSha256": "433B9824273B47E7CB10240655B6A8563428ADEAE29A9C54D9E8A67DACDB6E00",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 115614
+    },
+    {
+      "name": "旧整段超时库定向清理",
+      "mainPackage": "M3",
+      "testPackage": "T3",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-112023-87a69f41-device.log",
+      "reportSha256": "12DE26BD997C2BD3213569C7EEB6B337FCFFB70D07D70BBBC722CB15338065BF",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 10143
+    },
+    {
+      "name": "真实UI保存两篇观察、收藏及section基线",
+      "mainPackage": "M3",
+      "testPackage": "T3",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-112102-8cb21ee4-device.log",
+      "reportSha256": "89C022DD8B2E870910B1031C3A57FBB13B4DEF5F49198D458C84AB04D3F2E447",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 245178
+    },
+    {
+      "name": "同一离线库重开、出处、个人区跳转、专题正文与原pose回放",
+      "mainPackage": "M3",
+      "testPackage": "T3",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-112551-e0c4e941-device.log",
+      "reportSha256": "147829F52D1238C0A4CE062FC90AFD26AD8A53B3EB674C7044C90DB38B9276CE",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 251409
+    },
+    {
+      "name": "原库真实UI恢复旧标签再完整修改与即时刷新，其他记录版本不变",
+      "mainPackage": "M3",
+      "testPackage": "T4",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-114112-7a1d8a62-device.log",
+      "reportSha256": "1FAE52EC4B85686A9BCEF84A006FB99F43C308AA0B8A04D4F711AD0F107178C8",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 134961
+    },
+    {
+      "name": "正式删除、墓碑、其他记录保留、记忆首卡与固定入口",
+      "mainPackage": "M3",
+      "testPackage": "T4",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-114410-1514f6af-device.log",
+      "reportSha256": "AFD1A642263FD223A7A47E0ED87ED0BD3FC723837B091C5F1794727E3512ED79",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 69541
+    },
+    {
+      "name": "当前包独立空态，0/4、真实建议且不生成个人经历",
+      "mainPackage": "M3",
+      "testPackage": "T4",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-114602-3f80c636-device.log",
+      "reportSha256": "35706600E6CA0EDF7FF360189587A5E5438401A87986AFFE4A8E01896E539966",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 117575
+    },
+    {
+      "name": "最终同一连续测试库定向清理",
+      "mainPackage": "M3",
+      "testPackage": "T4",
+      "outcome": "pass",
+      "report": "docs/test-results/2026-10-21-114916-e6222c3b-device.log",
+      "reportSha256": "8B5D43DDE95B6ED895BF4632829E4BB07FE823845611B4DF832D09F25C4F6F24",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "consumingMs": 9314
+    }
+  ],
+  "failures": [
+    {
+      "name": "首轮空态：屏外标题等待与真实竖轴膨胀",
+      "mainPackage": "M1",
+      "testPackage": "T1",
+      "outcome": "error",
+      "report": "docs/test-results/2026-10-21-104354-acf60286-device.log",
+      "reportSha256": "B6FFA2D395EE2A41816620A4D7CD4DA888039F5EE599CB161B0C4639536937CB",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 1,
+        "pass": 0,
+        "ignore": 0
+      },
+      "consumingMs": 130200
+    },
+    {
+      "name": "首次整段主线600000ms超时，AA缺结束摘要",
+      "mainPackage": "M2",
+      "testPackage": "T2",
+      "outcome": "timeout_incomplete_aa",
+      "report": "docs/test-results/2026-10-21-105847-3dd82e77-device.log",
+      "hiLogReport": "docs/test-results/2026-10-21-journey-scroll-main-timeout-events.log",
+      "hiLogSummary": {
+        "total": 1,
+        "failure": 0,
+        "error": 1,
+        "pass": 0,
+        "ignore": 0
+      },
+      "timeoutMs": 600000,
+      "completedBeforeTimeout": [
+        "真实保存两篇",
+        "2/4",
+        "出处",
+        "共同专题",
+        "opening回放"
+      ],
+      "notCompletedBeforeTimeout": [
+        "标签编辑",
+        "墓碑删除",
+        "保留基线",
+        "记忆首卡"
+      ],
+      "reportSha256": "79611C4071ADAFDB1BF72993F399B6770199B5686C8B64E4C763DACCC206B788",
+      "summary": null,
+      "consumingMs": null
+    },
+    {
+      "name": "首次分段编辑删除360000ms超时，编辑与专题刷新已发生、删除未完成",
+      "mainPackage": "M3",
+      "testPackage": "T3",
+      "outcome": "error_timeout",
+      "report": "docs/test-results/2026-10-21-113017-4d3a7dc6-device.log",
+      "timeoutMs": 360000,
+      "stateAfterTimeout": "docs/test-results/2026-10-21-journey-scroll-t3-timeout-snapshot-summary.json",
+      "reportSha256": "7AE087DB4F396EB52EF49E6D9AC94F5407D5BB68F724D894000A4E2092C9DADD",
+      "summary": {
+        "total": 1,
+        "failure": 0,
+        "error": 1,
+        "pass": 0,
+        "ignore": 0
+      },
+      "consumingMs": 359993
+    }
+  ],
+  "buildFailure": {
+    "report": "docs/test-results/2026-10-21-journey-scroll-test-build-t3-first-failure.log",
+    "reason": "日志对象缺少ArkTS显式接口；未生成T3，旧T2被新鲜度门禁拒绝，未运行aa",
+    "fixed": "仅为日志对象补显式接口，重建T3成功；功能断言保持"
+  },
+  "cleanup": {
+    "legacyStore": "yunheji_test_ui_1792551530305_journey_scroll_main",
+    "legacyStoreConfirmedAbsent": true,
+    "currentStore": "yunheji_test_ui_journey_20261021_c09",
+    "currentStoreConfirmedAbsent": true,
+    "autoEmptyStoreConfirmedAbsent": true,
+    "verification": "docs/test-results/2026-10-21-journey-scroll-cleanup.json"
+  },
+  "shutdown": {
+    "instance": "YunhejiSyncB",
+    "pid": 17200,
+    "target": "127.0.0.1:5555",
+    "identityAndPortVerifiedBeforeStop": true,
+    "pidPresent": false,
+    "portListening": false,
+    "hdcTargetPresent": false,
+    "confirmedStopped": true,
+    "userDataPreserved": true,
+    "resetPerformed": false,
+    "checkedUtc": "2026-10-21T03:51:31.7963441Z"
+  },
+  "service": {
+    "initialHealth": "连接被拒绝，未监听",
+    "restoredUsingExistingConfiguration": true,
+    "certificateUnchanged": true,
+    "clientConfigurationUnchanged": true,
+    "health": {
+      "service": "yunheji-account",
+      "version": 1
+    },
+    "checkedUtc": "2026-10-21T03:51:32.1056052Z"
+  },
+  "boundaries": [
+    "原生HarmonyOS 7/API 26，未做网页替代",
+    "只派生earth-and-fire现有四节点及真实个人记录",
+    "沿用schema、稳定ID、来源、原pose和删除墓碑，无数据迁移",
+    "本轮不登录账号、不调用模型，不新增AI主题生成或同步证明",
+    "华为账号、原生可信双端传输、平板及完整恢复仍未完成",
+    "未重复完整历史UI、大字体或压力套件；自动化耗时不替代真人三分钟计时",
+    "未自动提交推送，未更新用户Word、视频或比赛压缩包"
+  ],
+  "sourceHashes": [
+    {
+      "path": "entry/src/main/ets/domain/JourneyScroll.ts",
+      "bytes": 5000,
+      "sha256": "5B486FF95C129E428AFCCF4830C8193C611884D815622BBD2E32D8C532ACEB2A"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyScrollPage.ets",
+      "bytes": 20378,
+      "sha256": "6D0F940AEB892376A97C7E2017FF150B94FE1358A547883D25E77049179AF61B"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "bytes": 49674,
+      "sha256": "6D5509ECEEF7B3D12C2F3E5481E561FDC99EBCF644DDCCB47AF7DB90D54238DB"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "bytes": 103489,
+      "sha256": "58B3B856A06CCFF740B92FC8652C67E9B426EC9A9CDB41AFD0E6E2C8290028F9"
+    },
+    {
+      "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+      "bytes": 3925,
+      "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureConnections.ts",
+      "bytes": 2905,
+      "sha256": "4B58671DF6AC09A8359FF242B37FCA8287EB2BA1436E4133DE5CC1D3AE50C17F"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+      "bytes": 7260,
+      "sha256": "B184FFDA0A25F641D8CD28A7FFEBFEE970653D9D6AF52580BEF92146ED986BA2"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/JourneyScroll.test.ets",
+      "bytes": 35412,
+      "sha256": "35B56AE95DC9F5853E9434E73294615B276C91D4F67BC1EE108EE789BE8597A4"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveUiSession.ets",
+      "bytes": 21213,
+      "sha256": "24E38DB08F8E726C9C63C2C96E217950D34679B9D5CB61F20149A92819594089"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "bytes": 2070,
+      "sha256": "C89BB493C4EF1320E06F13D9D0A409E2047B4411D670A6827920026C99BC7CE3"
+    },
+    {
+      "path": "tools/journey-scroll.test.mjs",
+      "bytes": 8322,
+      "sha256": "37EAB84BA9AF3B0040FC1EA469F407D50472BC1FA3206CABCB850AC392AE787A"
+    },
+    {
+      "path": "tools/test.ps1",
+      "bytes": 972,
+      "sha256": "FAA993577FD2CB46748619D597D195362A2F7B3E81F290DD0A6F2F70E44B2AB7"
+    },
+    {
+      "path": "tools/device-test.ps1",
+      "bytes": 6429,
+      "sha256": "19E7FD7551129C37407D91C7400B8085162894F6B52FD8684050959FD713DAD2"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/design/journey-scroll/edited-topic-refresh.json",
+      "bytes": 54042,
+      "sha256": "BEF6B92A5F72CAFBBEFCA64337DAD1A0CD4000CFE631C7251AC1C33389A2362E"
+    },
+    {
+      "path": "docs/design/journey-scroll/edited-topic-refresh.png",
+      "bytes": 400754,
+      "sha256": "73694E929742C42B5E6601D377FD7B197E62EC6C1B42EC1943C3425E901D0086"
+    },
+    {
+      "path": "docs/design/journey-scroll/empty-opened-archive.png",
+      "bytes": 409066,
+      "sha256": "D130263959BA3571FED37F77E1D943CF0B36964734E8B9381FE1F36FDED39C42"
+    },
+    {
+      "path": "docs/design/journey-scroll/empty-source.png",
+      "bytes": 303781,
+      "sha256": "0A78E99D907065FFF31DEFA9DC4D37319DD9FCBB733E4B991827642F61705C29"
+    },
+    {
+      "path": "docs/design/journey-scroll/final-empty-opened-archive.json",
+      "bytes": 52713,
+      "sha256": "865F85A828F83849B7C0B477FC4716F08509309C7815C3723116A66D54BE1BEB"
+    },
+    {
+      "path": "docs/design/journey-scroll/final-empty-opened-archive.png",
+      "bytes": 409066,
+      "sha256": "B9FE402096343670DE4D22D61BE3351BEAC16CA26DDE3CBF1534C68DCFA72496"
+    },
+    {
+      "path": "docs/design/journey-scroll/final-empty-real-suggestion.json",
+      "bytes": 68186,
+      "sha256": "F5D309207C463936FCDB1422C223DEF555DE2CAD3948BE2D9CB782C3720EFE69"
+    },
+    {
+      "path": "docs/design/journey-scroll/final-empty-real-suggestion.png",
+      "bytes": 303781,
+      "sha256": "616029119656AEDB15B771F36C2B73351B2C26B9D8810CB228FD0E80519ECA33"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-edit-delete-timeout.json",
+      "bytes": 420,
+      "sha256": "3903F846601B88DFC395B5FFDF9A88D3BAE49B032ACF4C857363D8C9A7DADEBE"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-edit-delete-timeout.png",
+      "bytes": 1256061,
+      "sha256": "AD9FA7FBB1CD82F18989F2828B5B0CAF58293B7ED5DAC05940E06509DB470ECA"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-edited-topic-refresh.json",
+      "bytes": 57734,
+      "sha256": "6D5E99FD931665B9DC9C38838EC4E079A649116457D1E61756B309BEA00D8AD3"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-edited-topic-refresh.png",
+      "bytes": 400754,
+      "sha256": "D47B6D068ED46DDFF13E53EE6A88188889F590B0D533126D604B5CA33C1AAC5E"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-empty-title-failure.json",
+      "bytes": 23762,
+      "sha256": "00301030F8200869CEC359AC5E4213D4D32E5664B56E5F56B585B46B8BADC47D"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-empty-title-failure.png",
+      "bytes": 559859,
+      "sha256": "48FFD20342BE590E8630D877C910C5DCF8D2BA2E0420CEB9EDF3BEB11418C930"
+    },
+    {
+      "path": "docs/design/journey-scroll/first-opening-replay-details.png",
+      "bytes": 387478,
+      "sha256": "ECE0B75442938C79A6F2DF070C94423637947FDA732C91F98DC0DFD4C10397B4"
+    },
+    {
+      "path": "docs/design/journey-scroll/memory-entry-first-card.json",
+      "bytes": 105947,
+      "sha256": "08CBD1D10099C72FFB0ED31227AFB88972C9CB37C1F13B6A356EECDD5EC3CBD5"
+    },
+    {
+      "path": "docs/design/journey-scroll/memory-entry-first-card.png",
+      "bytes": 394576,
+      "sha256": "B20DD025C98693FF5D2BFF2C6B845088EEA9AD2949C7B954FC2A3D4A660999E6"
+    },
+    {
+      "path": "docs/design/journey-scroll/opening-replay.json",
+      "bytes": 51765,
+      "sha256": "FE78D5C70C145EE411F536F61081A18DBDB021905B242CDAD92FFB2A68F56D2A"
+    },
+    {
+      "path": "docs/design/journey-scroll/opening-replay.png",
+      "bytes": 478184,
+      "sha256": "9DC7B60C896EAF9E47929F40F4B2B3F1121A519817A8C487742B9E8CAF2E7053"
+    },
+    {
+      "path": "docs/design/journey-scroll/overview.png",
+      "bytes": 456586,
+      "sha256": "A7E7793ADF3228A74DB45856968119E419D71B8AF9743B9D116DD06D55A6A27C"
+    },
+    {
+      "path": "docs/design/journey-scroll/reading-source.json",
+      "bytes": 78967,
+      "sha256": "5B4A53B8E3F133F6FBCA18FB7C3F19A19F583513F6D509368D469FD4E563CF16"
+    },
+    {
+      "path": "docs/design/journey-scroll/reading-source.png",
+      "bytes": 331337,
+      "sha256": "0B3C59F41C9CB50834BAABB27741EB92443CCC2BF0BEE8DA2C9BCD5F41A3B631"
+    },
+    {
+      "path": "docs/design/journey-scroll/tombstone-preserves-other-records.json",
+      "bytes": 53476,
+      "sha256": "2F1A603F7B501487EF061FCCBC9006D2567FFF832FBCDF04E1F79FF4FF81607A"
+    },
+    {
+      "path": "docs/design/journey-scroll/tombstone-preserves-other-records.png",
+      "bytes": 397024,
+      "sha256": "1949695ABA0D882F404162B2F410AEFC585137ACD5F2FBCF8615F56878CA62EF"
+    },
+    {
+      "path": "docs/design/journey-scroll/two-observations.json",
+      "bytes": 66447,
+      "sha256": "D9BFFACDFDCBAE572BE29631E27871033167E279D657D406F23BEDDC2478E25C"
+    },
+    {
+      "path": "docs/design/journey-scroll/two-observations.png",
+      "bytes": 337648,
+      "sha256": "A78C42BEED2A62D7118ABA24B73C5356AB682D085C2B2675565F16F09B276AFD"
+    },
+    {
+      "path": "docs/design/journey-scroll/zhengzhou-topic.json",
+      "bytes": 54056,
+      "sha256": "841F58DC9BA5DEDFC427F4A14CE7BE0E970296CB3F975DD730665CFF924DBF68"
+    },
+    {
+      "path": "docs/design/journey-scroll/zhengzhou-topic.png",
+      "bytes": 395205,
+      "sha256": "791A3E6BF67F292FDC306985FC77EF5B9C0FCCD5A9B0A56CD16C69E302A61A85"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-cleanup-events.log",
+      "bytes": 858,
+      "sha256": "6EE926877922EB3BAC6CCA7F0C72C61B43A3F6F0BB97A3AE61B15ED1E3FD087D"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-cleanup.json",
+      "bytes": 216,
+      "sha256": "3428CE9452D200685DB56F310A6A47274D9DEE21D1402AE8DDA11013421F189D"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-delete-t4-events.log",
+      "bytes": 8824,
+      "sha256": "3E10AFE2E2E04C2F6BB38DCC81CDE96BA06E4901709C0875B1E9BDD7D930C5B3"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-device.json",
+      "bytes": 498,
+      "sha256": "C38737E1AD7904136BEE44A534E15C8ED1F2501972205386C0CD25BAA043B4A2"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-edit-events.log",
+      "bytes": 21130,
+      "sha256": "41A9A2612B9A368794BBD2D6D50CE0ED6C8066D86F9AF32A9278727ECA0F8C04"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-edit-t4-events.log",
+      "bytes": 7106,
+      "sha256": "F87EC6D63B8B477AB9F5FB5D658AF4828E324B5586C49756949A3CD865D0A098"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-empty-t4-events.log",
+      "bytes": 3736,
+      "sha256": "05798AE8221F701BC67AED2F020CB8C1187BD1816B40C0EBEAD6771D9058AC63"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-inspect-events.log",
+      "bytes": 19036,
+      "sha256": "F13678A7D3890F44BF43E12609895D6133061ABF09E0E06430FEA583F80745A7"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-local.log",
+      "bytes": 11575,
+      "sha256": "70AF02A57B26763AC37BB6DFCF482945DE3B07D53068033C3DF5B1A28ECD3143"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-main-build-m1.log",
+      "bytes": 7931,
+      "sha256": "89D66EC079710807A88A8BBECC485C41700F857F2421DE70276890A9E55F7940"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-main-build-m2.log",
+      "bytes": 7918,
+      "sha256": "37AC365993B5BC8430CFF00C1EF4C02CD7791E3E0D5F385190C2DA3B930815BB"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-main-build-m3.log",
+      "bytes": 7919,
+      "sha256": "C21D517B549666D05D196281F987A1CF4CBBB82928ABE6C2BD9EE23905BEEE71"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-main-timeout-events.log",
+      "bytes": 956,
+      "sha256": "C37F787DF279475C5ADF2B24535CF58A802C9870D7FF06F8AC256625B7BAA823"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-prepare-events.log",
+      "bytes": 4765,
+      "sha256": "501C5380B459E5C373B7B333BF2A35A82805F65FD9ABEFEDE2A440DD74A42398"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-service-health.json",
+      "bytes": 300,
+      "sha256": "64C87168D8392E764099BFDD356CDD54F39A15E0028F3B1C7DA6E3EF24EE30C1"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-shutdown.json",
+      "bytes": 347,
+      "sha256": "149B19C6D469E09631FA0349314F49029469258070035C9C9DE03B36FB6AC416"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-t3-timeout-snapshot-summary.json",
+      "bytes": 1082,
+      "sha256": "610076B0D30C406EED700FD6A774D0DC183B074A71DB73B983153D4271577F44"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-test-build-t1.log",
+      "bytes": 56506,
+      "sha256": "B72E79FDBE579261D2E9BB016E15C3047137C0CDBA1984EA0009184B13ACCA1B"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-test-build-t2.log",
+      "bytes": 56500,
+      "sha256": "9814545256B21B07465F9C12F0BC229904D84C88ED4495A0CA37B9F18A8578A0"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-test-build-t3-first-failure.log",
+      "bytes": 58481,
+      "sha256": "54310F21F35B8E4EA315BAD7BB961FF9EE1691AF36BCC004174181386C2F479A"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-test-build-t3.log",
+      "bytes": 56507,
+      "sha256": "1BA540E969D4C008A02850F67CF7D2A60711F385DCCE517149D594C562067DBF"
+    },
+    {
+      "path": "docs/test-results/2026-10-21-journey-scroll-test-build-t4.log",
+      "bytes": 57778,
+      "sha256": "901280EDCDEC3C97B0030FF33B06EB507D1F2DDC151FF4B85366ED3B8D81A7F5"
+    }
+  ]
+}

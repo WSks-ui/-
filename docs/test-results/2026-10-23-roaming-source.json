@@ -1,0 +1,802 @@
+{
+  "recordedDate": "2026-10-23",
+  "gitHead": "910324679288e23f5c20d4803210e1c798c6ca03",
+  "workingTreeCommitted": false,
+  "appPackage": "M12",
+  "scope": [
+    "entry/src/main/**",
+    "AppScope/**",
+    "listed root and entry build/package configuration"
+  ],
+  "excluded": [
+    "ohosTest/private fixture",
+    ".local",
+    "signing material outside listed product paths",
+    "build outputs"
+  ],
+  "method": "SHA256(按相对路径排序的UTF-8 path + NUL + 文件SHA256大写 + LF)",
+  "sha256": "468DC77FA82AFA7C563EC8541B4B929976377947955F28B5DBC690F5CA779124",
+  "fileCount": 156,
+  "files": [
+    {
+      "path": "AppScope/app.json5",
+      "bytes": 243,
+      "sha256": "69CD9C0ACEED29969513360005F50F8D96B3929B60686D5C95949A5D924BCFDE"
+    },
+    {
+      "path": "AppScope/resources/base/element/string.json",
+      "bytes": 95,
+      "sha256": "D5ADF84E7057565FBFE242BA083C925925F6E757DA173525098DB4AA0F9CDC76"
+    },
+    {
+      "path": "AppScope/resources/base/media/background.png",
+      "bytes": 32383,
+      "sha256": "1CC24203FE9331E32B9D4D2A21866291CFB1CD48887541400DCCAB29516957F7"
+    },
+    {
+      "path": "AppScope/resources/base/media/foreground.png",
+      "bytes": 28293,
+      "sha256": "FBCB7C28E998B144470710E41B004E7B3DF0A1C262ADE68611F63BD9188BABED"
+    },
+    {
+      "path": "AppScope/resources/base/media/layered_image.json",
+      "bytes": 109,
+      "sha256": "3D18DCD7ED9E7D3D2C54C20CB80A44EB4877C661131C68A46E20B6E19D0BB476"
+    },
+    {
+      "path": "build-profile.json5",
+      "bytes": 792,
+      "sha256": "CB961C05F7B6A3DC4744D91983E5806F820FD812DA3444E7B764C05876D618D8"
+    },
+    {
+      "path": "entry/build-profile.json5",
+      "bytes": 540,
+      "sha256": "165C5E02E368CFAE38401DBFC371A106AB3F5A8A1ED05078625C0F1C573476DC"
+    },
+    {
+      "path": "entry/hvigorfile.ts",
+      "bytes": 227,
+      "sha256": "67CC02AA9CCF2F3A2C58E7FEE4B6E3A00FFB6128C11F76B7FEC5F00AD2D63581"
+    },
+    {
+      "path": "entry/oh-package.json5",
+      "bytes": 183,
+      "sha256": "5721FDA56A382803C6C18C8F86208FD5A5548D2FA5E045C9E0B52C48D9220E7C"
+    },
+    {
+      "path": "entry/src/main/ets/components/AccountPanel.ets",
+      "bytes": 3929,
+      "sha256": "7378C5F13B27C60EEC5CF764DBA09D62BE09A96B4E45AF0295B25A337595A91D"
+    },
+    {
+      "path": "entry/src/main/ets/components/AiObservationPanel.ets",
+      "bytes": 35592,
+      "sha256": "1DBD3AEC6CA5E67C43A9BE683F7CC0B3C4578AC39672F8055327D29A2D24754F"
+    },
+    {
+      "path": "entry/src/main/ets/components/ArchiveInfo.ets",
+      "bytes": 1576,
+      "sha256": "D968776285DDBA81119DE86E0C98EA556ECFB38DB414C0FC02F7AB3C88F93379"
+    },
+    {
+      "path": "entry/src/main/ets/components/ArchiveTheme.ets",
+      "bytes": 2125,
+      "sha256": "260B262163B3E9E5E0A95D1969183FC2DEFA8CE9B55EE8443403C11FA58445CE"
+    },
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "bytes": 30226,
+      "sha256": "EFB81048073727638A00876D7A92D276C26E38C9FD6B5C33454356C7E0A2421F"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureAtlas.ets",
+      "bytes": 22467,
+      "sha256": "9ED17C0EFF399861FFC64DE1906B5BC5C07313DE58FB4F429E3B13B9760F8AD9"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureGraph.ets",
+      "bytes": 5059,
+      "sha256": "B9DA19C9A4CA6F5B1CEAB073C284A8CCA46B427F68A4540E81AC9558CD49EC6E"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureGraphNative.ets",
+      "bytes": 12101,
+      "sha256": "B9D1D35F3F8D8B15F6F2C757E4B8E8AE812BC0D71F8034F27371CA51D150CB79"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureGraphWeb.ets",
+      "bytes": 9841,
+      "sha256": "B8338FFC31672B367580C95CCEF241F179F59F25D40799AC8E863E8EC87B5258"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyBadge.ets",
+      "bytes": 5691,
+      "sha256": "3873D63D8CD5519909821F8BBB354EFF4BB4A9E11439408E75A6A4077E0DF4B2"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyPanel.ets",
+      "bytes": 7654,
+      "sha256": "AF0F3F36EA454F86F6C142FA28E6C9B50198FECF905E1D16FF4D2D09C5EEE137"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyScrollPage.ets",
+      "bytes": 20378,
+      "sha256": "6D0F940AEB892376A97C7E2017FF150B94FE1358A547883D25E77049179AF61B"
+    },
+    {
+      "path": "entry/src/main/ets/components/LoginPage.ets",
+      "bytes": 6568,
+      "sha256": "AFC209852CC877A274D73B30C552B0417141FD2196835E1E36ECC4082CE7D5BD"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialComparisonPanel.ets",
+      "bytes": 10433,
+      "sha256": "54417533C0EDDC953D8CE6CAFCD695EBC640C752C6EAFA9E155821579903725E"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialStudyPanel.ets",
+      "bytes": 4699,
+      "sha256": "1F77917A12A3212550591B5D59689699086799DF6B2D1D5268895F8B8916A2F8"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryDetailPage.ets",
+      "bytes": 9251,
+      "sha256": "D41F03D17ECB165905D95385CC960B6B0C3635A5A37611651B5CF2C37DBEB310"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryFilterPage.ets",
+      "bytes": 5648,
+      "sha256": "AB3F394B5D8DFEEFC5A8E48156DD8D0EDB85018420AEBDCF2617703DDB980268"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+      "bytes": 7260,
+      "sha256": "B184FFDA0A25F641D8CD28A7FFEBFEE970653D9D6AF52580BEF92146ED986BA2"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+      "bytes": 12400,
+      "sha256": "68F29C8E4A08493F1384E36D3E15CE29F0C18A9E228276E42EF5DDDC759C3014"
+    },
+    {
+      "path": "entry/src/main/ets/components/ProfilePage.ets",
+      "bytes": 17338,
+      "sha256": "230A16D3CF98A48B15C97B59C2D61DA8CD9F7DDD4E92A78E3B3EF1D912A28694"
+    },
+    {
+      "path": "entry/src/main/ets/components/PunchRow.ets",
+      "bytes": 2526,
+      "sha256": "98CF680AA9183D58B90185363FB5781614ACD6D77F7464D22C54CA191DDE8D4E"
+    },
+    {
+      "path": "entry/src/main/ets/components/RiverBackdrop.ets",
+      "bytes": 1526,
+      "sha256": "9711A0C41A08903A491B572B43737073CF1F9DF2C1EDD9AC28B00C9AE88D43C6"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingChapterPage.ets",
+      "bytes": 47095,
+      "sha256": "402E6176C921D807C975839A7E82664969400C2E967BFBC69BB7FB5FFCB92518"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingFavoritesSection.ets",
+      "bytes": 3028,
+      "sha256": "6DBBB7B8720C29931B2DEA8D51C3C676849600D5B4D565FAB4F8209510A25480"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingHome.ets",
+      "bytes": 15829,
+      "sha256": "52E48A7841F3D69C226204C091E27A4478824F4E68C68F1C7707F28F201269E5"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingLibrarySection.ets",
+      "bytes": 4189,
+      "sha256": "15496424D430DCD73BC39537BA1C8CF532862F62193595798D71DF0CC63FFE96"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingMemoryDetail.ets",
+      "bytes": 10416,
+      "sha256": "34BC4BAF2B3EB5C35F4A77DA4A014A72AE7916167F20B17E8354D2E9049B61B0"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingScene.ets",
+      "bytes": 36938,
+      "sha256": "80340CFCBDEB80D0A8B6AF523B27C5CB8A2696C7F0DFC002A5E612DDA049983B"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingScrollPage.ets",
+      "bytes": 6309,
+      "sha256": "5CE71EA0BD0DBEDF5F473D90D181A38F548AC5B30D4AE08145EEFDA7429532CD"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingSystemPage.ets",
+      "bytes": 8537,
+      "sha256": "48BD5FB05EB165DE16D464A394B217D25947C32A122EC2724DF8484016C28E81"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingTheme.ets",
+      "bytes": 766,
+      "sha256": "6783C91781706EDCFE1EF306DEF6C85E50D1635521D463BF54456D9106656888"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteCard.ets",
+      "bytes": 4596,
+      "sha256": "DCBA2E2B2838B16183A3CBA22B1F826A21752701C3EEF75BB3DE1C1ABA94BC8A"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "bytes": 49745,
+      "sha256": "A8B985DCA9DEAF931F9B430B3DF3515F4D66FD57CDAFF2684A51D55B7AEDF3EF"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteObject3D.ets",
+      "bytes": 4861,
+      "sha256": "0EDAA1323CBC90624A033D31775EF058EBE1BF832E02B63051F7472541E7DB84"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteRow.ets",
+      "bytes": 2141,
+      "sha256": "10B12EB153686C99140BC3366358DFCF2E1FC8143EA179D38E0B2F792244D4C0"
+    },
+    {
+      "path": "entry/src/main/ets/components/WaterSituationPage.ets",
+      "bytes": 12637,
+      "sha256": "19D0B56D2EE103E38AC3A3B05F8166429A571B0F76D36FFE7CE7B80EE6B184E4"
+    },
+    {
+      "path": "entry/src/main/ets/data/AccountWorkspaceStore.ets",
+      "bytes": 3691,
+      "sha256": "D8808E4CD5DFC8D4A21543C3DE5193198BCCA8A592325A77021CBC7D88B1D269"
+    },
+    {
+      "path": "entry/src/main/ets/data/CulturalContentIndex.ts",
+      "bytes": 2541,
+      "sha256": "1CACD1A477B2987798B74C56C735F372E97DC29EFD7956095DE26939818EC06E"
+    },
+    {
+      "path": "entry/src/main/ets/data/HeritageCatalog.ts",
+      "bytes": 34343,
+      "sha256": "7ACDF043498689CF3DA6DD87FEBDC1C2E6B72E7672AD993B328AE162E9959DF6"
+    },
+    {
+      "path": "entry/src/main/ets/data/LocalArchiveRepository.ets",
+      "bytes": 2889,
+      "sha256": "FC36B6838FEBB69ED7B306F4DEFD4B73FBB52F09C42B48452B6C9CF3282B07F2"
+    },
+    {
+      "path": "entry/src/main/ets/data/MaterialStudyCatalog.ts",
+      "bytes": 10198,
+      "sha256": "E39666F8A1786A5EF8239749A7C42C1C71524F9C4E879108BBDACFED19DB4AAA"
+    },
+    {
+      "path": "entry/src/main/ets/data/RoamingCatalog.ts",
+      "bytes": 21409,
+      "sha256": "CA3935DBFB15EBCD49C9692BEB8FFF788D71FF87F178279C0E8DCC71B7ABC16D"
+    },
+    {
+      "path": "entry/src/main/ets/data/WaterSituationCatalog.ts",
+      "bytes": 3935,
+      "sha256": "9C1442E765907649C35138CD35632D532A49008D7B661F7D1E2A27A7B0544E0C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AccountSync.ts",
+      "bytes": 8052,
+      "sha256": "DBBA134CD1ADCFEC20206E1B872CB7AAA1A5168616F7D8AAAF2F32ECE8E45610"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AiObservation.ts",
+      "bytes": 16629,
+      "sha256": "935A22FD00F9C9A4AEB9689BFC662EC3DF70BF2EA9232DD55B5ED4704C3FBCFA"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AiObservationKnowledge.ts",
+      "bytes": 1153,
+      "sha256": "806E91B0602A7735A137BD27CF6E95B119B3A4DFCBA6A5FBA21C2210998E541C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ArchiveDomain.ts",
+      "bytes": 23150,
+      "sha256": "10707509D88872F3FA0AA895A46C31C5B561CE86666B362873565A1FDF332F3A"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalContent.ts",
+      "bytes": 6027,
+      "sha256": "62A4ED291E3EF1EEC7ECC185491A0BAB6CFB09FEA44E33D2BD08EC9B05642B40"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalEngineContract.ts",
+      "bytes": 2553,
+      "sha256": "A769E07A59E254CE267D784EA2674CFC06FEB8CF1385A3AC35427FD2F1E41BD2"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "bytes": 12869,
+      "sha256": "1741FC5E85DC4CA69E00331722347C3FC03B45CF0BDFA8F30D7828B6F3D1A22D"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureConnections.ts",
+      "bytes": 2905,
+      "sha256": "4B58671DF6AC09A8359FF242B37FCA8287EB2BA1436E4133DE5CC1D3AE50C17F"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureGraphData.ts",
+      "bytes": 1814,
+      "sha256": "A8F0E30CC0FBB11DA2E1FCF457B8E2605A9297CB452355FC9648312095CC331F"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureGraphLayout.ts",
+      "bytes": 5877,
+      "sha256": "F9DC1B1689CFF13C5212CE55A129172A3B58E4DA8200F1A8CAFB7579E0BC164C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureGraphSpace.ts",
+      "bytes": 7524,
+      "sha256": "83C3921E1B13BDB206AE2AD9A2D6E0EC8BA799544CE9689C71904089D9ECF192"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DahecunObservation.ts",
+      "bytes": 1739,
+      "sha256": "5ACBEDEEEA1CA751EFA1DE8612F004A5B242BF0A46D588669AD4C4FF3D30AE96"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DistributedArchive.ts",
+      "bytes": 871,
+      "sha256": "FF17F30C45E366A6E21E4CCBB31E3D6C679E03B1C6D0B04E18F8B2D423EBCD35"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservation.ts",
+      "bytes": 1525,
+      "sha256": "E4FF0288D0EFB55BA311CAA779DDC5C658695DFC29631CF8CBDE89B90D4E3BCD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+      "bytes": 13444,
+      "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ExplorationProgress.ts",
+      "bytes": 4332,
+      "sha256": "D43BE17AE1AB2CC41094F598A413376370CB8519FB9D6C698C23D80DE9DBC2E7"
+    },
+    {
+      "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+      "bytes": 3925,
+      "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+    },
+    {
+      "path": "entry/src/main/ets/domain/JourneyScroll.ts",
+      "bytes": 5000,
+      "sha256": "5B486FF95C129E428AFCCF4830C8193C611884D815622BBD2E32D8C532ACEB2A"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+      "bytes": 1532,
+      "sha256": "272B75A5966A9F85F3E8E093DAE2F9D59AEF5C1F55F4D8C3738722EF40E7BA76"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservationGeometry.ts",
+      "bytes": 11875,
+      "sha256": "5249D8F179CA2548A3903B7F7CC7964D1DE43485DF9DB3150C5FC0DAB6B0BC93"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+      "bytes": 6121,
+      "sha256": "4406005E6044A8CDE65F1E92D6D5B3DC523BD683B74B412B8652860333502530"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+      "bytes": 5748,
+      "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+      "bytes": 1663,
+      "sha256": "4D87B948ADD25C171101BCF452A1417ED38C87ABC1D37ED0FB8124F002E1FEA1"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+      "bytes": 13647,
+      "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+    },
+    {
+      "path": "entry/src/main/ets/domain/Roaming.ts",
+      "bytes": 7140,
+      "sha256": "9EFC119BD66F6C13432A5B44D3BF29FB47FCF596ADFBDB6D36F32B28886281A1"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectGeometry.ts",
+      "bytes": 10539,
+      "sha256": "EAC39C273DDCF6601B272012594D20701BA66DDB78D5C9DDAC3B946F9F0CF7CD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectRaster.ts",
+      "bytes": 5447,
+      "sha256": "C449A82C9F4B03E2364CC52FAC60D2D1AB8A775FC451FC0E2A52E7A38596AE25"
+    },
+    {
+      "path": "entry/src/main/ets/domain/WaterSituation.ts",
+      "bytes": 5652,
+      "sha256": "7D8D2BF133070BD433C7BF31D184D7BB3D112249E1376B7E2ECD14B282FD30F4"
+    },
+    {
+      "path": "entry/src/main/ets/entryability/EntryAbility.ets",
+      "bytes": 3147,
+      "sha256": "9CCDC440062100E16784F45852434552FA6E30F6BB4ABCC6F0260CDB63C119DF"
+    },
+    {
+      "path": "entry/src/main/ets/entrybackupability/EntryBackupAbility.ets",
+      "bytes": 522,
+      "sha256": "AE94F286234D41AD5FA9F70BFD11F61E2F609994D6F16687D1CE4EC442115E5D"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "bytes": 127751,
+      "sha256": "E783705DAF9783E9489D1E3DD63C34DC0C1ED9A0D26AFF199478F1476ABE2DC8"
+    },
+    {
+      "path": "entry/src/main/ets/platform/ArchiveLaunch.ts",
+      "bytes": 709,
+      "sha256": "5BBA4B15FE96DF82E05AB5D6BD3E30AE340ADE629C2959F1FB88C3ECA8B02DD0"
+    },
+    {
+      "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+      "bytes": 10616,
+      "sha256": "F05136EF98540EB1780EE453B4A99579AA9F482C97F587BD1CA005CE6386D0F9"
+    },
+    {
+      "path": "entry/src/main/ets/platform/HarmonyEffects.ets",
+      "bytes": 4818,
+      "sha256": "72B79F1082A01A9AC192EA2D058279F2F01FEA0E8A8250FD38EFD6299FA47D7B"
+    },
+    {
+      "path": "entry/src/main/ets/platform/RoamingSystem.ets",
+      "bytes": 11303,
+      "sha256": "33FF745ADB6278C8BEDD157F5B08D965281349CFB53680917594B64850D2F05B"
+    },
+    {
+      "path": "entry/src/main/ets/platform/SiteObjectCanvas.ets",
+      "bytes": 2453,
+      "sha256": "1DE30FA4480D615B7283681244FDBEE8C9E061AAC3371D35375BA4A00733C8D1"
+    },
+    {
+      "path": "entry/src/main/ets/platform/SiteObjectScene.ets",
+      "bytes": 4612,
+      "sha256": "D9E68EE806EA343E0C4CF286F2DF4AC9C211EC9499CCB2317D1C92EBAC09D67C"
+    },
+    {
+      "path": "entry/src/main/ets/roamingform/RoamingCardData.ets",
+      "bytes": 12260,
+      "sha256": "5BA1A0D62DA6250A331014B7D2F671E37895C33831E5778DA66B58E08268BD6B"
+    },
+    {
+      "path": "entry/src/main/ets/roamingform/RoamingFormAbility.ets",
+      "bytes": 1321,
+      "sha256": "87ED6CECEB5C55996CAF6E0C10C0D21A7ACA12F34D075241118A0F3ED96E4F82"
+    },
+    {
+      "path": "entry/src/main/ets/roamingform/pages/RoamingCard.ets",
+      "bytes": 3198,
+      "sha256": "FC21A298D1464235CE491728E2E834B5227EEAD6BFF22659AF9CF874F20518C5"
+    },
+    {
+      "path": "entry/src/main/ets/sync/AccountSyncClient.ets",
+      "bytes": 6789,
+      "sha256": "A20DDC79425107277BD9DB955036D9E2D112BB11DD2E7B7C157264C6F05A7029"
+    },
+    {
+      "path": "entry/src/main/ets/sync/DistributedArchiveChannel.ets",
+      "bytes": 8720,
+      "sha256": "D255C1A74232750B605E9BB5EF7D5B1FD03450261E20628D2013865F71EE9A1D"
+    },
+    {
+      "path": "entry/src/main/ets/sync/ServiceConfiguration.ets",
+      "bytes": 1669,
+      "sha256": "6F48E88D246052527E4EFC2EA51624C84DF37244659CC716B899C22A183ABBA7"
+    },
+    {
+      "path": "entry/src/main/ets/sync/SyncGateway.ts",
+      "bytes": 867,
+      "sha256": "3452B44E177E0CEE07E9E1740B7B4751CE5640DCAA2BA412E8A98243567D5452"
+    },
+    {
+      "path": "entry/src/main/ets/sync/WaterSituationClient.ets",
+      "bytes": 1654,
+      "sha256": "2876A71B4894F89593CBF31517363B4A25C6FAA1151B70B1ABD31A6DC6AC17CF"
+    },
+    {
+      "path": "entry/src/main/module.json5",
+      "bytes": 2033,
+      "sha256": "16CEA1F2D430F764B1F4B35CF417F77331A19EAD6EF9E17C043ED1EA75E00B48"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/color.json",
+      "bytes": 1116,
+      "sha256": "2025D7A3BAD906783A027E23AD7995E538597436635EC681721D1277BE27EB77"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/float.json",
+      "bytes": 100,
+      "sha256": "3AD317AD8B46B69683FCE81F0E5B808DFDE752594EC0334691917AF7B5383A12"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/roaming_string.json",
+      "bytes": 593,
+      "sha256": "916F216B2FCAAF2B9EB72D5124AFEE5CB2A1C6BD16B4749512C80417BB323BFC"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/string.json",
+      "bytes": 411,
+      "sha256": "61A6C2AED84A2EF07EB6D120BC32EE481237BF34A173D2981E8C954C3D476588"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/background.png",
+      "bytes": 32383,
+      "sha256": "1CC24203FE9331E32B9D4D2A21866291CFB1CD48887541400DCCAB29516957F7"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/foreground.png",
+      "bytes": 28293,
+      "sha256": "FBCB7C28E998B144470710E41B004E7B3DF0A1C262ADE68611F63BD9188BABED"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/layered_image.json",
+      "bytes": 109,
+      "sha256": "3D18DCD7ED9E7D3D2C54C20CB80A44EB4877C661131C68A46E20B6E19D0BB476"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/motif_city.svg",
+      "bytes": 1133,
+      "sha256": "CB6E844B496B15898CE42A2F3530136F4E0492C6BC0E037A1C8499FB3DF05D8B"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/motif_pagoda.svg",
+      "bytes": 1051,
+      "sha256": "F5534FF0A0F41992BA45CB71C556CA41BE0BEBC5EF555606104E790EDC609986"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/motif_pottery.svg",
+      "bytes": 1283,
+      "sha256": "BCF52AE83E6D94F68F6662D3737FA994A73210782485C0B73D8CF7B41D661373"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/roaming_card_river.svg",
+      "bytes": 931,
+      "sha256": "1929D0BCCC1C57C1DB1AFA67D12AF27CCE9D790D6AD09A2491EBC884ACDCDB47"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/startIcon.png",
+      "bytes": 15981,
+      "sha256": "C8EF3B31261D7C2270F02E8CA5F9B29335AAE59140588692D17E0FDB4F866D31"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/study_dahecun_twin.svg",
+      "bytes": 5708,
+      "sha256": "0BF145C8AD7D96040329FDAACADB8DD18014D3E5BD4D8E8004AEF74A7988D486"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/study_duling_pattern.svg",
+      "bytes": 5304,
+      "sha256": "0B574739DC9BE3B607BA2FE2C848E24C39763EF62CDA9E7BDE54D3D26461ED29"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/study_miaodigou_space.svg",
+      "bytes": 4013,
+      "sha256": "50509E48B36858E5E211D3DDF1BF690BCED75DCA2B238E7AD441C72EE83EA889"
+    },
+    {
+      "path": "entry/src/main/resources/base/profile/backup_config.json",
+      "bytes": 36,
+      "sha256": "9447811DE67729D65B6C0D76720CE53DAD97F70A4B0BBE1946A8DC1C7DE717F5"
+    },
+    {
+      "path": "entry/src/main/resources/base/profile/main_pages.json",
+      "bytes": 37,
+      "sha256": "F21984FB1D5096F0DB41314DA0BB94C573E7AD018E5AFAE3044F8D5FF71B0BFC"
+    },
+    {
+      "path": "entry/src/main/resources/base/profile/roaming_forms.json",
+      "bytes": 1037,
+      "sha256": "B11893E12AB41BE0D3D3225327CDECF97D66EFE5351DF118CA97BB04101BB67D"
+    },
+    {
+      "path": "entry/src/main/resources/dark/element/color.json",
+      "bytes": 1116,
+      "sha256": "E7ED1CD656A4F7F941D8DAB2E3541916117D4AB4CE67DF4C47D67D3904A9355A"
+    },
+    {
+      "path": "entry/src/main/resources/dark/media/motif_city.svg",
+      "bytes": 1135,
+      "sha256": "E451B5AB90A2A347D7E28DF49993A3DB85BD8C6E12D13065C9B680132CA81DD6"
+    },
+    {
+      "path": "entry/src/main/resources/dark/media/motif_pagoda.svg",
+      "bytes": 1053,
+      "sha256": "28DE1789B1F7CBC86A086DF28496E10E15E6D59AF0832585F19573C58631FDAE"
+    },
+    {
+      "path": "entry/src/main/resources/dark/media/motif_pottery.svg",
+      "bytes": 1285,
+      "sha256": "60BD21E77A5895A32263D0A2846B6CE92AD70671BDDA2B10DC184EDA3D177B95"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/account-sync-dev.json",
+      "bytes": 1728,
+      "sha256": "DAC61A3990708D639E368339463892AD8853475C58C4961C8B564B2A5C6CD388"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/README.md",
+      "bytes": 6576,
+      "sha256": "245DC66A6393280CBECC2543694864DBD74A20796316E8CF2CA1A566AE40346F"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/core.js",
+      "bytes": 24100,
+      "sha256": "95AF98B4530077B36FBA77565FB9C1B6F07527C5477112B9863DF20AF594DEE0"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/engine.css",
+      "bytes": 961,
+      "sha256": "BDED0F94094EC33B650B1F66082C3384AC85C12C4D163FB57469010EAC4CFDA8"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/engine.js",
+      "bytes": 23584,
+      "sha256": "60F3509237055AEE0D91433304988553676560BD2D053AEC3544ECF15B89EAA4"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/engine.test.cjs",
+      "bytes": 13879,
+      "sha256": "D28CBD8B607B994798F12237AAA6B2B61BD62EEE769D8AB7942303B5A56E56E7"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/glb.js",
+      "bytes": 11486,
+      "sha256": "393AAD85A3C86E5C65ECD36FB5491678E2084127C44382F6A60C2B090725B3CC"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/index.html",
+      "bytes": 1037,
+      "sha256": "7DDCE5EE8E26A7CC6DCF452853F43E1DC2DF15F38AF6CC138B73C1B18B7580C7"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/renderer.js",
+      "bytes": 10941,
+      "sha256": "20F6BA9C73A8FCD88564F357646FD59764D20E98C21CD0E2F4D0D9D01AA5932C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph-layout.js",
+      "bytes": 5979,
+      "sha256": "288D94F5E3B669A418A0F8C59DB31293482C367C22D079CAD4082B37651E6007"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph-space.js",
+      "bytes": 7578,
+      "sha256": "4FEF79F0DB4FAE4AD5A956C896922268D9300B90177ECB8017DB7B567ACBF6C3"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph.css",
+      "bytes": 2965,
+      "sha256": "0F13F50C59BB5F290FB9AC014C386F0B13A46491B585324EBBD12F9B0070F9AB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph.html",
+      "bytes": 1219,
+      "sha256": "96887EACE08E179E7B0DAF794E58843979F8713DB3820E032EDBF2D34920BB1A"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph.js",
+      "bytes": 16664,
+      "sha256": "B8E0C9AA45EB22C821B10C3256D8385AA76C3836EF76D6A9EAFFCE22E7EEF9FB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/cangjie-gate.jpg",
+      "bytes": 245008,
+      "sha256": "4F80B2D130AB218957A7DD46919BF770D1EA97EFFB18FC40356111F5177914A8"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/dahecun-foundations.jpg",
+      "bytes": 246333,
+      "sha256": "9D30C0625B832BE7C95D9E39F1A1C2354F8F232E2BB0A80D1446C4C3ACF9C736"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/duling-ding.jpg",
+      "bytes": 125468,
+      "sha256": "F67FC49DD6C18B0713A63FA7FD86D05A4EC9EBBCD5DD8839A03B746EE827DD70"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/erlitou-site.jpg",
+      "bytes": 263949,
+      "sha256": "55B99297B7B79EC83A433143F2D71EB238F47813792AE1D3D1F7EA8D60E30039"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/fanta.jpg",
+      "bytes": 251112,
+      "sha256": "AA8479348350ABAFA2B121ECAF8263158CB50975199E16F8F939E45B9A0DB5B7"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/guoguo-bronzes.jpg",
+      "bytes": 138166,
+      "sha256": "F52ECEC158601E0C7132CF7D073EB1BE540648C4E6870B280606BFA3D1C9837A"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/hanwei-palace.jpg",
+      "bytes": 237652,
+      "sha256": "956529852C481BCB724C159B1AD83CF0EFF2E48177132D28D64BFE1EC90C0D0C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/iron-pagoda.jpg",
+      "bytes": 136425,
+      "sha256": "E417BB8A9514E24F69836B8373FEB3F21ECD379217B88C74318AD24B0716CAD1"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/kaifeng-wall.jpg",
+      "bytes": 270957,
+      "sha256": "EF43873E1994A9C067AFFCBB8C1E256CE42E5B918F1A853939F9CE1678F9171C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/longmen.jpg",
+      "bytes": 242703,
+      "sha256": "576E93D5ECDA9A5D9C927BFC525DE4DC673E565A47E4A20DD88A43F49D6B2A33"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/miaodigou-basin.jpg",
+      "bytes": 64762,
+      "sha256": "F8F416A175BFB0EEA1927AB52A8B3D2D7DEB83C252CF4EA1B20319C545D45BDB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/xishuipo.jpg",
+      "bytes": 110339,
+      "sha256": "109D199832749A693C29A3C56B883A8D8F0B561B56198ED2FE50CF7EF1C9FC04"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/yangshao-strata.jpg",
+      "bytes": 270701,
+      "sha256": "270E3DA2CC0AF4EFC1C52594986513082E66813A8E23C76A88D926B9C7D25D7C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/yanshi-site.jpg",
+      "bytes": 297842,
+      "sha256": "9F06B50F03115D0886B1478B32470CE5E2AA35DB0CA13209DFA5A01BF3A62B8D"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/zhenghan-wall.jpg",
+      "bytes": 172796,
+      "sha256": "E0F5E9F528A6E694CFC68232FBA56C1F551454F81A3610AEBB2E59C604F2C55D"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/zhengzhou-wall.jpg",
+      "bytes": 228724,
+      "sha256": "4A2B78BFCE9621C86F43FB8C1B26030073B066978321BBA5E33D97126B133B1F"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/three/LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "BFE119EA4FD413F5F7CA3FCD63ADB0C4A073ED39DAA2FE7D3E6B769E21272601"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/three/NOTICE.md",
+      "bytes": 765,
+      "sha256": "B63D9DC669FC3269D2E7C670D62DA75A64A48CDF7253825B4BC662FC8F1E8850"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/three/three.min.js",
+      "bytes": 485760,
+      "sha256": "07BAF22CD95F34B46E8DA297383B261AC493131597321C042918A27300449814"
+    },
+    {
+      "path": "hvigor/hvigor-config.json5",
+      "bytes": 1482,
+      "sha256": "5D3F095EEDC3F393C057A3BDF2FA40A1AC4D115755B2C8A43825BE9AC90BBC9B"
+    },
+    {
+      "path": "hvigorfile.ts",
+      "bytes": 227,
+      "sha256": "383227660C07FA9335CAF3E65B8975C65FCBCC8B910BA84D0BC67B22AFCD56CD"
+    },
+    {
+      "path": "oh-package.json5",
+      "bytes": 211,
+      "sha256": "46E90386C64A3A0206A1B2FB09D8B7066263A82AB1A3E124EE521509E1657D24"
+    }
+  ]
+}

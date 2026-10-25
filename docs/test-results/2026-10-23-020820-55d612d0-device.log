@@ -1,0 +1,135 @@
+
+OHOS_REPORT_SUM: 6
+OHOS_REPORT_STATUS: class=RoamingTest
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_guest_five_city_entries_do_not_auto_complete
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_guest_five_city_entries_do_not_auto_complete
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=149564
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=kaifeng_real_three_clues_memory_crud_and_plain_note_preserved
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in kaifeng_real_three_clues_memory_crud_and_plain_note_preserved, ROAMING_CONFIRM_CONTROL_MISSING
+OHOS_REPORT_STATUS: test=kaifeng_real_three_clues_memory_crud_and_plain_note_preserved
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=51075
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=sanmenxia_real_hotspots_pit_house_and_paper_cut
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=3
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in sanmenxia_real_hotspots_pit_house_and_paper_cut, ROAMING_CONFIRM_MISSING:roam-smx-earth-home:0
+OHOS_REPORT_STATUS: test=sanmenxia_real_hotspots_pit_house_and_paper_cut
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=18724
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=luoyang_real_window_poem_and_water_banquet
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=4
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in luoyang_real_window_poem_and_water_banquet, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND 洛阳线索1
+OHOS_REPORT_STATUS: test=luoyang_real_window_poem_and_water_banquet
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=28946
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=zhengzhou_real_gate_poem_and_meeting
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=5
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in zhengzhou_real_gate_poem_and_meeting, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND 郑州线索1
+OHOS_REPORT_STATUS: test=zhengzhou_real_gate_poem_and_meeting
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=29002
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=puyang_real_shell_legend_and_fair
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: current=6
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=6
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in puyang_real_shell_legend_and_fair, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND 濮阳线索1
+OHOS_REPORT_STATUS: test=puyang_real_shell_legend_and_fair
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=29022
+
+
+OHOS_REPORT_STATUS: class=RoamingTest
+OHOS_REPORT_STATUS: suiteconsuming=306333
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 6, Failure: 0, Error: 5, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=306333
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

@@ -1,0 +1,2 @@
+AI_OBSERVE_OK provider=deepseek model=deepseek-flash site=zz-duling-fangding purpose=observe status=grounded facts=1 actions=3 elapsedMs=1867 account=authenticated
+AI_OBSERVE_OK provider=deepseek model=deepseek-flash site=zz-duling-fangding purpose=draft_memory status=grounded facts=1 actions=3 elapsedMs=2068 account=authenticated

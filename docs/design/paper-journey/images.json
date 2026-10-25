@@ -1,0 +1,347 @@
+{
+  "main": "paper-M14",
+  "images": [
+    {
+      "path": "docs/design/paper-journey/phone-home.jpeg",
+      "original": ".local/redesign-20261025/native/phone-final-home.jpeg",
+      "bytes": 168030,
+      "sha256": "87B50A9DDA9C97163129B95B46A3FF33D4E8FDC16B456A98D965D326B464CB05",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-home.json",
+      "original": ".local/redesign-20261025/native/phone-final-home.json",
+      "bytes": 90836,
+      "sha256": "6DB296693286596108E72B5047C646FD0D50112040664E932972B4DEFD9F672D",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-library.jpeg",
+      "original": ".local/redesign-20261025/native/phone-final-library.jpeg",
+      "bytes": 288822,
+      "sha256": "E0D7032FBD23A79D5FB099412929B676B4F5CE790CDF4E630BE240B486FE8290",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-library.json",
+      "original": ".local/redesign-20261025/native/phone-final-library.json",
+      "bytes": 82716,
+      "sha256": "856F6DEBF85F4F551E447D1B06B77D8430D733FD267087862B02881C7322F859",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-memory-empty.jpeg",
+      "original": ".local/redesign-20261025/native/phone-final-memory.jpeg",
+      "bytes": 140144,
+      "sha256": "4ACAD562DD2DF683FD2D7091F69E39D256D4514FEEB40AF922DC4B677BD79106",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-memory-empty.json",
+      "original": ".local/redesign-20261025/native/phone-final-memory.json",
+      "bytes": 62955,
+      "sha256": "A854A94AE6AC501E85B6A0394FD2C21ACE880F0A6770BD0B4050ED5758E5FA4A",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-profile.jpeg",
+      "original": ".local/redesign-20261025/native/phone-final-profile.jpeg",
+      "bytes": 165767,
+      "sha256": "B3343AA98AF982C0E1ADA8445A0D8F41F042DDD329EF5B9D22FCC306827D787B",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/phone-profile.json",
+      "original": ".local/redesign-20261025/native/phone-final-profile.json",
+      "bytes": 87501,
+      "sha256": "E4751BE0C5EE225915332B9A282CB46E25AB5B43494512E23BB03570778D16B5",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-home.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-home-smx.jpeg",
+      "bytes": 178944,
+      "sha256": "720190C502D2069683CE941D05EB501595D64347A413719CBD45E37F76434BF6",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-home.json",
+      "original": ".local/redesign-20261025/native/pad-final-home-smx.json",
+      "bytes": 96005,
+      "sha256": "0E6529211ED58C89B2335E258BCF08DFE5F2791C850B9508D1B999B7E11D91A3",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-create-smx.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-scene-smx.jpeg",
+      "bytes": 265231,
+      "sha256": "3878539084EABA4D7BF77087EE541833FE6FD8A05DBB6BC4D6BA0AC4027BAD9B",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-create-smx.json",
+      "original": ".local/redesign-20261025/native/pad-final-scene-smx.json",
+      "bytes": 84473,
+      "sha256": "F1A1072A2EE68D136187E05798948F1A3AD1E5DB4D607FD7821C1B1ADD6B537C",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-luoyang.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-scene-ly.jpeg",
+      "bytes": 268927,
+      "sha256": "959C2357560B623BA67E9CF8F81F0804BE014B4434283AA05B6908CA9B540196",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-luoyang.json",
+      "original": ".local/redesign-20261025/native/pad-final-scene-ly.json",
+      "bytes": 84639,
+      "sha256": "28BF2F96F60B016476F21732CE03A456697A5DFB2C50CED3C460FA9C41A3AE95",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-zhengzhou.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-scene-zz.jpeg",
+      "bytes": 288476,
+      "sha256": "F7A97C67F5D5B31DA226C9AA09F2AD51BDC76084640A8BF7912584727B3AFFC2",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-zhengzhou.json",
+      "original": ".local/redesign-20261025/native/pad-final-scene-zz.json",
+      "bytes": 85041,
+      "sha256": "5EDB5D636CAA851689AFDB93BB4C0422CDF4C7EA9D01C5ACB5E4DE7353CD78F6",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-kaifeng.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-scene-kf.jpeg",
+      "bytes": 283545,
+      "sha256": "095ADC569CC9D423BE9632B55E7B52A8D74F07674A5AC6E086E106EE3810E687",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-kaifeng.json",
+      "original": ".local/redesign-20261025/native/pad-final-scene-kf.json",
+      "bytes": 84955,
+      "sha256": "770AC9BFF8AF13339E0A2019E92EDACE791044C4AA5DD57F94652A9CCBCEB40C",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-puyang.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-scene-py.jpeg",
+      "bytes": 282856,
+      "sha256": "A14EBDA206F91BC5B2EA191738EED14CE07323EAB3E61B1E657975E8DFAA5CF6",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-puyang.json",
+      "original": ".local/redesign-20261025/native/pad-final-scene-py.json",
+      "bytes": 85037,
+      "sha256": "710DCDB8960247A99D5B2FB3F88BBB446ECC50CD31597A5946A06BA3EA5AF6A5",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-light.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-light-smx.jpeg",
+      "bytes": 276027,
+      "sha256": "ECFAB5DBE5207683000019E13666DE4890CEB0B1A1BCC38DC9363066DE496D23",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-light.json",
+      "original": ".local/redesign-20261025/native/pad-final-light-smx.json",
+      "bytes": 84491,
+      "sha256": "F23FAF58C4CA700333E4046A5E9E9152B6050CF4D25E4A017DB9CEB0A13EBAC4",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-library.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-library.jpeg",
+      "bytes": 307724,
+      "sha256": "7B26D0B7F676542C8B79522755A446AA0374D80BDC111A287116B3EAB06A80A7",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-library.json",
+      "original": ".local/redesign-20261025/native/pad-final-library.json",
+      "bytes": 110870,
+      "sha256": "875784F066057EF3AAFCEA48F408F209B87E6CFFFA5ACB309162398AF040FD00",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-memory.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-memory.jpeg",
+      "bytes": 154881,
+      "sha256": "1255D69F3AF8B3EC2B2EE0ED7B03DAAE4059765516FF9112C90C0B8500CA4061",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-memory.json",
+      "original": ".local/redesign-20261025/native/pad-final-memory.json",
+      "bytes": 72437,
+      "sha256": "BC6CB8DD3D63E6AFD36977D20229A453B64644D1BC6A042911666585D8C19901",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-memory-detail.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-memory-detail.jpeg",
+      "bytes": 168426,
+      "sha256": "231AFDDF2C640EAFE0ACBB5D4F35C8948912F83246D49D9B56467601E2E1C6AA",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-memory-detail.json",
+      "original": ".local/redesign-20261025/native/pad-final-memory-detail.json",
+      "bytes": 50388,
+      "sha256": "02466345212B1DE029788C6ED0A14E19FB4395C768A9CB10EC1BA9F333F1D416",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-profile.jpeg",
+      "original": ".local/redesign-20261025/native/pad-final-profile.jpeg",
+      "bytes": 164274,
+      "sha256": "3523CF0B3126430E2F752F812C51153DAD202FB53FD398BE7FE889DB6F69CF78",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-profile.json",
+      "original": ".local/redesign-20261025/native/pad-final-profile.json",
+      "bytes": 100477,
+      "sha256": "88579EA4D83523A92249AC542F164E5C1A719EF92EDCBD4A06283F98520F9A4A",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-memory-draft.jpeg",
+      "original": ".local/redesign-20261025/native/pad-draft-gallery-m14.jpeg",
+      "bytes": 227110,
+      "sha256": "223C367D87A874CAF24C4748FFAC9F68B166A9CB70CEBED3B3B8FDD77CC9BEF5",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-memory-draft.json",
+      "original": ".local/redesign-20261025/native/pad-memory-draft-final-m14.json",
+      "bytes": 97270,
+      "sha256": "7E95884BD6ECEAAF892ABEF25A8B84425C755C4584A5F54B72523B29C6906CB4",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-desktop-cards.jpeg",
+      "original": ".local/redesign-20261025/native/pad-desktop-own-cards-m14.jpeg",
+      "bytes": 193013,
+      "sha256": "3190AD0B9B036665CAD2EBBEF2DFEF9D76E6FE92CB0F83CD35A8A4BD12B35C8A",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-desktop-cards.json",
+      "original": ".local/redesign-20261025/native/pad-desktop-own-cards-m14.json",
+      "bytes": 85188,
+      "sha256": "016D5049BDA0969A27B486EB3DD2A1F34D5DEFFE56731D5359B7B3FA8E2F9EC1",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-cold-paper.jpeg",
+      "original": ".local/redesign-20261025/native/pad-process-cold-chapter-ready-m14.jpeg",
+      "bytes": 282979,
+      "sha256": "30264C3B0AAFD56BAAAAA250C2A9C1BC3D6C7A8A492869D00E205932F9DCE09E",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-cold-paper.json",
+      "original": ".local/redesign-20261025/native/pad-process-cold-chapter-ready-m14.json",
+      "bytes": 84867,
+      "sha256": "E0C10A6D8E33D77EF92C0A10C7B39AB0375D717042FAFACF385AE545781ACAFA",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-hot-paper.jpeg",
+      "original": ".local/redesign-20261025/native/pad-process-hot-chapter-m14.jpeg",
+      "bytes": 283409,
+      "sha256": "1D4CEF66CA838D22D66B9B5A30F375E00DA29107D2DF220AB129F61EB3F3564F",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-hot-paper.json",
+      "original": ".local/redesign-20261025/native/pad-process-hot-chapter-m14.json",
+      "bytes": 84885,
+      "sha256": "E5DF17AA2017EFD546B33299DCF0DE458ACBF6C46C9E2129FAC219C71C2DE4D3",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-cold-memory.jpeg",
+      "original": ".local/redesign-20261025/native/pad-process-cold-memory-m14.jpeg",
+      "bytes": 168756,
+      "sha256": "DDDBBF1A0D18B9F57C75AB5FAFF21C6F7FB0623517B2B836EDB43BC48E925124",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-cold-memory.json",
+      "original": ".local/redesign-20261025/native/pad-process-cold-memory-m14.json",
+      "bytes": 50300,
+      "sha256": "5F463DE9C01D7CA83006DEFF1DBAC420E6F5C3B8720260D51845C8B2BC9217DA",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-hot-memory.jpeg",
+      "original": ".local/redesign-20261025/native/pad-process-hot-memory-m14.jpeg",
+      "bytes": 169766,
+      "sha256": "F8EA8AFC6A5F5DC1A9C693B308E8B87CFAC5DBD2B2AB73FC566F0C7093D9E145",
+      "main": "paper-M14",
+      "kind": "native-screenshot"
+    },
+    {
+      "path": "docs/design/paper-journey/tablet-card-hot-memory.json",
+      "original": ".local/redesign-20261025/native/pad-process-hot-memory-m14.json",
+      "bytes": 50334,
+      "sha256": "B507101F0686CDF99C31A2A702D3CC361AA04C09BC43585486DB4A713C375D47",
+      "main": "paper-M14",
+      "kind": "native-layout"
+    }
+  ],
+  "overview": "overview.jpeg为真实截图等比拼接，未合成页面或虚构交互状态。",
+  "overviewImage": {
+    "path": "docs/design/paper-journey/overview.jpeg",
+    "bytes": 255783,
+    "sha256": "4BB034D157FD53279D2F8C6FAD21927BDBDDB41087728BE529B7B2B892C7EE7A"
+  }
+}

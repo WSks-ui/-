@@ -1,0 +1,26 @@
+[
+  {
+    "key": "const.ohos.fullname",
+    "value": "OpenHarmony-7.0.0.105"
+  },
+  {
+    "key": "const.ohos.apiversion",
+    "value": "26"
+  },
+  {
+    "key": "const.product.software.version",
+    "value": "emulator 7.0.0.107(SP8DEVC00E999R4P11)"
+  },
+  {
+    "key": "const.ohos.releasetype",
+    "value": "Release"
+  },
+  {
+    "key": "const.product.os.dist.name",
+    "value": "HarmonyOS"
+  },
+  {
+    "key": "const.product.os.dist.version",
+    "value": "7.0.0"
+  }
+]

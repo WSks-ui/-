@@ -1,0 +1,467 @@
+{
+  "stage": "C04 内容维度与 C07 记忆首屏",
+  "date": "2026-10-21",
+  "sourceBaseCommit": "910324679288e23f5c20d4803210e1c798c6ca03",
+  "branch": "main",
+  "uncommitted": true,
+  "packages": {
+    "M1": {
+      "bytes": 6518415,
+      "sha256": "86A2CCD9E3C28111162E6CCF8AD2E5F3233015E6F65250B133A85A8B9EEF364E"
+    },
+    "T2": {
+      "bytes": 6443727,
+      "sha256": "C1B6850C3216ECE81C460175DC8310FEF6B7DD62538DBCE57C04BB609356C0E6"
+    },
+    "M2": {
+      "bytes": 6520169,
+      "sha256": "BBBC83A68A1475F23641E91702EB63DF42A71EF29329C350557CC32E60131AC6"
+    },
+    "T4": {
+      "bytes": 6448707,
+      "sha256": "FD499714A790491DC75331DDCDF179CEC8CF48EB3DD376A503995A0F1C64F398"
+    },
+    "M4": {
+      "bytes": 6525915,
+      "sha256": "14F0F5A7443C0FE137911A9977E5360C81CB4F97D9F3B53FF0ECDAE530676E86"
+    },
+    "T7": {
+      "bytes": 6451051,
+      "sha256": "82ABCCBBB1D1565CA6A6BFB7D413AD1FEDBFED4852CBEF22B5D45A4FF5E639B9"
+    },
+    "T8": {
+      "bytes": 6453903,
+      "sha256": "BAC1027CBEF1B15B939CB11AF4F106DF36267EC511B10727D81C6A330C5770CF"
+    },
+    "T9": {
+      "bytes": 6449868,
+      "sha256": "DC656BD011025B8DBD0D657A0089D88E042A750F4EF90C46BF4D575FC68F39BF"
+    }
+  },
+  "packageNotes": "M1 用于首轮内容和五城入口；M2补资料热点名称，T4补真实AI首屏坐标断言和旧检索测试迁移；M4补记忆动态空态与视图选中高亮，T7补其真实选择及重置断言。未安装的中间构建不作为设备结果。 T8仅修正无障碍描述的测试错误，改为真实布局颜色互换断言；M4主包与T7真实AI通过时完全相同。 T9只将颜色证据的文件读取移到主机，保留原生截图/布局与全部功能断言；未修改主包。",
+  "devices": [
+    {
+      "role": "A",
+      "instance": "Pura 90 Pro",
+      "target": "127.0.0.1:5555",
+      "emulatorPid": 5772,
+      "api": 26,
+      "system": "HarmonyOS 7.0.0.107",
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560
+    },
+    {
+      "role": "B",
+      "instance": "YunhejiSyncB",
+      "target": "127.0.0.1:5557",
+      "emulatorPid": 19368,
+      "api": 26,
+      "system": "HarmonyOS 7.0.0.107",
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560
+    }
+  ],
+  "local": {
+    "tests": 119,
+    "passed": 119,
+    "failed": 0,
+    "reportParserPassed": 9,
+    "log": "2026-10-21-content-memory-local.log"
+  },
+  "firstLocal": {
+    "tests": 119,
+    "passed": 117,
+    "failed": 2,
+    "log": "2026-10-21-content-memory-first-local.log",
+    "causes": [
+      "22节点触发窄图谱垂直重叠，修复分离力且未放宽断言",
+      "兼容引擎测试误读不存在的title字段，按实际契约改查payload与卡片网格"
+    ]
+  },
+  "deviceRuns": [
+    {
+      "package": "M1",
+      "testPackage": "T2",
+      "target": "127.0.0.1:5555",
+      "log": "2026-10-21-011652-ae1b2c5d-device.log",
+      "case": "new_content_combined_filters_neutral_reading_and_real_favorites",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 220171,
+      "serviceStopped": true
+    },
+    {
+      "package": "M1",
+      "testPackage": "T2",
+      "target": "127.0.0.1:5557",
+      "log": "2026-10-21-011648-53aa4e85-device.log",
+      "case": "native_river_five_cities_filter_matrix",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 225161
+    },
+    {
+      "package": "M2",
+      "testPackage": "T4",
+      "target": "127.0.0.1:5557",
+      "log": "2026-10-21-012319-b7756e5f-device.log",
+      "case": "new_content_combined_filters_neutral_reading_and_real_favorites",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 212629,
+      "serviceStopped": true
+    },
+    {
+      "package": "M2",
+      "testPackage": "T4",
+      "target": "127.0.0.1:5555",
+      "log": "2026-10-21-012315-37bca604-device.log",
+      "cases": [
+        {
+          "name": "write_three_plain_notes_real_recent_oldest_tag_and_fulltext_return",
+          "pass": 1,
+          "ms": 202983
+        },
+        {
+          "name": "ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones",
+          "pass": 0,
+          "error": 1,
+          "ms": 33852,
+          "cause": "AI筛选条件已更新，动态空态标题保留普通文案"
+        }
+      ],
+      "total": 2,
+      "pass": 1,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0,
+      "ms": 236835
+    },
+    {
+      "package": "M2",
+      "testPackage": "T4",
+      "target": "127.0.0.1:5557",
+      "log": "2026-10-21-012720-327a9dbc-device.log",
+      "case": "real_ai_focus_save_and_resume_from_memory",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 222762
+    },
+    {
+      "package": "M4",
+      "testPackage": "T7",
+      "target": "127.0.0.1:5557",
+      "log": "2026-10-21-013154-c9fc8ba5-device.log",
+      "case": "real_ai_focus_save_and_resume_from_memory",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 185444
+    },
+    {
+      "package": "M4",
+      "testPackage": "T7",
+      "target": "127.0.0.1:5555",
+      "log": "2026-10-21-013154-fcfa426a-device.log",
+      "case": "ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones",
+      "total": 1,
+      "pass": 0,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0,
+      "ms": 187526,
+      "cause": "新增测试误把accessibilityText等同description；实际布局背景显示画廊已高亮，T8改读实际背景互换，主包未改"
+    },
+    {
+      "package": "M4",
+      "testPackage": "T8",
+      "target": "127.0.0.1:5557",
+      "log": "2026-10-21-013719-719f9348-device.log",
+      "case": "write_three_plain_notes_real_recent_oldest_tag_and_fulltext_return",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 186767
+    },
+    {
+      "package": "M4",
+      "testPackage": "T8",
+      "target": "127.0.0.1:5555",
+      "log": "2026-10-21-013719-6b2edccc-device.log",
+      "case": "ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones",
+      "total": 1,
+      "pass": 0,
+      "failure": 0,
+      "error": 1,
+      "ignore": 0,
+      "ms": 178241,
+      "cause": "额外颜色证据读取的测试宿主cat返回exitCode=-1；真实布局已生成。T9保留所有功能断言与原生截图/布局，颜色互换在主机按同次布局核对。主包未改。"
+    },
+    {
+      "package": "M4",
+      "testPackage": "T9",
+      "target": "127.0.0.1:5555",
+      "log": "2026-10-21-014217-92c77727-device.log",
+      "case": "ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones",
+      "total": 1,
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "ms": 251153
+    }
+  ],
+  "content": {
+    "count": 22,
+    "cityCounts": [
+      4,
+      4,
+      6,
+      4,
+      4
+    ],
+    "newIds": [
+      "zz-wangchenggang",
+      "zz-huangye-kiln"
+    ],
+    "reviewStatus": "初稿待校审",
+    "photos": 16,
+    "originalIllustrations": 6
+  },
+  "scope": "正常字号、原生手机模拟器演示主线；未跑大字体、压力或完整历史UI套件；HTTPS服务停止不等于整机断网；本轮未完成原生跨端、华为账号、平板或双连壶AI完整主线。",
+  "schemaChanged": false,
+  "committed": false,
+  "pushed": false,
+  "wordVideoOrZipUpdated": false,
+  "finalValidation": "完成。M4主包的真实AI、三篇手账排序及AI空态/新建/画廊/管理/墓碑分别1/1；T7/T8/T9为三份测试包，未合并为一次同包3/3。",
+  "viewColorVerification": "2026-10-21-content-memory-view-colors.json",
+  "remaining": [
+    "原生可信设备组网与实际跨端传输",
+    "华为账号授权",
+    "双连壶AI保存与同账号B完整重访",
+    "平板布局",
+    "完整恢复与个人长卷",
+    "最终Word/视频/比赛压缩包与真人计时"
+  ],
+  "environmentAfter": {
+    "emulators": "两台保留数据关闭；-stop成功后再次核对进程与5555/5557无监听",
+    "service": "同一HTTPS服务仍可用，使用本机CA核对/health，返回yunheji-account version1",
+    "formalArchives": "未清空或改写正式档案"
+  },
+  "assets": {
+    "design/content-memory/ai-empty-written.json": {
+      "bytes": 100212,
+      "sha256": "915B1D3BA0CC14806EA085D9FB4D35E675E6E8E29BBD8B71F5FBB03D6B6C1921"
+    },
+    "design/content-memory/ai-empty-written.png": {
+      "bytes": 323366,
+      "sha256": "24E8B79CF3D0DDE8ED914C032A7EC9DB361A378F3689B3B490CAB253E2E146CF"
+    },
+    "design/content-memory/ai-empty.json": {
+      "bytes": 73569,
+      "sha256": "CB7E816DA273C00A0649B546F1235DAB90B9426ED8505192989BF3DB0AFC6696"
+    },
+    "design/content-memory/ai-empty.png": {
+      "bytes": 275250,
+      "sha256": "7F0AF29670F421FBE6560722BF21FED447973DC3014262738D456286FD2756EA"
+    },
+    "design/content-memory/ai-evidence.png": {
+      "bytes": 405248,
+      "sha256": "344F89E20B7F41B97BAB7C44983CC9ECBAABD2913A3178704E8618AE0B18796F"
+    },
+    "design/content-memory/ai-memory-m2.json": {
+      "bytes": 105808,
+      "sha256": "83DE16DEA5BDD8BF63B7BBD830D918915270AAEFC9D2ABB2DDC0D9DCFEC360C1"
+    },
+    "design/content-memory/ai-memory-m2.png": {
+      "bytes": 426783,
+      "sha256": "89546DD3B98834646431F401183054D2B876EC327EF3396603A54F33564FF591"
+    },
+    "design/content-memory/ai-memory.json": {
+      "bytes": 105760,
+      "sha256": "1E24B123E627A34D5EE980A3EDB5A7EBF963E697EC2F60B597D9FBFA730BD27B"
+    },
+    "design/content-memory/ai-memory.png": {
+      "bytes": 426783,
+      "sha256": "CBD92AA310E78B52E25AC7EF3BA67B1BA5CA7ED62B03A427743BDD0C5257A7A3"
+    },
+    "design/content-memory/ai-resume.png": {
+      "bytes": 342486,
+      "sha256": "040FCC17AF639061D7D5DE881E484AD65665ADAD613BFE9E8FDC59B09FD59EA5"
+    },
+    "design/content-memory/batch-tombstones.json": {
+      "bytes": 72894,
+      "sha256": "6D4A9962E1D6BF57A4F8095E52550393A5AFA08BE254A36CFEA6F9A833E8D41B"
+    },
+    "design/content-memory/batch-tombstones.png": {
+      "bytes": 267604,
+      "sha256": "94F637E3EB19B122F7B68C961AE2D6EDA38854129DDA54E4280CB8F1AE62B8A7"
+    },
+    "design/content-memory/filters-ai.json": {
+      "bytes": 50929,
+      "sha256": "6C0D536F94A78C4D3598A4BFACCC02E125CC760373AFC8A2071906DA3BDF0604"
+    },
+    "design/content-memory/filters-ai.png": {
+      "bytes": 252252,
+      "sha256": "5FA7301E0004CD67AD712CA1A5D30DA3F37F1DFBF59B09AF131A7EDC26FF5C28"
+    },
+    "design/content-memory/filters-gallery.json": {
+      "bytes": 51611,
+      "sha256": "A2C55FE526339D3C9BF27036335B1A191A0C28BBE3ADF03875C9B3B059BD90ED"
+    },
+    "design/content-memory/filters-gallery.png": {
+      "bytes": 236846,
+      "sha256": "EB8F9085340A8BDEFB9EB3E679FC77EA5809B0DF5EC19ACC4BA5011B44D7F5E3"
+    },
+    "design/content-memory/filters-reset.json": {
+      "bytes": 51611,
+      "sha256": "BD223A193CF4AF5C8F56496F6B3CEAEB3336CCE073B9EB53DE78FBC8DB0768C0"
+    },
+    "design/content-memory/filters-reset.png": {
+      "bytes": 236891,
+      "sha256": "FEEDE7BCA96E092A96B795BF46846ECD2DCD891FEBB9E3A62E159C51E6D52A3A"
+    },
+    "design/content-memory/first-ai-empty-failure.json": {
+      "bytes": 48796,
+      "sha256": "93517461EBBF4789EB5021E3999E49B260C4C8235353E23E211BC3DDF77C1918"
+    },
+    "design/content-memory/first-ai-empty-failure.png": {
+      "bytes": 802376,
+      "sha256": "38EEEB27113BB4E49A552C0057D9D4D8C512240BD58AB5A46F47122DBC1BB59C"
+    },
+    "design/content-memory/gallery-selected.json": {
+      "bytes": 130707,
+      "sha256": "997B1167DD96641885F354E2D7E8B2022B6DBEF667E82CFCA407FEDFA90F903D"
+    },
+    "design/content-memory/gallery-selected.png": {
+      "bytes": 411481,
+      "sha256": "B3E6DE8DA1F6055937B392FD9BAE9CB22A96EE68595B23353ECFE91E66EC2FFD"
+    },
+    "design/content-memory/gallery.json": {
+      "bytes": 133260,
+      "sha256": "0EF9FE37147C5D5868B2D92DC3E4B04AD7F4075E197C954B8E056F73CAA706AE"
+    },
+    "design/content-memory/gallery.png": {
+      "bytes": 399528,
+      "sha256": "AF2EA7FBD3BCBF26947CB77840D5557C442BB6DE1C6C4D72E57DFD15985C2412"
+    },
+    "design/content-memory/longshan-reading.png": {
+      "bytes": 331608,
+      "sha256": "92A3BCDDD02A4EAEA240D4FE0F786B40494C8190A303B70948D83D93F5324D21"
+    },
+    "design/content-memory/memory-list.json": {
+      "bytes": 129889,
+      "sha256": "1151D7AD7B29BBD5201C0D4AA15BF7E99C99AC4BB5F34B98F158A210385F60E2"
+    },
+    "design/content-memory/memory-list.png": {
+      "bytes": 389712,
+      "sha256": "D0FA8C6510B4B70D4D6F172446EF186D18F5E17FC990167E5B80ABD73AA49CDE"
+    },
+    "design/content-memory/new-content-favorites.json": {
+      "bytes": 89069,
+      "sha256": "90D865F870BA9FF75D10ED2577BB6439CEA8D3CD1F0E18D0A6072C48A95AC368"
+    },
+    "design/content-memory/new-content-favorites.png": {
+      "bytes": 356701,
+      "sha256": "5A900D4C81A5551DEE91A6F437D53A275D625FC3BE0EE4A51D795B014CDC9F7A"
+    },
+    "design/content-memory/oldest-first-screen.json": {
+      "bytes": 130594,
+      "sha256": "5B37B2C9F5182242AD854A57020DBB37F8BB241DB60DFB61F63FE8D279E79E6E"
+    },
+    "design/content-memory/oldest-first-screen.png": {
+      "bytes": 389569,
+      "sha256": "C558CA1846A205A1FA4541D352ADF6820B473FCFDAD4D6167B23115E5019CFF6"
+    },
+    "design/content-memory/overview.png": {
+      "bytes": 367618,
+      "sha256": "2F1D24DA6698FB16B43174F512294255FCDB1001F21FCE3957D6C10401FECF0A"
+    },
+    "design/content-memory/tag-fulltext.json": {
+      "bytes": 43623,
+      "sha256": "3BC14E87CB09EFB15C0188ED3CFAAC5DE85922215AAFA5EEA0701B4A445EF186"
+    },
+    "design/content-memory/tag-fulltext.png": {
+      "bytes": 197438,
+      "sha256": "72665F030206EDFB21AC801D8B1233688B04989C194ABF396C28CC6BCD6D5693"
+    },
+    "design/content-memory/tag-return.json": {
+      "bytes": 130616,
+      "sha256": "DB1403958285F9BB81977AE2D259755F7D0E66310795DE189D9B36BA0334EB07"
+    },
+    "design/content-memory/tag-return.png": {
+      "bytes": 390560,
+      "sha256": "79AAC313C93CFCF14F9DB6459CB329D543F0BC85EF7024F12D9E664D7769912B"
+    },
+    "design/content-memory/view-description-assert-failure.json": {
+      "bytes": 26702,
+      "sha256": "49EC422EF0EF84C0EEA063A7AF77D9E75EF4A7636BB8EDBEECA004D65506EBDF"
+    },
+    "design/content-memory/view-description-assert-failure.png": {
+      "bytes": 802376,
+      "sha256": "A009F3BC36EA10C0FC22EAF9C04E6D64364CBD60517F6A4769E8F7F04B5E898C"
+    },
+    "design/content-memory/write-all-before-cancel.json": {
+      "bytes": 60810,
+      "sha256": "BD98DD68B65017F45916055A1CF1076B6B34FB7BE9AD292EC77AFCBB4A2EDC8D"
+    },
+    "design/content-memory/write-all-before-cancel.png": {
+      "bytes": 317552,
+      "sha256": "559EEB58C717EDD00CE300036701FA6AD3BF4B397E07B5B5FA61D224FF12E343"
+    },
+    "design/content-memory/zz-huangye-kiln-reading.json": {
+      "bytes": 54146,
+      "sha256": "18C1E3DA9C5F11E832232EEAD5BEE025FFDE2B98FFE5FE4C214C6DC5276BBE82"
+    },
+    "design/content-memory/zz-huangye-kiln-reading.png": {
+      "bytes": 347511,
+      "sha256": "6176052EF70BE52CB15E21170364029351AFF3B1CCC57E109C14AF3B63193B04"
+    },
+    "design/content-memory/zz-huangye-kiln-source.json": {
+      "bytes": 45934,
+      "sha256": "D2B87221E38F84AE7224F0CCCDE1F9E6E78014ED566CEE571AABED4CF69D8EF7"
+    },
+    "design/content-memory/zz-huangye-kiln-source.png": {
+      "bytes": 453954,
+      "sha256": "6217CAD2BBE07530E0F0EC6E76011C411791389501B879B048B9E1A47AE534AA"
+    },
+    "design/content-memory/zz-wangchenggang-reading.json": {
+      "bytes": 54092,
+      "sha256": "32DD6F3BE07D087A5BF72E5FF50F622404406906E068134A1E304D34D6D1C69E"
+    },
+    "design/content-memory/zz-wangchenggang-reading.png": {
+      "bytes": 336370,
+      "sha256": "89E87827F009824B008CF6A125CF47C49620B54AE41E6FDAD8B313A9FB459F21"
+    },
+    "design/content-memory/zz-wangchenggang-source.json": {
+      "bytes": 46225,
+      "sha256": "8F02363B5598A5C75E00B40C0E317BB2B2A761FE960E5403F4469A8F0B467F0B"
+    },
+    "design/content-memory/zz-wangchenggang-source.png": {
+      "bytes": 411022,
+      "sha256": "AD548B8F820729CDA3612874956FA75DC26EE6F7EF6C0560C320508072473757"
+    }
+  }
+}

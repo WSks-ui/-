@@ -1,0 +1,27 @@
+(node:2860) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ HTTPS account isolation, durable merge, offline edits, tombstones, conflicts and revoked sessions (368.322ms)
+AI_OBSERVE_OK provider=deepseek model=deepseek-test site=zz-duling-fangding purpose=draft_memory status=grounded facts=1 actions=1 elapsedMs=2 account=authenticated
+AI_OBSERVE_OK provider=deepseek model=deepseek-test site=zz-duling-fangding purpose=draft_memory status=grounded facts=1 actions=1 elapsedMs=1 account=authenticated
+✔ AI configuration reports availability without exposing the key (1.6237ms)
+✔ unconfigured AI returns a real failure state instead of a canned answer (1.2654ms)
+✔ draft request without a user observation asks for one without calling the model (0.4203ms)
+✔ real adapter sends facts, JSON mode and returns a validated application reply (3.5775ms)
+✔ draft reply is normalized and keeps only validated fact references (4.4551ms)
+✔ twin vessel opening draft keeps its facts, tags and own hotspot label (3.6979ms)
+✔ twin vessel adapter rejects Ding facts in every reply reference (6.0515ms)
+✔ invalid model content, facts or actions fail the whole reply (8.6536ms)
+✔ timeouts, provider errors and rate limits map to distinct states (4.5158ms)
+✔ server rejects unsupported sites or unknown hotspot before calling the model (1.0727ms)
+✔ twin vessel prompt uses its own object, facts and hotspots (1.4141ms)
+✔ prompt keeps the three fact bodies and forbids unsupported conclusions (1.788ms)
+✔ model output normalizes spaces between Chinese characters only (1.1687ms)
+✔ revisiting a note includes only its confirmed observation as personal expression (0.7218ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 593.4126

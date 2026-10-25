@@ -1,0 +1,92 @@
+{
+  "round": "2026-10-23 开封“叠城寻路”原生玩法样板",
+  "summary": "桥位/朝向决定街路与水路是否成立；同址多期靠材料叠合与解释判断；制灯把关系变成自己的画面。",
+  "build": {
+    "hap": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+    "bytes": 7934016,
+    "sha256": "534d752d53e4df56f6eba403ff607463e333260262d53e54461ec178945b1af0",
+    "signed": false,
+    "note": "工作区源码 assembleHap 产物，hdc install 直接安装；不是冻结的 M12 省赛包"
+  },
+  "devices": [
+    {
+      "role": "phone",
+      "name": "YunhejiSyncB",
+      "api": "26.0.0",
+      "resolution": "1256x2760",
+      "density": 560,
+      "target": "127.0.0.1:15555"
+    }
+  ],
+  "new_code": {
+    "domain": "entry/src/main/ets/domain/KaifengPuzzle.ts",
+    "component": "entry/src/main/ets/components/KaifengPuzzleScene.ets",
+    "tests": "tools/kaifeng-puzzle.test.mjs",
+    "integrated": "entry/src/main/ets/components/RoamingChapterPage.ets（仅开封分支）"
+  },
+  "walkthrough": [
+    "未摆放：桥在岸上，读数“尚未接通”",
+    "摆到街口不转向：读数“水路被堵”，船停桥前",
+    "转向过位：读数“只接通一端”",
+    "三级提示：街高亮 → 交会处圆环 → 演示摆放（标注不算独立解出）",
+    "成立：读数“两条都通了”，确认按钮启用",
+    "三片材料叠到桥位：3/3",
+    "选错解释：按钮保持禁用",
+    "选对解释：反馈“同一处的不同时间”，按钮启用",
+    "制灯：换骨架/纸面/位置即时重画，点亮",
+    "收束：出现结尾面板"
+  ],
+  "observed": {
+    "old_progress_present": true,
+    "old_progress_bypassed_gate": false,
+    "partial_states_seen": [
+      "along-river",
+      "north-only",
+      "offset"
+    ],
+    "demo_marked": true
+  },
+  "local_tests": {
+    "domain": "all pass (# fail 0)",
+    "device_report_parse": "9/9",
+    "kaifeng_case_count": 14
+  },
+  "not_verified": [
+    "作品快照持久化与跨端恢复（本轮仅内存）",
+    "UDMF 系统拖拽证据卡",
+    "平板横竖屏与三栏布局",
+    "其余四城新机制",
+    "真人试玩理解与兴趣",
+    "触觉反馈"
+  ],
+  "screenshots": [
+    {
+      "file": "01-kaifeng-unplaced.png",
+      "sha256": "df9afb870ba6c4f29246fac8a8da2dbb7b3974fd0c590ce4b06fd41698f6083c"
+    },
+    {
+      "file": "02-kaifeng-river-blocked.png",
+      "sha256": "b027e32f0da96d095aaf465028f312caafa35c46471958d295afec487d1e2c21"
+    },
+    {
+      "file": "03-kaifeng-one-end-only.png",
+      "sha256": "7b0c775bac147728c99633e19f1026357012cdc19b49bc941eaa2f6bc571e4ed"
+    },
+    {
+      "file": "04-kaifeng-hint-pad.png",
+      "sha256": "f4b4a0f99bc30060ff9336462c570be8db6ba7bfc1553a9c1c8d9310cb0beb45"
+    },
+    {
+      "file": "05-kaifeng-crossing-solved.png",
+      "sha256": "3c3f5c49f82edbdf1fc396204c775b5b64745a5abd033edb1aafdea334dadd64"
+    },
+    {
+      "file": "06-kaifeng-lantern-made.png",
+      "sha256": "a785ff13d9d3552fece456e1779817681d9db834e42bf04fa4cb493e70514c84"
+    },
+    {
+      "file": "07-kaifeng-closing.png",
+      "sha256": "9b34186b3d176c6724ce0f50e6abff7d928343d5b3d3588c7f823b0c79f85663"
+    }
+  ]
+}

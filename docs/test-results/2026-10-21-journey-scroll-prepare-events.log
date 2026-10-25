@@ -1,0 +1,30 @@
+10-21 11:20:36.455 30354 30354 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:cleanup:yunheji_test_ui_1792551530305_journey_scroll_main
+10-21 11:20:36.457 30354 30354 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:21:05.018 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:prepare:yunheji_test_ui_journey_20261021_c09
+10-21 11:21:11.501 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:prepare:OFFLINE_EXISTING_STORE
+10-21 11:21:11.506 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:save-observation:zz-dahecun:opening
+10-21 11:21:05.018 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:prepare:yunheji_test_ui_journey_20261021_c09
+10-21 11:21:11.501 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:prepare:OFFLINE_EXISTING_STORE
+10-21 11:21:11.506 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:save-observation:zz-dahecun:opening
+10-21 11:21:29.617 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:device-scroll:site-row-zz-dahecun
+10-21 11:21:35.370 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:observation-hotspot-opening
+10-21 11:21:39.613 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:engine-remember-view
+10-21 11:23:39.786 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:engine-mode-stratum
+10-21 11:23:42.039 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:exploration-overview
+10-21 11:23:45.238 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:exploration-complete
+10-21 11:23:39.786 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:engine-mode-stratum
+10-21 11:23:42.039 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:exploration-overview
+10-21 11:23:45.238 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:exploration-complete
+10-21 11:24:01.938 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:engine-mode-relic
+10-21 11:24:05.068 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:observation-hotspot-corners
+10-21 11:24:09.614 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:engine-remember-view
+10-21 11:24:54.636 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_NOTE_SAVED:{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"pose":{"version":1,"sceneType":"relic_inspector","yaw":0.78,"pitch":0.58,"zoom":0.98,"hotspotId":"corners","sectionId":"","label":"四个折角 · 45°","proceduralPreset":"duling_fangding","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}},"noteCount":2}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:detail-journey-scroll
+10-21 11:25:06.884 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARE_RESULT:{"noteIds":["note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676"],"activeNotes":2,"favoriteCount":1,"sectionPercent":25}
+10-21 11:25:09.474 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:prepare:244456
+10-21 11:25:09.477 30486 30486 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:25:54.088  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:inspect:yunheji_test_ui_journey_20261021_c09
+10-21 11:26:00.370  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:inspect:OFFLINE_EXISTING_STORE
+10-21 11:26:00.378  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:26:01.583  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll

@@ -1,0 +1,54 @@
+
+OHOS_REPORT_SUM: 2
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=twin_vessel_ai_entry_uses_its_own_starters
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=twin_vessel_ai_entry_uses_its_own_starters
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=63186
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_sort_tag_batch_and_profile_data
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=memory_sort_tag_batch_and_profile_data
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=114172
+
+
+OHOS_REPORT_STATUS: class=PageHierarchyTest
+OHOS_REPORT_STATUS: suiteconsuming=177358
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 2, Failure: 0, Error: 0, Pass: 2, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=177358
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

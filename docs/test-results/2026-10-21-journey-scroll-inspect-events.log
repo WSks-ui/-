@@ -1,0 +1,101 @@
+10-21 11:24:54.636 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_NOTE_SAVED:{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"pose":{"version":1,"sceneType":"relic_inspector","yaw":0.78,"pitch":0.58,"zoom":0.98,"hotspotId":"corners","sectionId":"","label":"四个折角 · 45°","proceduralPreset":"duling_fangding","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}},"noteCount":2}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:detail-journey-scroll
+10-21 11:25:06.884 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARE_RESULT:{"noteIds":["note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676"],"activeNotes":2,"favoriteCount":1,"sectionPercent":25}
+10-21 11:25:09.474 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:prepare:244456
+10-21 11:25:09.477 30486 30486 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:25:54.088  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:inspect:yunheji_test_ui_journey_20261021_c09
+10-21 11:26:00.370  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:inspect:OFFLINE_EXISTING_STORE
+10-21 11:26:00.378  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:26:01.583  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll
+10-21 11:26:08.330  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-zz-dahecun
+10-21 11:26:38.062  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-smx-miaodigou
+10-21 11:26:55.041  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-source-smx-miaodigou
+10-21 11:24:54.636 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_NOTE_SAVED:{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"pose":{"version":1,"sceneType":"relic_inspector","yaw":0.78,"pitch":0.58,"zoom":0.98,"hotspotId":"corners","sectionId":"","label":"四个折角 · 45°","proceduralPreset":"duling_fangding","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}},"noteCount":2}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:detail-journey-scroll
+10-21 11:25:06.884 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARE_RESULT:{"noteIds":["note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676"],"activeNotes":2,"favoriteCount":1,"sectionPercent":25}
+10-21 11:25:09.474 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:prepare:244456
+10-21 11:25:09.477 30486 30486 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:25:54.088  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:inspect:yunheji_test_ui_journey_20261021_c09
+10-21 11:26:00.370  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:inspect:OFFLINE_EXISTING_STORE
+10-21 11:26:00.378  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:26:01.583  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll
+10-21 11:26:08.330  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-zz-dahecun
+10-21 11:26:38.062  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-smx-miaodigou
+10-21 11:26:55.041  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-source-smx-miaodigou
+10-21 11:27:27.606  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:SOURCE_VERIFIED
+10-21 11:27:31.093  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-personal-open
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:PERSONAL_ANCHOR:{"title":{"bottom":462,"displayId":0,"left":84,"right":1172,"top":388},"scroll":{"bottom":2662,"displayId":0,"left":0,"right":1256,"top":332}}
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_BEGIN
+10-21 11:24:54.636 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_NOTE_SAVED:{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"pose":{"version":1,"sceneType":"relic_inspector","yaw":0.78,"pitch":0.58,"zoom":0.98,"hotspotId":"corners","sectionId":"","label":"四个折角 · 45°","proceduralPreset":"duling_fangding","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}},"noteCount":2}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:detail-journey-scroll
+10-21 11:25:06.884 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARE_RESULT:{"noteIds":["note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676"],"activeNotes":2,"favoriteCount":1,"sectionPercent":25}
+10-21 11:25:09.474 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:prepare:244456
+10-21 11:25:09.477 30486 30486 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:25:54.088  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:inspect:yunheji_test_ui_journey_20261021_c09
+10-21 11:26:00.370  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:inspect:OFFLINE_EXISTING_STORE
+10-21 11:26:00.378  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:26:01.583  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll
+10-21 11:26:08.330  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-zz-dahecun
+10-21 11:26:38.062  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-smx-miaodigou
+10-21 11:26:55.041  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-source-smx-miaodigou
+10-21 11:27:27.606  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:SOURCE_VERIFIED
+10-21 11:27:31.093  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-personal-open
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:PERSONAL_ANCHOR:{"title":{"bottom":462,"displayId":0,"left":84,"right":1172,"top":388},"scroll":{"bottom":2662,"displayId":0,"left":0,"right":1256,"top":332}}
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_BEGIN
+10-21 11:27:37.067  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_VERIFIED
+10-21 11:27:37.067  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BEGIN:zz-dahecun
+10-21 11:27:40.543  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BODY_VERIFIED:zz-dahecun
+10-21 11:27:40.543  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BEGIN:zz-duling-fangding
+10-21 11:24:54.636 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_NOTE_SAVED:{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"pose":{"version":1,"sceneType":"relic_inspector","yaw":0.78,"pitch":0.58,"zoom":0.98,"hotspotId":"corners","sectionId":"","label":"四个折角 · 45°","proceduralPreset":"duling_fangding","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}},"noteCount":2}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:24:56.654 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:detail-scroll:detail-journey-scroll
+10-21 11:25:06.884 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARE_RESULT:{"noteIds":["note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676"],"activeNotes":2,"favoriteCount":1,"sectionPercent":25}
+10-21 11:25:09.474 30486 30486 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:prepare:244456
+10-21 11:25:09.477 30486 30486 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:25:54.088  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:inspect:yunheji_test_ui_journey_20261021_c09
+10-21 11:26:00.370  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:inspect:OFFLINE_EXISTING_STORE
+10-21 11:26:00.378  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:26:01.583  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll
+10-21 11:26:08.330  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-zz-dahecun
+10-21 11:26:38.062  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-smx-miaodigou
+10-21 11:26:55.041  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-source-smx-miaodigou
+10-21 11:27:27.606  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:SOURCE_VERIFIED
+10-21 11:27:31.093  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-personal-open
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:PERSONAL_ANCHOR:{"title":{"bottom":462,"displayId":0,"left":84,"right":1172,"top":388},"scroll":{"bottom":2662,"displayId":0,"left":0,"right":1256,"top":332}}
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_BEGIN
+10-21 11:27:37.067  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_VERIFIED
+10-21 11:27:37.067  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BEGIN:zz-dahecun
+10-21 11:27:40.543  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BODY_VERIFIED:zz-dahecun
+10-21 11:27:40.543  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BEGIN:zz-duling-fangding
+10-21 11:25:54.088  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:inspect:yunheji_test_ui_journey_20261021_c09
+10-21 11:26:00.370  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:inspect:OFFLINE_EXISTING_STORE
+10-21 11:26:00.378  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:26:01.583  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll
+10-21 11:26:08.330  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-zz-dahecun
+10-21 11:26:38.062  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-step-smx-miaodigou
+10-21 11:26:55.041  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-source-smx-miaodigou
+10-21 11:27:27.606  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:SOURCE_VERIFIED
+10-21 11:27:31.093  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:journey-scroll:journey-personal-open
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:PERSONAL_ANCHOR:{"title":{"bottom":462,"displayId":0,"left":84,"right":1172,"top":388},"scroll":{"bottom":2662,"displayId":0,"left":0,"right":1256,"top":332}}
+10-21 11:27:35.134  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_BEGIN
+10-21 11:27:37.067  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:CITY_VERIFIED
+10-21 11:27:37.067  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BEGIN:zz-dahecun
+10-21 11:27:40.543  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BODY_VERIFIED:zz-dahecun
+10-21 11:27:40.543  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BEGIN:zz-duling-fangding
+10-21 11:29:03.172  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BODY_VERIFIED:zz-duling-fangding
+10-21 11:29:03.665  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:PREVIEW_BEGIN:note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077
+10-21 11:29:59.619  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_REPLAY_FRAME:{"canvas":{"bottom":2216,"displayId":0,"left":112,"right":1144,"top":1166},"angle":{"bottom":2307,"displayId":0,"left":112,"right":1144,"top":2258},"scroll":{"bottom":2662,"displayId":0,"left":0,"right":1256,"top":332}}
+10-21 11:29:03.172  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:TOPIC_BODY_VERIFIED:zz-duling-fangding
+10-21 11:29:03.665  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:inspect:PREVIEW_BEGIN:note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077
+10-21 11:29:59.619  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_REPLAY_FRAME:{"canvas":{"bottom":2216,"displayId":0,"left":112,"right":1144,"top":1166},"angle":{"bottom":2307,"displayId":0,"left":112,"right":1144,"top":2258},"scroll":{"bottom":2662,"displayId":0,"left":0,"right":1256,"top":332}}
+10-21 11:30:02.216  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:30:02.218  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_INSPECT_RESULT:{"noteIds":["note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676"],"originalRecordsUnchanged":true,"replayHotspot":"opening","revision":2}
+10-21 11:30:04.806  1415  1415 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_DONE:inspect:250718
+10-21 11:30:04.810  1415  1415 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 0, Pass: 1, Ignore: 0
+10-21 11:30:19.874  2898  2898 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_BEGIN:edit_delete:yunheji_test_ui_journey_20261021_c09
+10-21 11:30:25.905  2898  2898 I A03d00/JSAPP: JOURNEY_SCROLL_PHASE_READY:edit_delete:OFFLINE_EXISTING_STORE
+10-21 11:30:25.913  2898  2898 I A03d00/JSAPP: JOURNEY_SCROLL_PREPARED_RECORDS:{"notes":[{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077","siteId":"zz-dahecun","tags":["泥火观察"],"updatedAt":1792552944077},{"id":"note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676","siteId":"zz-duling-fangding","tags":["泥火观察"],"updatedAt":1792553092676}],"favorite":{"id":"favorite:zz-duling-fangding","updatedAt":1792553015784},"section":{"id":"progress:zz-duling-fangding:overview","updatedAt":1792553038174}}
+10-21 11:30:27.230  2898  2898 I A03d00/JSAPP: JOURNEY_SCROLL_STEP:click:archive-scroll:memory-journey-scroll

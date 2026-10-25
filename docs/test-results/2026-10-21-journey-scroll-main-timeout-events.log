@@ -1,0 +1,4 @@
+10-21 11:02:38.859 14597 14597 I A03d00/JSAPP: JOURNEY_SCROLL_NOTE_SAVED:{"id":"note:25c5cf05-7f8d-44da-8434-6f30da2728d4:1792551756975","siteId":"zz-duling-fangding","tags":["泥火观察"],"pose":{"version":1,"sceneType":"relic_inspector","yaw":0.78,"pitch":0.58,"zoom":0.98,"hotspotId":"corners","sectionId":"","label":"四个折角 · 45°","proceduralPreset":"duling_fangding","sceneRevision":2,"rendererProfile":"native-raster-v1","viewFrame":{"width":294.85714285714283,"height":300,"textDensity":3.5,"dark":false}},"noteCount":2}
+10-21 11:08:49.928 14597 14597 I A03d00/JSAPP: OHOS_REPORT_STATUS: stream=Error in native_records_replay_edit_and_delete_update_scroll, execute timeout 600000ms
+10-21 11:08:49.928 14597 14597 I A03d00/JSAPP: OHOS_REPORT_STATUS: test=native_records_replay_edit_and_delete_update_scroll
+10-21 11:08:49.942 14597 14597 I A03d00/JSAPP: OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 1, Pass: 0, Ignore: 0

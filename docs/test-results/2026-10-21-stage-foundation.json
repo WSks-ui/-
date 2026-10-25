@@ -1,0 +1,1112 @@
+{
+  "stage": "账号离线冷启动与原生分布式通道基础",
+  "date": "2026-10-21",
+  "sourceBaseCommit": "910324679288e23f5c20d4803210e1c798c6ca03",
+  "branch": "main",
+  "uncommitted": true,
+  "packages": {
+    "M": {
+      "name": "entry-default-unsigned.hap",
+      "bytes": 6462573,
+      "sha256": "9AF0483A63AA0425B70253A33B02EC832E8C1B3BABB66B8E42ABF9F5B7AB6AD6"
+    },
+    "T1": {
+      "name": "entry-ohosTest-unsigned.hap",
+      "bytes": 6376555,
+      "sha256": "2F4A355DBF27DAAD4AF6AC659BB9CF19831FFA98D933612F014EA94C49F71541"
+    },
+    "T2": {
+      "name": "entry-ohosTest-unsigned.hap",
+      "bytes": 6377002,
+      "sha256": "96844581F8F7E8DF655A7A6E38C3CFE011065E7149401ABBBBED1B2BE6F95A9D"
+    }
+  },
+  "packageNotes": "M 全轮不变；T2 仅调整首次权限弹窗销毁时 NoCandidates 的等待处理。冷启动结果来自 T1，页面中断轮来自 T1，恢复分组复验来自 T2。",
+  "earlyPackageSnapshots": {
+    "initial": [
+      {
+        "name": "entry-default-unsigned.hap",
+        "bytes": 6457687,
+        "sha256": "ECFECE9A6E6D1890E6132B9A75A7E68982F295997528978103DD97D635DDDEF4"
+      },
+      {
+        "name": "entry-ohosTest-unsigned.hap",
+        "bytes": 6368056,
+        "sha256": "B43F699D372D47EA65195C0B597CA7FAAC091102E098B8AD9491468CEACC328D"
+      }
+    ],
+    "beforeFinalFixes": [
+      {
+        "name": "entry-default-unsigned.hap",
+        "bytes": 6457687,
+        "sha256": "ECFECE9A6E6D1890E6132B9A75A7E68982F295997528978103DD97D635DDDEF4"
+      },
+      {
+        "name": "entry-ohosTest-unsigned.hap",
+        "bytes": 6372212,
+        "sha256": "2E8A1F1E3E080E620C6E2D335C30BFA0D5ACBF7B27D836344B833E38C6102B86"
+      }
+    ]
+  },
+  "devices": [
+    {
+      "label": "A",
+      "instance": "YunhejiSyncB",
+      "transport": "127.0.0.1:5555",
+      "system": "HarmonyOS 7.0.0.107",
+      "api": 26,
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560
+    },
+    {
+      "label": "B",
+      "instance": "Pura 90 Pro",
+      "transport": "127.0.0.1:5557",
+      "system": "HarmonyOS 7.0.0.107",
+      "api": 26,
+      "screen": [
+        1256,
+        2760
+      ],
+      "density": 560
+    }
+  ],
+  "localChecks": {
+    "pass": 116,
+    "total": 116,
+    "parserPass": 9,
+    "parserTotal": 9,
+    "servicePass": 13,
+    "serviceTotal": 13
+  },
+  "finalExecutions": [
+    {
+      "path": "docs/test-results/2026-10-21-002145-da29bbdd-device.log",
+      "bytes": 947,
+      "sha256": "EBEF6E0266C641A4B9EA9D86FEA70E31DF940DC7A4A71F184983FE48D614593F",
+      "mainPackage": "M",
+      "testPackage": "T1",
+      "result": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "durationMs": 106953
+    },
+    {
+      "path": "docs/test-results/2026-10-21-002337-2eeda69c-device.log",
+      "bytes": 994,
+      "sha256": "9FF677D23C41F1E1C28D031B9FCB7BACD7653298177F637CE066BDDE68DBDCA8",
+      "mainPackage": "M",
+      "testPackage": "T1",
+      "result": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "durationMs": 54885
+    },
+    {
+      "path": "docs/test-results/2026-10-21-002438-5d092c91-device.log",
+      "bytes": 956,
+      "sha256": "F45ADC8DA8CF3DC1E5E2200625CE717D0EFFDDDC81AECB715DE25FB1B6191633",
+      "mainPackage": "M",
+      "testPackage": "T1",
+      "result": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "durationMs": 20585
+    },
+    {
+      "path": "docs/test-results/2026-10-21-002503-ab751608-device.log",
+      "bytes": 956,
+      "sha256": "19A1A8C78A1D4B97A27A2C10D2C8563FB77BE780B42B868ABFF03A58104683FD",
+      "mainPackage": "M",
+      "testPackage": "T1",
+      "result": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "durationMs": 83576
+    },
+    {
+      "path": "docs/test-results/2026-10-21-002630-8c16bcd3-device.log",
+      "bytes": 941,
+      "sha256": "25EDB9D1B4820F1E5B71DD5765F5E52388B407EB2B3397FA0F0AA00E80A67ACF",
+      "mainPackage": "M",
+      "testPackage": "T1",
+      "result": {
+        "total": 1,
+        "failure": 0,
+        "error": 0,
+        "pass": 1,
+        "ignore": 0
+      },
+      "durationMs": 6093
+    },
+    {
+      "path": "docs/test-results/2026-10-21-002131-5c0e4c94-device.log",
+      "bytes": 1547,
+      "sha256": "C9F1FED3E97E9026E0D5CA679CB626C9EB0ABE07C23C262D670BB3C4962E4720",
+      "mainPackage": "M",
+      "testPackage": "T1",
+      "result": {
+        "total": 2,
+        "failure": 0,
+        "error": 0,
+        "pass": 2,
+        "ignore": 0
+      },
+      "durationMs": 18184
+    },
+    {
+      "path": "docs/test-results/2026-10-21-002921-2e9cbd13-device.log",
+      "bytes": 1547,
+      "sha256": "7900A4BBBE4282F9D0F8D95681170B12F3B5B040451C0D6CEEA0725098E6CFB1",
+      "mainPackage": "M",
+      "testPackage": "T2",
+      "result": {
+        "total": 2,
+        "failure": 0,
+        "error": 0,
+        "pass": 2,
+        "ignore": 0
+      },
+      "durationMs": 18235
+    },
+    {
+      "path": "docs/test-results/2026-10-21-003649-7eca4082-device.log",
+      "bytes": 2137,
+      "sha256": "84CA8FC776423D3806F76604037A81ABD81DCC1D8731EDB4AFE4D3635F2CDABD",
+      "mainPackage": "M",
+      "testPackage": "T2",
+      "result": {
+        "total": 3,
+        "failure": 0,
+        "error": 0,
+        "pass": 3,
+        "ignore": 0
+      },
+      "durationMs": 478657
+    },
+    {
+      "path": "docs/test-results/2026-10-21-003827-641cf01f-device.log",
+      "bytes": 1534,
+      "sha256": "E60B7FFA3531FE81813415C7F6A697D558A2DF81D9E407B4997D08C1D6C5B839",
+      "mainPackage": "M",
+      "testPackage": "T2",
+      "result": {
+        "total": 2,
+        "failure": 0,
+        "error": 0,
+        "pass": 2,
+        "ignore": 0
+      },
+      "durationMs": 177358
+    }
+  ],
+  "preservedFailure": {
+    "path": "docs/test-results/2026-10-21-002716-a8fb1e79-device.log",
+    "bytes": 1962,
+    "sha256": "CE6B1276E92BCAE74A02B5D477E474F5C2EBC04E6DF29D10E4D0F213CE1C5634",
+    "mainPackage": "M",
+    "testPackage": "T1",
+    "result": {
+      "total": 2,
+      "failure": 0,
+      "error": 1,
+      "pass": 1,
+      "ignore": 0
+    },
+    "durationMs": 20709
+  },
+  "interruptedPageRun": {
+    "path": "docs/test-results/2026-10-21-002650-8be7014c-device.log",
+    "bytes": 2064,
+    "sha256": "3F8C32B2A7107F14BB7FF396657B71AAA26B49E9951390F919C1826C48B7B5FF",
+    "mainPackage": "M",
+    "testPackage": "T1",
+    "complete": false,
+    "reason": "代理沿用交接摘要中反向的实例名/端口对应，误关仍在测试的实例；本轮不算通过，保留数据重启后以 T2 分组复验。"
+  },
+  "permissionNotes": "A 首次真实授权已生效，但测试重复点失效节点而失败；T2 在系统保留授权后通过。更早 B 初次弹窗有手工辅助，不能描述为首次授权全自动通过。",
+  "nativePlatform": {
+    "A": {
+      "phase": "waiting",
+      "message": "系统未发现可用可信设备；账号网络同步可继续使用",
+      "recordCount": 0,
+      "deviceCount": 0,
+      "lastSuccessfulSync": 0
+    },
+    "B": {
+      "phase": "waiting",
+      "message": "系统未发现可用可信设备；账号网络同步可继续使用",
+      "recordCount": 0,
+      "deviceCount": 0,
+      "lastSuccessfulSync": 0
+    },
+    "crossDeviceTransferVerified": false,
+    "huaweiAccountIntegrated": false,
+    "pollingSeconds": 5,
+    "dataChangeListener": false
+  },
+  "offlineScope": "强停应用进程并停止本任务 HTTPS 服务；没有断开整机网络。恢复同一服务后以 ASSET 会话继续，并由另一模拟器实际收到同一条修改。",
+  "realAiEvents": {
+    "path": "docs/test-results/2026-10-21-stage-real-ai-events.log",
+    "bytes": 335,
+    "sha256": "F087E15D58BF25E5B35AC4A4EB8568C388F0F40D6B7711B7284FDB99FF9C10B3"
+  },
+  "emulatorStateAfter": [
+    {
+      "instance": "Pura 90 Pro",
+      "running": "false"
+    },
+    {
+      "instance": "YunhejiSyncB",
+      "running": "false"
+    }
+  ],
+  "migration": "schema v1 不变，Preferences 仍为已确认快照；原生不可变版本库并行增量写入，不删除旧库，没有切换唯一存储。",
+  "screenshots": [
+    {
+      "path": "docs/design/stage-foundation/01-offline-memory.png",
+      "bytes": 217779,
+      "sha256": "4487A6EBD86604E43D54ABD624A488D6923BEF13C0E9612E361F86EE5B06BFF2"
+    },
+    {
+      "path": "docs/design/stage-foundation/02-other-device-memory.png",
+      "bytes": 216640,
+      "sha256": "0F68E2D3219F1E6B39C5B8C6153EBC68ABD8CD1D3FB506491A5D74EF62C8BE86"
+    },
+    {
+      "path": "docs/design/stage-foundation/04-ai-saved-evidence.png",
+      "bytes": 401303,
+      "sha256": "5024C9AB62C2D168D5A40DBC75D5C1E018195EAAC418A9F8ACF0B3DC941E9FA2"
+    },
+    {
+      "path": "docs/design/stage-foundation/03-native-status-crop.png",
+      "bytes": 83977,
+      "sha256": "2D8A4CAD8D637DE56097777DFB87828101F763E58FA077FF7559E42EC0E41049",
+      "crop": {
+        "x": 53,
+        "y": 1390,
+        "width": 1150,
+        "height": 1160,
+        "reason": "裁出原生状态卡，排除上方合成测试账号资料"
+      },
+      "sourceSha256": "0EEC726D2CD6AD0A88F80CF32697D9AB4CED0245F5DDEEC2A2C9CACB5360B8A7"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "AppScope/app.json5",
+      "bytes": 243,
+      "sha256": "69CD9C0ACEED29969513360005F50F8D96B3929B60686D5C95949A5D924BCFDE"
+    },
+    {
+      "path": "AppScope/resources/base/element/string.json",
+      "bytes": 95,
+      "sha256": "D5ADF84E7057565FBFE242BA083C925925F6E757DA173525098DB4AA0F9CDC76"
+    },
+    {
+      "path": "AppScope/resources/base/media/background.png",
+      "bytes": 32383,
+      "sha256": "1CC24203FE9331E32B9D4D2A21866291CFB1CD48887541400DCCAB29516957F7"
+    },
+    {
+      "path": "AppScope/resources/base/media/foreground.png",
+      "bytes": 28293,
+      "sha256": "FBCB7C28E998B144470710E41B004E7B3DF0A1C262ADE68611F63BD9188BABED"
+    },
+    {
+      "path": "AppScope/resources/base/media/layered_image.json",
+      "bytes": 109,
+      "sha256": "3D18DCD7ED9E7D3D2C54C20CB80A44EB4877C661131C68A46E20B6E19D0BB476"
+    },
+    {
+      "path": "entry/src/main/ets/components/AccountPanel.ets",
+      "bytes": 3929,
+      "sha256": "7378C5F13B27C60EEC5CF764DBA09D62BE09A96B4E45AF0295B25A337595A91D"
+    },
+    {
+      "path": "entry/src/main/ets/components/AiObservationPanel.ets",
+      "bytes": 35540,
+      "sha256": "218ECADBCD199475C6CA67FCD9CFF6B0E882FF17E2FE2C2657746488FC0EFCAA"
+    },
+    {
+      "path": "entry/src/main/ets/components/ArchiveInfo.ets",
+      "bytes": 1576,
+      "sha256": "D968776285DDBA81119DE86E0C98EA556ECFB38DB414C0FC02F7AB3C88F93379"
+    },
+    {
+      "path": "entry/src/main/ets/components/ArchiveTheme.ets",
+      "bytes": 2117,
+      "sha256": "D5A06F3F0DD44524E48C89CCD029042848E90F38C7E34CC5022FA34251AB4F3B"
+    },
+    {
+      "path": "entry/src/main/ets/components/CulturalEngineViewport.ets",
+      "bytes": 29967,
+      "sha256": "6F4C72D2C978A45692547414D98D61BFB0A7DED81220345367305D8DB1840658"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureAtlas.ets",
+      "bytes": 22467,
+      "sha256": "9ED17C0EFF399861FFC64DE1906B5BC5C07313DE58FB4F429E3B13B9760F8AD9"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureGraph.ets",
+      "bytes": 5059,
+      "sha256": "B9DA19C9A4CA6F5B1CEAB073C284A8CCA46B427F68A4540E81AC9558CD49EC6E"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureGraphNative.ets",
+      "bytes": 12101,
+      "sha256": "B9D1D35F3F8D8B15F6F2C757E4B8E8AE812BC0D71F8034F27371CA51D150CB79"
+    },
+    {
+      "path": "entry/src/main/ets/components/CultureGraphWeb.ets",
+      "bytes": 9841,
+      "sha256": "B8338FFC31672B367580C95CCEF241F179F59F25D40799AC8E863E8EC87B5258"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyBadge.ets",
+      "bytes": 5691,
+      "sha256": "3873D63D8CD5519909821F8BBB354EFF4BB4A9E11439408E75A6A4077E0DF4B2"
+    },
+    {
+      "path": "entry/src/main/ets/components/JourneyPanel.ets",
+      "bytes": 7654,
+      "sha256": "AF0F3F36EA454F86F6C142FA28E6C9B50198FECF905E1D16FF4D2D09C5EEE137"
+    },
+    {
+      "path": "entry/src/main/ets/components/LoginPage.ets",
+      "bytes": 6568,
+      "sha256": "AFC209852CC877A274D73B30C552B0417141FD2196835E1E36ECC4082CE7D5BD"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialComparisonPanel.ets",
+      "bytes": 10433,
+      "sha256": "54417533C0EDDC953D8CE6CAFCD695EBC640C752C6EAFA9E155821579903725E"
+    },
+    {
+      "path": "entry/src/main/ets/components/MaterialStudyPanel.ets",
+      "bytes": 4699,
+      "sha256": "1F77917A12A3212550591B5D59689699086799DF6B2D1D5268895F8B8916A2F8"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryDetailPage.ets",
+      "bytes": 9251,
+      "sha256": "D41F03D17ECB165905D95385CC960B6B0C3635A5A37611651B5CF2C37DBEB310"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPosePreview.ets",
+      "bytes": 7260,
+      "sha256": "B184FFDA0A25F641D8CD28A7FFEBFEE970653D9D6AF52580BEF92146ED986BA2"
+    },
+    {
+      "path": "entry/src/main/ets/components/MemoryPostcardItem.ets",
+      "bytes": 9614,
+      "sha256": "87DA0B318D62312D17055013FC7264092684AD9ED0D4F3666745D4DAF059D32A"
+    },
+    {
+      "path": "entry/src/main/ets/components/ProfilePage.ets",
+      "bytes": 16981,
+      "sha256": "B12A591ADD5F370A2580D7D3C9E45AF06AA8C4AAF4C8F71889ACEAD1DBD16120"
+    },
+    {
+      "path": "entry/src/main/ets/components/PunchRow.ets",
+      "bytes": 2526,
+      "sha256": "98CF680AA9183D58B90185363FB5781614ACD6D77F7464D22C54CA191DDE8D4E"
+    },
+    {
+      "path": "entry/src/main/ets/components/RiverBackdrop.ets",
+      "bytes": 1526,
+      "sha256": "9711A0C41A08903A491B572B43737073CF1F9DF2C1EDD9AC28B00C9AE88D43C6"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteCard.ets",
+      "bytes": 4596,
+      "sha256": "DCBA2E2B2838B16183A3CBA22B1F826A21752701C3EEF75BB3DE1C1ABA94BC8A"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteDetail.ets",
+      "bytes": 46885,
+      "sha256": "9430C2E4390532879C0B9AFB0BFCC088E8813311AF5D8B07C7F28680EDB8F438"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteObject3D.ets",
+      "bytes": 4861,
+      "sha256": "0EDAA1323CBC90624A033D31775EF058EBE1BF832E02B63051F7472541E7DB84"
+    },
+    {
+      "path": "entry/src/main/ets/components/SiteRow.ets",
+      "bytes": 2141,
+      "sha256": "10B12EB153686C99140BC3366358DFCF2E1FC8143EA179D38E0B2F792244D4C0"
+    },
+    {
+      "path": "entry/src/main/ets/components/WaterSituationPage.ets",
+      "bytes": 12637,
+      "sha256": "19D0B56D2EE103E38AC3A3B05F8166429A571B0F76D36FFE7CE7B80EE6B184E4"
+    },
+    {
+      "path": "entry/src/main/ets/data/AccountWorkspaceStore.ets",
+      "bytes": 3691,
+      "sha256": "D8808E4CD5DFC8D4A21543C3DE5193198BCCA8A592325A77021CBC7D88B1D269"
+    },
+    {
+      "path": "entry/src/main/ets/data/HeritageCatalog.ts",
+      "bytes": 30784,
+      "sha256": "5D0E7557F84D26AFDAA690FE8EF3A51A41414A06E5B789A7EC31735D9BA85F03"
+    },
+    {
+      "path": "entry/src/main/ets/data/LocalArchiveRepository.ets",
+      "bytes": 2889,
+      "sha256": "FC36B6838FEBB69ED7B306F4DEFD4B73FBB52F09C42B48452B6C9CF3282B07F2"
+    },
+    {
+      "path": "entry/src/main/ets/data/MaterialStudyCatalog.ts",
+      "bytes": 10198,
+      "sha256": "E39666F8A1786A5EF8239749A7C42C1C71524F9C4E879108BBDACFED19DB4AAA"
+    },
+    {
+      "path": "entry/src/main/ets/data/WaterSituationCatalog.ts",
+      "bytes": 3935,
+      "sha256": "9C1442E765907649C35138CD35632D532A49008D7B661F7D1E2A27A7B0544E0C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AccountSync.ts",
+      "bytes": 8052,
+      "sha256": "DBBA134CD1ADCFEC20206E1B872CB7AAA1A5168616F7D8AAAF2F32ECE8E45610"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AiObservation.ts",
+      "bytes": 16226,
+      "sha256": "488525D53DFF15BFC88A7A392C06D2F3549FD962C57268C423BEED3A86DA771E"
+    },
+    {
+      "path": "entry/src/main/ets/domain/AiObservationKnowledge.ts",
+      "bytes": 1153,
+      "sha256": "806E91B0602A7735A137BD27CF6E95B119B3A4DFCBA6A5FBA21C2210998E541C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ArchiveDomain.ts",
+      "bytes": 19638,
+      "sha256": "B4428F22604E4DB6CBC98EA98FFBF5CA0CFBCBB672C036E7D3DF387A9125D37A"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalContent.ts",
+      "bytes": 5475,
+      "sha256": "A0C39CBE3EE217F8CF99E5DB8D63DC9D100E0686D01D8B3C1FA5EF925E65E87C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalEngineContract.ts",
+      "bytes": 2553,
+      "sha256": "A769E07A59E254CE267D784EA2674CFC06FEB8CF1385A3AC35427FD2F1E41BD2"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CulturalNativeScene.ts",
+      "bytes": 11656,
+      "sha256": "C405E0AE9BE71950029170B8E324B9D3206DBB9D1F24B9D33613642374CE3C29"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureConnections.ts",
+      "bytes": 2905,
+      "sha256": "4B58671DF6AC09A8359FF242B37FCA8287EB2BA1436E4133DE5CC1D3AE50C17F"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureGraphData.ts",
+      "bytes": 1814,
+      "sha256": "A8F0E30CC0FBB11DA2E1FCF457B8E2605A9297CB452355FC9648312095CC331F"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureGraphLayout.ts",
+      "bytes": 5633,
+      "sha256": "6E09F8814EBF1CD9FD2ECBB7A09425455A236A8ED23617BA803AF7037EEE2749"
+    },
+    {
+      "path": "entry/src/main/ets/domain/CultureGraphSpace.ts",
+      "bytes": 7524,
+      "sha256": "83C3921E1B13BDB206AE2AD9A2D6E0EC8BA799544CE9689C71904089D9ECF192"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DahecunObservation.ts",
+      "bytes": 1739,
+      "sha256": "5ACBEDEEEA1CA751EFA1DE8612F004A5B242BF0A46D588669AD4C4FF3D30AE96"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DistributedArchive.ts",
+      "bytes": 871,
+      "sha256": "FF17F30C45E366A6E21E4CCBB31E3D6C679E03B1C6D0B04E18F8B2D423EBCD35"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservation.ts",
+      "bytes": 1525,
+      "sha256": "E4FF0288D0EFB55BA311CAA779DDC5C658695DFC29631CF8CBDE89B90D4E3BCD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/DulingObservationGeometry.ts",
+      "bytes": 13444,
+      "sha256": "1652DBD6BBC7BB567C8A175FA36809B5CD28C137EF0E9179C8D89EF7361881C9"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ExplorationProgress.ts",
+      "bytes": 4332,
+      "sha256": "D43BE17AE1AB2CC41094F598A413376370CB8519FB9D6C698C23D80DE9DBC2E7"
+    },
+    {
+      "path": "entry/src/main/ets/domain/JourneyRoutes.ts",
+      "bytes": 3925,
+      "sha256": "91E131F35AFEFCE28172DC8F9E368AC7EDE54A549703556AC0483CE1DBC1E9A5"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservation.ts",
+      "bytes": 1532,
+      "sha256": "272B75A5966A9F85F3E8E093DAE2F9D59AEF5C1F55F4D8C3738722EF40E7BA76"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MaterialObservationGeometry.ts",
+      "bytes": 11875,
+      "sha256": "5249D8F179CA2548A3903B7F7CC7964D1DE43485DF9DB3150C5FC0DAB6B0BC93"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryJournal.ts",
+      "bytes": 6121,
+      "sha256": "4406005E6044A8CDE65F1E92D6D5B3DC523BD683B74B412B8652860333502530"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MemoryReplay.ts",
+      "bytes": 5748,
+      "sha256": "8A914C13E9AADE67DED506B5CE1D4124D173045F8BA6EC63923D45F5A4D7C338"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservation.ts",
+      "bytes": 1663,
+      "sha256": "4D87B948ADD25C171101BCF452A1417ED38C87ABC1D37ED0FB8124F002E1FEA1"
+    },
+    {
+      "path": "entry/src/main/ets/domain/MiaodigouObservationGeometry.ts",
+      "bytes": 13647,
+      "sha256": "0A24B388CA0321F6DF2E1876666851CF3FBAE13A9208E2E8348C6467FFDA2809"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectGeometry.ts",
+      "bytes": 10539,
+      "sha256": "EAC39C273DDCF6601B272012594D20701BA66DDB78D5C9DDAC3B946F9F0CF7CD"
+    },
+    {
+      "path": "entry/src/main/ets/domain/SiteObjectRaster.ts",
+      "bytes": 5447,
+      "sha256": "C449A82C9F4B03E2364CC52FAC60D2D1AB8A775FC451FC0E2A52E7A38596AE25"
+    },
+    {
+      "path": "entry/src/main/ets/domain/WaterSituation.ts",
+      "bytes": 5652,
+      "sha256": "7D8D2BF133070BD433C7BF31D184D7BB3D112249E1376B7E2ECD14B282FD30F4"
+    },
+    {
+      "path": "entry/src/main/ets/entryability/EntryAbility.ets",
+      "bytes": 2516,
+      "sha256": "008AE134F89C12D10698AB8F421DA374CCBA3DB8F2506A5497D62AE2C38E7F86"
+    },
+    {
+      "path": "entry/src/main/ets/entrybackupability/EntryBackupAbility.ets",
+      "bytes": 522,
+      "sha256": "AE94F286234D41AD5FA9F70BFD11F61E2F609994D6F16687D1CE4EC442115E5D"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "bytes": 98722,
+      "sha256": "1E90D68795901D5CC4340A11BEC341C918B86596E9D6ED8368221B9F44D4575B"
+    },
+    {
+      "path": "entry/src/main/ets/platform/ArchiveLaunch.ts",
+      "bytes": 709,
+      "sha256": "5BBA4B15FE96DF82E05AB5D6BD3E30AE340ADE629C2959F1FB88C3ECA8B02DD0"
+    },
+    {
+      "path": "entry/src/main/ets/platform/CulturalNativeRenderer.ets",
+      "bytes": 10616,
+      "sha256": "F05136EF98540EB1780EE453B4A99579AA9F482C97F587BD1CA005CE6386D0F9"
+    },
+    {
+      "path": "entry/src/main/ets/platform/HarmonyEffects.ets",
+      "bytes": 4818,
+      "sha256": "72B79F1082A01A9AC192EA2D058279F2F01FEA0E8A8250FD38EFD6299FA47D7B"
+    },
+    {
+      "path": "entry/src/main/ets/platform/SiteObjectCanvas.ets",
+      "bytes": 2453,
+      "sha256": "1DE30FA4480D615B7283681244FDBEE8C9E061AAC3371D35375BA4A00733C8D1"
+    },
+    {
+      "path": "entry/src/main/ets/platform/SiteObjectScene.ets",
+      "bytes": 4612,
+      "sha256": "D9E68EE806EA343E0C4CF286F2DF4AC9C211EC9499CCB2317D1C92EBAC09D67C"
+    },
+    {
+      "path": "entry/src/main/ets/sync/AccountSyncClient.ets",
+      "bytes": 6789,
+      "sha256": "A20DDC79425107277BD9DB955036D9E2D112BB11DD2E7B7C157264C6F05A7029"
+    },
+    {
+      "path": "entry/src/main/ets/sync/DistributedArchiveChannel.ets",
+      "bytes": 8720,
+      "sha256": "D255C1A74232750B605E9BB5EF7D5B1FD03450261E20628D2013865F71EE9A1D"
+    },
+    {
+      "path": "entry/src/main/ets/sync/ServiceConfiguration.ets",
+      "bytes": 1669,
+      "sha256": "6F48E88D246052527E4EFC2EA51624C84DF37244659CC716B899C22A183ABBA7"
+    },
+    {
+      "path": "entry/src/main/ets/sync/SyncGateway.ts",
+      "bytes": 867,
+      "sha256": "3452B44E177E0CEE07E9E1740B7B4751CE5640DCAA2BA412E8A98243567D5452"
+    },
+    {
+      "path": "entry/src/main/ets/sync/WaterSituationClient.ets",
+      "bytes": 1654,
+      "sha256": "2876A71B4894F89593CBF31517363B4A25C6FAA1151B70B1ABD31A6DC6AC17CF"
+    },
+    {
+      "path": "entry/src/main/module.json5",
+      "bytes": 1608,
+      "sha256": "8C9F6D3ED3607A83CA2DCA2177F508A12F797935C336CB440FBB76B5EFC1E2E9"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/color.json",
+      "bytes": 1116,
+      "sha256": "629378DB93403DAB173F4162A1B16E4A2987BD6343EF35B7299964A49EB9F32D"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/float.json",
+      "bytes": 100,
+      "sha256": "3AD317AD8B46B69683FCE81F0E5B808DFDE752594EC0334691917AF7B5383A12"
+    },
+    {
+      "path": "entry/src/main/resources/base/element/string.json",
+      "bytes": 411,
+      "sha256": "61A6C2AED84A2EF07EB6D120BC32EE481237BF34A173D2981E8C954C3D476588"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/background.png",
+      "bytes": 32383,
+      "sha256": "1CC24203FE9331E32B9D4D2A21866291CFB1CD48887541400DCCAB29516957F7"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/foreground.png",
+      "bytes": 28293,
+      "sha256": "FBCB7C28E998B144470710E41B004E7B3DF0A1C262ADE68611F63BD9188BABED"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/layered_image.json",
+      "bytes": 109,
+      "sha256": "3D18DCD7ED9E7D3D2C54C20CB80A44EB4877C661131C68A46E20B6E19D0BB476"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/motif_city.svg",
+      "bytes": 1133,
+      "sha256": "CB6E844B496B15898CE42A2F3530136F4E0492C6BC0E037A1C8499FB3DF05D8B"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/motif_pagoda.svg",
+      "bytes": 1051,
+      "sha256": "F5534FF0A0F41992BA45CB71C556CA41BE0BEBC5EF555606104E790EDC609986"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/motif_pottery.svg",
+      "bytes": 1283,
+      "sha256": "BCF52AE83E6D94F68F6662D3737FA994A73210782485C0B73D8CF7B41D661373"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/startIcon.png",
+      "bytes": 15981,
+      "sha256": "C8EF3B31261D7C2270F02E8CA5F9B29335AAE59140588692D17E0FDB4F866D31"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/study_dahecun_twin.svg",
+      "bytes": 5708,
+      "sha256": "0BF145C8AD7D96040329FDAACADB8DD18014D3E5BD4D8E8004AEF74A7988D486"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/study_duling_pattern.svg",
+      "bytes": 5304,
+      "sha256": "0B574739DC9BE3B607BA2FE2C848E24C39763EF62CDA9E7BDE54D3D26461ED29"
+    },
+    {
+      "path": "entry/src/main/resources/base/media/study_miaodigou_space.svg",
+      "bytes": 4013,
+      "sha256": "50509E48B36858E5E211D3DDF1BF690BCED75DCA2B238E7AD441C72EE83EA889"
+    },
+    {
+      "path": "entry/src/main/resources/base/profile/backup_config.json",
+      "bytes": 36,
+      "sha256": "9447811DE67729D65B6C0D76720CE53DAD97F70A4B0BBE1946A8DC1C7DE717F5"
+    },
+    {
+      "path": "entry/src/main/resources/base/profile/main_pages.json",
+      "bytes": 37,
+      "sha256": "F21984FB1D5096F0DB41314DA0BB94C573E7AD018E5AFAE3044F8D5FF71B0BFC"
+    },
+    {
+      "path": "entry/src/main/resources/dark/element/color.json",
+      "bytes": 1116,
+      "sha256": "E7ED1CD656A4F7F941D8DAB2E3541916117D4AB4CE67DF4C47D67D3904A9355A"
+    },
+    {
+      "path": "entry/src/main/resources/dark/media/motif_city.svg",
+      "bytes": 1135,
+      "sha256": "E451B5AB90A2A347D7E28DF49993A3DB85BD8C6E12D13065C9B680132CA81DD6"
+    },
+    {
+      "path": "entry/src/main/resources/dark/media/motif_pagoda.svg",
+      "bytes": 1053,
+      "sha256": "28DE1789B1F7CBC86A086DF28496E10E15E6D59AF0832585F19573C58631FDAE"
+    },
+    {
+      "path": "entry/src/main/resources/dark/media/motif_pottery.svg",
+      "bytes": 1285,
+      "sha256": "60BD21E77A5895A32263D0A2846B6CE92AD70671BDDA2B10DC184EDA3D177B95"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/README.md",
+      "bytes": 6576,
+      "sha256": "245DC66A6393280CBECC2543694864DBD74A20796316E8CF2CA1A566AE40346F"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/core.js",
+      "bytes": 23185,
+      "sha256": "FB37238583D01718F00D3CBE4BF76900024FC33A3B381573E05BDA7F0CD2179A"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/engine.css",
+      "bytes": 961,
+      "sha256": "BDED0F94094EC33B650B1F66082C3384AC85C12C4D163FB57469010EAC4CFDA8"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/engine.js",
+      "bytes": 23584,
+      "sha256": "60F3509237055AEE0D91433304988553676560BD2D053AEC3544ECF15B89EAA4"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/engine.test.cjs",
+      "bytes": 13284,
+      "sha256": "4B9788DA3D164D5655F9AC01BFE232FFCAC1D64FB4DC913A572546F8C08C90EF"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/glb.js",
+      "bytes": 11486,
+      "sha256": "393AAD85A3C86E5C65ECD36FB5491678E2084127C44382F6A60C2B090725B3CC"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/index.html",
+      "bytes": 1037,
+      "sha256": "7DDCE5EE8E26A7CC6DCF452853F43E1DC2DF15F38AF6CC138B73C1B18B7580C7"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/engine/renderer.js",
+      "bytes": 10941,
+      "sha256": "20F6BA9C73A8FCD88564F357646FD59764D20E98C21CD0E2F4D0D9D01AA5932C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph-layout.js",
+      "bytes": 5735,
+      "sha256": "E1BD4D3042E8E3388A93322F085CF77CB8C1C2A6D7B35D2BAD6C61F2BCBED4D8"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph-space.js",
+      "bytes": 7578,
+      "sha256": "4FEF79F0DB4FAE4AD5A956C896922268D9300B90177ECB8017DB7B567ACBF6C3"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph.css",
+      "bytes": 2965,
+      "sha256": "0F13F50C59BB5F290FB9AC014C386F0B13A46491B585324EBBD12F9B0070F9AB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph.html",
+      "bytes": 1219,
+      "sha256": "96887EACE08E179E7B0DAF794E58843979F8713DB3820E032EDBF2D34920BB1A"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/graph.js",
+      "bytes": 16664,
+      "sha256": "B8E0C9AA45EB22C821B10C3256D8385AA76C3836EF76D6A9EAFFCE22E7EEF9FB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/cangjie-gate.jpg",
+      "bytes": 245008,
+      "sha256": "4F80B2D130AB218957A7DD46919BF770D1EA97EFFB18FC40356111F5177914A8"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/dahecun-foundations.jpg",
+      "bytes": 246333,
+      "sha256": "9D30C0625B832BE7C95D9E39F1A1C2354F8F232E2BB0A80D1446C4C3ACF9C736"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/duling-ding.jpg",
+      "bytes": 125468,
+      "sha256": "F67FC49DD6C18B0713A63FA7FD86D05A4EC9EBBCD5DD8839A03B746EE827DD70"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/erlitou-site.jpg",
+      "bytes": 263949,
+      "sha256": "55B99297B7B79EC83A433143F2D71EB238F47813792AE1D3D1F7EA8D60E30039"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/fanta.jpg",
+      "bytes": 251112,
+      "sha256": "AA8479348350ABAFA2B121ECAF8263158CB50975199E16F8F939E45B9A0DB5B7"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/guoguo-bronzes.jpg",
+      "bytes": 138166,
+      "sha256": "F52ECEC158601E0C7132CF7D073EB1BE540648C4E6870B280606BFA3D1C9837A"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/hanwei-palace.jpg",
+      "bytes": 237652,
+      "sha256": "956529852C481BCB724C159B1AD83CF0EFF2E48177132D28D64BFE1EC90C0D0C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/iron-pagoda.jpg",
+      "bytes": 136425,
+      "sha256": "E417BB8A9514E24F69836B8373FEB3F21ECD379217B88C74318AD24B0716CAD1"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/kaifeng-wall.jpg",
+      "bytes": 270957,
+      "sha256": "EF43873E1994A9C067AFFCBB8C1E256CE42E5B918F1A853939F9CE1678F9171C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/longmen.jpg",
+      "bytes": 242703,
+      "sha256": "576E93D5ECDA9A5D9C927BFC525DE4DC673E565A47E4A20DD88A43F49D6B2A33"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/miaodigou-basin.jpg",
+      "bytes": 64762,
+      "sha256": "F8F416A175BFB0EEA1927AB52A8B3D2D7DEB83C252CF4EA1B20319C545D45BDB"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/xishuipo.jpg",
+      "bytes": 110339,
+      "sha256": "109D199832749A693C29A3C56B883A8D8F0B561B56198ED2FE50CF7EF1C9FC04"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/yangshao-strata.jpg",
+      "bytes": 270701,
+      "sha256": "270E3DA2CC0AF4EFC1C52594986513082E66813A8E23C76A88D926B9C7D25D7C"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/yanshi-site.jpg",
+      "bytes": 297842,
+      "sha256": "9F06B50F03115D0886B1478B32470CE5E2AA35DB0CA13209DFA5A01BF3A62B8D"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/zhenghan-wall.jpg",
+      "bytes": 172796,
+      "sha256": "E0F5E9F528A6E694CFC68232FBA56C1F551454F81A3610AEBB2E59C604F2C55D"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/photos/zhengzhou-wall.jpg",
+      "bytes": 228724,
+      "sha256": "4A2B78BFCE9621C86F43FB8C1B26030073B066978321BBA5E33D97126B133B1F"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/three/LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "BFE119EA4FD413F5F7CA3FCD63ADB0C4A073ED39DAA2FE7D3E6B769E21272601"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/three/NOTICE.md",
+      "bytes": 765,
+      "sha256": "B63D9DC669FC3269D2E7C670D62DA75A64A48CDF7253825B4BC662FC8F1E8850"
+    },
+    {
+      "path": "entry/src/main/resources/rawfile/three/three.min.js",
+      "bytes": 485760,
+      "sha256": "07BAF22CD95F34B46E8DA297383B261AC493131597321C042918A27300449814"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/TestAbility.ets",
+      "bytes": 1035,
+      "sha256": "16ADEB789E467EC97CF290AF53DC9A63EADD0DB89A8FDDBBEEE10C083EDFBFFD"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/pages/TestHost.ets",
+      "bytes": 186,
+      "sha256": "C9CFE3DB700D9D8D18AAC4A879873B0D594E27D3B1A2C00EA052CDDA3028C397"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/AccountSync.test.ets",
+      "bytes": 16840,
+      "sha256": "3F533E490346D239B14C8960A5B65BA4653CBB37C2720BE8FC63BAAB05E29D50"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/Archive.test.ets",
+      "bytes": 5537,
+      "sha256": "2C5C3D71B3882E8FEBAEDCBACE8334F021CE07B79132AB0BF0A04922A1E767A7"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets",
+      "bytes": 8335,
+      "sha256": "E275B40419912F795BFAE2D10133CF4BBD12DB02E9986F2B0B6ECB317D736C1D"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets",
+      "bytes": 8398,
+      "sha256": "92DE0C219ED8C50E86AC1B77D5049E5E5269099C1A3FA6D68CD10D64B05A8343"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveRestart.test.ets",
+      "bytes": 2978,
+      "sha256": "6F38F6E98560900703DDC9677222E9B83A8688036303AD111B23460DD93CE796"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveUi.test.ets",
+      "bytes": 13904,
+      "sha256": "0FFB51ACF3CC4DF56D0ED277CDD55F699179516240C172950CEBC2F2724A2C26"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ArchiveUiSession.ets",
+      "bytes": 20326,
+      "sha256": "4AF13E304CBCE1D8B13D28002A9AF395F9989D39E48D3132D32C4E943CE195CF"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/CatalogGraph.test.ets",
+      "bytes": 7593,
+      "sha256": "2090206CBE227AF7239CB9A7F8E1619D3ED683EE7992B530313176AF55ADBABD"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/CoreContent.test.ets",
+      "bytes": 7414,
+      "sha256": "6FCBE7A14EF0C460868248596BD403F155A736B4EE8E27EAE36F2AAE49B12FEF"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/CultureAtlas.test.ets",
+      "bytes": 9142,
+      "sha256": "9841E8B63A4BC314C4C4B3EB5681C4864445467CB2EE70C6140712C6EA986CE5"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/DemoRehearsal.test.ets",
+      "bytes": 14774,
+      "sha256": "48DC5DFBB27486C1586A384C849BD590C67187B8759C0F49CAA8581A364509B9"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/EngineExperience.test.ets",
+      "bytes": 20271,
+      "sha256": "6E688BD6FAD29C445935D0E28D757DE6060FCC5FCA4DF5A36022E3C32E307911"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ExpandedObservation.test.ets",
+      "bytes": 19209,
+      "sha256": "B6CC586D865BC34E2DCAB26D62E1DE7200281B36C19EC91F436D1E19317D10E9"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/HomeExperience.test.ets",
+      "bytes": 18728,
+      "sha256": "B4D14D68417E459C98B940D156FC770E9CAB2E0CB1E65E21AC9A07229A30C322"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "bytes": 1836,
+      "sha256": "856309699B06DD2DAD8A45415D3395454BC4C18FE8472F0697B46D59221DF854"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/MaterialComparison.test.ets",
+      "bytes": 13180,
+      "sha256": "DAA80C46141813E80AA121443AB3B2A97B5FDA597894C2ABBA64960BE807704B"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/MemoryJourney.test.ets",
+      "bytes": 13069,
+      "sha256": "B8D8936FB05EB95167236739F0DB61E7E98D4577E7F7B14BC33625B53AAF59BD"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/MemorySync.test.ets",
+      "bytes": 29728,
+      "sha256": "2E2E9E0380F0F2E3765E40B8185E72AABEB7FA82BFC3E949B41EC02D03E32408"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ObservationMemory.test.ets",
+      "bytes": 14365,
+      "sha256": "5286E304EEF809F551967BEE129205A01ADDB9497B0D16841D1A7C83B718FC1F"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/PageHierarchy.test.ets",
+      "bytes": 20510,
+      "sha256": "F532532AD641B01081B922AE891F61B93617BD5393894BD144D1122E25DDD016"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/ProfileLogin.test.ets",
+      "bytes": 11705,
+      "sha256": "15A3388CB9B584CA3EB43D26FA321C98C81F8E85CE43C59106B1920BC32EF7DA"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/SpatialExperience.test.ets",
+      "bytes": 12085,
+      "sha256": "904C7C26A9A82C9A22695785AC11EDDDDA1D4499CE9C0A2E0AE4208440F5C55F"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/StageFoundation.test.ets",
+      "bytes": 13461,
+      "sha256": "9DE2B644083E2CF6B8493F7EBCC55FB9034C0AABBAEDBBBC4F55D3B55ADB9D71"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/TestContext.ets",
+      "bytes": 115,
+      "sha256": "29CB8198550D666EB529DAA93BFFAE10A5AAA9F6DFFACECCB26F19EA89F430B8"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/WaterSituation.test.ets",
+      "bytes": 2711,
+      "sha256": "970C1FCBF11518ACFDAE0CCB788FEBF48B62F43F591F4D94B432959F6F81C218"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/testrunner/OpenHarmonyTestRunner.ets",
+      "bytes": 735,
+      "sha256": "799DB92F40AD161179DD3938D71E743B254FF176D219226FA254133DD2867499"
+    },
+    {
+      "path": "entry/src/ohosTest/module.json5",
+      "bytes": 523,
+      "sha256": "3FB2BF19E9C48FC69127B3B764D37B9A37A73B010B5B2D91F136526443EB1BC8"
+    },
+    {
+      "path": "entry/src/ohosTest/resources/base/profile/test_pages.json",
+      "bytes": 32,
+      "sha256": "4E621A3115F69C8029583CFA994956D97F2490667140E13DF0C0C1ECFB4D8B93"
+    },
+    {
+      "path": "tools/device-test.ps1",
+      "bytes": 5713,
+      "sha256": "2933901194DECE6A1F4CBDEAA3356486F2A660C2F68B3F853268CED4A5DA0610"
+    },
+    {
+      "path": "tools/domain.test.mjs",
+      "bytes": 42538,
+      "sha256": "8B76964A3F952C200C27425DCDA30502D630497C53E56243A17CA15530E7900E"
+    },
+    {
+      "path": "tools/resume-test.ps1",
+      "bytes": 2742,
+      "sha256": "ECAE0895EAA17285996D954A292F0BC10CEA23DB6E471E5EE43E188F5B16343C"
+    }
+  ],
+  "sourceNotes": "源码哈希为最终 T2 工作区；T1 的 StageFoundation 权限等待修复前版本未另外采集源码哈希，使用已采集包哈希标定。忽略服务配置与测试凭证未写入本清单。"
+}

@@ -1,0 +1,25 @@
+{
+  "method": "同次原始 layout 读取 Canvas bounds；原图按整数坐标裁切，未缩放、未屏蔽像素",
+  "aImage": "design/ai-dual-memory/a-opening-focus.png",
+  "bImage": "design/ai-dual-memory/b-replay.png",
+  "aBounds": [
+    112,
+    960,
+    1144,
+    2010
+  ],
+  "bBounds": [
+    112,
+    1166,
+    1144,
+    2216
+  ],
+  "size": [
+    1032,
+    1050
+  ],
+  "totalPixels": 1083600,
+  "changedPixels": 4,
+  "identical": false,
+  "maximumChannelDifference": 1
+}

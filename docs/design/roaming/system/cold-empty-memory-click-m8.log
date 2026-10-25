@@ -1,0 +1,36 @@
+{'command': ['uitest', 'dumpLayout', '-p', '/data/local/tmp/yunheji-roaming-system-layout.json'], 'result': 'DumpLayout saved to:/data/local/tmp/yunheji-roaming-system-layout.json'}
+{'id': '7564a697-a258-43e5-9515-9fe1d4ed2565', 'text': '日历', 'type': 'Text', 'bounds': '[806,514][875,544]', 'enabled': 'true'}
+{'id': '8401dd2a-d722-4f28-bb49-69bfc41f10f8', 'text': '文件管理', 'type': 'Text', 'bounds': '[1020,514][1141,544]', 'enabled': 'true'}
+{'id': 'c847aed1-0ee5-4a66-ae3f-c0eda13cb820', 'text': '云河纪', 'type': 'Text', 'bounds': '[1273,514][1368,544]', 'enabled': 'true'}
+{'id': '', 'text': '云河纪', 'type': 'Text', 'bounds': '[1534,418][1601,444]', 'enabled': 'true'}
+{'id': '', 'text': '继续这段漫游', 'type': 'Text', 'bounds': '[2186,420][2306,443]', 'enabled': 'true'}
+{'id': '', 'text': '点亮汴京的一夜', 'type': 'Text', 'bounds': '[1534,454][2306,496]', 'enabled': 'true'}
+{'id': '', 'text': '找到街与河的交会，让一盏原创灯景照亮城市记忆。', 'type': 'Text', 'bounds': '[1596,506][2244,538]', 'enabled': 'true'}
+{'id': '', 'text': '0.000000', 'type': 'Progress', 'bounds': '[1534,707][1670,715]', 'enabled': 'true'}
+{'id': '', 'text': '0/3 条线索已发现', 'type': 'Text', 'bounds': '[1688,699][1844,722]', 'enabled': 'true'}
+{'id': '', 'text': '原创河流图景', 'type': 'Text', 'bounds': '[2234,720][2318,736]', 'enabled': 'true'}
+{'id': 'AppName_text__云河纪_mvjvyg2i5laup5eqeny', 'text': '云河纪', 'type': 'Text', 'bounds': '[1873,754][1968,784]', 'enabled': 'true'}
+{'id': '', 'text': '最近一页', 'type': 'Text', 'bounds': '[1266,660][1346,683]', 'enabled': 'true'}
+{'id': '', 'text': '原创河流图景', 'type': 'Text', 'bounds': '[1274,960][1358,976]', 'enabled': 'true'}
+{'id': 'AppName_text__云河纪_mvjvyg2zj63896cl3s', 'text': '云河纪', 'type': 'Text', 'bounds': '[913,994][1008,1024]', 'enabled': 'true'}
+{'command': ['uitest', 'uiInput', 'click', 960, 715], 'result': 'No Error'}
+{'command': ['uitest', 'dumpLayout', '-p', '/data/local/tmp/yunheji-roaming-system-layout.json'], 'result': 'DumpLayout saved to:/data/local/tmp/yunheji-roaming-system-layout.json'}
+{'id': '', 'text': '我的黄河记忆', 'type': 'Text', 'bounds': '[712,247][2011,294]', 'enabled': 'true'}
+{'id': 'memory-new', 'text': '写一页', 'type': 'Button', 'bounds': '[2027,230][2168,310]', 'enabled': 'true'}
+{'id': '', 'text': '手账', 'type': 'Text', 'bounds': '[1035,366][1092,399]', 'enabled': 'true'}
+{'id': 'note-count', 'text': '0', 'type': 'Text', 'bounds': '[1108,369][1122,397]', 'enabled': 'true'}
+{'id': '', 'text': '收藏', 'type': 'Text', 'bounds': '[1759,366][1816,399]', 'enabled': 'true'}
+{'id': 'collection-count', 'text': '0', 'type': 'Text', 'bounds': '[1832,369][1846,397]', 'enabled': 'true'}
+{'id': '', 'text': '我的黄河长卷', 'type': 'Text', 'bounds': '[736,486][905,519]', 'enabled': 'true'}
+{'id': '', 'text': '五城 · 我留下的片刻', 'type': 'Text', 'bounds': '[921,489][2065,517]', 'enabled': 'true'}
+{'id': '', 'text': '展开 ›', 'type': 'Text', 'bounds': '[2081,489][2144,517]', 'enabled': 'true'}
+{'id': '__SearchField__Button__memory-search', 'text': '查找', 'type': 'Button', 'bounds': '[1922,602][2027,666]', 'enabled': 'true'}
+{'id': '', 'text': '查找', 'type': 'Text', 'bounds': '[1922,618][2027,651]', 'enabled': 'true'}
+{'id': 'memory-filter-open', 'text': '筛选', 'type': 'Button', 'bounds': '[2051,590][2168,678]', 'enabled': 'true'}
+{'id': 'memory-result-count', 'text': '0 篇', 'type': 'Text', 'bounds': '[712,718][757,746]', 'enabled': 'true'}
+{'id': 'memory-conditions', 'text': '最近', 'type': 'Text', 'bounds': '[773,718][2168,746]', 'enabled': 'true'}
+{'id': 'memory-empty-title', 'text': '还没有留下手账', 'type': 'Text', 'bounds': '[1328,978][1553,1016]', 'enabled': 'true'}
+{'id': 'memory-empty-hint', 'text': '从一个好奇的问题开始。', 'type': 'Text', 'bounds': '[1308,1040][1572,1080]', 'enabled': 'true'}
+{'id': 'memory-empty-action', 'text': '沿河开始一段漫游', 'type': 'Button', 'bounds': '[712,1184][2168,1268]', 'enabled': 'true'}
+{'id': 'profile-entry', 'text': '', 'type': 'Button', 'bounds': '[2728,1780][2848,1892]', 'enabled': 'true'}
+{'id': 'profile-entry-label', 'text': '我的', 'type': 'Text', 'bounds': '[2764,1848][2812,1876]', 'enabled': 'true'}

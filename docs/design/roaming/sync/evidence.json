@@ -1,0 +1,166 @@
+{
+  "scope": "真实同账号HTTPS A→B→A定向验证",
+  "date": "2026-10-23",
+  "deviceA": {
+    "type": "phone",
+    "target": "127.0.0.1:5555",
+    "api": 26
+  },
+  "deviceB": {
+    "type": "tablet",
+    "target": "127.0.0.1:5557",
+    "api": 26,
+    "resolution": [
+      2880,
+      1920
+    ]
+  },
+  "checks": {
+    "initialBExactlyReceivedA": true,
+    "retryBNoteAndProgressExactlyRetained": true,
+    "retryBCheckpointSameBody": true,
+    "originalABeforeResumeStillOriginal": true,
+    "BEditedSameNoteId": true,
+    "BChangedBodyAndVersion": true,
+    "BFrozenContextUnchanged": true,
+    "BRetainedOriginalProgress": true,
+    "BCompletedThreeClues": true,
+    "AReturnExactlyReceivedB": true
+  },
+  "artifactPolicy": {
+    "originalBytesPreserved": true,
+    "credentialPageNodesFound": 0,
+    "visualPrivacyReview": "8张测试原图及1张复阅原图均已实际查看，无账号或凭据",
+    "rawIdentityOrHapPublished": false
+  },
+  "files": [
+    {
+      "path": "phone-a/a-confirmed.json",
+      "bytes": 81157,
+      "sha256": "1DBA62D61FCA78003E4768CF23A78E69C7BB30674374DA93EE21F8E067C97056",
+      "appPackage": "M11",
+      "testPackage": "T11"
+    },
+    {
+      "path": "phone-a/a-confirmed.png",
+      "bytes": 396740,
+      "sha256": "F2F843A57AE73545A438EC77F832966175FB299717F274103210B615417E618C",
+      "appPackage": "M11",
+      "testPackage": "T11"
+    },
+    {
+      "path": "phone-a/a-saved.json",
+      "bytes": 71602,
+      "sha256": "28EB1765F037D8BEA1EBB7DF78655EA92D30D5549A66CAEC35871C741B79D0B2",
+      "appPackage": "M11",
+      "testPackage": "T11"
+    },
+    {
+      "path": "phone-a/a-saved.png",
+      "bytes": 342142,
+      "sha256": "CBBBD38AD8DC3BC97FA935E29D7CA895E2E4FBCB2C5AAA64C1E926AE1D524803",
+      "appPackage": "M11",
+      "testPackage": "T11"
+    },
+    {
+      "path": "tablet-b/b-confirmed.json",
+      "bytes": 109559,
+      "sha256": "06B1770FF5E020B173A565822E60F03EC84E24AEC041876DD403B9FC0CA2210D",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-confirmed.png",
+      "bytes": 320197,
+      "sha256": "75C9267AE767EEC116BC5D5A02AE812EBE5E91B2EBCF212E6465227144B51ED2",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-edited-fulltext.json",
+      "bytes": 128113,
+      "sha256": "EFADBFBA08225F6B6FD7C2DC059F51AB4CC60FB1875137FDD6DA29E5AED378D5",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-edited-fulltext.png",
+      "bytes": 687493,
+      "sha256": "A686A2C81D0F4DFDE5D9FFBDBD1760D91D05B183A7F9926CE9D1732BD7FDC061",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-original-fulltext.json",
+      "bytes": 128023,
+      "sha256": "BCAC6201F5A4ACC88F54720F8749D4F2E496C7092DC188DA398EFADC36482A32",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-original-fulltext.png",
+      "bytes": 684226,
+      "sha256": "C87939E178F2B623FE046EB714851A664CA24674AF8DBAFECE615F567BBBF22A",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-resume-second-clue.json",
+      "bytes": 163909,
+      "sha256": "0D36E463522EB71D63B1A8A7214E2051AEAFE84C8C4043DBED82683EE11DFB7E",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "tablet-b/b-resume-second-clue.png",
+      "bytes": 747150,
+      "sha256": "D8C659DF5A9083952593EC9C905D377D2B578F3C4BE236CB711DC7251E93DBBE",
+      "appPackage": "M12",
+      "testPackage": "T13"
+    },
+    {
+      "path": "phone-a-return/a-return-completed-chapter.json",
+      "bytes": 82094,
+      "sha256": "393C651874CC3908B66BC1CE0459DC7D62471F2B21163B024A44488536E27614",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "phone-a-return/a-return-completed-chapter.png",
+      "bytes": 402720,
+      "sha256": "0C708F66C41165E9C1EF2AACD73CFCDF4F5A91D12752A5E2CC6B1A99999C8577",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "phone-a-return/a-return-fulltext.json",
+      "bytes": 44148,
+      "sha256": "5A0B23BA3637B804EDA3AC0EF32B59A344B6D4BBC6629A759A4FB1C491C422DD",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "phone-a-return/a-return-fulltext.png",
+      "bytes": 390951,
+      "sha256": "C47FD6C5681F37ED9DE543D638EAEDC910E654D68A5B7C1E0FE599EC02B8BADD",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "phone-a-return/a-return-full-body-review.png",
+      "bytes": 449302,
+      "sha256": "D9EAC251DA7980B0E5B364EC9950CD98418DFBF22D4D09AFD22560767F6D757B",
+      "appPackage": "M12",
+      "testPackage": null,
+      "kind": "Hypium完成后的原A只读原生复阅；不是新设备用例"
+    },
+    {
+      "path": "phone-a-return/a-return-full-body-review.nodes.json",
+      "bytes": 22483,
+      "sha256": "933BC90775D98EBC0D920CBB48B377D365F5E8BD5A13A8AFF92A0F4A3750091E",
+      "appPackage": "M12",
+      "testPackage": null,
+      "kind": "Hypium完成后的原A只读原生复阅；不是新设备用例"
+    }
+  ]
+}

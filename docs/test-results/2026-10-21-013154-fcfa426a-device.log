@@ -1,0 +1,36 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=ContentMemoryTest
+
+
+OHOS_REPORT_STATUS: class=ContentMemoryTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=ContentMemoryTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones, expect  equals 画廊，已选择
+OHOS_REPORT_STATUS: test=ai_empty_write_returns_visible_gallery_manage_and_batch_tombstones
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=187526
+
+
+OHOS_REPORT_STATUS: class=ContentMemoryTest
+OHOS_REPORT_STATUS: suiteconsuming=187526
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 1, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=187526
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

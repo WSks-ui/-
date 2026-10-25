@@ -1,0 +1,14 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=JourneyScrollTest
+
+
+OHOS_REPORT_STATUS: class=JourneyScrollTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_records_replay_edit_and_delete_update_scroll
+OHOS_REPORT_STATUS_CODE: 1
+
+Timeout: user test is not completed within the specified time.

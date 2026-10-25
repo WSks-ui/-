@@ -1,0 +1,36 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=RoamingTabletTest
+
+
+OHOS_REPORT_STATUS: class=RoamingTabletTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_excerpt_drag_survives_portrait_and_landscape_before_save
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RoamingTabletTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in native_excerpt_drag_survives_portrait_and_landscape_before_save, ROAMING_TARGET_NOT_FOUND:roam-writing-column
+OHOS_REPORT_STATUS: test=native_excerpt_drag_survives_portrait_and_landscape_before_save
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=77842
+
+
+OHOS_REPORT_STATUS: class=RoamingTabletTest
+OHOS_REPORT_STATUS: suiteconsuming=77842
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 1, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=77842
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

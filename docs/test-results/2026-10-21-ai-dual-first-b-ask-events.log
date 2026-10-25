@@ -1,0 +1,5 @@
+10-21 02:27:53.337 17865 17865 I A03d00/JSAPP: AI_MEMORY_SYNC_PHASE_FAILED:b-ask:56301
+10-21 02:27:55.650 17865 17865 I A03d00/JSAPP: [Hypium][errorDetail]Error: AI_MEMORY_SYNC_DETAIL_TARGET:engine-angle:memory-ai-replay:UI_SCROLL_FAILED(detail-scroll): UI_DETAIL_SCROLL_TARGET_NOT_EXPOSED
+10-21 02:27:55.650 17865 17865 I A03d00/JSAPP: OHOS_REPORT_STATUS: stream=Error in device_b_resume_and_ask_without_mutating_memory, AI_MEMORY_SYNC_DETAIL_TARGET:engine-angle:memory-ai-replay:UI_SCROLL_FAILED(detail-scroll): UI_DETAIL_SCROLL_TARGET_NOT_EXPOSED
+10-21 02:27:55.650 17865 17865 I C01330/Delegator: [ability_delegator.cpp397]message: OHOS_REPORT_STATUS: stream=Error in device_b_resume_and_ask_without_mutating_memory, AI_MEMORY_SYNC_DETAIL_TARGET:engine-angle:memory-ai-replay:UI_SCROLL_FAILED(detail-scroll): UI_DETAIL_SCROLL_TARGET_NOT_EXPOSED
+10-21 02:27:55.650 19212 19214 I C01303/AATool: [test_observer.cpp43]enter, msg : OHOS_REPORT_STATUS: stream=Error in device_b_resume_and_ask_without_mutating_memory, AI_MEMORY_SYNC_DETAIL_TARGET:engine-angle:memory-ai-replay:UI_SCROLL_FAILED(detail-scroll): UI_DETAIL_SCROLL_TARGET_NOT_EXPOSED

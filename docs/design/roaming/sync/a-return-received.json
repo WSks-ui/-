@@ -1,0 +1,104 @@
+{
+  "phase": "a-return-received",
+  "appPackage": "M12",
+  "testPackage": "T14",
+  "records": {
+    "note": {
+      "id": "note:79ea34fa-f12d-49fb-8c83-dabe1f901d5c:1792697740299",
+      "kind": "note",
+      "siteId": "roam-kf-crossing",
+      "body": "另一端继续读开封：街河的交会仍在，时间的层次和点亮的灯又添了新的理解。",
+      "tags": [
+        "漫游跨端roam1023_ba246c49",
+        "开封",
+        "续读"
+      ],
+      "updatedAt": 1792698914646,
+      "deviceId": "4a308007-42e0-404b-80fd-6452f11674db",
+      "deleted": false,
+      "stampType": "河洛拾遗",
+      "paperTheme": "jade",
+      "quotedPoemOrFact": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+      "roamingContext": {
+        "version": 1,
+        "chapterId": "roam-kf-night",
+        "clueId": "roam-kf-crossing",
+        "sceneRevision": 1,
+        "choiceId": "kf-street-river",
+        "excerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+        "title": "点亮汴京的一夜 · 找到街与河的交会",
+        "city": "开封",
+        "sources": [
+          {
+            "id": "roam-source-zhouqiao",
+            "title": "中国历史研究院·州桥及附近汴河遗址资料",
+            "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+            "accessedAt": "2026-10-23"
+          }
+        ],
+        "contentRevision": 1
+      }
+    },
+    "context": {
+      "version": 1,
+      "chapterId": "roam-kf-night",
+      "clueId": "roam-kf-crossing",
+      "sceneRevision": 1,
+      "choiceId": "kf-street-river",
+      "excerpt": "州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。",
+      "title": "点亮汴京的一夜 · 找到街与河的交会",
+      "city": "开封",
+      "sources": [
+        {
+          "id": "roam-source-zhouqiao",
+          "title": "中国历史研究院·州桥及附近汴河遗址资料",
+          "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+          "accessedAt": "2026-10-23"
+        }
+      ],
+      "contentRevision": 1
+    },
+    "progress": [
+      {
+        "id": "progress:roam:v1:roam-kf-night:roam-kf-crossing",
+        "kind": "progress",
+        "siteId": "roam-kf-night",
+        "body": "{\"version\":1,\"chapterId\":\"roam-kf-night\",\"clueId\":\"roam-kf-crossing\",\"choiceId\":\"kf-street-river\",\"completed\":true}",
+        "tags": [],
+        "updatedAt": 1792697701695,
+        "deviceId": "79ea34fa-f12d-49fb-8c83-dabe1f901d5c",
+        "deleted": false
+      },
+      {
+        "id": "progress:roam:v1:roam-kf-night:roam-kf-lantern",
+        "kind": "progress",
+        "siteId": "roam-kf-night",
+        "body": "{\"version\":1,\"chapterId\":\"roam-kf-night\",\"clueId\":\"roam-kf-lantern\",\"choiceId\":\"kf-river-safe\",\"completed\":true}",
+        "tags": [],
+        "updatedAt": 1792698863286,
+        "deviceId": "4a308007-42e0-404b-80fd-6452f11674db",
+        "deleted": false
+      },
+      {
+        "id": "progress:roam:v1:roam-kf-night:roam-kf-layers",
+        "kind": "progress",
+        "siteId": "roam-kf-night",
+        "body": "{\"version\":1,\"chapterId\":\"roam-kf-night\",\"clueId\":\"roam-kf-layers\",\"choiceId\":\"kf-bridge-layers\",\"completed\":true}",
+        "tags": [],
+        "updatedAt": 1792698844833,
+        "deviceId": "4a308007-42e0-404b-80fd-6452f11674db",
+        "deleted": false
+      }
+    ],
+    "checkpoint": {
+      "id": "progress:roaming-position:v1",
+      "kind": "progress",
+      "siteId": "roam-kf-night",
+      "body": "{\"version\":1,\"chapterId\":\"roam-kf-night\",\"clueId\":\"roam-kf-lantern\"}",
+      "tags": [],
+      "updatedAt": 1792698863287,
+      "deviceId": "4a308007-42e0-404b-80fd-6452f11674db",
+      "deleted": false
+    }
+  }
+}

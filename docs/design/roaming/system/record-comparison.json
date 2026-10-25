@@ -1,0 +1,28 @@
+{
+  "kind": "Read-only comparison of the exact independent test Preferences file",
+  "noteId": "note:94729185-465e-4ad5-b7dc-e6303ce2307e:1792693657021",
+  "shareCancel": {
+    "wholePreferencesByteIdentical": true,
+    "bytes": 3374,
+    "sha256": "56E54D751A7A6B254B878188C92BB6FD272F136EE33D036B09148BEBE7D055F8"
+  },
+  "deleteOnlyThisNote": {
+    "tombstoneRetained": true,
+    "preservedNoteFields": [
+      "id",
+      "kind",
+      "siteId",
+      "body",
+      "tags",
+      "deviceId",
+      "stampType",
+      "paperTheme",
+      "quotedPoemOrFact",
+      "roamingContext"
+    ],
+    "unchangedOtherRecords": 1,
+    "remainingActiveNotes": 0,
+    "beforeUpdatedAt": 1792693657021,
+    "afterUpdatedAt": 1792694113233
+  }
+}

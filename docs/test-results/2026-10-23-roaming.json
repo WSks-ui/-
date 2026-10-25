@@ -1,0 +1,777 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "project": "云河纪五城文化轻探索与个人记忆",
+  "finalAppPackage": "M12",
+  "latestTestPackage": "T15",
+  "workingTreeCommitted": false,
+  "sourceSnapshot": {
+    "path": "docs/test-results/2026-10-23-roaming-source.json",
+    "bytes": 29949,
+    "sha256": "E78AA073A83C9A028EDE511CF429D3C76A83074466F8EA10A92ADEA3F80E73D8"
+  },
+  "packages": {
+    "M10": {
+      "bytes": 7618873,
+      "sha256": "597FF85659599EDB39C378C1DBAB4EFBFF76B2FD5166E646A67DFECB83F4D30F",
+      "kind": "main",
+      "publishedHap": false
+    },
+    "M11": {
+      "bytes": 7625477,
+      "sha256": "E5C170AE1393E15DD2D4A77F638E583BCE5E23FADB4405A56FC6EE03499A5338",
+      "kind": "main",
+      "publishedHap": false
+    },
+    "M12": {
+      "bytes": 7629427,
+      "sha256": "FD6E7B3C89A155528FC9166B012AF96DB029DFE8AA379EC4ED669FBECD517094",
+      "kind": "main",
+      "publishedHap": false
+    },
+    "M7": {
+      "bytes": 7610653,
+      "sha256": "109D6A94FEBABBCFC6C4E4CF7ED14CD1221E839C7D31CFAA11C74EEBA2EC4113",
+      "kind": "main",
+      "publishedHap": false
+    },
+    "T15": {
+      "bytes": 7010799,
+      "sha256": "62730D071E2AAABC53F74D91D8C73F7A1689921B9A6365A9DE4D15CBAD0A2558",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T10": {
+      "bytes": 7010748,
+      "sha256": "7EAC6C1F72F530D5D54750073A39BB2AA95A4BB45AF3C824E8AACE87F29355C2",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T11": {
+      "bytes": 7011271,
+      "sha256": "3E4A471529E95EAC157D22D69BA79760BF1C86AB6DF042672CC8908648A7DBAA",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T12": {
+      "bytes": 7011271,
+      "sha256": "80414E8A33898028010BA17D50EA1EB5DECB58303A57B6B1796037D87FDF0E32",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T13": {
+      "bytes": 7011738,
+      "sha256": "64E0750E6983EFDD7DFD01BF1EBAB167EE23F5F7B9561E834C67DB326D4D4E88",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T14": {
+      "bytes": 7010525,
+      "sha256": "22AB32F72DDAF2DD5203026245212471F4882C71D6BFBADDCD8C03BCC3EE5F58",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T4": {
+      "bytes": 6884925,
+      "sha256": "3E8522E6555DF8B404E0F24C055703D06DD4A702C0B5B35847B472CEF7992BE5",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T8": {
+      "bytes": 6887198,
+      "sha256": "10D73AD406139F9B37DB723455466F6264FB84412BBF422FE45BBF5AD2BCCAB9",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "T9": {
+      "bytes": 7008942,
+      "sha256": "459E17E9DC8980556647A4D84637D23FEDF4078D1BACAF1D70ADD12D92F49039",
+      "kind": "ohosTest",
+      "publishedHap": false
+    },
+    "M5": {
+      "bytes": 7582788,
+      "sha256": "E710E8E33EBCA026B3D503DD681A05FAABA89CE615B75664469F67C498A6A3B6",
+      "kind": "main",
+      "source": "docs/design/roaming/system/evidence.json",
+      "publishedHap": false
+    },
+    "M6": {
+      "bytes": 7610407,
+      "sha256": "16D78945095B48D5DD4D718223D328D039048B2A4D6E02EB147DDC4EB816A053",
+      "kind": "main",
+      "source": "docs/design/roaming/system/evidence.json",
+      "publishedHap": false
+    },
+    "M8": {
+      "bytes": 7613206,
+      "sha256": "81165C3C3C68FD8068E9D24EB83EE3CC9CD8B748F2B49AF6CAED2D0561D44963",
+      "kind": "main",
+      "source": "docs/design/roaming/system/evidence.json",
+      "publishedHap": false
+    }
+  },
+  "localVerification": {
+    "testScript": "tools/test.ps1",
+    "pass": 141,
+    "failure": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "reportParserPass": 9,
+    "separateEarlierContractPass": 123,
+    "overlappingCountsAdded": false,
+    "logs": {
+      "local": {
+        "publicCopy": {
+          "path": "docs/test-results/2026-10-23-roaming-local.log",
+          "bytes": 13233,
+          "sha256": "FAFC1AB38AF556BA809B284572F4CBABB050C56E0426EE79497FF260B89E3689"
+        },
+        "originalPrivateSha256": "FAFC1AB38AF556BA809B284572F4CBABB050C56E0426EE79497FF260B89E3689",
+        "publicCopyNormalized": "只替换本机工作区/用户绝对前缀，原始日志仍在本机"
+      },
+      "mainBuild": {
+        "publicCopy": {
+          "path": "docs/test-results/2026-10-23-roaming-main-m12-build.log",
+          "bytes": 12215,
+          "sha256": "A978FDD6E5F0590D8B81E74DC54615F6DD9E3C615497E34EDA20E807439E13AA"
+        },
+        "originalPrivateSha256": "3B75AE025CDCDA17D61B42634AD109AC1388F6C1CF926EA23861F1A9404486CE",
+        "publicCopyNormalized": "只替换本机工作区/用户绝对前缀，原始日志仍在本机"
+      },
+      "testBuild": {
+        "publicCopy": {
+          "path": "docs/test-results/2026-10-23-roaming-test-t15-build.log",
+          "bytes": 95285,
+          "sha256": "69A73E430C8F838257B0FC103246D472ED70655B54AD6E560F7897CA3AAFE03C"
+        },
+        "originalPrivateSha256": "F45C9DD7E769A8D20E2846428E941041190C2AB81371F609BAE082634EFC1872",
+        "publicCopyNormalized": "只替换本机工作区/用户绝对前缀，原始日志仍在本机"
+      }
+    }
+  },
+  "builds": {
+    "main": "BUILD SUCCESSFUL",
+    "test": "BUILD SUCCESSFUL",
+    "warningsRetained": true,
+    "signature": "现有debug/unsigned模拟器包；未覆盖用户签名配置，不宣称任意实机可安装"
+  },
+  "devices": [
+    {
+      "id": "127.0.0.1:5555",
+      "name": "YunhejiSyncB",
+      "type": "phone",
+      "api": 26
+    },
+    {
+      "id": "127.0.0.1:5557",
+      "name": "YunhejiRoamingPad",
+      "type": "tablet",
+      "api": 26,
+      "resolution": [
+        2880,
+        1920
+      ],
+      "density": 320
+    }
+  ],
+  "deviceReports": [
+    {
+      "path": "docs/test-results/2026-10-23-020820-55d612d0-device.log",
+      "bytes": 4783,
+      "sha256": "5B34528F9A666D64D6BE2D0332A0E4BC43FE9CB91EABD1D93F230BF509D6AF77",
+      "appPackage": null,
+      "testPackage": null,
+      "packageBoundaryNote": "早期原包未在本清单重建精确别名，不推定为最终包",
+      "device": "phone",
+      "purpose": "早期六例；整份报告Error5",
+      "testNames": [
+        "native_guest_five_city_entries_do_not_auto_complete",
+        "kaifeng_real_three_clues_memory_crud_and_plain_note_preserved",
+        "sanmenxia_real_hotspots_pit_house_and_paper_cut",
+        "luoyang_real_window_poem_and_water_banquet",
+        "zhengzhou_real_gate_poem_and_meeting",
+        "puyang_real_shell_legend_and_fair"
+      ],
+      "counts": {
+        "total": 6,
+        "pass": 1,
+        "failure": 0,
+        "error": 5,
+        "ignore": 0
+      },
+      "elapsedMs": 306333,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-023435-7a9a7e05-device.log",
+      "bytes": 8592,
+      "sha256": "88FCF9C861AFE8A057B3A9E211ACB4A00A613A0F48557B03D2C323A4FAB0130D",
+      "appPackage": "M7",
+      "testPackage": "T4",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "入口子例通过，其余错误保留；不是6/6",
+      "testNames": [
+        "native_guest_five_city_entries_do_not_auto_complete",
+        "kaifeng_real_three_clues_memory_crud_and_plain_note_preserved",
+        "sanmenxia_real_hotspots_pit_house_and_paper_cut",
+        "luoyang_real_window_poem_and_water_banquet",
+        "zhengzhou_real_gate_poem_and_meeting",
+        "puyang_real_shell_legend_and_fair"
+      ],
+      "counts": {
+        "total": 6,
+        "pass": 1,
+        "failure": 0,
+        "error": 5,
+        "ignore": 0
+      },
+      "elapsedMs": 352905,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-024811-cd1fff44-device.log",
+      "bytes": 1207,
+      "sha256": "2D7D0045D48222EA28724BCDA043CC393F3562E3301046BF4213EE9BE5FF2034",
+      "appPackage": null,
+      "testPackage": null,
+      "packageBoundaryNote": "早期原包未在本清单重建精确别名，不推定为最终包",
+      "device": "phone",
+      "purpose": "开封单例失败，旧正文刷新问题修于M10",
+      "testNames": [
+        "kaifeng_real_three_clues_memory_crud_and_plain_note_preserved"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 325713,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-025926-e4e71c7f-device.log",
+      "bytes": 989,
+      "sha256": "6F7764524A4A4F9F957FFFFE9D0F606609E073FA039B262E9D63BE1566EA59F5",
+      "appPackage": "M10",
+      "testPackage": "T8",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "开封三线索+普通笔记+新记忆增删改墓碑",
+      "testNames": [
+        "kaifeng_real_three_clues_memory_crud_and_plain_note_preserved"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 295506,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-031733-a05d3004-device.log",
+      "bytes": 355,
+      "sha256": "A76724604E8AC7C8AD4AC17FA05C1ED8EDD5BB7EC8A9814310F977C045FDD51C",
+      "appPackage": "M11",
+      "testPackage": "T9",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "锁屏启动中断，无完整摘要",
+      "testNames": [
+        "native_excerpt_drag_survives_portrait_and_landscape_before_save"
+      ],
+      "counts": null,
+      "elapsedMs": null,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-031951-3fa6e759-device.log",
+      "bytes": 961,
+      "sha256": "F4C04F8FB5049A5A989E8501DAD84C3AA114E44759E0907712C1538B5EF9A82E",
+      "appPackage": "M11",
+      "testPackage": "T9",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "三门峡三条真实操作",
+      "testNames": [
+        "sanmenxia_real_hotspots_pit_house_and_paper_cut"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 153682,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-032333-d47f032d-device.log",
+      "bytes": 951,
+      "sha256": "9A8C511C208A2CB462B20DC155D32F657EC8262B7910A5BAEBF5604FD9FB2E1E",
+      "appPackage": "M11",
+      "testPackage": "T9",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "洛阳三条真实操作",
+      "testNames": [
+        "luoyang_real_window_poem_and_water_banquet"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 155725,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-032542-1769855c-device.log",
+      "bytes": 1335,
+      "sha256": "F8ECCAB171F745FA101BA3C1CD090BE2D90659C45B509CE15E00095E720E6019",
+      "appPackage": "M11",
+      "testPackage": "T9",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "摘录前置观察未完成的测试错误",
+      "testNames": [
+        "native_excerpt_drag_survives_portrait_and_landscape_before_save"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 30011,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-032642-f1270743-device.log",
+      "bytes": 939,
+      "sha256": "936838B2827C41133B0E457469ADEA96B41B868A46336195F962BCF6B04AEAD8",
+      "appPackage": "M11",
+      "testPackage": "T9",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "郑州三条真实操作",
+      "testNames": [
+        "zhengzhou_real_gate_poem_and_meeting"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 156440,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-032803-1f721c4b-device.log",
+      "bytes": 1235,
+      "sha256": "3128186D954F94755EB2A36B40DE483BD9255C1A3394CCC575BBCC18139A8CBF",
+      "appPackage": "M11",
+      "testPackage": "T10",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "摘录已拖入，键盘挡住后续标签",
+      "testNames": [
+        "native_excerpt_drag_survives_portrait_and_landscape_before_save"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 77842,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-032958-f5b393d9-device.log",
+      "bytes": 933,
+      "sha256": "9E636D08F310F2C45DAB916047207327C26655795F316CDF824D35AE81907947",
+      "appPackage": "M11",
+      "testPackage": "T10",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "濮阳三条真实操作",
+      "testNames": [
+        "puyang_real_shell_legend_and_fair"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 154821,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-033111-9a3c9460-device.log",
+      "bytes": 1017,
+      "sha256": "F70C36ED11096EEFC87911CCE114FA0DBA598AC69C40DDCA0CDE9659D9BB4BEC",
+      "appPackage": "M11",
+      "testPackage": "T11",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "跨Text选摘/UDMF原生拖放/真实旋转/保存",
+      "testNames": [
+        "native_excerpt_drag_survives_portrait_and_landscape_before_save"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 113514,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-033344-faf41c43-device.log",
+      "bytes": 1260,
+      "sha256": "103036D06BA36AD8053EC1E213F1D70396DD29E5FE3ECF96C33F049A86231527",
+      "appPackage": "M11",
+      "testPackage": "T11",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "目录首轮Back退出；产品M12修复",
+      "testNames": [
+        "native_memory_directory_keeps_selected_note_after_orientation_changes"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 74376,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-033345-efb6a745-device.log",
+      "bytes": 971,
+      "sha256": "E4F047CE28F23843CD7A79BF22E7C6589259F2B5A8DB0869236B89D95A89DCC1",
+      "appPackage": "M11",
+      "testPackage": "T11",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "A真实注册保存/一条进度/位置/服务器确认",
+      "testNames": [
+        "device_a_register_save_memory_and_first_clue"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 146497,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-034327-a4e2774e-device.log",
+      "bytes": 1029,
+      "sha256": "30105426DDEC08DC995541998C0A588EA86079FD7B579A59A69317C210ACB10D",
+      "appPackage": "M12",
+      "testPackage": "T12",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "两篇记忆目录切换/旋转/正文出处准确",
+      "testNames": [
+        "native_memory_directory_keeps_selected_note_after_orientation_changes"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 209582,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-034753-5376528e-device.log",
+      "bytes": 1194,
+      "sha256": "F775B443DBA665D1B53C2DD33A062F57F7F6D44FB4F4CA6725116BBADCD091A0",
+      "appPackage": "M12",
+      "testPackage": "T12",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "B已接收，但后续测试转场定位失败",
+      "testNames": [
+        "device_b_receive_continue_and_edit_same_memory"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 50812,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-035302-a6ad74dc-device.log",
+      "bytes": 975,
+      "sha256": "75945CF5FBE6E11A64CF8DF7BD7FF8CFA1CC56CD322E75CD6062CEAD955A690B",
+      "appPackage": "M12",
+      "testPackage": "T13",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "B接收并继续三条/编辑同篇/服务器确认",
+      "testNames": [
+        "device_b_receive_continue_and_edit_same_memory"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 151558,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-035906-f35194c2-device.log",
+      "bytes": 1228,
+      "sha256": "8EB3D3695C4AF31AC4AF266259474780675794DFAB8D21EB586F3297788DF4C4",
+      "appPackage": "M12",
+      "testPackage": "T13",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "原A启动前Context读取错误，原库仍在",
+      "testNames": [
+        "device_a_receive_new_version_with_all_progress_and_frozen_context"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 599,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-040257-eac09c66-device.log",
+      "bytes": 1010,
+      "sha256": "0BD9802CC04E92EA703F5C88B96954F416165F4A19248C083035BC0C932E348E",
+      "appPackage": "M12",
+      "testPackage": "T14",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "原A收到B完整新版本/三条进度/位置/阅读不改写",
+      "testNames": [
+        "device_a_receive_new_version_with_all_progress_and_frozen_context"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 81620,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-040454-b217a99a-device.log",
+      "bytes": 1038,
+      "sha256": "91F376BE237E0842EB97BCEB0A70F1A09AE17F6F800F8A103E894D43D25FE792",
+      "appPackage": "M12",
+      "testPackage": "T14",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "离线返回/仅登录/返回原第二条/游客隔离",
+      "testNames": [
+        "current_clue_returns_after_offline_cancel_and_login_only_keeps_guest_isolated"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 95405,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-040848-d690452a-device.log",
+      "bytes": 1266,
+      "sha256": "55A4D3FC28DF9D02F4849F7920270AF81793B8785C3C6F45ADB36717AF70EBAC",
+      "appPackage": "M12",
+      "testPackage": "T14",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "复制专项键盘挡标签的测试失败",
+      "testNames": [
+        "copy_roaming_keeps_guest_source_and_restores_second_clue_with_same_memory"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 0,
+        "failure": 0,
+        "error": 1,
+        "ignore": 0
+      },
+      "elapsedMs": 54027,
+      "status": "retained-incomplete-or-failed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-041142-2c32989f-device.log",
+      "bytes": 1033,
+      "sha256": "ED8871668EBDCEDDFFC8DCD1CE24BA75878697CB4B8B3697840545E226DC6A29",
+      "appPackage": "M12",
+      "testPackage": "T15",
+      "packageBoundaryNote": null,
+      "device": "tablet",
+      "purpose": "明确复制漫游/同记忆版本/游客原文不变/返回原第二条",
+      "testNames": [
+        "copy_roaming_keeps_guest_source_and_restores_second_clue_with_same_memory"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 116259,
+      "status": "passed"
+    },
+    {
+      "path": "docs/test-results/2026-10-23-042159-b485408f-device.log",
+      "bytes": 969,
+      "sha256": "8EECFAB1A67B3C9D756207E5D5182346FD141CFCE72C13B1CD74C3019A1ED625",
+      "appPackage": "M12",
+      "testPackage": "T15",
+      "packageBoundaryNote": null,
+      "device": "phone",
+      "purpose": "最终包独立五城游客入口/原目标/无自动通关或记忆",
+      "testNames": [
+        "native_guest_five_city_entries_do_not_auto_complete"
+      ],
+      "counts": {
+        "total": 1,
+        "pass": 1,
+        "failure": 0,
+        "error": 0,
+        "ignore": 0
+      },
+      "elapsedMs": 113555,
+      "status": "passed"
+    }
+  ],
+  "singleFinalPackageSuiteClaimed": false,
+  "nativeDirectedChecks": {
+    "hypiumCounts": false,
+    "systemEvidence": "docs/design/roaming/system/evidence.json",
+    "systemRecords": 11,
+    "passedSystemRecords": 10,
+    "retainedFailedSystemRecords": 1,
+    "finalGalleryEvidence": "docs/design/roaming/overview/evidence.json"
+  },
+  "https": {
+    "transport": "自建账号HTTPS，本机服务+HDC反向端口",
+    "comparison": "docs/design/roaming/sync/comparison.json",
+    "checks": 10,
+    "allTrue": true,
+    "sameOriginalAReturned": true,
+    "huaweiAccountOrTrustedNativeTransport": false
+  },
+  "offlineScope": "四城12条与完整开封演示在phone18443任务服务不可达时完成；没有整机网络断开证明",
+  "demo": {
+    "appPackage": "M12",
+    "result": "docs/design/roaming/demo/result.json",
+    "actualHdcCommands": 383,
+    "status": "completed",
+    "twoDeviceSyncInDemo": false,
+    "humanDurationCalibrated": false
+  },
+  "evidenceIndexes": [
+    {
+      "path": "docs/design/roaming/demo/evidence.json",
+      "bytes": 10308,
+      "sha256": "9E8A3D6079D16C98E3B13E9C37676DDFC1DE4AB84609D01B795C3959A1E74418"
+    },
+    {
+      "path": "docs/design/roaming/four-cities/evidence.json",
+      "bytes": 22225,
+      "sha256": "09638021D8557AE0898E5F0BAD1E8DD1D201C517A74C83312AF8369F79F1E0E7"
+    },
+    {
+      "path": "docs/design/roaming/login/evidence.json",
+      "bytes": 4781,
+      "sha256": "9AE9266892B8E1CC80275A6B81B33732BEBBEB9F454225988F45AD02CC01E1E7"
+    },
+    {
+      "path": "docs/design/roaming/overview/evidence.json",
+      "bytes": 1964,
+      "sha256": "0B1DB82284D08609CFFD8190FCE154F6E2EBA9073DB43949CC36699C264CBE23"
+    },
+    {
+      "path": "docs/design/roaming/sync/evidence.json",
+      "bytes": 5340,
+      "sha256": "238F426262567C7DCE8940ABD22944D6D82BED212B42CB059A0924849D9E5CCB"
+    },
+    {
+      "path": "docs/design/roaming/system/evidence.json",
+      "bytes": 19431,
+      "sha256": "13BBADDB5E6786B3D5C4E50121BA94F558A5C6130F15DB7A405F5A45C2A96A4C"
+    },
+    {
+      "path": "docs/design/roaming/tablet/evidence.json",
+      "bytes": 62295,
+      "sha256": "BA070372597A8220817FE19DF3ABD36043E5F1F06D235D6921EEB5FFBF3B6839"
+    }
+  ],
+  "preserved": [
+    "schema v1",
+    "old22 IDs",
+    "timestamps",
+    "decorations",
+    "snapshot3DPose semantics",
+    "AI frozen evidence",
+    "tombstones",
+    "formal account isolation"
+  ],
+  "notCompletedOrExcluded": [
+    "华为账号",
+    "鸿蒙原生可信跨端和系统应用接续",
+    "完整文件备份恢复",
+    "云部署（本轮排除）",
+    "物理设备验收（本轮排除）",
+    "真人4–6分钟校准",
+    "正式文化校审"
+  ],
+  "delivery": {
+    "materials": "由最终materials-verification与现场包清单单独绑定，避免循环哈希",
+    "testHapOrCredentialsIncluded": false,
+    "oldMaterialsPreserved": true
+  }
+}

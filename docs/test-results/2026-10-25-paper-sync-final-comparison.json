@@ -1,0 +1,49 @@
+{
+  "result": "PASS",
+  "method": "完整220字符HiLog分片还原、JSON深比较、实际mask与逻辑版本核对",
+  "receivedWorkExactly": true,
+  "continuedWorkChanged": true,
+  "originalDeviceReceivedExactNewWork": true,
+  "frozenNoteUnchangedInAllFourPhases": true,
+  "noteId": "note:b9318934-ca82-4484-aaed-9daf0a0bdf12:1792924921425",
+  "workId": "progress:paper-journey:v1:paper-kf",
+  "sourceCount": 3,
+  "comparedNoteFields": [
+    "body",
+    "deleted",
+    "deviceId",
+    "id",
+    "kind",
+    "paperContext",
+    "paperTheme",
+    "siteId",
+    "stampType",
+    "tags",
+    "updatedAt"
+  ],
+  "frozenNoteSha256": "7858845A892CBFD86343E3C9B05B5103586AEBA244351896D5557A15D6151E0D",
+  "originalWorkSha256": "13FC389FEC17DC6F2B6F8BD2A8D32EA484C3311C125BDAFCAFBA7BF2BA43E061",
+  "continuedWorkSha256": "EAD193981EC45B00EC2BA7A883C718869FEF35FB8954C2E6B92A2A2FF795486E",
+  "phases": [
+    {
+      "phase": "a-saved",
+      "workSha256": "13FC389FEC17DC6F2B6F8BD2A8D32EA484C3311C125BDAFCAFBA7BF2BA43E061",
+      "noteSha256": "7858845A892CBFD86343E3C9B05B5103586AEBA244351896D5557A15D6151E0D"
+    },
+    {
+      "phase": "b-received",
+      "workSha256": "13FC389FEC17DC6F2B6F8BD2A8D32EA484C3311C125BDAFCAFBA7BF2BA43E061",
+      "noteSha256": "7858845A892CBFD86343E3C9B05B5103586AEBA244351896D5557A15D6151E0D"
+    },
+    {
+      "phase": "b-continued",
+      "workSha256": "EAD193981EC45B00EC2BA7A883C718869FEF35FB8954C2E6B92A2A2FF795486E",
+      "noteSha256": "7858845A892CBFD86343E3C9B05B5103586AEBA244351896D5557A15D6151E0D"
+    },
+    {
+      "phase": "a-return",
+      "workSha256": "EAD193981EC45B00EC2BA7A883C718869FEF35FB8954C2E6B92A2A2FF795486E",
+      "noteSha256": "7858845A892CBFD86343E3C9B05B5103586AEBA244351896D5557A15D6151E0D"
+    }
+  ]
+}

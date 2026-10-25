@@ -1,0 +1,5 @@
+10-25 19:39:49.448  4488  4488 I A03d00/JSAPP: PAPER_SYSTEM_CARD_ROUTE:{"formId":"178531600","formName":"RoamingMemory","mode":"ability-cold-onCreate","cityId":"paper-kf","noteId":"note:dd7c90ba-2779-4b26-9d76-59f4c9ef2297:1792928286288","testStore":"yunheji_test_ui_1792928259760_paper_native_forms","maskPreserved":true,"frozenNotePreserved":true}
+10-25 19:39:58.449  4488  4488 I A03d00/JSAPP: PAPER_SYSTEM_CARD_ROUTE:{"formId":"193495455","formName":"RoamingContinue","mode":"ability-hot-onNewWant","cityId":"paper-kf","noteId":"note:dd7c90ba-2779-4b26-9d76-59f4c9ef2297:1792928286288","testStore":"yunheji_test_ui_1792928259760_paper_native_forms","maskPreserved":true,"frozenNotePreserved":true}
+10-25 19:40:20.024  4488  4488 I A03d00/JSAPP: PAPER_SYSTEM_STOP_STEP:TERMINATE_ENTRY_ABILITY
+10-25 19:40:20.025  4488  4488 I A03d00/JSAPP: PAPER_SYSTEM_STOP_STEP:TERMINATE_REQUEST_FINISHED
+10-25 19:40:21.847  4488  4488 I A03d00/JSAPP: PAPER_SYSTEM_STOP_STEP:ENTRY_PAGES_GONE:{"absentSamples":3,"attempt":2}

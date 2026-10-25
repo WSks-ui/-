@@ -1,0 +1,2235 @@
+> hvigor [32mUP-TO-DATE :entry:ohosTest@PreBuild...  [39m
+> hvigor [32mFinished :entry:ohosTest@CreateModuleInfo... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GenerateMetadata...  [39m
+> hvigor [32mFinished :entry:ohosTest@ConfigureCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@MergeProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CreateBuildProfile...  [39m
+> hvigor [32mFinished :entry:ohosTest@PreCheckSyscap... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GeneratePkgContextInfo...  [39m
+> hvigor [32mFinished :entry:ohosTest@GeneratePkgSdkInfo... after 2 ms [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessIntegratedHsp... after 1 ms [39m
+> hvigor [32mFinished :entry:ohosTest@BuildNativeWithCmake... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@MakePackInfo...  [39m
+> hvigor [32mFinished :entry:ohosTest@SyscapTransform... after 7 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessProfile...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessRouterMap...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessShareConfig...  [39m
+> hvigor [32mFinished :entry:ohosTest@ProcessStartupConfig... after 9 ms [39m
+> hvigor [32mFinished :entry:ohosTest@BuildNativeWithNinja... after 1 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@GenerateLoaderJson...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@ProcessLibs...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CompileResource...  [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@DoNativeStrip...  [39m
+> hvigor [32mFinished :entry:ohosTest@OhosTestBuildJS... after 2 ms [39m
+> hvigor [32mUP-TO-DATE :entry:ohosTest@CacheNativeLibs...  [39m
+[31m
+FAILURE: Build completed with 1 failure.[31m[39m
+[31m
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task 'ohosTest@OhosTestCompileArkTS'.
+  > Compilation error. See log for more details
+
+[31m* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+[31m[39m
+[31m================================================================================[31m[39m
+
+25 tasks in total: 10 executed, 15 up-to-date
+> hvigor [91mERROR: Failed :entry:ohosTest@OhosTestCompileArkTS... [39m
+> hvigor [33mWARN: 
+[33m1 WARN: [33m[33mArkTS:WARN: For details about ArkTS syntax errors, see FAQs[39m[39m
+[33m2 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:27:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m3 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:28:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m4 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:29:57
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m5 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:61:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m6 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:62:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m7 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:63:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m8 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:74:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m9 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:75:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m10 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/data/AccountWorkspaceStore.ets:76:17
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m11 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ The system capacity of this api 'createMd' is not supported on all devices
+[39m[39m
+[33m12 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m13 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ The system capacity of this api 'update' is not supported on all devices
+[39m[39m
+[33m14 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m15 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ The system capacity of this api 'digest' is not supported on all devices
+[39m[39m
+[33m16 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m17 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:85:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m18 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:90:62
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m19 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/DistributedArchiveChannel.ets:166:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m20 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:54:73
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m21 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:135:80
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m22 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:140:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m23 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:146:118
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m24 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:151:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m25 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:163:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m26 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:166:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m27 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:174:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m28 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:186:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m29 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:188:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m30 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:191:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m31 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:193:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m32 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:200:25
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m33 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m34 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:17:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m35 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:18:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m36 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:20:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m37 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:21:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m38 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:26:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m39 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:33:70
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m40 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:34:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m41 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:35:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m42 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:38:65
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m43 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m44 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:15:71
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m45 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:21:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m46 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:22:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m47 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:27:73
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m48 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:28:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m49 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:29:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m50 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/AccountSyncClient.ets:43:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m51 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/sync/AccountSyncClient.ets:151:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m52 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:24:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m53 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:29:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m54 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:30:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m55 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:31:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m56 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:34:116
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m57 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:35:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m58 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:36:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m59 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:37:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m60 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:38:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m61 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:40:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m62 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:51:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m63 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:57:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m64 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:65:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m65 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:71:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m66 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:78:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m67 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:80:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m68 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AccountSync.test.ets:81:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m69 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:14:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m70 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:21:65
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m71 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:22:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m72 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:23:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m73 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:28:69
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m74 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:30:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m75 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:10:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m76 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:17:16
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m77 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:23:56
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m78 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:24:56
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m79 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:26:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m80 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:28:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m81 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:29:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m82 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/SpatialExperience.test.ets:12:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m83 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/SpatialExperience.test.ets:20:114
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m84 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:15:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m85 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:27:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m86 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:28:64
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m87 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:32:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m88 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:33:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m89 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:34:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m90 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:35:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m91 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:64:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m92 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:65:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m93 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:80:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m94 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:82:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m95 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:91:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m96 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:93:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m97 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:127:62
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m98 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:136:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m99 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:144:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m100 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:145:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m101 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:152:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m102 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:154:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m103 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:155:34
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m104 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:157:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m105 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/EngineExperience.test.ets:161:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m106 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:15:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m107 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:25:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m108 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:29:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m109 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:30:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m110 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:31:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m111 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:32:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m112 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:39:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m113 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:41:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m114 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:55:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m115 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:56:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m116 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:68:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m117 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:71:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m118 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:87:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m119 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:88:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m120 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:89:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m121 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:90:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m122 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:14:64
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m123 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:25:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m124 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:26:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m125 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:35:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m126 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:36:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m127 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:56:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m128 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:57:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m129 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:58:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m130 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:59:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m131 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/CoreContent.test.ets:83:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m132 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:16:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m133 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:17:64
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m134 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:21:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m135 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:22:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m136 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:23:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m137 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:24:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m138 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:38:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m139 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:39:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m140 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:46:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m141 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:49:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m142 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:67:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m143 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:68:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m144 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:69:50
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m145 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:70:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m146 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:96:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m147 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:97:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m148 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:99:82
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m149 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:28:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m150 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:29:64
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m151 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:33:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m152 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:34:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m153 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:35:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m154 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:36:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m155 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:49:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m156 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:51:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m157 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:58:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m158 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:62:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m159 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:77:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m160 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:79:15
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m161 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:88:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m162 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:90:91
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m163 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:95:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m164 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:96:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m165 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:97:50
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m166 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:98:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m167 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:124:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m168 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:125:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m169 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:127:91
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m170 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:19:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m171 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:23:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m172 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:24:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m173 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:25:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m174 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:26:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m175 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:34:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m176 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:38:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m177 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:39:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m178 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:41:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m179 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:42:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m180 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:54:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m181 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:56:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m182 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:63:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m183 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:66:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m184 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:81:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m185 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:89:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m186 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:90:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m187 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:113:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m188 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:115:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m189 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:117:88
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m190 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/HomeExperience.test.ets:131:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m191 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:17:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m192 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:18:64
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m193 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:22:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m194 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:23:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m195 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:24:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m196 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:25:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m197 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:40:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m198 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:41:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m199 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:49:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m200 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:53:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m201 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:57:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m202 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:73:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m203 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:74:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m204 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:77:16
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m205 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:87:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m206 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:88:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m207 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:89:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m208 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:90:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m209 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:95:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m210 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:96:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m211 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:120:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m212 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:53:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m213 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:87:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m214 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:87:55
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m215 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:89:16
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m216 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:93:116
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m217 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:97:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m218 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:98:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m219 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:103:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m220 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:104:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m221 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:106:34
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m222 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:111:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m223 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:139:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m224 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:147:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m225 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:152:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m226 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:153:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m227 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:163:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m228 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:204:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m229 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:208:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m230 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:209:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m231 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:210:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m232 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:211:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m233 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:219:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m234 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:223:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m235 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:224:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m236 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:225:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m237 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:226:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m238 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:237:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m239 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:239:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m240 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:246:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m241 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:249:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m242 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:264:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m243 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:271:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m244 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:272:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m245 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:295:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m246 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:297:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m247 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:299:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m248 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/MemorySync.test.ets:313:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m249 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:30:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m250 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:35:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m251 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:40:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m252 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:41:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m253 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:42:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m254 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:43:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m255 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:55:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m256 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:57:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m257 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:64:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m258 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:67:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m259 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:81:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m260 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:87:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m261 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:88:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m262 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:100:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m263 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:111:98
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m264 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:115:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m265 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:117:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m266 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PageHierarchy.test.ets:15:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m267 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:23:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m268 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:30:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m269 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:35:91
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m270 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:36:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m271 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:37:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m272 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:38:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m273 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/StageFoundation.test.ets:39:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m274 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:9:55
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m275 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:27:89
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m276 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:29:60
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m277 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:41:50
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m278 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:49:63
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m279 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:53:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m280 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:54:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m281 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:55:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m282 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:68:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m283 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:71:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m284 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:72:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m285 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:80:50
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m286 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:83:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m287 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:86:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m288 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:94:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m289 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:96:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m290 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:104:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m291 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:105:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m292 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:106:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m293 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:107:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m294 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:108:81
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m295 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:109:60
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m296 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/ContentMemory.test.ets:110:79
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m297 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:35:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m298 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:66:116
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m299 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:69:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m300 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:69:57
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m301 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:71:8
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m302 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:73:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m303 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:74:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m304 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:76:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m305 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:77:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m306 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:78:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m307 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:80:67
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m308 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:82:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m309 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:104:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m310 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:119:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m311 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:128:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m312 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:130:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m313 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:133:79
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m314 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:169:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m315 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:173:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m316 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:174:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m317 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:175:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m318 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:176:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m319 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:189:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m320 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:191:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m321 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:204:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m322 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:207:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m323 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:220:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m324 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:224:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m325 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:229:80
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m326 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:238:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m327 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:339:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m328 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:351:82
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m329 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:352:81
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m330 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:363:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m331 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:367:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m332 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:566:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m333 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:571:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m334 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:572:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m335 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:600:25
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m336 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:140:50
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m337 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:143:94
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m338 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:145:56
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m339 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:149:14
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m340 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:151:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m341 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:152:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m342 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:166:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m343 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:168:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m344 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:189:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m345 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:195:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m346 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:200:96
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m347 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:204:63
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m348 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:205:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m349 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:206:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m350 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:208:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m351 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:21:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m352 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:26:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m353 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:30:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m354 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:31:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m355 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:32:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m356 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:38:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m357 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:54:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m358 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:55:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m359 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:58:18
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m360 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:59:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m361 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:65:61
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m362 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:69:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m363 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:70:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m364 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:77:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m365 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:80:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m366 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:84:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m367 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:85:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m368 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:97:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m369 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:104:55
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m370 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:122:48
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m371 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:124:91
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m372 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:131:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m373 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:139:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m374 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:144:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m375 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:149:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m376 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:154:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m377 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:155:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m378 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:167:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m379 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:174:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m380 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:176:97
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m381 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:179:90
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m382 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:182:57
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m383 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:211:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m384 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:212:73
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m385 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:214:99
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m386 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:217:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m387 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:218:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m388 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:219:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m389 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:229:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m390 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/Roaming.test.ets:231:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m391 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:25:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m392 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:48:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m393 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:95:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m394 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:96:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m395 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:98:116
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m396 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:101:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m397 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:101:57
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m398 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:102:63
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m399 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:104:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m400 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:105:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m401 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:110:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m402 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:112:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m403 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:113:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m404 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:114:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m405 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:119:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m406 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:121:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m407 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:126:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m408 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:127:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m409 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:129:65
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m410 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:131:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m411 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:142:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m412 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:157:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m413 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:212:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m414 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:225:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m415 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:230:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m416 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:238:25
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m417 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:250:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m418 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:251:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m419 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:252:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m420 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:255:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m421 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:256:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m422 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:261:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m423 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:262:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m424 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:263:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m425 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:269:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m426 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:270:85
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m427 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:272:90
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m428 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingSync.test.ets:273:93
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m429 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:30:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m430 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:52:19
+ This API is unavailable to 2in1.
+[39m[39m
+[33m431 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:52:19
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m432 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:56:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m433 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:61:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m434 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:66:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m435 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:68:88
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m436 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:88:29
+ This API is unavailable to 2in1.
+[39m[39m
+[33m437 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:98:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m438 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:103:117
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m439 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:104:74
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m440 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:105:71
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m441 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:106:71
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m442 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:109:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m443 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:113:59
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m444 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:114:34
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m445 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:131:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m446 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:137:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m447 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:139:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m448 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:177:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m449 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:178:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m450 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:179:80
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m451 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:185:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m452 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:186:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m453 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:190:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m454 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:192:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m455 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:200:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m456 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:202:68
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m457 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:204:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m458 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:205:68
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m459 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:206:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m460 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:230:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m461 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:231:91
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m462 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:232:90
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m463 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:233:93
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m464 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:238:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m465 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:245:68
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m466 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingTablet.test.ets:246:69
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m467 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:27:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m468 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:48:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m469 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:89:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m470 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:118:27
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m471 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:120:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m472 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:127:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m473 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:129:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m474 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:144:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m475 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:145:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m476 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:146:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m477 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:147:27
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m478 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:168:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m479 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:170:79
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m480 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:175:79
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m481 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:176:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m482 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:177:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m483 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:178:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m484 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:179:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m485 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:182:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m486 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:183:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m487 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:184:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m488 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:185:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m489 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:188:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m490 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:190:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m491 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:192:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m492 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:198:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m493 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:203:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m494 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:211:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m495 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:248:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m496 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:249:68
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m497 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:252:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m498 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:253:68
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m499 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:254:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m500 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:258:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m501 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:262:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m502 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:263:63
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m503 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:268:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m504 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:270:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m505 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:273:90
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m506 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:276:93
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m507 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/RoamingLogin.test.ets:281:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m508 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:23:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m509 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:27:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m510 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:30:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m511 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:31:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m512 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:32:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m513 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:38:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m514 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:46:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m515 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:48:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m516 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:49:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m517 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:58:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m518 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:59:46
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m519 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:61:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m520 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:62:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m521 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:66:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m522 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:67:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m523 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:68:56
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m524 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:71:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m525 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:73:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m526 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:74:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m527 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:83:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m528 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:90:67
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m529 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:94:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m530 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:98:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m531 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:106:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m532 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:118:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m533 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:120:49
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m534 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:122:59
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m535 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:123:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m536 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:124:73
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m537 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:125:89
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m538 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:131:89
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m539 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:155:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m540 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourney.test.ets:167:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m541 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:29:6
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m542 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:55:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m543 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:59:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m544 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:63:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m545 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:64:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m546 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:70:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m547 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:78:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m548 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:80:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m549 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:81:51
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m550 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:89:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m551 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:90:46
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m552 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:92:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m553 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:93:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m554 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:97:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m555 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:101:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m556 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:102:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m557 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:106:36
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m558 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:108:20
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m559 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:115:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m560 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:122:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m561 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:123:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m562 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:129:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m563 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:130:116
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m564 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:133:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m565 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:133:57
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m566 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:134:63
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m567 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:136:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m568 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:137:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m569 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:140:43
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m570 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:143:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m571 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:144:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m572 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:145:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m573 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:147:45
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m574 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:151:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m575 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:152:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m576 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:152:114
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m577 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:153:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m578 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:160:77
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m579 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:167:14
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m580 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:168:95
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m581 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:169:83
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m582 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:171:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m583 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:213:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m584 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:223:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m585 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:234:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m586 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:258:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m587 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:260:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m588 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:261:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m589 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:268:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m590 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:269:83
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m591 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:272:88
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m592 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:277:30
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m593 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:279:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m594 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperJourneySync.test.ets:281:34
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m595 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:63:15
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m596 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:64:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m597 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:119:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m598 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:162:11
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m599 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:163:11
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m600 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:170:9
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m601 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:171:9
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m602 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/roamingform/RoamingCardData.ets:178:22
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m603 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/platform/RoamingSystem.ets:224:48
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m604 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/platform/RoamingSystem.ets:241:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m605 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/platform/RoamingSystem.ets:242:18
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m606 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/platform/RoamingSystem.ets:244:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m607 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/main/ets/platform/RoamingSystem.ets:264:8
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m608 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:40:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m609 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:44:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m610 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:49:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m611 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:52:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m612 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:53:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m613 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:58:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m614 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:64:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m615 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:65:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m616 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:66:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m617 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:67:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m618 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:84:47
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m619 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:88:61
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m620 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:92:83
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m621 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:93:72
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m622 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:98:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m623 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:100:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m624 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:105:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m625 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:118:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m626 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:119:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m627 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:128:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m628 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:134:54
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m629 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:135:100
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m630 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:136:88
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m631 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:143:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m632 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:154:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m633 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:164:46
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m634 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:165:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m635 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:166:60
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m636 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:167:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m637 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:168:53
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m638 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:174:46
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m639 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:175:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m640 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:176:88
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m641 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:186:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m642 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:202:12
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m643 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:225:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m644 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:226:35
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m645 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:227:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m646 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:236:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m647 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:244:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m648 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:249:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m649 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:253:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m650 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:258:33
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m651 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:261:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m652 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:263:60
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m653 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:273:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m654 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:275:16
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m655 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:276:80
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m656 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:283:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m657 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:293:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m658 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:294:42
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m659 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:295:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m660 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:296:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m661 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:302:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m662 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:309:46
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m663 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:311:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m664 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:318:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m665 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:323:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m666 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:324:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m667 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:327:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m668 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:329:66
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m669 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:338:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m670 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:342:95
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m671 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:343:60
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m672 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:358:16
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m673 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:359:39
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m674 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:360:48
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m675 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:361:48
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m676 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:363:18
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m677 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:368:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m678 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:369:34
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m679 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperSystem.test.ets:370:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m680 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:36:21
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m681 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:39:41
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m682 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:42:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m683 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:43:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m684 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:44:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m685 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:50:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m686 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:56:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m687 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:57:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m688 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:58:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m689 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:59:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m690 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:74:61
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m691 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:78:83
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m692 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:79:72
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m693 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:84:44
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m694 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:86:38
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m695 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:91:40
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m696 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:104:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m697 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:105:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m698 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:112:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m699 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:120:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m700 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:126:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m701 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:137:73
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m702 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:138:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m703 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:139:27
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m704 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:194:28
+ This API is unavailable to 2in1.
+[39m[39m
+[33m705 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:289:34
+ This API is unavailable to 2in1.
+[39m[39m
+[33m706 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:25:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m707 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:28:78
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m708 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:31:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m709 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:37:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m710 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:42:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m711 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:43:37
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m712 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:44:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m713 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:45:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m714 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:83:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m715 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:84:58
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m716 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:88:67
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m717 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:89:73
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m718 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:90:75
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m719 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:91:56
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m720 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:99:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m721 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:108:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m722 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:126:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m723 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:148:26
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m724 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:157:31
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m725 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:158:23
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33m726 WARN: [33m[33mArkTS:WARN File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperLight.test.ets:169:76
+ Function may throw exceptions. Special handling is required.
+[39m[39m[39m
+> hvigor [91mERROR: ArkTS Compiler Error
+[31m1 ERROR: [31m10605087 ArkTS Compiler Error
+[31mError Message: "throw" statements cannot accept values of arbitrary types (arkts-limited-throw) At File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:287:11
+[31m[39m
+[39m
+[31m2 ERROR: [31m10605087 ArkTS Compiler Error
+[31mError Message: "throw" statements cannot accept values of arbitrary types (arkts-limited-throw) At File: D:/Open_of/yuenheji/entry/src/ohosTest/ets/test/PaperExcerpt.test.ets:291:33
+[31m[39m
+[39m
+[31mCOMPILE RESULT:FAIL {ERROR:3 WARN:726}[39m
+
+[31m* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+[39m
+> hvigor [91mERROR: BUILD FAILED in 10 s 821 ms [39m

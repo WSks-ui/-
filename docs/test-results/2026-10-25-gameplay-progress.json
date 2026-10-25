@@ -1,0 +1,299 @@
+{
+  "date": "2026-10-25",
+  "createdAtUtc": "2026-10-25T08:52:29.713446+00:00",
+  "scope": "现有进度核查；产品源码未编辑；更新AGENTS模型约定并新增报告与核查证据",
+  "agentModel": "gpt-6.1-sol",
+  "agentReasoning": "max",
+  "report": {
+    "path": "docs/reviews/2026-10-25-gameplay-progress.md",
+    "bytes": 14005,
+    "sha256": "3C0220762FDDC8CA3339786CEF22A177A250D8160D2529AF884FCBD287FCCD07"
+  },
+  "localTests": {
+    "pass": 200,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "deviceReportParserPass": 9,
+    "deviceReportParserTotal": 9
+  },
+  "mainBuild": "BUILD SUCCESSFUL",
+  "mainHap": {
+    "path": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+    "bytes": 8274695,
+    "sha256": "9F398858C86500A9DBAEC8EC63C6249E29E97DD3DE9F93939ABE9BD48A5F0571"
+  },
+  "testHap": {
+    "path": "entry/build/default/outputs/ohosTest/entry-ohosTest-unsigned.hap",
+    "bytes": 7010799,
+    "sha256": "62730D071E2AAABC53F74D91D8C73F7A1689921B9A6365A9DE4D15CBAD0A2558",
+    "scope": "历史2026-10-23 T15，本轮未重建或运行"
+  },
+  "native": {
+    "target": "127.0.0.1:5555",
+    "instance": "YunhejiSyncB",
+    "api": 26,
+    "size": [
+      1256,
+      2760
+    ],
+    "installedCurrentMainHap": true,
+    "actions": "open existing result -> restart -> back -> reopen",
+    "observation": "结算第2局→换局第3局→返回后重进为第2局结算；故障已复现，未修复",
+    "performedExcavation": false,
+    "savedNote": false,
+    "clearedData": false,
+    "loggedIn": false,
+    "calledAi": false,
+    "hypiumRun": false,
+    "rawPass": null,
+    "rawFailure": null,
+    "rawError": null,
+    "hypiumBoundary": "手动HDC走查，没有aa test摘要，不登记Hypium Pass/Failure/Error"
+  },
+  "domainProbes": {
+    "allFiveIssuesReproduced": true,
+    "scope": "直接调用当前领域代码及原样抽取restart函数；不是两台设备网络测试"
+  },
+  "notValidatedThisRun": [
+    "平板新玩法",
+    "新城市/探方双端传输与冲突",
+    "游客发掘记复制到账号",
+    "真实开封AI模型",
+    "文件备份恢复",
+    "陌生用户趣味性"
+  ],
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3556,
+      "sha256": "BA2738FA68A9F94FBABB85F4FD7FCAF9BD5AA33171A309E2ED319A749AC26405"
+    },
+    {
+      "path": "entry/src/main/ets/domain/KaifengDig.ts",
+      "bytes": 20954,
+      "sha256": "F4B931BD2A6BCCF2B1B7F458143CE54C4F3A246C06BB842B84F575D5E59B538D"
+    },
+    {
+      "path": "entry/src/main/ets/domain/KaifengDigRecords.ts",
+      "bytes": 1186,
+      "sha256": "4572A660491BE81199F3BF124CAA03844F31DEC35A8A7911989C5B5A2FA09575"
+    },
+    {
+      "path": "entry/src/main/ets/domain/KaifengPuzzle.ts",
+      "bytes": 43016,
+      "sha256": "C5809EEF4BC39688BDB987031B02D900B8190DBCA5189DE91238D470D6CAD661"
+    },
+    {
+      "path": "entry/src/main/ets/components/KaifengDigPage.ets",
+      "bytes": 25196,
+      "sha256": "B6A9029AA6360060234725185D88D70F9F6E20869FD93FC89CE277FE00C4A469"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingChapterPage.ets",
+      "bytes": 92003,
+      "sha256": "9B323B2962572FA687FFACB887BFFB360B3A21976A7E7BE8A729230E900D1BE0"
+    },
+    {
+      "path": "entry/src/main/ets/components/RoamingHome.ets",
+      "bytes": 28170,
+      "sha256": "A9935936C6745B11DEE91EF2B92AC2E746567A3CDE5EE20415546649212B57CF"
+    },
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "bytes": 102957,
+      "sha256": "FD170BE431FD729C20C1F021B372C2707CF7920C83E492EB56E2A8C4A2441C4A"
+    },
+    {
+      "path": "entry/src/main/ets/domain/ArchiveDomain.ts",
+      "bytes": 23571,
+      "sha256": "814EF3D8177AB53D2B3AE2F9EA522FBA512DE8BD40230F69570A9151CBFCF690"
+    },
+    {
+      "path": "entry/src/main/ets/sync/AccountSyncClient.ets",
+      "bytes": 9713,
+      "sha256": "A9324960952AAC34B574726286E6D2275DD0CF4A7351825F58C279BF759C4EE8"
+    },
+    {
+      "path": "entry/src/main/ets/data/RoamingCatalog.ts",
+      "bytes": 23104,
+      "sha256": "D6385192FBE4394D03BD6ED9040A47C7A4D7AC80EAF1EFA19DF1F81711528434"
+    },
+    {
+      "path": "entry/src/main/ets/domain/KaifengAi.ts",
+      "bytes": 7864,
+      "sha256": "2AFA080EBB067743A59883629224A599123C79DA20C2B64376E07E22BB87946B"
+    },
+    {
+      "path": "entry/src/main/ets/domain/KaifengAiFacts.ts",
+      "bytes": 4472,
+      "sha256": "51B9F524444D84CD078BF014021AAC34BEB410B1F531820E58B9F655D7941839"
+    },
+    {
+      "path": "entry/src/main/ets/components/ProfilePage.ets",
+      "bytes": 24528,
+      "sha256": "E8E0020FFF3B688CDEA3C6E4C219A0090AACE318F02133C4347494D8C6669BDF"
+    },
+    {
+      "path": "tools/kaifeng-dig.test.mjs",
+      "bytes": 16736,
+      "sha256": "063EEE46C0F0D72F7223DD4BCC8270154E1C5ABAD9DDC7E48DFE84A2EEF9504E"
+    }
+  ],
+  "localEvidence": [
+    {
+      "path": ".local/progress-audit-20261025/build-main.log",
+      "bytes": 2291,
+      "sha256": "5E8EB90AB29828A9782E3644F1361DA7C28A97875F3BABBA18009D5A1CC8D973"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-after-restart.jpeg",
+      "bytes": 216888,
+      "sha256": "60A8548A96B5E1603C89C808CADFFCC865220CC2899D714863CA0895DEDDCA2F"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-after-restart.json",
+      "bytes": 105012,
+      "sha256": "434FE929F593818E51D9C934C3D1672455C3C8220161B0173908437A31840644"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-before-restart-top.jpeg",
+      "bytes": 190176,
+      "sha256": "6872452DC25165C5CA81EEE704FE0CA9A1F9AFD7C996E77C5FCE3846D67AF015"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-before-restart-top.json",
+      "bytes": 90165,
+      "sha256": "6978BD635577263F79565457F0BDA6015437DEE611CFCFBFC340A2563BD5F77A"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-before-restart.jpeg",
+      "bytes": 190209,
+      "sha256": "31530337849C73F800C5C56A47A843CB3ECB069BDC58762340761936C56400A3"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-before-restart.json",
+      "bytes": 90165,
+      "sha256": "40936188B3ED0E3F7431ACB2294AB15B961110E1C7DBC50ECEF65EAFC3F3063E"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-probes-result.json",
+      "bytes": 3451,
+      "sha256": "B65E633DCEA945C0EA9FFF486346D6F094438C303ED427738B1A4ABB8D6E2D27"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-probes.mjs",
+      "bytes": 8857,
+      "sha256": "D79AD27A9945278B9B3BE6F589B7FC640DF9D51AC7E6128E3391B91A3C825E4C"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-reopened.jpeg",
+      "bytes": 190140,
+      "sha256": "156983D4D5642579326A24CEFEBA88D0A98B57C5BED8A9B3DE98DE8720327872"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-reopened.json",
+      "bytes": 90165,
+      "sha256": "1E08CB5AC27BF0850735B02D71F0A01A8D66B060EA8AD376A2EDFF8D032A3526"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-result-scroll-1.jpeg",
+      "bytes": 196131,
+      "sha256": "A93419D7D590A71E20B9A2EB0D6F04FE16CFB5B0EFD4B236DC7456453D1E021E"
+    },
+    {
+      "path": ".local/progress-audit-20261025/dig-result-scroll-1.json",
+      "bytes": 79021,
+      "sha256": "BAFB63D111143A05E4148600D5CF5AF6F425233D9A5F326700B2A4EF7331DD79"
+    },
+    {
+      "path": ".local/progress-audit-20261025/emulator-start.err.log",
+      "bytes": 103,
+      "sha256": "D34BDDFA36001BA00CAB017967F2E16AAB9C22849EE6B9BB9E20950BF5F26585"
+    },
+    {
+      "path": ".local/progress-audit-20261025/emulator-start.out.log",
+      "bytes": 30,
+      "sha256": "102867CFF5E9366DBF38A4B068BE61C196335B371B78E732F814EFE904F0B77C"
+    },
+    {
+      "path": ".local/progress-audit-20261025/emulator-stop.err.log",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": ".local/progress-audit-20261025/emulator-stop.out.log",
+      "bytes": 41,
+      "sha256": "952F8D2A1A5D62539E57D4EF7A807BFFB768C7D1C50DF52AE4B9B75A9FA4F8AB"
+    },
+    {
+      "path": ".local/progress-audit-20261025/emulator-user.err.log",
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": ".local/progress-audit-20261025/emulator-user.out.log",
+      "bytes": 149,
+      "sha256": "B8883357F165D8F95CD2F710339EEE576E0CB049D9EF5400A2D26A9339885B87"
+    },
+    {
+      "path": ".local/progress-audit-20261025/home-after-restart.jpeg",
+      "bytes": 168448,
+      "sha256": "4D5039E52C5E2C8624D6EFB4875D6EDCEBCF422BE10ABC59F3B9B68AB70DEE56"
+    },
+    {
+      "path": ".local/progress-audit-20261025/home-after-restart.json",
+      "bytes": 97287,
+      "sha256": "92B711E5197365C815F507AED9D05B712B2D679F8952DF07F52A7896727B9027"
+    },
+    {
+      "path": ".local/progress-audit-20261025/home-layout.json",
+      "bytes": 97290,
+      "sha256": "7A73DDC4B662189261E87D8ECD9A83B61F6246EFCCD424C97BF3E9151C852675"
+    },
+    {
+      "path": ".local/progress-audit-20261025/home.jpeg",
+      "bytes": 168339,
+      "sha256": "A31CB277997FFF42047E334F04AD9AC8659B1ABF9BB2236C741BB01BBDA2D7AE"
+    },
+    {
+      "path": ".local/progress-audit-20261025/initial-inspection-state.jpeg",
+      "bytes": 190176,
+      "sha256": "6872452DC25165C5CA81EEE704FE0CA9A1F9AFD7C996E77C5FCE3846D67AF015"
+    },
+    {
+      "path": ".local/progress-audit-20261025/initial-inspection-state.json",
+      "bytes": 90165,
+      "sha256": "6978BD635577263F79565457F0BDA6015437DEE611CFCFBFC340A2563BD5F77A"
+    },
+    {
+      "path": ".local/progress-audit-20261025/local-tests.log",
+      "bytes": 18233,
+      "sha256": "9EBDC33D11811E7EAF68CE61859AB5824593516EF6F0B6589A7791FEDB3F053A"
+    },
+    {
+      "path": ".local/progress-audit-20261025/native-events.jsonl",
+      "bytes": 10599,
+      "sha256": "E1FA369DBCF4BD4624FEF0B3353AD2A8F0F69126371D37B87DB1979253A1E83B"
+    },
+    {
+      "path": ".local/progress-audit-20261025/native-inspection.py",
+      "bytes": 4176,
+      "sha256": "E276B48D42F56345B663089CD1694F781A9B9E7C4D2A7E8D3EEFDBE642D6519C"
+    },
+    {
+      "path": ".local/progress-audit-20261025/native-result.json",
+      "bytes": 4869,
+      "sha256": "C7E2742F107EBC09EB8BBEE201DC9CBC7871A2EFB68431134320D8933FD14ED4"
+    },
+    {
+      "path": ".local/progress-audit-20261025/write-manifest.py",
+      "bytes": 4480,
+      "sha256": "F435FF2E52C77A4922BEDE80DF9F43D482C87F33252B1C15076294F5E61A27BD"
+    }
+  ],
+  "reportChecks": {
+    "localLinkCount": 22
+  },
+  "notCommittedOrPushed": true
+}

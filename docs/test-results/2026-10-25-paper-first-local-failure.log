@@ -1,0 +1,86 @@
+✔ kaifeng ai server: 提示词只带七条事实，并要求逐句给 id (0.8559ms)
+✔ kaifeng ai server: ask 工具只允许七条事实与五个锚点 (1.4793ms)
+✔ kaifeng ai server: 题跋工具返回逐句事实与冲突，未知事实被过滤 (0.5729ms)
+✔ kaifeng ai server: 未配置、错对象、错模式都给出真实错误码 (0.7523ms)
+✔ kaifeng ai server: 供应商失败不读取正文，映射为统一错误 (1.135ms)
+(node:10184) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10184) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+✔ kaifeng ai route requires a session and returns the configured service reply (119.8639ms)
+✔ kaifeng ai route reports AI_NOT_CONFIGURED instead of a fake answer (48.7237ms)
+✔ water parser reads five columns, keeps missing flow null and joins page date (2.7761ms)
+✔ water parser rejects pages without target station (0.531ms)
+✔ water service caches the last good snapshot and marks it stale after failure (15.2914ms)
+(node:28988) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ AI knowledge scope comes from the existing Ding catalog and hotspots (1.693ms)
+✔ AI supports the twin vessel with its own facts, hotspots and starters (0.7943ms)
+✔ AI request validation rejects another site, scene revision, hotspot or oversized context (0.375ms)
+✔ AI reply validation closes request identity, facts and executable actions (0.639ms)
+✔ insufficient evidence and draft replies keep their own contract (0.2495ms)
+✔ twin vessel replies reject Ding facts in the answer, actions and draft (0.3486ms)
+✔ late AI replies cannot overwrite a stopped or changed observation (0.1822ms)
+✔ adopted AI draft freezes catalog facts and deep copies source ids (0.3953ms)
+✔ adopted twin vessel opening draft freezes its own catalog fact (0.4843ms)
+✔ twin vessel frozen AI metadata survives snapshot transfer, editing copy and merge (1.0294ms)
+✔ AI note metadata survives parse, deep copy and deterministic merge (0.3739ms)
+✔ AI error copy never disguises failure as a successful answer (0.1643ms)
+node:internal/modules/esm/resolve:275
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'D:\Open_of\yuenheji\entry\src\main\ets\domain\GameProgressMerge' imported from D:\Open_of\yuenheji\entry\src\main\ets\domain\ArchiveDomain.ts
+    at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:991:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:719:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:736:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:765:52)
+    at #resolve (node:internal/modules/esm/loader:701:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:621:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:160:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:245:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///D:/Open_of/yuenheji/entry/src/main/ets/domain/GameProgressMerge'
+}
+
+Node.js v24.14.1
+✖ tools\domain.test.mjs (219.4275ms)
+(node:4724) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ empty scroll keeps four sourced reading steps without inventing personal history (1.3463ms)
+✔ ordinary notes enter the scroll while route completion keeps the existing postcard rule (0.4927ms)
+✔ shared topics recalculate after tag updates and tombstones cannot revive old entries (0.4628ms)
+✔ favorites and valid section progress are independent, while opened markers stay out (0.3605ms)
+✔ route city order and note ties stay stable without mutating inputs or using outside records (0.5837ms)
+(node:21200) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ repository initializes a genuinely absent snapshot and persists installation id (1.5165ms)
+✔ repository reopens existing snapshot without rewriting it (0.5016ms)
+✔ repository rejects existing empty, corrupt and wrong-type values without clearing them (1.9235ms)
+✔ repository does not initialize over an orphaned backup (0.4261ms)
+✔ failed flush leaves disk and current in-memory cache on confirmed snapshot (0.5835ms)
+✔ queue recovers after a failed write (1.8261ms)
+✔ save captures input before caller mutates it (0.5751ms)
+✔ queued writes persist the last request and retain the previous confirmed version (0.6953ms)
+✔ invalid schema is rejected before any write (0.7151ms)
+✔ repository preserves frozen roaming sources and tombstones through queued persistence and reopen (2.0636ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 37
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 454.9662
+
+✖ failing tests:
+
+test at tools\domain.test.mjs:1:1
+✖ tools\domain.test.mjs (219.4275ms)
+  'test failed'
+Exception: D:\Open_of\yuenheji\tools\test.ps1:12
+Line |
+  12 |      if ($LASTEXITCODE -ne 0) { throw "Tests failed: $LASTEXITCODE" }
+     |                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Tests failed: 1

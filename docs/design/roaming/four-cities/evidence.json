@@ -1,0 +1,558 @@
+{
+  "scope": "四城原生交互与进度保存定向测试",
+  "date": "2026-10-23",
+  "status": "completed",
+  "device": {
+    "kind": "phone",
+    "hdcTarget": "127.0.0.1:5555",
+    "pngWidth": 1256,
+    "pngHeight": 2760
+  },
+  "parameters": {
+    "ExpectedTests": 1,
+    "TestTimeoutMs": 600000,
+    "execution": "顺序单例"
+  },
+  "totals": {
+    "testsRun": 4,
+    "passed": 4,
+    "failure": 0,
+    "error": 0,
+    "ignore": 0,
+    "persistedClues": 12,
+    "activeNotesCreated": 0,
+    "activeFavoritesCreated": 0,
+    "artifactFileCount": 32
+  },
+  "artifactPolicy": {
+    "originalBytesPreserved": true,
+    "redrawn": false,
+    "cropped": false,
+    "composited": false,
+    "credentialsOrPrivateBinaryPublished": false,
+    "layoutLoginProfileNodesFound": 0
+  },
+  "cases": [
+    {
+      "city": "三门峡",
+      "test": "RoamingTest#sanmenxia_real_hotspots_pit_house_and_paper_cut",
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "consumingMs": 153682,
+      "report": "docs/test-results/2026-10-23-031951-3fa6e759-device.log",
+      "artifacts": [
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-1-observed.png",
+          "bytes": 417228,
+          "sha256": "CCA6D14710C90882233F2A0469F5A6B0DAB36D6F9108A843755C52B14F409AA4"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-1-observed.json",
+          "bytes": 67500,
+          "sha256": "4E2CCADB3B8A779DEB9C2DE5C767FD727E441D93839601FFEE0A3013F93EAC9E"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-2-observed.png",
+          "bytes": 337839,
+          "sha256": "61A0A18D1BF57982A29BA70208D8212318350319A3CF44EB8831E688C7574BC3"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-2-observed.json",
+          "bytes": 64088,
+          "sha256": "CDE0F7F32A7BF8BDE673466FC5B92AF40C63D8FB5A056CE92998CEDF8F058AC2"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-3-observed.png",
+          "bytes": 350009,
+          "sha256": "43915BFDB570BC3A886C6DB0D8317AC4FD5C12FF1B0F1D47A7891BBF78E2EE1E"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-3-observed.json",
+          "bytes": 64762,
+          "sha256": "1ADFF2C32174054C5FC69C8A8E854E5E48F9DD326EFFF05091834D23AE9F55D1"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-completed-no-note.png",
+          "bytes": 323129,
+          "sha256": "01FCBB9949E03BEF2076479FAA50821F35176C2DF4DBC952E546F40C1D456A3F"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-completed-no-note.json",
+          "bytes": 54641,
+          "sha256": "E6904AC78B896668798B33F89D50EB030F2E10BF523A2B66953D92A821F006B0"
+        }
+      ],
+      "reportSha256": "f4c04f8fb5049a5a989e8501dad84c3aa114e44759e0907712c1538b5ef9a82e",
+      "mainPackage": {
+        "label": "M11",
+        "bytes": 7625477,
+        "sha256": "E5C170AE1393E15DD2D4A77F638E583BCE5E23FADB4405A56FC6EE03499A5338"
+      },
+      "testPackage": {
+        "label": "T9",
+        "bytes": 7008942,
+        "sha256": "459E17E9DC8980556647A4D84637D23FEDF4078D1BACAF1D70ADD12D92F49039"
+      },
+      "persistedClues": [
+        {
+          "chapterId": "roam-smx-earth-home",
+          "clueId": "roam-smx-life",
+          "choiceId": "smx-clay",
+          "completedCount": 1,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-smx-earth-home",
+          "clueId": "roam-smx-pit-house",
+          "choiceId": "smx-courtyard",
+          "completedCount": 2,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-smx-earth-home",
+          "clueId": "roam-smx-paper-cut",
+          "choiceId": "smx-branch",
+          "completedCount": 3,
+          "activeNotes": 0
+        }
+      ],
+      "actualCityResult": {
+        "chapterId": "roam-smx-earth-home",
+        "city": "三门峡",
+        "completedClues": 3,
+        "activeNotes": 0,
+        "activeFavorites": 0,
+        "elapsedMs": 150757
+      },
+      "directory": "docs/design/roaming/four-cities/sanmenxia",
+      "selected": {
+        "scene": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-2-observed.png",
+        "sceneLayout": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-2-observed.json",
+        "closing": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-completed-no-note.png",
+        "closingLayout": "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-completed-no-note.json"
+      },
+      "visualReview": "实际查看：地表已揭开，院落与窑洞图景、已看见滑条和院落选择可见；完成图为已选枝叶窗花及完成按钮。"
+    },
+    {
+      "city": "洛阳",
+      "test": "RoamingTest#luoyang_real_window_poem_and_water_banquet",
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "consumingMs": 155725,
+      "report": "docs/test-results/2026-10-23-032333-d47f032d-device.log",
+      "artifacts": [
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-1-observed.png",
+          "bytes": 373872,
+          "sha256": "454574AD149DF0706E94FAAF3292E5D7BDE6B81E05B2C57D3839C1E61AE6E9B4"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-1-observed.json",
+          "bytes": 64088,
+          "sha256": "5E391FDD88009AF36B9FB766C47EC0D8833E4AABE162574B5CF5F5398989AF18"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-2-observed.png",
+          "bytes": 416089,
+          "sha256": "4B57CC83BA5D3EF8D74589C9CC380DB6E6B72638392C12D63989AD91C5AD4617"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-2-observed.json",
+          "bytes": 61576,
+          "sha256": "C65892A5B5ACEE32A0E5D8BE0871634B8D21E1530B8649476A56C499F95EB4AE"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-3-observed.png",
+          "bytes": 396174,
+          "sha256": "AFCF3E619362180A374A6A950C42C0394F35229F7517D0900FCFC1028DB92969"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-3-observed.json",
+          "bytes": 64820,
+          "sha256": "99419678D39A62452320D2D0809D26248027369D4F0D6E520B18B5AE262ACD81"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-completed-no-note.png",
+          "bytes": 363645,
+          "sha256": "87A5AE55EF18844E226E95FF82EA41CB769C5AF34D17A991983255E4AA27CC7C"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-completed-no-note.json",
+          "bytes": 54639,
+          "sha256": "32B8361F569982F58F02CAA4A30C279893C467EC90DD75F407AE679155ED8D62"
+        }
+      ],
+      "reportSha256": "9a8c511c208a2cb462b20dc155d32f657ec8262b7910a5baebf5604fd9fb2e1e",
+      "mainPackage": {
+        "label": "M11",
+        "bytes": 7625477,
+        "sha256": "E5C170AE1393E15DD2D4A77F638E583BCE5E23FADB4405A56FC6EE03499A5338"
+      },
+      "testPackage": {
+        "label": "T9",
+        "bytes": 7008942,
+        "sha256": "459E17E9DC8980556647A4D84637D23FEDF4078D1BACAF1D70ADD12D92F49039"
+      },
+      "persistedClues": [
+        {
+          "chapterId": "roam-ly-spring",
+          "clueId": "roam-ly-longmen",
+          "choiceId": "ly-river",
+          "completedCount": 1,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-ly-spring",
+          "clueId": "roam-ly-peony",
+          "choiceId": "ly-flowers",
+          "completedCount": 2,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-ly-spring",
+          "clueId": "roam-ly-water-banquet",
+          "choiceId": "ly-petal",
+          "completedCount": 3,
+          "activeNotes": 0
+        }
+      ],
+      "actualCityResult": {
+        "chapterId": "roam-ly-spring",
+        "city": "洛阳",
+        "completedClues": 3,
+        "activeNotes": 0,
+        "activeFavorites": 0,
+        "elapsedMs": 152761
+      },
+      "directory": "docs/design/roaming/four-cities/luoyang",
+      "selected": {
+        "scene": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-2-observed.png",
+        "sceneLayout": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-2-observed.json",
+        "closing": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-completed-no-note.png",
+        "closingLayout": "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-completed-no-note.json"
+      },
+      "visualReview": "实际查看：花影展开，滑条已看见，完整短引“洛阳之俗，大抵好花。”可见；完成图为水席花影与完成按钮。"
+    },
+    {
+      "city": "郑州",
+      "test": "RoamingTest#zhengzhou_real_gate_poem_and_meeting",
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "consumingMs": 156440,
+      "report": "docs/test-results/2026-10-23-032642-f1270743-device.log",
+      "artifacts": [
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-1-observed.png",
+          "bytes": 362631,
+          "sha256": "4D2E2EF7F9B80EAB72BC8F9D79AB15C35A744A273223AAE68F2A1990FD39E32F"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-1-observed.json",
+          "bytes": 64110,
+          "sha256": "CDC07650D2EBFE238052F9E87193D1FA5F90A0EE782D0849A0934DCCD13A1E4A"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-2-observed.png",
+          "bytes": 399349,
+          "sha256": "16614A90484A888405013B1D4DF7DFB09E8323B2132B16D39B33EF40BB5D0D80"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-2-observed.json",
+          "bytes": 61536,
+          "sha256": "EA0F1DD63B209D4633CED24B9DEEFBF5360296B256F9308B51398A4A595C15A6"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-3-observed.png",
+          "bytes": 383272,
+          "sha256": "A2E06D9AA45B7C9B7BF142D9C6E20424E3588379AD72BEAC4FF3368957F5DB8F"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-3-observed.json",
+          "bytes": 64836,
+          "sha256": "D6DA67FE7E1BA258719377A92544A025A98D2FF649552156F981120E9B85830C"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-completed-no-note.png",
+          "bytes": 345831,
+          "sha256": "7293D8E063017AFECDBE58DAC58F1E71D792056AE37884175E7F87B820EB2BBE"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-completed-no-note.json",
+          "bytes": 54685,
+          "sha256": "9BCA5C91E44B0A2D9611C40CBC846DBE19CB0F6AC89137D5BA9B387ACCCE672C"
+        }
+      ],
+      "reportSha256": "936838b2827c41133b0e457469adea96b41b868a46336195f962bcf6b04aead8",
+      "mainPackage": {
+        "label": "M11",
+        "bytes": 7625477,
+        "sha256": "E5C170AE1393E15DD2D4A77F638E583BCE5E23FADB4405A56FC6EE03499A5338"
+      },
+      "testPackage": {
+        "label": "T9",
+        "bytes": 7008942,
+        "sha256": "459E17E9DC8980556647A4D84637D23FEDF4078D1BACAF1D70ADD12D92F49039"
+      },
+      "persistedClues": [
+        {
+          "chapterId": "roam-zz-zhenwei",
+          "clueId": "roam-zz-gates",
+          "choiceId": "zz-land-gate",
+          "completedCount": 1,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-zz-zhenwei",
+          "clueId": "roam-zz-poem",
+          "choiceId": "zz-river-names",
+          "completedCount": 2,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-zz-zhenwei",
+          "clueId": "roam-zz-zheng-song",
+          "choiceId": "zz-words",
+          "completedCount": 3,
+          "activeNotes": 0
+        }
+      ],
+      "actualCityResult": {
+        "chapterId": "roam-zz-zhenwei",
+        "city": "郑州",
+        "completedClues": 3,
+        "activeNotes": 0,
+        "activeFavorites": 0,
+        "elapsedMs": 153514
+      },
+      "directory": "docs/design/roaming/four-cities/zhengzhou",
+      "selected": {
+        "scene": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-1-observed.png",
+        "sceneLayout": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-1-observed.json",
+        "closing": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-completed-no-note.png",
+        "closingLayout": "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-completed-no-note.json"
+      },
+      "visualReview": "实际查看：人物已到陆门，沿路走向陆门/已看见可见，陆门选择按钮在图下方；完成图为相会纸页与完成按钮。"
+    },
+    {
+      "city": "濮阳",
+      "test": "RoamingTest#puyang_real_shell_legend_and_fair",
+      "passed": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "consumingMs": 154821,
+      "report": "docs/test-results/2026-10-23-032958-f5b393d9-device.log",
+      "testPackage": {
+        "label": "T10",
+        "bytes": 7010748,
+        "sha256": "7EAC6C1F72F530D5D54750073A39BB2AA95A4BB45AF3C824E8AACE87F29355C2"
+      },
+      "artifacts": [
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-1-observed.png",
+          "bytes": 395319,
+          "sha256": "BAB2AB52137089B83680A0221379EABB131871FBA9D8D3E1B732B64367099BEA"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-1-observed.json",
+          "bytes": 61481,
+          "sha256": "8476493228488BD236FB329C5816F5E0FC4114145AABF9A8CB81F502D4BAD2D4"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-2-observed.png",
+          "bytes": 363725,
+          "sha256": "63300169B493713E44498A30CD390DBBC69D988BA49BB3DB20C4272517475C7A"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-2-observed.json",
+          "bytes": 61533,
+          "sha256": "8897A6589374638B82D1EE09108D8446B268B11EFECF6EE29BF6F78C3E950726"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-3-observed.png",
+          "bytes": 399414,
+          "sha256": "536F558A1887A7236DCA3BD978B030E03CD8276FA1625F90B743ECB7835EECE2"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-3-observed.json",
+          "bytes": 62233,
+          "sha256": "37AAD106610B6B93214AA17BF1136269E1D34E0C45B98381F6DD394F9D31044E"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-completed-no-note.png",
+          "bytes": 364128,
+          "sha256": "2E66BE31CC2817A09F66646AEAB74085DF7D0E22EA925FBC77EC129047BCBD68"
+        },
+        {
+          "file": "docs/design/roaming/four-cities/puyang/roaming-py-memory-completed-no-note.json",
+          "bytes": 54739,
+          "sha256": "49486B4372F7FA2DFB4583D1C03145E7ED14C176D94B4B7A49A836B27A20B164"
+        }
+      ],
+      "reportSha256": "9e636d08f310f2c45dab916047207327c26655795f316cdf824d35ae81907947",
+      "mainPackage": {
+        "label": "M11",
+        "bytes": 7625477,
+        "sha256": "E5C170AE1393E15DD2D4A77F638E583BCE5E23FADB4405A56FC6EE03499A5338"
+      },
+      "persistedClues": [
+        {
+          "chapterId": "roam-py-dragon-memory",
+          "clueId": "roam-py-shell",
+          "choiceId": "py-dragon",
+          "completedCount": 1,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-py-dragon-memory",
+          "clueId": "roam-py-cangjie",
+          "choiceId": "py-character-memory",
+          "completedCount": 2,
+          "activeNotes": 0
+        },
+        {
+          "chapterId": "roam-py-dragon-memory",
+          "clueId": "roam-py-fair",
+          "choiceId": "py-people-echo",
+          "completedCount": 3,
+          "activeNotes": 0
+        }
+      ],
+      "actualCityResult": {
+        "chapterId": "roam-py-dragon-memory",
+        "city": "濮阳",
+        "completedClues": 3,
+        "activeNotes": 0,
+        "activeFavorites": 0,
+        "elapsedMs": 151899
+      },
+      "directory": "docs/design/roaming/four-cities/puyang",
+      "selected": {
+        "scene": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-1-observed.png",
+        "sceneLayout": "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-1-observed.json",
+        "closing": "docs/design/roaming/four-cities/puyang/roaming-py-memory-completed-no-note.png",
+        "closingLayout": "docs/design/roaming/four-cities/puyang/roaming-py-memory-completed-no-note.json"
+      },
+      "visualReview": "实际查看：蚌塑龙、虎原创轮廓与观察窗、已看见滑条可见，篇章标题换为两行；完成图为庙会回声与完成按钮。"
+    }
+  ],
+  "visualReview": {
+    "reviewedOn": "2026-10-23",
+    "imagesActuallyViewed": [
+      "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-clue-2-observed.png",
+      "docs/design/roaming/four-cities/sanmenxia/roaming-smx-home-completed-no-note.png",
+      "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-clue-2-observed.png",
+      "docs/design/roaming/four-cities/luoyang/roaming-ly-spring-completed-no-note.png",
+      "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-clue-1-observed.png",
+      "docs/design/roaming/four-cities/zhengzhou/roaming-zz-meeting-completed-no-note.png",
+      "docs/design/roaming/four-cities/puyang/roaming-py-memory-clue-1-observed.png",
+      "docs/design/roaming/four-cities/puyang/roaming-py-memory-completed-no-note.png"
+    ],
+    "closingFrameBoundary": "四张完成图可见第三景、选择、这一城已展开按钮及收束标题；完整收束正文下半段与页首3/3不在该帧。完成与0笔记/收藏同时依据完整测试摘要、逐条标记与磁盘回读。"
+  },
+  "networkBoundary": "仅临时移除手机到本机账号服务的 tcp:18443 reverse；未整机断网，未执行账号登录、AI或同步。",
+  "portIncident": "HDC -t 5555 fport rm tcp:18443 tcp:18443 实际全局删除同规则，5557短暂受影响；立即恢复5557，仅5555断开后顺序执行。主线程确认当时平板纯游客选摘用例没有网络断言。四城结束两端原映射均恢复。",
+  "portEvidence": [
+    {
+      "role": "initial-rules",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5555",
+        "fport",
+        "ls"
+      ],
+      "rawOutput": "127.0.0.1:5555    tcp:18443 tcp:18443    [Reverse]\n127.0.0.1:5557    tcp:18443 tcp:18443    [Reverse]\n",
+      "sourceLogSha256": "6b82b0cc5f98b4508edb379423a27e8cd998d8601457eac6b0904f0dc84b8377"
+    },
+    {
+      "role": "global-rule-removal",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5555",
+        "fport",
+        "rm",
+        "tcp:18443",
+        "tcp:18443"
+      ],
+      "rawOutput": "Remove forward ruler success, ruler:tcp:18443 tcp:18443\n\n",
+      "sourceLogSha256": "8bbbf51509b2d57bb0f05e58d3f01975068198b6c3d4576aead5cbe2a04bbaee"
+    },
+    {
+      "role": "after-global-removal",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5555",
+        "fport",
+        "ls"
+      ],
+      "rawOutput": "[Empty]\n\n",
+      "sourceLogSha256": "561479ecebe3f02ac81d2144e5414657d177aab6a3d38e96d96d92935c4aee99"
+    },
+    {
+      "role": "immediate-tablet-rule-restoration",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5557",
+        "rport",
+        "tcp:18443",
+        "tcp:18443"
+      ],
+      "rawOutput": "Forwardport result:OK\n\n",
+      "sourceLogSha256": "85935457f4480c79107a2f82948caf6898c14bf312c64f8cdb14e8c8e79f3210"
+    },
+    {
+      "role": "only-phone-rule-disconnected",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5555",
+        "fport",
+        "ls"
+      ],
+      "rawOutput": "127.0.0.1:5557    tcp:18443 tcp:18443    [Reverse]\n",
+      "sourceLogSha256": "57aee326a50220c9930dab1a3a6957bef35a473d3c53a901f34d1fa9d97498c3"
+    },
+    {
+      "role": "final-phone-rule-restoration",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5555",
+        "rport",
+        "tcp:18443",
+        "tcp:18443"
+      ],
+      "rawOutput": "Forwardport result:OK\n\n",
+      "sourceLogSha256": "85935457f4480c79107a2f82948caf6898c14bf312c64f8cdb14e8c8e79f3210"
+    },
+    {
+      "role": "final-rules",
+      "argv": [
+        "hdc",
+        "-t",
+        "127.0.0.1:5555",
+        "fport",
+        "ls"
+      ],
+      "rawOutput": "127.0.0.1:5555    tcp:18443 tcp:18443    [Reverse]\n127.0.0.1:5557    tcp:18443 tcp:18443    [Reverse]\n",
+      "sourceLogSha256": "6b82b0cc5f98b4508edb379423a27e8cd998d8601457eac6b0904f0dc84b8377"
+    }
+  ],
+  "portsRestored": true,
+  "phoneBusinessLogReaderStopped": true,
+  "limitations": [
+    "不替代开封个人感想CRUD与公开演示脚本完整链路",
+    "不证明双端账号同步或鸿蒙可信设备传输",
+    "文化内容初稿待校审；图景为原创阅读示意，不是完整历史复原或真实到访证明"
+  ]
+}

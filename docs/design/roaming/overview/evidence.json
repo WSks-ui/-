@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-23",
+  "appPackage": "M12",
+  "kind": "HDC实际原生定向检查，非Hypium计数",
+  "device": {
+    "type": "tablet",
+    "api": 26,
+    "resolution": [
+      2880,
+      1920
+    ]
+  },
+  "checks": [
+    "真实五城河流首页",
+    "文化库牡丹关键词",
+    "收藏分类研究资料",
+    "不完成前置线索仍可自由阅读第二条资料"
+  ],
+  "activeNotes": 0,
+  "completedClues": 0,
+  "visualPrivacyReview": "已逐张查看，无账号或凭据",
+  "files": [
+    {
+      "path": "tablet-roaming-home-m12.png",
+      "bytes": 917504,
+      "sha256": "A2D83339CE621B2BB6316E459E6A5E8C501374E741A296BC7E4263A43734DD63"
+    },
+    {
+      "path": "tablet-roaming-home-m12.nodes.json",
+      "bytes": 94890,
+      "sha256": "8CADE0D29A822881AD0B6AFBF62CE91E2CB6975A64D3F07E0D8D4AD3FAD64379"
+    },
+    {
+      "path": "tablet-library-peony-m12.png",
+      "bytes": 917504,
+      "sha256": "48C1884122B231EBB06054E4AB1466F6E30612255FDBB9D0698A2E84E74C68A2"
+    },
+    {
+      "path": "tablet-library-peony-m12.nodes.json",
+      "bytes": 64845,
+      "sha256": "AA076D871CDABC2258C652DCE6D72E1B8A349155A9E3E7C0BC9FE5506DE198DF"
+    },
+    {
+      "path": "tablet-culture-favorite-tagged-m12.png",
+      "bytes": 917504,
+      "sha256": "4C5FA069C880AF020A1BDC0E56E2D8C094EE47195839A77A6EE36F17A1B1E8BE"
+    },
+    {
+      "path": "tablet-culture-favorite-tagged-m12.nodes.json",
+      "bytes": 68792,
+      "sha256": "4B241919ACA20B35F914EACE20823F4EF851491A8D881203DCD33FFA8732926A"
+    },
+    {
+      "path": "tablet-library-free-second-clue-m12.png",
+      "bytes": 917504,
+      "sha256": "EF483E8F12D84F35BC7C1934255DC8B64D2F236E0119B3D1DB4890FDA3BA8EAE"
+    },
+    {
+      "path": "tablet-library-free-second-clue-m12.nodes.json",
+      "bytes": 160172,
+      "sha256": "6FD467B873211F8231C84B75FD68681DD77763340DDE4CAF4B62E9831A5C1127"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+> hvigor Finished :entry:default@PreBuild... after 214 ms 
+> hvigor Finished :entry:default@CreateModuleInfo... after 2 ms 
+> hvigor Finished :entry:default@GenerateMetadata... after 4 ms 
+> hvigor Finished :entry:default@ConfigureCmake... after 1 ms 
+> hvigor Finished :entry:default@MergeProfile... after 40 ms 
+> hvigor UP-TO-DATE :entry:default@CreateBuildProfile...  
+> hvigor Finished :entry:default@PreCheckSyscap... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@GeneratePkgContextInfo...  
+> hvigor Finished :entry:default@GeneratePkgSdkInfo... after 4 ms 
+> hvigor Finished :entry:default@ProcessIntegratedHsp... after 3 ms 
+> hvigor Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+> hvigor Finished :entry:default@MakePackInfo... after 5 ms 
+> hvigor Finished :entry:default@SyscapTransform... after 37 ms 
+> hvigor Finished :entry:default@ProcessProfile... after 173 ms 
+> hvigor Finished :entry:default@ProcessRouterMap... after 4 ms 
+> hvigor Finished :entry:default@ProcessShareConfig... after 4 ms 
+> hvigor Finished :entry:default@ProcessStartupConfig... after 4 ms 
+> hvigor Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@ProcessResource...  
+> hvigor Finished :entry:default@GenerateLoaderJson... after 16 ms 
+> hvigor UP-TO-DATE :entry:default@ProcessLibs...  
+> hvigor Finished :entry:default@CompileResource... after 343 ms 
+> hvigor UP-TO-DATE :entry:default@DoNativeStrip...  
+> hvigor Finished :entry:default@BuildJS... after 4 ms 
+> hvigor UP-TO-DATE :entry:default@CacheNativeLibs...  
+
+FAILURE: Build completed with 1 failure.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task 'default@CompileArkTS'.
+  > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+
+================================================================================
+
+25 tasks in total: 19 executed, 6 up-to-date
+> hvigor ERROR: Failed :entry:default@CompileArkTS... 
+> hvigor WARN: 
+1 WARN: ArkTS:WARN: For details about ArkTS syntax errors, see FAQs
+2 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:27:37
+ Function may throw exceptions. Special handling is required.
+
+3 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:28:22
+ Function may throw exceptions. Special handling is required.
+
+4 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:29:57
+ Function may throw exceptions. Special handling is required.
+
+5 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:61:37
+ Function may throw exceptions. Special handling is required.
+
+6 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:62:17
+ Function may throw exceptions. Special handling is required.
+
+7 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:63:17
+ Function may throw exceptions. Special handling is required.
+
+8 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:74:37
+ Function may throw exceptions. Special handling is required.
+
+9 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:75:17
+ Function may throw exceptions. Special handling is required.
+
+10 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:76:17
+ Function may throw exceptions. Special handling is required.
+
+11 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:52:36
+ The system capacity of this api 'createMd' is not supported on all devices
+
+12 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:52:36
+ Function may throw exceptions. Special handling is required.
+
+13 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:18
+ The system capacity of this api 'update' is not supported on all devices
+
+14 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:18
+ Function may throw exceptions. Special handling is required.
+
+15 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:37
+ The system capacity of this api 'digest' is not supported on all devices
+
+16 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:37
+ Function may throw exceptions. Special handling is required.
+
+17 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:83:54
+ Function may throw exceptions. Special handling is required.
+
+18 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:88:62
+ Function may throw exceptions. Special handling is required.
+
+19 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/AiObservationPanel.ets:60:56
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+20 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:82:52
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+21 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/SiteDetail.ets:83:53
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+22 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/LoginPage.ets:18:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+23 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/LoginPage.ets:19:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+24 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/ProfilePage.ets:65:45
+ Function may throw exceptions. Special handling is required.
+
+25 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/AccountSyncClient.ets:37:36
+ Function may throw exceptions. Special handling is required.
+
+26 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/sync/WaterSituationClient.ets:25:36
+ Function may throw exceptions. Special handling is required.
+
+27 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/components/WaterSituationPage.ets:43:47
+ 'getContext' has been deprecated.
+
+28 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:351:45
+ Function may throw exceptions. Special handling is required.
+
+29 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:537:45
+ Function may throw exceptions. Special handling is required.
+
+30 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:567:45
+ Function may throw exceptions. Special handling is required.
+
+31 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:592:45
+ Function may throw exceptions. Special handling is required.
+
+32 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:639:45
+ Function may throw exceptions. Special handling is required.
+
+33 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:666:48
+ Function may throw exceptions. Special handling is required.
+
+34 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:687:43
+ Function may throw exceptions. Special handling is required.
+
+35 WARN: ArkTS:WARN File: <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:986:12
+ The current component id "home-recent-memory-body" is duplicate with <PROJECT_ROOT>/entry/src/main/ets/pages/Index.ets:976:16.
+> hvigor ERROR: ArkTS Compiler Error
+1 ERROR: 10605008 ArkTS Compiler Error
+Error Message: Use explicit types instead of "any", "unknown" (arkts-no-any-unknown) At File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:36:13
+
+
+2 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Type '{}' is missing the following properties from type 'Map<Tag, Value>': clear, delete, forEach, get, and 8 more. At File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:32:13
+
+
+3 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Type '{}' is missing the following properties from type 'Map<Tag, Value>': clear, delete, forEach, get, and 8 more. At File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:52:13
+
+
+4 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Type '{}' is missing the following properties from type 'Map<Tag, Value>': clear, delete, forEach, get, and 8 more. At File: <PROJECT_ROOT>/entry/src/main/ets/data/AccountWorkspaceStore.ets:68:11
+
+
+COMPILE RESULT:FAIL {ERROR:5 WARN:35}
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+
+> hvigor ERROR: BUILD FAILED in 15 s 627 ms 

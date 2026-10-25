@@ -1,0 +1,141 @@
+> hvigor UP-TO-DATE :entry:default@PreBuild...  
+> hvigor Finished :entry:default@CreateModuleInfo... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@GenerateMetadata...  
+> hvigor Finished :entry:default@ConfigureCmake... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@MergeProfile...  
+> hvigor UP-TO-DATE :entry:default@CreateBuildProfile...  
+> hvigor Finished :entry:default@PreCheckSyscap... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@GeneratePkgContextInfo...  
+> hvigor Finished :entry:default@GeneratePkgSdkInfo... after 3 ms 
+> hvigor Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+> hvigor Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@MakePackInfo...  
+> hvigor Finished :entry:default@SyscapTransform... after 12 ms 
+> hvigor UP-TO-DATE :entry:default@ProcessProfile...  
+> hvigor UP-TO-DATE :entry:default@ProcessRouterMap...  
+> hvigor UP-TO-DATE :entry:default@ProcessShareConfig...  
+> hvigor Finished :entry:default@ProcessStartupConfig... after 3 ms 
+> hvigor Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@ProcessResource...  
+> hvigor UP-TO-DATE :entry:default@GenerateLoaderJson...  
+> hvigor UP-TO-DATE :entry:default@ProcessLibs...  
+> hvigor Finished :entry:default@CompileResource... after 283 ms 
+> hvigor UP-TO-DATE :entry:default@DoNativeStrip...  
+> hvigor Finished :entry:default@BuildJS... after 4 ms 
+> hvigor UP-TO-DATE :entry:default@CacheNativeLibs...  
+> hvigor Finished :entry:default@CompileArkTS... after 5 s 525 ms 
+> hvigor Finished :entry:default@GeneratePkgModuleJson... after 5 ms 
+> hvigor Finished :entry:default@ProcessCompiledResources... after 2 ms 
+> hvigor Finished :entry:default@PackageHap... after 1 s 47 ms 
+> hvigor Finished :entry:default@PackingCheck... after 11 ms 
+> hvigor Finished :entry:default@SignHap... after 4 ms 
+> hvigor Finished :entry:default@CollectDebugSymbol... after 2 ms 
+> hvigor Finished :entry:assembleHap... after 1 ms 
+> hvigor BUILD SUCCESSFUL in 12 s 362 ms 
+
+33 tasks in total: 19 executed, 14 up-to-date
+> hvigor WARN: WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:27:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:28:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:29:57
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:61:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:62:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:63:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:74:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:75:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:76:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ The system capacity of this api 'createMd' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ The system capacity of this api 'update' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ The system capacity of this api 'digest' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:85:54
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:90:62
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:166:42
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/AiObservationPanel.ets:60:56
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/SiteDetail.ets:83:52
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/SiteDetail.ets:84:53
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/LoginPage.ets:18:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/LoginPage.ets:19:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/ProfilePage.ets:65:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/AccountSyncClient.ets:37:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/WaterSituationClient.ets:25:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/WaterSituationPage.ets:43:47
+ 'getContext' has been deprecated.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:384:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:603:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:633:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:658:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:705:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:732:48
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:753:43
+ Function may throw exceptions. Special handling is required.
+
+
+> hvigor WARN: Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in <workspace>\build-profile.json5.

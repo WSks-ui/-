@@ -1,0 +1,14 @@
+{
+  "mainPackage": "M4",
+  "testPackage": "T9",
+  "before": {
+    "memory-view-list": "#FFF4ECE4",
+    "memory-view-gallery": "#FFFBEAF0"
+  },
+  "after": {
+    "memory-view-list": "#FFFBEAF0",
+    "memory-view-gallery": "#FFF4ECE4"
+  },
+  "result": "PASS",
+  "method": "按同次设备原始布局核对选择画廊与重置后的按钮背景实际互换；不重绘界面。"
+}

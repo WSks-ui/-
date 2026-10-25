@@ -1,0 +1,4 @@
+10-25 18:58:21.143 15053 15053 I A03d00/JSAPP: PAPER_SYSTEM_STORE:yunheji_test_ui_1792925898855_paper_native_share
+10-25 18:58:38.385 15053 15053 I A03d00/JSAPP: PAPER_SYSTEM_PNG_PIXELS:{"width":1080,"height":1968,"changedPaperPixels":3144,"changedTextPixels":0,"decodedRgbaBytes":8501760}
+10-25 18:59:07.099 15053 15053 I A03d00/JSAPP: PAPER_SYSTEM_NATIVE_SHARE:{"panelId":"share_card","bounds":{"bottom":1863,"displayId":0,"left":56,"right":1200,"top":1583},"noteId":"note:90e399f2-8eb9-44d1-9d59-b72686132a38:1792925927813","receiverSelected":false}
+10-25 18:59:09.698 15053 15053 I A03d00/JSAPP: PAPER_SYSTEM_SHARE_CANCEL_RESULT:wholeSnapshotIdentical=true;noteVersionIdentical=true;receiverSelected=false

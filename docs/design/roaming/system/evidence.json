@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-23T02:42:57",
+  "kind": "HDC actual native UI directed validation, not an aa test/Hypium report",
+  "device": {
+    "target": "127.0.0.1:5557",
+    "type": "tablet",
+    "resolution": [
+      2880,
+      1920
+    ],
+    "api": 26,
+    "softwareVersion": "emulator 7.0.0.107(SP8DEVC00E16R1P1)",
+    "fullname": "OpenHarmony-7.0.0.105"
+  },
+  "packages": {
+    "M5": {
+      "time": "2026-10-23T02:10:57.712831",
+      "device": "127.0.0.1:5557",
+      "testStore": "yunheji_test_ui_roaming_system",
+      "package": "entry\\build\\default\\outputs\\default\\entry-default-unsigned.hap",
+      "bytes": 7582788,
+      "sha256": "E710E8E33EBCA026B3D503DD681A05FAABA89CE615B75664469F67C498A6A3B6"
+    },
+    "M6": {
+      "time": "2026-10-23T02:28:43.572026",
+      "device": "127.0.0.1:5557",
+      "testStore": "yunheji_test_ui_roaming_system",
+      "package": "entry\\build\\default\\outputs\\default\\entry-default-unsigned.hap",
+      "bytes": 7610407,
+      "sha256": "16D78945095B48D5DD4D718223D328D039048B2A4D6E02EB147DDC4EB816A053"
+    },
+    "M8": {
+      "time": "2026-10-23T02:39:51.227976",
+      "device": "127.0.0.1:5557",
+      "testStore": "yunheji_test_ui_roaming_system",
+      "package": "entry\\build\\default\\outputs\\default\\entry-default-unsigned.hap",
+      "bytes": 7613206,
+      "sha256": "81165C3C3C68FD8068E9D24EB83EE3CC9CD8B748F2B49AF6CAED2D0561D44963"
+    }
+  },
+  "cases": [
+    {
+      "id": "m5-ui-note-save",
+      "package": "M5",
+      "result": "passed",
+      "detail": "Basic offline input mode selected during fresh emulator setup. Actual UI choice, test text entry, confirm-save, and note readback; game progress remains 0/3.",
+      "evidence": [
+        "saved-memory-m5.png",
+        "note-detail-before-share-m5.png"
+      ]
+    },
+    {
+      "id": "m6-two-real-desktop-cards",
+      "package": "M6",
+      "result": "passed",
+      "detail": "Continue card originally added on M5 is refreshed on M6; recent-page card is added through M6 AddFormMenuItem. Both actual desktop cards show current saved content. This emulator did not show a second confirmation dialog after the add menu.",
+      "evidence": [
+        "card-previews-m6.png",
+        "two-desktop-cards-m6.png"
+      ]
+    },
+    {
+      "id": "m6-chapter-cold",
+      "package": "M6",
+      "result": "passed",
+      "detail": "After aa force-stop, actual desktop continue-card click opens the Kaifeng chapter.",
+      "evidence": [
+        "force-stop-before-chapter-card-m6.log",
+        "cold-chapter-click-m6.log",
+        "cold-chapter-m6.png"
+      ]
+    },
+    {
+      "id": "m6-chapter-hot",
+      "package": "M6",
+      "result": "passed",
+      "detail": "From a running background ability, actual continue-card click opens the same Kaifeng chapter.",
+      "evidence": [
+        "hot-chapter-click-m6.log",
+        "hot-chapter-m6.png"
+      ]
+    },
+    {
+      "id": "m6-memory-cold",
+      "package": "M6",
+      "result": "passed",
+      "detail": "After aa force-stop, actual recent-page card restores the exact saved note, including body and source.",
+      "evidence": [
+        "force-stop-before-memory-card-m6.log",
+        "cold-memory-click-m6.log",
+        "cold-memory-m6.png"
+      ]
+    },
+    {
+      "id": "m6-memory-hot",
+      "package": "M6",
+      "result": "passed",
+      "detail": "Actual recent-page card opens the exact note from the background ability.",
+      "evidence": [
+        "hot-memory-click-m6.log",
+        "hot-memory-m6.png"
+      ]
+    },
+    {
+      "id": "m6-native-share-png-and-cancel",
+      "package": "M6",
+      "result": "passed",
+      "detail": "Native ShareKit sheet appears. Actual PNG is retrieved and visually checked. Back cancels without choosing an external recipient. Entire independent test Preferences file is byte-identical before and after cancellation.",
+      "evidence": [
+        "system-share-sheet-m6.png",
+        "native-postcard-m6.png",
+        "note-after-share-cancel-m6.png",
+        "record-comparison.json"
+      ]
+    },
+    {
+      "id": "m6-delete-only-note-clear-card",
+      "package": "M6",
+      "result": "passed",
+      "detail": "Only the one UI-created note is deleted through confirmation; tombstone and original fields remain, the other progress record is unchanged, and desktop recent-page card removes the old title/body.",
+      "evidence": [
+        "delete-confirm-m6.png",
+        "memory-card-empty-m6.png",
+        "record-comparison.json"
+      ]
+    },
+    {
+      "id": "m6-empty-card-destination",
+      "package": "M6",
+      "result": "failed-and-fixed-in-M8",
+      "detail": "Clicking the empty recent-page card kept the previously open chapter. Empty memory action and Index route-stack clearing were corrected; retain this original failure.",
+      "evidence": [
+        "empty-memory-click-m6.log",
+        "empty-memory-destination-m6.png"
+      ]
+    },
+    {
+      "id": "m8-empty-memory-hot",
+      "package": "M8",
+      "result": "passed",
+      "detail": "Clicking the empty desktop recent-page card in the background ability opens the memory tab with 0 notes and no stale NavDestination.",
+      "evidence": [
+        "hot-empty-memory-click-m8.log",
+        "hot-empty-memory-m8.png"
+      ]
+    },
+    {
+      "id": "m8-empty-memory-cold",
+      "package": "M8",
+      "result": "passed",
+      "detail": "After aa force-stop, empty recent-page card opens the same independent test memory tab. Empty cache retains only whitelisted Debug store scope; the default archive file remains absent.",
+      "evidence": [
+        "force-stop-before-empty-card-m8.log",
+        "memory-card-empty-m8.png",
+        "cold-empty-memory-click-m8.log",
+        "cold-empty-memory-m8.png",
+        "default-store-absent-m8.log"
+      ]
+    }
+  ],
+  "sourceReportSha256": "587580431A98439779F17591A68AE539E525AFE921DD4A347602F460A3BACCA7",
+  "publishedFiles": [
+    {
+      "path": "card-previews-m6.layout.json",
+      "bytes": 127127,
+      "sha256": "6243A59126B925C6A4662B394A5FD98F916401E632501AFDFC0327FF48F5306E",
+      "sourceSha256": "6243A59126B925C6A4662B394A5FD98F916401E632501AFDFC0327FF48F5306E",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "card-previews-m6.png",
+      "bytes": 582389,
+      "sha256": "896CADEC49239BD0D263189DB7D1BDE94040A9A78B9DD96C6FF39227EB4E80F1",
+      "sourceSha256": "896CADEC49239BD0D263189DB7D1BDE94040A9A78B9DD96C6FF39227EB4E80F1",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "cold-chapter-click-m6.log",
+      "bytes": 12625,
+      "sha256": "8D8CA6CC8B236F3D3989C0895740010E2BE9F09742A54745459D5226E0B72396",
+      "sourceSha256": "8D8CA6CC8B236F3D3989C0895740010E2BE9F09742A54745459D5226E0B72396",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "cold-chapter-m6.layout.json",
+      "bytes": 167251,
+      "sha256": "22A2B29D71A895DE51B011D9CB1EF0B5FE21759B4360AD14938686E7F4D5F5A5",
+      "sourceSha256": "22A2B29D71A895DE51B011D9CB1EF0B5FE21759B4360AD14938686E7F4D5F5A5",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "cold-chapter-m6.png",
+      "bytes": 786469,
+      "sha256": "85A242C70BF7F2E540F5B6F9AE64FA13DC4CB389AB26632867B5ACDA70B56520",
+      "sourceSha256": "85A242C70BF7F2E540F5B6F9AE64FA13DC4CB389AB26632867B5ACDA70B56520",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "cold-empty-memory-click-m8.log",
+      "bytes": 4380,
+      "sha256": "9847BC019AF2164C0CBADE7069B5FB14600761716E3293E00D1928F01CA16995",
+      "sourceSha256": "9847BC019AF2164C0CBADE7069B5FB14600761716E3293E00D1928F01CA16995",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "cold-empty-memory-m8.layout.json",
+      "bytes": 79199,
+      "sha256": "4D9F9CFA541BBC708413C6C840D59AA897F8DDB292304B05462667744A26D5B3",
+      "sourceSha256": "4D9F9CFA541BBC708413C6C840D59AA897F8DDB292304B05462667744A26D5B3",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "cold-empty-memory-m8.png",
+      "bytes": 249010,
+      "sha256": "8B90F55676D3C4DCF063B4D51A463747677509479274B6FBB6A913A0A5B40B5B",
+      "sourceSha256": "8B90F55676D3C4DCF063B4D51A463747677509479274B6FBB6A913A0A5B40B5B",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "cold-memory-click-m6.log",
+      "bytes": 6969,
+      "sha256": "837D16316B7B8C04C2DA5FF4816D4B6545BF7DAF89C9736C00DE5EEA4FF39963",
+      "sourceSha256": "837D16316B7B8C04C2DA5FF4816D4B6545BF7DAF89C9736C00DE5EEA4FF39963",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "cold-memory-m6.layout.json",
+      "bytes": 107851,
+      "sha256": "F42D1B0FF6B913B960A8DDAB4471C72E17DC86EBEE02FAE78063660A38FC1D55",
+      "sourceSha256": "F42D1B0FF6B913B960A8DDAB4471C72E17DC86EBEE02FAE78063660A38FC1D55",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "cold-memory-m6.png",
+      "bytes": 682746,
+      "sha256": "A08963705E6444EB0FDDB339F6E455872EAA09BF5E59BA4EEFD4FABE3B995146",
+      "sourceSha256": "A08963705E6444EB0FDDB339F6E455872EAA09BF5E59BA4EEFD4FABE3B995146",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "default-store-absent-m8.log",
+      "bytes": 117,
+      "sha256": "921D00429AF0CE380616D0548B98EAA22B865A63403B10F296A0396488596C53",
+      "sourceSha256": "921D00429AF0CE380616D0548B98EAA22B865A63403B10F296A0396488596C53",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "delete-confirm-m6.layout.json",
+      "bytes": 118343,
+      "sha256": "AD17BD9D75AB1870ABB70C149496ABF4142FBD721AF5A4285F0AAAD284CFA9D7",
+      "sourceSha256": "AD17BD9D75AB1870ABB70C149496ABF4142FBD721AF5A4285F0AAAD284CFA9D7",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "delete-confirm-m6.png",
+      "bytes": 689016,
+      "sha256": "3926CBAFD909A6451E593827217E057BDA88B924FF6419B0C7F2C3A196125CF0",
+      "sourceSha256": "3926CBAFD909A6451E593827217E057BDA88B924FF6419B0C7F2C3A196125CF0",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "empty-memory-click-m6.log",
+      "bytes": 13510,
+      "sha256": "4CBAB22427117ACA7BC200E7188ED902FD421EA576196E6F86602D799F2979D4",
+      "sourceSha256": "4CBAB22427117ACA7BC200E7188ED902FD421EA576196E6F86602D799F2979D4",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "empty-memory-destination-m6.layout.json",
+      "bytes": 168660,
+      "sha256": "DA358F1F5694AEDB5E9BDF6F151E880301480AC58D6AA86D2CCCA90BF7D5D275",
+      "sourceSha256": "DA358F1F5694AEDB5E9BDF6F151E880301480AC58D6AA86D2CCCA90BF7D5D275",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "empty-memory-destination-m6.png",
+      "bytes": 792251,
+      "sha256": "FC1B3B085874FD8EE2EEF8F5E4EE0E89BB50A358753EB4F1B6032B4E17055CB0",
+      "sourceSha256": "FC1B3B085874FD8EE2EEF8F5E4EE0E89BB50A358753EB4F1B6032B4E17055CB0",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "force-stop-before-chapter-card-m6.log",
+      "bytes": 34,
+      "sha256": "23E243CE16C2F768226C6E814CE03A087137029F9B7A0B7EFEA4701AF481F4D3",
+      "sourceSha256": "23E243CE16C2F768226C6E814CE03A087137029F9B7A0B7EFEA4701AF481F4D3",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "force-stop-before-empty-card-m8.log",
+      "bytes": 34,
+      "sha256": "23E243CE16C2F768226C6E814CE03A087137029F9B7A0B7EFEA4701AF481F4D3",
+      "sourceSha256": "23E243CE16C2F768226C6E814CE03A087137029F9B7A0B7EFEA4701AF481F4D3",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "force-stop-before-memory-card-m6.log",
+      "bytes": 34,
+      "sha256": "23E243CE16C2F768226C6E814CE03A087137029F9B7A0B7EFEA4701AF481F4D3",
+      "sourceSha256": "23E243CE16C2F768226C6E814CE03A087137029F9B7A0B7EFEA4701AF481F4D3",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "hot-chapter-click-m6.log",
+      "bytes": 13511,
+      "sha256": "36E6A32B17136B363DDD2E8AE1F5BA761A69C4A89AF7A2598CBF0D6961AAE5EE",
+      "sourceSha256": "36E6A32B17136B363DDD2E8AE1F5BA761A69C4A89AF7A2598CBF0D6961AAE5EE",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "hot-chapter-m6.layout.json",
+      "bytes": 168660,
+      "sha256": "7755139BF057FDC0D088277D1FA40EAA89C750046CADF153AED97E53660C7BA7",
+      "sourceSha256": "7755139BF057FDC0D088277D1FA40EAA89C750046CADF153AED97E53660C7BA7",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "hot-chapter-m6.png",
+      "bytes": 792065,
+      "sha256": "C3F39096EF6B5B0481BEF046BFC58EF62B7974C0A19E8A5F45D39F4E41036D1D",
+      "sourceSha256": "C3F39096EF6B5B0481BEF046BFC58EF62B7974C0A19E8A5F45D39F4E41036D1D",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "hot-empty-memory-click-m8.log",
+      "bytes": 4380,
+      "sha256": "9847BC019AF2164C0CBADE7069B5FB14600761716E3293E00D1928F01CA16995",
+      "sourceSha256": "9847BC019AF2164C0CBADE7069B5FB14600761716E3293E00D1928F01CA16995",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "hot-empty-memory-m8.layout.json",
+      "bytes": 79255,
+      "sha256": "88DA8B82DD5FA8C4572C6EBF56B176E03C788A2C78E5C7AA588F529325D193D2",
+      "sourceSha256": "88DA8B82DD5FA8C4572C6EBF56B176E03C788A2C78E5C7AA588F529325D193D2",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "hot-empty-memory-m8.png",
+      "bytes": 249010,
+      "sha256": "8B90F55676D3C4DCF063B4D51A463747677509479274B6FBB6A913A0A5B40B5B",
+      "sourceSha256": "8B90F55676D3C4DCF063B4D51A463747677509479274B6FBB6A913A0A5B40B5B",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "hot-memory-click-m6.log",
+      "bytes": 6969,
+      "sha256": "D2F1B4DFC9ADD739260CDA146D2E7E4A6B3AC591428B7410F902D5F1D89F4992",
+      "sourceSha256": "D2F1B4DFC9ADD739260CDA146D2E7E4A6B3AC591428B7410F902D5F1D89F4992",
+      "logPathsRedacted": true
+    },
+    {
+      "path": "hot-memory-m6.layout.json",
+      "bytes": 109208,
+      "sha256": "3A216C9483598FD70D80B9DB302E00FD2E1B34DD06BE4A35D5CAD8946CCC0FBA",
+      "sourceSha256": "3A216C9483598FD70D80B9DB302E00FD2E1B34DD06BE4A35D5CAD8946CCC0FBA",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "hot-memory-m6.png",
+      "bytes": 684174,
+      "sha256": "902498D5D6FDBA34712F031B3F0F8F60DE9B12DA504A024C3B56F2D56DFE6E5C",
+      "sourceSha256": "902498D5D6FDBA34712F031B3F0F8F60DE9B12DA504A024C3B56F2D56DFE6E5C",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "memory-card-empty-m6.layout.json",
+      "bytes": 96956,
+      "sha256": "2E2FAD6482FCAD03E3E3B2C7D8F420D8CD913DBA5C59167DD90C93425AB11BA9",
+      "sourceSha256": "2E2FAD6482FCAD03E3E3B2C7D8F420D8CD913DBA5C59167DD90C93425AB11BA9",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "memory-card-empty-m6.png",
+      "bytes": 1898179,
+      "sha256": "698B4B45B10887CAB31E755B1953EE93F922102852B3888A8F9CD07BEBED6E62",
+      "sourceSha256": "698B4B45B10887CAB31E755B1953EE93F922102852B3888A8F9CD07BEBED6E62",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "memory-card-empty-m8.layout.json",
+      "bytes": 96954,
+      "sha256": "ADFF30B490CDC1995850E3E52C056581757B42AC682C17638BD7BC48BA51B60D",
+      "sourceSha256": "ADFF30B490CDC1995850E3E52C056581757B42AC682C17638BD7BC48BA51B60D",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "memory-card-empty-m8.png",
+      "bytes": 1897473,
+      "sha256": "B424D2324E441938DE65A9F907BFEBCF4AA745ED59805052C50DB68ABEED0416",
+      "sourceSha256": "B424D2324E441938DE65A9F907BFEBCF4AA745ED59805052C50DB68ABEED0416",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "native-postcard-m6.png",
+      "bytes": 245441,
+      "sha256": "186B4FDF675133710EBB1143573C12B77EC9A7752975551A8A2DA0645ED441BB",
+      "sourceSha256": "186B4FDF675133710EBB1143573C12B77EC9A7752975551A8A2DA0645ED441BB",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "note-after-share-cancel-m6.layout.json",
+      "bytes": 107851,
+      "sha256": "9DD32763A78FF42AA29764D7467A5CFA6D90A6ED429B86D5EF355C1AEEE5CD97",
+      "sourceSha256": "9DD32763A78FF42AA29764D7467A5CFA6D90A6ED429B86D5EF355C1AEEE5CD97",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "note-after-share-cancel-m6.png",
+      "bytes": 682508,
+      "sha256": "8D4C83A174EDDD85C6989B33BECD9511FE30DCE8542737B914884CB08A11912E",
+      "sourceSha256": "8D4C83A174EDDD85C6989B33BECD9511FE30DCE8542737B914884CB08A11912E",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "note-detail-before-share-m5.layout.json",
+      "bytes": 109236,
+      "sha256": "19DE3A76611719C9D245E6E0DF5D6976428DF6BC9D958F6B8920BBC0DAD22D35",
+      "sourceSha256": "19DE3A76611719C9D245E6E0DF5D6976428DF6BC9D958F6B8920BBC0DAD22D35",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "note-detail-before-share-m5.png",
+      "bytes": 683241,
+      "sha256": "B162F4B4E9B2F9ED4E3674B31DB464C130770FF0C4B372BCBFA76F8A319B9EE5",
+      "sourceSha256": "B162F4B4E9B2F9ED4E3674B31DB464C130770FF0C4B372BCBFA76F8A319B9EE5",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "record-comparison.json",
+      "bytes": 759,
+      "sha256": "437A72BDD6A7276163E9E5A482F0E544A9AE8F632F0B9DEB15DC1A9D9EBD7524",
+      "sourceSha256": "437A72BDD6A7276163E9E5A482F0E544A9AE8F632F0B9DEB15DC1A9D9EBD7524",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "saved-memory-m5.layout.json",
+      "bytes": 145791,
+      "sha256": "A07CD9FDEA6CF54DAD5174CBD0C1819A69FA63AB7B1D433F4E877B9A44E51AEF",
+      "sourceSha256": "A07CD9FDEA6CF54DAD5174CBD0C1819A69FA63AB7B1D433F4E877B9A44E51AEF",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "saved-memory-m5.png",
+      "bytes": 704471,
+      "sha256": "1B534A962A384627C6DDDE804B4E9986F42BA6FF13B4A0D6CDEA8A8E08BC5A48",
+      "sourceSha256": "1B534A962A384627C6DDDE804B4E9986F42BA6FF13B4A0D6CDEA8A8E08BC5A48",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "system-share-sheet-m6.layout.json",
+      "bytes": 160762,
+      "sha256": "2E6E4023A527788911CD9EC41CDF20B12D09AC2045523E6A0D89B5894DFDA8DD",
+      "sourceSha256": "2E6E4023A527788911CD9EC41CDF20B12D09AC2045523E6A0D89B5894DFDA8DD",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "system-share-sheet-m6.png",
+      "bytes": 727751,
+      "sha256": "D8A9F60552FAE0B32635B6960386C8032432DC6DA51AA73A8BF9BA9A4456063F",
+      "sourceSha256": "D8A9F60552FAE0B32635B6960386C8032432DC6DA51AA73A8BF9BA9A4456063F",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "two-desktop-cards-m6.layout.json",
+      "bytes": 97072,
+      "sha256": "CB768507F2F3922A447DCD82BA72032BC02B5FDDE8B1C8A53F7E290D24D5256D",
+      "sourceSha256": "CB768507F2F3922A447DCD82BA72032BC02B5FDDE8B1C8A53F7E290D24D5256D",
+      "logPathsRedacted": false
+    },
+    {
+      "path": "two-desktop-cards-m6.png",
+      "bytes": 1910971,
+      "sha256": "2416AD6CEF40A4F365BC2F125115032A3FD27758E34D71D5CEFFFC53E5D88D7E",
+      "sourceSha256": "2416AD6CEF40A4F365BC2F125115032A3FD27758E34D71D5CEFFFC53E5D88D7E",
+      "logPathsRedacted": false
+    }
+  ],
+  "omittedPrivateWorkingFiles": [
+    "raw Preferences XML",
+    "full system logs",
+    "private development scripts"
+  ]
+}

@@ -1,0 +1,1060 @@
+> hvigor UP-TO-DATE :entry:ohosTest@PreBuild...  
+> hvigor Finished :entry:ohosTest@CreateModuleInfo... after 1 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@GenerateMetadata...  
+> hvigor Finished :entry:ohosTest@ConfigureCmake... after 1 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@MergeProfile...  
+> hvigor UP-TO-DATE :entry:ohosTest@CreateBuildProfile...  
+> hvigor Finished :entry:ohosTest@PreCheckSyscap... after 1 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@GeneratePkgContextInfo...  
+> hvigor Finished :entry:ohosTest@GeneratePkgSdkInfo... after 3 ms 
+> hvigor Finished :entry:ohosTest@ProcessIntegratedHsp... after 1 ms 
+> hvigor Finished :entry:ohosTest@BuildNativeWithCmake... after 1 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@MakePackInfo...  
+> hvigor Finished :entry:ohosTest@SyscapTransform... after 14 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@ProcessProfile...  
+> hvigor UP-TO-DATE :entry:ohosTest@ProcessRouterMap...  
+> hvigor UP-TO-DATE :entry:ohosTest@ProcessShareConfig...  
+> hvigor Finished :entry:ohosTest@ProcessStartupConfig... after 2 ms 
+> hvigor Finished :entry:ohosTest@BuildNativeWithNinja... after 1 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@ProcessResource...  
+> hvigor UP-TO-DATE :entry:ohosTest@GenerateLoaderJson...  
+> hvigor UP-TO-DATE :entry:ohosTest@ProcessLibs...  
+> hvigor UP-TO-DATE :entry:ohosTest@CompileResource...  
+> hvigor UP-TO-DATE :entry:ohosTest@DoNativeStrip...  
+> hvigor Finished :entry:ohosTest@OhosTestBuildJS... after 4 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@CacheNativeLibs...  
+> hvigor Finished :entry:ohosTest@OhosTestCompileArkTS... after 7 s 356 ms 
+> hvigor UP-TO-DATE :entry:ohosTest@OhosTestCopyMockConfigJson...  
+> hvigor UP-TO-DATE :entry:ohosTest@GeneratePkgModuleJson...  
+> hvigor Finished :entry:ohosTest@ProcessCompiledResources... after 1 ms 
+> hvigor Finished :entry:ohosTest@PackageHap... after 516 ms 
+> hvigor Finished :entry:ohosTest@PackingCheck... after 18 ms 
+> hvigor Finished :entry:ohosTest@SignHap... after 3 ms 
+> hvigor Finished :entry:ohosTest@CollectDebugSymbol... after 2 ms 
+> hvigor Finished :entry:assembleHap... after 1 ms 
+> hvigor BUILD SUCCESSFUL in 14 s 212 ms 
+
+34 tasks in total: 17 executed, 17 up-to-date
+> hvigor WARN: WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:27:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:28:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:29:57
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:61:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:62:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:63:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:74:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:75:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/data/AccountWorkspaceStore.ets:76:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ The system capacity of this api 'createMd' is not supported on all devices
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ The system capacity of this api 'update' is not supported on all devices
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ The system capacity of this api 'digest' is not supported on all devices
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:85:54
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:90:62
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:166:42
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:54:73
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:135:80
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:140:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:146:118
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:151:35
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:163:43
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:166:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:174:42
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:186:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:188:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:191:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:193:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveUiSession.ets:200:25
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:17:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveAppearance.test.ets:18:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:20:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:21:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:26:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:33:70
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:34:54
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:35:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ArchiveImmersive.test.ets:38:65
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:9:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:15:71
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:21:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:22:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:27:73
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:28:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CultureAtlas.test.ets:29:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/main/ets/sync/AccountSyncClient.ets:37:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:24:6
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:29:29
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:30:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:31:78
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:34:116
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:35:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:36:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:37:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:38:75
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:40:49
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:51:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:57:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:65:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:71:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:78:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:80:49
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AccountSync.test.ets:81:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:14:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:21:65
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:22:58
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:23:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:28:69
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ProfileLogin.test.ets:30:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:10:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:17:16
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:23:56
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:24:56
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:26:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:28:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CatalogGraph.test.ets:29:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/SpatialExperience.test.ets:12:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/SpatialExperience.test.ets:20:114
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:15:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:27:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:28:64
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:32:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:33:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:34:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:35:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:64:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:65:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:80:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:82:35
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:91:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:93:29
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:127:62
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:136:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:144:29
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:145:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:152:49
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:154:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:155:34
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:157:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/EngineExperience.test.ets:161:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:15:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:25:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:29:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:30:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:31:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:32:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:39:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:41:29
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:55:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:56:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:68:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:71:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:87:44
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:88:44
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:89:47
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemoryJourney.test.ets:90:47
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:14:64
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:25:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:26:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:35:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:36:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:56:43
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:57:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:58:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:59:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/CoreContent.test.ets:83:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:16:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:17:64
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:21:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:22:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:23:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:24:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:38:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:39:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:46:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:49:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:67:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:68:58
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:69:50
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:70:47
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:96:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:97:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ObservationMemory.test.ets:99:82
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:28:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:29:64
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:33:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:34:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:35:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:36:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:49:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:51:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:58:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:62:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:77:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:79:15
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:88:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:90:91
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:95:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:96:58
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:97:50
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:98:47
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:124:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:125:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ExpandedObservation.test.ets:127:91
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:19:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:23:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:24:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:25:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:26:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:34:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:38:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:39:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:41:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:42:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:54:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:56:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:63:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:66:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:81:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:89:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:90:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:113:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:115:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:117:88
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/HomeExperience.test.ets:131:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:17:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:18:64
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:22:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:23:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:24:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:25:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:40:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:41:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:49:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:53:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:57:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:73:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:74:75
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:77:16
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:87:44
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:88:44
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:89:47
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:90:47
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:95:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:96:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MaterialComparison.test.ets:120:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:53:6
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:87:20
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:87:55
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:89:16
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:93:116
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:97:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:98:75
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:103:30
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:104:42
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:106:34
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:111:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:139:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:147:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:152:30
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:153:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:163:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:204:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:208:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:209:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:210:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:211:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:219:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:223:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:224:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:225:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:226:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:237:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:239:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:246:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:249:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:264:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:271:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:272:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:295:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:297:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:299:76
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/MemorySync.test.ets:313:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:30:6
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:35:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:40:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:41:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:42:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:43:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:55:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:57:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:64:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:67:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:81:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:87:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:88:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:100:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:111:98
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:115:35
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/DemoRehearsal.test.ets:117:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/PageHierarchy.test.ets:15:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:23:6
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:30:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:35:91
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:36:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:37:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:38:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/StageFoundation.test.ets:39:75
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:9:55
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:27:89
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:29:60
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:41:50
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:49:63
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:53:76
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:54:76
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:55:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:68:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:71:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:72:32
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:80:50
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:83:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:86:77
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:94:44
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:96:43
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:104:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:105:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:106:35
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:107:33
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:108:81
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:109:60
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/ContentMemory.test.ets:110:79
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:35:6
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:66:116
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:69:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:69:57
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:71:8
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:73:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:74:75
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:76:30
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:77:42
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:78:35
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:80:67
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:82:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:104:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:119:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:128:30
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:130:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:133:79
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:169:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:173:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:174:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:175:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:176:53
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:189:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:191:24
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:204:44
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:207:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:220:54
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:224:49
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:229:80
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:238:39
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:339:26
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:351:82
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:352:81
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:363:41
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:367:28
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:566:23
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:571:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:572:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/AiMemorySync.test.ets:600:25
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:48:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:54:51
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:59:96
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:63:63
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:64:76
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:65:76
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <WORKSPACE>/entry/src/ohosTest/ets/test/JourneyScroll.test.ets:67:45
+ Function may throw exceptions. Special handling is required.
+
+
+> hvigor WARN: Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in <WORKSPACE>\build-profile.json5.

@@ -1,0 +1,36 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=PaperExcerptTest
+
+
+OHOS_REPORT_STATUS: class=PaperExcerptTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_tablet_selection_udmf_drag_and_explicit_save_freeze_excerpt
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PaperExcerptTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stack=    at run entry (entry/src/ohosTest/ets/test/ArchiveUiSession.ets:365:13)
+OHOS_REPORT_STATUS: stream=Error in native_tablet_selection_udmf_drag_and_explicit_save_freeze_excerpt, UI_WAIT_FAILED: UI_COMPONENT_NOT_FOUND paper-memory-body
+OHOS_REPORT_STATUS: test=native_tablet_selection_udmf_drag_and_explicit_save_freeze_excerpt
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=91666
+
+
+OHOS_REPORT_STATUS: class=PaperExcerptTest
+OHOS_REPORT_STATUS: suiteconsuming=91666
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 1, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=91666
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

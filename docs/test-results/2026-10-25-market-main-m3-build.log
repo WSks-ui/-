@@ -1,0 +1,200 @@
+> hvigor UP-TO-DATE :entry:default@PreBuild...  
+> hvigor Finished :entry:default@CreateModuleInfo... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@GenerateMetadata...  
+> hvigor Finished :entry:default@ConfigureCmake... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@MergeProfile...  
+> hvigor UP-TO-DATE :entry:default@CreateBuildProfile...  
+> hvigor Finished :entry:default@PreCheckSyscap... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@GeneratePkgContextInfo...  
+> hvigor Finished :entry:default@GeneratePkgSdkInfo... after 2 ms 
+> hvigor Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+> hvigor Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@MakePackInfo...  
+> hvigor Finished :entry:default@SyscapTransform... after 8 ms 
+> hvigor UP-TO-DATE :entry:default@ProcessProfile...  
+> hvigor UP-TO-DATE :entry:default@ProcessRouterMap...  
+> hvigor UP-TO-DATE :entry:default@ProcessShareConfig...  
+> hvigor Finished :entry:default@ProcessStartupConfig... after 2 ms 
+> hvigor Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+> hvigor UP-TO-DATE :entry:default@ProcessResource...  
+> hvigor UP-TO-DATE :entry:default@GenerateLoaderJson...  
+> hvigor UP-TO-DATE :entry:default@ProcessLibs...  
+> hvigor UP-TO-DATE :entry:default@CompileResource...  
+> hvigor UP-TO-DATE :entry:default@DoNativeStrip...  
+> hvigor Finished :entry:default@BuildJS... after 4 ms 
+> hvigor UP-TO-DATE :entry:default@CacheNativeLibs...  
+> hvigor Finished :entry:default@CompileArkTS... after 8 s 733 ms 
+> hvigor UP-TO-DATE :entry:default@GeneratePkgModuleJson...  
+> hvigor Finished :entry:default@ProcessCompiledResources... after 1 ms 
+> hvigor Finished :entry:default@PackageHap... after 498 ms 
+> hvigor Finished :entry:default@PackingCheck... after 11 ms 
+> hvigor Finished :entry:default@SignHap... after 4 ms 
+> hvigor Finished :entry:default@CollectDebugSymbol... after 2 ms 
+> hvigor Finished :entry:assembleHap... after 1 ms 
+> hvigor BUILD SUCCESSFUL in 13 s 510 ms 
+
+33 tasks in total: 17 executed, 16 up-to-date
+> hvigor WARN: WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:63:15
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:64:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:119:31
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:162:11
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:163:11
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:170:9
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:171:9
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/roamingform/RoamingCardData.ets:178:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/entryability/EntryAbility.ets:69:24
+ This API is unavailable to 2in1.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:27:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:28:22
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:29:57
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:61:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:62:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:63:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:74:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:75:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/data/AccountWorkspaceStore.ets:76:17
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ The system capacity of this api 'createMd' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:53:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ The system capacity of this api 'update' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:54:18
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ The system capacity of this api 'digest' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:55:37
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:85:54
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:90:62
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/DistributedArchiveChannel.ets:166:42
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/AiObservationPanel.ets:61:56
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/SiteDetail.ets:88:52
+ The system capacity of this api 'TextAreaController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/SiteDetail.ets:89:53
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/LoginPage.ets:18:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/LoginPage.ets:19:57
+ The system capacity of this api 'TextInputController' is not supported on all devices
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/ProfilePage.ets:92:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/AccountSyncClient.ets:43:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/AccountSyncClient.ets:151:40
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/sync/WaterSituationClient.ets:25:36
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/WaterSituationPage.ets:43:47
+ 'getContext' has been deprecated.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/platform/PaperWindowStyle.ets:11:25
+ This API is unavailable to 2in1.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/PaperJourneyPage.ets:178:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:224:48
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:241:21
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:242:18
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:244:38
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/platform/RoamingSystem.ets:264:8
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/RoamingSystemPage.ets:39:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/RoamingSystemPage.ets:44:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:620:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:684:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:877:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1065:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1095:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1120:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/pages/Index.ets:1178:45
+ Function may throw exceptions. Special handling is required.
+
+WARN: ArkTS:WARN File: <workspace>/entry/src/main/ets/components/PaperMemoryShelf.ets:302:65
+ The current component id "memory-search" is duplicate with <workspace>/entry/src/main/ets/pages/Index.ets:1588:58.
+
+> hvigor WARN: Will skip sign 'hos_hap'. No signingConfigs profile is configured in current project.
+             If needed, configure the signingConfigs in <workspace>\build-profile.json5.

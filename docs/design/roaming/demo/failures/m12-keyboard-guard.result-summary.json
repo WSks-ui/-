@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "detail": "检测到其他应用或系统遮挡；停止，不猜测弹窗按钮。",
+  "stage": "input-personal-thought",
+  "runId": "20261023-034338-b3e129",
+  "phone": "127.0.0.1:5555",
+  "isolatedStore": "yunheji_test_ui_roaming_demo_m12",
+  "shareRequested": true,
+  "commandCount": 241,
+  "twoDeviceSyncVerified": false,
+  "mainPackage": "M12",
+  "sourceResultSha256": "1aa1016c855681e0d10151af3355437599057f4372e2aa6972deb15dc47034b8",
+  "publishedAs": "原始失败结果的安全字段摘要；完整失败中间帧、命令日志与原始键盘fixture未公开",
+  "blankThoughtOpened": true,
+  "personalThoughtEntered": false,
+  "personalMemorySaved": false,
+  "failureScreenshot": "failures/demo-m12-input-failure.png"
+}

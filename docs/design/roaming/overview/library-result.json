@@ -1,0 +1,23 @@
+{
+  "actualNativeDirectedCheck": true,
+  "appPackage": "M12",
+  "searchText": "牡丹",
+  "matchedClue": "roam-ly-peony",
+  "favorite": {
+    "id": "favorite:roam-ly-peony",
+    "kind": "favorite",
+    "siteId": "roam-ly-peony",
+    "body": "",
+    "tags": [
+      "研究资料"
+    ],
+    "updatedAt": 1792699441962,
+    "deviceId": "256bc2eb-f2a1-4fc6-ae2f-6e07d1572bd2",
+    "deleted": false
+  },
+  "activeNotes": 0,
+  "completedClues": 0,
+  "freeReadingClue": "roam-ly-peony",
+  "rawPreferencesBytes": 1653,
+  "rawPreferencesSha256": "AE737F0DF3354B2B410253CEB6F429CF46647CC9F5F2A62735EDC2B842A883CA"
+}

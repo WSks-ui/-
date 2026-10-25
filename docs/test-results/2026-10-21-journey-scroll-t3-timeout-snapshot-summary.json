@@ -1,0 +1,43 @@
+{
+  "method": "超时后只读取已确认独立测试Preferences XML，不写入或注入记录",
+  "records": [
+    {
+      "id": "note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792552944077",
+      "kind": "note",
+      "siteId": "zz-dahecun",
+      "tags": [
+        "泥火观察"
+      ],
+      "deleted": false,
+      "updatedAt": 1792552944077
+    },
+    {
+      "id": "favorite:zz-duling-fangding",
+      "kind": "favorite",
+      "siteId": "zz-duling-fangding",
+      "tags": [
+        "待实地探访"
+      ],
+      "deleted": false,
+      "updatedAt": 1792553015784
+    },
+    {
+      "id": "progress:zz-duling-fangding:overview",
+      "kind": "progress",
+      "siteId": "zz-duling-fangding",
+      "tags": [],
+      "deleted": false,
+      "updatedAt": 1792553038174
+    },
+    {
+      "id": "note:7ef035c4-14e1-4cb1-80da-200df53e9e1c:1792553092676",
+      "kind": "note",
+      "siteId": "zz-duling-fangding",
+      "tags": [
+        "青铜折角"
+      ],
+      "deleted": false,
+      "updatedAt": 1792553586615
+    }
+  ]
+}

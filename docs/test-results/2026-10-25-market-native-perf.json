@@ -1,0 +1,1422 @@
+{
+  "boundary": "设备CPU绘制命令与输入排队统计，不是GPU/FPS/端到端触摸延迟。M2是本轮首次缓存版本，不是原M14性能基线。",
+  "firstM2Phone": {
+    "actualGestureRows": [
+      {
+        "phase": "cut",
+        "inputs": 16,
+        "frames": 16,
+        "coalesced": 7,
+        "maxPending": 1,
+        "segments": 16,
+        "geometryBuilds": 14,
+        "staticBuilds": 19,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 16,
+          "p50": 0.1288240011781454,
+          "p95": 0.30868600122630596
+        },
+        "drawIssueMs": {
+          "count": 16,
+          "p50": 66.32328000105917,
+          "p95": 198.775612000376
+        },
+        "judgeMs": {
+          "count": 8,
+          "p50": 3.154493000358343,
+          "p95": 7.164977999404073
+        },
+        "cacheMs": {
+          "count": 19,
+          "p50": 42.50554400123656,
+          "p95": 73.54791899956763
+        },
+        "inputWaitMs": {
+          "count": 16,
+          "p50": 2.371398000046611,
+          "p95": 144.3431809991598
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 22,
+        "frames": 21,
+        "coalesced": 3,
+        "maxPending": 1,
+        "segments": 22,
+        "geometryBuilds": 16,
+        "staticBuilds": 16,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 21,
+          "p50": 0.11966700106859207,
+          "p95": 0.2367090005427599
+        },
+        "drawIssueMs": {
+          "count": 21,
+          "p50": 37.64391300082207,
+          "p95": 78.91230800002813
+        },
+        "judgeMs": {
+          "count": 9,
+          "p50": 4.253219999372959,
+          "p95": 8.043160999193788
+        },
+        "cacheMs": {
+          "count": 16,
+          "p50": 35.914269000291824,
+          "p95": 80.67527799867094
+        },
+        "inputWaitMs": {
+          "count": 21,
+          "p50": 1.9810939989984035,
+          "p95": 26.76427299901843
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 11,
+        "frames": 9,
+        "coalesced": 4,
+        "maxPending": 1,
+        "segments": 11,
+        "geometryBuilds": 6,
+        "staticBuilds": 6,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 9,
+          "p50": 0.11963699944317341,
+          "p95": 0.41974599845707417
+        },
+        "drawIssueMs": {
+          "count": 9,
+          "p50": 135.55304399877787,
+          "p95": 374.27606900036335
+        },
+        "judgeMs": {
+          "count": 6,
+          "p50": 9.09643100015819,
+          "p95": 17.315450001507998
+        },
+        "cacheMs": {
+          "count": 6,
+          "p50": 242.15448400005698,
+          "p95": 365.79289900138974
+        },
+        "inputWaitMs": {
+          "count": 9,
+          "p50": 4.235758000984788,
+          "p95": 263.7293270006776
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 23,
+        "frames": 22,
+        "coalesced": 3,
+        "maxPending": 1,
+        "segments": 23,
+        "geometryBuilds": 18,
+        "staticBuilds": 18,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 22,
+          "p50": 0.12162999995052814,
+          "p95": 0.22205599956214428
+        },
+        "drawIssueMs": {
+          "count": 22,
+          "p50": 39.00865299999714,
+          "p95": 51.888152999803424
+        },
+        "judgeMs": {
+          "count": 9,
+          "p50": 3.0373510010540485,
+          "p95": 3.986676000058651
+        },
+        "cacheMs": {
+          "count": 18,
+          "p50": 35.50431799888611,
+          "p95": 49.246432000771165
+        },
+        "inputWaitMs": {
+          "count": 22,
+          "p50": 1.1369770001620054,
+          "p95": 25.966995999217033
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 63,
+        "frames": 49,
+        "coalesced": 15,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 49,
+          "p50": 0.8663229998201132,
+          "p95": 2.358618000522256
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 49,
+          "p50": 4.223709998652339,
+          "p95": 17.944624001160264
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 61,
+        "frames": 48,
+        "coalesced": 14,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 48,
+          "p50": 1.0373170003294945,
+          "p95": 3.4077259991317987
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 48,
+          "p50": 4.500370999798179,
+          "p95": 30.22833700105548
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 63,
+        "frames": 48,
+        "coalesced": 16,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 48,
+          "p50": 0.9973420016467571,
+          "p95": 2.1562300007790327
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 48,
+          "p50": 3.8370369989424944,
+          "p95": 19.7185490000993
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 62,
+        "frames": 52,
+        "coalesced": 11,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 52,
+          "p50": 0.8426080010831356,
+          "p95": 3.134484998881817
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 52,
+          "p50": 3.075798001140356,
+          "p95": 25.615500001236796
+        }
+      }
+    ],
+    "cut": {
+      "gestures": 4,
+      "drawIssueCpuP50MsPerGesture": [
+        66.32328000105917,
+        37.64391300082207,
+        135.55304399877787,
+        39.00865299999714
+      ],
+      "drawIssueCpuP95MsPerGesture": [
+        198.775612000376,
+        78.91230800002813,
+        374.27606900036335,
+        51.888152999803424
+      ],
+      "inputWaitP95MsPerGesture": [
+        144.3431809991598,
+        26.76427299901843,
+        263.7293270006776,
+        25.966995999217033
+      ],
+      "staticBuildsPerGesture": [
+        19,
+        16,
+        6,
+        18
+      ],
+      "geometryBuildsPerGesture": [
+        14,
+        16,
+        6,
+        18
+      ],
+      "maxPending": 1,
+      "allPreviewMatchesCommit": true
+    },
+    "light": {
+      "gestures": 4,
+      "drawIssueCpuP50MsPerGesture": [
+        0.8663229998201132,
+        1.0373170003294945,
+        0.9973420016467571,
+        0.8426080010831356
+      ],
+      "drawIssueCpuP95MsPerGesture": [
+        2.358618000522256,
+        3.4077259991317987,
+        2.1562300007790327,
+        3.134484998881817
+      ],
+      "inputWaitP95MsPerGesture": [
+        17.944624001160264,
+        30.22833700105548,
+        19.7185490000993,
+        25.615500001236796
+      ],
+      "staticBuildsPerGesture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "geometryBuildsPerGesture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxPending": 1,
+      "allPreviewMatchesCommit": true
+    },
+    "settleAndLifecycleRows": [
+      {
+        "phase": "disappear",
+        "inputs": 23,
+        "frames": 23,
+        "coalesced": 3,
+        "maxPending": 1,
+        "segments": 23,
+        "geometryBuilds": 18,
+        "staticBuilds": 18,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 22,
+          "p50": 0.12162999995052814,
+          "p95": 0.22205599956214428
+        },
+        "drawIssueMs": {
+          "count": 23,
+          "p50": 38.494858000427485,
+          "p95": 51.888152999803424
+        },
+        "judgeMs": {
+          "count": 9,
+          "p50": 3.0373510010540485,
+          "p95": 3.986676000058651
+        },
+        "cacheMs": {
+          "count": 18,
+          "p50": 35.50431799888611,
+          "p95": 49.246432000771165
+        },
+        "inputWaitMs": {
+          "count": 23,
+          "p50": 1.1369770001620054,
+          "p95": 32.89318300038576
+        }
+      },
+      {
+        "phase": "disappear",
+        "inputs": 0,
+        "frames": 349,
+        "coalesced": 123,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 5,
+        "staticBuilds": 10,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 349,
+          "p50": 0.25321999937295914,
+          "p95": 1.2259530015289783
+        },
+        "judgeMs": {
+          "count": 5,
+          "p50": 3.549812000244856,
+          "p95": 4.138739999383688
+        },
+        "cacheMs": {
+          "count": 10,
+          "p50": 58.84075199998915,
+          "p95": 93.23909099958837
+        },
+        "inputWaitMs": {
+          "count": 349,
+          "p50": 3.715345999225974,
+          "p95": 26.914745001122355
+        }
+      },
+      {
+        "phase": "disappear",
+        "inputs": 0,
+        "frames": 1,
+        "coalesced": 1,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 1,
+        "staticBuilds": 6,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 1,
+          "p50": 255.25729400105774,
+          "p95": 255.25729400105774
+        },
+        "judgeMs": {
+          "count": 1,
+          "p50": 4.253457000479102,
+          "p95": 4.253457000479102
+        },
+        "cacheMs": {
+          "count": 6,
+          "p50": 41.9886360000819,
+          "p95": 76.3924540001899
+        },
+        "inputWaitMs": {
+          "count": 1,
+          "p50": 11.482305999845266,
+          "p95": 11.482305999845266
+        }
+      }
+    ]
+  },
+  "firstM2TruncatedLinesRetainedInRaw": 0,
+  "finalM3Phone": {
+    "actualGestureRows": [
+      {
+        "phase": "cut",
+        "inputs": 43,
+        "frames": 35,
+        "coalesced": 9,
+        "maxPending": 1,
+        "segments": 43,
+        "geometryBuilds": 28,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 35,
+          "p50": 0.136,
+          "p95": 0.535
+        },
+        "drawIssueMs": {
+          "count": 35,
+          "p50": 1.547,
+          "p95": 6.358
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 4.14,
+          "p95": 22.257
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 35,
+          "p50": 1.461,
+          "p95": 17.001
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 47,
+        "frames": 38,
+        "coalesced": 11,
+        "maxPending": 1,
+        "segments": 47,
+        "geometryBuilds": 25,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 38,
+          "p50": 0.138,
+          "p95": 0.977
+        },
+        "drawIssueMs": {
+          "count": 38,
+          "p50": 1.695,
+          "p95": 8.832
+        },
+        "judgeMs": {
+          "count": 9,
+          "p50": 3.447,
+          "p95": 6.675
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 34.587,
+          "p95": 34.587
+        },
+        "inputWaitMs": {
+          "count": 38,
+          "p50": 2.471,
+          "p95": 28.349
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 43,
+        "frames": 39,
+        "coalesced": 6,
+        "maxPending": 1,
+        "segments": 43,
+        "geometryBuilds": 28,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 38,
+          "p50": 0.131,
+          "p95": 0.534
+        },
+        "drawIssueMs": {
+          "count": 39,
+          "p50": 2.112,
+          "p95": 7.644
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 3.631,
+          "p95": 4.245
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 46.189,
+          "p95": 46.189
+        },
+        "inputWaitMs": {
+          "count": 39,
+          "p50": 1.608,
+          "p95": 23.67
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 43,
+        "frames": 37,
+        "coalesced": 7,
+        "maxPending": 1,
+        "segments": 43,
+        "geometryBuilds": 28,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 37,
+          "p50": 0.091,
+          "p95": 0.334
+        },
+        "drawIssueMs": {
+          "count": 37,
+          "p50": 2.23,
+          "p95": 7.682
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 3.027,
+          "p95": 19.469
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 37,
+          "p50": 5.554,
+          "p95": 28.207
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 65,
+        "frames": 51,
+        "coalesced": 15,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 51,
+          "p50": 0.829,
+          "p95": 3.23
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 51,
+          "p50": 5.72,
+          "p95": 26.979
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 60,
+        "frames": 46,
+        "coalesced": 15,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 46,
+          "p50": 0.881,
+          "p95": 2.119
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 46,
+          "p50": 6.777,
+          "p95": 26.279
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 63,
+        "frames": 51,
+        "coalesced": 13,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 51,
+          "p50": 0.853,
+          "p95": 3.084
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 51,
+          "p50": 6.467,
+          "p95": 23.041
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 64,
+        "frames": 55,
+        "coalesced": 10,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 55,
+          "p50": 0.786,
+          "p95": 3.023
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 55,
+          "p50": 3.155,
+          "p95": 23.107
+        }
+      }
+    ],
+    "cut": {
+      "gestures": 4,
+      "drawIssueCpuP50MsPerGesture": [
+        1.547,
+        1.695,
+        2.112,
+        2.23
+      ],
+      "drawIssueCpuP95MsPerGesture": [
+        6.358,
+        8.832,
+        7.644,
+        7.682
+      ],
+      "inputWaitP95MsPerGesture": [
+        17.001,
+        28.349,
+        23.67,
+        28.207
+      ],
+      "staticBuildsPerGesture": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "geometryBuildsPerGesture": [
+        28,
+        25,
+        28,
+        28
+      ],
+      "maxPending": 1,
+      "allPreviewMatchesCommit": true
+    },
+    "light": {
+      "gestures": 4,
+      "drawIssueCpuP50MsPerGesture": [
+        0.829,
+        0.881,
+        0.853,
+        0.786
+      ],
+      "drawIssueCpuP95MsPerGesture": [
+        3.23,
+        2.119,
+        3.084,
+        3.023
+      ],
+      "inputWaitP95MsPerGesture": [
+        26.979,
+        26.279,
+        23.041,
+        23.107
+      ],
+      "staticBuildsPerGesture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "geometryBuildsPerGesture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxPending": 1,
+      "allPreviewMatchesCommit": true
+    },
+    "settleAndLifecycleRows": [
+      {
+        "phase": "disappear",
+        "inputs": 43,
+        "frames": 38,
+        "coalesced": 7,
+        "maxPending": 1,
+        "segments": 43,
+        "geometryBuilds": 29,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 37,
+          "p50": 0.091,
+          "p95": 0.334
+        },
+        "drawIssueMs": {
+          "count": 38,
+          "p50": 2.251,
+          "p95": 23.461
+        },
+        "judgeMs": {
+          "count": 11,
+          "p50": 2.998,
+          "p95": 19.469
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 25.577,
+          "p95": 25.577
+        },
+        "inputWaitMs": {
+          "count": 38,
+          "p50": 5.885,
+          "p95": 28.207
+        }
+      },
+      {
+        "phase": "disappear",
+        "inputs": 0,
+        "frames": 358,
+        "coalesced": 115,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 5,
+        "staticBuilds": 10,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 358,
+          "p50": 0.278,
+          "p95": 1.508
+        },
+        "judgeMs": {
+          "count": 5,
+          "p50": 3.664,
+          "p95": 4.602
+        },
+        "cacheMs": {
+          "count": 10,
+          "p50": 37.787,
+          "p95": 69.874
+        },
+        "inputWaitMs": {
+          "count": 358,
+          "p50": 3.081,
+          "p95": 27.229
+        }
+      },
+      {
+        "phase": "disappear",
+        "inputs": 0,
+        "frames": 1,
+        "coalesced": 1,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 1,
+        "staticBuilds": 6,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 1,
+          "p50": 274.993,
+          "p95": 274.993
+        },
+        "judgeMs": {
+          "count": 1,
+          "p50": 7.161,
+          "p95": 7.161
+        },
+        "cacheMs": {
+          "count": 6,
+          "p50": 40.144,
+          "p95": 73.075
+        },
+        "inputWaitMs": {
+          "count": 1,
+          "p50": 11.779,
+          "p95": 11.779
+        }
+      }
+    ]
+  },
+  "finalM3Tablet": {
+    "actualGestureRows": [
+      {
+        "phase": "cut",
+        "inputs": 42,
+        "frames": 40,
+        "coalesced": 9,
+        "maxPending": 1,
+        "segments": 42,
+        "geometryBuilds": 28,
+        "staticBuilds": 6,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 40,
+          "p50": 0.128,
+          "p95": 0.26
+        },
+        "drawIssueMs": {
+          "count": 40,
+          "p50": 1.422,
+          "p95": 17.8
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 4.675,
+          "p95": 13.775
+        },
+        "cacheMs": {
+          "count": 6,
+          "p50": 62.714,
+          "p95": 91.302
+        },
+        "inputWaitMs": {
+          "count": 40,
+          "p50": 5.184,
+          "p95": 21.909
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 44,
+        "frames": 36,
+        "coalesced": 10,
+        "maxPending": 1,
+        "segments": 44,
+        "geometryBuilds": 29,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 36,
+          "p50": 0.147,
+          "p95": 0.878
+        },
+        "drawIssueMs": {
+          "count": 36,
+          "p50": 2.516,
+          "p95": 13.738
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 3.737,
+          "p95": 5.914
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 37.429,
+          "p95": 37.429
+        },
+        "inputWaitMs": {
+          "count": 36,
+          "p50": 9.279,
+          "p95": 25.67
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 42,
+        "frames": 36,
+        "coalesced": 8,
+        "maxPending": 1,
+        "segments": 42,
+        "geometryBuilds": 27,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 36,
+          "p50": 0.139,
+          "p95": 0.329
+        },
+        "drawIssueMs": {
+          "count": 36,
+          "p50": 2.773,
+          "p95": 8.041
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 3.232,
+          "p95": 4.41
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 53.888,
+          "p95": 53.888
+        },
+        "inputWaitMs": {
+          "count": 36,
+          "p50": 2.847,
+          "p95": 23.851
+        }
+      },
+      {
+        "phase": "cut",
+        "inputs": 42,
+        "frames": 37,
+        "coalesced": 7,
+        "maxPending": 1,
+        "segments": 42,
+        "geometryBuilds": 27,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 37,
+          "p50": 0.122,
+          "p95": 0.968
+        },
+        "drawIssueMs": {
+          "count": 37,
+          "p50": 3.455,
+          "p95": 20.952
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 3.706,
+          "p95": 14.011
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 35.894,
+          "p95": 35.894
+        },
+        "inputWaitMs": {
+          "count": 37,
+          "p50": 2.361,
+          "p95": 22.432
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 57,
+        "frames": 46,
+        "coalesced": 12,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 46,
+          "p50": 1.299,
+          "p95": 4.716
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 46,
+          "p50": 6.36,
+          "p95": 18.945
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 58,
+        "frames": 42,
+        "coalesced": 17,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 42,
+          "p50": 0.925,
+          "p95": 5.062
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 42,
+          "p50": 12.674,
+          "p95": 33.154
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 61,
+        "frames": 45,
+        "coalesced": 17,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 45,
+          "p50": 1.193,
+          "p95": 3.886
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 45,
+          "p50": 13.031,
+          "p95": 18.862
+        }
+      },
+      {
+        "phase": "light",
+        "inputs": 60,
+        "frames": 49,
+        "coalesced": 12,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 0,
+        "staticBuilds": 0,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 49,
+          "p50": 1.047,
+          "p95": 2.493
+        },
+        "judgeMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "cacheMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "inputWaitMs": {
+          "count": 49,
+          "p50": 5.406,
+          "p95": 22.911
+        }
+      }
+    ],
+    "cut": {
+      "gestures": 4,
+      "drawIssueCpuP50MsPerGesture": [
+        1.422,
+        2.516,
+        2.773,
+        3.455
+      ],
+      "drawIssueCpuP95MsPerGesture": [
+        17.8,
+        13.738,
+        8.041,
+        20.952
+      ],
+      "inputWaitP95MsPerGesture": [
+        21.909,
+        25.67,
+        23.851,
+        22.432
+      ],
+      "staticBuildsPerGesture": [
+        6,
+        1,
+        1,
+        1
+      ],
+      "geometryBuildsPerGesture": [
+        28,
+        29,
+        27,
+        27
+      ],
+      "maxPending": 1,
+      "allPreviewMatchesCommit": true
+    },
+    "light": {
+      "gestures": 4,
+      "drawIssueCpuP50MsPerGesture": [
+        1.299,
+        0.925,
+        1.193,
+        1.047
+      ],
+      "drawIssueCpuP95MsPerGesture": [
+        4.716,
+        5.062,
+        3.886,
+        2.493
+      ],
+      "inputWaitP95MsPerGesture": [
+        18.945,
+        33.154,
+        18.862,
+        22.911
+      ],
+      "staticBuildsPerGesture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "geometryBuildsPerGesture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "maxPending": 1,
+      "allPreviewMatchesCommit": true
+    },
+    "settleAndLifecycleRows": [
+      {
+        "phase": "disappear",
+        "inputs": 42,
+        "frames": 38,
+        "coalesced": 7,
+        "maxPending": 1,
+        "segments": 42,
+        "geometryBuilds": 27,
+        "staticBuilds": 1,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 37,
+          "p50": 0.122,
+          "p95": 0.968
+        },
+        "drawIssueMs": {
+          "count": 38,
+          "p50": 3.455,
+          "p95": 20.952
+        },
+        "judgeMs": {
+          "count": 10,
+          "p50": 3.706,
+          "p95": 14.011
+        },
+        "cacheMs": {
+          "count": 1,
+          "p50": 35.894,
+          "p95": 35.894
+        },
+        "inputWaitMs": {
+          "count": 38,
+          "p50": 2.588,
+          "p95": 27.531
+        }
+      },
+      {
+        "phase": "disappear",
+        "inputs": 0,
+        "frames": 255,
+        "coalesced": 85,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 5,
+        "staticBuilds": 10,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 255,
+          "p50": 0.296,
+          "p95": 2.205
+        },
+        "judgeMs": {
+          "count": 5,
+          "p50": 3.55,
+          "p95": 6.518
+        },
+        "cacheMs": {
+          "count": 10,
+          "p50": 48.915,
+          "p95": 103.65
+        },
+        "inputWaitMs": {
+          "count": 255,
+          "p50": 7.203,
+          "p95": 24.367
+        }
+      },
+      {
+        "phase": "disappear",
+        "inputs": 0,
+        "frames": 1,
+        "coalesced": 1,
+        "maxPending": 1,
+        "segments": 0,
+        "geometryBuilds": 1,
+        "staticBuilds": 6,
+        "previewMatchesCommit": true,
+        "previewMs": {
+          "count": 0,
+          "p50": 0,
+          "p95": 0
+        },
+        "drawIssueMs": {
+          "count": 1,
+          "p50": 332.344,
+          "p95": 332.344
+        },
+        "judgeMs": {
+          "count": 1,
+          "p50": 3.929,
+          "p95": 3.929
+        },
+        "cacheMs": {
+          "count": 6,
+          "p50": 75.548,
+          "p95": 100.88
+        },
+        "inputWaitMs": {
+          "count": 1,
+          "p50": 14.57,
+          "p95": 14.57
+        }
+      }
+    ]
+  },
+  "finalTruncatedLines": 0,
+  "coldCacheBoundary": "初次离屏缓存和抬手柔影仍有一次成本。原始lifecycle记录保留，不把其排除后的手势p95称为全程无卡顿。"
+}

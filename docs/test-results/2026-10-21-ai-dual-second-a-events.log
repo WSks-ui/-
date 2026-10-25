@@ -1,0 +1,5 @@
+10-21 02:11:19.031  8969  8969 I A03d00/JSAPP: AI_MEMORY_SYNC_PHASE_FAILED:a-save:145313
+10-21 02:11:21.570  8969  8969 I A03d00/JSAPP: [Hypium][errorDetail]Error: AI_MEMORY_SYNC_TARGET_NOT_EXPOSED:detail-scroll
+10-21 02:11:21.570  8969  8969 I A03d00/JSAPP: OHOS_REPORT_STATUS: stream=Error in device_a_real_ai_save_dahecun_memory, AI_MEMORY_SYNC_TARGET_NOT_EXPOSED:detail-scroll
+10-21 02:11:21.570  8969  8969 I C01330/Delegator: [ability_delegator.cpp397]message: OHOS_REPORT_STATUS: stream=Error in device_a_real_ai_save_dahecun_memory, AI_MEMORY_SYNC_TARGET_NOT_EXPOSED:detail-scroll
+10-21 02:11:21.571  9068  9074 I C01303/AATool: [test_observer.cpp43]enter, msg : OHOS_REPORT_STATUS: stream=Error in device_a_real_ai_save_dahecun_memory, AI_MEMORY_SYNC_TARGET_NOT_EXPOSED:detail-scroll

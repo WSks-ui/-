@@ -1,0 +1,468 @@
+{
+  "generatedAt": "2026-10-25T15:03:13.488075+00:00",
+  "version": "0.1.0",
+  "scope": "原生汴京开市经营样板及旧纸景热路径修复；五城经营未完成，不宣称已验证有趣。",
+  "mainPackage": {
+    "path": ".local/market-20261025/packages/m3-t4/entry-default-unsigned.hap",
+    "bytes": 9503075,
+    "sha256": "ED1748CCD65A1C2B72F4D3C7BE3E8E36F0A6F0C6B36CCEA07D7F4BE3574F16D5"
+  },
+  "testPackage": {
+    "path": ".local/market-20261025/packages/m3-t4/entry-ohosTest-unsigned.hap",
+    "bytes": 7837149,
+    "sha256": "BBA48B2F600B4F2E629E6BE2362C9A1104468D719DAF85D1EADE201EBAD23430"
+  },
+  "packageHistory": [
+    {
+      "stage": "m1",
+      "path": ".local/market-20261025/packages/m1/entry-default-unsigned.hap",
+      "bytes": 9477301,
+      "sha256": "613496FD688AA834BCB263D69611CEDE38C6E6C8FA5497CB923602E2A627EE37"
+    },
+    {
+      "stage": "m2-t2",
+      "path": ".local/market-20261025/packages/m2-t2/entry-default-unsigned.hap",
+      "bytes": 9501941,
+      "sha256": "E97B59FD5A51586E1D513E8585F796954FFBF38B03AC5E3190EB931028B423D9"
+    },
+    {
+      "stage": "m2-t2",
+      "path": ".local/market-20261025/packages/m2-t2/entry-ohosTest-unsigned.hap",
+      "bytes": 7837036,
+      "sha256": "0FBB19CD96DE69B0360DA8460177499379256415D1CA6A53CD264191400F590E"
+    },
+    {
+      "stage": "m3-t3",
+      "path": ".local/market-20261025/packages/m3-t3/entry-default-unsigned.hap",
+      "bytes": 9503075,
+      "sha256": "ED1748CCD65A1C2B72F4D3C7BE3E8E36F0A6F0C6B36CCEA07D7F4BE3574F16D5"
+    },
+    {
+      "stage": "m3-t3",
+      "path": ".local/market-20261025/packages/m3-t3/entry-ohosTest-unsigned.hap",
+      "bytes": 7837036,
+      "sha256": "8FBD3E814A6960E635CDCFAC1608F4BD52F257B338185834F74A4F400CFC23C5"
+    },
+    {
+      "stage": "m3-t4",
+      "path": ".local/market-20261025/packages/m3-t4/entry-default-unsigned.hap",
+      "bytes": 9503075,
+      "sha256": "ED1748CCD65A1C2B72F4D3C7BE3E8E36F0A6F0C6B36CCEA07D7F4BE3574F16D5"
+    },
+    {
+      "stage": "m3-t4",
+      "path": ".local/market-20261025/packages/m3-t4/entry-ohosTest-unsigned.hap",
+      "bytes": 7837149,
+      "sha256": "BBA48B2F600B4F2E629E6BE2362C9A1104468D719DAF85D1EADE201EBAD23430"
+    }
+  ],
+  "local": {
+    "passed": 252,
+    "failed": 0,
+    "parserPassed": 9,
+    "parserFailed": 0
+  },
+  "buildLogs": {
+    "local": {
+      "path": "docs/test-results/2026-10-25-market-local.log",
+      "bytes": 24092,
+      "sha256": "67D49FAEC60CD54DEB57FC4865267211DF9ABDB20FF937D159D1A5DB5CAFB3F5"
+    },
+    "main": {
+      "path": "docs/test-results/2026-10-25-market-main-m3-build.log",
+      "bytes": 10851,
+      "sha256": "33A098D038A476A6D6C5F69E289EE8FF7B49C2B0C9EAFC873781074927E4E46F"
+    },
+    "test": {
+      "path": "docs/test-results/2026-10-25-market-test-t4-build.log",
+      "bytes": 128185,
+      "sha256": "D3E39B002CDBCFECBB7686D4FFAB90A6C1FEA8570BAF36FC062E5D3D8606F9FC"
+    },
+    "mainFirstFailure": {
+      "path": "docs/test-results/2026-10-25-market-first-main-failure.log",
+      "bytes": 11916,
+      "sha256": "12113EB220BCF38479B0A4D1CBB3F71ABDCFA0EAB60B971DA5D21CB1590BE6DA"
+    },
+    "testFirstFailure": {
+      "path": "docs/test-results/2026-10-25-market-first-test-failure.log",
+      "bytes": 131901,
+      "sha256": "32CDB642B9C29EDF9E09F63FB240170A8D7537A92D742398E74916D7D78EC7DD"
+    },
+    "phonePerfRaw": {
+      "path": "docs/test-results/2026-10-25-market-phone-perf-events.log",
+      "bytes": 10884,
+      "sha256": "E6484C2DCA88ABECE123B9926A775346720F66D31EFAFCC5720F674B4CA3EFC6"
+    },
+    "tabletPerfRaw": {
+      "path": "docs/test-results/2026-10-25-market-tablet-perf-events.log",
+      "bytes": 4953,
+      "sha256": "6DED8C84D086FEF668707E012095D82126F16BD4C95991EDE4C08911BFB83F45"
+    },
+    "tabletMarketRaw": {
+      "path": "docs/test-results/2026-10-25-market-tablet-game-events.log",
+      "bytes": 4261,
+      "sha256": "99E88F2EB75AE0745F06F39FBA07281AE6F64CCA1FB0C7BC5536DC3CEB8AE3F6"
+    },
+    "phonePerfActions": {
+      "path": "docs/test-results/2026-10-25-market-phone-perf-path.log",
+      "bytes": 4496,
+      "sha256": "A249EF46564D284B14F5839FC66672BA74AE241C12272DBE28A081D36E4F708B"
+    }
+  },
+  "deviceResults": [
+    {
+      "path": "docs/test-results/2026-10-25-220203-eb7291d7-device.log",
+      "bytes": 1036,
+      "sha256": "CA017879E8E9992F8EA459AAD198C96F164AB3915385CC9DF4F7DE59165C26AD",
+      "package": "M2/T2",
+      "target": "phone",
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        68217
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-220204-1c48c3b9-device.log",
+      "bytes": 1945,
+      "sha256": "8939BFEB535BEC46137ABDDA875DC74A5C80F9E43C11387F32A84DA8DFF8D27F",
+      "package": "M2/T2",
+      "target": "tablet",
+      "total": 2,
+      "failure": 0,
+      "error": 1,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        42168,
+        122697
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-221004-4a7561b6-device.log",
+      "bytes": 1317,
+      "sha256": "E70117B6871BFE6CA37BCABA275BBA39FE9B2A256F7F1D4C613463E29A19ABEF",
+      "package": "M3/T3",
+      "target": "tablet",
+      "total": 1,
+      "failure": 0,
+      "error": 1,
+      "pass": 0,
+      "ignore": 0,
+      "caseDurationsMs": [
+        165120
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-221004-a1a69d84-device.log",
+      "bytes": 1956,
+      "sha256": "11FE3A624CEE9ECEC2C1E9813D3845737DE145FE0F657BFFCD1872E58E019BC3",
+      "package": "M3/T3",
+      "target": "phone",
+      "total": 2,
+      "failure": 0,
+      "error": 1,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        40466,
+        156410
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-221520-030528b0-device.log",
+      "bytes": 1036,
+      "sha256": "3E61DD92C080F9A8F90A7AF300EAA75DE875CDA9EC24AD860B4B1A28EF89A455",
+      "package": "M3/T3",
+      "target": "phone",
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        66713
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-221925-3a278288-device.log",
+      "bytes": 1059,
+      "sha256": "09A8400E6CE3DD26D9178A8FCF7736F3169A6CCB18F172E5DDF4C088FFF4D9E2",
+      "package": "M3/T4",
+      "target": "phone",
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        149134
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-221926-e543ef57-device.log",
+      "bytes": 1059,
+      "sha256": "1155104C3EB0FCF4509F692866F21E630734F009605AD52336761E1ECB3917C5",
+      "package": "M3/T4",
+      "target": "tablet",
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        157751
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-224123-a3c71166-device.log",
+      "bytes": 1036,
+      "sha256": "C60864120186D142EE8EAD6B9D723064C0D31B89004C3697A40BD009FB43BD67",
+      "package": "M3/T4",
+      "target": "tablet",
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        67228
+      ]
+    },
+    {
+      "path": "docs/test-results/2026-10-25-225032-31cf7181-device.log",
+      "bytes": 1040,
+      "sha256": "6AAB5E1E1AC14DF4E1274293278957F937B2A65A0BD865D0C621595F5697BFA8",
+      "package": "M3/T4",
+      "target": "phone",
+      "total": 1,
+      "failure": 0,
+      "error": 0,
+      "pass": 1,
+      "ignore": 0,
+      "caseDurationsMs": [
+        40468
+      ]
+    }
+  ],
+  "performance": {
+    "path": "docs/test-results/2026-10-25-market-native-perf.json",
+    "bytes": 32199,
+    "sha256": "9EDB218389DD19EFE841228CA5E938F3DF94654C45533E6D28E1D0818F0CF75D"
+  },
+  "screenshots": [
+    {
+      "path": "docs/design/river-market/first-alert-selector-failure.png",
+      "bytes": 795249,
+      "sha256": "D6D17DF8CB20EC2AF04F6CB35EC8468A227B12E34469F3986C2612F25ADF89AA"
+    },
+    {
+      "path": "docs/design/river-market/first-tablet-keyboard-failure.png",
+      "bytes": 706486,
+      "sha256": "E345E31CC2CE977C4EF81E1D3E7DB0A7BC049772228F13E7E16DC848E2430C67"
+    },
+    {
+      "path": "docs/design/river-market/overview.png",
+      "bytes": 424165,
+      "sha256": "606214E062A3A12DF4CEEB21D1B317EF8493FFAB7E54416FBE4268C2B4DE8918"
+    },
+    {
+      "path": "docs/design/river-market/pad-memory-final.png",
+      "bytes": 270218,
+      "sha256": "D3FEF1C5E84679AF0673B9D681F3BF7CB6D3074DE9760C0500E6FDF5DCDE67FD"
+    },
+    {
+      "path": "docs/design/river-market/pad-strategy-final.png",
+      "bytes": 861077,
+      "sha256": "8243719259965F347D9EEE78EA9CB3820E63BE1310A348C17CDA153FB7502998"
+    },
+    {
+      "path": "docs/design/river-market/phone-arrange.jpeg",
+      "bytes": 207693,
+      "sha256": "5DF09F9FCAB249CCDAFF2C2B48818812CC5C18F42EB927AC75D5854BC90CE3DC"
+    },
+    {
+      "path": "docs/design/river-market/phone-home.jpeg",
+      "bytes": 194386,
+      "sha256": "7C49DC83BA53CB651170BE06C9480505C4606ECFB0957C8A9C3E32077F03AD8F"
+    },
+    {
+      "path": "docs/design/river-market/phone-memory-final.png",
+      "bytes": 355177,
+      "sha256": "E6F15B86127CF5B4D92145235F188193B1FACAB189808D5352C4FCA25593076C"
+    },
+    {
+      "path": "docs/design/river-market/phone-strategy-final.png",
+      "bytes": 584196,
+      "sha256": "A5618765B589B511D54D587E5B688806989FFB35067A1E768B54624C05FDC75C"
+    },
+    {
+      "path": "docs/design/river-market/tablet-arrange.jpeg",
+      "bytes": 250472,
+      "sha256": "944DDB8CC9E438B8F1028F983BE57AF453E06CE2212F330535105EA3965CD4FB"
+    },
+    {
+      "path": "docs/design/river-market/tablet-home.jpeg",
+      "bytes": 195761,
+      "sha256": "C10158E4B48F2E524AA8B7025549CE480DFBB8915F362009A9663890DA04C176"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "entry/src/main/ets/pages/Index.ets",
+      "bytes": 118453,
+      "sha256": "44E5F1F64AA87A36A66A78111DE00A61A08E87B5ACD08EBBCC49F540B0F2B89E"
+    },
+    {
+      "path": "entry/src/main/ets/entryability/EntryAbility.ets",
+      "bytes": 5489,
+      "sha256": "BAFFA9FB2C870EC901ACBDA8519850B975B997D107FDC27331B2EBB72ED34C8C"
+    },
+    {
+      "path": "entry/src/main/ets/domain/RiverMarket.ts",
+      "bytes": 21501,
+      "sha256": "424C148C8F44E398B1E8375575ED43380DAF12800317111A715A15B2FA0D845F"
+    },
+    {
+      "path": "entry/src/main/ets/domain/RiverMarketRecords.ts",
+      "bytes": 2016,
+      "sha256": "1D431A046FBD429E9D9096642EBE7CF9B23675CBAF9BEFBE41A112052E5E3098"
+    },
+    {
+      "path": "entry/src/main/ets/domain/PaperJourney.ts",
+      "bytes": 24598,
+      "sha256": "126CD5B92AB84B1A9AB0D8428455C65025EBDFB2AA579D8D1CD3E25398C26E18"
+    },
+    {
+      "path": "entry/src/main/ets/data/RiverMarketCatalog.ts",
+      "bytes": 3285,
+      "sha256": "3B4E202EFA46F7C1C175B145EFB469BB1E022AB2110DFA000776EB5FA17AF1E9"
+    },
+    {
+      "path": "entry/src/main/ets/components/RiverMarketHome.ets",
+      "bytes": 5151,
+      "sha256": "871EEF5BB4F71CDDBC6D1A02B9930D5F917CD28F599EBD1BDEDEE85F9AA7962C"
+    },
+    {
+      "path": "entry/src/main/ets/components/RiverMarketPage.ets",
+      "bytes": 36009,
+      "sha256": "FC23E9ED65021C1A58FC46C71F4C8C1B6313F9E50F3A11DDD519B7B3D49ED7E7"
+    },
+    {
+      "path": "entry/src/main/ets/components/RiverMarketScene.ets",
+      "bytes": 20150,
+      "sha256": "FAE30EE5FBAC01B16E417594E11EC348C1757AC969F1154CE13609B600787382"
+    },
+    {
+      "path": "entry/src/main/ets/components/PaperJourneyScene.ets",
+      "bytes": 58986,
+      "sha256": "7C28ED47EFCF2278604682288E02F5411A4C2E4ACFEAB4A230433DAC89CB47BD"
+    },
+    {
+      "path": "entry/src/main/ets/components/PaperJourneyPage.ets",
+      "bytes": 27483,
+      "sha256": "3C818E4756A8BACB24BD8232949A68B41164ECDE873CFBA95A9F07F88C502903"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/RiverMarket.test.ets",
+      "bytes": 24118,
+      "sha256": "C8594D44D16C3A2F99EDA66741D21874E58CE79FDB227295B1245989926E191F"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/RiverPaperPerf.test.ets",
+      "bytes": 13260,
+      "sha256": "569C26C650FC1966AC52D29378DBB3A4D019EC21F06CF624B5ACD1FE0B96A3E0"
+    },
+    {
+      "path": "entry/src/ohosTest/ets/test/List.test.ets",
+      "bytes": 3692,
+      "sha256": "AC404860F9E81B874FD0D3B5787E4BC03CAD0323251420BAF47AAB21FA9C1EAD"
+    },
+    {
+      "path": "tools/river-market.test.mjs",
+      "bytes": 14137,
+      "sha256": "61352FB59CCC43C069E7868510B5FD6DF4785FFA6D66037D38F9C49A9186A644"
+    },
+    {
+      "path": "tools/domain.test.mjs",
+      "bytes": 45097,
+      "sha256": "7D4FBC76C583332F7C5A3EC15AD387E461FE8B1CDBF43DD6D35D346DB3D35EBD"
+    }
+  ],
+  "research": [
+    {
+      "name": "dongjing-original",
+      "url": "https://zh.wikisource.org/zh-hans/%E6%9D%B1%E4%BA%AC%E5%A4%A2%E8%8F%AF%E9%8C%84",
+      "accessedAt": "2026-10-25T13:27:40.750279+00:00",
+      "status": 200,
+      "actualUrl": "https://zh.wikisource.org/zh-hans/%E6%9D%B1%E4%BA%AC%E5%A4%A2%E8%8F%AF%E9%8C%84",
+      "bytes": 72035,
+      "sha256": "425d489a7581a699087198f8389b3e547f7a92935e30bb69e29323f42f8eeb49",
+      "title": "东京梦华录 - 维基文库，自由的图书馆"
+    },
+    {
+      "name": "dongjing-volume2",
+      "url": "https://zh.wikisource.org/zh-hans/%E6%9D%B1%E4%BA%AC%E5%A4%A2%E8%8F%AF%E9%8C%84/%E5%8D%B7%E4%BA%8C",
+      "accessedAt": "2026-10-25T13:27:40.750279+00:00",
+      "status": 200,
+      "actualUrl": "https://zh.wikisource.org/zh-hans/%E6%9D%B1%E4%BA%AC%E5%A4%A2%E8%8F%AF%E9%8C%84/%E5%8D%B7%E4%BA%8C",
+      "bytes": 75835,
+      "sha256": "3742afb1af39451698eae7f0dce215c2f0650edbd80077f5451d48f6c905e483",
+      "title": "东京梦华录/卷二 - 维基文库，自由的图书馆"
+    },
+    {
+      "name": "dongjing-volume3",
+      "url": "https://zh.wikisource.org/zh-hans/%E6%9D%B1%E4%BA%AC%E5%A4%A2%E8%8F%AF%E9%8C%84/%E5%8D%B7%E4%B8%89",
+      "accessedAt": "2026-10-25T13:27:40.755880+00:00",
+      "status": 200,
+      "actualUrl": "https://zh.wikisource.org/zh-hans/%E6%9D%B1%E4%BA%AC%E5%A4%A2%E8%8F%AF%E9%8C%84/%E5%8D%B7%E4%B8%89",
+      "bytes": 79032,
+      "sha256": "654a8d5df8952ff809d626a03f1faf3ef1ca5466401083759240f572e775d07a",
+      "title": "东京梦华录/卷三 - 维基文库，自由的图书馆"
+    },
+    {
+      "name": "mini-motorways",
+      "url": "https://dinopoloclub.com/games/mini-motorways/",
+      "accessedAt": "2026-10-25T13:27:40.757069+00:00",
+      "status": 200,
+      "actualUrl": "https://dinopoloclub.com/games/mini-motorways/",
+      "bytes": 53655,
+      "sha256": "8c6ec2904bb5093098fbc5a8972abf3329e620bdb686db3a0e2aaf8e27c10e8f",
+      "title": "Mini Motorways - Dinosaur Polo Club"
+    },
+    {
+      "name": "against-storm",
+      "url": "https://store.steampowered.com/app/1336490/Against_the_Storm/",
+      "accessedAt": "2026-10-25T13:27:41.984519+00:00",
+      "status": 200,
+      "actualUrl": "https://store.steampowered.com/app/1336490/Against_the_Storm/",
+      "bytes": 297642,
+      "sha256": "245b3e12935e6da243bdbc673207e0d263b0b659ad594a293282ea1487a93414",
+      "title": "Against the Storm on Steam"
+    },
+    {
+      "name": "zhouqiao-institute",
+      "url": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+      "accessedAt": "2026-10-25T13:27:42.236629+00:00",
+      "status": 200,
+      "actualUrl": "http://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml",
+      "bytes": 23271,
+      "sha256": "13e21bd3dd11eb0ae4d34d42e109ae708deb7d556fca118b34caa725d7980a8a",
+      "title": "中国历史研究院"
+    }
+  ],
+  "notCompleted": [
+    "五城经营玩法",
+    "真人趣味性/4至6分钟校准",
+    "新经营HTTPS A-B-A设备专项",
+    "新经营桌面卡片/分享",
+    "华为账号",
+    "鸿蒙原生可信传输",
+    "完整文件备份恢复",
+    "实机/FPS/GPU/端到端触摸延迟",
+    "更新最终Word/PDF/视频/现场包"
+  ]
+}

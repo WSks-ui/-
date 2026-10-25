@@ -1,0 +1,62 @@
+{
+  "round": "2026-10-23 设计样板轮（页面结构＋字号＋交互修复）",
+  "captured_at": "2026-10-23T12:45+08:00",
+  "build": {
+    "hap": "entry/build/default/outputs/default/entry-default-unsigned.hap",
+    "bytes": 7732087,
+    "sha256": "822360b8dbcec1ee9dac90cd63a866e1819cb3c63e8d261e6142bc88a2e71474",
+    "signed": false,
+    "note": "工作区源码 assembleHap 产物；与冻结 M12 省赛包不是同一包"
+  },
+  "devices": [
+    {
+      "role": "phone",
+      "name": "YunhejiSyncB",
+      "api": "26.0.0",
+      "resolution": "1256x2760",
+      "density": 560,
+      "target": "127.0.0.1:15555"
+    }
+  ],
+  "verified_on_device": [
+    "首页选中与切换城市",
+    "三门峡两处发现可点击（遮罩层拦截已修复）",
+    "确认键随交互就绪而启用",
+    "开封第三步选愿并点灯",
+    "记忆全文渲染",
+    "中文正文输入与保存"
+  ],
+  "local_tests": {
+    "domain": "141/141 pass",
+    "device_report_parse": "9/9 pass"
+  },
+  "not_verified": [
+    "平板横竖屏切换",
+    "三栏 ≥1000vp 布局",
+    "选摘→UDMF 拖放",
+    "记忆列表卡片样式统一",
+    "其余四城图景"
+  ],
+  "screenshots": [
+    {
+      "file": "01-phone-home-sanmenxia.png",
+      "sha256": "6c0676a3e5204184f12fa54cb198660342448623a4626cae6735baabd528065c"
+    },
+    {
+      "file": "02-phone-chapter-structure.png",
+      "sha256": "8e4ea2b5022bc41055c97331c378fe1a2fb052eda640ac104d9a1a206887cc7e"
+    },
+    {
+      "file": "03-phone-chapter-found.png",
+      "sha256": "6e4ab3583a443fcab6792ece7c98305a828b6ba2b2cc08bfb670141d27dd5f85"
+    },
+    {
+      "file": "04-phone-kaifeng-lantern-lit.png",
+      "sha256": "0fc23484b0e3d2856bbf10fa3a85ab19d1a9e1c17cf1fa5d0102c5c87f29f861"
+    },
+    {
+      "file": "05-phone-memory-fulltext.png",
+      "sha256": "7d3cff63d39b843cdf8c16bc71f8d7c734b72b8879688ea4a5ae50725ba6ddcf"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=JourneyScrollTest
+
+
+OHOS_REPORT_STATUS: class=JourneyScrollTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=edit_delete_preserve_records_and_memory_entry
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=JourneyScrollTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stack=    at anonymous @ohos/hypium (oh_modules/.ohpm/@ohos+hypium@1.0.25/oh_modules/@ohos/hypium/src/main/service.js:86:24)
+OHOS_REPORT_STATUS: stream=Error in edit_delete_preserve_records_and_memory_entry, execute timeout 360000ms
+OHOS_REPORT_STATUS: test=edit_delete_preserve_records_and_memory_entry
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=359993
+
+
+OHOS_REPORT_STATUS: class=JourneyScrollTest
+OHOS_REPORT_STATUS: suiteconsuming=359993
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 1, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=359993
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

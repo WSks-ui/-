@@ -1,0 +1,52 @@
+{'command': ['uitest', 'dumpLayout', '-p', '/data/local/tmp/yunheji-roaming-system-layout.json'], 'result': 'DumpLayout saved to:/data/local/tmp/yunheji-roaming-system-layout.json'}
+{'id': '7564a697-a258-43e5-9515-9fe1d4ed2565', 'text': '日历', 'type': 'Text', 'bounds': '[806,514][875,544]', 'enabled': 'true'}
+{'id': '8401dd2a-d722-4f28-bb49-69bfc41f10f8', 'text': '文件管理', 'type': 'Text', 'bounds': '[1020,514][1141,544]', 'enabled': 'true'}
+{'id': 'c847aed1-0ee5-4a66-ae3f-c0eda13cb820', 'text': '云河纪', 'type': 'Text', 'bounds': '[1273,514][1368,544]', 'enabled': 'true'}
+{'id': '', 'text': '云河纪', 'type': 'Text', 'bounds': '[1534,418][1601,444]', 'enabled': 'true'}
+{'id': '', 'text': '继续这段漫游', 'type': 'Text', 'bounds': '[2186,420][2306,443]', 'enabled': 'true'}
+{'id': '', 'text': '点亮汴京的一夜', 'type': 'Text', 'bounds': '[1534,454][2306,496]', 'enabled': 'true'}
+{'id': '', 'text': '找到街与河的交会，让一盏原创灯景照亮城市记忆。', 'type': 'Text', 'bounds': '[1596,506][2244,538]', 'enabled': 'true'}
+{'id': '', 'text': '0.000000', 'type': 'Progress', 'bounds': '[1534,707][1670,715]', 'enabled': 'true'}
+{'id': '', 'text': '0/3 条线索已发现', 'type': 'Text', 'bounds': '[1688,699][1844,722]', 'enabled': 'true'}
+{'id': '', 'text': '原创河流图景', 'type': 'Text', 'bounds': '[2234,720][2318,736]', 'enabled': 'true'}
+{'id': 'AppName_text__云河纪_mvjvk4v0rt9p1jcc6r8', 'text': '云河纪', 'type': 'Text', 'bounds': '[1873,754][1968,784]', 'enabled': 'true'}
+{'id': '', 'text': '最近一页', 'type': 'Text', 'bounds': '[1266,660][1346,683]', 'enabled': 'true'}
+{'id': '', 'text': '原创河流图景', 'type': 'Text', 'bounds': '[1274,960][1358,976]', 'enabled': 'true'}
+{'id': 'AppName_text__云河纪_mvjvkvt8ort593tc5z8', 'text': '云河纪', 'type': 'Text', 'bounds': '[913,994][1008,1024]', 'enabled': 'true'}
+{'command': ['uitest', 'uiInput', 'click', 960, 715], 'result': 'No Error'}
+{'command': ['uitest', 'dumpLayout', '-p', '/data/local/tmp/yunheji-roaming-system-layout.json'], 'result': 'DumpLayout saved to:/data/local/tmp/yunheji-roaming-system-layout.json'}
+{'id': 'roaming-home', 'text': '', 'type': 'Scroll', 'bounds': '[0,78][720,1864]', 'enabled': 'true'}
+{'id': 'roam-river-scroll', 'text': '', 'type': 'Scroll', 'bounds': '[40,388][680,892]', 'enabled': 'true'}
+{'id': 'roam-city-roam-smx-earth-home', 'text': '', 'type': 'Button', 'bounds': '[172,538][372,644]', 'enabled': 'true'}
+{'id': 'roam-city-roam-ly-spring', 'text': '', 'type': 'Button', 'bounds': '[592,469][680,575]', 'enabled': 'true'}
+{'id': 'roam-pick-roam-smx-earth-home', 'text': '三门峡', 'type': 'Button', 'bounds': '[40,910][158,974]', 'enabled': 'true'}
+{'id': 'roam-pick-roam-ly-spring', 'text': '洛阳', 'type': 'Button', 'bounds': '[170,910][289,974]', 'enabled': 'true'}
+{'id': 'roam-pick-roam-zz-zhenwei', 'text': '郑州', 'type': 'Button', 'bounds': '[301,910][419,974]', 'enabled': 'true'}
+{'id': 'roam-pick-roam-kf-night', 'text': '开封', 'type': 'Button', 'bounds': '[431,910][550,974]', 'enabled': 'true'}
+{'id': 'roam-pick-roam-py-dragon-memory', 'text': '濮阳', 'type': 'Button', 'bounds': '[562,910][680,974]', 'enabled': 'true'}
+{'id': 'roam-home-progress', 'text': '0 / 3 线索', 'type': 'Text', 'bounds': '[552,1040][646,1066]', 'enabled': 'true'}
+{'id': 'roam-home-chapter-title', 'text': '点亮汴京的一夜', 'type': 'Text', 'bounds': '[74,1086][646,1152]', 'enabled': 'true'}
+{'id': 'roam-home-current-goal', 'text': '当前目标 · 沿水线移动，找到州桥与御街的相接处', 'type': 'Text', 'bounds': '[74,1172][646,1214]', 'enabled': 'true'}
+{'id': 'roam-start', 'text': '', 'type': 'Button', 'bounds': '[74,1234][646,1326]', 'enabled': 'true'}
+{'id': 'roam-home-library', 'text': '', 'type': 'Button', 'bounds': '[40,1392][347,1530]', 'enabled': 'true'}
+{'id': 'roam-home-memory', 'text': '', 'type': 'Button', 'bounds': '[373,1392][680,1530]', 'enabled': 'true'}
+{'id': 'profile-entry', 'text': '', 'type': 'Button', 'bounds': '[576,1780][688,1892]', 'enabled': 'true'}
+{'id': 'profile-entry-label', 'text': '我的', 'type': 'Text', 'bounds': '[608,1848][656,1876]', 'enabled': 'true'}
+{'id': '', 'text': '我的黄河记忆', 'type': 'TitleBar', 'bounds': '[721,86][2880,190]', 'enabled': 'true'}
+{'id': '__NavdestinationField__Text__MainTitle__', 'text': '我的黄河记忆', 'type': 'Text', 'bounds': '[753,106][1039,162]', 'enabled': 'true'}
+{'id': 'roam-memory-scroll', 'text': '', 'type': 'Scroll', 'bounds': '[721,190][2880,1864]', 'enabled': 'true'}
+{'id': '', 'text': '开封', 'type': 'Text', 'bounds': '[945,234][2657,267]', 'enabled': 'true'}
+{'id': 'roam-memory-title', 'text': '点亮汴京的一夜 · 找到街与河的交会', 'type': 'Text', 'bounds': '[945,303][2657,364]', 'enabled': 'true'}
+{'id': '', 'text': '10/23/2026, 2:27:37\u202fAM', 'type': 'Text', 'bounds': '[945,400][2657,428]', 'enabled': 'true'}
+{'id': 'roam-scene', 'text': '', 'type': 'Stack', 'bounds': '[945,464][2657,964]', 'enabled': 'true'}
+{'id': 'roam-scene-canvas', 'text': '', 'type': 'Canvas', 'bounds': '[945,464][2657,964]', 'enabled': 'true'}
+{'id': '', 'text': '原创叙事示意', 'type': 'Text', 'bounds': '[969,488][1117,527]', 'enabled': 'true'}
+{'id': '', 'text': '这次选中的文化片段 · 原创图景', 'type': 'Text', 'bounds': '[945,1000][2657,1028]', 'enabled': 'true'}
+{'id': 'roam-memory-body', 'text': '在州桥的水线边，我读懂了街与河的相遇。这一页只记下我自己的观察。', 'type': 'Text', 'bounds': '[945,1064][2657,1124]', 'enabled': 'true'}
+{'id': 'roam-memory-edit', 'text': '编辑这一页', 'type': 'Button', 'bounds': '[945,1160][1791,1244]', 'enabled': 'true'}
+{'id': 'roam-memory-share', 'text': '分享纪行', 'type': 'Button', 'bounds': '[1811,1160][2657,1244]', 'enabled': 'true'}
+{'id': '', 'text': '当时留下的文化摘录', 'type': 'Text', 'bounds': '[981,1316][2621,1351]', 'enabled': 'true'}
+{'id': 'roam-memory-excerpt', 'text': '州桥及附近汴河遗址，把汴河水道与东京城的街路关系带到眼前。桥的位置帮助我们理解街与河怎样相遇，也把日常通行和城市格局联系起来。画面中的街河关系为原创学习示意。\n\n我选择：记住街河交会。从州桥所在的位置，观察城市道路与水道的联系。', 'type': 'Text', 'bounds': '[981,1371][2621,1571]', 'enabled': 'true'}
+{'id': '', 'text': '中国历史研究院·州桥及附近汴河遗址资料\nhttp://hrczh.cass.cn/ywdt/dt/202502/t20250228_5849988.shtml', 'type': 'Text', 'bounds': '[981,1591][2621,1671]', 'enabled': 'true'}
+{'id': '', 'text': '文化内容：初稿待校审', 'type': 'Text', 'bounds': '[981,1691][2621,1717]', 'enabled': 'true'}
+{'id': 'roam-memory-revisit', 'text': '回到这一段漫游', 'type': 'Button', 'bounds': '[945,1789][2657,1864]', 'enabled': 'true'}

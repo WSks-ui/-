@@ -1,0 +1,152 @@
+{
+  "date": "2026-10-23",
+  "visualPrivacyReview": "7张原图均已实际查看，无身份页或凭据",
+  "cases": [
+    {
+      "id": "only",
+      "appPackage": "M12",
+      "testPackage": "T14",
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "elapsedMs": 95405,
+      "rawResult": "docs/test-results/2026-10-23-040454-b217a99a-device.log",
+      "assertions": [
+        "离线返回当前第二条线索",
+        "仅登录未复制游客选择",
+        "游客序列化原文不变",
+        "账号已有三条进度保留"
+      ]
+    },
+    {
+      "id": "copy",
+      "appPackage": "M12",
+      "testPackage": "T15",
+      "pass": 1,
+      "failure": 0,
+      "error": 0,
+      "ignore": 0,
+      "elapsedMs": 116259,
+      "rawResult": "docs/test-results/2026-10-23-041142-2c32989f-device.log",
+      "assertions": [
+        "明确复制后返回洛阳第二条",
+        "游客每条记录与复制版本完整相同",
+        "同一note及冻结上下文完整保留",
+        "游客原始序列化文本不变",
+        "原账号开封记忆及三条进度保留"
+      ]
+    }
+  ],
+  "retainedFailure": {
+    "appPackage": "M12",
+    "testPackage": "T14",
+    "pass": 0,
+    "failure": 0,
+    "error": 1,
+    "ignore": 0,
+    "elapsedMs": 54027,
+    "rawResult": "docs/test-results/2026-10-23-040848-d690452a-device.log",
+    "cause": "测试输入正文后未收软键盘，标签被遮挡；T15补实际Back操作，产品不变"
+  },
+  "files": [
+    {
+      "path": "copy-account-memory-sources.json",
+      "bytes": 156920,
+      "sha256": "6AD3ACB62F10F925E0D6EDA1E8E36475C425F42F4F49ACBEA8E1A1520E4796F0",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-account-memory-sources.png",
+      "bytes": 749020,
+      "sha256": "859284EBAFD985AD4FD9FD8E83CE72606F566378AFCAF08692A4FF787FDEF9ED",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-account-memory.json",
+      "bytes": 156920,
+      "sha256": "6AD3ACB62F10F925E0D6EDA1E8E36475C425F42F4F49ACBEA8E1A1520E4796F0",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-account-memory.png",
+      "bytes": 749020,
+      "sha256": "859284EBAFD985AD4FD9FD8E83CE72606F566378AFCAF08692A4FF787FDEF9ED",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-account-return-second-clue.json",
+      "bytes": 160284,
+      "sha256": "B532EA97E9FC18D4A75BBAE5862B345E8DE7B000A6117AE1EB5DDFF1D72F51DE",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-account-return-second-clue.png",
+      "bytes": 748655,
+      "sha256": "3456E3FE2C9F399A0507E0C2CC56429E83FF2AFFB656EA83A7066C896B60D55A",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-guest-second-clue.json",
+      "bytes": 159820,
+      "sha256": "B1178311B14AD07AEA22C94CF488D69C8DB68E124951D149D23257EFE86F69BF",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "copy-guest-second-clue.png",
+      "bytes": 832835,
+      "sha256": "840673A04A8E37E882C828FBBCDC77A5EF1A07A1CA57CDB750430C6B6FEA8B33",
+      "appPackage": "M12",
+      "testPackage": "T15"
+    },
+    {
+      "path": "only-account-return-second-clue.json",
+      "bytes": 172960,
+      "sha256": "0A8474A1901929BC6EC16E5F7D8C5279496F2071CDACEE56B8E62CCA1DB0FF0C",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "only-account-return-second-clue.png",
+      "bytes": 841495,
+      "sha256": "049E816EA2024376FCC222428C5362481DD6C967F19BD0311DE5D1A68413F2CE",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "only-guest-second-clue.json",
+      "bytes": 161712,
+      "sha256": "EBE5FB22A98C3DC20F8398ECB291D12F1BCE6AA509037601CB9C0DC6854A779A",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "only-guest-second-clue.png",
+      "bytes": 737419,
+      "sha256": "CAB86ED92D1DF9DE70C5E65C6D6C88E67FE405F3470FEAF5DB529803627F3EA6",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "only-offline-return-second-clue.json",
+      "bytes": 161792,
+      "sha256": "D6E3EC97B9DB430970E41A0FD45DBD581D5E3885CEEE3A79EF712368C7DD5CC0",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    },
+    {
+      "path": "only-offline-return-second-clue.png",
+      "bytes": 737421,
+      "sha256": "9C77232D0406E576312A7A885D5E8936CC5DBABBBBFBD6FE47AD31DC6D854561",
+      "appPackage": "M12",
+      "testPackage": "T14"
+    }
+  ]
+}

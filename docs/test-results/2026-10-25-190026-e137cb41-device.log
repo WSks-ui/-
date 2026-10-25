@@ -1,0 +1,36 @@
+
+OHOS_REPORT_SUM: 1
+OHOS_REPORT_STATUS: class=PaperSystemTest
+
+
+OHOS_REPORT_STATUS: class=PaperSystemTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_desktop_forms_reopen_paper_city_and_exact_note_cold_and_hot
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=PaperSystemTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=1
+OHOS_REPORT_STATUS: stack=    at runCase entry (entry/src/ohosTest/ets/test/PaperSystem.test.ets:340:40)
+OHOS_REPORT_STATUS: stream=Error in native_desktop_forms_reopen_paper_city_and_exact_note_cold_and_hot, Widget: {selfMatcher=[{attrName:visible; value:true; Pattern:0},{attrName:id; value:paper-profile; Pattern:0},]}71:894dose not exist on current UI! Check if the UI has changed after you got the widget object(NoCandidates)
+OHOS_REPORT_STATUS: test=native_desktop_forms_reopen_paper_city_and_exact_note_cold_and_hot
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=68013
+
+
+OHOS_REPORT_STATUS: class=PaperSystemTest
+OHOS_REPORT_STATUS: suiteconsuming=68013
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 1, Failure: 0, Error: 1, Pass: 0, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=68013
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.

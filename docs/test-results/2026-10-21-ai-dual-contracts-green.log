@@ -1,0 +1,36 @@
+AI_OBSERVE_OK provider=deepseek model=deepseek-test site=zz-duling-fangding purpose=draft_memory status=grounded facts=1 actions=1 elapsedMs=1 account=authenticated
+AI_OBSERVE_OK provider=deepseek model=deepseek-test site=zz-duling-fangding purpose=draft_memory status=grounded facts=1 actions=1 elapsedMs=0 account=authenticated
+✔ AI configuration reports availability without exposing the key (1.1233ms)
+✔ unconfigured AI returns a real failure state instead of a canned answer (1.0161ms)
+✔ draft request without a user observation asks for one without calling the model (0.423ms)
+✔ real adapter sends facts, JSON mode and returns a validated application reply (1.9548ms)
+✔ draft reply is normalized and keeps only validated fact references (1.0505ms)
+✔ twin vessel opening draft keeps its facts, tags and own hotspot label (0.5562ms)
+✔ twin vessel adapter rejects Ding facts in every reply reference (1.865ms)
+✔ invalid model content, facts or actions fail the whole reply (1.4008ms)
+✔ timeouts, provider errors and rate limits map to distinct states (0.7862ms)
+✔ server rejects unsupported sites or unknown hotspot before calling the model (0.5152ms)
+✔ twin vessel prompt uses its own object, facts and hotspots (0.352ms)
+✔ prompt keeps the three fact bodies and forbids unsupported conclusions (0.4823ms)
+✔ model output normalizes spaces between Chinese characters only (0.9383ms)
+✔ revisiting a note includes only its confirmed observation as personal expression (0.3931ms)
+✔ AI knowledge scope comes from the existing Ding catalog and hotspots (3.38ms)
+✔ AI supports the twin vessel with its own facts, hotspots and starters (1.4925ms)
+✔ AI request validation rejects another site, scene revision, hotspot or oversized context (0.6317ms)
+✔ AI reply validation closes request identity, facts and executable actions (0.9129ms)
+✔ insufficient evidence and draft replies keep their own contract (0.3274ms)
+✔ twin vessel replies reject Ding facts in the answer, actions and draft (0.5314ms)
+✔ late AI replies cannot overwrite a stopped or changed observation (0.1729ms)
+✔ adopted AI draft freezes catalog facts and deep copies source ids (0.3412ms)
+✔ adopted twin vessel opening draft freezes its own catalog fact (0.5228ms)
+✔ twin vessel frozen AI metadata survives snapshot transfer, editing copy and merge (2.0742ms)
+✔ AI note metadata survives parse, deep copy and deterministic merge (0.4764ms)
+✔ AI error copy never disguises failure as a successful answer (0.1772ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 203.0625

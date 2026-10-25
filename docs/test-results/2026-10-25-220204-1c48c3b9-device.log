@@ -1,0 +1,55 @@
+
+OHOS_REPORT_SUM: 2
+OHOS_REPORT_STATUS: class=RiverMarketTest
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_default_four_segments_fail_without_note_and_playback_cannot_advance_twice
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: current=1
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_default_four_segments_fail_without_note_and_playback_cannot_advance_twice
+OHOS_REPORT_STATUS_CODE: 0
+OHOS_REPORT_STATUS: consuming=42168
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stream=
+OHOS_REPORT_STATUS: test=native_strategy_save_plain_memory_cold_reopen_and_restart_preserve_note_and_old_favorite
+OHOS_REPORT_STATUS_CODE: 1
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: current=2
+OHOS_REPORT_STATUS: id=JS
+OHOS_REPORT_STATUS: numtests=2
+OHOS_REPORT_STATUS: stack=    at wait entry (entry/src/ohosTest/ets/test/RiverMarket.test.ets:29:67)
+OHOS_REPORT_STATUS: stream=Error in native_strategy_save_plain_memory_cold_reopen_and_restart_preserve_note_and_old_favorite, MARKET_TEST_TARGET_MISSING:market-memory-body
+OHOS_REPORT_STATUS: test=native_strategy_save_plain_memory_cold_reopen_and_restart_preserve_note_and_old_favorite
+OHOS_REPORT_STATUS_CODE: -1
+OHOS_REPORT_STATUS: consuming=122697
+
+
+OHOS_REPORT_STATUS: class=RiverMarketTest
+OHOS_REPORT_STATUS: suiteconsuming=164865
+
+
+OHOS_REPORT_RESULT: stream=Tests run: 2, Failure: 0, Error: 1, Pass: 1, Ignore: 0
+OHOS_REPORT_CODE: 0
+OHOS_REPORT_STATUS: taskconsuming=164865
+
+TestFinished-ResultCode: 0
+TestFinished-ResultMsg: your test finished!!!
+user test finished.
