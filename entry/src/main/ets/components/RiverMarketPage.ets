@@ -435,7 +435,9 @@ export struct RiverMarketPage {
         ForEach(MARKET_LOTS, (lot: MarketLot) => {
           if (this.playbackReport!.servedByLot[lot.id] > 0) {
             Row() {
-              Text(`${lot.label} · ${marketStallName(this.state.stalls[lot.id].type)}`)
+              // 铺名取结算时的类型快照：收市后收铺或改建，不能让历史接待
+              // 变成“空地接待 N 客”或挂到新铺子名下。
+              Text(`${lot.label} · ${marketStallName(this.playbackReport!.stallTypes[lot.id])}`)
                 .fontSize(13).fontColor('#5D715B').layoutWeight(1)
               Text(`${this.playbackReport!.servedByLot[lot.id]} 客`).fontSize(13).fontColor('#876740')
             }.width('100%')

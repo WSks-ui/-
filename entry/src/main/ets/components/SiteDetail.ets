@@ -525,6 +525,7 @@ export struct SiteDetail {
     this.busy = true;
     const next = copySnapshot(this.snapshot);
     const time = nextTimestamp(next.records, Date.now());
+    const existing = this.editingId ? next.records.find(item => item.id === this.editingId && !item.deleted) : undefined;
     const record: ArchiveRecord = {
       id: this.editingId || `note:${next.deviceId}:${time}`, kind: 'note', siteId: this.site.id,
       body, tags, updatedAt: time, deviceId: next.deviceId, deleted: false
@@ -534,6 +535,13 @@ export struct SiteDetail {
     if (this.quoteEnabled && this.quotedText) record.quotedPoemOrFact = this.quotedText;
     if (this.draftPose) record.snapshot3DPose = this.draftPose;
     if (aiAssist) record.aiAssist = aiAssist;
+    if (existing) {
+      // 这个表单只管理正文、标签与上方装饰字段；纸景/漫游的冻结上下文（剪口、
+      // 出处、篇章选择）不在编辑器里。用原 ID 重建记录时必须原样带回，
+      // 否则从档案页补写一段文字就会抹掉整份冻结作品。
+      record.paperContext = existing.paperContext;
+      record.roamingContext = existing.roamingContext;
+    }
     next.records = putRecord(next.records, record);
     if (await this.onCommit(next)) {
       this.editorOpen = false;

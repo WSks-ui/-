@@ -215,7 +215,12 @@ export struct PaperJourneyScene {
     if (this.observationMode) { if (this.lightDragging) this.moveLight(event); return; }
     if (!this.active) return;
     const point = this.pointAt(event);
-    if (!point) return;
+    if (!point) {
+      // 手指已划出纸面：这一笔到此为止，已划过的部分先按原领域动作提交。
+      // 若只忽略纸外采样点，从纸外回来时会把前后两个纸内点连成没有划过的直线剪口。
+      this.endStroke();
+      return;
+    }
     const previous = this.points[this.points.length - 1];
     if (previous && Math.abs(point.x - previous.x) + Math.abs(point.y - previous.y) < 0.003) return;
     this.points.push(point);
@@ -242,12 +247,8 @@ export struct PaperJourneyScene {
     this.sample(this.perfPreview, started);
   }
 
-  private finish(event: GestureEvent | undefined = undefined): void {
-    if (event) this.move(event);
-    if (this.observationMode || this.lightDragging) {
-      this.lightDragging = false; this.active = false; this.points = []; this.preview = undefined;
-      this.perfReportPending = 'light'; this.draw(); return;
-    }
+  // 结束并提交当前笔迹：抬手、划出纸面共用；结束后不接受后续 move，直到新手势落下。
+  private endStroke(): void {
     if (!this.active) return;
     // 收尾先消费最后未出帧的输入，调试时对照正式动作；不是把一个未绘制尾段漏掉。
     this.advancePreview();
@@ -259,6 +260,15 @@ export struct PaperJourneyScene {
     if (points.length > 0) this.onStroke(points);
     this.perfReportPending = 'cut';
     this.draw();
+  }
+
+  private finish(event: GestureEvent | undefined = undefined): void {
+    if (event) this.move(event);
+    if (this.observationMode || this.lightDragging) {
+      this.lightDragging = false; this.active = false; this.points = []; this.preview = undefined;
+      this.perfReportPending = 'light'; this.draw(); return;
+    }
+    this.endStroke();
   }
 
   private tap(event: GestureEvent): void {

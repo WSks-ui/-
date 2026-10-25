@@ -903,51 +903,8 @@ export function parseKaifengCity(text: string): KaifengCityV1 | undefined {
   return out;
 }
 
-// 跨端合并：幕的完成状态只增不减；层位与纹样按槽位取“非空优先”，
-// 避免另一端较早但更完整的摆放被较新的空状态覆盖。桥面与灯取较新一方。
-export function mergeKaifengCity(local: KaifengCityV1 | undefined,
-  incoming: KaifengCityV1 | undefined): KaifengCityV1 | undefined {
-  if (!local) return incoming ? parseKaifengCity(serializeKaifengCity(incoming)) : undefined;
-  if (!incoming) return parseKaifengCity(serializeKaifengCity(local));
-  const newer = incoming.updatedAt >= local.updatedAt ? incoming : local;
-  const older = incoming.updatedAt >= local.updatedAt ? local : incoming;
-  const layer = (a: string, b: string): string => a !== '' ? a : b;
-  const closedA = local.closedAt !== undefined && local.closedAt > 0 ? local.closedAt : 0;
-  const closedB = incoming.closedAt !== undefined && incoming.closedAt > 0 ? incoming.closedAt : 0;
-  let closedAt: number | undefined = undefined;
-  if (closedA > 0 && closedB > 0) closedAt = Math.min(closedA, closedB);
-  else if (closedA > 0) closedAt = closedA;
-  else if (closedB > 0) closedAt = closedB;
-  return {
-    version: 1,
-    chapterId: newer.chapterId,
-    acts: {
-      bridge: local.acts.bridge || incoming.acts.bridge,
-      layers: local.acts.layers || incoming.acts.layers,
-      lantern: local.acts.lantern || incoming.acts.lantern,
-      bridgeIndependent: local.acts.bridgeIndependent || incoming.acts.bridgeIndependent,
-      note: local.acts.note || incoming.acts.note
-    },
-    bridge: { x: newer.bridge.x, y: newer.bridge.y, angle: newer.bridge.angle },
-    bridgeKind: newer.bridgeKind,
-    boatSpot: newer.boatSpot,
-    layers: {
-      lower: layer(newer.layers.lower, older.layers.lower),
-      middle: layer(newer.layers.middle, older.layers.middle),
-      upper: layer(newer.layers.upper, older.layers.upper)
-    },
-    motif: {
-      center: layer(newer.motif.center, older.motif.center),
-      left: layer(newer.motif.left, older.motif.left),
-      right: layer(newer.motif.right, older.motif.right),
-      bottom: layer(newer.motif.bottom, older.motif.bottom)
-    },
-    lantern: { frame: newer.lantern.frame, paper: newer.lantern.paper, wish: newer.lantern.wish, spot: newer.lantern.spot },
-    lights: newer.lights.map((light: KaifengLightPoint): KaifengLightPoint => ({ id: light.id, x: light.x, y: light.y })),
-    closedAt,
-    updatedAt: Math.max(local.updatedAt, incoming.updatedAt)
-  };
-}
+// 城市跨端/重走合并已移至 GameProgressMerge.mergeKaifengCityProgress：
+// 仙鹤两片按并集合并会得到重复 id，parseKaifengCity 读不回，不能再用槽位直并。
 
 export interface KaifengCityGrade {
   grade: number;

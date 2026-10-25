@@ -91,6 +91,16 @@ function mergeCity(a: KaifengCityV1, b: KaifengCityV1): KaifengCityV1 | undefine
   return parseKaifengCity(serializeKaifengCity(out));
 }
 
+// 本机保存路径与跨端合并共用同一套城市规则（仙鹤去重 + 写前解析校验）。
+// 旧的按槽位并集合并会把 crane-a/crane-b 合成两片相同的鹤，结果无法被
+// parseKaifengCity 读回；返回 undefined 表示合不出可读结果，调用方保留较新一方。
+export function mergeKaifengCityProgress(local: KaifengCityV1 | undefined,
+  incoming: KaifengCityV1 | undefined): KaifengCityV1 | undefined {
+  if (!local) return incoming ? parseKaifengCity(serializeKaifengCity(incoming)) : undefined;
+  if (!incoming) return parseKaifengCity(serializeKaifengCity(local));
+  return mergeCity(local, incoming);
+}
+
 // 返回 undefined 表示不是已识别且完整有效的游戏记录，调用方继续原 LWW。
 // 身份须同时匹配 id、siteId 和 body.chapterId / cityId；不能拿普通 progress 或其他章节套用规则。
 // 墓碑完全交给 ArchiveDomain 原有版本比较，语义并集不得复活删除。

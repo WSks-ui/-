@@ -8,8 +8,9 @@ const {
   parseKaifengWork, placeKaifengEvidence, serializeKaifengWork, settleKaifengBridge, validKaifengLantern,
   judgeKaifengCrossing, kaifengBoatSpotFor, emptyKaifengLayerSlots, placeKaifengLayer,
   emptyKaifengMotifSlots, placeKaifengMotif, kaifengCoverage, kaifengLight,
-  emptyKaifengCity, parseKaifengCity, serializeKaifengCity, kaifengCityRecordId, mergeKaifengCity
+  emptyKaifengCity, parseKaifengCity, serializeKaifengCity, kaifengCityRecordId
 } = await import(domainModuleUrl('KaifengPuzzle'));
+const { mergeKaifengCityProgress } = await import(domainModuleUrl('GameProgressMerge'));
 
 const at = (x, y, angle) => ({ x, y, angle });
 const layerState = (placed = []) => ({ placed, lastDistance: 0, lastAligned: false });
@@ -302,11 +303,26 @@ test('kaifeng: 城市快照往返、记录 id 与合并语义', () => {
   const incoming = emptyKaifengCity('roam-kf-night', 200);
   incoming.acts.layers = true;
   incoming.layers = { lower: 'song-base', middle: '', upper: '' };
-  const merged = mergeKaifengCity(local, incoming);
+  const merged = mergeKaifengCityProgress(local, incoming);
   assert.equal(merged.acts.bridge, true, '两端的幕完成状态取并集');
   assert.equal(merged.acts.layers, true);
   assert.equal(merged.layers.lower, 'song-base', '较新一端的空槽不会覆盖已放好的层');
   assert.equal(merged.updatedAt, 200);
+});
+
+test('kaifeng: 重走换边放置的仙鹤不会合并出两片相同的鹤', () => {
+  // 旧记录左 crane-a、右 crane-b；重走后只在左侧重新放 crane-b。
+  // 按槽位直并会把两只合成 crane-b x2，结果无法被正式解析器读回。
+  const local = emptyKaifengCity('roam-kf-night', 100);
+  local.motif = { center: 'horse', left: 'crane-a', right: 'crane-b', bottom: 'cloud' };
+  const replay = emptyKaifengCity('roam-kf-night', 200);
+  replay.motif = { center: 'horse', left: 'crane-b', right: '', bottom: 'cloud' };
+  const merged = mergeKaifengCityProgress(local, replay);
+  assert.ok(merged, '去重合并必须产出可读城市');
+  assert.equal(merged.motif.left, 'crane-a');
+  assert.equal(merged.motif.right, 'crane-b');
+  assert.deepEqual(parseKaifengCity(serializeKaifengCity(merged)), merged,
+    '合并结果要能被正式解析器往返读回');
 });
 
 test('kaifeng: 残缺城市快照不会被补成看似正常的城', () => {

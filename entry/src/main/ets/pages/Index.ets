@@ -60,7 +60,8 @@ import { RoamingSystemPage } from '../components/RoamingSystemPage';
 import { ROAM_CHAPTERS } from '../data/RoamingCatalog';
 import { culturalEntryForId, roamingChapterForId, ROAM_LIBRARY_ERAS, ROAM_LIBRARY_TYPES } from '../data/CulturalContentIndex';
 import { RoamChapter, RoamingMemoryContext, completeRoamClue, roamProgress } from '../domain/Roaming';
-import { KaifengCityV1, mergeKaifengCity, parseKaifengCity } from '../domain/KaifengPuzzle';
+import { KaifengCityV1, parseKaifengCity, serializeKaifengCity } from '../domain/KaifengPuzzle';
+import { mergeKaifengCityProgress } from '../domain/GameProgressMerge';
 import { kaifengCityFromRecords, kaifengCityRecord } from '../domain/KaifengRecords';
 import { KaifengDigV1, mergeDig, parseDig } from '../domain/KaifengDig';
 import { kaifengDigFromRecords, kaifengDigRecord } from '../domain/KaifengDigRecords';
@@ -421,10 +422,13 @@ struct Index {
     if (!incoming || incoming.chapterId !== chapterId) return;
     const next = copySnapshot(this.snapshot);
     const existing = kaifengCityFromRecords(next.records, chapterId);
-    const merged: KaifengCityV1 = mergeKaifengCity(existing, incoming) || incoming;
-    const updatedAt = nextTimestamp(next.records, Date.now());
-    merged.updatedAt = updatedAt;
-    next.records = putRecord(next.records, kaifengCityRecord(merged, next.deviceId, updatedAt));
+    // 与跨端同步共用同一套去重合并（两只仙鹤不按槽位并集复制），并在保存前用
+    // 正式解析器校验：合不出可读正文时退回刚玩出的这一版，绝不落盘读不回的城市。
+    const merged: KaifengCityV1 = mergeKaifengCityProgress(existing, incoming) || incoming;
+    merged.updatedAt = nextTimestamp(next.records, Date.now());
+    const verified = parseKaifengCity(serializeKaifengCity(merged));
+    if (!verified) return;
+    next.records = putRecord(next.records, kaifengCityRecord(verified, next.deviceId, merged.updatedAt));
     await this.commit(next);
   }
 
@@ -608,9 +612,12 @@ struct Index {
         const city = parseKaifengCity(cityJson);
         if (city && city.chapterId === chapterId) {
           const existing = kaifengCityFromRecords(next.records, chapterId);
-          const merged: KaifengCityV1 = mergeKaifengCity(existing, city) || city;
+          const merged: KaifengCityV1 = mergeKaifengCityProgress(existing, city) || city;
           merged.updatedAt = nextTimestamp(next.records, Date.now());
-          next.records = putRecord(next.records, kaifengCityRecord(merged, next.deviceId, merged.updatedAt));
+          const verified = parseKaifengCity(serializeKaifengCity(merged));
+          if (verified) {
+            next.records = putRecord(next.records, kaifengCityRecord(verified, next.deviceId, merged.updatedAt));
+          }
         }
       }
       const index = chapter.clues.findIndex(clue => clue.id === clueId);

@@ -32,6 +32,9 @@ export interface MarketForecast {
 export interface MarketRoundReport extends MarketRoundSummary {
   visits: MarketVisit[]; servedByLot: number[]; stockUsed: MarketStock; effectiveLamps: boolean[];
   reasonCounts: MarketReasonCount[]; advice: string[];
+  // 结算一刻各铺位的类型快照，供回看账本解释 servedByLot；不随 progress 落盘。
+  // 收市后收铺/改建不能改写历史，账本必须按结算时的铺子说明接待去向。
+  stallTypes: (MarketStallType | '')[];
 }
 export interface MarketAdvanceResult { state: RiverMarketV1; report: MarketRoundReport; }
 export interface MarketSummary {
@@ -251,7 +254,9 @@ export function advanceMarketRound(state: RiverMarketV1, now: number = Date.now(
   if (reasons[4] > 0) advice.push(`${reasons[4]}客没找到对应铺子；后两段茶饮偏好多，可以提前布置。`);
   if (advice.length === 0) advice.push('这一段来客都接住了，留意下一段的偏好和灯油。');
   return { state: next, report: { ...summary, visits, servedByLot, stockUsed,
-    effectiveLamps: forecast.effectiveLamps.slice(), reasonCounts: MARKET_LOSS_REASONS.map((reason, index) => ({ reason, count: reasons[index] })), advice } };
+    effectiveLamps: forecast.effectiveLamps.slice(),
+    stallTypes: next.stalls.map((stall: MarketStall): MarketStallType | '' => stall.type),
+    reasonCounts: MARKET_LOSS_REASONS.map((reason, index) => ({ reason, count: reasons[index] })), advice } };
 }
 
 // 用预告给出的配额轮流安排客人，偏好、来源与顺序完全确定；不靠重开赌一批“好客”。

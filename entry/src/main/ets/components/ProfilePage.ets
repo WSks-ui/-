@@ -1,6 +1,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 import { pasteboard } from '@kit.BasicServicesKit';
-import { activeRecords, ArchiveSnapshot, copySnapshot, mergeRecords, parseSnapshot } from '../domain/ArchiveDomain';
+import { activeRecords, ArchiveRecord, ArchiveSnapshot, copySnapshot, mergeRecords, nextTimestamp, parseSnapshot } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { AccountView, guestAccountView } from '../domain/AccountSync';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
@@ -143,12 +143,26 @@ export struct ProfilePage {
     } else {
       // 覆盖用于换机迁移：记录整体替换，但保留本机的安装身份与阅读偏好，
       // 不把备份来源设备的 deviceId 当成本机身份。先深拷贝，避免备份对象与快照共享引用。
-      next.records = copySnapshot(parsed).records;
+      const restored = copySnapshot(parsed).records;
+      // 本机有、备份没有的记录必须转成删除墓碑：覆盖提交后会立刻触发账号同步，
+      // 没有墓碑时服务端上的这些记录会按 LWW 原样合并回来，覆盖看起来没有发生。
+      // 墓碑随同步传达删除意图；与另一端更新的正文冲突时仍按时间戳保留较新版本。
+      const restoredIds = new Set<string>();
+      restored.forEach((item: ArchiveRecord) => { restoredIds.add(item.id); });
+      const stamp = nextTimestamp(this.snapshot.records.concat(restored), Date.now());
+      const tombs = this.snapshot.records
+        .filter((item: ArchiveRecord) => !restoredIds.has(item.id))
+        .map((item: ArchiveRecord): ArchiveRecord => {
+          return { id: item.id, kind: item.kind, siteId: item.siteId, body: item.body,
+            tags: item.tags, updatedAt: stamp, deviceId: next.deviceId, deleted: true };
+        });
+      next.records = restored.concat(tombs);
     }
     const ok = await this.onCommit(next);
     this.restoreBusy = false;
     if (ok) {
-      this.restoreMessage = mode === 'merge' ? '已合并备份，冲突按最新时间戳保留。' : '已用备份覆盖本机记录，原档案已写入可回退版本。';
+      this.restoreMessage = mode === 'merge' ? '已合并备份，冲突按最新时间戳保留。'
+        : '已用备份覆盖本机记录；本机原有而备份缺失的记录已转为删除墓碑，与另一端更新的编辑冲突时仍保留较新版本。';
     } else {
       this.restoreMessage = '写入失败，原档案仍保留。请稍后重试。';
     }
