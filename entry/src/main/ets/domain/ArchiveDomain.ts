@@ -1,3 +1,8 @@
+import type { RoamSource, RoamingMemoryContext } from './Roaming';
+import { mergeGameProgressBody } from './GameProgressMerge';
+import { copyPaperMemory, validPaperMemory } from './PaperMemory';
+import type { PaperMemoryContext } from './PaperMemory';
+
 export interface SourceRef {
   title: string;
   url: string;
@@ -96,6 +101,11 @@ export interface ArchiveRecord {
   snapshot3DPose?: MemoryPose;
   // 仅在用户采纳或修改 AI 草稿后确认保存时写入；只问答、放弃草稿或失败均不补标。
   aiAssist?: AiMemoryAssist;
+  // schema v1 的可选漫游扩展：旧记录缺省；仅用户确认保存时冻结篇章、选择及资料出处。
+  // 不复用器物镜头或 AI 依据，防止新图景改写历史 snapshot3DPose / aiAssist 的含义。
+  roamingContext?: RoamingMemoryContext;
+  // 原创纸景独立于旧pose/漫游图景；只有用户确认收进记忆时才冻结作品和出处。
+  paperContext?: PaperMemoryContext;
 }
 
 export interface ArchiveSnapshot {
@@ -174,6 +184,19 @@ export function copyAiMemoryAssist(assist: AiMemoryAssist): AiMemoryAssist {
   };
 }
 
+export function copyRoamingMemoryContext(context: RoamingMemoryContext): RoamingMemoryContext {
+  const copy: RoamingMemoryContext = {
+    version: context.version, chapterId: context.chapterId, clueId: context.clueId,
+    sceneRevision: context.sceneRevision, choiceId: context.choiceId, excerpt: context.excerpt,
+    title: context.title, city: context.city,
+    sources: context.sources.map((source: RoamSource): RoamSource => ({
+      id: source.id, title: source.title, url: source.url, accessedAt: source.accessedAt
+    }))
+  };
+  if (context.contentRevision !== undefined) copy.contentRevision = context.contentRevision;
+  return copy;
+}
+
 export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
   return {
     schemaVersion: snapshot.schemaVersion,
@@ -193,6 +216,10 @@ export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
       if (record.aiAssist !== undefined) {
         copy.aiAssist = copyAiMemoryAssist(record.aiAssist);
       }
+      if (record.roamingContext !== undefined) {
+        copy.roamingContext = copyRoamingMemoryContext(record.roamingContext);
+      }
+      if (record.paperContext !== undefined) copy.paperContext = copyPaperMemory(record.paperContext);
       return copy;
     }),
     lightEnabled: snapshot.lightEnabled,
@@ -203,7 +230,11 @@ export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
 export function filterSites(sites: HeritageSite[], filter: SiteFilter): HeritageSite[] {
   const words = filter.keyword.trim().toLowerCase().split(/\s+/).filter((word: string) => word.length > 0);
   return sites.filter((site: HeritageSite) => {
-    const text = `${site.name} ${site.city} ${site.era} ${site.type} ${site.summary} ${site.tags.join(' ')}`.toLowerCase();
+    // 关键词检索必须覆盖正文：观众常按「绿松石龙形器」「海马」这类细节检索，
+    // 只匹配名称与摘要会把写在考古、历史段里的内容漏掉。诗词与探访信息同样纳入，
+    // 因为它们也是详情页的正式层级，不应当只能在页面里用肉眼找。
+    const text = `${site.name} ${site.city} ${site.era} ${site.type} ${site.summary} ${site.tags.join(' ')} ` +
+      `${site.overview} ${site.archaeology} ${site.history} ${site.poetry} ${site.travel}`.toLowerCase();
     return (filter.city === CITIES[0] || filter.city === site.city) &&
       (filter.era === ERAS[0] || filter.era === site.era) &&
       (filter.type === TYPES[0] || filter.type === site.type) &&
@@ -232,6 +263,7 @@ function recordContent(record: ArchiveRecord): string {
   const pose = record.snapshot3DPose;
   const frame = pose === undefined ? undefined : pose.viewFrame;
   const assist = record.aiAssist;
+  const roaming = record.roamingContext;
   // 明确字段顺序，不依赖 JSON 对象的属性插入顺序。可选字段缺省在数组里规范化为 null。
   // 新手账字段也参与版本比较，正文相同而纸色、印章或视角不同的记录不能被判为同一版本。
   // AI 参考元数据包含冻结事实正文，必须参与比较；否则同一页删改依据后会被误判为相同版本。
@@ -241,7 +273,11 @@ function recordContent(record: ArchiveRecord): string {
       pose.hotspotId, pose.sectionId, pose.label, pose.proceduralPreset, pose.sceneRevision, pose.rendererProfile,
       frame === undefined ? null : [frame.width, frame.height, frame.textDensity, frame.dark]],
     assist === undefined ? null : [assist.version, assist.question, assist.factIds, assist.contentRevision,
-      assist.facts.map((fact: AiFactSnapshot): (string | string[])[] => [fact.id, fact.title, fact.body, fact.sourceIds])]]);
+      assist.facts.map((fact: AiFactSnapshot): (string | string[])[] => [fact.id, fact.title, fact.body, fact.sourceIds])],
+    roaming === undefined ? null : [roaming.version, roaming.chapterId, roaming.clueId, roaming.sceneRevision, roaming.contentRevision,
+      roaming.choiceId, roaming.excerpt, roaming.title, roaming.city,
+      roaming.sources.map((source: RoamSource): string[] => [source.id, source.title, source.url, source.accessedAt])],
+    record.paperContext === undefined ? null : copyPaperMemory(record.paperContext)]);
 }
 
 // 相同时间戳必须有稳定的次序，否则 A 合并 B 与 B 合并 A 会得出不同结果。
@@ -268,11 +304,32 @@ export function mergeRecords(local: ArchiveRecord[], remote: ArchiveRecord[]): M
         (candidate.deleted !== previous.deleted || recordContent(candidate) !== recordContent(previous))) {
         conflicts.push(order > 0 ? previous : candidate);
       }
-      if (order > 0) records[index] = candidate;
+      const progressBody = previous.body === candidate.body ? undefined : mergeGameProgressBody(previous, candidate);
+      if (progressBody !== undefined) {
+        // 只有已识别且双方有效、未删除的游戏 progress 才合并正文。
+        // 版本信封仍按原 compareVersions 选择，旧 note、墓碑与确认规则不变；
+        // 复用现有深拷贝边界，不能把合成正文写回调用方持有的原始记录。
+        const preferred = order > 0 ? candidate : previous;
+        const merged = copySnapshot({ schemaVersion: 1, deviceId: preferred.deviceId, records: [preferred],
+          lightEnabled: true, reducedMotion: false }).records[0];
+        merged.body = progressBody;
+        records[index] = merged;
+      } else if (order > 0) records[index] = candidate;
     }
   });
   records.sort((a: ArchiveRecord, b: ArchiveRecord) => compareText(a.id, b.id));
   return { records, conflicts };
+}
+
+// 网络响应只确认其中实际返回的记录版本。响应到达时间晚于本机编辑时间，
+// 并不代表该编辑已经发出；正文、墓碑、视角和 AI 依据也必须与确认版本一致。
+export function recordVersionConfirmed(record: ArchiveRecord, confirmed: ArchiveRecord[]): boolean {
+  const remote = confirmed.find((candidate: ArchiveRecord) => candidate.id === record.id);
+  return remote !== undefined && compareVersions(record, remote) === 0;
+}
+
+export function pendingRecordCount(records: ArchiveRecord[], confirmed: ArchiveRecord[]): number {
+  return records.filter((record: ArchiveRecord) => !recordVersionConfirmed(record, confirmed)).length;
 }
 
 export function recommendSites(sites: HeritageSite[], records: ArchiveRecord[], currentId: string = ''): Recommendation[] {
@@ -322,7 +379,9 @@ export function parseSnapshot(raw: string): ArchiveSnapshot {
       (record.paperTheme !== undefined && typeof record.paperTheme !== 'string') ||
       (record.quotedPoemOrFact !== undefined && typeof record.quotedPoemOrFact !== 'string') ||
       (record.snapshot3DPose !== undefined && !isValidMemoryPose(record.snapshot3DPose)) ||
-      (record.aiAssist !== undefined && !isValidAiMemoryAssist(record.aiAssist))) {
+      (record.aiAssist !== undefined && !isValidAiMemoryAssist(record.aiAssist)) ||
+      (record.roamingContext !== undefined && !isValidRoamingMemoryContext(record.roamingContext)) ||
+      (record.paperContext !== undefined && !validPaperMemory(record.paperContext))) {
       throw new Error('ARCHIVE_INVALID_RECORD');
     }
     ids.push(record.id);
@@ -372,4 +431,28 @@ export function isValidAiMemoryAssist(assist: AiMemoryAssist): boolean {
     assist.facts.every((fact: AiFactSnapshot) => validFactSnapshot(fact)) &&
     assist.facts.every((fact: AiFactSnapshot) => assist.factIds.includes(fact.id)) &&
     assist.factIds.every((id: string) => assist.facts.some((fact: AiFactSnapshot) => fact.id === id));
+}
+
+function validRoamingSource(source: RoamSource): boolean {
+  return !!source && typeof source.id === 'string' && /^[a-z0-9-]{1,80}$/.test(source.id) &&
+    typeof source.title === 'string' && source.title.trim().length > 0 && source.title.length <= 240 &&
+    typeof source.url === 'string' && /^https?:\/\/[^\s]+$/.test(source.url) && source.url.length <= 2048 &&
+    typeof source.accessedAt === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(source.accessedAt);
+}
+
+export function isValidRoamingMemoryContext(context: RoamingMemoryContext): boolean {
+  // 损坏扩展拒绝整份快照，由既有仓库保护原始数据；不能删掉依据再以“成功读取”覆盖。
+  // sceneRevision 允许未来正修订号归档，是否能恢复图景由新图景的播放层判断。
+  return !!context && context.version === 1 &&
+    typeof context.chapterId === 'string' && /^[a-z0-9-]{1,100}$/.test(context.chapterId) &&
+    typeof context.clueId === 'string' && /^[a-z0-9-]{1,100}$/.test(context.clueId) &&
+    Number.isSafeInteger(context.sceneRevision) && context.sceneRevision > 0 &&
+    (context.contentRevision === undefined || (Number.isSafeInteger(context.contentRevision) && context.contentRevision > 0)) &&
+    typeof context.choiceId === 'string' && /^[a-z0-9-]{1,100}$/.test(context.choiceId) &&
+    typeof context.excerpt === 'string' && context.excerpt.trim().length > 0 && context.excerpt.length <= 2400 &&
+    typeof context.title === 'string' && context.title.trim().length > 0 && context.title.length <= 240 &&
+    typeof context.city === 'string' && context.city.trim().length > 0 && context.city.length <= 40 &&
+    Array.isArray(context.sources) && context.sources.length > 0 && context.sources.length <= 8 &&
+    context.sources.every((source: RoamSource) => validRoamingSource(source)) &&
+    new Set<string>(context.sources.map((source: RoamSource) => source.id)).size === context.sources.length;
 }

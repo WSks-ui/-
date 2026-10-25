@@ -27,29 +27,30 @@ export default function archiveUiTest() {
     it('native_combined_filters_and_reset', 0, async () => {
       const session = new ArchiveUiSession('filters');
       await session.run(async () => {
-        await session.inScroll('explore-scroll', ON.id('filter-city'));
-        await session.select('filter-city', '洛阳');
-        await session.inScroll('explore-scroll', ON.id('filter-era'));
-        await session.select('filter-era', '夏商');
-        await session.inScroll('explore-scroll', ON.id('filter-type'));
-        await session.select('filter-type', '都城遗址');
+        await (await session.waitId('tab-2')).click();
+        await session.inScroll('device-scroll', ON.id('library-city'));
+        await session.select('library-city', '洛阳');
+        await session.inScroll('device-scroll', ON.id('library-era'));
+        await session.select('library-era', '夏商');
+        await session.inScroll('device-scroll', ON.id('library-type'));
+        await session.select('library-type', '都城遗址');
         // 扩充后的洛阳有两处夏商都城；保留 AND 筛选，并同时核对两张真实结果卡片。
         await session.search('青铜 都城', 2);
-        await session.inScroll('explore-scroll', ON.id('site-row-ly-erlitou').within(ON.id('explore-site-grid')));
-        await session.inScroll('explore-scroll', ON.id('site-row-ly-yanshi-shang').within(ON.id('explore-site-grid')));
+        await session.inScroll('device-scroll', ON.id('site-row-ly-erlitou').within(ON.id('archive-library-grid')));
+        await session.inScroll('device-scroll', ON.id('site-row-ly-yanshi-shang').within(ON.id('archive-library-grid')));
         // 同时核对实际卡片，避免结果数量更新了、双列 ForEach 却仍保留旧配对。
-        expect(!await session.driver.findComponent(ON.id('site-row-smx-yangshao').within(ON.id('explore-site-grid')))).assertTrue();
-        expect(!await session.driver.findComponent(ON.id('site-row-zz-shang').within(ON.id('explore-site-grid')))).assertTrue();
-        await (await session.waitId('explore-scroll')).scrollToTop(40000);
-        await session.inScroll('explore-scroll', ON.id('reset-filters'));
-        await (await session.waitId('reset-filters')).click();
-        expect(await (await session.waitId('search-result-count')).getText()).assertEqual(`${HERITAGE_SITES.length} 处文化遗产`);
-        await session.inScroll('explore-scroll', ON.id('filter-city'));
-        await session.select('filter-city', '洛阳');
-        await session.inScroll('explore-scroll', ON.id('filter-era'));
-        await session.select('filter-era', '宋');
-        expect(await (await session.waitId('search-result-count')).getText()).assertEqual('0 处文化遗产');
-        await session.inScroll('explore-scroll', ON.text('没有符合条件的档案'));
+        expect(!await session.driver.findComponent(ON.id('site-row-smx-yangshao').within(ON.id('archive-library-grid')))).assertTrue();
+        expect(!await session.driver.findComponent(ON.id('site-row-zz-shang').within(ON.id('archive-library-grid')))).assertTrue();
+        await (await session.waitId('device-scroll')).scrollToTop(40000);
+        await session.inScroll('device-scroll', ON.id('library-reset'));
+        await (await session.waitId('library-reset')).click();
+        expect(await (await session.waitId('library-result-count')).getText()).assertEqual(`${HERITAGE_SITES.length} 处`);
+        await session.inScroll('device-scroll', ON.id('library-city'));
+        await session.select('library-city', '洛阳');
+        await session.inScroll('device-scroll', ON.id('library-era'));
+        await session.select('library-era', '宋');
+        expect(await (await session.waitId('library-result-count')).getText()).assertEqual('0 处');
+        await session.inScroll('device-scroll', ON.text('没有符合条件的档案'));
       });
     });
 

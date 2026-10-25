@@ -35,9 +35,11 @@ export default function archiveAppearanceTest() {
         app.setFontSizeScale(1);
         await session.run(async () => {
           await capture(session, 'home');
-          await session.inScroll('explore-scroll', ON.id('search-result-count'));
-          await session.inScroll('explore-scroll', ON.id('site-row-smx-yangshao').within(ON.id('explore-site-grid')));
+          await (await session.waitId('tab-2')).click();
+          await session.inScroll('device-scroll', ON.id('library-result-count'));
+          await session.inScroll('device-scroll', ON.id('site-row-smx-yangshao').within(ON.id('archive-library-grid')));
           await capture(session, 'catalog');
+          await (await session.waitId('tab-0')).click();
           await (await session.waitId('explore-scroll')).scrollToTop(40000);
           // 首屏快捷入口必须使用真实导航，不用装饰卡片冒充功能。新版首页把“河流记忆”
           // 与“从彩陶读起”放到纸页入口区，先滚动到真实控件再点击，断言不变。

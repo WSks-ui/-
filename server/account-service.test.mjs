@@ -7,6 +7,10 @@ import { join } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import { createAccountService } from './account-service.mjs';
 import { accountStoreName, validateAccountReply } from '../entry/src/main/ets/domain/AccountSync.ts';
+import { ROAM_CHAPTERS, ROAM_SOURCES } from '../entry/src/main/ets/data/RoamingCatalog.ts';
+import { domainModuleUrl } from '../tools/load-domain-module.mjs';
+
+const { completeRoamClue, makeRoamingMemoryContext, roamProgress } = await import(domainModuleUrl('Roaming'));
 
 const record = patch => ({ id: 'note:device_a:1', kind: 'note', siteId: 'ly-erlitou', body: '城垣与道路',
   tags: ['都城研学'], updatedAt: 100, deviceId: 'device_a', deleted: false, ...patch });
@@ -73,4 +77,63 @@ test('HTTPS account isolation, durable merge, offline edits, tombstones, conflic
   // 未监听的 service.close 也须关闭 SQLite。
   await reopened.close();
   rmSync(root, { recursive: true, force: true });
+});
+
+test('HTTPS preserves roaming choices and frozen memory evidence across two devices and durable tombstones', async () => {
+  const root = mkdtempSync(join(tmpdir(), 'yunheji-roaming-sync-test-'));
+  const databasePath = join(root, 'accounts.sqlite');
+  const service = createAccountService({ databasePath, cert, key });
+  await new Promise(resolve => service.server.listen(0, '127.0.0.1', resolve));
+  const port = service.server.address().port;
+  const request = (path, body, token = '') => new Promise((resolve, reject) => {
+    const req = https.request({ hostname: '127.0.0.1', port, path, method: 'POST', ca: cert,
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) } }, res => {
+      let data = '';
+      res.on('data', chunk => { data += chunk; });
+      res.on('end', () => resolve({ status: res.statusCode, value: JSON.parse(data) }));
+    });
+    req.on('error', reject); req.end(JSON.stringify(body));
+  });
+  try {
+    const a = (await request('/auth/register', { username: 'test_roaming_sync', password: 'roaming_test_password' })).value;
+    const b = (await request('/auth/login', { username: 'test_roaming_sync', password: 'roaming_test_password' })).value;
+    const sync = (session, deviceId, records) => request('/sync', { deviceId, records }, session.token);
+    const chapter = ROAM_CHAPTERS[3];
+    const clue = chapter.clues[0];
+    const progress = completeRoamClue(chapter, clue.id, clue.options[0].id, [], 'device_a', 100);
+    const memory = record({
+      id: 'note:roaming-sync', siteId: chapter.id, body: '我想记住街与河的交会',
+      roamingContext: makeRoamingMemoryContext(chapter, clue, clue.options[0].id, ROAM_SOURCES)
+    });
+    const oldContext = structuredClone(memory.roamingContext);
+    delete oldContext.contentRevision;
+    const oldMemory = record({ id: 'note:old-roaming-context', siteId: clue.id, roamingContext: oldContext });
+    assert.equal((await sync(a, 'device_a', [progress, memory, oldMemory])).status, 200);
+    const received = (await sync(b, 'device_b', [])).value.records;
+    assert.deepEqual(received.find(item => item.id === memory.id), memory);
+    assert.equal(received.find(item => item.id === memory.id).roamingContext.contentRevision, 1);
+    assert.deepEqual(received.find(item => item.id === oldMemory.id), oldMemory);
+    assert.equal(Object.hasOwn(received.find(item => item.id === oldMemory.id).roamingContext, 'contentRevision'), false);
+    assert.equal(roamProgress(received, chapter).completedCount, 1);
+    const second = completeRoamClue(chapter, chapter.clues[1].id, chapter.clues[1].options[1].id,
+      received, 'device_b', 101);
+    await sync(b, 'device_b', [second]);
+    const continued = (await sync(a, 'device_a', [progress, memory])).value.records;
+    assert.equal(roamProgress(continued, chapter).completedCount, 2);
+    assert.deepEqual(continued.find(item => item.id === memory.id).roamingContext, memory.roamingContext);
+    const tombstone = { ...memory, updatedAt: 102, deleted: true };
+    await sync(a, 'device_a', [tombstone]);
+    const delayed = (await sync(b, 'device_b', [memory])).value.records.find(item => item.id === memory.id);
+    assert.equal(delayed.deleted, true);
+    assert.deepEqual(delayed.roamingContext, memory.roamingContext);
+    const audit = new DatabaseSync(databasePath);
+    const persisted = JSON.parse(audit.prepare('SELECT records FROM accounts WHERE id=?').get(a.accountId).records);
+    assert.equal(roamProgress(persisted, chapter).completedCount, 2);
+    assert.deepEqual(persisted.find(item => item.id === memory.id), tombstone);
+    assert.deepEqual(persisted.find(item => item.id === oldMemory.id), oldMemory);
+    audit.close();
+  } finally {
+    await service.close();
+    rmSync(root, { recursive: true, force: true });
+  }
 });

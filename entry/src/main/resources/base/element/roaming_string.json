@@ -1,0 +1,9 @@
+{
+  "string": [
+    { "name": "roaming_form_description", "value": "云河纪的漫游与个人记忆桌面卡片" },
+    { "name": "roaming_continue_display_name", "value": "继续这段漫游" },
+    { "name": "roaming_continue_description", "value": "回到已保存的城市篇章，继续发现文化线索。进度来自本机已保存记录。" },
+    { "name": "roaming_memory_display_name", "value": "最近一页" },
+    { "name": "roaming_memory_description", "value": "重读最近亲手保存的摘录与感想。卡片使用原创河流图景，不是原取景截图。" }
+  ]
+}

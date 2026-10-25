@@ -1,6 +1,6 @@
 import { bundleManager } from '@kit.AbilityKit';
 import { pasteboard } from '@kit.BasicServicesKit';
-import { activeRecords, ArchiveSnapshot, copySnapshot } from '../domain/ArchiveDomain';
+import { activeRecords, ArchiveSnapshot, copySnapshot, mergeRecords, parseSnapshot } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { AccountView, guestAccountView } from '../domain/AccountSync';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
@@ -8,15 +8,26 @@ import { AccountPanel } from './AccountPanel';
 import { ArchiveStatusRow } from './ArchiveInfo';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 import { JourneyPanel } from './JourneyPanel';
+import { DistributedArchiveStatus, distributedPhaseLabel, initialDistributedStatus } from '../domain/DistributedArchive';
 
 @Component
 export struct ProfilePage {
   @Link snapshot: ArchiveSnapshot;
   @Prop view: AccountView = guestAccountView();
+  @Prop nativeView: DistributedArchiveStatus = initialDistributedStatus();
+  onNativeSync: () => void = () => {};
   @Prop saving: boolean = false;
   @Prop university: string = '';
   @Prop studentNumber: string = '';
   @Prop section: string = '';
+  // 备份恢复是本次新增的“一键恢复”入口。状态只在本页内存中，
+  // 不把粘贴的备份写进快照，直到用户点“合并”或“覆盖”并通过校验。
+  @State private restoreOpen: boolean = false;
+  @State private restoreText: string = '';
+  @State private restorePreview: string = '';
+  @State private restoreMessage: string = '';
+  @State private restoreCount: number = 0;
+  @State private restoreBusy: boolean = false;
   onOpenSection: (section: string) => void = () => {};
   onOpenMemory: (aiOnly: boolean) => void = () => {};
   onOpenCollection: () => void = () => {};
@@ -28,6 +39,8 @@ export struct ProfilePage {
   onSync: () => void = () => {};
   onOpenSite: (siteId: string) => void = () => {};
   onOpenJourneyGraph: (routeId: string) => void = () => {};
+  onOpenSystem: () => void = () => {};
+  onBack: () => void = () => {};
 
   private favoriteCount(): number {
     return activeRecords(this.snapshot.records, 'favorite').length;
@@ -42,6 +55,23 @@ export struct ProfilePage {
   private storageKb(): number {
     // 以实际序列化体积估算本机占用；这是备份体积，不是 Preferences 的磁盘页对齐值。
     return Math.max(1, Math.round(JSON.stringify(this.snapshot).length / 1024));
+  }
+
+  // 同步方向与进度只取本机真实数量：没有远端确认时进度不会画满，
+  // 没有第二台设备时明确写“尚无其他设备”，不伪造设备数。
+  private syncTotal(): number {
+    return Math.max(this.view.recordCount, this.view.pendingCount, 1);
+  }
+
+  private syncConfirmed(): number {
+    return Math.max(0, this.syncTotal() - this.view.pendingCount);
+  }
+
+  private syncDirection(): string {
+    if (!this.view.signedIn) return '未登录';
+    if (this.view.otherDevices > 0) return `本机 → 其他 ${this.view.otherDevices} 台`;
+    if (this.view.otherDevices === 0) return '本机 → 尚无其他设备';
+    return '等待设备信息';
   }
 
   private versionName(): string {
@@ -70,6 +100,58 @@ export struct ProfilePage {
     if (this.section === 'preferences') return '阅读偏好';
     if (this.section === 'about') return '关于云河纪';
     return '我的';
+  }
+
+  // 备份校验只做“整份接受或整份拒绝”：parseSnapshot 会检查 schema 版本、
+  // 每条记录的 kind/长度/时间戳与扩展字段；任何一条坏了都不做部分导入，
+  // 避免把半份档案合并进来后无法回退。
+  private validateBackup(): ArchiveSnapshot | undefined {
+    const text = this.restoreText.trim();
+    if (!text) {
+      this.restoreMessage = '先粘贴备份 JSON。';
+      this.restoreCount = 0;
+      this.restorePreview = '';
+      return undefined;
+    }
+    try {
+      const parsed = parseSnapshot(text);
+      const notes = activeRecords(parsed.records, 'note').length;
+      let latest = 0;
+      parsed.records.forEach((record) => { if (record.updatedAt > latest) latest = record.updatedAt; });
+      this.restoreCount = parsed.records.length;
+      this.restorePreview = `${parsed.records.length} 条记录 · ${notes} 篇手账 · 最近更新 ` +
+        `${latest > 0 ? new Date(latest).toLocaleString() : '无时间戳'}`;
+      this.restoreMessage = '';
+      return parsed;
+    } catch (_error) {
+      this.restoreCount = 0;
+      this.restorePreview = '';
+      this.restoreMessage = '备份无法读取：不是合法 JSON、schema 版本不符，或存在损坏记录。整份导入已拒绝，原档案未改动。';
+      return undefined;
+    }
+  }
+
+  private async applyRestore(mode: string): Promise<void> {
+    if (this.restoreBusy || this.saving) return;
+    const parsed = this.validateBackup();
+    if (!parsed) return;
+    this.restoreBusy = true;
+    const next = copySnapshot(this.snapshot);
+    if (mode === 'merge') {
+      // 合并走现有 LWW：同 id 保留较新版本，墓碑仍然获胜，不复活已删除记录。
+      next.records = mergeRecords(this.snapshot.records, parsed.records).records;
+    } else {
+      // 覆盖用于换机迁移：记录整体替换，但保留本机的安装身份与阅读偏好，
+      // 不把备份来源设备的 deviceId 当成本机身份。先深拷贝，避免备份对象与快照共享引用。
+      next.records = copySnapshot(parsed).records;
+    }
+    const ok = await this.onCommit(next);
+    this.restoreBusy = false;
+    if (ok) {
+      this.restoreMessage = mode === 'merge' ? '已合并备份，冲突按最新时间戳保留。' : '已用备份覆盖本机记录，原档案已写入可回退版本。';
+    } else {
+      this.restoreMessage = '写入失败，原档案仍保留。请稍后重试。';
+    }
   }
 
   @Builder
@@ -130,6 +212,8 @@ export struct ProfilePage {
     this.menuRow('数据与存储', '本机记录、备份与占用', $r('sys.symbol.folder'),
       'profile-data', () => this.onOpenSection('data'))
     this.groupLabel('应用')
+    this.menuRow('桌面卡片', '继续这段漫游 · 翻开最近一页', $r('sys.symbol.square_and_pencil'),
+      'profile-system-cards', this.onOpenSystem)
     this.menuRow('阅读偏好', '沉浸光感与动态效果', $r('sys.symbol.bookmark'),
       'profile-preferences', () => this.onOpenSection('preferences'))
     this.menuRow('关于与资料说明', '内容来源、AI 范围与版本', $r('sys.symbol.folder'),
@@ -173,7 +257,7 @@ export struct ProfilePage {
     Column({ space: 14 }) {
       Text('资料说明').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
       Text('文化内容').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.accent).width('100%')
-      Text('五城二十处档案仍为初稿待校审；事实与来源以详情中列出的官方页面为准，机构入口不等于条目级校审。')
+      Text('五城十五条漫游线索与二十二条遗址档案随包提供，继续保留初稿待校审；事实、诗文语境与年代以各条资料的出处为准。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(21).width('100%')
       Text('图像与模型').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.accent).width('100%')
       Text('封面插画与程序化几何为原创学习示意，不是文物照片、测绘或考古复原；比例、纹样和标记均已简化。')
@@ -217,6 +301,48 @@ export struct ProfilePage {
       .onClick(() => { this.copyBackup(); })
     Text('备份包含收藏、手账正文、标签、视角与 AI 依据，不包含账号密码。')
       .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').padding({ top: 10 })
+    Button(this.restoreOpen ? '收起恢复' : '从备份恢复', { type: ButtonType.Normal }).id('profile-open-restore')
+      .width('100%').constraintSize({ minHeight: 44 }).fontSize(F.small).margin({ top: 10 })
+      .fontColor(T.accent).backgroundColor(T.accentSoft).borderRadius(11)
+      .onClick(() => { this.restoreOpen = !this.restoreOpen; this.restoreMessage = ''; })
+    if (this.restoreOpen) {
+      Column({ space: 10 }) {
+        Text('粘贴备份 JSON，先校验再选择合并或覆盖。')
+          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+        TextArea({ text: this.restoreText, placeholder: '{"schemaVersion":1,"deviceId":"…","records":[…]}' })
+          .height(120).width('100%').fontSize(F.caption).backgroundColor(T.soft).borderRadius(10)
+          .id('profile-restore-input')
+          .onChange((value: string) => {
+            this.restoreText = value;
+            this.restoreCount = 0; this.restorePreview = ''; this.restoreMessage = '';
+          })
+        Button('校验备份', { type: ButtonType.Normal }).width('100%').height(40).fontSize(F.small)
+          .fontColor(T.mintInk).backgroundColor(T.mint).borderRadius(10).id('profile-validate-restore')
+          .enabled(!this.restoreBusy).onClick(() => { this.validateBackup(); })
+        if (this.restorePreview) {
+          Text(this.restorePreview).fontSize(F.caption).fontColor(T.ink).lineHeight(20)
+            .width('100%').id('profile-restore-preview')
+        }
+        if (this.restoreMessage) {
+          Text(this.restoreMessage).fontSize(F.caption).fontColor(T.accent).lineHeight(20)
+            .width('100%').id('profile-restore-message')
+        }
+        Row({ space: 10 }) {
+          Button(this.restoreBusy ? '处理中' : '合并到本机', { type: ButtonType.Normal }).layoutWeight(1).height(42)
+            .fontSize(F.small).fontColor(T.onAccent).backgroundColor(T.accent).borderRadius(10)
+            .enabled(this.restoreCount > 0 && !this.restoreBusy).id('profile-merge-restore')
+            .onClick(() => { this.applyRestore('merge'); })
+          Button('覆盖本机', { type: ButtonType.Normal }).layoutWeight(1).height(42)
+            .fontSize(F.small).fontColor(T.accent).backgroundColor(T.surface).borderRadius(10)
+            .border({ width: 1, color: T.accent })
+            .enabled(this.restoreCount > 0 && !this.restoreBusy).id('profile-replace-restore')
+            .onClick(() => { this.applyRestore('replace'); })
+        }.width('100%')
+        Text('覆盖前会先写上一版快照，可从同一入口再次恢复回退。')
+          .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
+      }.width('100%').padding(14).backgroundColor(T.soft).borderRadius(T.cardRadius)
+        .alignItems(HorizontalAlign.Start)
+    }
   }
 
   build() {
@@ -235,15 +361,39 @@ export struct ProfilePage {
             ArchiveStatusRow({ label: '其他账号设备', value: this.view.signedIn && this.view.lastSync > 0
               ? `${this.view.otherDevices} 台` : '暂无同步记录', valueId: 'connected-devices-value' })
             Divider().color(T.line)
+            ArchiveStatusRow({ label: '同步方向', value: this.syncDirection(), valueId: 'sync-direction' })
+            Divider().color(T.line)
+            ArchiveStatusRow({ label: '已确认记录', value: `${this.syncConfirmed()} / ${this.syncTotal()} 条`,
+              valueId: 'sync-progress' })
+            Divider().color(T.line)
+            ArchiveStatusRow({ label: '本次合并冲突', value: this.view.mergeConflicts > 0
+              ? `${this.view.mergeConflicts} 条` : '无', valueId: 'merge-conflict-count' })
+            Divider().color(T.line)
             ArchiveStatusRow({ label: '最近账号同步', value: this.view.signedIn && this.view.lastSync > 0
               ? new Date(this.view.lastSync).toLocaleTimeString() : '尚未接入', valueId: 'last-sync-value' })
             Divider().color(T.line)
             ArchiveStatusRow({ label: '服务连接', value: this.view.serviceConfigured ? '已配置' : '未配置',
               valueId: 'service-state' })
             Divider().color(T.line)
-            ArchiveStatusRow({ label: '同步冲突', value: this.view.conflictCount > 0
-              ? `${this.view.conflictCount} 项待处理` : '无', valueId: 'conflict-count' })
+            ArchiveStatusRow({ label: '账号历史落败版本', value: this.view.conflictCount > 0
+              ? `已合并 · 保留 ${this.view.conflictCount} 个历史版本` : '无', valueId: 'conflict-count' })
           }.width('100%').padding({ left: 18, right: 18 }).backgroundColor(T.surface).borderRadius(T.cardRadius)
+          this.heading('鸿蒙设备同步')
+          Column({ space: 12 }) {
+            Text(distributedPhaseLabel(this.nativeView.phase)).fontSize(F.card).fontWeight(FontWeight.Medium)
+              .fontColor(T.mintInk).width('100%').id('native-sync-phase')
+            Text(this.nativeView.message).fontSize(F.caption).fontColor(T.muted).lineHeight(21)
+              .width('100%').id('native-sync-message')
+            ArchiveStatusRow({ label: '本机版本库', value: `${this.nativeView.recordCount} 条记录`, valueId: 'native-record-count' })
+            ArchiveStatusRow({ label: '系统可信设备', value: this.nativeView.deviceCount < 0 ? '授权后查询' : `${this.nativeView.deviceCount} 台`,
+              valueId: 'native-device-count' })
+            ArchiveStatusRow({ label: '最近平台传输', value: this.nativeView.lastSuccessfulSync > 0 ?
+              new Date(this.nativeView.lastSuccessfulSync).toLocaleTimeString() : '尚无跨端确认', valueId: 'native-sync-time' })
+            Button('授权并检查设备', { type: ButtonType.Normal }).width('100%').height(44)
+              .fontColor(T.mintInk).backgroundColor(T.mint).borderRadius(11).id('native-sync-check')
+              .enabled(this.view.signedIn && this.nativeView.phase !== 'unsupported' && this.nativeView.phase !== 'syncing')
+              .onClick(this.onNativeSync)
+          }.width('100%').padding(18).backgroundColor(T.surface).borderRadius(T.cardRadius)
           }
           if (this.section === 'data') { this.dataSection() }
           if (this.section === 'preferences') { this.preferences() }
@@ -261,5 +411,6 @@ export struct ProfilePage {
       }.width('100%').height('100%').align(Alignment.Top).id('profile-scroll')
     }.title(this.pageTitle(), { systemMaterial: HarmonyEffects.material(this.snapshot.lightEnabled, this.snapshot.reducedMotion) })
       .backgroundColor(T.canvas).id('profile-page')
+      .onBackPressed(() => { if (!this.saving && !this.view.busy) this.onBack(); return true; })
   }
 }

@@ -57,6 +57,15 @@ function frustum(name: string, radius: number, topRadius: number, low: number, h
   return mesh;
 }
 function relic(preset: string): SiteObjectShape {
+  if (preset === 'generic_site_study') {
+    // 三张薄盒只表达资料页，不代表城墙、窑炉或出土器形；两档案共享的是学习形式。
+    // 此分支保留 revision 1 的几何。后续独立观察须另加修订并兼容旧手账解析，不能原位替换。
+    return { title: '通用资料学习示意', meshes: [
+      box('study-overview-card', -0.48, 0.12, -0.18, 0.36, 0.5, 0.035, '#E6D3BB'),
+      box('study-observation-card', 0, 0, 0, 0.36, 0.5, 0.035, '#C88A4B'),
+      box('study-history-card', 0.48, -0.12, 0.18, 0.36, 0.5, 0.035, '#5B8E8A')
+    ] };
+  }
   if (preset.includes('ding')) {
     const meshes: ObjectMesh[] = [box('body', 0, 0.12, 0, 0.58, 0.31, 0.4, '#5B8E8A')];
     [-1, 1].forEach(x => [-1, 1].forEach(z => meshes.push(box('leg', x * 0.44, -0.47, z * 0.29,
@@ -193,6 +202,15 @@ export function nativeCulturalScene(type: CulturalSceneType, payload: CulturalEn
     return { shape, anchors: observation.hotspots.map(hotspot => ({
       id: hotspot.id, label: hotspot.label, type: 'hotspot', point: hotspot.point
     })) };
+  }
+  if (payload.proceduralPreset === 'generic_site_study') {
+    // 通用资料页的热点对应阅读层级，不能沿用器物的“形 / 纹 / 史”标签。
+    // 保留 form / pattern / story 稳定 ID，使本轮保存视角仍可按旧信封回放。
+    return { shape: relic('generic_site_study'), anchors: [
+      { id: 'form', label: '概览', type: 'hotspot', point: { x: -0.48, y: 0.12, z: -0.12 } },
+      { id: 'pattern', label: '遗存', type: 'hotspot', point: { x: 0, y: 0, z: 0.06 } },
+      { id: 'story', label: '线索', type: 'hotspot', point: { x: 0.48, y: -0.12, z: 0.24 } }
+    ] };
   }
   return { shape: relic(payload.proceduralPreset || 'yangshao_pottery'), anchors: [
     { id: 'form', label: '形', type: 'hotspot', point: { x: -0.75, y: 0.2, z: 0.2 } },

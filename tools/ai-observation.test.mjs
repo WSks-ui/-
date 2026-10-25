@@ -9,9 +9,9 @@ import {
   validateAiObservationReply, validateAiObservationRequest
 } from '../entry/src/main/ets/domain/AiObservation.ts';
 import { DAHECUN_OBSERVATION } from '../entry/src/main/ets/domain/DahecunObservation.ts';
-import {
-  activeRecords, compareVersions, copySnapshot, emptySnapshot, mergeRecords, parseSnapshot
-} from '../entry/src/main/ets/domain/ArchiveDomain.ts';
+import { domainModuleUrl } from './load-domain-module.mjs';
+const { activeRecords, compareVersions, copySnapshot, emptySnapshot, mergeRecords, parseSnapshot } =
+  await import(domainModuleUrl('ArchiveDomain'));
 
 const study = materialStudyForId(AI_OBSERVATION_SITE_ID);
 const scope = buildAiKnowledgeScope(study, DULING_OBSERVATION);
@@ -24,6 +24,20 @@ const reply = (patch = {}) => ({
   version: 1, requestId: 'ai-12345678-1', siteId: AI_OBSERVATION_SITE_ID, contentRevision: AI_CONTENT_REVISION,
   status: 'grounded', answer: '每壁正中一组，四个折角再各一组，合计八组。', factIds: ['duling-eight'],
   actions: [{ type: 'focus_hotspot', hotspotId: 'corners', factIds: ['duling-eight'], label: '看四个折角' }],
+  ...patch
+});
+const twinStudy = materialStudyForId('zz-dahecun');
+const twinScope = buildAiKnowledgeScope(twinStudy, DAHECUN_OBSERVATION);
+const twinDraftRequest = (patch = {}) => request({
+  siteId: 'zz-dahecun', hotspotId: 'opening', purpose: 'draft_memory',
+  question: '把腹部通口的观察整理成手账', userObservation: '我沿浅绿色通道看到了两侧内腔相通的位置。',
+  ...patch
+});
+const twinDraftReply = (patch = {}) => reply({
+  siteId: 'zz-dahecun', answer: '腹部接合处有椭圆形通口，使两壶内部相通。', factIds: ['dahecun-opening'],
+  actions: [{ type: 'focus_hotspot', hotspotId: 'opening', factIds: ['dahecun-opening'], label: '看腹部通口' }],
+  draft: { body: '我沿浅绿色通道观察两侧内腔，腹部接合处的椭圆形通口让两壶内部相通。',
+    tags: ['双连壶', '腹部通口'], factIds: ['dahecun-opening'] },
   ...patch
 });
 
@@ -111,6 +125,26 @@ test('insufficient evidence and draft replies keep their own contract', () => {
   }), draftRequest, scope), /AI_INVALID_REPLY/);
 });
 
+test('twin vessel replies reject Ding facts in the answer, actions and draft', () => {
+  const validRequest = validateAiObservationRequest(twinDraftRequest(), twinScope);
+  const valid = validateAiObservationReply(twinDraftReply(), validRequest, twinScope);
+  assert.deepEqual(collectAiReplyFactIds(valid), ['dahecun-opening']);
+  assert.doesNotThrow(() => validateAiObservationReply(twinDraftReply({
+    actions: [{ type: 'focus_hotspot', hotspotId: 'opening', factIds: [], label: '看腹部通口' }]
+  }), validRequest, twinScope));
+  // opening 是合法热点也不能夹带方鼎依据；回复、聚焦、依据按钮和草稿都属于同一对象契约。
+  const foreignReferences = [
+    { factIds: ['dahecun-opening', 'duling-eight'] },
+    { actions: [{ type: 'focus_hotspot', hotspotId: 'opening', factIds: ['duling-eight'], label: '看腹部通口' }] },
+    { actions: [{ type: 'show_evidence', hotspotId: '', factIds: ['duling-eight'], label: '查看依据' }] },
+    { draft: { ...valid.draft, factIds: ['dahecun-opening', 'duling-eight'] } }
+  ];
+  for (const patch of foreignReferences) {
+    assert.throws(() => validateAiObservationReply(twinDraftReply(patch), validRequest, twinScope), /AI_INVALID_REPLY/,
+      `双连壶拒绝跨对象引用：${JSON.stringify(patch)}`);
+  }
+});
+
 test('late AI replies cannot overwrite a stopped or changed observation', () => {
   const validRequest = validateAiObservationRequest(request(), scope);
   const validReply = validateAiObservationReply(reply(), validRequest, scope);
@@ -142,6 +176,72 @@ test('adopted AI draft freezes catalog facts and deep copies source ids', () => 
     question: '问题', factIds: ['duling-eight', 'duling-size'], contentRevision: 1,
     facts: [scope.facts[2]], body: '正文', tags: []
   }, scope), /AI_INVALID_DRAFT/);
+});
+
+test('adopted twin vessel opening draft freezes its own catalog fact', () => {
+  const adoptionScope = buildAiKnowledgeScope(twinStudy, DAHECUN_OBSERVATION);
+  const opening = adoptionScope.facts.find(fact => fact.id === 'dahecun-opening');
+  const validRequest = validateAiObservationRequest(twinDraftRequest(), adoptionScope);
+  const validReply = validateAiObservationReply(twinDraftReply(), validRequest, adoptionScope);
+  const adoption = {
+    question: validRequest.question, factIds: validReply.draft.factIds,
+    contentRevision: validReply.contentRevision, facts: [opening],
+    body: validReply.draft.body, tags: validReply.draft.tags
+  };
+  const assist = buildAiMemoryAssist(adoption, adoptionScope);
+  const frozen = structuredClone(assist);
+  assert.equal(assist.version, 1);
+  assert.equal(assist.contentRevision, AI_CONTENT_REVISION);
+  assert.equal(assist.question, validRequest.question);
+  assert.deepEqual(assist.factIds, ['dahecun-opening']);
+  assert.deepEqual(assist.facts, [twinStudy.facts.find(fact => fact.id === 'dahecun-opening')]);
+  // 保存依据是采纳当时的副本；后续问答更换引用、资料正文修订都不能改到这页手账。
+  adoption.factIds.push('dahecun-lines');
+  opening.body = '后续资料修订';
+  opening.sourceIds.push('later-source');
+  assert.deepEqual(assist, frozen);
+  assert.throws(() => buildAiMemoryAssist({
+    ...adoption, factIds: ['dahecun-opening', 'duling-eight'],
+    facts: [frozen.facts[0], scope.facts.find(fact => fact.id === 'duling-eight')]
+  }, adoptionScope), /AI_INVALID_DRAFT/);
+});
+
+test('twin vessel frozen AI metadata survives snapshot transfer, editing copy and merge', () => {
+  const draft = twinDraftReply().draft;
+  const assist = buildAiMemoryAssist({
+    question: twinDraftRequest().question, factIds: draft.factIds, contentRevision: AI_CONTENT_REVISION,
+    facts: [twinScope.facts.find(fact => fact.id === 'dahecun-opening')], body: draft.body, tags: draft.tags
+  }, twinScope);
+  const record = {
+    id: 'note:device_a:100', kind: 'note', siteId: 'zz-dahecun', body: draft.body, tags: draft.tags,
+    updatedAt: 100, deviceId: 'device_a', deleted: false, aiAssist: assist
+  };
+  const snapshot = { ...emptySnapshot('device_a'), records: [record] };
+  const parsed = parseSnapshot(JSON.stringify(snapshot));
+  assert.deepEqual(parsed, snapshot);
+  // 这里只验证传输快照契约；B 的安装身份独立，收到的手账仍保留 A 的记录来源与冻结依据。
+  const received = parseSnapshot(JSON.stringify({
+    ...emptySnapshot('device_b'), records: mergeRecords([], parsed.records).records
+  }));
+  assert.equal(received.deviceId, 'device_b');
+  assert.deepEqual(received.records[0], record);
+  const editing = copySnapshot(received);
+  editing.records[0].aiAssist.question = '编辑中的新问题';
+  editing.records[0].aiAssist.factIds.push('dahecun-lines');
+  editing.records[0].aiAssist.facts[0].body = '编辑中的依据';
+  editing.records[0].aiAssist.facts[0].sourceIds.push('editing-source');
+  assert.deepEqual(received.records[0].aiAssist, assist);
+  assert.deepEqual(parsed.records[0].aiAssist, assist);
+
+  const newer = { ...record, body: '我换个角度仍能找到连接两腹的通口。', updatedAt: 200, deviceId: 'device_b' };
+  const merged = mergeRecords(parsed.records, [newer]);
+  assert.deepEqual(merged.records, [newer]);
+  assert.deepEqual(merged.records[0].aiAssist, assist);
+  assert.deepEqual(merged.conflicts[0].aiAssist, assist);
+  assert.deepEqual(mergeRecords([newer], parsed.records).records, merged.records);
+  assert.deepEqual(mergeRecords(merged.records, parsed.records).records, merged.records);
+  // 即使正文、时间与设备相同，换过提问的 AI 依据也须参与版本比较，不能被同步判成同一版本。
+  assert.notEqual(compareVersions(record, { ...record, aiAssist: { ...assist, question: '腹部通口在哪里？' } }), 0);
 });
 
 test('AI note metadata survives parse, deep copy and deterministic merge', () => {

@@ -103,8 +103,8 @@ export default function coreContentTest() {
           const study = materialStudyForId(siteId);
           if (!site || !study || study.sources.length === 0) throw new Error(`CORE_CONTENT_TEST_DATA_MISSING:${siteId}`);
           await session.search(site.name, 1);
-          await (await session.inScroll('explore-scroll',
-            ON.id(`site-row-${siteId}`).within(ON.id('explore-site-grid')))).click();
+          await (await session.inScroll('device-scroll',
+            ON.id(`site-row-${siteId}`).within(ON.id('archive-library-grid')))).click();
           await session.waitId('detail-scroll');
 
           // 目录仅提供预期文案；下列结论全部来自真实窗口的节点和可见范围，不用数据数组代替 UI。
@@ -127,7 +127,7 @@ export default function coreContentTest() {
           expect(await sourceLabel.getText()).assertEqual(`〔1〕${source.publisher} · ${source.title}`);
           console.info(`CORE_CONTENT_UI_VERIFIED:${siteId}:${Date.now() - started}`);
           await session.driver.pressBack();
-          await session.waitId('explore-scroll');
+          await session.waitId('device-scroll');
         }
         console.info(`CORE_CONTENT_PATH_MS:${Date.now() - started}`);
       });

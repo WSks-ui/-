@@ -25,7 +25,7 @@ async function pageArea(session: ArchiveUiSession, page: string): Promise<PageAr
   const bounds = await scroll.getBounds();
   let top = bounds.top + 24;
   let bottom = bounds.bottom - 48;
-  if (page === 'explore-scroll' || page === 'archive-scroll') {
+  if (page === 'explore-scroll' || page === 'archive-scroll' || page === 'device-scroll') {
     const header = await session.driver.findComponent(ON.id('top-navigation-content'));
     const dock = await session.driver.findComponent(ON.id('tab-0'));
     if (header) top = Math.max(top, (await header.getBounds()).bottom + 24);
@@ -128,8 +128,8 @@ export default function memoryJourneyTest() {
         if (!site) throw new Error('MEMORY_TEST_SITE_MISSING');
 
         await session.search(site.name, 1);
-        await (await inPage(session, 'explore-scroll',
-          ON.id(`site-row-${siteId}`).within(ON.id('explore-site-grid')))).click();
+        await (await inPage(session, 'device-scroll',
+          ON.id(`site-row-${siteId}`).within(ON.id('archive-library-grid')))).click();
         await session.waitId('detail-scroll');
         await (await session.inScroll('detail-scroll', ON.id('engine-remember-view'))).click();
         await (await inPage(session, 'note-editor-scroll', ON.id('note-body'))).inputText(body);
@@ -178,11 +178,10 @@ export default function memoryJourneyTest() {
         await capture(session, 'detail-card');
 
         await session.driver.pressBack();
-        await session.waitId('explore-scroll');
+        await session.waitId('device-scroll');
         await (await session.waitId('tab-1')).click();
         await session.waitId('archive-scroll');
-        await inPage(session, 'archive-scroll', ON.id('memory-view-list'));
-        await (await inPage(session, 'archive-scroll', ON.id('memory-view-gallery'))).click();
+        await session.setMemoryView(true);
         // 手账已前置到统计下方、收藏前方；从其标题到页脚按钮定位整张卡，不再先滚到收藏页尾。
         await frameCapture(session, 'archive-scroll',
           ON.text('云河手记').within(ON.id(`memory-card-${note.id}`)),

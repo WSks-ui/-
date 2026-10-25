@@ -6,10 +6,17 @@
     [ValidateRange(60000, 600000)][int]$TestTimeoutMs = 240000,
     [ValidatePattern('^yunheji_test_ui_restart_[a-z0-9_]{1,60}$')][string]$RestartStore = '',
     [ValidatePattern('^yunheji_test_ui_[0-9]+_maximum$')][string]$MaximumStore = '',
+    [ValidatePattern('^yunheji_test_ui_(?:journey_[a-z0-9_]{1,60}|[0-9]+_journey_scroll_main)$')][string]$JourneyStore = '',
     [switch]$SkipInstall
 )
 
 $ErrorActionPreference = 'Stop'
+# 旧格式仅兼容清理本轮已确认的整段超时库；三个新阶段必须使用明确的新独立库名。
+# 不枚举偏好目录，也不允许把其他历史库名或正式库名送入清理测试。
+if ($JourneyStore -match '^yunheji_test_ui_[0-9]+_journey_scroll_main$' -and
+    $TestClass -ne 'JourneyScrollTest#cleanup_only_requested_journey_store') {
+    throw '旧长卷库格式仅允许 cleanup_only_requested_journey_store；新阶段请使用 yunheji_test_ui_journey_ 前缀。'
+}
 . (Join-Path $PSScriptRoot 'deveco-path.ps1')
 $DevEcoHome = Resolve-YunhejiDevEcoHome -DevEcoHome $DevEcoHome
 $hdcTool = Join-Path $DevEcoHome 'sdk\default\openharmony\toolchains\hdc.exe'
@@ -75,11 +82,15 @@ if (-not $SkipInstall) {
 
 $timestamp = [TimeZoneInfo]::ConvertTimeFromUtc([DateTime]::UtcNow,
     [TimeZoneInfo]::FindSystemTimeZoneById('China Standard Time')).ToString('yyyy-MM-dd-HHmmss')
-$logPath = Join-Path $resultDirectory "$timestamp-device.log"
+# 双端设备可在同一秒开始测试。时间戳后加本次随机标识，避免 Tee-Object
+# 抢占同一日志文件而丢失一端原始报告；保留 *-device.log 后缀供已有脚本检索。
+$runSuffix = [Guid]::NewGuid().ToString('N').Substring(0, 8)
+$logPath = Join-Path $resultDirectory "$timestamp-$runSuffix-device.log"
 $testCommand = "aa test -b com.yunheji.archive -m entry_test -s unittest OpenHarmonyTestRunner -s timeout $TestTimeoutMs -w 600"
 if ($TestClass) { $testCommand += " -s class $TestClass" }
 if ($RestartStore) { $testCommand += " -s archiveRestartStore $RestartStore" }
 if ($MaximumStore) { $testCommand += " -s archiveMaximumStore $MaximumStore" }
+if ($JourneyStore) { $testCommand += " -s archiveJourneyStore $JourneyStore" }
 $reportLines = [System.Collections.Generic.List[string]]::new()
 & $hdcTool -t $TargetId shell $testCommand 2>&1 | ForEach-Object {
     $reportLines.Add($_.ToString())

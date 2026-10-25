@@ -229,6 +229,15 @@
     return normalizeMeshes(out);
   }
   function relic(preset) {
+    if(preset==='generic_site_study') {
+      // 与原生端同为三张抽象资料卡，不套用城址、窑炉或文物轮廓。
+      // 后续独立场景必须保留本预设的 revision 1 和旧手账解析，不能替换这组学习几何。
+      return normalizeMeshes([
+        box('study-overview-card',[-.48,.12,-.18],[.72,1,.07],'#E6D3BB',3),
+        box('study-observation-card',[0,0,0],[.72,1,.07],'#C88A4B',3),
+        box('study-history-card',[.48,-.12,.18],[.72,1,.07],'#5B8E8A',3)
+      ]);
+    }
     const aliases={miaodigou_pottery:'miaodigou_rose_basin',dahecun_pottery:'dahecun_star_bowl',
       duling_fangding:'zhengzhou_ding',qicheng_site:'qicheng_altar',yanshi_city:'erlitou_palace',
       hanwei_city:'hanwei_palace',zhenghan_city:'zhengzhou_wall',xishuipo_site:'excavation_shells'};
@@ -288,7 +297,12 @@
       });
     } else if(type==='relic_inspector') {
       result.meshes=relic(p.proceduralPreset);
-      result.hotspots=HOTSPOTS.map(h=>({...h,type:'hotspot',position:h.position.slice(),color:'#C45A6A'}));
+      // 资料学习沿用稳定热点 ID，但名称只表达阅读层级，不暗示已有器形与纹饰模型。
+      const studyLabels=['概览','遗存','线索'];
+      const studyPositions=[[-.48,.12,-.12],[0,0,.06],[.48,-.12,.24]];
+      result.hotspots=HOTSPOTS.map((h,i)=>({...h,type:'hotspot',
+        label:p.proceduralPreset==='generic_site_study'?studyLabels[i]:h.label,
+        position:p.proceduralPreset==='generic_site_study'?studyPositions[i]:h.position.slice(),color:'#C45A6A'}));
       result.meshes.push(lathe('中性展示基座',[[.83,-1.25],[.94,-1.18],[.94,-1.14],[.83,-1.1]],'#C9B79E',3,48));
     } else if(type==='stratum_slice') {
       const layers=p.layers.length?p.layers:[

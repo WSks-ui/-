@@ -2,7 +2,7 @@ import { common } from '@kit.AbilityKit';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 import { WATER_SITUATION } from '../data/WaterSituationCatalog';
 import {
-  latestSnapshot, liveFlowText, liveLevelText, liveStation, WaterLiveReply, WaterLiveStation, WaterSnapshot
+  latestSnapshot, liveFlowText, liveStation, WaterLiveReply, WaterLiveStation, WaterSnapshot
 } from '../domain/WaterSituation';
 import { WaterSituationClient } from '../sync/WaterSituationClient';
 

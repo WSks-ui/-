@@ -6,22 +6,30 @@ import { stripTypeScriptTypes } from 'node:module';
 import { runInNewContext } from 'node:vm';
 import { createHash } from 'node:crypto';
 import { domainModuleUrl } from './load-domain-module.mjs';
-import {
+const {
   activeRecords, compareVersions, copySnapshot, emptySnapshot, filterSites,
-  mergeRecords, nextTimestamp, parseSnapshot, putRecord, recommendSites,
+  mergeRecords, nextTimestamp, parseSnapshot, pendingRecordCount, putRecord, recommendSites, recordVersionConfirmed,
   MAX_NOTE_TAGS_TEXT_LENGTH, CITIES, ERAS, TYPES
-} from '../entry/src/main/ets/domain/ArchiveDomain.ts';
+} = await import(domainModuleUrl('ArchiveDomain'));
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import { materialStudyForId } from '../entry/src/main/ets/data/MaterialStudyCatalog.ts';
 import { groupMemoryRecords, memoryMonthLabel } from '../entry/src/main/ets/domain/MemoryJournal.ts';
 import { UnavailableSyncGateway } from '../entry/src/main/ets/sync/SyncGateway.ts';
 import { archiveStoreForLaunch, DEFAULT_ARCHIVE_STORE } from '../entry/src/main/ets/platform/ArchiveLaunch.ts';
 import { connectionReasons, cultureConnections, cultureTopics, personalCultureSites } from '../entry/src/main/ets/domain/CultureConnections.ts';
-import { accountStoreName, changedAccountView, guestAccountView, validateAccountInput, validateAccountSession, validateAccountReply, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
+import { accountStoreName, changedAccountView, guestAccountView, parseAccountWorkspace, validateAccountInput, validateAccountSession, validateAccountReply, validateServiceEndpoint, validatePublicServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
 import { WATER_SITUATION } from '../entry/src/main/ets/data/WaterSituationCatalog.ts';
 import { latestSnapshot, snapshotsForStation, sourceFor, validateWaterLiveReply, validateWaterSituation } from '../entry/src/main/ets/domain/WaterSituation.ts';
 import './memory-journal.test.mjs';
 import './journey-routes.test.mjs';
+import './roaming.test.mjs';
+import './kaifeng-puzzle.test.mjs';
+import './kaifeng-dig.test.mjs';
+import './paper-journey.test.mjs';
+import './river-market.test.mjs';
+import './paper-memory.test.mjs';
+import './game-progress-merge.test.mjs';
+import './kaifeng-ai.test.mjs';
 
 test('account stores isolate account identity and test sessions without changing guest data', () => {
   const accountA = 'a'.repeat(32), accountB = 'b'.repeat(32);
@@ -76,6 +84,18 @@ const all = { keyword: '', city: '全部城市', era: '全部年代', type: '全
 const record = (patch = {}) => ({
   id: 'note:a', kind: 'note', siteId: 'ly-erlitou', body: '观察记录', tags: ['研究资料'],
   updatedAt: 100, deviceId: 'device-a', deleted: false, ...patch
+});
+
+test('late sync response confirms only returned record versions, including tombstones', () => {
+  const sent = record();
+  const editedWhileWaiting = record({ body: '请求发出后才保存的观察', updatedAt: 101 });
+  const deleted = record({ deleted: true, updatedAt: 102 });
+  assert.equal(recordVersionConfirmed(sent, [sent]), true);
+  assert.equal(recordVersionConfirmed(editedWhileWaiting, [sent]), false);
+  assert.equal(recordVersionConfirmed(record({ body: '同毫秒的不同内容' }), [sent]), false);
+  assert.equal(pendingRecordCount([editedWhileWaiting], [sent]), 1);
+  assert.equal(pendingRecordCount([deleted], [editedWhileWaiting]), 1);
+  assert.equal(pendingRecordCount([deleted], [deleted]), 0);
 });
 
 test('all seed cities are covered and stable ids are unique', () => {
@@ -224,11 +244,11 @@ test('culture graph explains shared era and content without inventing links', ()
   assert.deepEqual(connectionReasons(HERITAGE_SITES[0], HERITAGE_SITES[3]), []);
 });
 
-test('expanded catalog covers 20 entries, valid filters and unchanged original identities', () => {
-  assert.equal(HERITAGE_SITES.length, 20);
+test('expanded catalog covers 22 entries, valid filters and unchanged original identities', () => {
+  assert.equal(HERITAGE_SITES.length, 22);
   assert.deepEqual(HERITAGE_SITES.slice(0, 5).map(site => site.id),
     ['smx-yangshao', 'ly-erlitou', 'zz-shang', 'kf-iron-pagoda', 'py-qicheng']);
-  assert.deepEqual(CITIES.slice(1).map(city => HERITAGE_SITES.filter(site => site.city === city).length), [4, 4, 4, 4, 4]);
+  assert.deepEqual(CITIES.slice(1).map(city => HERITAGE_SITES.filter(site => site.city === city).length), [4, 4, 6, 4, 4]);
   for (const site of HERITAGE_SITES) {
     assert.ok(ERAS.includes(site.era) && TYPES.includes(site.type));
     assert.match(site.id, /^(smx|ly|zz|kf|py)-[a-z]+(?:-[a-z]+)*$/);
@@ -237,11 +257,37 @@ test('expanded catalog covers 20 entries, valid filters and unchanged original i
     for (const field of ['summary', 'overview', 'archaeology', 'history', 'travel']) {
       assert.ok(typeof site[field] === 'string' && site[field].length > 0, `${site.id}: ${field}`);
     }
-    // 没有核实诗文时保持空字符串，由 SiteDetail 统一隐藏诗文段；
-    // 不再用“暂未收录”占位正文，也不要求只有精做对象才能留空。
+    // 没有核实诗文时保持空字符串；详情页保留“诗文索引”层级并显示空态说明，
+    // 不把“暂未收录”写进档案正文，也不要求只有精做对象才能留空。
     assert.equal(typeof site.poetry, 'string');
     assert.equal(filterSites(HERITAGE_SITES, { ...all, keyword: site.name })[0].id, site.id);
   }
+});
+
+test('keyword search reaches detail body fields, not only names and summaries', () => {
+  // 「绿松石龙形器」只写在二里头遗址的考古段里，名称、摘要与标签都没有；
+  // 正文不参与检索时，观众按细节词搜不到，会误判为没有这条资料。
+  const detail = filterSites(HERITAGE_SITES, { keyword: '绿松石龙形器', city: CITIES[0], era: ERAS[0], type: TYPES[0] });
+  assert.deepEqual(detail.map(site => site.id), ['ly-erlitou']);
+  // 下面三个词分别只出现在州桥档案的考古、历史、诗文段里，名称与摘要都没有；
+  // 用它们确认三段正文都进入检索，而不是只放宽了 summary。
+  // 注意 filterSites 的城市/年代/类型默认值必须显式传入「全部」，否则会被当成精确筛选。
+  for (const word of ['雁翅', '崇祯十五年', '范成大']) {
+    assert.ok(filterSites(HERITAGE_SITES,
+      { keyword: word, city: CITIES[0], era: ERAS[0], type: TYPES[0] })
+      .some(site => site.id === 'kf-zhouqiao'), word);
+  }
+  // 检索仍然要能返回空，不能因为放宽字段而变成“什么都命中”。
+  assert.equal(filterSites(HERITAGE_SITES, { keyword: '不存在的遗址词条' }).length, 0);
+});
+
+test('Longshan and kiln intersections return sourced new entries without relabeling older records', () => {
+  assert.deepEqual(filterSites(HERITAGE_SITES, { keyword: '', city: '郑州', era: '龙山', type: '城址' })
+    .map(site => site.id), ['zz-wangchenggang']);
+  assert.deepEqual(filterSites(HERITAGE_SITES, { keyword: '', city: '郑州', era: '汉唐', type: '窑址' })
+    .map(site => site.id), ['zz-huangye-kiln']);
+  assert.equal(HERITAGE_SITES.find(site => site.id === 'smx-yangshao').era, '仰韶');
+  assert.match(HERITAGE_SITES.find(site => site.id === 'zz-huangye-kiln').overview, /五代.*北宋.*金代/);
 });
 
 // Node 的类型擦除不补全 ArkTS 的无扩展名依赖；只在测试加载时解析到实际同一份规则源文件。
@@ -583,6 +629,22 @@ test('native procedural presets preserve distinct silhouettes and bounded finite
   assert.equal(new Set(signatures).size, presets.length);
 });
 
+test('new sourced sites share an explicit abstract study scene instead of another site model', () => {
+  const metadata = HERITAGE_SITES.filter(site => ['zz-wangchenggang', 'zz-huangye-kiln'].includes(site.id));
+  assert.equal(metadata.length, 2);
+  for (const site of metadata) {
+    const scene = nativeCulturalScene('relic_inspector', { version: 1, proceduralPreset: 'generic_site_study' });
+    assert.equal(scene.shape.title, '通用资料学习示意');
+    assert.equal(scene.shape.meshes.length, 3);
+    assert.ok(scene.shape.meshes.every(mesh => mesh.name.startsWith('study-') && mesh.name.endsWith('-card')));
+    assert.deepEqual(scene.anchors.map(anchor => anchor.id), ['form', 'pattern', 'story']);
+    assert.deepEqual(scene.anchors.map(anchor => anchor.label), ['概览', '遗存', '线索']);
+    assert.ok(scene.shape.meshes.every(mesh => mesh.vertices.every(point => Object.values(point).every(Number.isFinite))));
+    const frame = objectRasterFrame(scene.shape, '#C88A4B', 330, 300, 0.25, 0.3);
+    assert.ok(frame.faces.length > 0, `${site.id}: abstract cards must be visible`);
+  }
+});
+
 test('force layout preserves existing nodes and bounds drag and resize', () => {
   const layout = new GraphLayout(328, 448);
   layout.setData(cultureGraphData(HERITAGE_SITES, 'ly-erlitou'));
@@ -677,4 +739,29 @@ test('memory month groups keep caller order and merge adjacent months', () => {
   assert.deepEqual(groups[0].notes.map(item => item.id), ['b', 'a']);
   assert.equal(memoryMonthLabel(0), '时间未知');
   assert.equal(memoryMonthLabel(Number.NaN), '时间未知');
+});
+
+test('restored account workspace validates identity without persisting a network token', () => {
+  const workspace = { version: 1, accountId: 'a'.repeat(32), username: 'offline_demo', token: 'discarded' };
+  assert.deepEqual(parseAccountWorkspace(JSON.stringify(workspace)), {
+    version: 1, accountId: workspace.accountId, username: workspace.username
+  });
+  assert.throws(() => parseAccountWorkspace(JSON.stringify({ ...workspace, accountId: '../another' })));
+  assert.throws(() => parseAccountWorkspace(JSON.stringify({ ...workspace, version: 2 })));
+  const offline = changedAccountView(guestAccountView(), { signedIn: true, username: workspace.username });
+  assert.equal(offline.sessionReady, false);
+  assert.equal(offline.lastSync, 0);
+});
+
+test('public service origin permits trusted HTTPS domains separately from simulator CA configuration', () => {
+  for (const origin of ['https://api.example.com', 'https://api.example.com:443', 'https://demo.example.com:18443']) {
+    assert.equal(validatePublicServiceEndpoint(origin), true, origin);
+    assert.equal(validateServiceEndpoint(origin, true), false, origin);
+  }
+  for (const origin of ['http://api.example.com', 'https://localhost', 'https://127.0.0.1:18443',
+    'https://192.168.1.2:18443', 'https://user:password@api.example.com', 'https://api.example.com/path',
+    'https://api.example.com?token=abc', 'https://api.example.com:0', 'https://api.example.com:65536',
+    'https://api..example.com', 'https://api.example.com#fragment', 'https://device.local']) {
+    assert.equal(validatePublicServiceEndpoint(origin), false, origin);
+  }
 });

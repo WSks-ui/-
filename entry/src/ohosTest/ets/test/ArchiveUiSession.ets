@@ -4,7 +4,10 @@ import { KeyCode } from '@kit.InputKit';
 import { preferences } from '@kit.ArkData';
 import { expect } from '@ohos/hypium';
 import { LocalArchiveRepository } from '../../../main/ets/data/LocalArchiveRepository';
+import { AccountWorkspaceStore } from '../../../main/ets/data/AccountWorkspaceStore';
+import { DistributedArchiveChannel } from '../../../main/ets/sync/DistributedArchiveChannel';
 import { ArchiveSnapshot } from '../../../main/ets/domain/ArchiveDomain';
+import { accountStoreName } from '../../../main/ets/domain/AccountSync';
 import { TestContext } from './TestContext';
 
 // 与正式应用共用页面和真实存储，只通过 debug 专用启动参数选择独立库。
@@ -22,7 +25,7 @@ export class ArchiveUiSession {
     this.browseOffline = browseOffline;
   }
 
-  async start(): Promise<void> {
+  async start(resumeAccount: boolean = false): Promise<void> {
     try {
       const delegator = abilityDelegatorRegistry.getAbilityDelegator();
       await delegator.startAbility({
@@ -31,8 +34,11 @@ export class ArchiveUiSession {
       });
       // 正式启动首先显示独立登录页。旧的离线路径测试也必须经真实按钮进入，
       // 不用启动参数跳过认证界面；账号 / 登录专项可选择停留在登录页。
-      await this.waitId('login-scroll');
-      if (this.browseOffline) await this.enterOffline();
+      if (resumeAccount) await this.waitId('native-dock');
+      else {
+        await this.waitId('login-scroll');
+        if (this.browseOffline) await this.enterOffline();
+      }
       // 启动命令返回时窗口可能尚未就绪，必须等节点出现后才能查询顶层 Ability。
       this.ability = await delegator.getCurrentTopAbility();
       expect(this.ability.context.abilityInfo.name === 'EntryAbility').assertTrue();
@@ -70,27 +76,53 @@ export class ArchiveUiSession {
   async dispose(): Promise<void> {
     try {
       await this.stop();
+      const workspaceStore = new AccountWorkspaceStore(this.context, this.name);
+      const restored = await workspaceStore.load();
+      if (restored && canIUse('SystemCapability.DistributedDataManager.KVStore.DistributedKVStore')) {
+        // 正式页面会为测试账号建立原生版本库；退出测试窗口后清理同一测试 scope，
+        // 避免只删身份指针却留下不可定位的 KV。通道本身还会拒绝删除正式账号库。
+        const channel = new DistributedArchiveChannel(this.context as common.UIAbilityContext);
+        try {
+          if (!await channel.open(restored.workspace.accountId, this.name)) throw new Error('NATIVE_TEST_CLEANUP_OPEN_FAILED');
+          await channel.cleanupTestStore();
+        } finally { await channel.close(); }
+      }
+      if (restored) await preferences.deletePreferences(this.context, accountStoreName(restored.workspace.accountId, this.name));
+      await workspaceStore.forget();
       await preferences.deletePreferences(this.context, this.name);
     } catch (error) { throw new Error(`UI_CLEANUP_FAILED: ${(error as Error).message}`); }
   }
 
   async wait(target: On, hint: string = ''): Promise<Component> {
     try {
-      let component = await this.driver.waitForComponent(target, 10000);
-      if (!component) throw new Error(`UI_COMPONENT_NOT_FOUND ${hint}`);
+      const initial = await this.driver.waitForComponent(target, 10000);
+      if (!initial) throw new Error(`UI_COMPONENT_NOT_FOUND ${hint}`);
       // Navigation/Sheet 动画期间节点已进入可访问树，但坐标仍在移动。只有范围连续
       // 稳定且控件可用才交给点击/输入步骤，避免点击动画中的旧坐标而漏掉真实操作。
       let previousBounds = '';
       let stableSamples = 0;
       for (let attempt = 0; attempt < 30; attempt++) {
-        const bounds = JSON.stringify(await component.getBounds());
-        stableSamples = bounds === previousBounds && await component.isEnabled() ? stableSamples + 1 : 0;
-        if (stableSamples >= 3) return component;
-        previousBounds = bounds;
+        // 二级页返回/进入时可能保留同名节点，但原 Widget 已被 Navigation 替换。
+        // 每次稳定性采样都重新定位；仅把已知的 NoCandidates 当作切换中的瞬态，
+        // 其他设备错误仍立即失败，原 30 次采样上限和连续稳定要求保持不变。
+        const component = await this.driver.findComponent(target);
+        if (component) {
+          try {
+            const bounds = JSON.stringify(await component.getBounds());
+            stableSamples = bounds === previousBounds && await component.isEnabled() ? stableSamples + 1 : 0;
+            if (stableSamples >= 3) return component;
+            previousBounds = bounds;
+          } catch (error) {
+            const message = (error as Error).message;
+            if (!message.includes('NoCandidates')) throw new Error(message);
+            stableSamples = 0;
+            previousBounds = '';
+          }
+        } else {
+          stableSamples = 0;
+          previousBounds = '';
+        }
         await this.driver.delayMs(150);
-        const current = await this.driver.findComponent(target);
-        if (current) component = current;
-        else stableSamples = 0;
       }
       throw new Error(`UI_COMPONENT_NOT_STABLE ${hint}`);
     } catch (error) { throw new Error(`UI_WAIT_FAILED: ${(error as Error).message}`); }
@@ -98,6 +130,22 @@ export class ArchiveUiSession {
 
   async waitId(id: string): Promise<Component> { return this.wait(ON.id(id), id); }
   async waitText(text: string): Promise<Component> { return this.wait(ON.text(text), text); }
+
+  async openMemoryFilters(): Promise<void> {
+    await (await this.inScroll('archive-scroll', ON.id('memory-filter-open'))).click();
+    await this.waitId('memory-filter-page');
+  }
+
+  async closeMemoryFilters(): Promise<void> {
+    await (await this.waitId('memory-filter-done')).click();
+    await this.waitId('archive-scroll');
+  }
+
+  async setMemoryView(gallery: boolean): Promise<void> {
+    await this.openMemoryFilters();
+    await (await this.inScroll('memory-filter-scroll', ON.id(gallery ? 'memory-view-gallery' : 'memory-view-list'))).click();
+    await this.closeMemoryFilters();
+  }
 
   private async inDetailScroll(scroll: Component, target: On): Promise<Component> {
     const viewport = await scroll.getBounds();
@@ -222,16 +270,20 @@ export class ArchiveUiSession {
 
   async search(keyword: string, expectedCount: number): Promise<void> {
     try {
-      await (await this.wait(ON.id('explore-scroll'))).scrollToTop(40000);
+      // 完整检索归到档案 Tab；重复调用时保留已选城市 / 年代 / 类型，
+      // 与用户在同一个目录内连续检索的行为一致，不替用例偷偷重置条件。
+      await (await this.waitId('tab-2')).click();
+      await (await this.waitId('device-scroll')).scrollToTop(40000);
       // Search 外层不是输入字段；SDK 26 的实际可编辑节点为 SearchField。
       // 每次重新获取节点，输入后核对文字并提交，不假定软键盘何时出现。
-      await (await this.inScroll('explore-scroll', ON.type('SearchField'))).inputText(keyword);
-      expect(await (await this.wait(ON.type('SearchField'))).getText()).assertEqual(keyword);
+      const field = ON.type('SearchField').within(ON.id('library-search'));
+      await (await this.inScroll('device-scroll', field)).inputText(keyword);
+      expect(await (await this.wait(field)).getText()).assertEqual(keyword);
       // 直接操作页面的原生检索按钮；软键盘 Enter 可能只提交输入法候选，
       // 不能据此假定已经结束 Search 编辑，也不能无条件 Back 退出应用。
       await (await this.wait(ON.text('检索').type('Button'), '原生检索按钮')).click();
-      const count = await this.inScroll('explore-scroll', ON.id('search-result-count'));
-      expect(await count.getText()).assertEqual(`${expectedCount} 处文化遗产`);
+      const count = await this.inScroll('device-scroll', ON.id('library-result-count'));
+      expect(await count.getText()).assertEqual(`${expectedCount} 处`);
     } catch (error) { throw new Error(`UI_SEARCH_FAILED: ${(error as Error).message}`); }
   }
 
@@ -266,7 +318,7 @@ export class ArchiveUiSession {
     try {
       // 内容扩充后“仰韶”会命中多处同文化条目；这个助手只负责打开仰韶村，使用完整名称。
       await this.search('仰韶村遗址', 1);
-      await (await this.inScroll('explore-scroll', ON.id('site-row-smx-yangshao'))).click();
+      await (await this.inScroll('device-scroll', ON.id('site-row-smx-yangshao'))).click();
       await this.inScroll('detail-scroll', ON.id('write-note'));
     } catch (error) { throw new Error(`UI_OPEN_FAILED: ${(error as Error).message}`); }
   }

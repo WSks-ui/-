@@ -3,7 +3,11 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
-import * as domain from '../entry/src/main/ets/domain/ArchiveDomain.ts';
+import { domainModuleUrl } from './load-domain-module.mjs';
+const domain = await import(domainModuleUrl('ArchiveDomain'));
+import { ROAM_CHAPTERS, ROAM_SOURCES } from '../entry/src/main/ets/data/RoamingCatalog.ts';
+
+const { makeRoamingMemoryContext } = await import(domainModuleUrl('Roaming'));
 
 // 在内存中转译实际 Repository 源文件，平台替身仅用于故障注入，不进入应用包。
 const require = createRequire(import.meta.url);
@@ -119,4 +123,37 @@ test('invalid schema is rejected before any write', async () => {
   const count = f.writes();
   await assert.rejects(f.repo.save({ ...state, schemaVersion: 999 }));
   assert.equal(f.writes(), count);
+});
+
+test('repository preserves frozen roaming sources and tombstones through queued persistence and reopen', async () => {
+  const f = fixture();
+  const state = await f.repo.load();
+  const chapter = ROAM_CHAPTERS[3];
+  const clue = chapter.clues[0];
+  const roamingContext = makeRoamingMemoryContext(chapter, clue, clue.options[0].id, ROAM_SOURCES);
+  const savedContext = structuredClone(roamingContext);
+  state.records = [{
+    id: 'note:roaming-repository', kind: 'note', siteId: chapter.id, body: '我想记住街与河交会的地方',
+    tags: ['开封'], updatedAt: 100, deviceId: state.deviceId, deleted: false, roamingContext
+  }];
+  const saving = f.repo.save(state);
+  state.records[0].roamingContext.sources[0].title = '保存发起后才改的草稿';
+  await saving;
+  const disk = JSON.parse(f.disk().get('snapshot'));
+  assert.equal(disk.records[0].roamingContext.contentRevision, 1);
+  assert.deepEqual(disk.records[0].roamingContext, savedContext);
+  assert.deepEqual((await f.repo.load()).records[0].roamingContext, savedContext);
+  const removed = domain.copySnapshot(disk);
+  removed.records[0].updatedAt = 101;
+  removed.records[0].deleted = true;
+  const oldContext = structuredClone(savedContext);
+  delete oldContext.contentRevision;
+  removed.records.push({ ...disk.records[0], id: 'note:old-roaming-context', roamingContext: oldContext });
+  await f.repo.save(removed);
+  assert.equal((await f.repo.load()).records[0].deleted, true);
+  assert.deepEqual((await f.repo.load()).records[0].roamingContext, savedContext);
+  const oldReopened = (await f.repo.load()).records.find(record => record.id === 'note:old-roaming-context');
+  assert.deepEqual(oldReopened.roamingContext, oldContext);
+  assert.equal(Object.hasOwn(oldReopened.roamingContext, 'contentRevision'), false);
+  assert.deepEqual(JSON.parse(f.disk().get('previous_snapshot')).records, disk.records);
 });

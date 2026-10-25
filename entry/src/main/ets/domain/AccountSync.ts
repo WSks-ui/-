@@ -7,6 +7,21 @@ export interface AccountSession {
   expiresAt: number;
 }
 
+export interface AccountWorkspace {
+  version: number;
+  accountId: string;
+  username: string;
+}
+
+// 本机账号身份与网络会话分开。会话过期不影响离线访问原账号工作区，
+// 但不能继续调用同步或 AI；用户名和账号 ID 仅接受此前真实认证写入的值。
+export function parseAccountWorkspace(raw: string): AccountWorkspace {
+  const value = JSON.parse(raw) as AccountWorkspace;
+  if (!value || value.version !== 1 || !/^[a-f0-9]{32}$/.test(value.accountId) ||
+    !/^[a-z0-9_]{4,32}$/.test(value.username)) throw new Error('ACCOUNT_WORKSPACE_INVALID');
+  return { version: 1, accountId: value.accountId, username: value.username };
+}
+
 export interface AccountSyncReply {
   accountId: string;
   records: ArchiveRecord[];
@@ -17,18 +32,26 @@ export interface AccountSyncReply {
 
 export interface AccountView {
   signedIn: boolean;
+  sessionReady: boolean;
   username: string;
   busy: boolean;
   syncing: boolean;
   serviceConfigured: boolean;
   otherDevices: number;
   lastSync: number;
+  // 账号历史落败版本总数（服务端累计），用于说明“这个账号一共留下过多少旧版本”。
   conflictCount: number;
   message: string;
+  pendingCount: number;
+  // 本机记录总数与“本次合并产生的冲突数”。两者用于画真实进度条，
+  // 不能拿服务端累计值冒充本次冲突，否则面板上的数字会对不上刚发生的事。
+  recordCount: number;
+  mergeConflicts: number;
 }
 
 export interface AccountViewChange {
   signedIn?: boolean;
+  sessionReady?: boolean;
   username?: string;
   busy?: boolean;
   syncing?: boolean;
@@ -37,23 +60,31 @@ export interface AccountViewChange {
   lastSync?: number;
   conflictCount?: number;
   message?: string;
+  pendingCount?: number;
+  recordCount?: number;
+  mergeConflicts?: number;
 }
 
 export function changedAccountView(view: AccountView, change: AccountViewChange): AccountView {
   // ArkTS 不支持对象展开；每次发布完整状态，使异步同步反馈可靠触发 @Prop 更新。
   return {
-    signedIn: change.signedIn ?? view.signedIn, username: change.username ?? view.username,
+    signedIn: change.signedIn ?? view.signedIn, sessionReady: change.sessionReady ?? view.sessionReady,
+    username: change.username ?? view.username,
     busy: change.busy ?? view.busy, syncing: change.syncing ?? view.syncing,
     serviceConfigured: change.serviceConfigured ?? view.serviceConfigured,
     otherDevices: change.otherDevices ?? view.otherDevices, lastSync: change.lastSync ?? view.lastSync,
-    conflictCount: change.conflictCount ?? view.conflictCount, message: change.message ?? view.message
+    conflictCount: change.conflictCount ?? view.conflictCount, message: change.message ?? view.message,
+    pendingCount: change.pendingCount ?? view.pendingCount,
+    recordCount: change.recordCount ?? view.recordCount,
+    mergeConflicts: change.mergeConflicts ?? view.mergeConflicts
   };
 }
 
 export function guestAccountView(): AccountView {
   return {
-    signedIn: false, username: '', busy: false, syncing: false, serviceConfigured: false,
-    otherDevices: -1, lastSync: 0, conflictCount: 0, message: ''
+    signedIn: false, sessionReady: false, username: '', busy: false, syncing: false, serviceConfigured: false,
+    otherDevices: -1, lastSync: 0, conflictCount: 0, message: '', pendingCount: 0,
+    recordCount: 0, mergeConflicts: 0
   };
 }
 
@@ -109,6 +140,18 @@ export function validateServiceEndpoint(endpoint: string, debug: boolean): boole
   if (parts[0] === 192 && parts[1] === 168) return true;
   if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return true;
   return false;
+}
+
+// 公网服务使用系统受信任 TLS，不读取调试 CA。这里只校验完整 HTTPS origin；
+// 实际域名由随包 account-service.json 提供，没有配置时绝不猜测或连接示例域名。
+export function validatePublicServiceEndpoint(endpoint: string): boolean {
+  const match = /^https:\/\/([a-z0-9](?:[a-z0-9.-]*[a-z0-9])?)(?::([0-9]{1,5}))?$/.exec(endpoint);
+  if (!match) return false;
+  const host = match[1];
+  if (!host.includes('.') || /^[0-9.]+$/.test(host) || host.endsWith('.local') || host.endsWith('.localhost')) return false;
+  if (host.split('.').some((label: string) => !/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label))) return false;
+  if (match[2] && (Number(match[2]) < 1 || Number(match[2]) > 65535)) return false;
+  return true;
 }
 
 export function accountErrorMessage(code: string): string {

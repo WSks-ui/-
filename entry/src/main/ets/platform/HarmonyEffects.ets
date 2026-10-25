@@ -74,7 +74,7 @@ export class HarmonyEffects {
     return {
       // HDS 原生浮动栏按三个入口自适应宽度；不以百分比强制拉满，
       // 当前 SDK 的百分比配置会让材质底板偏移，窄屏也容易越过边缘。
-      barSideMargin: 16, barBottomMargin: -14,
+      barSideMargin: 12, barBottomMargin: 8,
       // 官方 miniBar 在 TabBar 外并排显示；尺寸 / 材质由 HDS 协调，不增加第四个页签。
       miniBar: profileBuilder ? {
         miniBarBuilder: profileBuilder, miniBarStyle: HdsBarStyle.COLLAPSE,

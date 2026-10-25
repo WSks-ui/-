@@ -13,12 +13,15 @@
     "installationFree": false,
     "pages": "$profile:main_pages",
     "requestPermissions": [
-      { "name": "ohos.permission.INTERNET" }
+      { "name": "ohos.permission.INTERNET" },
+      { "name": "ohos.permission.DISTRIBUTED_DATASYNC", "reason": "$string:distributed_sync_reason",
+        "usedScene": { "abilities": ["EntryAbility"], "when": "inuse" } }
     ],
     "abilities": [
       {
         "name": "EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "launchType": "singleton",
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
         "label": "$string:EntryAbility_label",
@@ -38,6 +41,19 @@
       }
     ],
     "extensionAbilities": [
+      {
+        "name": "RoamingFormAbility",
+        "srcEntry": "./ets/roamingform/RoamingFormAbility.ets",
+        "description": "$string:roaming_form_description",
+        "type": "form",
+        "exported": true,
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:roaming_forms"
+          }
+        ]
+      },
       {
         "name": "EntryBackupAbility",
         "srcEntry": "./ets/entrybackupability/EntryBackupAbility.ets",

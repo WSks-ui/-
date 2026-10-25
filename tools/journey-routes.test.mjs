@@ -2,16 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { stripTypeScriptTypes } from 'node:module';
+import { domainModuleUrl } from './load-domain-module.mjs';
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import { encodeExplorationProgressRecord } from '../entry/src/main/ets/domain/ExplorationProgress.ts';
 
 // ArkTS 使用无扩展名的相对导入；测试仅把路径换成真实 TS 文件 URL，执行同一领域源码。
-let source = readFileSync(new URL('../entry/src/main/ets/domain/JourneyRoutes.ts', import.meta.url), 'utf8');
-for (const name of ['ArchiveDomain', 'ExplorationProgress', 'MemoryJournal']) {
-  source = source.replaceAll(`'./${name}'`, `'${new URL(`../entry/src/main/ets/domain/${name}.ts`, import.meta.url).href}'`);
-}
 const { JOURNEY_ROUTES, journeyForId, journeyProgress, unlockedJourneySiteIds } =
-  await import(`data:text/javascript,${encodeURIComponent(stripTypeScriptTypes(source))}`);
+  await import(domainModuleUrl('JourneyRoutes'));
 
 const postcard = (siteId, patch = {}) => ({
   id: `note:journey-${siteId}`, kind: 'note', siteId, body: '沿着线索留下一页记忆',

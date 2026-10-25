@@ -5,9 +5,13 @@ import { randomBytes, scrypt, timingSafeEqual, createHash } from 'node:crypto';
 import { promisify } from 'node:util';
 import { DatabaseSync } from 'node:sqlite';
 import { pathToFileURL } from 'node:url';
-import { mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
+import { domainModuleUrl } from '../tools/load-domain-module.mjs';
+// 与 ArkTS 端执行同一份领域规则。递归装载解析 ArkTS 的无扩展名依赖，
+// 不能另写一套服务端合并，否则游戏存档会在服务器回包时退回旧语义。
+const { mergeRecords, parseSnapshot } = await import(domainModuleUrl('ArchiveDomain'));
 import { validateAccountInput, validateServiceEndpoint } from '../entry/src/main/ets/domain/AccountSync.ts';
 import { createAiObservationService, describeAiConfiguration, loadAiConfiguration } from './ai-observation.mjs';
+import { createKaifengAiService } from './kaifeng-ai.mjs';
 import { createWaterSituationService } from './water-situation.mjs';
 
 const derivePassword = promisify(scrypt);
@@ -17,7 +21,8 @@ const sessionDuration = 12 * 60 * 60 * 1000;
 
 // 独立账号服务只实现已授权的演示范围：注册 / 登录、账号隔离、真实 HTTPS 同步。
 // SQLite 持久化记录与冲突版本；不把网络传输宣传为鸿蒙分布式数据库。
-export function createAccountService({ databasePath, cert, key, now = Date.now, ai = undefined, water = undefined }) {
+export function createAccountService({ databasePath, cert, key, now = Date.now, ai = undefined,
+  water = undefined, kaifengAi = undefined }) {
   const db = new DatabaseSync(databasePath);
   db.exec(`PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON;
     CREATE TABLE IF NOT EXISTS accounts(id TEXT PRIMARY KEY, username TEXT UNIQUE NOT NULL,
@@ -124,6 +129,15 @@ export function createAccountService({ databasePath, cert, key, now = Date.now, 
         const reply = await ai.run(body, session);
         send(res, 200, reply); return;
       }
+      if (path === '/ai/kaifeng') {
+        // 开封“校书”与观察导览共用账号会话与限流，但工具 schema、事实集和提示词独立。
+        // 客户端仍会再做逐句接地与年份校验，服务端返回不作为可信输入。
+        if (!kaifengAi || !kaifengAi.available) throw fail('AI_NOT_CONFIGURED', 503);
+        aiRateLimit(session.account_id);
+        const body = await readBody(req);
+        const reply = await kaifengAi.run(body, session);
+        send(res, 200, reply); return;
+      }
       if (path !== '/sync') throw fail('ACCOUNT_NOT_FOUND', 404);
       const body = await readBody(req);
       if (!body || typeof body.deviceId !== 'string' || !/^[a-zA-Z0-9_-]{1,128}$/.test(body.deviceId)) {
@@ -188,10 +202,16 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     // 配置损坏时明确保持未配置；不要用示例回复冒充在线 AI，也不影响账号与同步。
     aiService = createAiObservationService({ configuration: { configured: false } });
   }
+  let kaifengAiService;
+  try {
+    kaifengAiService = createKaifengAiService({ configuration: loadAiConfiguration({ configPath: aiConfigPath }) });
+  } catch {
+    kaifengAiService = createKaifengAiService({ configuration: { configured: false } });
+  }
   const waterService = createWaterSituationService({ cacheDir: join(root, '..', 'water-situation') });
   const service = createAccountService({ databasePath: join(root, 'accounts.sqlite'),
     cert: readFileSync(join(root, 'server.pem')), key: readFileSync(join(root, 'server.key')),
-    ai: aiService, water: waterService });
+    ai: aiService, water: waterService, kaifengAi: kaifengAiService });
   // 监听地址与客户端共用同一条领域规则：默认回环；局域网演示时绑定指定私有 IPv4。
   // 不默认监听 0.0.0.0，避免把调试服务无意暴露到其他网卡。
   const host = typeof config.host === 'string' && config.host ? config.host : '127.0.0.1';
@@ -202,6 +222,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     const ai = describeAiConfiguration(aiService.describe());
     process.stdout.write(`云河纪账号服务已启动：HTTPS / ${host}:${config.port}\n` +
       `AI 观察导览：${ai.configured ? `已配置 ${ai.provider}/${ai.model}` : '未配置（/ai/observe 返回 AI_NOT_CONFIGURED）'}\n` +
+      `AI 开封校书：${kaifengAiService.available ? '已配置（/ai/kaifeng）' : '未配置（/ai/kaifeng 返回 AI_NOT_CONFIGURED）'}\n` +
       '水情观察：/water/situation（服务端抓取黄河实时水情，带缓存与失败回退）\n');
   });
   const stop = async () => { await service.close(); process.exit(0); };

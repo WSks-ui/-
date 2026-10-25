@@ -37,7 +37,7 @@ async function checkNewSites(sites: HeritageSite[], scenario: string): Promise<v
   await session.run(async () => {
     for (const site of sites) {
       await session.search(site.name, 1);
-      await (await session.inScroll('explore-scroll', ON.id(`site-row-${site.id}`).within(ON.id('explore-site-grid')))).click();
+      await (await session.inScroll('device-scroll', ON.id(`site-row-${site.id}`).within(ON.id('archive-library-grid')))).click();
       await session.waitId('detail-scroll');
       await session.inScroll('detail-scroll', ON.text(site.summary));
       await checkSourceNotice(session, site.source.title);

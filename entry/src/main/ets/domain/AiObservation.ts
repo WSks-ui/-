@@ -185,8 +185,12 @@ function validAction(action: AiObservationAction, scope: AiKnowledgeScope): bool
   if (!action || typeof action.label !== 'string' || !action.label.trim() || action.label.length > 40) return false;
   if (!Array.isArray(action.factIds)) return false;
   if (action.type === 'focus_hotspot') {
+    // 定位动作可以不附事实；一旦附带引用，就必须属于当前对象且不重复。
+    // 否则合法的双连壶热点仍能夹带方鼎依据，在“定位后看依据”时出现对象串用。
+    // 客户端与服务端共用此规则，新增开放对象时不在这里另写事实白名单。
     return typeof action.hotspotId === 'string' &&
-      scope.hotspots.some((hotspot: AiHotspotScope) => hotspot.id === action.hotspotId);
+      scope.hotspots.some((hotspot: AiHotspotScope) => hotspot.id === action.hotspotId) &&
+      (action.factIds.length === 0 || uniqueFactIds(action.factIds, scope));
   }
   if (action.type === 'show_evidence') {
     return action.factIds.length > 0 && uniqueFactIds(action.factIds, scope);

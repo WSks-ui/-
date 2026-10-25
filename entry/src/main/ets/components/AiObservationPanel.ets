@@ -14,6 +14,7 @@ import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 // 面板不自动转动镜头、不自动保存；回答到达只更新本面板，聚焦与保存都必须由用户点击触发。
 @Component
 export struct AiObservationPanel {
+  onLogin: () => void = () => {};
   @Prop siteId: string = '';
   @Prop sceneRevision: number = 2;
   @Prop @Watch('contextChanged') hotspotId: string = '';
@@ -615,8 +616,8 @@ export struct AiObservationPanel {
         'AI 只依据本件已核事实解释，资料不足会明确说明，不替代馆方原文。')
         .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%')
       if (!this.signedIn) {
-        Text('登录入口：我的 → 账号与同步。离线仍可转动模型、查看资料和写手账。')
-          .fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+        Button('登录后继续这里的观察', { type: ButtonType.Normal }).width('100%').height(42)
+          .fontColor(T.mintInk).backgroundColor(T.mint).onClick(() => this.onLogin()).id('ai-login-direct')
       }
     }.width('100%').alignItems(HorizontalAlign.Start).padding(14).backgroundColor(T.soft).borderRadius(14)
       .id('ai-locked')

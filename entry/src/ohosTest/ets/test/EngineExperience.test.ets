@@ -28,7 +28,7 @@ async function pageWindow(session: ArchiveUiSession, page: string): Promise<Page
   const bounds = await (current || await session.waitId(page)).getBounds();
   let top = bounds.top + 24;
   let bottom = bounds.bottom - 24;
-  if (page === 'explore-scroll') {
+  if (page === 'explore-scroll' || page === 'device-scroll') {
     const header = await session.driver.findComponent(ON.id('top-navigation-content'));
     const dock = await session.driver.findComponent(ON.id('tab-0'));
     if (header) top = Math.max(top, (await header.getBounds()).bottom + 24);
@@ -67,6 +67,7 @@ async function pageSwipe(session: ArchiveUiSession, page: string, towardTop: boo
 
 function topAnchor(page: string): On {
   if (page === 'explore-scroll') return ON.text('沿河，遇见文明');
+  if (page === 'device-scroll') return ON.text('文化档案');
   if (page === 'detail-scroll') return ON.id('engine-mode-relic');
   return ON.text('一条河，许多种相遇');
 }
@@ -122,8 +123,8 @@ function siteFor(id: string): HeritageSite {
 async function openSite(session: ArchiveUiSession, id: string): Promise<void> {
   const site = siteFor(id);
   await session.search(site.name, 1);
-  const target = ON.id(`site-row-${id}`).within(ON.id('explore-site-grid'));
-  await (await inPage(session, 'explore-scroll', target, id)).click();
+  const target = ON.id(`site-row-${id}`).within(ON.id('archive-library-grid'));
+  await (await inPage(session, 'device-scroll', target, id)).click();
   await session.waitId('detail-scroll');
   await inDetail(session, 'engine-native-relic_inspector');
 }
@@ -164,7 +165,7 @@ async function setReducedMotion(session: ArchiveUiSession): Promise<void> {
 export default function engineExperienceTest() {
   const parameters = abilityDelegatorRegistry.getArguments().parameters;
   const requested = parameters['class'] || parameters['-s class'] || '';
-  // 首页矩阵与图谱分别运行，避免把二十项卡片检查和后续图谱全塞进一个时限。
+  // 首页城市入口、档案目录矩阵与图谱分别运行，保留每城全部真实卡片检查。
   // 不改变旧的默认功能套件，不把旧视口用例自动标成通过。
   // 本套件检验当前模拟器的真实原生兼容分支，真机 WebGL2 必须另留 GPU 画面证据。
   if (!requested.includes('EngineExperienceTest')) return;
@@ -174,20 +175,35 @@ export default function engineExperienceTest() {
       await session.run(async () => {
         await inPage(session, 'explore-scroll', ON.id('river-sandbox-card'), '首页流光沙盘');
         await checkViewport(session, 'river_sandbox', 'explore-scroll');
+        await (await inPage(session, 'explore-scroll', ON.id('river-city-0'), '沙盘选择三门峡')).click();
+        const sandboxCity = CITIES[1];
+        const sandboxCount = HERITAGE_SITES.filter(site => site.city === sandboxCity).length;
         await capture(session, 'river-home');
         for (let index = 0; index < 5; index++) {
           const started = Date.now();
           const city = CITIES[index + 1];
           const expected = HERITAGE_SITES.filter(site => site.city === city);
-          expect(expected.length).assertEqual(4);
+          expect(expected.length >= 4).assertTrue();
           await (await inPage(session, 'explore-scroll', ON.id(`city-${index}`), city)).click();
-          const count = await inPage(session, 'explore-scroll', ON.id('search-result-count').text('4 处文化遗产'), `${city}四项结果`);
-          expect(await count.getText()).assertEqual('4 处文化遗产');
+          await session.waitId('device-scroll');
+          const selectedCity = await inPage(session, 'device-scroll', ON.id('library-city'), `${city}档案城市条件`);
+          expect(await selectedCity.getText()).assertEqual(city);
+          const count = await inPage(session, 'device-scroll', ON.id('library-result-count').text(`${expected.length} 处`), `${city}目录结果`);
+          expect(await count.getText()).assertEqual(`${expected.length} 处`);
           for (const site of expected) {
-            await inPage(session, 'explore-scroll', ON.id(`site-row-${site.id}`).within(ON.id('explore-site-grid')), site.name);
+            await inPage(session, 'device-scroll', ON.id(`site-row-${site.id}`).within(ON.id('archive-library-grid')), site.name);
           }
+          await (await session.waitId('tab-0')).click();
+          // 城市直达只重置档案条件，不能把沙盘先前选中的观察城市改成这次的目录城市。
+          const selectedSandbox = await inPage(session, 'explore-scroll',
+            ON.text(`${sandboxCity} · ${sandboxCount} 处文化档案`).within(ON.id('river-sandbox-card')), '返回后沙盘城市保留');
+          expect(await selectedSandbox.getText()).assertEqual(`${sandboxCity} · ${sandboxCount} 处文化档案`);
           console.info(`ENGINE_CITY_VERIFIED:${city}:${expected.map(site => site.id).join('|')}:elapsed=${Date.now() - started}ms`);
         }
+        await (await inPage(session, 'explore-scroll', ON.id('home-library-open'), '浏览完整文化档案')).click();
+        await session.waitId('device-scroll');
+        expect(await (await inPage(session, 'device-scroll', ON.id('library-result-count'), '完整目录结果')).getText())
+          .assertEqual(`${HERITAGE_SITES.length} 处`);
       });
     });
 
@@ -278,7 +294,7 @@ export default function engineExperienceTest() {
           expect(decodeExplorationProgress((await session.read()).records, id).percent).assertEqual(0);
           console.info(`ENGINE_MODEL_VERIFIED:${id}`);
           await session.driver.pressBack();
-          await session.waitId('explore-scroll');
+          await session.waitId('device-scroll');
         }
       });
     });

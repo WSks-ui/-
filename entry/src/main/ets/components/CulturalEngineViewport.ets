@@ -253,10 +253,13 @@ export struct CulturalEngineViewport {
       }
     }
     const selected = this.payload.selectedId || '';
+    // 通用几何展示的是资料页，保存名称不能把它写成实际器物观察；切片和已有预设沿用原文案。
+    const sceneLabel: string = this.sceneType === 'stratum_slice' ? '主题切片' :
+      (this.payload.proceduralPreset === 'generic_site_study' ? '资料观察' : '器物凝视');
     const pose: MemoryPose = { version: 1, sceneType: this.sceneType, yaw: this.yaw, pitch: this.pitch,
       zoom: this.zoom, hotspotId: this.sceneType === 'relic_inspector' ? selected : '',
       sectionId: this.sceneType === 'stratum_slice' ? selected : '',
-      label: `${this.sceneType === 'stratum_slice' ? '主题切片' : '器物凝视'} · ${Math.round(this.yaw * 180 / Math.PI)}°` };
+      label: `${sceneLabel} · ${Math.round(this.yaw * 180 / Math.PI)}°` };
     if (this.native) {
       pose.proceduralPreset = this.payload.proceduralPreset;
       pose.sceneRevision = this.payload.sceneRevision || 1;
@@ -490,8 +493,9 @@ export struct CulturalEngineViewport {
         }
       }.width('100%')
       if (this.rememberEnabled) {
-        Button('留住此刻 · 写一页手账').id('engine-remember-view').width('100%').height(42)
-          .borderRadius(12).fontSize(F.small).fontColor(T.accent).backgroundColor(T.accentSoft)
+        // 主操作统一成实心主色按钮：原来是浅色整条 + 居中文字，像网页横幅。
+        Button('留住此刻 · 写一页手账').id('engine-remember-view').width('100%').height(46)
+          .borderRadius(10).fontSize(14).fontColor(T.onAccent).backgroundColor(T.accent)
           .onClick(() => this.rememberView())
       }
     }.width('100%')

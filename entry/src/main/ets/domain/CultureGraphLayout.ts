@@ -84,7 +84,9 @@ export class GraphLayout {
         const ox = this.nodeWidth + 8 - Math.abs(dx), oy = 62 * this.fontScale - Math.abs(dy);
         if (ox > 0 && oy > 0) {
           if (ox < oy) { const push = Math.sign(dx || 1) * ox * 0.08; a.vx -= push; b.vx += push; }
-          else { const push = Math.sign(dy || 1) * oy * 0.08; a.vy -= push; b.vy += push; }
+          // 窄屏从七行增至八行后，边界会压缩可用行距；原 0.08 的分离力会与锚点 / 连边
+          // 在仍重叠的位置抵消。只增强垂直碰撞响应，不改节点尺寸、边界或横向拖动规则。
+          else { const push = Math.sign(dy || 1) * oy * 0.25; a.vy -= push; b.vy += push; }
         }
       }
     }

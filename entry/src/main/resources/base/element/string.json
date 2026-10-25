@@ -1,5 +1,6 @@
 {
   "string": [
+    { "name": "distributed_sync_reason", "value": "用于在你的可信鸿蒙设备间同步收藏、手账与探索进度" },
     {
       "name": "module_desc",
       "value": "黄河文化数字档案"

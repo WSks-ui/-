@@ -29,7 +29,7 @@ async function pageArea(session: ArchiveUiSession, page: string): Promise<PageAr
   const bounds = await (current || await session.waitId(page)).getBounds();
   let top = bounds.top + 24;
   let bottom = bounds.bottom - 80;
-  if (page === 'explore-scroll' || page === 'archive-scroll') {
+  if (page === 'explore-scroll' || page === 'archive-scroll' || page === 'device-scroll') {
     const header = await session.driver.findComponent(ON.id('top-navigation-content'));
     const dock = await session.driver.findComponent(ON.id('tab-0'));
     if (header) top = Math.max(top, (await header.getBounds()).bottom + 24);
@@ -153,8 +153,8 @@ async function runExpandedObservation(scenario: ExpandedObservationScenario): Pr
     if (!finalFact) throw new Error('EXPANDED_OBSERVATION_FINAL_FACT_MISSING');
 
     await session.search(scenario.searchText, 1);
-    await (await inPage(session, 'explore-scroll',
-      ON.id(`site-row-${scenario.siteId}`).within(ON.id('explore-site-grid')))).click();
+    await (await inPage(session, 'device-scroll',
+      ON.id(`site-row-${scenario.siteId}`).within(ON.id('archive-library-grid')))).click();
     await session.waitId('detail-scroll');
 
     // 三处热点必须各自指向资料事实与具体可见提示；逐帧留图供 wrapper 验证选中标记真的变化。
@@ -246,10 +246,10 @@ async function runExpandedObservation(scenario: ExpandedObservationScenario): Pr
     console.info(`EXPANDED_OBSERVATION_SAVED:${JSON.stringify(note)}`);
 
     await session.driver.pressBack();
-    await session.waitId('explore-scroll');
+    await session.waitId('device-scroll');
     await (await session.waitId('tab-1')).click();
     await session.waitId('archive-scroll');
-    await (await inPage(session, 'archive-scroll', ON.id('memory-view-gallery'))).click();
+    await session.setMemoryView(true);
     const previewId = `memory-preview-${note.id}`;
     await inPage(session, 'archive-scroll', ON.id(`${previewId}-status`).text('已恢复当时视角')
       .within(ON.id('archive-scroll')));

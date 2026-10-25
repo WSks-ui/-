@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { domainModuleUrl } from './load-domain-module.mjs';
-import { copySnapshot, compareVersions, emptySnapshot, mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
+const { copySnapshot, compareVersions, emptySnapshot, mergeRecords, parseSnapshot } =
+  await import(domainModuleUrl('ArchiveDomain'));
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import {
   STAMP_TYPES, PAPER_THEMES, defaultStampForSite, isMemoryPostcard, memoryPoseLabel,

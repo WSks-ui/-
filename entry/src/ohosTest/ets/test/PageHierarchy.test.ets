@@ -6,6 +6,9 @@ import { activeRecords } from '../../../main/ets/domain/ArchiveDomain';
 import { AccountSyncClient } from '../../../main/ets/sync/AccountSyncClient';
 import { accountStoreName } from '../../../main/ets/domain/AccountSync';
 import { LocalArchiveRepository } from '../../../main/ets/data/LocalArchiveRepository';
+import { AccountWorkspaceStore } from '../../../main/ets/data/AccountWorkspaceStore';
+import { HERITAGE_SITES } from '../../../main/ets/data/HeritageCatalog';
+import { aiKnowledgeScope } from '../../../main/ets/domain/AiObservationKnowledge';
 import { ArchiveUiSession } from './ArchiveUiSession';
 
 async function click(session: ArchiveUiSession, scroll: string, id: string): Promise<void> {
@@ -32,7 +35,7 @@ export default function pageHierarchyTest() {
         await click(session, 'archive-scroll', 'memory-section-1');
         await session.waitId('collection-filter');
         await click(session, 'archive-scroll', 'memory-browse-archives');
-        expect(await (await session.inScroll('device-scroll', ON.id('library-result-count'))).getText()).assertEqual('20 处');
+        expect(await (await session.inScroll('device-scroll', ON.id('library-result-count'))).getText()).assertEqual(`${HERITAGE_SITES.length} 处`);
         await (await session.waitId('device-scroll')).scrollToTop(40000);
         await capture('library');
         await click(session, 'device-scroll', 'library-ai-filter');
@@ -43,7 +46,7 @@ export default function pageHierarchyTest() {
         expect(await (await session.waitId('library-result-count')).getText()).assertEqual('0 处');
         await capture('library-empty');
         await click(session, 'device-scroll', 'library-reset');
-        expect(await (await session.waitId('library-result-count')).getText()).assertEqual('20 处');
+        expect(await (await session.waitId('library-result-count')).getText()).assertEqual(`${HERITAGE_SITES.length} 处`);
         const search = ON.type('SearchField').within(ON.id('library-search'));
         await (await session.inScroll('device-scroll', search)).inputText('杜岭');
         await (await session.wait(ON.text('检索').type('Button'))).click();
@@ -83,7 +86,9 @@ export default function pageHierarchyTest() {
         await session.driver.pressBack();
         await click(session, 'profile-scroll', 'profile-ai-memories');
         await session.waitId('archive-scroll');
+        await session.openMemoryFilters();
         expect(await (await session.waitId('memory-ai-filter')).isChecked()).assertTrue();
+        await session.closeMemoryFilters();
         await session.waitText('还没有 AI 辅助手账');
       });
     });
@@ -191,7 +196,26 @@ export default function pageHierarchyTest() {
           expect(note.snapshot3DPose?.hotspotId).assertEqual('corners');
           await session.driver.pressBack();
           await (await session.waitId('tab-1')).click();
-          await click(session, 'archive-scroll', 'memory-ai-filter');
+          await session.openMemoryFilters();
+          await click(session, 'memory-filter-scroll', 'memory-ai-filter');
+          await session.closeMemoryFilters();
+          // 不滚动补救：真实 AI 卡比普通手账多出来源标记与视角说明，
+          // 仍须在进入首屏时读到标题、正文和主要动作。
+          await (await session.waitId('archive-scroll')).scrollToTop(40000);
+          const cardId = `memory-card-${note.id}`;
+          const siteName = HERITAGE_SITES.find(site => site.id === note.siteId)!.name;
+          const titleBounds = await (await session.wait(ON.text(siteName).within(ON.id(cardId)))).getBounds();
+          const bodyBounds = await (await session.wait(ON.text(note.body).within(ON.id(cardId)))).getBounds();
+          const actionBounds = await (await session.waitId(`memory-open-${note.id}`)).getBounds();
+          const aiBadgeBounds = await (await session.waitId(`memory-ai-assist-${note.id}`)).getBounds();
+          const headerBounds = await (await session.waitId('top-navigation-content')).getBounds();
+          const dockBounds = await (await session.waitId('tab-0')).getBounds();
+          for (const bounds of [titleBounds, bodyBounds, actionBounds, aiBadgeBounds]) {
+            expect(bounds.bottom > bounds.top && bounds.right > bounds.left).assertTrue();
+            expect(bounds.top >= headerBounds.bottom && bounds.bottom <= dockBounds.top).assertTrue();
+          }
+          console.info(`CONTENT_MEMORY_AI_FIRST_CARD_BOUNDS:${JSON.stringify({ title: titleBounds,
+            body: bodyBounds, action: actionBounds, aiBadge: aiBadgeBounds, header: headerBounds, dock: dockBounds })}`);
           await capture('ai-memory');
           await click(session, 'archive-scroll', `memory-open-${note.id}`);
           await click(session, 'memory-detail-scroll', 'memory-detail-evidence');
@@ -206,6 +230,104 @@ export default function pageHierarchyTest() {
       } finally {
         if (identity) await preferences.deletePreferences(session.context, accountStoreName(identity, session.name));
       }
+    });
+
+    it('real_twin_ai_opening_save_evidence_and_resume', 0, async () => {
+      const session = new ArchiveUiSession('page_twin_ai', '', false);
+      const username = `twin_full_${Date.now()}`;
+      const password = util.generateRandomUUID(true);
+      await session.run(async () => {
+        await (await session.waitId('account-mode-register')).click();
+        await (await session.inScroll('login-scroll', ON.id('account-username'))).inputText(username);
+        await (await session.inScroll('login-scroll', ON.id('account-password'))).inputText(password);
+        await session.driver.pressBack();
+        await click(session, 'login-scroll', 'account-submit');
+        await session.waitId('explore-scroll');
+        const workspace = await new AccountWorkspaceStore(session.context, session.name).load();
+        if (!workspace) throw new Error('TWIN_AI_WORKSPACE_MISSING');
+        const store = accountStoreName(workspace.workspace.accountId, session.name);
+        const scope = aiKnowledgeScope('zz-dahecun');
+        if (!scope) throw new Error('TWIN_AI_SCOPE_MISSING');
+        await (await session.waitId('tab-2')).click();
+        await click(session, 'device-scroll', 'library-ai-open-dahecun');
+        await click(session, 'detail-scroll', 'ai-starter-1');
+        expect(await session.driver.waitForComponent(ON.id('ai-answer'), 35000) !== undefined).assertTrue();
+        await click(session, 'detail-scroll', 'ai-action-opening');
+        expect(await (await session.waitId('ai-focus-visible')).getText())
+          .assertEqual('AI 已定位 · 腹部通口');
+        const canvas = await (await session.waitId('engine-native-relic_inspector')).getBounds();
+        const viewport = await (await session.waitId('detail-scroll')).getBounds();
+        expect(canvas.top >= viewport.top && canvas.bottom <= viewport.bottom).assertTrue();
+        await capture('twin-ai-focus');
+        // 聚焦时优先呈现完整画布，部位说明在当前视口下方；先留存画布，再真实滚动核对说明。
+        expect(await (await session.inScroll('detail-scroll', ON.id('observation-selected-detail'))).getText())
+          .assertEqual('正在观察 · 腹部通口');
+        await click(session, 'detail-scroll', 'ai-continue');
+        await session.inScroll('detail-scroll', ON.id('ai-question-input'));
+        await session.driver.delayMs(650);
+        await click(session, 'detail-scroll', 'ai-evidence-toggle');
+        await session.inScroll('detail-scroll', ON.id('ai-evidence-dahecun-opening'));
+        expect(!await session.driver.findComponent(ON.id('ai-evidence-duling-eight'))).assertTrue();
+        await capture('twin-ai-evidence');
+        await (await session.inScroll('detail-scroll', ON.id('ai-observation-input')))
+          .inputText('我先看两只壶口，再沿腹部寻找相通的位置，记下两体相连的观察。');
+        await click(session, 'detail-scroll', 'ai-draft-request');
+        expect(await session.driver.waitForComponent(ON.id('ai-draft-adopt'), 35000) !== undefined).assertTrue();
+        await click(session, 'detail-scroll', 'ai-draft-adopt');
+        await session.waitId('note-editor-scroll');
+        // 手账关联的是稳定档案，编辑器沿用档案名；具体观察对象由下方 pose / AI 事实断言核对。
+        expect(await (await session.waitId('note-associated-site')).getText())
+          .assertEqual(HERITAGE_SITES.find(site => site.id === 'zz-dahecun')!.name);
+        const reference = await (await session.waitId('note-ai-draft-reference')).getText();
+        expect(reference.includes('相通的地方在腹部')).assertTrue();
+        expect(reference.includes('dahecun-')).assertFalse();
+        await (await session.waitId('save-note')).click();
+        await session.editorClosed();
+        // 清缓存回读确认后的记录，资料摘录与事实来自本对象目录，不能用模型自由文本替代。
+        await preferences.removePreferencesFromCache(session.context, store);
+        const notes = activeRecords((await new LocalArchiveRepository(session.context, store).load()).records, 'note');
+        expect(notes.length).assertEqual(1);
+        const note = notes[0];
+        expect(note.siteId).assertEqual('zz-dahecun');
+        expect(note.snapshot3DPose?.hotspotId).assertEqual('opening');
+        expect(note.snapshot3DPose?.proceduralPreset).assertEqual('dahecun_pottery');
+        expect(note.snapshot3DPose?.sceneRevision).assertEqual(2);
+        expect((note.snapshot3DPose?.viewFrame?.width || 0) > 24).assertTrue();
+        expect((note.snapshot3DPose?.viewFrame?.height || 0) > 46).assertTrue();
+        expect(note.aiAssist?.contentRevision).assertEqual(scope.contentRevision);
+        expect(note.aiAssist?.question).assertEqual('腹部相通的位置在哪里？');
+        expect(note.aiAssist?.factIds.includes('dahecun-opening')).assertTrue();
+        for (const fact of note.aiAssist!.facts) {
+          const original = scope.facts.find(item => item.id === fact.id);
+          expect(original !== undefined && fact.id.startsWith('dahecun-')).assertTrue();
+          expect(JSON.stringify(fact)).assertEqual(JSON.stringify(original));
+        }
+        await session.driver.pressBack();
+        await (await session.waitId('tab-1')).click();
+        await session.openMemoryFilters();
+        await click(session, 'memory-filter-scroll', 'memory-ai-filter');
+        await session.closeMemoryFilters();
+        await session.inScroll('archive-scroll', ON.id(`memory-ai-assist-${note.id}`));
+        await capture('twin-ai-memory');
+        await click(session, 'archive-scroll', `memory-open-${note.id}`);
+        await click(session, 'memory-detail-scroll', 'memory-detail-evidence');
+        for (const fact of note.aiAssist!.facts) {
+          expect(await (await session.inScroll('memory-detail-scroll',
+            ON.text(fact.body).within(ON.id(`memory-fact-${fact.id}`)))).getText()).assertEqual(fact.body);
+        }
+        await capture('twin-ai-saved-evidence');
+        await click(session, 'memory-detail-scroll', 'memory-detail-ai');
+        expect(await (await session.inScroll('detail-scroll', ON.id('ai-question-input'))).getText())
+          .assertEqual(note.aiAssist!.question);
+        expect(await (await session.inScroll('detail-scroll', ON.id('ai-observation-input'))).getText())
+          .assertEqual(note.body.slice(0, 300));
+        expect(!await session.driver.findComponent(ON.id('ai-answer'))).assertTrue();
+        await capture('twin-ai-resume');
+        await preferences.removePreferencesFromCache(session.context, store);
+        expect(JSON.stringify(activeRecords((await new LocalArchiveRepository(session.context, store).load()).records, 'note')[0]))
+          .assertEqual(JSON.stringify(note));
+        console.info(`C08_TWIN_SINGLE_SAVED:${JSON.stringify(note)}`);
+      });
     });
 
     it('twin_vessel_ai_entry_uses_its_own_starters', 0, async () => {
@@ -277,7 +399,9 @@ export default function pageHierarchyTest() {
         await (await session.waitId('memory-copy-selected')).click();
         await (await session.waitId('memory-manage')).click();
         // 标签筛选只影响回顾视图，不删除或改写记录。
-        await click(session, 'archive-scroll', 'memory-tag-0');
+        await session.openMemoryFilters();
+        await click(session, 'memory-filter-scroll', 'memory-tag-0');
+        await session.closeMemoryFilters();
         await session.waitId(`memory-card-${saved.id}`);
         await capture('memory-tag-filter');
         // 档案页“已浏览”应只留下刚打开过的方鼎，数量与“我的”统计一致。
@@ -290,7 +414,7 @@ export default function pageHierarchyTest() {
         await capture('profile-stats');
         await click(session, 'profile-scroll', 'profile-data');
         expect(await (await session.waitId('data-notes')).getText()).assertEqual('1 篇');
-        expect(await (await session.waitId('data-visited')).getText()).assertEqual('1 / 20 处');
+        expect(await (await session.waitId('data-visited')).getText()).assertEqual(`1 / ${HERITAGE_SITES.length} 处`);
         expect((await (await session.waitId('data-storage')).getText()).includes('KB')).assertTrue();
         await capture('profile-data');
         // 数据页是压在“我的”之上的独立 NavDestination：第一次返回个人页，第二次才回到 Tab。

@@ -17,7 +17,7 @@ async function pageArea(session: ArchiveUiSession, page: string): Promise<PageAr
   const bounds = await (current || await session.waitId(page)).getBounds();
   let top = bounds.top + 24;
   let bottom = bounds.bottom - 80;
-  if (page === 'explore-scroll' || page === 'archive-scroll') {
+  if (page === 'explore-scroll' || page === 'archive-scroll' || page === 'device-scroll') {
     const header = await session.driver.findComponent(ON.id('top-navigation-content'));
     const dock = await session.driver.findComponent(ON.id('tab-0'));
     if (header) top = Math.max(top, (await header.getBounds()).bottom + 24);
@@ -124,8 +124,8 @@ export default function observationMemoryTest() {
         const canvasId = 'engine-native-relic_inspector';
 
         await session.search(site.name, 1);
-        await (await inPage(session, 'explore-scroll',
-          ON.id(`site-row-${siteId}`).within(ON.id('explore-site-grid')))).click();
+        await (await inPage(session, 'device-scroll',
+          ON.id(`site-row-${siteId}`).within(ON.id('archive-library-grid')))).click();
         await session.waitId('detail-scroll');
         for (const id of ['mouth', 'paint', 'opening']) {
           const detail = observation.hotspots.find(item => item.id === id);
@@ -198,10 +198,10 @@ export default function observationMemoryTest() {
         console.info(`OBSERVATION_SAVED_MS:${Date.now() - started}`);
 
         await session.driver.pressBack();
-        await session.waitId('explore-scroll');
+        await session.waitId('device-scroll');
         await (await session.waitId('tab-1')).click();
         await session.waitId('archive-scroll');
-        await (await inPage(session, 'archive-scroll', ON.id('memory-view-gallery'))).click();
+        await session.setMemoryView(true);
         const previewId = `memory-preview-${note.id}`;
         const previewStatus = ON.id(`${previewId}-status`).within(ON.id('archive-scroll'));
         await inPage(session, 'archive-scroll', previewStatus);

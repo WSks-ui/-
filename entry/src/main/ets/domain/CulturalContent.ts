@@ -20,7 +20,8 @@ export type ProceduralPreset =
   | 'xishuipo_site'
   | 'xipo_settlement'
   | 'cangjie_memorial'
-  | 'dangui_memorial';
+  | 'dangui_memorial'
+  | 'generic_site_study';
 
 export type ExplorationSectionId = 'overview' | 'archaeology' | 'history' | 'poetry-travel';
 
@@ -76,7 +77,11 @@ export const CULTURAL_SITE_METADATA: Record<string, CulturalSiteMetadata> = {
   'zz-duling-fangding': { siteId: 'zz-duling-fangding', proceduralPreset: 'duling_fangding', cityOrder: 2, learningTheme: '青铜器形制与纹饰观察' },
   'kf-city-wall': { siteId: 'kf-city-wall', proceduralPreset: 'kaifeng_city_wall', cityOrder: 3, learningTheme: '城墙与城市空间' },
   'py-cangjie': { siteId: 'py-cangjie', proceduralPreset: 'cangjie_memorial', cityOrder: 4, learningTheme: '地方传说与纪念空间' },
-  'py-danguai': { siteId: 'py-danguai', proceduralPreset: 'dangui_memorial', cityOrder: 4, learningTheme: '近现代历史记忆' }
+  'py-danguai': { siteId: 'py-danguai', proceduralPreset: 'dangui_memorial', cityOrder: 4, learningTheme: '近现代历史记忆' },
+  // 两处暂共用抽象资料卡，不借用其他遗址形制。以后升级独立场景时须扩展回放解析，
+  // 继续识别已保存的 generic_site_study / revision 1，不得用新模型覆盖旧手账画面。
+  'zz-wangchenggang': { siteId: 'zz-wangchenggang', proceduralPreset: 'generic_site_study', cityOrder: 2, learningTheme: '龙山城址资料阅读' },
+  'zz-huangye-kiln': { siteId: 'zz-huangye-kiln', proceduralPreset: 'generic_site_study', cityOrder: 2, learningTheme: '窑业遗存资料阅读' }
 };
 
 export function getCulturalSiteMetadata(siteId: string): CulturalSiteMetadata | undefined {

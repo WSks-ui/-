@@ -2,7 +2,7 @@ import {
   activeRecords, ArchiveRecord, ArchiveSnapshot, COLLECTION_TAGS, copySnapshot,
   HeritageSite, MAX_NOTE_LENGTH, MAX_NOTE_TAGS, MAX_NOTE_TAG_LENGTH, MAX_NOTE_TAGS_TEXT_LENGTH,
   nextTimestamp, putRecord, recommendSites, Recommendation, MemoryPose, copyMemoryPose,
-  AiMemoryAssist, copyAiMemoryAssist
+  AiMemoryAssist, AiFactSnapshot, copyAiMemoryAssist
 } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { MATERIAL_STUDIES, materialStudyForId } from '../data/MaterialStudyCatalog';
@@ -23,11 +23,13 @@ import type { AiDraftAdoption, AiObservationReply, AiObservationRequest } from '
 import { buildAiMemoryAssist, isAiObservationSite } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
 import { AiObservationPanel } from './AiObservationPanel';
+import { journeyForId } from '../domain/JourneyRoutes';
 
 interface MemoryPoseRequest extends MemoryPose { request: number; }
 
 @Component
 export struct SiteDetail {
+  onLogin: () => void = () => {};
   @Prop site: HeritageSite = HERITAGE_SITES[0];
   @Link snapshot: ArchiveSnapshot;
   @Prop initialPoseJson: string = '';
@@ -35,9 +37,11 @@ export struct SiteDetail {
   @Prop aiServiceConfigured: boolean = false;
   @Prop startAiPanel: boolean = false;
   @Prop initialNoteId: string = '';
+  @Prop startNewNote: boolean = false;
   @Prop initialAiQuestion: string = '';
   @Prop initialAiObservation: string = '';
   onReadMemory: (note: ArchiveRecord) => void = () => {};
+  onOpenJourney: () => void = () => {};
   onCommit: (next: ArchiveSnapshot) => Promise<boolean> = async () => false;
   onOpen: (site: HeritageSite) => void = () => {};
   onAiRequest: (request: AiObservationRequest) => Promise<AiObservationReply> = async () => {
@@ -76,6 +80,8 @@ export struct SiteDetail {
   @State private aiReturnVisible: boolean = false;
   @State private aiReturnText: string = '';
   @State private infoOpen: boolean = false;
+  // 仅记录本页刚刚成功新建的手账 ID，接续卡不写入归档，也不替代真实路线进度。
+  @State private savedJourneyNoteId: string = '';
   private aiPanelOffset: number = 0;
   private originalDecoration: string = '';
   private detailScroller: Scroller = new Scroller();
@@ -92,14 +98,15 @@ export struct SiteDetail {
     }
     // 从首页“陪我观察”进入时，等详情布局完成后再把 AI 面板带入视野；
     // 仍保留上方方鼎和热点按钮，用户可随时上滑回到模型，不另建聊天页。
-    if (this.startAiPanel || this.initialNoteId) {
+    if (this.startAiPanel || this.initialNoteId || this.startNewNote) {
       this.pageDisposed = false;
       setTimeout(() => {
         if (this.pageDisposed) return;
         if (this.initialNoteId) {
           const note = this.notes().find(item => item.id === this.initialNoteId);
           if (note) this.editNote(note);
-        } else this.detailScroller.scrollTo({ xOffset: 0, yOffset: Math.max(0, this.aiPanelOffset - 12) });
+        } else if (this.startNewNote) this.editNote();
+        else this.detailScroller.scrollTo({ xOffset: 0, yOffset: Math.max(0, this.aiPanelOffset - 12) });
       }, 420);
     }
   }
@@ -194,9 +201,13 @@ export struct SiteDetail {
     return activeRecords(this.snapshot.records, 'note').filter((record: ArchiveRecord) => record.siteId === this.site.id);
   }
 
+  private isGenericStudy(): boolean {
+    return getCulturalSiteMetadata(this.site.id)?.proceduralPreset === 'generic_site_study';
+  }
+
   private enginePayload(): string {
     const payload: CulturalEnginePayload = { version: 1, itemId: this.site.id, title: this.site.name,
-      proceduralPreset: getCulturalSiteMetadata(this.site.id)?.proceduralPreset || 'yangshao_pottery',
+      proceduralPreset: getCulturalSiteMetadata(this.site.id)?.proceduralPreset || 'generic_site_study',
       sceneRevision: this.sceneRevision(),
       selectedId: this.engineMode === 'stratum_slice' ? this.explorationSection : this.hotspot,
       exploredIds: decodeExplorationProgress(this.snapshot.records, this.site.id).completedSectionIds,
@@ -269,13 +280,14 @@ export struct SiteDetail {
   @Builder
   culturalExperience() {
     Column({ space: 12 }) {
-      Text('文化凝视').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
+      Text(this.isGenericStudy() ? '文化资料' : '文化凝视').fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink).width('100%')
       if (this.observation()) {
         Text(materialStudyForId(this.site.id)?.question || '').fontSize(F.body).fontColor(T.ink)
           .fontWeight(FontWeight.Medium).lineHeight(27).width('100%')
       }
       Row({ space: 8 }) {
-        Button(this.site.id === 'smx-miaodigou' && this.observation() ? '空间观察' : '器物凝视')
+        Button(this.isGenericStudy() ? '资料观察' :
+          (this.site.id === 'smx-miaodigou' && this.observation() ? '空间观察' : '器物凝视'))
           .id('engine-mode-relic').onClick(() => this.startObservation('relic_inspector'))
           .layoutWeight(1).fontSize(F.small).fontColor(T.accent).backgroundColor(this.engineMode === 'relic_inspector' ? T.accentSoft : T.soft)
         Button('文化切片').id('engine-mode-stratum').onClick(() => this.startObservation('stratum_slice'))
@@ -361,15 +373,15 @@ export struct SiteDetail {
         // 三个热点等分一行，显式收紧内边距，让 1.5 倍字号仍完整显示三字标签。
         // 保留系统字体缩放；后续增加文案长度时应改换行布局，不能靠限制字号掩盖截断。
         Row({ space: 8 }) {
-          Button('观形制').id('hotspot-form').onClick(() => this.selectHotspot('form'))
+          Button(this.isGenericStudy() ? '看概览' : '观形制').id('hotspot-form').onClick(() => this.selectHotspot('form'))
             .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
             .padding({ left: 4, right: 4 })
             .backgroundColor(this.hotspot === 'form' ? T.accentSoft : T.soft)
-          Button('察纹样').id('hotspot-pattern').onClick(() => this.selectHotspot('pattern'))
+          Button(this.isGenericStudy() ? '读遗存' : '察纹样').id('hotspot-pattern').onClick(() => this.selectHotspot('pattern'))
             .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
             .padding({ left: 4, right: 4 })
             .backgroundColor(this.hotspot === 'pattern' ? T.accentSoft : T.soft)
-          Button('读线索').id('hotspot-story').onClick(() => this.selectHotspot('story'))
+          Button(this.isGenericStudy() ? '寻线索' : '读线索').id('hotspot-story').onClick(() => this.selectHotspot('story'))
             .layoutWeight(1).height(40).borderRadius(12).fontSize(F.small).fontColor(T.accent)
             .padding({ left: 4, right: 4 })
             .backgroundColor(this.hotspot === 'story' ? T.accentSoft : T.soft)
@@ -380,6 +392,7 @@ export struct SiteDetail {
         if (this.observation() && isAiObservationSite(this.site.id)) {
           Column() {
           AiObservationPanel({
+            onLogin: this.onLogin,
             siteId: this.site.id, sceneRevision: this.sceneRevision(), hotspotId: this.hotspot,
             signedIn: this.aiSignedIn, serviceConfigured: this.aiServiceConfigured,
             startExpanded: this.startAiPanel, reducedMotion: this.snapshot.reducedMotion,
@@ -401,7 +414,8 @@ export struct SiteDetail {
           (this.hotspot === 'form' ? this.site.overview : this.hotspot === 'pattern' ? this.site.archaeology : this.site.history))
           .fontSize(F.small).fontColor(T.muted).lineHeight(24).width('100%').id('engine-hotspot-reading')
           .maxLines(3).textOverflow({ overflow: TextOverflow.Ellipsis })
-        Text(this.observation()?.notice || '按档案主题生成的几何与装饰示意，非文物或遗址复原。')
+        Text(this.isGenericStudy() ? '通用资料学习示意，不表示本遗址平面、窑炉结构或出土器物。' :
+          (this.observation()?.notice || '按档案主题生成的几何与装饰示意，非文物或遗址复原。'))
           .fontSize(F.caption).fontColor(T.muted).lineHeight(20).width('100%').id('site-object-notice')
           .maxLines(3).textOverflow({ overflow: TextOverflow.Ellipsis })
         Row() {
@@ -437,9 +451,15 @@ export struct SiteDetail {
     this.busy = true;
     const next = copySnapshot(this.snapshot);
     const previous = this.favorite();
+    // 分类标签与自定义标签分开处理：切换“待实地探访 / 已去过 / 研究资料”时
+    // 只替换分类位，保留用户自己写的标签，避免一次改分类把研究关键词整组清空。
+    const previousTags: string[] = previous ? previous.tags : [];
+    const customTags: string[] = previousTags.filter((item: string) => !COLLECTION_TAGS.includes(item));
+    const nextTags: string[] = tag ? customTags.concat([tag]) : customTags;
     const record: ArchiveRecord = {
       id: `favorite:${this.site.id}`, kind: 'favorite', siteId: this.site.id, body: '',
-      tags: tag ? [tag] : ['待实地探访'], updatedAt: nextTimestamp(next.records, Date.now()),
+      tags: nextTags.length > 0 ? nextTags : ['待实地探访'],
+      updatedAt: nextTimestamp(next.records, Date.now()),
       deviceId: next.deviceId, deleted: !tag && previous !== undefined
     };
     next.records = putRecord(next.records, record);
@@ -517,6 +537,15 @@ export struct SiteDetail {
     next.records = putRecord(next.records, record);
     if (await this.onCommit(next)) {
       this.editorOpen = false;
+      if (!this.editingId && journeyForId('earth-and-fire')?.siteIds.includes(this.site.id)) {
+        this.savedJourneyNoteId = record.id;
+        // 表单可能从详情下方打开。确认落盘后回到真实页首的轻量接续入口，
+        // 不自动打开新页面；重温镜头仍使用保存时已取得的 pose，不受接续卡布局影响。
+        setTimeout(() => {
+          if (!this.pageDisposed && !this.editorOpen) this.detailScroller.scrollTo({ xOffset: 0, yOffset: 0,
+            animation: this.snapshot.reducedMotion ? undefined : { duration: 240 } });
+        }, 240);
+      }
       this.draft = '';
       this.originalDraft = '';
       this.noteTags = '';
@@ -576,7 +605,7 @@ export struct SiteDetail {
         Row().width(3).height(18).borderRadius(2).backgroundColor(T.accent)
         Text(title).fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
       }
-      Text(content).fontSize(F.body).lineHeight(28).fontColor(T.ink)
+      Text(content).fontSize(15).lineHeight(24).fontColor(T.ink)
         .copyOption(CopyOptions.LocalDevice)
     }.alignItems(HorizontalAlign.Start).width('100%').padding(20)
       .backgroundColor(T.surface).borderRadius(T.cardRadius).margin({ bottom: 12 })
@@ -587,7 +616,7 @@ export struct SiteDetail {
     Column({ space: 14 }) {
       Row() {
         Column({ space: 6 }) {
-          Text(this.site.name).fontSize(F.caption).fontColor(T.accent)
+          Text(this.site.name).fontSize(F.caption).fontColor(T.accent).id('note-associated-site')
           Text(this.aiDraft ? '整理 AI 草稿' : this.editingId ? '编辑拾遗手账' : '留一页，记住此刻')
             .fontSize(F.section).fontWeight(FontWeight.Bold).fontColor(T.ink)
         }.alignItems(HorizontalAlign.Start).layoutWeight(1)
@@ -604,12 +633,13 @@ export struct SiteDetail {
             Column({ space: 4 }) {
               Text('AI 辅助草稿 · 请确认或修改后保存').fontSize(F.small).fontWeight(FontWeight.Medium)
                 .fontColor(T.accent).width('100%').id('note-ai-draft-badge')
-              Text(`参考事实：${this.aiDraft.factIds.join(' · ')} · 资料 v${this.aiDraft.contentRevision}`)
-                .fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
+              // 展示本次冻结事实的中文标题；稳定事实 ID 继续留在元数据中，不能直接变成用户文案。
+              Text(`参考依据：${this.aiDraft.facts.map((fact: AiFactSnapshot) => fact.title).join(' · ')} · 资料 v${this.aiDraft.contentRevision}`)
+                .fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%').id('note-ai-draft-reference')
               Text(this.aiNotice).fontSize(F.caption).fontColor(T.muted).lineHeight(19).width('100%')
             }.width('100%').alignItems(HorizontalAlign.Start).padding(11).backgroundColor(T.accentSoft).borderRadius(10)
           } else if (this.editingAiAssist) {
-            Text(`这页曾参考 AI 辅助整理 · 依据 ${this.editingAiAssist.factIds.join(' · ')} · 资料 v${this.editingAiAssist.contentRevision}`)
+            Text(`这页曾参考 AI 辅助整理 · 依据 ${this.editingAiAssist.facts.map((fact: AiFactSnapshot) => fact.title).join(' · ')} · 资料 v${this.editingAiAssist.contentRevision}`)
               .fontSize(F.caption).fontColor(T.mintInk).lineHeight(19).width('100%').padding(10)
               .backgroundColor(T.mint).borderRadius(10).id('note-ai-assist-badge')
           }
@@ -671,6 +701,20 @@ export struct SiteDetail {
     NavDestination() {
       Scroll(this.detailScroller) {
         Column() {
+          if (this.savedJourneyNoteId && this.notes().some((note: ArchiveRecord) => note.id === this.savedJourneyNoteId)) {
+            Button({ type: ButtonType.Normal }) {
+              Row({ space: 10 }) {
+                SymbolGlyph($r('sys.symbol.bookmark')).fontSize(20).fontColor([T.yellowInk])
+                Column({ space: 3 }) {
+                  Text('这一页，已写入长卷').fontSize(F.small).fontWeight(FontWeight.Medium).fontColor(T.ink)
+                  Text('展开我的泥火长卷').fontSize(F.caption).fontColor(T.yellowInk)
+                }.alignItems(HorizontalAlign.Start).layoutWeight(1)
+                Text('›').fontSize(24).fontColor(T.yellowInk)
+              }.width('100%')
+            }.width('100%').constraintSize({ minHeight: 60 }).padding(14).backgroundColor(T.yellow).borderRadius(16)
+              .margin({ top: 8, bottom: 14 }).id('detail-journey-scroll').accessibilityText('展开我的泥火长卷')
+              .onClick(this.onOpenJourney)
+          }
           if (materialStudyForId(this.site.id) && !materialObservationForSite(this.site.id)) {
             MaterialStudyPanel({ study: materialStudyForId(this.site.id) || MATERIAL_STUDIES[0] })
           }
@@ -723,10 +767,10 @@ export struct SiteDetail {
           this.section('档案概览', this.site.overview)
           this.section('考古与遗存', this.site.archaeology)
           this.section('历史线索', this.site.history)
-          // 没有核实诗文时不制造一段“以后补充”的正文；旧档案有内容时仍正常展示。
-          if (this.hasPoetry()) {
-            this.section('诗文索引', this.site.poetry)
-          }
+          // 详情页要有“相关诗词”这一层：没有核实诗文时保留层级并说明缺口，
+          // 而不是整段隐藏。隐藏会被读成功能缺失；空态是诚实的资料状态，也方便后续补录。
+          this.section('诗文索引', this.hasPoetry() ? this.site.poetry :
+            '本档案暂未收录相关诗文；已收录考古与探访信息，不作补白。')
           this.section('探访信息', this.site.travel)
           Column({ space: 10 }) {
             Text(this.site.reviewStatus).fontSize(F.caption).fontColor(T.accent)

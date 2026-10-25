@@ -29,6 +29,17 @@ const configuration = (patch = {}) => ({
   provider: 'deepseek', model: 'deepseek-test', baseUrl: 'https://api.example.invalid/v1', apiKey: 'sk-test-key-12345678',
   timeoutMs: 5000, configured: true, ...patch
 });
+const twinDraftRequest = () => request({
+  siteId: 'zz-dahecun', hotspotId: 'opening', purpose: 'draft_memory',
+  question: '把腹部通口的观察整理成手账', userObservation: '我沿浅绿色通道看到了两侧内腔相通的位置。'
+});
+const twinModelReply = (patch = {}) => modelReply({
+  answer: '腹部接合处有椭圆形通口，使两壶内部相通。', factIds: ['dahecun-opening'],
+  actions: [{ type: 'focus_hotspot', hotspotId: 'opening', factIds: ['dahecun-opening'], label: '模型自带标签' }],
+  draft: { body: '我沿浅绿色通道观察两侧内腔，腹部接合处的椭圆形通口让两壶内部相通。',
+    tags: ['双连壶', '腹部通口'], factIds: ['dahecun-opening'] },
+  ...patch
+});
 
 test('AI configuration reports availability without exposing the key', () => {
   const loaded = loadAiConfiguration({ env: { DEEPSEEK_API_KEY: 'sk-test-key-12345678', YUNHEJI_AI_MODEL: 'deepseek-test' }, configPath: null });
@@ -105,6 +116,45 @@ test('draft reply is normalized and keeps only validated fact references', async
   assert.ok(reply.draft);
   assert.equal(reply.draft.body, '正面四组，折角四组，合起来八组。');
   assert.deepEqual(reply.draft.tags, ['方鼎', '兽面纹']);
+});
+
+test('twin vessel opening draft keeps its facts, tags and own hotspot label', async () => {
+  let captured;
+  const service = createAiObservationService({
+    configuration: configuration(), logger: { info: () => {} },
+    fetchImpl: async (_url, init) => { captured = JSON.parse(init.body); return response(twinModelReply()); }
+  });
+  const reply = await service.run(twinDraftRequest(), { account_id: 'a'.repeat(32) });
+  assert.equal(reply.siteId, 'zz-dahecun');
+  assert.equal(reply.requestId, twinDraftRequest().requestId);
+  assert.equal(reply.contentRevision, aiScopeFor('zz-dahecun').contentRevision);
+  assert.deepEqual(reply.factIds, ['dahecun-opening']);
+  assert.deepEqual(reply.actions, [{
+    type: 'focus_hotspot', hotspotId: 'opening', factIds: ['dahecun-opening'], label: '看腹部通口'
+  }]);
+  assert.deepEqual(reply.draft, twinModelReply().draft);
+  assert.ok(captured.messages[0].content.includes('dahecun-opening'));
+  assert.ok(!captured.messages[0].content.includes('duling-eight'));
+  assert.ok(captured.messages.at(-1).content.includes(twinDraftRequest().userObservation));
+});
+
+test('twin vessel adapter rejects Ding facts in every reply reference', async () => {
+  // 服务端须拒绝整条跨对象回复，不能删掉错引后把草稿显示为可采纳。
+  const foreignReferences = [
+    { factIds: ['dahecun-opening', 'duling-eight'] },
+    { actions: [{ type: 'focus_hotspot', hotspotId: 'opening', factIds: ['duling-eight'] }] },
+    { actions: [{ type: 'show_evidence', factIds: ['duling-eight'] }] },
+    { draft: { ...twinModelReply().draft, factIds: ['dahecun-opening', 'duling-eight'] } }
+  ];
+  for (const patch of foreignReferences) {
+    const service = createAiObservationService({
+      configuration: configuration(), logger: { info: () => {} },
+      fetchImpl: async () => response(twinModelReply(patch))
+    });
+    await assert.rejects(() => service.run(twinDraftRequest(), {}),
+      error => error.message === 'AI_INVALID_REPLY' && error.status === 502,
+      `双连壶拒绝跨对象引用：${JSON.stringify(patch)}`);
+  }
 });
 
 test('invalid model content, facts or actions fail the whole reply', async () => {

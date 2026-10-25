@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { emptySnapshot, mergeRecords, parseSnapshot } from '../entry/src/main/ets/domain/ArchiveDomain.ts';
+import { domainModuleUrl } from './load-domain-module.mjs';
+const { emptySnapshot, mergeRecords, parseSnapshot } = await import(domainModuleUrl('ArchiveDomain'));
 import { HERITAGE_SITES } from '../entry/src/main/ets/data/HeritageCatalog.ts';
 import {
   CULTURAL_CITY_ORDER, CULTURAL_SITE_METADATA, EXPLORATION_SECTIONS, getCulturalSiteMetadata
@@ -13,7 +14,8 @@ import {
 const originalIds = [
   'smx-yangshao', 'ly-erlitou', 'zz-shang', 'kf-iron-pagoda', 'py-qicheng',
   'smx-miaodigou', 'smx-guoguo', 'ly-yanshi-shang', 'ly-hanwei', 'ly-longmen',
-  'zz-dahecun', 'zz-zhenghan', 'kf-fanta', 'kf-zhouqiao', 'py-xishuipo'
+  'zz-dahecun', 'zz-zhenghan', 'kf-fanta', 'kf-zhouqiao', 'py-xishuipo',
+  'smx-xipo', 'kf-city-wall', 'py-cangjie', 'py-danguai', 'zz-duling-fangding'
 ];
 
 const record = (patch = {}) => ({
@@ -21,13 +23,13 @@ const record = (patch = {}) => ({
   updatedAt: 1, deviceId: 'device-test', deleted: false, ...patch
 });
 
-test('catalog expands to four entries per city while preserving all original ids and order', () => {
+test('catalog adds sourced Longshan and kiln entries while preserving all original ids and order', () => {
   const ids = HERITAGE_SITES.map((site) => site.id);
   assert.deepEqual(ids.slice(0, originalIds.length), originalIds);
-  assert.equal(ids.length, 20);
-  assert.equal(new Set(ids).size, 20);
+  assert.equal(ids.length, 22);
+  assert.equal(new Set(ids).size, 22);
   for (const city of CULTURAL_CITY_ORDER) {
-    assert.equal(HERITAGE_SITES.filter((site) => site.city === city).length, 4, `${city} should have four entries`);
+    assert.equal(HERITAGE_SITES.filter((site) => site.city === city).length, city === '郑州' ? 6 : 4, `${city} coverage`);
   }
   assert.ok(HERITAGE_SITES.every((site) => site.reviewStatus === '初稿待校审'));
   assert.ok(HERITAGE_SITES.every((site) => typeof site.source.url === 'string' && site.source.url.startsWith('http')));

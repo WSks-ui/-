@@ -60,12 +60,13 @@ export default function archiveImmersiveTest() {
             ? hdsMaterial.MaterialType.IMMERSIVE : hdsMaterial.MaterialType.ADAPTIVE);
           await checkBars(session);
           await capture(session, 'home');
-          await session.inScroll('explore-scroll', ON.id('site-row-smx-yangshao').within(ON.id('explore-site-grid')));
+          // 首页完整目录已交由档案页，滚动材质核对仍落在首页实际保留的城市索引。
+          await session.inScroll('explore-scroll', ON.id('city-0'));
           await capture(session, 'scrolled');
           // Component.scrollToBottom 的默认手势会从浮动 Dock 内开始，可能误切页。
           // 使用已避开覆盖区的真实滚动定位，并断言当前页尾；截图文件存在不等于场景正确。
-          const footer = await session.inScroll('explore-scroll', ON.text('— 五城二十处 · 沿河而读 —'));
-          expect(await footer.getText()).assertEqual('— 五城二十处 · 沿河而读 —');
+          const footer = await session.inScroll('explore-scroll', ON.text('— 五城文化 · 沿河而读 —'));
+          expect(await footer.getText()).assertEqual('— 五城文化 · 沿河而读 —');
           await session.waitId('explore-scroll');
           await capture(session, 'scroll-bottom');
           await (await session.waitId('top-collection')).click();
@@ -112,7 +113,7 @@ export default function archiveImmersiveTest() {
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
           await checkBars(session);
           await capture(session, 'dark');
-          await session.inScroll('explore-scroll', ON.id('site-row-smx-yangshao').within(ON.id('explore-site-grid')));
+          await session.inScroll('explore-scroll', ON.id('city-0'));
           await capture(session, 'scrolled-dark');
           app.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
           app.setFontSizeScale(1.5);

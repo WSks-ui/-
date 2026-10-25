@@ -1,6 +1,6 @@
 import { HeritageSite } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
-import { siteIllustration } from './SiteRow';
+import { SiteRow, siteIllustration } from './SiteRow';
 import { ArchiveTheme as T, ArchiveType as F } from './ArchiveTheme';
 
 // 双列目录与收藏共用同一张卡片。图形只是原创主题示意，保留可见标识；
@@ -63,25 +63,15 @@ export struct SiteGrid {
   onOpen: (site: HeritageSite) => void = () => {};
 
   build() {
-    Column() {
-      // 使用可观察的组件属性承接筛选结果。@Builder 的数组值会被 ForEach 闭包捕获，
-      // 复用首条 ID 时可能留下旧配对；行 key 同时包含两个条目，右列变化必须重建。
-      // 外层 Scroll 内用自然高度行，避免嵌套滚动和写死卡片总高度。
-      ForEach(this.sites.filter((_site: HeritageSite, index: number) => index % 2 === 0), (site: HeritageSite, pair: number) => {
-        Row({ space: 12 }) {
-          Column() {
-            SiteCard({ site, collected: this.collectedIds.includes(site.id),
-              visited: this.visitedIds.includes(site.id), onOpen: this.onOpen })
-          }.layoutWeight(1)
-          Column() {
-            if (this.sites[pair * 2 + 1]) {
-              SiteCard({ site: this.sites[pair * 2 + 1],
-                collected: this.collectedIds.includes(this.sites[pair * 2 + 1].id),
-                visited: this.visitedIds.includes(this.sites[pair * 2 + 1].id), onOpen: this.onOpen })
-            }
-          }.layoutWeight(1)
-        }.width('100%').alignItems(VerticalAlign.Top).margin({ bottom: 12 })
-      }, (site: HeritageSite, pair: number) => `${site.id}:${this.sites[pair * 2 + 1]?.id || 'empty'}`)
+    Column({ space: 8 }) {
+      // 目录与收藏统一走单列列表：双列海报卡在 1256px 手机上每张只有约 200dp 宽，
+      // 标题、摘要、年代挤成三行居中块，读起来像网页长图册，不像手机列表。
+      // 这里仍保留 archive-library-grid / archive-site-grid 容器 id 与
+      // site-row-<id> 行 id，设备用例的定位路径不变。
+      ForEach(this.sites, (site: HeritageSite) => {
+        SiteRow({ site: site, collected: this.collectedIds.includes(site.id),
+          visited: this.visitedIds.includes(site.id), onOpen: this.onOpen })
+      }, (site: HeritageSite) => `${site.id}:${this.collectedIds.includes(site.id)}:${this.visitedIds.includes(site.id)}`)
     }.width('100%').id(this.gridId)
   }
 }

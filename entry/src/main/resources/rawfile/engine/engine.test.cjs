@@ -12,10 +12,10 @@ const presets=['yangshao_pottery','miaodigou_rose_basin','guoguo_jade_sword','xi
   'dahecun_star_bowl','gongyi_blue_white','kaifeng_pagoda','zhouqiao_stratum','ruyao_celadon','bianjing_scroll',
   'qicheng_altar','puyang_dragon','yellow_river_gate','cangjie_tablet'];
 
-test('任务书与当前20条元数据预设都有对应有限网格，非陶器条目不会落到陶罐',()=>{
+test('任务书与当前22条元数据预设都有对应有限网格，非陶器条目不会落到陶罐',()=>{
   const metadataText=fs.readFileSync(path.resolve(__dirname,'../../../ets/domain/CulturalContent.ts'),'utf8');
   const metadata=[...metadataText.matchAll(/proceduralPreset:\s*['"]([^'"]+)['"]/g)].map(match=>match[1]);
-  assert.equal(metadata.length,20);
+  assert.equal(metadata.length,22);
   for(const proceduralPreset of new Set([...presets,...metadata])){
     const scene=Core.makeScene('relic_inspector',{proceduralPreset});
     assert.equal(scene.hotspots.length,3);assert.ok(scene.meshes.length>0);
@@ -42,6 +42,15 @@ test('软件投影与 GPU MVP 在旋转、俯视、推拉后的坐标一致',()=
     }
   }
   assert.ok(Core.rotate([0,1,0],{yaw:0,pitch:.6})[2]<0,'正俯角应看到地面上表面');
+});
+
+test('通用资料预设显式绘制资料卡，不落到城墙或陶器分支',()=>{
+  const scene=Core.makeScene('relic_inspector',{proceduralPreset:'generic_site_study'});
+  assert.equal(scene.payload.proceduralPreset,'generic_site_study');
+  assert.equal(scene.meshes.filter(mesh=>/^study-.*-card$/.test(mesh.name)).length,3);
+  assert.deepEqual(scene.hotspots.map(hotspot=>hotspot.id),['form','pattern','story']);
+  assert.deepEqual(scene.hotspots.map(hotspot=>hotspot.label),['概览','遗存','线索']);
+  assert.ok(scene.meshes.every(mesh=>mesh.positions.every(Number.isFinite)));
 });
 
 test('五城锚点有序，主题切片保持传入 ids，图谱只保留实际有效关联',()=>{

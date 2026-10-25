@@ -64,7 +64,7 @@ export default function archiveDeviceTest() {
       const session = new ArchiveUiSession('search');
       await session.run(async () => {
         await session.search('不存在的文化条目', 0);
-        await session.inScroll('explore-scroll', ON.text('没有符合条件的档案'));
+        await session.inScroll('device-scroll', ON.text('没有符合条件的档案'));
         await session.openYangshao();
         await (await session.waitId('write-note')).click();
         await (await session.waitId('save-note')).click();
@@ -73,7 +73,7 @@ export default function archiveDeviceTest() {
         await session.editorClosed();
         await session.driver.pressBack();
         // 新目录保留离开前的滚动位置；搜索框可能在屏幕上方，先确认目录返回再滚到输入框。
-        await session.inScroll('explore-scroll', ON.id('site-search'));
+        await session.inScroll('device-scroll', ON.id('library-search'));
       });
     });
 

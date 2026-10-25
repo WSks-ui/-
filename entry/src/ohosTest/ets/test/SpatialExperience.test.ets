@@ -17,7 +17,7 @@ async function capture(session: ArchiveUiSession, name: string): Promise<void> {
 async function openSite(session: ArchiveUiSession, id: string): Promise<void> {
   const site = HERITAGE_SITES.find(item => item.id === id)!;
   await session.search(site.name, 1);
-  await (await session.inScroll('explore-scroll', ON.id(`site-row-${id}`).within(ON.id('explore-site-grid')))).click();
+  await (await session.inScroll('device-scroll', ON.id(`site-row-${id}`).within(ON.id('archive-library-grid')))).click();
   await session.waitId('site-object-viewport');
   await session.waitText('按档案类型生成的几何示意，非文物或遗址复原。');
 }
@@ -46,7 +46,7 @@ async function checkObjects(ids: string[], scenario: string): Promise<void> {
       await capture(session, id);
       console.info(`NATIVE_OBJECT_VERIFIED:${id}`);
       await session.driver.pressBack();
-      await session.waitId('explore-scroll');
+      await session.waitId('device-scroll');
     }
   });
 }

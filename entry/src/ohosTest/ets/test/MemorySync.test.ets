@@ -401,9 +401,11 @@ async function publishOnA(): Promise<void> {
     // A 端的交换成功时间只读取真实账号面板：只有服务端响应通过且本机落盘后才出现。
     await (await session.waitId('profile-entry')).click();
     await session.waitId('profile-scroll');
-    const syncStatus = await session.waitText('上次同步已完成');
-    expect(await syncStatus.getText()).assertEqual('上次同步已完成');
-    console.info('T11_A_SYNC:上次同步已完成');
+    // 新版账号卡把旧长文案收为“已同步”。按固定状态 ID 与真实完成文案一起等待，
+    // 仍要求远端交换完成，不能只看到账号面板就当作同步通过。
+    const syncStatus = await session.wait(ON.id('account-sync-state').text('已同步'), 'A 端真实同步完成');
+    expect(await syncStatus.getText()).assertEqual('已同步');
+    console.info('T11_A_SYNC:已同步');
     await capture(session, 'a-sync-status');
     console.info(`T11_A_PHASE_MS:${Date.now() - started}`);
   }, true);
@@ -480,9 +482,9 @@ async function receiveOnB(): Promise<void> {
     await session.waitId('explore-scroll');
     await (await session.waitId('profile-entry')).click();
     await session.waitId('profile-scroll');
-    const syncStatus = await session.waitText('上次同步已完成');
-    expect(await syncStatus.getText()).assertEqual('上次同步已完成');
-    console.info('T11_B_SYNC:上次同步已完成');
+    const syncStatus = await session.wait(ON.id('account-sync-state').text('已同步'), 'B 端真实同步完成');
+    expect(await syncStatus.getText()).assertEqual('已同步');
+    console.info('T11_B_SYNC:已同步');
     await capture(session, 'b-sync-status');
     const finalSnapshot = await readAccount(session, accountId);
     expect(finalSnapshot.records.some(record => record.id === note.id && record.body === expected.body)).assertTrue();
