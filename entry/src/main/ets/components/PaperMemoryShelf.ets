@@ -4,6 +4,7 @@ import { culturalEntryForId } from '../data/CulturalContentIndex';
 import { PAPER_CITIES } from '../data/PaperJourneyCatalog';
 import { PaperJourneyScene } from './PaperJourneyScene';
 import { PaperJourneyTheme as P } from './PaperJourneyTheme';
+import { MarketMemoryPreview } from './MarketMemoryPage';
 
 @Component
 export struct PaperMemoryShelf {
@@ -26,6 +27,7 @@ export struct PaperMemoryShelf {
   @State private tag: string = '全部标签';
   @State private sort: string = '最近';
   @State private aiOnly: boolean = false;
+  @State private memoryType: string = '全部记忆';
   @State private collectionTag: string = '全部分类';
   @State private filtersOpen: boolean = false;
   @State private selectedPaperId: string = '';
@@ -53,10 +55,11 @@ export struct PaperMemoryShelf {
 
   private site(note: ArchiveRecord): HeritageSite | undefined { return culturalEntryForId(note.siteId); }
   private title(note: ArchiveRecord): string {
-    return note.paperContext?.title || note.roamingContext?.title || this.site(note)?.name || '这一页文字记忆';
+    return note.marketContext?.title || note.paperContext?.title || note.roamingContext?.title || this.site(note)?.name || '这一页文字记忆';
   }
 
   private city(note: ArchiveRecord): string {
+    if (note.marketContext) return '开封';
     if (note.paperContext) return PAPER_CITIES.find(city => city.id === note.paperContext?.cityId)?.city || '纸上作品';
     return note.roamingContext?.city || this.site(note)?.city || '个人记录';
   }
@@ -71,15 +74,20 @@ export struct PaperMemoryShelf {
     const words = this.keyword.trim().toLowerCase().split(/\s+/).filter(value => !!value);
     const notes = activeRecords(this.records, 'note').filter((note: ArchiveRecord): boolean =>
       (!this.aiOnly || note.aiAssist !== undefined) && (this.tag === '全部标签' || note.tags.includes(this.tag)) &&
+      (this.memoryType === '全部记忆' || (this.memoryType === '开封三夜' && note.marketContext !== undefined) ||
+        (this.memoryType === '纸景作品' && note.paperContext !== undefined) ||
+        (this.memoryType === '文字记忆' && note.marketContext === undefined && note.paperContext === undefined)) &&
       words.every(word => (`${this.title(note)} ${this.city(note)} ${note.body} ${note.tags.join(' ')} ` +
-        `${note.quotedPoemOrFact || ''} ${note.aiAssist?.question || ''}`).toLowerCase().includes(word)));
+        `${note.quotedPoemOrFact || ''} ${note.aiAssist?.question || ''} ${note.marketContext?.excerpt || ''} ` +
+        `${note.marketContext?.sources.map(source => `${source.title} ${source.quote}`).join(' ') || ''}`).toLowerCase().includes(word)));
     // 纸景优先展示是排版选择；最近/最早顺序只按实际保存时间，不改任何记录或时间戳。
     if (this.sort === '最早') notes.sort((a, b) => a.updatedAt - b.updatedAt || (a.id < b.id ? -1 : 1));
     return notes;
   }
 
   private paperNotes(): ArchiveRecord[] { return this.notes().filter(note => note.paperContext !== undefined); }
-  private textNotes(): ArchiveRecord[] { return this.notes().filter(note => note.paperContext === undefined); }
+  private marketNotes(): ArchiveRecord[] { return this.notes().filter(note => note.marketContext !== undefined); }
+  private textNotes(): ArchiveRecord[] { return this.notes().filter(note => note.paperContext === undefined && note.marketContext === undefined); }
   private selectedPaper(): ArchiveRecord | undefined {
     const papers = this.paperNotes();
     return papers.find(note => note.id === this.selectedPaperId) || papers[0];
@@ -101,8 +109,8 @@ export struct PaperMemoryShelf {
     return entry ? `${entry.city} · ${entry.type}` : `已保留原收藏 · ${record.siteId}`;
   }
 
-  private hasFilters(): boolean { return !!this.keyword || this.tag !== '全部标签' || this.sort !== '最近' || this.aiOnly; }
-  private resetFilters(): void { this.keyword = ''; this.tag = '全部标签'; this.sort = '最近'; this.aiOnly = false; }
+  private hasFilters(): boolean { return !!this.keyword || this.tag !== '全部标签' || this.sort !== '最近' || this.aiOnly || this.memoryType !== '全部记忆'; }
+  private resetFilters(): void { this.keyword = ''; this.tag = '全部标签'; this.sort = '最近'; this.aiOnly = false; this.memoryType = '全部记忆'; }
 
   private confirmDelete(note: ArchiveRecord): void {
     // 回调携带确认时那一篇的真实身份，不能用精选作品的 ID 代替列表里点中的旧手账。
@@ -121,7 +129,7 @@ export struct PaperMemoryShelf {
         Button('写一页  ＋', { type: ButtonType.Normal }).height(34).fontSize(12).fontColor(P.paper)
           .backgroundColor(Color.Transparent).padding(0).onClick(() => this.onWrite()).id('memory-write')
       }.width('100%')
-      Text('纸上的光，和当时想说的话。').fontSize(14).fontColor(P.paperSoft)
+      Text('一夜的灯火，和当时想说的话。').fontSize(14).fontColor(P.paperSoft)
     }.width('100%').alignItems(HorizontalAlign.Start).margin({ bottom: 23 })
     Row({ space: 22 }) {
       Button(`手账 ${activeRecords(this.records, 'note').length}`, { type: ButtonType.Normal })
@@ -141,6 +149,32 @@ export struct PaperMemoryShelf {
           .onClick(() => { this.filtersOpen = true; }).id('memory-filters')
       }
     }.width('100%').border({ width: { bottom: 0.6 }, color: P.line }).margin({ bottom: 20 })
+  }
+
+  @Builder
+  private marketNote(note: ArchiveRecord) {
+    if (note.marketContext) {
+      Column() {
+        MarketMemoryPreview({ context: note.marketContext }).width('100%').height(this.contentWidth >= 760 ? 250 : 200)
+          .onClick(() => this.onRead(note)).id(`market-memory-preview-${note.id}`)
+        Column({ space: 10 }) {
+          Row({ space: 9 }) {
+            Text('开封 / 三夜记忆').fontSize(11).fontColor(P.copper).layoutWeight(1)
+            Text(this.date(note.updatedAt)).fontSize(10).fontColor(P.ink).opacity(0.6)
+          }.width('100%')
+          Text(note.marketContext.title).fontSize(22).fontWeight(FontWeight.Medium).fontColor(P.ink).width('100%')
+          Text(`接待 ${note.marketContext.summary.served} / ${note.marketContext.summary.arrivals} 客 · 余 ${note.marketContext.summary.cash} 钱`)
+            .fontSize(11).fontColor(P.copper).width('100%')
+          Text(note.body || note.marketContext.excerpt).fontSize(14).lineHeight(23).fontColor(P.ink).width('100%').maxLines(3)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+          Row({ space: 12 }) {
+            Button('翻开这一夜  →', { type: ButtonType.Normal }).height(35).fontSize(12).fontColor(P.ink).padding(0)
+              .backgroundColor(Color.Transparent).onClick(() => this.onRead(note)).layoutWeight(1).id(`memory-open-${note.id}`)
+            this.noteActions(note, false)
+          }.width('100%')
+        }.width('100%').padding({ left: 19, right: 19, top: 16, bottom: 16 }).alignItems(HorizontalAlign.Start)
+      }.width('100%').backgroundColor(P.paper).borderRadius(6).clip(true).margin({ bottom: 23 }).id(`market-memory-feature-${note.id}`)
+    }
   }
 
   @Builder
@@ -239,6 +273,7 @@ export struct PaperMemoryShelf {
 
   @Builder
   private notesBody() {
+    ForEach(this.marketNotes(), (note: ArchiveRecord) => { this.marketNote(note) }, (note: ArchiveRecord) => note.id)
     if (this.selectedPaper()) { this.paperFeature(this.selectedPaper()!) }
     this.paperList()
     if (this.textNotes().length > 0) {
@@ -300,10 +335,16 @@ export struct PaperMemoryShelf {
       Search({ value: this.keyword, controller: this.searchController, placeholder: '正文、标题、标签或保存时的问题' })
         .height(45).fontColor(P.ink).placeholderColor('#7A847D').backgroundColor('#E6DDCA').borderRadius(5)
         .onChange((value: string) => { this.keyword = value; }).id('memory-search')
+      Scroll() {
+      Column({ space: 17 }) {
       Text('标签').fontSize(12).fontColor(P.ink).width('100%')
       Select(this.tags().map((value: string): SelectOption => ({ value }))).value(this.tag).height(44).width('100%')
         .font({ size: 13 }).fontColor(P.ink).backgroundColor('#E6DDCA')
         .onSelect((_index: number, value: string) => { this.tag = value; }).id('memory-tag')
+      Text('记忆种类').fontSize(12).fontColor(P.ink).width('100%')
+      Select(['全部记忆', '开封三夜', '纸景作品', '文字记忆'].map((value: string): SelectOption => ({ value })))
+        .value(this.memoryType).height(42).width('100%').font({ size: 13 }).fontColor(P.ink).backgroundColor('#E6DDCA')
+        .onSelect((_index: number, value: string) => { this.memoryType = value; }).id('memory-type')
       Text('顺序').fontSize(12).fontColor(P.ink).width('100%')
       Select(['最近', '最早'].map((value: string): SelectOption => ({ value }))).value(this.sort).height(44).width('100%')
         .font({ size: 13 }).fontColor(P.ink).backgroundColor('#E6DDCA')
@@ -316,7 +357,8 @@ export struct PaperMemoryShelf {
         Toggle({ type: ToggleType.Switch, isOn: this.aiOnly }).selectedColor(P.moss)
           .onChange((value: boolean) => { this.aiOnly = value; }).id('memory-ai-filter')
       }.width('100%').padding({ top: 8, bottom: 8 })
-      Blank()
+      }.width('100%').alignItems(HorizontalAlign.Start)
+      }.width('100%').layoutWeight(1).scrollBar(BarState.Off)
       Row({ space: 12 }) {
         Button('重置', { type: ButtonType.Normal }).height(46).width(80).fontSize(13).fontColor(P.ink)
           .backgroundColor('#E6DDCA').borderRadius(5).onClick(() => this.resetFilters())

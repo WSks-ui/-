@@ -541,6 +541,8 @@ export struct SiteDetail {
       // 否则从档案页补写一段文字就会抹掉整份冻结作品。
       record.paperContext = existing.paperContext;
       record.roamingContext = existing.roamingContext;
+      // 原档案的旧编辑入口也可补写三夜记忆；冻结布局和出处不属于此表单的编辑范围。
+      record.marketContext = existing.marketContext;
     }
     next.records = putRecord(next.records, record);
     if (await this.onCommit(next)) {

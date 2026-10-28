@@ -100,8 +100,9 @@ export struct RoamingSystemPage {
   chapterCard() {
     Column({ space: 12 }) {
       this.previewFace(this.chapterPreview, CHAPTER_PREVIEW_ID)
-      Text('继续这段漫游').fontSize(17).fontWeight(FontWeight.Medium).fontColor('#243F36').width('100%')
-      Text('从桌面回到已保存的城市篇章。线索进度与你亲手完成的探索一致。')
+      Text(this.chapterPreview.cardLabel).fontSize(17).fontWeight(FontWeight.Medium).fontColor('#243F36').width('100%')
+      Text(this.chapterPreview.chapterId.startsWith('night-') ? '回到已保存的夜次和批次。桌面卡片不会替你推进生意。' :
+        '从桌面回到已保存的城市篇章。线索进度与你亲手完成的探索一致。')
         .fontSize(13).fontColor('#657568').lineHeight(20).width('100%')
       Button('添加到桌面').fontSize(14).fontWeight(FontWeight.Medium).fontColor('#FFFFFF')
         .backgroundColor('#2E6F5D').width('100%').height(43).borderRadius(14)

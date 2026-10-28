@@ -1,5 +1,6 @@
 import { activeRecords, AiFactSnapshot, ArchiveRecord, ArchiveSnapshot, copySnapshot, nextTimestamp } from '../domain/ArchiveDomain';
 import { HERITAGE_SITES } from '../data/HeritageCatalog';
+import { culturalEntryForId } from '../data/CulturalContentIndex';
 import { isAiObservationSite } from '../domain/AiObservation';
 import { aiKnowledgeScope } from '../domain/AiObservationKnowledge';
 import { HarmonyEffects } from '../platform/HarmonyEffects';
@@ -42,7 +43,7 @@ export struct MemoryDetailPage {
   }
 
   private title(): string {
-    return HERITAGE_SITES.find(item => item.id === this.note()?.siteId)?.name || '我的手账';
+    return culturalEntryForId(this.note()?.siteId || '')?.name || '我的手账';
   }
 
   private sourceLabel(id: string): string {
@@ -133,10 +134,10 @@ export struct MemoryDetailPage {
       }
       Row({ space: 12 }) {
         Button('编辑手账', { type: ButtonType.Normal }).id('memory-detail-edit').height(42).layoutWeight(1)
-          .enabled(!this.saving && HERITAGE_SITES.some(item => item.id === note.siteId))
+          .enabled(!this.saving && culturalEntryForId(note.siteId) !== undefined)
           .fontColor(T.accent).backgroundColor(T.accentSoft).onClick(() => this.onEdit(note))
         Button('原文化档案', { type: ButtonType.Normal }).id('memory-detail-archive').height(42).layoutWeight(1)
-          .enabled(HERITAGE_SITES.some(item => item.id === note.siteId))
+          .enabled(culturalEntryForId(note.siteId) !== undefined)
           .fontColor(T.ink).backgroundColor(T.soft).onClick(() => this.onArchive(note.siteId))
         Button({ type: ButtonType.Normal }) {
           SymbolGlyph($r('sys.symbol.trash')).fontSize(19).fontColor([T.muted])

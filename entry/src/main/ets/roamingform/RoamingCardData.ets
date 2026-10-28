@@ -19,6 +19,8 @@ export interface RoamingCardState {
   excerpt: string;
   completedClues: number;
   totalClues: number;
+  // 经营卡片仍使用普通2×4卡路由，只显示已落盘的段/批；旧漫游缓存缺省时保持原文案。
+  marketCheckpoint?: string;
   noteId?: string;
   // 仅 Debug 独立设备验收可携带；Release 与非白名单值一律不进入卡片路由。
   testStoreName?: string;
@@ -90,10 +92,10 @@ function bindingForState(state: RoamingCardState, name: string): RoamingCardPrev
     Number.isInteger(state.completedClues) && Number.isInteger(state.totalClues) && state.totalClues > 0 &&
     state.completedClues >= 0 && state.completedClues <= state.totalClues;
   return {
-    cardLabel: memory ? '最近一页' : '继续这段漫游',
+    cardLabel: memory ? '最近一页' : state.chapterId.startsWith('night-') ? '继续经营' : '继续这段漫游',
     title: state.title.trim(), excerpt: state.excerpt.trim(), chapterId: state.chapterId,
     noteId: state.noteId ?? '', routeAction: memory ? 'memory' : 'chapter',
-    progressLabel: progressValid ? state.chapterId.startsWith('paper-') ?
+    progressLabel: progressValid ? state.chapterId.startsWith('night-') ? state.marketCheckpoint || '回到已保存的街市' : state.chapterId.startsWith('paper-') ?
       state.completedClues > 0 ? '这张纸已亮起，可以继续创作' : '剪口与纸色会随这页保留' :
       `${state.completedClues}/${state.totalClues} 条线索已发现` : '',
     progressValue: progressValid ? state.completedClues / state.totalClues * 100 : 0,

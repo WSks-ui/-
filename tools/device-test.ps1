@@ -7,6 +7,7 @@
     [ValidatePattern('^yunheji_test_ui_restart_[a-z0-9_]{1,60}$')][string]$RestartStore = '',
     [ValidatePattern('^yunheji_test_ui_[0-9]+_maximum$')][string]$MaximumStore = '',
     [ValidatePattern('^yunheji_test_ui_(?:journey_[a-z0-9_]{1,60}|[0-9]+_journey_scroll_main)$')][string]$JourneyStore = '',
+    [ValidatePattern('^yunheji_test_ui_nights_[a-z0-9_]{1,60}$')][string]$MarketNightsStore = '',
     [switch]$SkipInstall
 )
 
@@ -91,6 +92,7 @@ if ($TestClass) { $testCommand += " -s class $TestClass" }
 if ($RestartStore) { $testCommand += " -s archiveRestartStore $RestartStore" }
 if ($MaximumStore) { $testCommand += " -s archiveMaximumStore $MaximumStore" }
 if ($JourneyStore) { $testCommand += " -s archiveJourneyStore $JourneyStore" }
+if ($MarketNightsStore) { $testCommand += " -s archiveMarketNightsStore $MarketNightsStore" }
 $reportLines = [System.Collections.Generic.List[string]]::new()
 & $hdcTool -t $TargetId shell $testCommand 2>&1 | ForEach-Object {
     $reportLines.Add($_.ToString())

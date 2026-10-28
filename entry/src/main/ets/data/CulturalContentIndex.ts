@@ -2,6 +2,7 @@ import type { HeritageSite } from '../domain/ArchiveDomain';
 import type { RoamChapter, RoamClue } from '../domain/Roaming';
 import { HERITAGE_SITES } from './HeritageCatalog';
 import { ROAM_CHAPTERS, ROAM_SOURCES } from './RoamingCatalog';
+import { MARKET_CULTURE_ENTRIES } from './MarketCultureCatalog';
 
 export const ROAM_LIBRARY_TYPES: string[] = ['全部类型', '考古与空间', '诗文与生活', '非遗技艺', '地方记忆'];
 // 资料年代直接取目录的完整标注，不把北宋记述和当代传承合并成同一个历史事实。
@@ -26,6 +27,8 @@ export function roamingChapterForId(id: string): RoamChapter | undefined {
 export function culturalEntryForId(id: string): HeritageSite | undefined {
   const heritage = HERITAGE_SITES.find(site => site.id === id);
   if (heritage) return heritage;
+  const market = MARKET_CULTURE_ENTRIES.find((entry: HeritageSite): boolean => entry.id === id);
+  if (market) return market;
   const chapter = roamingChapterForId(id);
   if (!chapter) return undefined;
   const clue: RoamClue | undefined = chapter.clues.find(item => item.id === id);

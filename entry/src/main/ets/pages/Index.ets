@@ -38,6 +38,16 @@ import { RoamingHome } from '../components/RoamingHome';
 import { PaperJourneyHome } from '../components/PaperJourneyHome';
 import { RiverMarketHome } from '../components/RiverMarketHome';
 import { RiverMarketPage } from '../components/RiverMarketPage';
+import { MarketNightsHome } from '../components/MarketNightsHome';
+import { MarketNightPage } from '../components/MarketNightPage';
+import { MarketCulturePage } from '../components/MarketCulturePage';
+import { MarketMemoryPage } from '../components/MarketMemoryPage';
+import { decodeExplorationProgress } from '../domain/ExplorationProgress';
+import { RiverMarketV2, MarketNightId, NIGHT_CONFIGS, copyMarketNight } from '../domain/RiverMarketV2';
+import { marketNightFromRecords, marketNightIsDeleted, marketNightIsUnreadable, marketNightRecord,
+  marketNightUnlocked } from '../domain/RiverMarketV2Records';
+import { MarketMemoryContext, copyMarketMemory } from '../domain/MarketMemory';
+import { marketCultureForId, cultureIdForNight } from '../data/MarketCultureCatalog';
 import { copyRiverMarket, RiverMarketState } from '../domain/RiverMarket';
 import { RIVER_MARKET_RECORD_ID, riverMarketFromRecords, riverMarketIsDeleted, riverMarketIsUnreadable,
   riverMarketRecord } from '../domain/RiverMarketRecords';
@@ -75,6 +85,8 @@ interface MemoryRoute { noteId: string; }
 interface RoamingRoute { chapterId: string; clueId?: string; }
 interface DigRoute { chapterId: string; }
 interface PaperRoute { cityId: string; }
+interface MarketNightRoute { nightId: string; }
+interface MarketCultureRoute { contentId: string; marketState?: RiverMarketV2; }
 interface RoamingNoteRoute { noteId: string; edit?: boolean; }
 interface RoamingPosition { version: number; chapterId: string; clueId: string; }
 
@@ -144,6 +156,7 @@ struct Index {
   private cardRefreshQueue: Promise<void> = Promise.resolve();
   private paperWriteQueue: Promise<void> = Promise.resolve();
   private marketWriteQueue: Promise<void> = Promise.resolve();
+  private marketNightsWriteQueue: Promise<void> = Promise.resolve();
 
   aboutToAppear(): void {
     // 首页没有详情时使用完整画幅；打开篇章后才保留左侧目录。
@@ -194,6 +207,11 @@ struct Index {
           record.id.startsWith('progress:kaifeng-dig:') ||
           record.id.startsWith('progress:paper-journey:') || record.id === 'progress:paper-position:v1' ||
           record.id === RIVER_MARKET_RECORD_ID ||
+          record.id.startsWith('progress:river-market:v2:kaifeng:') || record.marketContext !== undefined ||
+          (record.kind === 'progress' && record.body === 'opened' &&
+            marketCultureForId(record.siteId) !== undefined && record.id === `progress:${record.siteId}`) ||
+          (record.kind === 'favorite' && marketCultureForId(record.siteId) !== undefined) ||
+          (record.kind === 'note' && marketCultureForId(record.siteId) !== undefined) ||
           record.paperContext !== undefined ||
           (record.kind === 'note' && record.siteId === 'kf-zhouqiao' && record.tags.includes('汴河探方')) ||
           (record.kind === 'note' && record.siteId === 'kf-zhouqiao' && record.tags.includes('汴京开市')) ||
@@ -280,7 +298,8 @@ struct Index {
     if (this.saving || this.accountView.busy) return;
     const names = this.paths.getAllPathName();
     const name = names.length > 0 ? names[names.length - 1] : '';
-    if (['roaming', 'site', 'roam-memory', 'roam-scroll', 'profile', 'profile-section'].includes(name)) {
+    if (['roaming', 'site', 'roam-memory', 'roam-scroll', 'profile', 'profile-section',
+      'market-night', 'market-culture', 'market-memory'].includes(name)) {
       this.loginReturnName = name;
       this.loginReturnParameter = this.paths.getParamByIndex(names.length - 1) as Object;
       if (name === 'roaming') {
@@ -325,7 +344,9 @@ struct Index {
       const route = JSON.parse(this.roamingLaunchRoute) as RoamingLaunchRoute;
       // 窗口级启动意图只消费一次，不清空路由或切换身份，避免热启动打断当前账号。
       this.roamingLaunchRoute = '';
-      if (route.action === 'chapter' && PAPER_CITIES.some(city => city.id === route.chapterId)) {
+      if (route.action === 'chapter' && NIGHT_CONFIGS.some(night => night.id === route.chapterId)) {
+        this.openMarketNight(route.chapterId);
+      } else if (route.action === 'chapter' && PAPER_CITIES.some(city => city.id === route.chapterId)) {
         this.openPaper(route.chapterId);
       } else if (route.action === 'chapter' && ROAM_CHAPTERS.some(chapter => chapter.id === route.chapterId)) {
         this.openRoaming(route.chapterId);
@@ -347,9 +368,25 @@ struct Index {
     const position = snapshot.records.find(record => record.id === 'progress:paper-position:v1' && !record.deleted);
     const city = PAPER_CITIES.find(item => item.id === position?.siteId) || PAPER_CITIES[0];
     const work = paperWorkFromRecords(snapshot.records, city.id);
-    const state: RoamingCardState = { mode: 'chapter', chapterId: city.id,
+    let state: RoamingCardState = { mode: 'chapter', chapterId: city.id,
       title: city.title, excerpt: work ? '上次的剪口还在，接着剪这一页。' : city.subtitle,
       completedClues: work?.completedAt ? 1 : 0, totalClues: 1 };
+    // 卡片只消费已确认快照；批次播放、打开页面、应急面板本身都不推进显示进度。
+    const nights = NIGHT_CONFIGS.map(config => marketNightFromRecords(snapshot.records, config.id))
+      .filter((night: RiverMarketV2 | undefined): boolean => night !== undefined) as RiverMarketV2[];
+    nights.sort((a: RiverMarketV2, b: RiverMarketV2): number => b.updatedAt - a.updatedAt);
+    const latestNight = nights[0];
+    if (latestNight) {
+      const config = NIGHT_CONFIGS.find(item => item.id === latestNight.nightId)!;
+      const label = latestNight.phase === 'closed' ? '四段已收市' :
+        `第${latestNight.round + 1}段 · 已过${latestNight.batch}/3批`;
+      state = { mode: 'chapter', chapterId: latestNight.nightId, title: config.title,
+        excerpt: latestNight.phase === 'emergency' ? '客人正等着下一批，回来安排一次应急。' : '回到自己保存的街市安排。',
+        completedClues: Math.min(12, latestNight.round * 3 + latestNight.batch), totalClues: 12, marketCheckpoint: label };
+    } else if (!work) {
+      state = { mode: 'chapter', chapterId: 'night-1', title: '开封三夜 · 州桥初市',
+        excerpt: '六处铺位、六名伙计，亲手安排第一夜。', completedClues: 0, totalClues: 12, marketCheckpoint: '尚未开市' };
+    }
     if (/^yunheji_test_ui_[a-z0-9_]{1,80}$/.test(this.archiveStoreName)) state.testStoreName = this.archiveStoreName;
     try { await publishRoamingCard(context, state); }
     catch { /* 单张卡片的宿主失败不阻止另一类缓存刷新或清理。 */ }
@@ -357,8 +394,8 @@ struct Index {
       const note = activeRecords(snapshot.records, 'note')[0];
       if (note) {
         const memoryState: RoamingCardState = { mode: 'memory',
-          chapterId: note.paperContext?.cityId || note.roamingContext?.chapterId || '',
-          noteId: note.id, title: note.paperContext?.title || note.roamingContext?.title || this.memorySite(note).name,
+          chapterId: note.marketContext?.nightId || note.paperContext?.cityId || note.roamingContext?.chapterId || '',
+          noteId: note.id, title: note.marketContext?.title || note.paperContext?.title || note.roamingContext?.title || this.memorySite(note).name,
           excerpt: note.body || (note.paperContext ? '我留下的一幅纸景，剪口与出处都在。' : ''), completedClues: 0, totalClues: 0 };
         if (/^yunheji_test_ui_[a-z0-9_]{1,80}$/.test(this.archiveStoreName)) memoryState.testStoreName = this.archiveStoreName;
         await publishRoamingCard(context, memoryState);
@@ -452,6 +489,69 @@ struct Index {
 
   private openMarket(): void {
     if (this.ready) this.paths.pushPathByName('river-market', '', !this.snapshot.reducedMotion);
+  }
+
+  private openMarketNight(nightId: string): void {
+    const config = NIGHT_CONFIGS.find(item => item.id === nightId);
+    if (!this.ready || !config || !marketNightUnlocked(this.snapshot.records, config.id)) return;
+    this.paths.pushPathByName('market-night', { nightId } as MarketNightRoute, !this.snapshot.reducedMotion);
+  }
+
+  private saveMarketNight(state: RiverMarketV2, restart: boolean): Promise<boolean> {
+    const frozen = copyMarketNight(state); const generation = this.accountGeneration;
+    let result = false;
+    const operation = this.marketNightsWriteQueue.catch(() => {}).then(async (): Promise<void> => {
+      await this.waitForArchiveWrite();
+      if (this.saving || generation !== this.accountGeneration || !marketNightUnlocked(this.snapshot.records, frozen.nightId)) return;
+      if (marketNightIsUnreadable(this.snapshot.records, frozen.nightId) ||
+        (marketNightIsDeleted(this.snapshot.records, frozen.nightId) && !restart)) {
+        this.errorMessage = '这一夜的原存档已保留，暂停覆盖。删除的进度须明确重新开市。'; return;
+      }
+      // 每批与每次应急是一个原子检查点。失败重存同一完整版本，不在这里重算客流或扣款。
+      const next = copySnapshot(this.snapshot); const updatedAt = nextTimestamp(next.records, Date.now());
+      frozen.updatedAt = updatedAt;
+      next.records = putRecord(next.records, marketNightRecord(frozen, next.deviceId, updatedAt));
+      result = await this.commit(next);
+    });
+    this.marketNightsWriteQueue = operation;
+    return operation.then(() => result);
+  }
+
+  private openMarketCulture(contentId: string, state?: RiverMarketV2): void {
+    if (!marketCultureForId(contentId)) return;
+    this.paths.pushPathByName('market-culture', { contentId,
+      marketState: state ? copyMarketNight(state) : undefined } as MarketCultureRoute, !this.snapshot.reducedMotion);
+  }
+
+  private async saveMarketCultureNote(contentId: string, body: string, tags: string[], excerpt: string,
+    context?: MarketMemoryContext): Promise<boolean> {
+    const generation = this.accountGeneration;
+    const frozen = context ? copyMarketMemory(context) : undefined;
+    await this.marketNightsWriteQueue; await this.waitForArchiveWrite();
+    const entry = culturalEntryForId(contentId);
+    if (!entry || this.saving || generation !== this.accountGeneration || (!body.trim() && !excerpt.trim())) return false;
+    const next = copySnapshot(this.snapshot); const updatedAt = nextTimestamp(next.records, Date.now());
+    const note: ArchiveRecord = { id: `note:${next.deviceId}:${updatedAt}`, kind: 'note', siteId: contentId,
+      body: body.trim().slice(0, 4000), tags: tags.map(tag => tag.trim().slice(0, 40)).filter(tag => !!tag).slice(0, 20),
+      updatedAt, deviceId: next.deviceId, deleted: false, stampType: '开封三夜', paperTheme: 'jade',
+      quotedPoemOrFact: `${excerpt.trim()}\n${entry.source.title}\n${entry.source.url}`.trim() };
+    // 游戏场景与来源是确认时的冻结副本，阅读条目也能写普通笔记，不靠通关造个人感想。
+    if (frozen) note.marketContext = frozen;
+    next.records = putRecord(next.records, note);
+    const saved = await this.commit(next); if (saved) this.lastSavedNoteId = note.id;
+    return saved;
+  }
+
+  private async favoriteMarketCulture(contentId: string, category: string): Promise<boolean> {
+    await this.waitForArchiveWrite();
+    if (!marketCultureForId(contentId) || this.saving) return false;
+    const next = copySnapshot(this.snapshot);
+    const previous = next.records.find(item => item.id === `favorite:${contentId}`);
+    const tags = previous?.tags.filter(tag => !COLLECTION_TAGS.includes(tag)) || [];
+    if (category && COLLECTION_TAGS.includes(category)) tags.unshift(category);
+    next.records = putRecord(next.records, { id: `favorite:${contentId}`, kind: 'favorite', siteId: contentId,
+      body: '', tags, updatedAt: nextTimestamp(next.records, Date.now()), deviceId: next.deviceId, deleted: !category });
+    return this.commit(next);
   }
 
   private saveMarketState(state: RiverMarketState, restart: boolean = false): Promise<boolean> {
@@ -651,10 +751,20 @@ struct Index {
   }
 
   private openCulturalContent(id: string): void {
+    if (marketCultureForId(id)) { this.openMarketCulture(id); this.rememberMarketReading(id); return; }
     const chapter = roamingChapterForId(id);
     if (chapter) { this.openRoaming(chapter.id, id); return; }
     const site = this.siteFor(id);
     if (site) this.openSite(site);
+  }
+
+  private async rememberMarketReading(contentId: string): Promise<void> {
+    const generation = this.accountGeneration; await this.waitForArchiveWrite();
+    if (this.saving || generation !== this.accountGeneration || !marketCultureForId(contentId)) return;
+    const next = copySnapshot(this.snapshot);
+    next.records = putRecord(next.records, { id: `progress:${contentId}`, kind: 'progress', siteId: contentId,
+      body: 'opened', tags: [], updatedAt: nextTimestamp(next.records, Date.now()), deviceId: next.deviceId, deleted: false });
+    await this.commit(next);
   }
 
   private async toggleCultureFavorite(id: string): Promise<void> {
@@ -681,12 +791,15 @@ struct Index {
 
   private async shareMemory(note: ArchiveRecord): Promise<void> {
     try {
-      const source = note.paperContext?.sources.map(item => `${item.title} · ${item.era}\n${item.quote}\n${item.url}`).join('\n\n') ||
+      const source = note.marketContext?.sources.map(item => `${item.title} · ${item.era}\n${item.quote}\n${item.url}`).join('\n\n') ||
+        note.paperContext?.sources.map(item => `${item.title} · ${item.era}\n${item.quote}\n${item.url}`).join('\n\n') ||
         note.roamingContext?.sources.map(item => `${item.title} ${item.url}`).join('\n') || '';
       await shareRoamingMemory(this.getUIContext().getHostContext() as common.UIAbilityContext,
-        note.paperContext?.title || note.roamingContext?.title || this.memorySite(note).name, note.body,
-        note.paperContext?.excerpt || note.paperContext?.culture || note.roamingContext?.excerpt || note.quotedPoemOrFact || '', source,
-        note.paperContext ? 'paper-note-share' : 'roam-memory-share', note.paperContext?.work);
+        note.marketContext?.title || note.paperContext?.title || note.roamingContext?.title || this.memorySite(note).name, note.body,
+        note.marketContext ? note.marketContext.excerpt :
+          note.paperContext?.excerpt || note.paperContext?.culture || note.roamingContext?.excerpt || note.quotedPoemOrFact || '',
+        source || note.quotedPoemOrFact || '', note.marketContext ? 'tn-memory-share' : note.paperContext ? 'paper-note-share' : 'roam-memory-share',
+        note.paperContext?.work, note.marketContext);
     } catch {
       this.getUIContext().getPromptAction().showToast({ message: '分享未完成，记忆仍然保存在本机。' });
     }
@@ -715,6 +828,8 @@ struct Index {
           old.id === note.id && compareVersions(old, note) >= 0));
       const receivedProgress = activeRecords(next.records, 'progress').find((record: ArchiveRecord) =>
         (record.id.startsWith('progress:roam:') ||
+          (record.id.startsWith('progress:river-market:v2:kaifeng:') && NIGHT_CONFIGS.some(config =>
+            marketNightFromRecords([record], config.id) !== undefined)) ||
           (record.id === RIVER_MARKET_RECORD_ID && !!riverMarketFromRecords([record])) ||
           (record.id.startsWith('progress:paper-journey:v1:') && !!paperWorkFromRecords([record], record.siteId))) &&
         record.deviceId !== this.snapshot.deviceId &&
@@ -725,7 +840,9 @@ struct Index {
       this.accountConfirmed = reply.records;
       if (received) this.incomingMemoryId = received.id;
       // 新纸景与旧篇章共享“收到后主动继续”入口；接收本身不导航，不打断另一篇的编辑。
-      if (receivedProgress?.id === RIVER_MARKET_RECORD_ID) {
+      if (receivedProgress?.id.startsWith('progress:river-market:v2:kaifeng:')) {
+        this.incomingChapterId = receivedProgress.id.substring('progress:river-market:v2:kaifeng:'.length);
+      } else if (receivedProgress?.id === RIVER_MARKET_RECORD_ID) {
         this.incomingChapterId = 'river-market';
       } else if (receivedProgress && (PAPER_CITIES.some((city: PaperCity) => city.id === receivedProgress.siteId) ||
         ROAM_CHAPTERS.some((chapter: RoamChapter) => chapter.id === receivedProgress.siteId))) {
@@ -922,9 +1039,12 @@ struct Index {
   }
 
   private visitedSiteIds(): string[] {
-    // 浏览记录与主题探索共用 progress kind；按 siteId 去重后供档案卡与筛选复用。
-    return HERITAGE_SITES.filter((site: HeritageSite) => this.snapshot.records.some((record: ArchiveRecord) =>
-      record.kind === 'progress' && !record.deleted && record.siteId === site.id))
+    // 经营也借用kf-zhouqiao作为文化关联，不能把经营检查点当作读过遗址。
+    // 沿用四主题解析器识别真正opened/阅读记录，旧比例仍保持原语义。
+    return HERITAGE_SITES.filter((site: HeritageSite) => {
+      const reading = decodeExplorationProgress(this.snapshot.records, site.id);
+      return reading.openedOnly || reading.percent > 0;
+    })
       .map((site: HeritageSite) => site.id);
   }
 
@@ -1001,7 +1121,8 @@ struct Index {
 
   private lastOpenedAt(siteId: string): number {
     return this.snapshot.records.reduce((latest: number, record: ArchiveRecord) =>
-      record.kind === 'progress' && !record.deleted && record.siteId === siteId
+      record.kind === 'progress' && !record.deleted && record.siteId === siteId &&
+        record.id === `progress:${siteId}` && record.body === 'opened'
         ? Math.max(latest, record.updatedAt) : latest, 0);
   }
 
@@ -1026,6 +1147,7 @@ struct Index {
   }
 
   private editMemory(note: ArchiveRecord): void {
+    if (note.marketContext) { this.openMemory(note, false); return; }
     if (note.roamingContext) {
       this.paths.pushPathByName('roam-memory', { noteId: note.id, edit: true } as RoamingNoteRoute, !this.snapshot.reducedMotion);
       return;
@@ -1153,7 +1275,8 @@ struct Index {
   }
 
   private siteFor(id: string): HeritageSite | undefined {
-    return HERITAGE_SITES.find((site: HeritageSite) => site.id === id);
+    // 文献条目有独立身份，普通摘记编辑也必须解析回该条资料；不能落到目录首条遗址。
+    return culturalEntryForId(id);
   }
 
   private memorySite(note: ArchiveRecord): HeritageSite {
@@ -1167,6 +1290,9 @@ struct Index {
   }
 
   private openMemory(note: ArchiveRecord, replay: boolean): void {
+    if (note.marketContext) {
+      this.paths.pushPathByName('market-memory', { noteId: note.id } as MemoryRoute, !this.snapshot.reducedMotion); return;
+    }
     if (note.paperContext) {
       this.paths.pushPathByName('paper-memory', { noteId: note.id } as MemoryRoute, !this.snapshot.reducedMotion);
       return;
@@ -1223,6 +1349,28 @@ struct Index {
             this.paths.pushPathByName('profile-section', 'account', !this.snapshot.reducedMotion);
           } else this.openLogin();
         } })
+    } else if (name === 'market-night') {
+      MarketNightPage({ nightId: (parameter as MarketNightRoute).nightId, records: this.snapshot.records,
+        saving: this.saving, reducedMotion: this.snapshot.reducedMotion,
+        onSaveState: (state: RiverMarketV2, restart: boolean): Promise<boolean> => this.saveMarketNight(state, restart),
+        onOpenContent: (id: string) => this.openCulturalContent(id),
+        onComposeMemory: (state: RiverMarketV2) => { this.openMarketCulture(cultureIdForNight(state.nightId), state); },
+        onNextNight: (id: string) => this.openMarketNight(id), onBack: () => { this.paths.pop(); } })
+    } else if (name === 'market-culture') {
+      MarketCulturePage({ contentId: (parameter as MarketCultureRoute).contentId,
+        marketState: (parameter as MarketCultureRoute).marketState, records: this.snapshot.records,
+        saving: this.saving, reducedMotion: this.snapshot.reducedMotion,
+        onSave: (body: string, tags: string[], excerpt: string, context?: MarketMemoryContext): Promise<boolean> =>
+          this.saveMarketCultureNote((parameter as MarketCultureRoute).contentId, body, tags, excerpt, context),
+        onFavorite: (id: string, category: string): Promise<boolean> => this.favoriteMarketCulture(id, category),
+        onOpenContent: (id: string) => this.openCulturalContent(id), onBack: () => { this.paths.pop(); } })
+    } else if (name === 'market-memory') {
+      MarketMemoryPage({ noteId: (parameter as MemoryRoute).noteId, records: this.snapshot.records,
+        saving: this.saving, reducedMotion: this.snapshot.reducedMotion,
+        onCurrentSnapshot: (): ArchiveSnapshot => this.snapshot,
+        onCommit: (next: ArchiveSnapshot): Promise<boolean> => this.commit(next),
+        onContinue: (id: string) => this.openMarketNight(id), onArchive: (id: string) => this.openCulturalContent(id),
+        onShare: (note: ArchiveRecord) => { this.shareMemory(note); }, onBack: () => { this.paths.pop(); } })
     } else if (name === 'river-market') {
       RiverMarketPage({ records: this.snapshot.records, saving: this.saving,
         reducedMotion: this.snapshot.reducedMotion,
@@ -1326,7 +1474,7 @@ struct Index {
         onCommit: (next: ArchiveSnapshot): Promise<boolean> => this.commit(next),
         onEdit: (note: ArchiveRecord) => this.editMemory(note), onReplay: (note: ArchiveRecord) => this.openMemory(note, true),
         onAsk: (note: ArchiveRecord) => this.askMemory(note),
-        onArchive: (id: string) => { const site = this.siteFor(id); if (site) this.openSite(site); },
+        onArchive: (id: string) => this.openCulturalContent(id),
         onBack: () => { this.paths.pop(); } })
     } else if (name === 'profile' || name === 'profile-section') {
       ProfilePage({ snapshot: $snapshot, view: this.accountView, nativeView: this.nativeView, saving: this.saving,
@@ -1863,7 +2011,8 @@ struct Index {
                       this.incomingMemoryId = ''; if (note) this.openMemory(note, false);
                     } else {
                       const id = this.incomingChapterId; this.incomingChapterId = '';
-                      if (id === 'river-market') this.openMarket();
+                      if (NIGHT_CONFIGS.some(config => config.id === id)) this.openMarketNight(id);
+                      else if (id === 'river-market') this.openMarket();
                       else if (PAPER_CITIES.some((city: PaperCity) => city.id === id)) this.openPaper(id);
                       else this.openRoaming(id);
                     }
@@ -1875,9 +2024,10 @@ struct Index {
             }
             HdsTabs({ controller: this.tabsController, index: this.currentTab }) {
               TabContent() {
-                RiverMarketHome({ records: this.snapshot.records, reducedMotion: this.snapshot.reducedMotion,
+                MarketNightsHome({ records: this.snapshot.records, reducedMotion: this.snapshot.reducedMotion,
                   topClearance: this.contentClearance(), bottomClearance: this.dockClearance(), scroller: this.exploreScroller,
-                  onOpen: () => this.openMarket(), onLibrary: () => this.showLibrary(),
+                  onOpen: (id: string) => this.openMarketNight(id), onLibrary: () => this.showLibrary(),
+                  onLegacyMarket: () => this.openMarket(),
                   onLegacyPaper: () => { this.paths.pushPathByName('paper-home', '', !this.snapshot.reducedMotion); } })
               }.tabBar(this.tabStyle(0, '漫游', $r('sys.symbol.map')))
               TabContent() {
@@ -1896,7 +2046,7 @@ struct Index {
                   onWrite: () => this.paths.pushPathByName('memory-new', '', !this.snapshot.reducedMotion),
                   onOpenCollection: (id: string) => this.openCulturalContent(id), onLegacyScroll: () => this.openPersonalRiver(),
                   onContinue: (id: string) => this.openPaper(id), onEdit: (note: ArchiveRecord) => {
-                    if (note.paperContext) this.openMemory(note, false); else this.editMemory(note);
+                    if (note.paperContext || note.marketContext) this.openMemory(note, false); else this.editMemory(note);
                   },
                   onDelete: (note: ArchiveRecord) => this.confirmDeleteMemory(note) })
               }.tabBar(this.tabStyle(2, '记忆', $r('sys.symbol.bookmark')))

@@ -2,6 +2,8 @@ import type { RoamSource, RoamingMemoryContext } from './Roaming';
 import { mergeGameProgressBody } from './GameProgressMerge';
 import { copyPaperMemory, validPaperMemory } from './PaperMemory';
 import type { PaperMemoryContext } from './PaperMemory';
+import { canonicalMarketMemory, copyMarketMemory, validMarketMemory } from './MarketMemory';
+import type { MarketMemoryContext } from './MarketMemory';
 
 export interface SourceRef {
   title: string;
@@ -106,6 +108,8 @@ export interface ArchiveRecord {
   roamingContext?: RoamingMemoryContext;
   // 原创纸景独立于旧pose/漫游图景；只有用户确认收进记忆时才冻结作品和出处。
   paperContext?: PaperMemoryContext;
+  // 三夜经营图景只在用户确认保存时冻结；旧笔记缺省，不从当前 progress 补写。
+  marketContext?: MarketMemoryContext;
 }
 
 export interface ArchiveSnapshot {
@@ -220,6 +224,7 @@ export function copySnapshot(snapshot: ArchiveSnapshot): ArchiveSnapshot {
         copy.roamingContext = copyRoamingMemoryContext(record.roamingContext);
       }
       if (record.paperContext !== undefined) copy.paperContext = copyPaperMemory(record.paperContext);
+      if (record.marketContext !== undefined) copy.marketContext = copyMarketMemory(record.marketContext);
       return copy;
     }),
     lightEnabled: snapshot.lightEnabled,
@@ -277,7 +282,8 @@ function recordContent(record: ArchiveRecord): string {
     roaming === undefined ? null : [roaming.version, roaming.chapterId, roaming.clueId, roaming.sceneRevision, roaming.contentRevision,
       roaming.choiceId, roaming.excerpt, roaming.title, roaming.city,
       roaming.sources.map((source: RoamSource): string[] => [source.id, source.title, source.url, source.accessedAt])],
-    record.paperContext === undefined ? null : copyPaperMemory(record.paperContext)]);
+    record.paperContext === undefined ? null : copyPaperMemory(record.paperContext),
+    record.marketContext === undefined ? null : canonicalMarketMemory(record.marketContext)]);
 }
 
 // 相同时间戳必须有稳定的次序，否则 A 合并 B 与 B 合并 A 会得出不同结果。
@@ -381,7 +387,8 @@ export function parseSnapshot(raw: string): ArchiveSnapshot {
       (record.snapshot3DPose !== undefined && !isValidMemoryPose(record.snapshot3DPose)) ||
       (record.aiAssist !== undefined && !isValidAiMemoryAssist(record.aiAssist)) ||
       (record.roamingContext !== undefined && !isValidRoamingMemoryContext(record.roamingContext)) ||
-      (record.paperContext !== undefined && !validPaperMemory(record.paperContext))) {
+      (record.paperContext !== undefined && !validPaperMemory(record.paperContext)) ||
+      (record.marketContext !== undefined && !validMarketMemory(record.marketContext))) {
       throw new Error('ARCHIVE_INVALID_RECORD');
     }
     ids.push(record.id);

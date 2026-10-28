@@ -5,6 +5,7 @@ import { HERITAGE_SITES } from '../data/HeritageCatalog';
 import { ROAM_CHAPTERS } from '../data/RoamingCatalog';
 import { PAPER_CITIES } from '../data/PaperJourneyCatalog';
 import { ROAM_LIBRARY_ERAS, ROAM_LIBRARY_TYPES, roamingContentType } from '../data/CulturalContentIndex';
+import { MARKET_CULTURES, MARKET_CULTURE_ERA, MARKET_CULTURE_TYPE, MarketCultureEntry } from '../data/MarketCultureCatalog';
 import { siteIllustration } from './SiteRow';
 import { PaperJourneyTheme as P } from './PaperJourneyTheme';
 
@@ -56,8 +57,16 @@ export struct PaperLibrarySection {
     }
   }
 
-  private eras(): string[] { return ERAS.concat(ROAM_LIBRARY_ERAS.filter(value => !ERAS.includes(value))); }
-  private types(): string[] { return TYPES.concat(ROAM_LIBRARY_TYPES.filter(value => !TYPES.includes(value))); }
+  private eras(): string[] {
+    const values = ERAS.concat(ROAM_LIBRARY_ERAS.filter(value => !ERAS.includes(value)));
+    if (!values.includes(MARKET_CULTURE_ERA)) values.push(MARKET_CULTURE_ERA);
+    return values;
+  }
+  private types(): string[] {
+    const values = TYPES.concat(ROAM_LIBRARY_TYPES.filter(value => !TYPES.includes(value)));
+    if (!values.includes(MARKET_CULTURE_TYPE)) values.push(MARKET_CULTURE_TYPE);
+    return values;
+  }
   private categories(): string[] { return ['全部分类'].concat(COLLECTION_TAGS); }
   private words(): string[] { return this.keyword.trim().toLowerCase().split(/\s+/).filter(value => !!value); }
   private matchesText(text: string): boolean { return this.words().every(word => text.toLowerCase().includes(word)); }
@@ -68,7 +77,8 @@ export struct PaperLibrarySection {
 
   private lastOpened(id: string): number {
     return this.records.reduce((latest: number, record: ArchiveRecord): number =>
-      record.kind === 'progress' && !record.deleted && record.siteId === id ? Math.max(latest, record.updatedAt) : latest, 0);
+      record.kind === 'progress' && !record.deleted && record.siteId === id && record.body === 'opened' &&
+        record.id === `progress:${id}` ? Math.max(latest, record.updatedAt) : latest, 0);
   }
 
   private matchesScope(ids: string[]): boolean {
@@ -102,6 +112,18 @@ export struct PaperLibrarySection {
         this.matchesText(`${chapter.city} ${chapter.title} ${chapter.opening} ${chapter.closing} ` +
           `${clue.title} ${clue.goal} ${clue.body} ${clue.era} ${roamingContentType(clue)}`));
     });
+  }
+
+  private marketEntries(): MarketCultureEntry[] {
+    const entries = MARKET_CULTURES.filter((entry: MarketCultureEntry): boolean =>
+      (this.city === '全部城市' || this.city === entry.city) &&
+      (this.era === '全部年代' || this.era === entry.era) &&
+      (this.type === '全部类型' || this.type === entry.type) && this.matchesScope([entry.id]) &&
+      this.matchesText(`${entry.title} ${entry.subtitle} ${entry.city} ${entry.era} ${entry.type} ` +
+        `${entry.tags.join(' ')} ${entry.quote} ${entry.body} ${entry.gameConnection} ${entry.source.title}`));
+    if (this.sort === '最近浏览') entries.sort((a: MarketCultureEntry, b: MarketCultureEntry): number =>
+      this.lastOpened(b.id) - this.lastOpened(a.id));
+    return entries;
   }
 
   private featured(): HeritageSite | undefined {
@@ -182,8 +204,41 @@ export struct PaperLibrarySection {
     Row({ space: 8 }) {
       Text(this.summary()).fontSize(11).fontColor(P.muted).layoutWeight(1).maxLines(1)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
-      Text(`${this.sites().length} 处档案`).fontSize(11).fontColor(P.dim).id('library-result-count')
+      Text(`${this.sites().length} 处档案 · ${this.marketEntries().length} 篇文献`).fontSize(11).fontColor(P.dim).id('library-result-count')
     }.width('100%').padding({ top: 10, bottom: 19 })
+  }
+
+  @Builder
+  private marketReadings() {
+    if (this.marketEntries().length > 0) {
+      Row({ space: 10 }) {
+        Text('开封三夜，读生活').fontSize(21).fontWeight(FontWeight.Medium).fontColor(P.paper).layoutWeight(1)
+        Text(`${this.marketEntries().length} 篇文献`).fontSize(10).fontColor(P.dim).id('library-market-count')
+      }.width('100%').margin({ top: 1, bottom: 5 })
+      Text('不必开市，也能自由读、选摘和写一页。').fontSize(11).fontColor(P.muted).width('100%').margin({ bottom: 6 })
+      ForEach(this.marketEntries(), (entry: MarketCultureEntry) => {
+        Row({ space: 12 }) {
+          Button({ type: ButtonType.Normal }) {
+            Column({ space: 7 }) {
+              Text(entry.title).fontSize(17).fontWeight(FontWeight.Medium).fontColor(P.paper).width('100%')
+              Text(`「${entry.quote.replace(/\n/g, ' ')}」`).fontSize(12).lineHeight(20).fontColor(P.paperSoft)
+                .width('100%').maxLines(2).textOverflow({ overflow: TextOverflow.Ellipsis })
+              Text(`${entry.source.title} · ${this.lastOpened(entry.id) > 0 ? '已读' : '自由阅读'}`)
+                .fontSize(10).fontColor(P.dim).width('100%')
+            }.width('100%').alignItems(HorizontalAlign.Start)
+          }.layoutWeight(1).padding(0).backgroundColor(Color.Transparent).borderRadius(0)
+            .onClick(() => this.onOpen(entry.id)).id(`site-row-${entry.id}`)
+          Button({ type: ButtonType.Normal }) {
+            SymbolGlyph(this.favorite(entry.id) ? $r('sys.symbol.bookmark_fill') : $r('sys.symbol.bookmark'))
+              .fontSize(18).fontColor([this.favorite(entry.id) ? P.amber : P.muted])
+          }.width(34).height(38).padding(0).backgroundColor(Color.Transparent)
+            .onClick(() => this.onToggleFavorite(entry.id)).id(`library-favorite-${entry.id}`)
+            .accessibilityText(this.favorite(entry.id) ? '取消收藏' : '收藏这篇文献')
+        }.width('100%').alignItems(VerticalAlign.Top).padding({ top: 16, bottom: 16 })
+          .border({ width: { bottom: 0.6 }, color: P.line }).id(`library-market-${entry.id}`)
+      }, (entry: MarketCultureEntry) => entry.id)
+      Text('生活文献与下方遗址档案分别计数。').fontSize(10).fontColor(P.dim).width('100%').margin({ top: 9, bottom: 26 })
+    }
   }
 
   @Builder
@@ -319,7 +374,7 @@ export struct PaperLibrarySection {
             .onSelect((_index: number, value: string) => { this.sort = value; }).id('library-sort')
         }.width('100%').alignItems(HorizontalAlign.Start).padding({ bottom: 8 })
       }.layoutWeight(1).width('100%').scrollBar(BarState.Off)
-      Button(`翻开 ${this.sites().length} 处档案 · ${this.chapters().length} 篇导读`, { type: ButtonType.Normal })
+      Button(`翻开 ${this.sites().length} 处档案 · ${this.marketEntries().length} 篇文献 · ${this.chapters().length} 篇导读`, { type: ButtonType.Normal })
         .width('100%').height(46).fontSize(14).fontColor(P.paper).backgroundColor(P.moss).borderRadius(5)
         .onClick(() => { this.filtersOpen = false; }).id('library-filter-done')
     }.width('100%').height('100%').padding({ left: 24, right: 24, top: 24, bottom: 25 }).backgroundColor(P.paper)
@@ -330,6 +385,7 @@ export struct PaperLibrarySection {
       Column() {
         this.heading()
         this.searchBar()
+        this.marketReadings()
         if (this.featured()) { this.feature(this.featured()!) }
         ForEach(this.pairs(), (pair: PaperLibraryPair) => {
           Row({ space: 28 }) {
@@ -339,7 +395,7 @@ export struct PaperLibrarySection {
             }
           }.width('100%').alignItems(VerticalAlign.Top)
         }, (pair: PaperLibraryPair) => `${pair.first.id}-${pair.second?.id || ''}`)
-        if (this.sites().length === 0 && this.chapters().length === 0) {
+        if (this.sites().length === 0 && this.marketEntries().length === 0 && this.chapters().length === 0) {
           Column({ space: 12 }) {
             Text('这一页还没有找到').fontSize(21).fontColor(P.paper)
             Text('换一个关键词，或放宽筛选，再沿河读一读。').fontSize(13).fontColor(P.muted)

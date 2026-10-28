@@ -34,6 +34,9 @@ import paperExcerptTest from './PaperExcerpt.test';
 import paperLightTest from './PaperLight.test';
 import riverPaperPerfTest from './RiverPaperPerf.test';
 import riverMarketTest from './RiverMarket.test';
+import marketNightsTest from './MarketNights.test';
+import marketNightsCultureTest from './MarketNightsCulture.test';
+import marketNightsSyncTest from './MarketNightsSync.test';
 
 export default function testsuite() {
   archiveDeviceTest();
@@ -80,4 +83,8 @@ export default function testsuite() {
   riverPaperPerfTest();
   // 汴京开市真实经营、回放连点与普通记忆保留仅在显式 class=RiverMarketTest 时注册。
   riverMarketTest();
+  // 三夜逐批经营使用显式阶段与独立库，不写入正式档案或混入旧回归。
+  marketNightsTest();
+  marketNightsCultureTest();
+  marketNightsSyncTest();
 }

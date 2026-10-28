@@ -27,6 +27,8 @@ import './kaifeng-puzzle.test.mjs';
 import './kaifeng-dig.test.mjs';
 import './paper-journey.test.mjs';
 import './river-market.test.mjs';
+import './river-market-v2.test.mjs';
+import './market-memory.test.mjs';
 import './paper-memory.test.mjs';
 import './game-progress-merge.test.mjs';
 import './kaifeng-ai.test.mjs';
